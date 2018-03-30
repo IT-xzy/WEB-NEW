@@ -12,9 +12,7 @@ https://it-xzy.github.io/WEB-NEW/0-index-WEB.html
 - 每一小节目录标题独占一页，其后数页才写章节内容
 - 更改以前已有的PPT分享后，需要将自己的名字添加到PPT尾页前人名字之后
 
-上传完成记得更新目录：0-index-WEB.html
-上传完成记得更新目录：0-index-WEB.html
-上传完成记得更新目录：0-index-WEB.html
+## 上传完成记得更新目录：0-index-WEB.html
 
 ## 备注
 PPT基于reveal，希望查看更多详情可以访问[reveal官网](https://github.com/hakimel/reveal.js)
