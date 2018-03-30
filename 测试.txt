@@ -1,0 +1,35 @@
+水平居中:
+1.需要同时设置父元素和子元素
+.parent {text-align: center;}
+.child {display: inline-block;}
+
+2.需要指定宽度
+.child {width: 200px; margin: 0 auto;}
+
+3.IE6，7需要调整结构
+.child {display: table; margin: 0 auto;}
+
+4.IE9及以上使用
+.parent {position: relative;}
+/*或者使用margin-left的负值为盒子宽度的一半也可以实现，不过这样就必须知道盒子的宽度，但兼容性好
+.child {position: absolute; left: 50%; transform: translateX(-50%);}
+
+5.如果进行大面积的布局可能会影响效率
+.parent {display: flex; justify-content: center;}
+
+.parent {display: flex;}
+.child {margin: 0 auto;}
+
+垂直居中:
+1.
+.parent {display: table-cell; vertical-align: middle; height: 20px;}
+
+.parent {display: inline-block; vertical-align: middle; line-height: 20px;}
+
+2.
+.parent {position: relative;}
+.child {position: absolute; top: 50%; transform: translateY(-50%);}
+
+3.
+.parent {display: flex; align-items: center;}
+
