@@ -1,26 +1,26 @@
-Ë®Æ½¾ÓÖĞ:
-1.ĞèÒªÍ¬Ê±ÉèÖÃ¸¸ÔªËØºÍ×ÓÔªËØ
+æ°´å¹³å±…ä¸­:
+1.éœ€è¦åŒæ—¶è®¾ç½®çˆ¶å…ƒç´ å’Œå­å…ƒç´ 
 .parent {text-align: center;}
 .child {display: inline-block;}
 
-2.ĞèÒªÖ¸¶¨¿í¶È
+2.éœ€è¦æŒ‡å®šå®½åº¦
 .child {width: 200px; margin: 0 auto;}
 
-3.IE6£¬7ĞèÒªµ÷Õû½á¹¹
+3.IE6ï¼Œ7éœ€è¦è°ƒæ•´ç»“æ„
 .child {display: table; margin: 0 auto;}
 
-4.IE9¼°ÒÔÉÏÊ¹ÓÃ
+4.IE9åŠä»¥ä¸Šä½¿ç”¨
 .parent {position: relative;}
-/*»òÕßÊ¹ÓÃmargin-leftµÄ¸ºÖµÎªºĞ×Ó¿í¶ÈµÄÒ»°ëÒ²¿ÉÒÔÊµÏÖ£¬²»¹ıÕâÑù¾Í±ØĞëÖªµÀºĞ×ÓµÄ¿í¶È£¬µ«¼æÈİĞÔºÃ
+/*æˆ–è€…ä½¿ç”¨margin-leftçš„è´Ÿå€¼ä¸ºç›’å­å®½åº¦çš„ä¸€åŠä¹Ÿå¯ä»¥å®ç°ï¼Œä¸è¿‡è¿™æ ·å°±å¿…é¡»çŸ¥é“ç›’å­çš„å®½åº¦ï¼Œä½†å…¼å®¹æ€§å¥½
 .child {position: absolute; left: 50%; transform: translateX(-50%);}
 
-5.Èç¹û½øĞĞ´óÃæ»ıµÄ²¼¾Ö¿ÉÄÜ»áÓ°ÏìĞ§ÂÊ
+5.å¦‚æœè¿›è¡Œå¤§é¢ç§¯çš„å¸ƒå±€å¯èƒ½ä¼šå½±å“æ•ˆç‡
 .parent {display: flex; justify-content: center;}
 
 .parent {display: flex;}
 .child {margin: 0 auto;}
 
-´¹Ö±¾ÓÖĞ:
+å‚ç›´å±…ä¸­:
 1.
 .parent {display: table-cell; vertical-align: middle; height: 20px;}
 
