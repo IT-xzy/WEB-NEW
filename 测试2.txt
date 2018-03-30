@@ -1,4 +1,4 @@
-水平居中:
+11水平居中:
 1.需要同时设置父元素和子元素
 .parent {text-align: center;}
 .child {display: inline-block;}
