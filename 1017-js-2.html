@@ -1,223 +1,188 @@
-<!DOCTYPE html>
-<!-- saved from url=(0105)https://ptteng.github.io/PPT/PPT/js-02-%E5%B8%B8%E8%A7%81%E7%9A%84DOM%E6%93%8D%E4%BD%9C-SH-LHongLi.html#/ -->
-<html class=" js no-mobile desktop no-ie chrome chrome65 ppt-section ppt-section gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch no-retina fontface domloaded w-1366 gt-240 gt-320 gt-480 gt-640 gt-768 gt-800 gt-1024 gt-1280 lt-1440 lt-1680 lt-1920 no-portrait landscape" id="js-02-%e5%b8%b8%e8%a7%81%e7%9a%84dom%e6%93%8d%e4%bd%9c-sh-lhongli-page"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <title>葡萄藤PPT</title>
 
-    <link rel="stylesheet" href="./葡萄藤PPT_files/reveal.css">
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
 
     <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
-    <link rel="stylesheet" href="./葡萄藤PPT_files/ptt.css">
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
 
     <!-- syntax highlighting 代码高亮主题 -->
-    <link rel="stylesheet" href="./葡萄藤PPT_files/zenburn.css">
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
 
     <!-- 打印和PDF输出样式 -->
     <script>
-        var link = document.createElement('link');
+        var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
-        document.getElementsByTagName('head')[0].appendChild(link);
-    </script><link rel="stylesheet" type="text/css" href="./葡萄藤PPT_files/paper.css"><script type="text/javascript" src="./葡萄藤PPT_files/marked.js.下载"></script><script type="text/javascript" src="./葡萄藤PPT_files/markdown.js.下载"></script><script type="text/javascript" src="./葡萄藤PPT_files/notes.js.下载"></script><script type="text/javascript" src="./葡萄藤PPT_files/highlight.js.下载"></script>
-</head>
-
-<body>
-    <img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
-    <map name="pttmap">
-        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
-    </map>
-    <div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
-        <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.754714);">
-            <section class="present" style="top: 133px; display: block;">
-                <h2>【JS-task234】DOM常见的操作方式有哪些？</h2>
-                <h3>小课堂【北京第31期】</h3>
-                <p>分享人：金立剑</p>
-            </section>
-            <section class="future" style="top: 3px; display: block;" hidden="" aria-hidden="true">
-                <p>目录</p>
-                <p>1.背景介绍</p>
-                <p>2.知识剖析</p>
-                <p>3.常见问题</p>
-                <p>4.解决方案</p>
-                <p>5.编码实战</p>
-                <p>6.扩展思考</p>
-                <p>7.参考文献</p>
-                <p>8.更多讨论</p>
-            </section>
-            <section class="stack future" style="top: 0px; display: block;" data-previous-indexv="0" hidden="" aria-hidden="true">
-                <section class="past" style="top: 267px; display: none;" hidden="" aria-hidden="true">
-                    <h3>1.背景介绍</h3>
-                </section>
-                <section class="" style="top: 37px; display: block;" aria-hidden="true">
-                    <p style="font-size:1.8rem;text-align:left;text-indent:4.5rem;">什么是DOM？简单地说，DOM是一套对文档的内容进行抽象和概念化的方法</p>
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">在现实世界里，人们对所谓的'世界对象模型'都不会陌生，例如，当用'汽车'、'房子'和'树'等名词来称呼日常生活环境里的事物时，我们都可以百分百的肯定对方知道我们说的是什么，这是因为人们在对这些名词所代表的的东西有着相同的认知。于是，当对别人说"汽车停在车库里"时，可以断定他们不会理解为"小鸟关在壁橱里"</p>
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">
-                        我们的"世界对象模型"不仅可以用来描述客观存在的事物，还可以同来描述抽象概念。例如，假设有个人想我问路，而我给出的答案是"左边第三栋房子"，这个答案有没有意义取决于那个人能够理解"左边"和"第三"的含义。如果他不会数数或者分不清左右，则不管他是否理解这几个概念，我的回答对他都不会有任何的帮助。在现实世界中，正是因为大家对抽象的"世界对象模型"有着基本的共识，人们才能用非常简单的话来表达出复杂的含义并得到对方的理解。
-                    </p>
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">
-                        而DOM的定义则是由W3C所制定的标准，定义为"一个与系统平台和编程语言无关的接口，程序和脚本可以通过这个接口动态地访问和修改文档的内容`、结构和样式。"
-                    </p>
-
-                </section>
-            </section>
-            <section class="stack future" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true">
-                <section class="past" style="top: 267px; display: none;" hidden="" aria-hidden="true">
-                    <h3>2.知识剖析</h3>
-                </section>
-                <section class="past" style="top: 120.5px; display: none;" hidden="" aria-hidden="true">
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">
-                        节点这个词是一个网络用语，代表了网络中的一个连接点。一个网络就是由一些节点构成的集合。
-                    </p>
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">
-                        在现实世界中，一切事物都由原子构成。原子就是现实世界的节点。但是原子同样还可以进一步分解为更细小的亚原子微粒。这些亚原子微粒同样也是节点。
-                    </p>
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">
-                        DOM也是同样的情况。文档是由节点构成的集合，只不过此时的节点是文档树上的树枝和树叶而已。
-                    </p>
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">
-                        在DOM中有许多不同类型的节点。就像原子包含着亚原子微粒那样，也有很多类型的DOM节点包含着其他类型的节点。接下来我们先看看其中的三种：元素节点、文本节点和属性节点。
-                    </p>
-                </section>
-                <section class="past" style="top: 218px; display: none;" hidden="" aria-hidden="true">
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">
-                        元素节点只是节点类型的一种。如果一份文档完全有一些空白元素构成，他将有一个结构，但这份文档本身将不会包含什么内容。
-                    </p>
-                </section>
-                <section class="past" style="top: 31.5px; display: none;" hidden="" aria-hidden="true">
-                    <h3>常见的DOM操作</h3>
-                    <p style="text-align:left">获取DOM</p>
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">通过使用 getElementById() 方法匹配元素的id属性来访问元素节点，对元素节点进行操作</p>
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">通过使用 getElementsByTagName() 方法匹配元素的tagName来访问元素节点，对元素节点进行操作</p>
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">通过使用 getElementsByClassName() 方法匹配元素的className来访问元素节点，对元素节点进行操作</p>
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">值得注意的是， getElementsByTagName() 和 getElementsByClassName() 这两种方法因为其访问的是节点中的可能为复数的属性，所以得到的会是一个以数组的形式来体现出来的元素节点集合，我们可以通过打印获取到的DOM节点来判断类型</p>
-                    <a href="https://ptteng.github.io/PPT/demo/js-02-%E5%B8%B8%E8%A7%81%E7%9A%84DOM%E6%93%8D%E4%BD%9C-SH-LHongLi/demo.html">demo</a>
-                </section>
-                <section class="" style="top: 65.5px; display: none;" aria-hidden="true">
-                    <p style="text-align:left">DOM事件</p>
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">onclick事件---当用户点击时执行</p>
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">onload事件---当用户进入时执行</p>
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">onunload事件---用用户离开时执行</p>
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">onmouseover事件---当用户鼠标指针移入时执行</p>
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">onmouseout事件---当用户鼠标指针移出时执行</p>
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">onmousedown事件---当用户鼠标摁下时执行</p>
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">onmouseup事件---当用户鼠标松开时执行</p>
-
-                    <a href="https://ptteng.github.io/PPT/demo/js-02-%E5%B8%B8%E8%A7%81%E7%9A%84DOM%E6%93%8D%E4%BD%9C-SH-LHongLi/demo.html">demo</a>
-                </section>
-            </section>
-            <section class="stack future" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true">
-                <section class="" style="top: 267px; display: none;" aria-hidden="true">
-                    <h3>3.常见问题</h3>
-                </section>
-                <section class="future" style="top: 274.5px; display: none;" hidden="" aria-hidden="true">
-
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">如何通过class和tag调用元素?如何对其设置属性？</p>
-                </section>
-            </section>
-            <section class="stack future" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true">
-                <section class="past" style="top: 267px; display: none;" hidden="" aria-hidden="true">
-                    <h3>4.解决方案</h3>
-                </section>
-                <section class="" style="top: 236px; display: none;" aria-hidden="true">
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">在一个页面中常常有多个class相同的元素，也有多个标签相同的元素，在调用时方法如下</p>
-                    <a href="https://ptteng.github.io/PPT/demo/js-02-%E5%B8%B8%E8%A7%81%E7%9A%84DOM%E6%93%8D%E4%BD%9C-SH-LHongLi/demo.html">demo</a>
-                </section>
-            </section>
-            <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
-                <h3>5.编码实战</h3>
-            </section>
-
-            <section class="stack future" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true">
-                <section class="past" style="top: 267px; display: none;" hidden="" aria-hidden="true">
-                    <h3>6.扩展思考</h3>
-                </section>
-                <section class="" style="top: 175px; display: none;" aria-hidden="true">
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">
-                        onblur事件---当对象失去焦点时发生
-                    </p>
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">
-                        onchange事件---当对象域的值被改变时发生
-                    </p>
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">
-                         button 事件---属性可返回一个整数，指示当事件被触发时哪个鼠标按键被点击。
-                    </p>
-                    <p style="font-size:1.5rem;text-align:left;text-indent:3.5rem;">
-                        更多的事件就不一一的描述了，有兴趣的同学可以去看下这个
-                    </p>
-                    <a href="http://www.w3school.com.cn/jsref/dom_obj_document.asp">w3school</a>
-                </section>
-            </section>
-
-            <section hidden="" aria-hidden="true" class="stack future" style="top: 0px; display: none;" data-previous-indexv="0">
-                <section style="top: 267px; display: none;">
-                    <h3>7.参考文献</h3>
-                </section>
-                <section class="future" aria-hidden="true" style="top: 244px; display: none;">
-                    <p>《JavaScript DOM编程艺术》</p>
-                    <a href="http://www.w3school.com.cn/jsref/dom_obj_document.asp">w3school</a>
-                </section>
-            </section>
-            <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: none;">
-                <h3>8.更多讨论</h3>
-            </section>
-
-            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-                <h4>鸣谢</h4>
-                <p>感谢大家观看</p>
-                <p>
-                    分享人：金立剑
-                    <br>
-                </p>
-            </section>
-
-        </div>
-    <div class="backgrounds"><div class="slide-background present" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background stack future" data-loaded="true" style="display: block;"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div></div><div class="slide-background stack future" data-loaded="true" style="display: none;"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background present" data-loaded="true" style="display: none;"></div></div><div class="slide-background stack future" data-loaded="true" style="display: none;"><div class="slide-background present" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div></div><div class="slide-background stack future" data-loaded="true" style="display: none;"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background present" data-loaded="true" style="display: none;"></div></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background stack future" data-loaded="true" style="display: none;"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background present" data-loaded="true" style="display: none;"></div></div><div class="slide-background stack future" data-loaded="true" style="display: none;"><div class="slide-background present" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 0px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
-                【JS-task6】DOM常见的操作方式有哪些？
-                小课堂【北京第31期】
-                分享人：金立剑
-            </div></div>
-
-    <script src="./葡萄藤PPT_files/head.min.js.下载"></script>
-    <script src="./葡萄藤PPT_files/reveal.js.下载"></script>
-
-    <script>
-        // 以下为常见配置属性的默认值
-        // {
-        // 	controls: true, // 是否在右下角展示控制条
-        // 	progress: true, // 是否显示演示的进度条
-        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
-        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
-        // 	keyboard: true, // 是否启用键盘快捷键来导航
-        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
-        // 	center: true, // 是否将幻灯片垂直居中
-        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
-        // 	loop: false, // 是否循环演示
-        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
-        // 	fragments: true, // 全局开启和关闭碎片。
-        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
-        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
-        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
-        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
-        // }
-        // 初始化幻灯片
-        Reveal.initialize({
-            history: true,
-            dependencies: [
-                { src: '../plugin/markdown/marked.js' },
-                { src: '../plugin/markdown/markdown.js' },
-                { src: '../plugin/notes/notes.js', async: true },
-                {
-                    src: '../plugin/highlight/highlight.js', async: true, callback: function () {
-                        hljs.initHighlightingOnLoad();
-                    }
-                }
-            ]
-        });
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
     </script>
+</head>
+<body>
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>【js-task02】常见Dom操作有哪些？</h2>
+            <h3>小课堂</h3>
+            <p>分享人:金立剑</p>
+        </section>
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <section>
+            <p>DOM（文档对象模型）是针对HTML 和XML 文档的一个API（应用程序编程接口）。</p>
+            <p>DOM描绘了一个层次化的节点树，允许开发人员添加、移除和修改页面的某一部分。</p>
+        </section>
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            <p>DOM是什么？</p>
+            <p>DOM 是 Document Object Model（文档对象模型）的缩写。DOM就是一个编程接口，就是一套API，是针对HTML文档、XML等文档的一套API。</p>
+            <p>DOM用来访问或操作HTML文档、XHTML文档、XML文档中的节点元素。JavaScript 可以通过 DOM 来访问和操作HTML文档所有的元素。JavaScript是一种脚本语言，DOM是用来获得和操作HTML文档的节点属性。JavaScript通常是通过DOM来获得和操作HTML属性的。</p>
+        </section>
+        <section>
+            <p>什么是DOM节点？</p>
+            <p>HTML 文档中的所有内容都是节点</p>
+            <p>整个文档是一个文档节点</p>
+            <p>每个 HTML 元素是元素节点</p>
+            <p>HTML 元素内的文本是文本节点</p>
+            <p>每个 HTML 属性是属性节点</p>
+            <p>注释是注释节点</p>
+        </section>
 
+        <section>
+            <h3>3.常见问题</h3>
+            <p>常见的DOM操作有哪些？</p>
+        </section>
+        <section>
+            <p>1.查找节点</p>
+            <p>2.新建节点</p>
+            <p>3.添加新节点</p>
+            <p>4.删除节点</p>
+            <p>5.修改节点</p>
+        </section>
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            <p>常用的查找节点的方法有：</p>
+            <p>document.getElementById('id属性值');返回拥有指定id的对象的引用</p>
+            <p>document.getElementsByClassName('class属性值');返回拥有指定class的对象集合</p>
+            <p>document.getElementsByTagName('标签名');返回拥有指定标签名的对象集合</p>
+        </section>
+        <section>
+            <p>常用的新建节点的方法有：</p>
+            <p>document.createElement('元素名');创建新的元素节点</p>
+            <p>document.createAttribute('属性名');创建新的属性节点</p>
+            <p>document.createTextNode('文本内容');创建新的文本节点</p>
+        </section>
+        <section>
+            <p>常用的添加新节点的方法有：</p>
+            <p>1.element.setAttribute( attributeName, attributeValue );给元素增加指定属性，并设定属性值</p>
+            <p>2.element.setAttributeNode( attributeName );给元素增加属性节点</p>
+            <p>3.如需向 HTML DOM 添加新元素，您必须首先创建该元素（元素节点），然后向一个已存在的元素追加该元素。</p>
+            <p>1)document.createTextNode('新增文本内容');创建新的文本节点</p>
+            <p>2)parent.appendChild( 创建的新节点 );向父节点的最后一个子节点后追加新节点 或 parent.insertBefore( newChild, existingChild );向父节点的某个特定子节点之前插入新节点</p>
+        </section>
+        <section>
+            <p>常用的删除节点的方法有：</p>
+            <p>parentNode.removeChild( existingChild );删除已有的子节点，返回值为删除节点</p>
+            <p>DOM 需要清楚你需要删除的元素，以及它的父元素。常用的解决方案：找到你希望删除的子元素，然后使用其 parentNode 属性来找到父元素：
+                var child=document.getElementById("p1");
+                child.parentNode.removeChild(child);
+            </p>
+        </section>
+        <section>
+            <p>常用的修改节点的方法有：</p>
+            <p>parentNode.replaceChild( newChild, existingChild );用新节点替换父节点中已有的子节点</p>
+            <p>element.setAttribute( attributeName, attributeValue );给元素增加指定属性，并设定属性值(若原元素已有该节点，此操作能达到修改该属性值的目的)</p>
+            <p>element.setAttributeNode( attributeName );给元素增加属性节点(若原元素已有该节点，此操作能达到修改该属性值的目的)</p>
+        </section>
 
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+        <section>
+            <h3>6.更多讨论</h3>
+            <p>常见的DOM - 事件又哪些？</p>
+            <p>onclick 事件——当用户点击时</p>
+            <p>onload 事件——用户进入</p>
+            <p>onunload 事件——用户离开</p>
+            <p>onmouseover事件——鼠标移入</p>
+            <p>onmouseout事件——鼠标移出</p>
+            <p>onmousedown事件——鼠标按下</p>
+            <p>onmouseup 事件——鼠标抬起</p>
+            <p><a href="http://www.runoob.com/jsref/dom-obj-event.html">HTML DOM 事件</a></p>
+        </section>
+        <section>
+            <h3>7.参考文献</h3>
+            <p><a href="http://www.runoob.com/htmldom/htmldom-tutorial.html">菜鸟教程-HTML DOM 教程</a></p>
+            <p><a href="http://www.cnblogs.com/yinshuige/p/5812095.html">DOM常用操作 - GraceZy - 博客园</a></p>
+        </section>
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p><small>BY :金立剑 </small></p>
+        </section>
 
-Contact GitHub API Training Shop Blog About © 2016 GitHub, Inc. Terms Privacy Security Status He</body></html>
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: './plugin/markdown/marked.js' },
+            { src: './plugin/markdown/markdown.js' },
+            { src: './plugin/notes/notes.js', async: true },
+            { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>
