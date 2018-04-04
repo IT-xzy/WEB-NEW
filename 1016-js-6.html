@@ -1,0 +1,383 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section class="present" style="top: 132.5px; display: block;">
+                <h2>【JS-task4】JS中的面向对象编程</h2>
+                <h3>小课堂</h3>
+                <p style="text-align: center">分享人 : 黄苏威</p>
+            </section>
+            <section class="future" style="top: 1.5px; display: block;" hidden="" aria-hidden="true">
+                <p style="text-align: center">目录</p>
+                <p style="text-align: center">1.背景介绍</p>
+                <p style="text-align: center">2.知识剖析</p>
+                <p style="text-align: center">3.常见问题</p>
+                <p style="text-align: center">4.解决方案</p>
+                <p style="text-align: center">5.编码实战</p>
+                <p style="text-align: center">6.扩展思考</p>
+                <p style="text-align: center">7.参考文献</p>
+                <p style="text-align: center">8.更多讨论</p>
+            </section>
+            <section class="future" style="top: 266.5px; display: block;" hidden="" aria-hidden="true">
+                <h3>1.背景介绍</h3>
+            </section>
+            <section class="stack future" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true">
+                <section class="" style="top: 153.5px; display: none;" aria-hidden="true">
+                    <h4>什么是对象？</h4>
+                    <p>ECMA-262把对象定义为:"无序属性的集合，其属性可以包括基本值、对象或者函数"，相当于说对象是一组没有特定顺序的值。 对象的每一个属性和方法都有一个名字，每个名字都映射到一个值。
+                    </p>
+                </section>
+                <section class="future" style="top: 0px; display: none;" aria-hidden="true" hidden="">
+                    <h4>创建对象</h4>
+                    <p>创建一个Object实例并添加属性和方法</p>
+                    <pre>                    <code class="hljs mipsasm">
+                                 var person = new Object()<span class="hljs-comment">;</span>
+                                    person.name = <span class="hljs-string">"Nicholas"</span><span class="hljs-comment">;</span>
+                                    person.age = <span class="hljs-number">29</span><span class="hljs-comment">;</span>
+                                    person.<span class="hljs-keyword">job </span>= <span class="hljs-string">"doctor"</span><span class="hljs-comment">;</span>
+                                    person.sayName = function(){
+                                    alert(this.name)<span class="hljs-comment">;</span>
+                                    }<span class="hljs-comment">;</span>
+            
+                                    var person = {
+            <span class="hljs-symbol">                        name:</span><span class="hljs-string">"Nicholas"</span><span class="hljs-comment">;</span>
+            <span class="hljs-symbol">                        age:</span><span class="hljs-number">29</span><span class="hljs-comment">;</span>
+            <span class="hljs-symbol">                        job:</span><span class="hljs-string">"doctor"</span><span class="hljs-comment">;</span>
+                                    sayName{
+                                    alert(this.name)
+                                    }
+                                    }
+                                </code>
+                            </pre>
+                </section>
+                <section class="future" style="top: 61.5px; display: none;" hidden="" aria-hidden="true">
+                    <h4>什么是面向对象编程？</h4>
+                    <p>面向对象编程是一种通用思想，主要概念为： 把一组数据结构和处理它们的方法组成对象（object）， 把相同行为的对象归纳为类（class），通过类的封装（encapsulation）隐藏内部细节， 通过继承（inheritance）实现类的特化（specialization）／泛化（generalization），
+                        通过多态（polymorphism）实现基于对象类型的动态分派（dynamic dispatch）。
+                    </p>
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: 108px; display: none;">
+                    <p>为什么要面向对象编程</p>
+                    <p> 面向对象是为了解决系统的可维护性，可扩展性，可重用性：
+                        <br>
+                    </p>
+                    <p>1.数据和方法（方法可以理解为函数）被封装在一起，这样做改动的时候对整个程序的影响不大。 2.通过继承减少代码的冗余。 3.易扩展 </p>
+                </section>
+            </section>
+            <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                <h3>2.知识剖析</h3>
+            </section>
+            <section class="stack future" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true">
+            
+                <section class="" style="top: 110.5px; display: none;" aria-hidden="true">
+                    <h4>面向对象的特征详解</h4>
+                    <p>封装：把属性和方法储存在到对象内部</p>
+                    <p>继承：子类继承父类，可以继承父类的方法及属性，实现了多态以及代码的重用，因此也解决了系统的重用性和扩展性，但是继承破坏了封装.</p>
+                    <p>多态：接口的多种不同的实现方式即为多态。接口是对行为的抽象.方法不变，通过接收的参数变化，来实现多态。</p>
+                </section>
+            
+                <section class="future" aria-hidden="true" hidden="" style="top: 81px; display: none;">
+                    <h4>如何封装一个对象</h4>
+                    <p>构造函数模式</p>
+                    <pre>                    <code class="hljs actionscript">
+                                    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Cat</span><span class="hljs-params">(name,color)</span></span>{
+                                    　　　　<span class="hljs-keyword">this</span>.name = name;
+                                    　　　　<span class="hljs-keyword">this</span>.color = color;
+                                    　　　　<span class="hljs-keyword">this</span>.type = <span class="hljs-string">"猫科动物"</span>;
+                                    　　　　<span class="hljs-keyword">this</span>.eat = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{alert(<span class="hljs-string">"吃老鼠"</span>);};
+                                    　　}
+                                    <span class="hljs-keyword">var</span> cat1 = <span class="hljs-keyword">new</span> Cat(<span class="hljs-string">"大毛"</span>,<span class="hljs-string">"黄色"</span>);
+                                    alert(cat1.color);   <span class="hljs-comment">//   黄色</span>
+                                </code>
+                            </pre>
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: 287px; display: none;">
+                    构造函数模式存在的问题？如何改进？
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: 330px; display: none;">
+                    <p>问题：每个属性和方法都要在每个实例上重新创建一遍，造成内存和资源的浪费</p>
+                </section>
+            
+                <section class="future" aria-hidden="true" hidden="" style="top: 330px; display: none;">
+                    <p> Prototype模式</p>
+                    <p>把那些不变的属性和方法，直接定义在prototype对象上</p>
+                    <pre>                    <code class="hljs actionscript">
+                                    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Cat</span><span class="hljs-params">(name,color)</span></span>{
+                                    　　　　<span class="hljs-keyword">this</span>.name = name;
+                                    　　　　<span class="hljs-keyword">this</span>.color = color;
+                                    　　}
+                                    　　Cat.prototype.type = <span class="hljs-string">"猫科动物"</span>;
+                                    　　Cat.prototype.eat = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{alert(<span class="hljs-string">"吃老鼠"</span>)};
+            
+                                     <span class="hljs-keyword">var</span> cat1 = <span class="hljs-keyword">new</span> Cat(<span class="hljs-string">"大毛"</span>,<span class="hljs-string">"黄色"</span>);
+            　　                        <span class="hljs-keyword">var</span> cat2 = <span class="hljs-keyword">new</span> Cat(<span class="hljs-string">"二毛"</span>,<span class="hljs-string">"黑色"</span>);
+            　　                        alert(cat1.type); <span class="hljs-comment">// 猫科动物</span>
+            　　                        cat1.eat(); <span class="hljs-comment">// 吃老鼠</span>
+                                </code>
+                            </pre>
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: 330px; display: none;">
+                    <p>如何理解原型</p>
+                </section>
+            </section>
+            
+            <section class="future" style="top: 234px; display: none;" hidden="" aria-hidden="true">
+                <h3>3.常见问题</h3>
+                <p>如何实现构造函数的继承</p>
+            </section>
+            <section class="future" style="top: 178px; display: none;" hidden="" aria-hidden="true">
+                <h3>4.解决方案</h3>
+                <p>采用"拷贝"方法实现继承。</p>
+                <p>子类构造函数内部调用父类构造函数，使用apply（）和call（）方法在新建的对象上执行构造函数</p>
+            </section>
+            
+            
+            <section class="stack future" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true">
+                <h3>5.编码实战</h3>
+                <section class="" style="top: 50.5px; display: none;" aria-hidden="true">
+                    <pre>                    <code class="hljs javascript">
+                                    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Animal</span>(<span class="hljs-params"></span>)</span>{}
+                                    Animal.prototype.species = <span class="hljs-string">"动物"</span>;
+                                    Animal.prototype.hi=<span class="hljs-string">"hello"</span>;
+                                    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Cat</span>(<span class="hljs-params">name,color</span>)</span>{
+                                    <span class="hljs-keyword">this</span>.name = name;
+                                    <span class="hljs-keyword">this</span>.color = color;
+                                    }
+                                    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">extend2</span>(<span class="hljs-params">Child, Parent</span>) </span>{
+                                    <span class="hljs-keyword">var</span> p = Parent.prototype;
+                                    <span class="hljs-keyword">var</span> c = Child.prototype;
+                                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i <span class="hljs-keyword">in</span> p) {
+                                    c[i] = p[i];
+                                    <span class="hljs-built_in">console</span>.log(i);            species hi
+                                    }
+            
+                                    }
+                                    extend2(Cat, Animal);
+                                    <span class="hljs-keyword">var</span> cat1 = <span class="hljs-keyword">new</span> Cat(<span class="hljs-string">"大毛"</span>,<span class="hljs-string">"黄色"</span>);
+                                    alert(cat1.species); <span class="hljs-comment">// 动物</span>
+                                </code>
+                            </pre>
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: 89.5px; display: none;">
+                    <pre>                    <code class="hljs actionscript">
+                                       <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">SuperType</span><span class="hljs-params">()</span></span>{
+                                      <span class="hljs-keyword">this</span>.colors=[<span class="hljs-string">"red"</span>,<span class="hljs-string">"blue"</span>,<span class="hljs-string">"green"</span>]
+                                           }
+            
+                                     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">SubType</span><span class="hljs-params">()</span></span>{
+                                    SuperType.call(<span class="hljs-keyword">this</span>);
+                                   }
+                                   <span class="hljs-keyword">var</span> instance1 = <span class="hljs-keyword">new</span> SubType();
+                                   instance1.colors.push(<span class="hljs-string">"black"</span>);
+                                   alert(instance1.colors);
+                                   <span class="hljs-keyword">var</span> instance2 = <span class="hljs-keyword">new</span> SubType();
+                                   alert(instance2.colors);
+                                </code>
+                            </pre>
+                </section>
+            </section>
+            <section class="future" style="top: 211px; display: none;" hidden="" aria-hidden="true">
+                <p>构造函数继承的缺点</p>
+                <p>方法都在构造函数中定义，函数的复用性就是个问题，因此构造函数的继承很少单独使用</p>
+            </section>
+            <section class="future" style="top: 211px; display: none;" hidden="" aria-hidden="true">
+                <p>组合继承</p>
+                <p>把原型链继承和构造函数继承组合到一起，发挥二者之间的长处</p>
+            </section>
+            <section class="future" style="top: 50.5px; display: none;" hidden="" aria-hidden="true">
+                <pre>                    <code class="hljs actionscript">
+                                 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">SuperType</span><span class="hljs-params">(name)</span></span>{
+                    <span class="hljs-keyword">this</span>.name = name;
+                    <span class="hljs-keyword">this</span>.colors=[<span class="hljs-string">"red"</span>,<span class="hljs-string">"blue"</span>,<span class="hljs-string">"green"</span>]
+                }
+                SuperType.prototype.sayName =<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+                    alert(<span class="hljs-keyword">this</span>.name);
+                };
+            
+            
+                <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">SubType</span><span class="hljs-params">(name,age)</span></span>{
+                    SuperType.call(<span class="hljs-keyword">this</span>,name);  <span class="hljs-comment">//继承属性</span>
+                    <span class="hljs-keyword">this</span>.age = age;
+                }
+            
+                <span class="hljs-comment">//继承方法</span>
+                SubType.prototype = <span class="hljs-keyword">new</span> SuperType();
+                SubType.prototype.construtor = SubType;
+                SubType.prototype.sayAge = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+                    alert(<span class="hljs-keyword">this</span>.age);
+                };
+                <span class="hljs-keyword">var</span> instance1 = <span class="hljs-keyword">new</span> SubType(<span class="hljs-string">"wang"</span>,<span class="hljs-number">29</span>);
+                instance1.colors.push(<span class="hljs-string">"black"</span>);
+                alert(instance1.colors);<span class="hljs-comment">//"red,blue,green,black"</span>
+               instance1.sayName();<span class="hljs-comment">//"wang"</span>
+                instance1.sayAge();<span class="hljs-comment">//29</span>
+            
+                <span class="hljs-keyword">var</span> instance2 = <span class="hljs-keyword">new</span> SubType(<span class="hljs-string">"baobao"</span>,<span class="hljs-number">2</span>);
+                alert(instance2.colors);<span class="hljs-comment">//"red,blue,green"</span>
+                instance2.sayName();<span class="hljs-comment">//"baobao"</span>
+                instance2.sayAge();<span class="hljs-comment">//2</span>
+                                </code>
+                            </pre>
+            </section>
+            <section class="future" style="top: 244px; display: none;" hidden="" aria-hidden="true">
+                <p> 组合继承避免了原型链和构造函数的缺陷，融合了它们的优点，是一种比较常用的继承模式</p>
+            </section>
+            <section class="future" style="top: 0px; display: none;" hidden="" aria-hidden="true">
+                <p>组合继承调用两次父函数，衍生出寄生组合继承（理想模式）</p>
+                <pre>                    <code class="hljs vbscript-html"><span class="xml">
+                                 function SuperType(name){
+                                 this.name = name;
+                                 this.colors=["red","blue","green"]
+                                  }
+                                  SuperType.prototype.sayName =function(){
+                                  alert(this.name);
+                                    };
+            
+            
+                                 function SubType(name,age){
+                                 SuperType.call(this,name);  //继承属性
+                                 this.age = age;
+                                  }
+                                    inheritPrototype(Subtype,Supertype);
+                                    SubType.prototype.sayAge = function(){
+                                    alert(this.age);
+                                    };
+            
+                                    function inheritPrototype(Subtype,Supertype){
+                                    var prototype = object(SuperType.prototype);
+                                    prototype.constructor = SubType;
+                                    SubType.prototype = prototype;
+                                    }
+                <span class="hljs-comment">&lt;!--//继承方法--&gt;</span>
+                <span class="hljs-comment">&lt;!--SubType.prototype = new SuperType();--&gt;</span>
+                <span class="hljs-comment">&lt;!--SubType.prototype.construtor = SubType;--&gt;</span>
+                <span class="hljs-comment">&lt;!--SubType.prototype.sayAge = function(){--&gt;</span>
+                    <span class="hljs-comment">&lt;!--alert(this.age);--&gt;</span>
+                <span class="hljs-comment">&lt;!--};--&gt;</span>
+                var instance1 = new SubType("wang",29);
+                instance1.colors.push("black");
+                alert(instance1.colors);//"red,blue,green,black"
+               instance1.sayName();//"wang"
+                instance1.sayAge();//29
+            
+                var instance2 = new SubType("baobao",2);
+                alert(instance2.colors);//"red,blue,green"
+                instance2.sayName();//"baobao"
+                instance2.sayAge();//2
+                                </span></code>
+                            </pre>
+            </section>
+            <section class="future" style="top: 129px; display: none;" hidden="" aria-hidden="true">
+                <p>这个函数接收两个参数：子类构造函数和父类构造函数。在函数的内部：第一步创建父类原型的一个副本。 第二步是为创建的副本添加consttructor属性，从而弥补因为因重写原型而失去的默认constructor属性，最后一步，将新建的对象（即副本）赋值给子类型的原型。
+                    这样就可以调用inheritPrototype函数，去替换为子类原型赋值的语句了
+                </p>
+            </section>
+            <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                <h3>6.扩展思考</h3>
+            </section>
+            <section class="future" style="top: 0px; display: none;" hidden="" aria-hidden="true">
+                <p>
+                    面向过程到面向对象思维如何转变？ 当我们习惯了面向过程编程时，发现在程序过程中到处找不到需要面向对象的地方，最主要的原因，是思维没有转变。 程序员通常在拿到一个需求的时候，第一个反应就是如何实现这个需求，这是典型的面向过程的思维过程，而且很快可能就实现了它。
+                    而面向对象，面对的却是客体，第一步不是考虑如何实现需求，而是进行需求分析，就是根据需求找到其中的客体， 再找到这些客体之间的联系。因此面向过程和面向对象的思维转变的关键点，就是在第一步设计，拿到需求后， 一定先不要考虑如何实现它，而是通过UML建模，然后按照UML模型去实现它。这种思路的转变，可能需要个过程。
+                </p>
+            
+            </section>
+            
+            <section class="future" style="top: 266.5px; display: none;" hidden="" aria-hidden="true">
+                <h3>7.参考文献</h3>
+            </section>
+            <section class="future" style="top: 200.5px; display: none;" hidden="" aria-hidden="true">
+            
+                <p>参考一：
+                    <a href="http://www.cnblogs.com/seesea125/archive/2012/04/03/2431176.html">赵学智</a>
+                </p>
+                <p>参考二：
+                    <a href="http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html">阮一峰</a>
+                </p>
+                <p>参考三：
+                    <a href="https://www.cnblogs.com/BeiGuo-FengGuang/p/5935763.html">编程思想：面向对象和面向过程</a>
+                </p>
+            </section>
+            <section class="future" style="top: 266.5px; display: none;" hidden="" aria-hidden="true">
+                <h3>8.更多讨论</h3>
+            </section>
+            <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                <p>
+                    <a href="http://www.cnblogs.com/ayqy/p/4471638.html">六种继承方式</a>
+                </p>
+            </section>
+            <section class="future" style="top: 189px; display: none;" hidden="" aria-hidden="true">
+                <h4>鸣谢</h4>
+                <p style="text-align: center">感谢大家观看</p>
+                <p style="text-align: center">
+                    <small>BY : 黄苏威</small>
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [
+                { src: '../plugin/markdown/marked.js' },
+                { src: '../plugin/markdown/markdown.js' },
+                { src: '../plugin/notes/notes.js', async: true },
+                { src: '../plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+            ]
+        });
+    </script>
+</body>
+
+</html>
