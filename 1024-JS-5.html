@@ -19,7 +19,7 @@
         var link = document.createElement('link');
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
         document.getElementsByTagName('head')[0].appendChild(link);
     </script><link rel="stylesheet" type="text/css" href="./原型链是什么/paper.css"><script type="text/javascript" src="./原型链是什么/marked.js.下载"></script><script type="text/javascript" src="./原型链是什么/markdown.js.下载"></script><script type="text/javascript" src="./原型链是什么/notes.js.下载"></script><script type="text/javascript" src="./原型链是什么/highlight.js.下载"></script>
 </head>
@@ -227,11 +227,11 @@
     Reveal.initialize({
         history: true,
         dependencies: [
-            {src: '../plugin/markdown/marked.js'},
-            {src: '../plugin/markdown/markdown.js'},
-            {src: '../plugin/notes/notes.js', async: true},
+            {src: './plugin/markdown/marked.js'},
+            {src: './plugin/markdown/markdown.js'},
+            {src: './plugin/notes/notes.js', async: true},
             {
-                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                src: './plugin/highlight/highlight.js', async: true, callback: function () {
                 hljs.initHighlightingOnLoad();
             }
             }
