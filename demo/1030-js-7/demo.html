@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo">
+<head>
+	<meta charset="UTF-8">
+	<title>demo</title>
+	<meta name="keywords" content="">
+	<!-- SEO页面描述 -->
+	<meta name="description" content="">
+	<!-- 任何IE版本都以当前版本所支持的最高级标准模式渲染 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+	<style type="text/css">
+	.wrap {
+		padding: 20px;
+	}
+	.box {
+		margin: 0 auto 10px;
+		padding: 10px;
+		width: 1000px;
+		border: 1px solid #000;
+	}
+	p {
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+
+</style>
+<body ng-controller="demoCtrl">
+	<div class="wrap">
+		<div class="box">
+			<h2>constant</h2>
+			<select>
+				<option ng-repeat="(x,y) in list" value="{{x}}">{{y}}</option>
+			</select>
+		</div>
+		<div class="box">
+			<h2>AngularJS内置过滤器：</h2>
+			<h3>1. currency (货币处理)</h3>
+			<p>使用currency可以将数字格式化为货币，默认是美元符号，你可以自己传入所需的符号，例如我传入人民币：</p>
+			<p ng-non-bindable>{{num | currency : '￥'}}</p>
+			<input type="text" ng-model="num">
+			<div>格式化货币：{{num | currency : '￥'}}</div>
+			
+			<h3>2. date (日期格式化)</h3>
+			<p>原生的js对日期的格式化能力有限，ng提供的date过滤器基本可以满足一般的格式化要求。用法如下：</p>
+			<p ng-non-bindable>{{date | date : 'yyyy-MM-dd hh:mm:ss EEEE'}}</p>
+			<input type="text" ng-model="date">
+			<div>格式化日期：{{date | date : 'yyyy-MM-dd hh:mm:ss EEEE'}}</div>
+
+			<h3>3. filter(匹配子串)</h3>
+			<p>这个名叫filter的filter（不得不说这名字起的，真让人容易混淆——！）用来处理一个数组，然后可以过滤出含有某个子串的元素，作为一个子数组来返回。可以是字符串数组，也可以是对象数组。如果是对象数组，可以匹配属性的值。它接收一个参数，用来定义子串的匹配规则。下面举个例子说明一下参数的用法，先定义了一个数组：</p>
+			<pre>
+				<code>
+					$scope.nameArray = [
+					{ name: '开放树',age: 23 },
+					{ name: '康桥炯',age: 23 },
+					{ name: '陈阿婆',age: 99 },
+					{ name: '钟铁头',age: 36 },
+					];
+					$scope.func = function(e){return e.age > 30;}
+				</code>
+			</pre>
+			<p>用法1（参数使用字符串）：</p>
+			<p ng-non-bindable>{{ nameArray | filter: '陈阿婆' }}</p><br>
+			<div>筛选后的数据：{{ nameArray | filter: '陈阿婆' }} </div>
+			<br>
+			<p>用法2（参数使用函数）：</p>
+			<p ng-non-bindable>{{ nameArray | filter: func }}</p><br>
+			<div>筛选后的数据：{{ nameArray | filter: func }}</div>
+			<br>
+			<p>用法3（参数使用对象）：</p>
+			<p ng-non-bindable>{{ nameArray | filter: {age:36} }}</p><br>
+			<div>筛选后的数据：{{ nameArray | filter: {age:36} }}</div>
+			
+
+			<h3>4. json(格式化json对象)</h3>
+			<p>json过滤器可以把一个js对象格式化为json字符串，没有参数。作用就和我们熟悉的JSON.stringify()一样。用法超级简单：</p>
+			<p ng-non-bindable>{{ { name:'开放树',age:23 } | json}}</p>
+			<div>把对象格式化为json字符串：{{ {name:'开放树',age:23} | json}}</div>
+
+			<h3>5. limitTo(限制数组长度或字符串长度)</h3>
+			<p>limitTo过滤器用来截取数组或字符串，接收一个参数用来指定截取的长度，如果参数是负值，则从数组尾部开始截取。看看使用方法：</p>
+			<p ng-non-bindable>{{ nameArray | limitTo : 2 }}</p>
+			<div>将会显示数组中的前两项：{{ nameArray | limitTo : -2 }}</div>
+			
+			<h3>6. lowercase(小写)</h3>
+			<p>把数据转化为全部小写。</p>
+			<p ng-non-bindable>{{ "MONEY" | lowercase }}</p>
+			<div>把"MONEY"变为小写：{{ "MONEY" | lowercase }}</div>
+			
+			<h3>7. uppercase(大写)</h3>
+			<p>把数据转化为全部大写。</p>
+			<p ng-non-bindable>{{ "money" | uppercase }}</p>
+			<div>把"money"变为小写：{{ "money" | uppercase }}</div>
+
+			<h3>8. number(格式化数字)</h3>
+			<p>number过滤器可以为一个数字加上千位分割，像这样，123,456,789。同时接收一个参数，可以指定float类型保留几位小数：</p>
+			<p ng-non-bindable>{{ num | number: 3 }}</p>
+			<div>保留3位小数：{{ 123456789 | number: 1 }}</div>
+
+			<h3>9. orderBy(排序)</h3>
+			<p>orderBy过滤器可以将一个数组中的元素进行排序，接收一个参数来指定排序规则，参数可以是一个字符串，表示以该属性名称进行排序。可以是一个函数，定义排序属性。还可以是一个数组，表示依次按数组中的属性值进行排序（若按第一项比较的值相等，再按第二项比较），还是拿上面的数组举例：</p>
+			<p ng-non-bindable>{{ nameArray | orderBy : 'age' }}</p>
+			<div>按age属性值进行排序，若是-age，则倒序：</div>
+			{{ nameArray | orderBy : 'age' }}
+			<br>
+			<br>
+			<p ng-non-bindable>{{ nameArray | orderBy : orderFunc }}</p>
+			<div>按照函数的返回值进行排序：</div>
+			<br>
+			<p ng-non-bindable>{{ nameArray | orderBy : ['age','name'] }}</p>
+			<div>如果age相同，按照name进行排序：</div>
+			{{ nameArray | orderBy : ['age','name'] }}
+		</div>
+		<div class="box">
+			<h2>自定义过滤器</h2>
+			<input type="text" ng-model="type">
+			<div>过滤后的数据：{{ type | typeFilter }}</div>
+		</div>
+	</div>
+
+
+	<script src="https://cdn.bootcss.com/angular.js/1.6.9/angular.js"></script>
+	<script>
+		var demo = angular.module("demo",[]);
+
+		// 常量
+		demo.constant("list",{
+			0: "首页Banner",
+			1: "找职位Banner",
+			2: "找精英Banner",
+			3: "行业大图"
+		})
+
+		// 自定义过滤器
+		demo.filter("typeFilter",function () {
+			return function (types) {
+				switch(types) {
+					case '0':
+					return "首页banner";
+					case '1':
+					return "找职位banner";
+					case '2':
+					return "找精英banner";
+					case '3':
+					return "行业大图";
+				}
+			}
+		})
+
+		demo.controller("demoCtrl",function($scope, list){
+			$scope.list = list;    // 把常量list赋值给$scope.list
+
+			$scope.nameArray = [
+				{name:'开放树',age:23},
+				{name:'康桥炯',age:23},
+				{name:'陈阿婆',age:99},
+				{name:'钟铁头',age:36},
+			];
+
+			$scope.func = function(e){return e.age > 30;}
+
+		})
+	</script>
+</body>
+</html>
