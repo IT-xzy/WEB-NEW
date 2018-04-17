@@ -19,7 +19,7 @@
         var link = document.createElement('link');
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
         document.getElementsByTagName('head')[0].appendChild(link);
     </script><link rel="stylesheet" type="text/css" href="./葡萄藤PPT_files/paper.css">
     <style>
@@ -359,11 +359,11 @@
     Reveal.initialize({
         history: true,
         dependencies: [
-            {src: '../plugin/markdown/marked.js'},
-            {src: '../plugin/markdown/markdown.js'},
-            {src: '../plugin/notes/notes.js', async: true},
+            {src: './plugin/markdown/marked.js'},
+            {src: './plugin/markdown/markdown.js'},
+            {src: './plugin/notes/notes.js', async: true},
             {
-                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                src: './plugin/highlight/highlight.js', async: true, callback: function () {
                 hljs.initHighlightingOnLoad();
             }
             }
