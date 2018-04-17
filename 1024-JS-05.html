@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)https://ptteng.github.io/PPT/PPT/JS-11-Mini-Program.html#/13 -->
+<html xmlns="http://www.w3.org/1999/html" class=" js no-mobile desktop no-ie chrome chrome65 ppt-section ppt-section gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch no-retina fontface domloaded w-1366 gt-240 gt-320 gt-480 gt-640 gt-768 gt-800 gt-1024 gt-1280 lt-1440 lt-1680 lt-1920 no-portrait landscape" id="js-11-mini-program-page"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>原型链</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script><link rel="stylesheet" type="text/css" href="./原型链是什么/paper.css"><script type="text/javascript" src="./原型链是什么/marked.js.下载"></script><script type="text/javascript" src="./原型链是什么/markdown.js.下载"></script><script type="text/javascript" src="./原型链是什么/notes.js.下载"></script><script type="text/javascript" src="./原型链是什么/highlight.js.下载"></script>
+</head>
+<body>
+<img src="./原型链是什么/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section style="top: 178.5px; display: none;" class="past" hidden="" aria-hidden="true">
+            <h2>【js-5】原型链是什么，有什么用处？若想访问一个对象的原型，应该使用什么方法？ </h2>
+
+            <h3>小课堂127期</h3>
+            <p style="text-align: center;">分享人：禚洪宇</p>
+        </section>
+        <section style="top: 3px; display: none;" class="past" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+            <p><img src="./阿萨德.jpg" alt=""></p>
+        </section>
+        <section style="top: 0px; display: none;" class="stack past" data-previous-indexv="0" hidden="" aria-hidden="true">
+            <section style="top: 267px; display: none;" class="" aria-hidden="true">
+                <h3>1.背景介绍</h3>
+            </section>
+            <section class="future" aria-hidden="true" style="top: 38.5px; display: none;" hidden="">
+                <h4 style="text-align:left">1.1 原型是什么？</h4>
+                <p style="text-align:left">
+                    <div class="highlight" style="background: #202020"><pre style="line-height: 125%"><span style="background-color: #f0f0f0; padding: 0 5px 0 5px">1 </span><span style="color: #d0d0d0">&gt;&gt;&gt;</span><span style="color: #6ab825; font-weight: bold">function</span> <span style="color: #d0d0d0">foo(a,b){</span><span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">a*b;}</span>
+<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">2 </span><span style="color: #d0d0d0">&gt;&gt;&gt;foo.length</span>
+<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">3 </span><span style="color: #3677a9">2</span>
+<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">4 </span><span style="color: #d0d0d0">&gt;&gt;&gt;foo.constructor</span>
+<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">5 </span><span style="color: #24909d">Function</span><span style="color: #d0d0d0">()</span>
+</pre></div>
+<div class="highlight" style="background: #202020"><pre style="line-height: 125%"><span style="background-color: #f0f0f0; padding: 0 5px 0 5px">1 </span><span style="color: #d0d0d0">&gt;&gt;&gt;</span><span style="color: #6ab825; font-weight: bold">typeof</span> <span style="color: #d0d0d0">foo.prototype</span>
+<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">2 </span><span style="color: #ed9d13">&quot;object&quot;</span>
+<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">3 </span>
+<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">4 </span><span style="color: #d0d0d0">&gt;&gt;&gt;foo.prototype</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">{}</span>
+</pre></div>
+                </p>
+            </section>
+            <section style="text-align: left; top: 21.5px; display: none;" class="future" aria-hidden="true" hidden="">
+                <h4 style="text-align:left">1.2  它有着什么样的作用？</h4>
+                <p style="text-align:left">
+                    网景公司（Netscape）<br>
+					prototype将JS中的对象都联系起来，而且节省内存；
+                </p>
+            </section>
+        </section>
+        <section style="top: 0px; display: none;" class="stack past" data-previous-indexv="0" hidden="" aria-hidden="true">
+            <section style="top: 267px; display: none;" class="" aria-hidden="true">
+                <h3>2.知识剖析</h3>
+            </section>
+            <section class="future" aria-hidden="true" style="top: 38.5px; display: none;" hidden="">
+                <p style="text-align:left">2.1 原型链</p><br>
+                <p style="text-align:left">
+                	<div class="highlight" style="background: #202020"><pre style="line-height: 125%"><span style="background-color: #f0f0f0; padding: 0 5px 0 5px">1 </span><span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">monkey</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">{</span>
+<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">2 </span>    <span style="color: #d0d0d0">feeds:</span> <span style="color: #ed9d13">&#39;bananas&#39;</span><span style="color: #d0d0d0">,</span>
+<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">3 </span>    <span style="color: #d0d0d0">breathes:</span> <span style="color: #ed9d13">&#39;air&#39;</span>
+<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">4 </span><span style="color: #d0d0d0">}</span>
+</pre></div>
+                </p>
+                <p style="text-align:left">
+                	<div class="highlight" style="background: #202020"><pre style="line-height: 125%"><span style="background-color: #f0f0f0; padding: 0 5px 0 5px">1 </span><span style="color: #6ab825; font-weight: bold">function</span> <span style="color: #d0d0d0">human()</span> <span style="color: #d0d0d0">{}</span>
+<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">2 </span><span style="color: #d0d0d0">human.prototype</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">monkey;</span>
+</pre></div>
+                </p>
+
+                <p style="text-align:left">
+                	<div class="highlight" style="background: #202020"><pre style="line-height: 125%"><span style="background-color: #f0f0f0; padding: 0 5px 0 5px">1 </span><span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">developer</span> <span style="color: #d0d0d0">=</span> <span style="color: #6ab825; font-weight: bold">new</span> <span style="color: #d0d0d0">human();</span>
+<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">2 </span><span style="color: #d0d0d0">developer.feeds</span> <span style="color: #d0d0d0">=</span> <span style="color: #ed9d13">&#39;pizza&#39;</span><span style="color: #d0d0d0">;</span>
+<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">3 </span><span style="color: #d0d0d0">developer.hacks</span> <span style="color: #d0d0d0">=</span> <span style="color: #ed9d13">&#39;JavaScript&#39;</span><span style="color: #d0d0d0">;</span>
+</pre></div>
+                </p>
+
+                <p style="text-align:left">
+                	<div class="highlight" style="background: #202020"><pre style="line-height: 125%"><span style="background-color: #f0f0f0; padding: 0 5px 0 5px">1 </span><span style="color: #d0d0d0">&gt;&gt;&gt;developer.feeds;</span>
+<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">2 </span><span style="color: #ed9d13">&quot;pizza&quot;</span>
+<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">3 </span>
+<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">4 </span><span style="color: #d0d0d0">&gt;&gt;&gt;developer.hacks;</span>
+<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">5 </span><span style="color: #ed9d13">&quot;JavaScript&quot;</span>
+</pre></div>
+                </p>
+                
+                <p style="text-align:left">
+                	<div class="highlight" style="background: #202020"><pre style="line-height: 125%"><span style="background-color: #f0f0f0; padding: 0 5px 0 5px">1 </span><span style="color: #d0d0d0">&gt;&gt;&gt;developer.breathes</span>
+<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">2 </span><span style="color: #ed9d13">&quot;air&quot;</span>
+</pre></div>
+				</p>
+				
+            </section>
+            <section class="future" aria-hidden="true" style="top: 38.5px; display: none;" hidden="">
+                <p style="text-align:left"></p><br>
+                <p style="text-align:left">
+                	&emsp;&emsp;每一个构造函数都拥有一个prototype属性，这个属性指向一个对象，也就是原型对象。
+                	当使用这个构造函数创建实例的时候，prototype属性指向的原型对象就成为实例的原型对象。<br>
+                &emsp;&emsp;原型对象自身也是一个对象，它也有自己的原型对象，这样层层上溯，就形成了一个类似链表的结构，
+                这就是原型链（prototype chain） 。<br>
+                &emsp;&emsp;当我们访问一个函数的属性时，JS引擎就会遍历整个函数，如果找到了就会返回改属性值，
+                如果没有找到就会到函数的原型属性中去找，如果还没有找到就会到原型的原型中去找，直到找到这个属性或者搜索到原型链的末尾。
+                </p>
+            </section>
+            
+            <section class="future" aria-hidden="true" style="top: 38.5px; display: none;" hidden="">
+                <h3>2.2 访问对象的原型</h3>
+            </section>
+            <section class="future" aria-hidden="true" style="top: 38.5px; display: none;" hidden="">
+                <p style="text-align:left">
+                	1、构造函数<br>
+                	2、每个对象都拥有一个隐藏的属性[[prototype]]，指向它的原型对象，这个属性可以通过
+				Object.getPrototypeOf(obj) 或 obj.__proto__ 来访问。
+                </p>
+            </section>
+                
+            
+        </section>
+        <section style="top: 267px; display: none;" class="past" hidden="" aria-hidden="true">
+            <section class="future" aria-hidden="true" style="top: 38.5px; display: none;" hidden="">
+                <h3>3.常见问题</h3>
+            </section>
+            <section class="future" aria-hidden="true" style="top: 38.5px; display: none;" hidden="">
+                <p style="text-align:left">
+                	 Array.isArray(Array.prototype)输出什么？
+                </p>
+            </section>
+        </section>
+        
+        
+        <section style="top: 0px; display: none;" class="stack past" data-previous-indexv="0" hidden="" aria-hidden="true">
+            <section style="top: 267px; display: none;" class="" aria-hidden="true">
+                <section class="future" aria-hidden="true" style="top: 38.5px; display: none;" hidden="">
+                    <h3>4.解决方案</h3>
+
+                </section>
+                <section class="future" aria-hidden="true" style="top: 38.5px; display: none;" hidden="">
+                <p style="text-align:left">&emsp;&emsp;Array.prototype是Array构造函数实例的原型，构造函数实例化后仍为数组，所以输出true</p>
+                <p style="text-align:left">&emsp;&emsp;。</p>
+                </section>
+            </section>
+
+            
+        </section>
+        <section style="top: 0px; display: none;" class="stack past" data-previous-indexv="0" hidden="" aria-hidden="true">
+            <section style="top: 267px; display: none;" class="past" hidden="" aria-hidden="true">
+                <h3>5.编码实战</h3>
+            </section>
+            <section style="top: 267px; display: none;" class="past" hidden="" aria-hidden="true">
+                <p>
+                </p>
+            </section>
+        </section>
+        <section style="text-align: left; top: 178px; display: block;" class="past" hidden="" aria-hidden="true">
+            <h3 style="text-align: center">6.扩展思考</h3>
+            <p></p>
+            <p></p>
+        </section>
+        <section style="top: 267px; display: block;" class="past" hidden="" aria-hidden="true">
+            <h3>7.参考文献</h3>
+        </section>
+        <section style="top: 267px; display: block;" class="present">
+            <p style="text-align:left">参考一：<a href="http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html">Javascript继承机制的设计思想</a></p>
+            <p style="text-align:left">参考二：<a href="">《JavaScript面向对象编程指南》</a></p>
+            <p style="text-align:left">参考三：<a href="http://www.colabug.com/2389126.html">三分钟看完JavaScript原型与原型链</a></p>
+
+        </section>
+        <section style="text-align: left; top: 66px; display: block;" hidden="" aria-hidden="true" class="future">
+            <h3 style="text-align: center">8.更多讨论</h3>
+            <p>prototype 与 _proto_是什么关系？</p>
+            <p></p>
+            <p></p>
+            <p></p>
+        </section>
+        <section style="top: 245.5px; display: block;" hidden="" aria-hidden="true" class="future">
+            <h4>感谢观看</h4>
+            <p>
+                <small>BY :禚洪宇</small>
+            </p>
+        </section>
+    </div>
+<div class="backgrounds"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background stack past" data-loaded="true" style="display: none;"><div class="slide-background present" data-loaded="true" style="display: none;"></div><div class="slide-background future" style="display: none;" data-loaded="true"></div></div><div class="slide-background stack past" style="display: none;" data-loaded="true"><div class="slide-background present" style="display: none;" data-loaded="true"></div><div class="slide-background future" style="display: none;" data-loaded="true"></div><div class="slide-background future" style="display: none;" data-loaded="true"></div></div><div class="slide-background past" style="display: none;" data-loaded="true"></div><div class="slide-background past" style="display: none;" data-loaded="true"></div><div class="slide-background past" style="display: none;" data-loaded="true"></div><div class="slide-background past" style="display: none;" data-loaded="true"></div><div class="slide-background past" style="display: none;" data-loaded="true"></div><div class="slide-background stack past" style="display: none;" data-loaded="true"><div class="slide-background present" style="display: none;" data-loaded="true"></div><div class="slide-background future" style="display: none;" data-loaded="true"></div><div class="slide-background future" style="display: none;" data-loaded="true"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background past" style="display: none;" data-loaded="true"></div><div class="slide-background past" style="display: block;" data-loaded="true"></div><div class="slide-background past" style="display: block;" data-loaded="true"></div><div class="slide-background present" style="display: block;" data-loaded="true"></div><div class="slide-background future" style="display: block;" data-loaded="true"></div><div class="slide-background future" style="display: block;" data-loaded="true"></div></div><div class="progress" style="display: block;"><span style="width: 1241.82px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+            参考一：简明教程
+        </div></div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+<script>
+
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: './plugin/markdown/marked.js'},
+            {src: './plugin/markdown/markdown.js'},
+            {src: './plugin/notes/notes.js', async: true},
+            {
+                src: './plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+
+
+
+
+</body></html>
