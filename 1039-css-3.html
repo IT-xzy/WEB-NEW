@@ -1,0 +1,237 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>葡萄藤PPT</title>
+	<link rel="stylesheet" href="../css/reveal/reveal.css">
+
+	<!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+	<link rel="stylesheet" href="../css/reveal/theme/ptt.css">
+
+	<!-- syntax highlighting 代码高亮主题 -->
+	<link rel="stylesheet" href="../lib/reveal/css/zenburn.css">
+
+	<!-- 打印和PDF输出样式 -->
+	<script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+
+        link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+	<style>
+		.reveal pre code {
+			background-color: #120;
+		}
+	</style>
+</head>
+<body>
+<img src="../img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+	<area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+	<div class="slides">
+		<section>
+			<h4>小课堂【萌新】</h4>
+			<h4>盒子的模型</h4>
+			<h4>分享人：段俊超</h4>
+		</section>
+		<section>
+			<p>目录</p>
+			<p>1.什么是盒子</p>
+			<p>2.盒子的种类</p>
+			<p>3.标准的盒子模型</p>
+			<p>4.盒子模型的属性</p>
+			<p>5.盒子的边框</p>
+			<p>6.盒子内边距</p>
+			<p>7.盒子外边距</p>
+			<P>8.标准盒子模型宽度计算方试</P>
+		</section>
+		<section>
+			<p>9.设置固定宽度</p>
+			<P>10.充满父级容器</P>
+			<p>11.包裹内容的情况下</p>
+			<p>12.怪异盒子模型</p>
+			<P>13.盒子的元素</P>
+		</section>
+		<section>
+			<h3>1.盒子的特性</h3>
+		</section>
+		<section>
+			<p>
+				一个盒子中主要的属性就5个：width、height、padding、border、margin。
+				具备内容、填充、边框、边界这些属性，能包含其他元素的容器都是盒子。
+			</p>
+		</section>
+		<section>
+			<h3>2.盒子的种类</h3>
+		</section>
+		 <section>
+				<p>
+					1.标准盒子模型
+				</p>
+				<p>
+				2.怪异盒子模型（IE盒子模型）
+				</p>
+				<p class="fragment">注意：根据盒子的尺寸计算方式分类，盒子的基本属性相同</p>
+				<p class="fragment">在 CSS 盒子模型 (Box Model) 规定了元素处理元素的几种方式： 内容、内边距、边框、外边距。</p>
+			</section>
+		<section>
+			<h3>3.标准的盒子模型</h3>
+		</section>
+		<section>
+			<img src="../../../AppData/Local/Temp/box-model.png"/>
+			<p class="fragment">content-内容</p>
+			<p class="fragment">padding-内边距(填充）</p>
+			<p class="fragment">border-边框</p>
+			<p class="fragment">margin-外边距</p>
+		</section>
+		<section>
+			<h3>4.盒子模型的属性</h3>
+		</section>
+		<section>
+			<img src="../../../AppData/Local/Temp/box-model.png"/>
+			<p class="fragment">1.边框(border):可以设置边框的宽窄、样式和颜色。</p>
+
+				 <p class="fragment"> 2.内边距(padding):可以设置盒子内容区与边框的间距，想像一下内边距是从边框向内推元素的内容。</p>
+
+				 <p class="fragment"> 3.外边距(margin):可以设置盒子与相邻元素的间距，想像一下外边距是边框向外推其他元素。</p>
+		</section>
+		<section>
+			<h3>5.盒子的边框</h3>
+		</section>
+		<section>
+		边框有3个相关的属性:
+			<p class="fragment">宽度(border-width)</p>
+			<p class="fragment">样式(border-style)</p>
+			<p class="fragment">颜色(border-color)</p>
+		</section>
+		<section>
+			<h3>6.盒子内边距</h3>
+		</section>
+		<section>
+		<img src="../../../AppData/Local/Temp/fang_1.png"/>
+			在显式设定了width的前提下，padding值的设定会加大盒子的占位宽度。
+		</section>
+			<section>
+				<h3>7.盒子外边距</h3>
+			</section>
+		<section>
+			<img src="../../../AppData/Local/Temp/fang_2.png"/>
+			<p class="fragment">样式表的第一条规则:* {margion:0 ;padding=0;}，所有元素默认的外边距和内边距都设定为零。</p>
+		</section>
+		<section>
+			<h3>8.标准盒子模型宽度计算方试</h3>
+		</section>
+			<section>
+		<p class="fragment">设置固定宽度</p>
+		<p class="fragment">充满父容器</p>
+		<p class="fragment">	包裹内容</p>
+			</section>
+		<section>
+			<h3>9.设置固定宽度</h3>
+		</section>
+		<section>
+			<img src="../../../AppData/Local/Temp/box-width.png"/>
+			width:200px;height: 200px;padding: 10px; margin: 50px;border: 5px ；
+			<p class="fragment">这种情况下，设置的200px为content的宽度;整个盒子的宽度是：（内容宽度 + border宽度 + padding宽度 + margin宽度）之和</p>
+		</section>
+		<section>
+			10.充满父级容器
+		</section>
+		<section>
+			<img src="../../../AppData/Local/Temp/box-filled.png"/>
+			height: 200px;
+			这里可以看到不规定盒子宽度的话，盒子会自动充满一整行，这是块级元素的特性。
+		</section>
+		<section>
+			height: 200px;border: 50px solid red;background-color: black;padding: 50px;margin: 50px;
+			<img src="../../../AppData/Local/Temp/box-fillde-ch.png"/>
+		这种情况下，增加盒子的margin;border;padding;都会压缩内部contant的宽度
+		</section>
+		<section>
+			11.包裹内容的情况下
+		</section>
+		<section>
+			这种情况比较简单，内容的宽度按照内容计算，盒子的宽度将在内容宽度的基础上再增加（padding宽度 + border宽度 + margin宽度）之和。
+		</section>
+		<section>
+			12.怪异盒子模型
+		</section>
+		<section>
+			box-sizing:border-box;height: 200px;width:200px;border: 10px solid red;padding: 10px;margin: 10px;
+			<img src="../../../AppData/Local/Temp/box-ie.png"/>
+			<p class="fragment">当为盒子设置box-sizing:border-box时，就是怪异盒子模型</P>
+			<p class="fragment">这个时候你会发现，盒子200px的宽度是内容 + border + 边框的宽度（不包括margin）</P>
+
+		</section>
+		<section>
+			13.盒子的元素
+		</section>
+		<section>
+		1.块级元素
+		2.行内元素
+		</section>
+		<section>
+			1.块级元素(BLOCK ELEMENT)
+			1.没有显式地设置元素的width属性,默认值是auto. 元素始终会扩展到填满其父元素的宽度为止
+
+			2.为设定了宽度的盒子添加边框、内边距和外边距，会导致盒子扩展得更宽。扩展量等于水平边框和内边距之和
+		</section>
+		<section>
+			1.行内元素(BLOCK ELEMENT)
+			<p class="fragment">1.inline元素会扩展到足以包裹其内容的宽度，添加内边距和水平边框会导致liline元素变宽，添加量等于水平边框和内边距的和。</p>
+			行内元素+DISPLAY：BLOCK=块状元素
+			CSS3 BOX-SIZING属性
+		</section>
+		<section>
+			<h4>鸣谢</h4>
+			<p>感谢大家观看</p>
+			<p>
+				By
+				<small style="vertical-align: middle">段俊超</small>
+			</p>
+		</section>
+	 </div>
+</div>
+<script src="../lib/reveal/js/head.min.js"></script>
+<script src="../lib/reveal/reveal.js"></script>
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: false,
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
