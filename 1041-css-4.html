@@ -1,0 +1,539 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        .reveal pre code {
+            background-color: #120;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+    </map>
+    <div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+        <div class="slides" style="width: 9.6rem; height: 7rem; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.461571);">
+            <section class="past" style="top: .87rem; display: none;" hidden="" aria-hidden="true">
+                <h2>【css-04】</h2>
+                <h2>主题：如何理解HTML语义化？</h2>
+                <h3>小课堂【上海】</h3>
+                分享人：杨亚洲
+            </section>
+            <section style="line-height: .7rem; top: 0rem; display: none;" class="past" hidden="" aria-hidden="true">
+                目录
+                <p>
+                    
+                    1.背景介绍
+                </p>
+                    
+
+                <p>
+                    
+                    2.知识剖析
+                </p>
+                    
+
+                <p>
+                    
+                    3.常见问题
+                </p>
+                    
+
+                <p>
+                    
+                    4.解决方案
+                </p>
+                    
+
+                <p>
+                    
+                    5.编码实战
+                </p>
+                    
+
+                <p>
+                    
+                    6.扩展思考
+                </p>
+                    
+
+                <p>
+                    
+                    7.参考文献
+                </p>
+                    
+
+                <p>
+                    
+                    8.更多讨论
+                </p>
+                    
+
+            <p>
+                
+                
+            </p>
+                
+            </section>
+
+            <section class="stack past" style="top: 0rem; display: none;" data-previous-indexv="1" hidden="" aria-hidden="true">
+                <section class="past" style="top: 2.665rem; display: none;" hidden="" aria-hidden="true">
+                    <h3>1.背景介绍</h3>
+                </section>
+                <section class="" style="top: 1.065rem; display: none;" aria-hidden="true">
+                    <h5>为什么会出现html语义化？</h5>
+                    <p>语义化的出现是大势所趋，来看看语义化的前世今生。</p>
+                    <p>对于当前的 Web 而言，HTML 是联系大多数 Web 资源的纽带，也是内容的载体。 在 Web 被刚刚设计出来的时候，开发者可能不会想到它现在会达到的规模以及深入到我们生活的那么多方面。也许起初的想法很简单：用来发布
+                        Web 内容和资源的索引，方便人们查看。但是随着 Web 规模的不断扩大，信息量之大已经不在人肉处理的范围之内了。这个时候人们开始用机器来处理 Web 上发布的各种内容，搜索引擎就诞生了。再后来，人们又设计了各种智能程序来对索引好的内容作各种处理和挖掘。所以让机器能够更好地读懂
+                        Web 上发布的各种内容就变得越来越重要。
+
+                    </p>
+
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: .515rem; display: none;">
+                    <h5>看一下最初yahoo的网站例子，就会明白为什么会出现HTML语义化了</h5>
+                    <img src="img/1041-css-04/onea.jpg" alt="" width="600px">
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: .515rem; display: none;">
+                    <p style="text-align: left">那时候如果你做了一个网站，需要到各个的网站登陆页面专门登陆，等这些搜索引擎（例如Yahoo）的管理员通过后，他会给你确认放到哪个目录下面，以后人们就按照这个目录去查找！
+                    </p>
+                    <P style="text-align: left">后来，随着内容的暴增，发现这种目录搞不定了.</P>
+                    <P style="text-align: left">不仅仅是新网站层出不穷，而且随着各行各业的数字化加之的出现：每个网站的网页数量也成指数的暴增，的那种手工录入的导航方式无法满足人们的需要：覆盖的全面性、及时性都较差，所以它出现了。</P>
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: .515rem; display: none;">
+                    <h5>所以史上最大也是最成功的搜索引擎公司诞生了</h5>
+                    <img src="img/1041-css-04/twoa.jpg" alt="" width="500px">
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: .515rem; display: none;">
+                    <p style="text-align: left">Google不按照网站而是按照关键词去发现内容，不需要你去登陆网站和网页，而通过蜘蛛主动去抓取。这个变化，成就了截止到现在的Google的辉煌！
+                    </p>
+                    <P style="text-align: left">以Google为代表的这类信息和知识发现方式无疑极大改变了人类对于信息和知识的获取，仿佛间世界就在你的键盘。但也有问题：内容太多了，我们不知道看什么；找到的内容参差不齐，我们花费了巨额的时间成本，但仍然找不到我们需要的内容。不是说我们的需要内容不存在，而是可能由于某种原因尘封在茫茫的网络大海中，如何更好更快的搜索到我们想要信息？
+                        所以，才出现了HTML语义化。
+                    </P>
+                </section>
+            </section>
+            <section class="stack past" style="top: 0rem; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true">
+                <section class="" style="top: 2.665rem; display: none;" aria-hidden="true">
+                    <h3>2.知识剖析</h3>
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: .515rem; display: none;">
+                    <p>什么是语义化？</p>
+                    <p>字面意思就是说根据我们所说的话，就能了解其中的含义。我说水，你脑海就会出现水，我说长城，你脑海绝不会出现金字塔。 开发上的“语义化”指的是：机器在需要更少的人类干预的情况下能够研究和收集信息，让网页能够被机器理解，最终让人类受益。
+                    </p>
+
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: .515rem; display: none;">
+                    <p>什么是HTML语义化？</p>
+                    <p style="text-align:left"> 首先标签语义化是指HTML，不是CSS, 语义化标签只是HTML，CSS不存在语义化。HTML是标签，CSS是属性。
+                    </p>
+                    <p style="text-align:left">
+                        什么是标签语义化？ 来看看最初html里标签的语义，我们看到table,就会知道这是列表，看到p，就知道这是段落，看到img知道是图片，看到input就知道这是一个表单，h1~h6是标题。 机器和人类相比笨多了，但是只要我们设定好程序，上面的标签的意思机器也能读懂。
+                    </p>
+                    <p style="text-align:left">
+                        但是也有些是无语义化的如div---division并不能呢个表示div标签里面内容的属性和表现样式
+                    </p>
+                    <p style="text-align:left">
+                        HTML 标签语义化是让大家直观的通过标签(markup)和属性(attribute)来知道其用途和作用。
+                    </p>
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: .215rem; display: none;">
+                    <p>判断标签是否语义化</p>
+                    <p>去掉样式，看网页结构是否组织良好有序，是否仍然有很好的可读性。</p>
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: 3.3rem; display: none;">
+                    <p>简单介绍下具有语义化的html标签？</p>
+                    <p>header</p>
+                    <p>
+                        页眉通常包括网站标志、主导航、全站链接以及搜索框。 也适合对页面内部一组介绍性或导航性内容进行标记。
+                    </p>
+                    <p>footer</p>
+                    <p>
+                        页眉通常包括网站标志、主导航、全站链接以及搜索框。 也适合对页面内部一组介绍性或导航性内容进行标记。
+                    </p>
+
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: 3.3rem; display: none;">
+                    <p>main</p>
+                    <p style="text-align:left">
+                        页面主要内容，一个页面只能使用一次。如果是web应用，则包围其主要功能。
+                    </p>
+                    <p>article</p>
+                    <p style="text-align:left">
+                        包含像报纸一样的内容= =||是这么理解的，表示文档、页面、应用或一个独立的容器。 article可以嵌套article，只要里面的article与外面的是部分与整体的关系。
+                    </p>
+                    <p>section</p>
+                    <p style="text-align:left">
+                        具有相似主题的一组内容，比如网站的主页可以分成介绍、新闻条目、联系信息等条块。
+                    </p>
+                    <p style="text-align:left">如果只是为了添加样式，请用div！</p>
+
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: 3.3rem; display: none;">
+                    <p>small</p>
+                    <p style="text-align:left">
+                        指定细则，输入免责声明、注解、署名、版权。 只适用于短语，不要用来标记“使用条款”、“隐私政策”等长的法律声明。
+                    </p>
+                    <p>strong</p>
+                    <p style="text-align:center">
+                        表示内容重要性。
+                    </p>
+                    <p>em</p>
+                    <p style="text-align:center">
+                        标记内容着重点（大量用于提升段落文本语义）
+                    </p>
+                    <p>mark</p>
+                    <p style="text-align:left">
+                        主要用来在视觉上向用户呈现那些需要突出的文字,标签的一个比较典型的应用就是在搜索结果中向用户高亮显示搜索关键词。
+                    </p>
+
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: 3.3rem; display: none;">
+                    <p>address</p>
+                    <p style="text-align:left">
+                        作者、相关人士或组织的联系信息（电子邮件地址、指向联系信息页的链接）。 如果提供整个页面的作者联系信息，一般放在页面级footer里。不能包含文档或者文档等其他内容。
+                    </p>
+                    <p>progress</p>
+                    <p style="text-align:center">
+                        使用过bootstrap库都知道，它里面有一个组件就是关于进度条的组件，这里提供的新标签，也可以实现同样的效果。
+                    </p>
+                    <p>blockquoto</p>
+                    <p style="text-align:center">
+                        引述文本，默认新的一行显示。
+                    </p>
+
+                    <p>video</p>
+                    <p style="text-align:center">
+                        标签定义视频，比如电影片段或其他视频流。
+                    </p>
+
+                    <p>audio</p>
+                    <p style="text-align:center">
+                        标签定义声音，比如音乐或其他音频流。
+                    </p>
+
+
+
+                </section>
+
+
+                <section style="width: 110%; top: 3.3rem; display: none;" class="future" aria-hidden="true" hidden="">
+                    <p>此外该有很多语义化标签，</p>
+                    <p>例如：ul ol li p h1-h6 table thead tbody tr th td </p>
+                    <p> 以及h5新的与语义化标签q dfn hgroup canvas datalist summary</p>
+                    <p>新的语义化标签是在太多，一一道来，实在浪费大家宝贵的时间，所以就不一一介绍，有兴趣的自己抽时间去学习吧。</p>
+
+                </section>
+                <section style="width: 110%; top: 3.3rem; display: none;" class="future" aria-hidden="true" hidden="">
+                    <p>不能光说不练，来让我举个栗子吧</p>
+                    <img src="img/1041-css-04/threea.jpg" width="500px" alt="">
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: 3.3rem; display: none;">
+
+                    <a href="https://learn.shayhowe.com/html-css/building-your-first-web-page/">aside和article</a>
+                    <br>
+                    <a href="https://www.smartresize.com/zh-cn">header main footer结构</a>
+                    <br>
+                    <a href="https://god-y.github.io/test/small-class/one.html">自己理解的语义化结构</a>
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: 3.3rem; display: none;">
+                    <a href="https://justineo.github.io/slideshows/semantic-html/#/6/9">再次的演示</a>
+                </section>
+            </section>
+            <section class="stack past" style="top: 0rem; display: none;" data-previous-indexv="1" hidden="" aria-hidden="true">
+
+                <section class="stack past" style="top: 0rem; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true">
+                    <section class="" style="top: 2.665rem; display: none;" aria-hidden="true">
+                        <h3>3.常见问题</h3>
+                    </section>
+                </section>
+
+                <section style="width: 110%; top: 3.3rem; display: none;" class="future" aria-hidden="true" hidden="">
+                    <p style="">实现HTML语义化好处有哪些？</p>
+
+                </section>
+                <section style="width: 110%; top: 3.3rem; display: none;" class="future" aria-hidden="true" hidden="">
+                    <p style="text-align:left"> 1.清晰的页面结构。去掉或样式丢失的时候,也能让页面呈现清晰的结构，增强页面的可读性。 。</p>
+                    <p style="text-align:left"> 2.支持更多的设备。屏幕阅读器会完全根据你的标记来“读”你的网页。更好的支持浏览器的阅读模式等。。</p>
+                    <p style="text-align:left"> 3. 去掉或样式丢失的时候能让页面呈现清晰的结构，便于团队开发和维护。在团队中大家都遵循同一个标准，可以减少很多差异化的东西，方便开发和维护，提高开发效率，甚至实现模块化开发。。</p>
+                    <p style="text-align:left">4.有利于SEO。和搜索引擎建立良好沟通，有助于爬虫抓取更多的有效信息，搜索引擎的爬虫也依赖于标记来确定上下文和各个关键字的权重。
+
+                </section>
+                <section style="width: 110%; top: 3.3rem; display: none;" class="future" aria-hidden="true" hidden="">
+                    <p style="">b和strong标签 ，em标签和i标签</p>
+
+                </section>
+                <section style="width: 110%; top: 3.3rem; display: none;" class="future" aria-hidden="true" hidden="">
+                    <p><b>b就是bold，字体加粗</b> 
+                       
+                    </p> 
+                       <strong>strong是要表达强调而字体被加粗</strong> 
+                    <p>
+                        <i>i就是italic，字体斜体</i> 
+                       
+                    </p> 
+                         <em>em也是强调内容，而被倾斜</em> 
+                    <p>i和b ,都是文字样式元素，没有任何语义，但是em和strong的语义性更强烈，对于搜索引擎的爬蛛来说更友好，能让它知道你这里面的内容的语义效果，b和i只对视觉效果进行了强调，而语义上没有帮助,html5标准已经不推荐使用b和i标签</p>
+                </section>
+                <section style="width: 110%; top: 3.3rem; display: none;" class="future" aria-hidden="true" hidden="">
+                    <p style="">糟糕的语义化html文档长什么样？</p>
+                </section>
+                <section style="width: 110%; top: 3.3rem; display: none;" class="future" aria-hidden="true" hidden="">
+                    <img src="img/1041-css-04/four.png" width="600px" alt="">
+                </section>
+                <section style="width: 110%; top: 3.3rem; display: none;" class="future" aria-hidden="true" hidden="">
+                    <img src="img/1041-css-04/five.jpg" width="200px" alt="">
+                    <p>如果我们遇到第一种代码，真不知道该哭还是该笑</p>
+                    
+                </section>
+
+            </section>
+            </section>
+
+            <section class="stack past" style="top: 0rem; display: block;" data-previous-indexv="0" hidden="" aria-hidden="true">
+                <section class="" style="top: 2.665rem; display: block;" aria-hidden="true">
+                    <h3>5.编码实战</h3>
+                </section>
+            </section>
+            <section class="stack past" style="top: 0rem; display: block;" data-previous-indexv="0" hidden="" aria-hidden="true">
+                <section class="" style="top: 2.665rem; display: block;" aria-hidden="true">
+                    <h3>6.扩展思考</h3>
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: 2.435rem; display: block;">
+                    <p>基于此，在写页面结构时，我们应该注意什么呢？</p>
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: .715rem; display: none;">
+                    <p style="text-align: left"> （1）、尽可能少的使用没有语义的div和span元素。</p>
+                    <p style="text-align: left">
+
+                        （2）、在对语义要求不明显时，技能使用div也能使用p,那就使用p，以为p默认有上下边距，可以兼容特殊终端。
+                    </p>
+                    <p style="text-align: left">
+
+                        （3）、不要使用纯样式标签，如：b、font、u等，改用css设置。
+                    </p>
+                    <p style="text-align: left">
+
+                        （4）、需要强调的文本，可以包含在strong或者em标签中（浏览器预设样式，能用CSS指定就不用他们），strong默认样式是加粗（不要用b，因为没语义），em是斜体（不用i同b）；
+                    </p>
+                    <p style="text-align: left">
+
+                        （5）、使用表格时，标题要用caption，表头用thead，主体部分用tbody包围，尾部用tfoot包围。表头和一般单元格要区分开，表头标题用th，内容单元格用td；</p>
+                    </p>
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: 2.435rem; display: block;">
+                    <p>CSS命名规范（id和class的命名）</p>
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: .715rem; display: none;">
+                    <p>
+                            更多的情况下推荐按照选择器命名的惯例进行设置，无论是 ID 还是 class，对任何东西最好总是根据它是什么而不是它看上去是什么样子来命名。
+                    </p>
+                    <a href="http://www.jb51.net/css/141575.html">命名链接</a>
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: 2.435rem; display: block;">
+                    <p>阶段三：使用微格式标记数据，微格式（Microformat）</p>
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: 2.435rem; display: block;">
+                   <p>
+
+                        微格式（Microformat）
+                    </p>
+                    <p>
+
+                        Microformat，有人翻译成“微格式”，是一种对Web网页进行语义注解的方法，这种方法依托于标准的Web页面写作技术，这样引入语义信息对浏览器等所有现存的Web技术冲击最小。采用Microformat的Web页面，在HTML文档中给一些标签（Tag）增加一些属性（attribute），这些属性对信息的语义结构进行注解，处理HTML文档的软件，例如，浏览器等，如果不认识这些属性可以跳过，并不造成任何不良影响。
+                    </p>
+                    <p>
+
+                        微格式（Microformat），是通过语意相关让内容人机可读。网页上的允许的微格式数据包括事件、人物、地点等，它可以被其它的软件检测到，并提取出相应的信息，以及对信息进行索引、搜索、跨平台的参考，把这些信息以其它形式重复使用或组合。
+                    </p>
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: .715rem; display: none;">
+                    
+                    <p>
+
+                        微格式通常附加在用于添加样式的class属性上。你可以根据数据的类型，使用某些标准的样式名来标注数据。然后，其他程序可以读取你的标记，提取数据并通过检查class属性来确定数据的含义。目前比较流行的微格式应该是：hCard。
+                    </p>
+                    <p>
+
+                        HTML文档中的Microformat代码可以有两类：compound microformat和elemental microformat.
+                    </p>
+                    <a href="https://justineo.github.io/slideshows/semantic-html/#/13">链接</a>
+                    <a href="https://www.google.com.tw/search?ei=i07YWrrfAcLM8wWvrKyYBQ&q=贝拉克·侯赛因·奥巴马&oq=贝拉克·侯赛因·奥巴马&gs_l=psy-ab.3...2857.34177.0.34497.11.11.0.0.0.0.436.1189.1j2j2j0j1.6.0....0...1c.1j4.64.psy-ab..7.3.665...0j0i67k1.0.zQ6ucmZlpjY">链接2</a>
+                  
+                </section>
+            </section>
+            <section class="stack present" style="top: 0rem; display: block;" data-previous-indexv="0">
+                <section class="present" style="top: 2.665rem; display: block;">
+                    <h3>7.参考文献</h3>
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: 2.335rem; display: block;">
+                    <p>参考一：
+                        <a href="https://www.zhihu.com/question/20455165" target="_blank">知乎：html语义化</a>
+                    </p>
+                    <p>参考二：
+                        <a href="https://justineo.github.io/slideshows/semantic-html/#/13/3" target="_blank">HTML语义化的应用</a>
+                    </p>
+                </section>
+            </section>
+            <section class="stack future" style="top: 0rem; display: block;" data-previous-indexv="0" hidden="" aria-hidden="true">
+                <section class="" style="top: 2.665rem; display: block;" aria-hidden="true">
+                    <h3>8.更多讨论</h3>
+                    <p>最后的讨论，什么是网络爬虫？</p>    
+                </section>
+                <section class="future" aria-hidden="true" hidden="" style="top: 2.435rem; display: block;">
+                        网络爬虫其实是一种机器人程序，什么是机器人程序，就是替人类做重复性工作的程序，比如说:你得到了一份很无趣的工作，你的老板叫你每天把隔壁竞争对手公司网站主页内容复制下来保存到word给他（也没谁了），接下你会打开浏览器，输入隔壁公司的网址， 进入主页，鼠标一划，然后Ctrl+C 和 Ctrl + V, ，保存world，万事大吉。  突然有一天你公司强大了， 竞争对手范围上升到了50个， 还是重复之前的流程，还好CV大法练得比较纯熟，下班前就完成了，不过想想以后这要是几百个，几千个竞争对手，我的天啊，要累死朕啊！内心极度渴望一种程序可以摆脱这无聊的工作，幸好是个程序猿，所以要写个程序帮我完成这些工作。
+                        我们怎么设计这个程序呢， 首先我要将50个公司的网址保存起来，循环他每个网址，访问网站，找到内容，保存到本地。这就是爬虫程序，名字听起来高大上，其实爬虫就是帮你解决这些重复的操作而已
+                </section>
+                <section class="" style="top: 2.665rem; display: block;" aria-hidden="true">
+                        <img src="img/1041-css-04/clipboard.png" width="500px" alt=""> 
+                    </section>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 2.24rem; display: block;">
+                <h4>鸣谢</h4>
+                <h4>感谢大家观看</h4>
+                <small>BY : 杨亚洲</small>
+            </section>
+        </div>
+        <div class="backgrounds">
+            <div class="slide-background past" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background past" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background stack past" data-loaded="true" style="display: none;">
+                <div class="slide-background past" data-loaded="true" style="display: none;"></div>
+                <div class="slide-background present" data-loaded="true" style="display: none;"></div>
+            </div>
+            <div class="slide-background stack past" data-loaded="true" style="display: none;">
+                <div class="slide-background present" data-loaded="true" style="display: none;"></div>
+                <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+                <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+            </div>
+            <div class="slide-background stack past" data-loaded="true" style="display: none;">
+                <div class="slide-background present" data-loaded="true" style="display: none;"></div>
+            </div>
+            <div class="slide-background past" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background stack past" data-loaded="true" style="display: none;">
+                <div class="slide-background present" data-loaded="true" style="display: none;"></div>
+                <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+                <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+            </div>
+            <div class="slide-background stack past" data-loaded="true" style="display: block;">
+                <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+            </div>
+            <div class="slide-background stack past" data-loaded="true" style="display: block;">
+                <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+                <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+                <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+            </div>
+            <div class="slide-background stack present" data-loaded="true" style="display: block;">
+                <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+                <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            </div>
+            <div class="slide-background stack future" data-loaded="true" style="display: block;">
+                <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+            </div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+        </div>
+        <div class="progress" style="display: block;">
+            <span style="width: 6.77273rem;"></span>
+        </div>
+        <aside class="controls" style="display: block;">
+            <button class="navigate-left enabled" aria-label="previous slide"></button>
+            <button class="navigate-right enabled" aria-label="next slide"></button>
+            <button class="navigate-up" aria-label="above slide"></button>
+            <button class="navigate-down enabled" aria-label="below slide"></button>
+        </aside>
+        <div class="slide-number" style="display: none;"></div>
+        <div class="speaker-notes" data-prevent-swipe=""></div>
+        <div class="pause-overlay"></div>
+        <div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: .01rem; width: .01rem; overflow: hidden; clip: rect(.01rem .01rem .01rem .01rem);">
+            7.参考文献
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: './plugin/markdown/marked.js'
+                },
+                {
+                    src: './plugin/markdown/markdown.js'
+                },
+                {
+                    src: './plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: './plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+
+
+</body>
+
+</html>
