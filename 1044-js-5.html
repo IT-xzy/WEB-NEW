@@ -1,0 +1,223 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h3>什么是Ajax</h3>
+            <p style="text-align: center;">深圳分院：林健凡</p>
+        </section>
+        <section>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <section>
+            <section>
+                <h3>什么是Ajax</h3>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 40px">
+                    简单来说<br>
+                    就是没用AJAX的网页，你点一个按钮就要刷新一下整个页面，尽管新页面上只有一行字和当前页面不一样，但你还是要无聊地等待页面刷新<br>
+                    用了AJAX之后，你点击，然后页面上的一行字就变化了，页面本身不用刷
+                </p>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 40px">
+                    AJAX只是一种技术，不是某种具体的东西。不同的浏览器有自己实现AJAX的组件
+                </p>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 40px">
+                    同步请求<br>
+                    异步请求
+                </p>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 31px">
+                    同步请求即是当前发出请求后，浏览器什么都不能做，必须得等到请求完成返回数据之后，才会执行后续的代码，相当于是排队，前一个人办理完自己的事务，下一个人才能接着办。也就是说，当JS代码加载到当前AJAX的时候会把页面里所有的代码停止加载，页面处于一个假死状态，当这个AJAX执行完毕后才会继续运行其他代码页面解除假死状态(即当ajax返回数据后，才执行后面的function2)
+                <p style="text-align:left;font-size: 31px">
+                    异步请求就当发出请求的同时，浏览器可以继续做任何事，Ajax发送请求并不会影响页面的加载与用户的操作，相当于是在两条线上，各走各的，互不影响。异步请求可以完全不影响用户的体验效果，无论请求的时间长或者短，用户都在专心的操作页面的其他内容，并不会有等待的感觉
+                </p>
+            </section>
+            
+        </section>
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            <section>
+                <h3>Ajax</h3><br>
+                <p>就是用 JS 发起一个请求，并得到服务器返回的内容。这跟以前的技术最大的不同点在于「页面没有刷新」，仅此而已</p>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 40px">
+                    如何用JS发起一个请求
+                </p>
+                <ul>
+                    <li>创建一个对象</li>
+                    <li>监听请求成功后的状态变化</li>
+                    <li>设置请求参数</li>
+                    <li>发起请求</li>
+                </ul>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 40px">
+                    创建一个对象
+                </p>
+                <p style="text-align:left">var xhr = new XMLHttpRequest();</p>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 40px">
+                    监听请求成功后的状态变化
+                </p>
+                <p style="text-align:left">onreadystatechange：用来监听readyState的变化的</p>
+                <p style="text-align:left">readyState：表示当前请求的后台的状态</p>
+                <p style="text-align:left">status：表示处理的结果</p>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 40px">
+                    readyState：表示当前请求的后台的状态
+                </p>
+                <p style="text-align:left">0：请求未初始化(还没有调用open())</p>
+                <p style="text-align:left">1：请求已经建立，但是还没有发送(还没有调用send())</p>
+                <p style="text-align:left">2：请求已经发送，正在处理中</p>
+                <p style="text-align:left">3：请求正在处理中，通常响应中已经有部分数据可以用了</p>
+                <p style="text-align:left">4：响应已经完成，可以获取并使用服务器的响应了</p>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 40px">
+                    status：表示处理的结果(状态码)
+                </p>
+                <p style="text-align:left">status == 200 是表示处理的结果是OK的</p>
+                <p style="text-align:left">状态码:200到300是指服务端正常返回</p>
+                <p style="text-align:left">304:如果网页自请求者上次请求后再也没有更改过，应将服务器配置为返回此响应，进而节省带宽和开销</p>
+                <p style="text-align:left">404:找不到对象</p>
+                <p style="text-align:left">503:服务器超时</p>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 40px">
+                    设置请求参数
+                </p>
+                <p style="text-align:left">xhr对象接受三个参数 <br> 1：表示请求类型<br> 2：表示请求的网址<br> 3：表示是否异步</p>
+            </section>
+            <section>   
+                <p style="text-align:left;font-size: 40px">
+                    get/post/put/delete
+                </p>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 40px">
+                    发起请求
+                </p>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 40px">
+                    get是获取数据，get的send方法的参数可以是null或者空 <br> post可以发送数据，但是在使用post方法发送数据，需要使用setRequestHeader()来添加HTTP头，同时，post的send()方法需要写入要发送的数据的值
+                </p>
+            </section>
+        </section>
+        <section>
+            <h3>3、常见问题</h3>
+        </section>
+        <section>
+            <p style="text-align:left;font-size: 40px">IE下的缓存问题</p>
+            <p style="text-align:left;font-size: 40px">Ajax对象属性的大小写问题</p>
+            <p style="text-align:left;font-size: 40px">使用post提交需要设置content-type的问题</p>
+        </section>
+        <section>
+            <h3>4、解决方案</h3>
+        </section>
+        <section>
+            <h3>5、编码实战</h3>
+        </section>
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+            <h3>7.参考文献</h3>
+        </section>
+        <section>
+            CSDN/知乎
+        </section>
+        <section>
+            <h3>8、更多讨论</h3>
+        </section>
+        <section>
+            <h4>鸣谢</h4>
+            <h3>感谢观看</h3>
+            <p><small>BY ︱林健凡</small></p>
+        </section>
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+  // 以下为常见配置属性的默认值
+  // {
+  // 	controls: true, // 是否在右下角展示控制条
+  // 	progress: true, // 是否显示演示的进度条
+  // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+  // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+  // 	keyboard: true, // 是否启用键盘快捷键来导航
+  // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+  // 	center: true, // 是否将幻灯片垂直居中
+  // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+  // 	loop: false, // 是否循环演示
+  // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+  // 	fragments: true, // 全局开启和关闭碎片。
+  // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+  // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+  // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+  // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+  // }
+  // 初始化幻灯片
+  Reveal.initialize({
+    history: true,
+    dependencies: [
+      { src: '../plugin/markdown/marked.js' },
+      { src: '../plugin/markdown/markdown.js' },
+      { src: '../plugin/notes/notes.js', async: true },
+      { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+    ]
+  });
+</script>
+</body>
+</html>
