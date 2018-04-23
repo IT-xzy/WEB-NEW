@@ -1,0 +1,177 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>葡萄藤PPT</title>
+	<link rel="stylesheet" href="../css/reveal/reveal.css">
+
+	<!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+	<link rel="stylesheet" href="../css/reveal/theme/ptt.css">
+
+	<!-- syntax highlighting 代码高亮主题 -->
+	<link rel="stylesheet" href="../lib/reveal/css/zenburn.css">
+
+	<!-- 打印和PDF输出样式 -->
+	<script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+
+        link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+	<style>
+		.reveal pre code {
+			background-color: #120;
+		}
+	</style>
+</head>
+<body>
+<img src="../img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+	<area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+	<div class="slides">
+		<section>
+			<h4>小课堂【萌新】</h4>
+			<h4></h4>
+			<h4>分享人：段俊超</h4>
+		</section>
+		<section>
+			<p>目录</p>
+			<p>1.HTML 行内元素 与 块级元素</p>
+			<p>2.常用的 display 值</p>
+			<p>3.行内元素 和 块级元素 盒模型区别 </p>
+			<p>4.块级元素 与 overflow</p>
+			<p>5.实践</p>
+		</section>
+		<section>
+			<h3>1.HTML 行内元素 与 块级元素</h3>
+		</section>
+		<section>
+			<p>行内元素一般是内容的容器，而块级元素一般是其他容器的容器。一般情况下，行内元素
+				只能包含内容或者其它行内元素，宽度和长度依据内容而定，不可以设置，可以和其它元素
+				和平共处于一行；而块级元素可以包含行内元素和其它块级元素，且占据父元素的整个空间，
+				可以设置 width 和 height 属性，浏览器通常会在块级元素前后另起一个新行。
+			</p>
+		</section>
+		<section>
+			因此，行内元素适合显示具体内容，而块级元素适合做布局。常用的行内和块级元素如下：
+			级别	元素
+			<p>行内元素	a,b,strong,span,img,label,button,input,select,textarea</p>
+			<p> 块级元素header,form,ul,ol,table,article,div,hr,aside,figure,canvas,video,audio,footer</p>
+			<p class="fragment">之所以说“一般情况下”，是因为元素的级别不是一成不变的，浏览器是按照规范规定元素默认的级别，但是可以通过“display”属性改变其级别。</p>
+		</section>
+		<section>
+			<h3>2.常用的 display 值</h3>
+		</section>
+		<section>
+			常用的 display 可能的值如下：
+		<p>	inline	以行内元素行为展示</p>
+			<p>	block	以块级元素行为展示</p>
+			<p>	inline-block	行内元素和块级元素特性兼而有之，既不会占满父元素，又可以设置width和height属性</p>
+			<p>	table	以表格的形式展示</p>
+		</section>
+		<section>
+			<p>	table-column	以表格列的形式展示</p>
+			<p>	flex	CSS3 新增，虽然处于CR阶段，但是很多现代浏览器已经支持无前缀的该特性，IE从11开始部分支持。类似块级元素，但是可以用于制作自适应布局</p>
+			<p>	inline-flex	类似行内元素，但是可以用于制作自适应布局</p>
+			<p>	grid	CSS3 新增，目前处于“实验阶段（Experimental）”,只是得到了IE11和edge的部分支持</p>
+		</section>
+		<section>
+			<h3>3.行内元素 和 块级元素 盒模型区别</h3>
+		</section>
+		<section>
+			<p>行内元素尺寸由内含的内容决定，盒模型中 padding, border 与块级元素并无差异，都是标准的盒模型，</p>
+			<p>但是 margin 却只有水平方向的值，垂直方向并没有起作用。</p>
+
+		</section>
+		<section>
+			<p>块级元素当没有明确指定 width 和 height 值时，块级元素尺寸由内容确定，</p>
+			<p>当指定了 width 和 height 的值时，内容超出块级元素的尺寸就会溢出，</p>
+			<p>这时块级元素要呈现什么行为要看其 overflow 的值，下面会提到。</p>
+			<p>块级元素的 padding, border 和标准的盒模型一致，</p>
+			<p>但是如果 width + padding + border + 指定的margin 小于其父元素的宽度时，</p>
+			<p>浏览器会通过补margin 来填满整行。</p>
+		</section>
+		<section>
+			<h3>4.块级元素 与 overflow</h3>
+		</section>
+		<section>
+			<p>块级元素当没有明确指定 width 和 height 值时，块级元素尺寸由内容确定，</p>
+			<p>当指定了 width 和 height 的值时，内容超出规定的尺寸就会溢出，元素的尺寸并不会随着内容改变。</p>
+			<p>这时候使用 overflow 可以指定内容超出时的行为，当然， overflow 只对块级元素起作用，</p>
+			<p>指定当内容超出块级容器的时候，块级元素该如何处理内容的显示。overflow 可能的值如下</p>
+		</section>
+		<section>
+			<p>visible	默认值，如果内容超出容器尺寸，不做任何处理</p>
+			<p>hidden	超出的内容被截断并隐藏</p>
+			<p>scroll	无论内容是否超出，总是显示滚动条。可以控制只显示一个方向的滚动条，
+			这时应该设置 overflow-x 和 overflow-y</p>
+			<p>auto	内容没有超出时，不显示滚动条；内容超出时，显示滚动条，
+			且如果只有一个方向超出，那么只显示该方向上的滚动条</p>
+		</section>
+		<section>
+			<h3>5.实践</h3>
+		</section>
+		<section>
+		<h3>6.总结</h3>
+		</section>
+		<section>
+		文章总结了行内元素和块级元素的区别，每个元素都可以通过 display 来设置行内还是块级显示，
+			inline 和 block 是两种显示模型，浏览器对每个元素都要采用一种模型来呈现元素，
+			上面我们提到的行内元素和块级元素分组，其实并不是它们天生就应该这样，而是浏览器按照规范指定了默认值，
+			因此即使我们没有指定这些属性，那些元素仍然会按照其所属类别渲染呈现。
+			通过display 可以改变元素对应的渲染呈现模型，也就是盒模型。当块级元素的内容超出容器时，
+			使用 overflow 属性来指定块级元素的行为。
+		</section>
+		<section>
+			<h4>鸣谢</h4>
+			<p>感谢大家观看</p>
+			<p>
+				By
+				<small style="vertical-align: middle">段俊超</small>
+			</p>
+		</section>
+	 </div>
+</div>
+<script src="../lib/reveal/js/head.min.js"></script>
+<script src="../lib/reveal/reveal.js"></script>
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: false,
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
