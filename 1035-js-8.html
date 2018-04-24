@@ -1,0 +1,372 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        .reveal pre code {
+            background-color: #120;
+        }
+    </style>
+</head>
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.461571);">
+        <section class="past" style="top: 87px; display: none;" hidden="" aria-hidden="true">
+            <h2>【js-08】</h2>
+            <h2>主题：如何理解angular自定义指令directive的scope属性？</h2>
+            <h3>小课堂【北京】</h3>
+            分享人：黄苏威
+        </section>
+        <section style="line-height: 70px; top: 0px; display: none;" class="past" hidden="" aria-hidden="true">
+            目录<br>
+
+            1.背景介绍<br>
+
+            2.知识剖析<br>
+
+            3.常见问题<br>
+
+            4.解决方案<br>
+
+            5.编码实战<br>
+
+            6.扩展思考<br>
+
+            7.参考文献<br>
+
+            8.更多讨论<br>
+        </section>
+
+        <section class="stack past" style="top: 0px; display: none;" data-previous-indexv="1" hidden="" aria-hidden="true">
+            <section class="past" style="top: 266.5px; display: none;" hidden="" aria-hidden="true">
+                <h3>1.背景介绍</h3>
+            </section>
+            <section class="" style="top: 106.5px; display: none;" aria-hidden="true">
+                <h5>指令定义</h5>
+
+                <p> AngularJS与JQuery最大的区别表现在数据双向绑定，实质就是DOM的操作形式不一样。
+                    JQuery通过选择器找到DOM元素，再赋予元素的行为；
+                    而AngularJS则是，将指令与DOM绑定在一起，再扩展指令的行为。
+
+                    例如， ng-click 可以让一个元素能够监听 click 事件，并在接收到事件的时候执行AngularJS表 达式。
+                    我们可以自己创造新的指令。使用angular的directive( )这个模块是用来定义指令的。</p>
+
+            </section>
+        </section>
+        <section class="stack past" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true">
+            <section class="" style="top: 266.5px; display: none;" aria-hidden="true">
+                <h3>2.知识剖析</h3>
+            </section>
+            <section class="future" aria-hidden="true" hidden="" style="top: 51.5px; display: none;">
+                <p>一个完整的自定义指令所包含的内容</p>
+
+                    <pre><code class="hljs lua">
+    angular.<span class="hljs-built_in">module</span>(...);
+
+      .directive(<span class="hljs-string">'My-directive'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(injectables)</span></span> {
+
+        restrict: <span class="hljs-string">'A'</span>,
+
+     　　priority: <span class="hljs-number">0</span>,
+
+     　　template: <span class="hljs-string">'&lt;div&gt;&lt;/div&gt;'</span>,
+
+     　　templateUrl: <span class="hljs-string">'directive.html'</span>,
+
+     　　replace: <span class="hljs-keyword">false</span>,
+
+     　　transclude: <span class="hljs-keyword">false</span>,
+
+     　　scope: <span class="hljs-keyword">false</span>,
+
+     　　compile: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(tElement, tAttrs, transclude)</span></span> {
+
+     　　　　<span class="hljs-keyword">return</span> {
+
+     　　　　　　 pre：<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preLink</span><span class="hljs-params">(scope, iElement, iAttrs, controller)</span></span> { ... },
+
+     　　　　　　 post：<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postLink</span><span class="hljs-params">(scope, iElement, iAttrs, controller)</span></span> { ... }
+
+    　　　　}
+
+    　　},
+
+     　　link: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(scope, iElement, iAttrs)</span></span> { ... }
+
+    });
+
+
+                </code></pre>
+            </section>
+            <section class="future" aria-hidden="true" hidden="" style="top: 21.5px; display: none;">
+                <p>restrict（字符串）</p>
+
+                <p>restrict 是一个可选的参数。它告诉AngularJS这个指令在DOM中可以何种形式被声明。默 认AngularJS认为 restrict 的值是 A ，即以属性的形式来进行声明。</p>
+
+               <p>restrict 值可以是以下几种:</p>
+                <p>E 作为元素名使用</p>
+                <p>A 作为属性使用</p>
+                <p>C 作为类名使用</p>
+                <p>M 作为注释使用</p>
+            </section>
+            <section class="future" aria-hidden="true" hidden="" style="top: 330px; display: none;">
+               <p>template （字符串或函数）</p>
+
+                <p>template 参数是可选的，必须被设置为以下两种形式之一：</p>
+
+               <p> 一段HTML文本；</p>
+
+                <p> 一个可以接受两个参数的函数，参数为 tElement 和 tAttrs ，并返回一个代表模板的字符 串。</p>
+
+                <p>templateUrl，引入外部的一个html文件</p>
+            </section>
+            <section class="future" aria-hidden="true" hidden="" style="top: 330px; display: none;">
+                指令中的SCOPE
+                directive 默认能共享父 scope 中定义的属性，例如在模版中直接使用父 scope 中的对象和属性。
+                通常使用这种直接共享的方式可以实现一些简单的 directive 功能。但是当要创建一个可以重复使用的
+                directive的时候， 就不能依赖于父scope了，因为在不同的地方使用directive对应的父scope不一样。
+                所以需要一个隔离的scope。
+            </section>
+            <section style="width: 110%; top: 330px; display: none;" class="future" aria-hidden="true" hidden="">
+                <b>2.2 scope属性的3种取值</b>
+                <p>①、false（默认值）：直接使用父scope。</p>
+                <p>②、true：继承父scope</p>
+                <p>③、对象{ }：创建一个新的“隔离”scope，但仍可与父scope通信。隔离的scope，通常用于创建可复用的指令，也就是它不用管父scope中的model。然而虽然说是“隔离”，但通常我们还是需要让这个子scope跟父scope中的变量进行绑定。绑定的策略有3种：@、=、&amp;。</p>
+            </section>
+            <section class="future" aria-hidden="true" hidden="" style="top: 330px; display: none;">
+
+                <p>@ 这是一个单项绑定的前缀标识符</p>
+                <p>使用方法：在元素中使用属性，好比这样 my-name="{{name}}"，注意，属性的名字要用-将两个单词连接，因为是数据的单项绑定所以要通过使用{{}}来绑定数据。</p>
+                <p> = 这是一个双向数据绑定前缀标识符</p>
+                <p>使用方法：在元素中使用属性，好比这样 my-age="age",注意，数据的双向绑定要通过=前缀标识符实现，所以不可以使用{{}}。
+                    </p>
+                <p>&amp; 这是一个绑定函数方法的前缀标识符</p>
+                <p>使用方法：在元素中使用属性，好比这样 my-change="changeAge()"，注意，属性的名字要用-将多个个单词连接。</p>
+            </section>
+            <section class="future" aria-hidden="true" hidden="" style="top: 330px; display: none;">
+                <p>指令中的 CONTROLLER , COMPILE , LINK函数</p>
+                <p>AngularJs 的生命周期;分为两个阶段:</p>
+               <p>第一个阶段是编译阶段: 在编译阶段，AngularJS会遍历整个HTML文档并根据JavaScript中的指令定义来处理页面上声明的指令。
+                   每一个指令的模板中都可能含 有另外一个指令，另外一个指令也可能会有自己的模板。当AngularJS调用HTML文档根部的指令时，
+                   会遍历其中所有的模板，模板中也可能包 含带有模板的指令.一旦对指令和其中的子模板进行遍历或编译，
+                   编译后的模板会返回一个叫做模板函数的函数。我们有机会在指令的模板函 数被返回前，对编译后的DOM树进行修改。</p>
+            </section>
+            <section class="future" aria-hidden="true" hidden="" style="top: 330px; display: none;">
+                第二个阶段是链接阶段:链接函数来将模板与作用域链接起来;负责设置事件监听器，监视数据变化和实时的操作DOM.链接函数是可选的。
+                如果定义了编译函数，它会返回链接函数，因此当两个函数都定义了时，编译函数会重载链接函数
+                指令的控制器和link函数可以进行互换。控制器主要是用来提供可在指令间复用的行为，但链接函数只能在当前内部指令中定义行为，
+                且无法在指令间复用.link函数可以将指令互相隔离开来，而controller则定义可复用的行为。
+            </section>
+        </section>
+        <section class="stack past" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true">
+            <section class="" style="top: 266.5px; display: none;" aria-hidden="true">
+                <h3>3.常见问题</h3>
+            </section>
+        </section>
+        <section class="past" style="top: 287px; display: none;" hidden="" aria-hidden="true">
+            <b>scope属性的3种取值对指令有什么影响?</b>
+        </section>
+        <section class="stack past" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true">
+            <section class="" style="top: 266.5px; display: none;" aria-hidden="true">
+                <h3>4.解决方案</h3>
+            </section>
+            <section class="future" aria-hidden="true" hidden="" style="top: 174.5px; display: none;">
+                <p>每当一个指令被创建的时候，都会有这样一个选择，是继承自己的父作用域（一般是外部的Controller提供的作用域或者根作用域（$rootScope）），还是创建一个新的自己的作用域，当然AngularJS为我们指令的scope参数提供了三种选择，分别是：false,true,{}；默认情况下是false。</p>
+            </section>
+            <section class="future" aria-hidden="true" hidden="" style="top: 39px; display: none;">
+                当scope参数被设置为false时有什么情况发生在这种情况下，在指令模板中可以直接使用父作用域中的变量，函数
+               <pre><code class="hljs xquery">
+              &lt;div ng-controller=<span class="hljs-string">"MyCtrl"</span> class=<span class="hljs-string">"div1"</span>&gt;
+                    Ctrl:&lt;br&gt;
+                    &lt;input ng-model=<span class="hljs-string">"userName"</span>&gt;{{userName}}&lt;br&gt;
+                    Directive:&lt;br&gt;
+                    &lt;hello&gt;&lt;/hello&gt;
+                        兄弟&lt;br&gt;
+                    &lt;hello&gt;&lt;/hello&gt;
+                    &lt;/div&gt;
+
+             angular.module(<span class="hljs-string">"app"</span>,[])
+
+            //测试<span class="hljs-literal">true</span>和<span class="hljs-literal">false</span>
+            .controller(<span class="hljs-string">"MyCtrl"</span>,<span class="hljs-keyword">function</span>($scope){
+                            $scope.userName=<span class="hljs-string">"山水"</span>;
+                        })
+                        .directive(<span class="hljs-string">"hello"</span>,<span class="hljs-keyword">function</span> () {
+                            return{
+                                restrict:<span class="hljs-string">"AECM"</span>,
+                                template:<span class="hljs-string">'&lt;div&gt;&lt;input type="text" ng-model="userName"&gt;{{userName}}&lt;/div&gt;'</span>,
+                                replace:true,
+                                scope:false              }
+                        })
+
+           </code></pre>
+            </section>
+
+            <section class="future" aria-hidden="true" hidden="" style="top: 330px; display: none;">
+                <p>因为我们将scope的属性设置为false所以，我们创建的指令继承了父作用域的一切属性和方法，这也使得在指令的模板中我们可以使用这些属性和方法。</p>
+                <p>注意：此时我们在输入框里改变名字，会发现上面的两个名字都发生了变化</p>
+            </section>
+            <section class="future" aria-hidden="true" hidden="" style="top: 330px; display: none;">
+                <b>4.2 scope = true。</b>
+                <p>
+                    当把scope属性设置为true时，这表明我们创建的指令要创建一个新的作用域，这个作用域继承自我们的父作用域。
+                </p>
+                <p>
+                    修改上面的JS代码，将指令中的：scope:false修改为scope:true "
+                </p>
+                <p>然后我们再试着在我们的input输入框中写一些字符串，会发现，指令中的那个name发生了变化，但是指令外的那个name却没有发生变化，这说明了一个问题。</p>
+            </section>
+            <section class="future" aria-hidden="true" hidden="" style="top: 330px; display: none;">
+                <p>当我们将scope设置为true的时候，我们就新创建了一个作用域，只不过这个作用域是继承了我们的父作用域；我觉得可以这样理解，我们新创建的作用域是一个新的作用域，只不过在初始化的时候，用了父作用域的属性和方法去填充我们这个新的作用域。它和父作用域不是同一个作用域。</p>
+                <p>当我们将scope设置为false的时候,我们创建的指令和父作用域（其实是同一个作用域）共享同一个model模型，所以在指令中修改模型数据，它会反映到父作用域的模型中。</p>
+            </section>
+            <section class="future" aria-hidden="true" hidden="" style="top: 330px; display: none;">
+                <b>4.3 scope = {}</b>
+                <p>当我们将scope的属性设置为{}时，我们可以做更多的事情。</p>
+                <p>
+                    AngularJS最强的大的地方之一就是它可以构建组件，无论放在哪里都是可以使用的；这所以可以做到这些，不得不归功于指令的这个属性；当我们将scope设置为{}时，意味着我们创建的一个新的与父作用域隔离的新的作用域，这使我们在不知道外部环境的情况下，就可以正常工作，不依赖外部环境。
+                </p>
+            </section>
+            <section style="text-align: left; top: 330px; display: none;" class="future" aria-hidden="true" hidden="">
+                <p>我们使用了隔离的作用域，不代表我们不可以使用父作用域的属性和方法。</p>
+                <p>我们可以通过向scope的{}中传入特殊的前缀标识符（即prefix），来进行数据的绑定。</p>
+                <p>在创建了隔离的作用域，我们可以通过@,&amp;,=引用应用指令的元素的属性</p>
+            </section>
+            <section class="future" aria-hidden="true" hidden="" style="top: 330px; display: none;">
+                <p>下面我们来看看如何使用这些前缀标识符：</p>
+                <p>1.@：单向绑定，外部scope能够影响内部scope，但反过来不成立；</p>
+                <p>这是一个单项绑定的前缀标识符。使用方法：在元素中使用属性，好比这样</p>
+                <pre>                <code class="hljs applescript">
+                    &lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">my</span>-directive=<span class="hljs-string">""</span> <span class="hljs-keyword">my</span>-<span class="hljs-built_in">name</span>=<span class="hljs-string">"{{name}}"</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;
+                </code>
+                </pre>
+                <p>注意，属性的名字要用-将两个单词连接，因为是数据的单项绑定所以要通过使用{{}}来绑定数据。</p>
+            </section>
+            <section style="text-align: left; top: 330px; display: none;" class="future" aria-hidden="true" hidden="">
+                <p>2、=：双向绑定，外部scope和内部scope的model能够相互改变；</p>
+                <p>这是一个双向数据绑定前缀标识符。使用方法：在元素中使用属性，好比这样</p>
+                <pre>                <code class="hljs applescript">
+                    &lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">my</span>-directive=<span class="hljs-string">""</span> <span class="hljs-keyword">my</span>-<span class="hljs-built_in">name</span>=<span class="hljs-string">"name"</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;
+                </code>
+                </pre>
+                <p>注意，数据的双向绑定要通过=前缀标识符实现，所以不可以使用{{}}。</p>
+            </section>
+            <section style="text-align: left; top: 330px; display: none;" class="future" aria-hidden="true" hidden="">
+                <p>3、&amp;：把内部scope的函数的返回值和外部scope的任何属性绑定起来。</p>
+                <p>这是一个绑定函数方法的前缀标识符。使用方法：在元素中使用属性，好比这样</p>
+                <pre><code class="hljs x86asm">
+                    &lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">test</span>-directive=<span class="hljs-string">""</span> action=<span class="hljs-string">"click()"</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;
+                </code></pre>
+                <p>注意，属性的名字要用-将多个个单词连接。</p>
+            </section>
+        </section>
+
+        <section class="stack past" style="top: 0px; display: block;" data-previous-indexv="0" hidden="" aria-hidden="true">
+            <section class="" style="top: 266.5px; display: block;" aria-hidden="true">
+                <h3>5.编码实战</h3>
+            </section>
+        </section>
+        <section class="stack past" style="top: 0px; display: block;" data-previous-indexv="0" hidden="" aria-hidden="true">
+            <section class="" style="top: 266.5px; display: block;" aria-hidden="true">
+                <h3>6.扩展思考</h3>
+            </section>
+            <section class="future" aria-hidden="true" hidden="" style="top: 243.5px; display: block;">
+                <p>我们的指令是如何利用这些前缀标识符来寻找我们想要的属性或者函数的？</p>
+            </section>
+            <section class="future" aria-hidden="true" hidden="" style="top: 71.5px; display: none;">
+                <p>@ 当指令编译到模板的name时，就会到scope中寻找是否含有name的键值对，如果存在，就像上面那样，看到@就知道这是一个单向的数据绑定，然后寻找原来的那个使用指令的元素上（或者是指令元素本身）含有这个值的属性即my-name={{name}}，然后在父作用域查找{{name}}的值，得到之后传递给模板中的name。</p>
+                <p>=和&amp;与@差不多，只不过=进行的是双向的数据绑定，不论模板还是父作用域上的属性的值发生改变都会使另一个值发生改变，而&amp;是绑定函数而已。</p>
+            </section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="0">
+            <section class="present" style="top: 266.5px; display: block;">
+                <h3>7.参考文献</h3>
+            </section>
+            <section class="future" aria-hidden="true" hidden="" style="top: 233.5px; display: block;">
+                <p>参考一：<a href="http://www.jb51.net/article/83051.htm" target="_blank">AngularJS 自定义指令</a></p>
+                <p>参考二：<a href="https://segmentfault.com/a/1190000002773689" target="_blank">一招制敌 - 玩转 AngularJS 指令的 Scope (作用域)</a></p>
+            </section>
+        </section>
+        <section class="stack future" style="top: 0px; display: block;" data-previous-indexv="0" hidden="" aria-hidden="true">
+            <section class="" style="top: 266.5px; display: block;" aria-hidden="true">
+                <h3>8.更多讨论</h3>
+            </section>
+
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 224px; display: block;">
+            <h4>鸣谢</h4>
+            <h4>感谢大家观看</h4>
+            <small>BY : 黄苏威</small>
+        </section>
+    </div>
+<div class="backgrounds"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background stack past" data-loaded="true" style="display: none;"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background present" data-loaded="true" style="display: none;"></div></div><div class="slide-background stack past" data-loaded="true" style="display: none;"><div class="slide-background present" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background stack past" data-loaded="true" style="display: none;"><div class="slide-background present" data-loaded="true" style="display: none;"></div></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background stack past" data-loaded="true" style="display: none;"><div class="slide-background present" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background stack past" data-loaded="true" style="display: block;"><div class="slide-background present" data-loaded="true" style="display: block;"></div></div><div class="slide-background stack past" data-loaded="true" style="display: block;"><div class="slide-background present" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div></div><div class="slide-background stack present" data-loaded="true" style="display: block;"><div class="slide-background present" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div></div><div class="slide-background stack future" data-loaded="true" style="display: block;"><div class="slide-background present" data-loaded="true" style="display: block;"></div></div><div class="slide-background future" data-loaded="true" style="display: block;"></div></div><div class="progress" style="display: block;"><span style="width: 677.273px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up" aria-label="above slide"></button><button class="navigate-down enabled" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px 1px 1px 1px);">
+                7.参考文献
+            </div></div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: './plugin/markdown/marked.js'},
+            {src: './plugin/markdown/markdown.js'},
+            {src: './plugin/notes/notes.js', async: true},
+            {
+                src: './plugin/highlight/highlight.js',
+                async: true,
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+
+
+</body></html>
