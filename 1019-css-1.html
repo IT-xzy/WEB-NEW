@@ -1,0 +1,225 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+   
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h3>【CSS-task1】九宫格有哪几种方法可以实现，他们各自的优缺点是什么？</h3>
+            <p>分享人：杨亚洲</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <h3>盒子模型与元素水平</h3>
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                
+                <img src="img\1019-css-1\one.jpg" alt="">
+            </section>
+            <section class="present" style="top: 148.5px; display: block;">
+                <p>九宫格对于一个初学者来说，只需要了解标准盒模型，盒模型由内至外分别是content、padding、border、margin，
+                    其中可以使用百分比的有content,padding,margin，边框border则不可以用%单位。
+                </p>
+            </section>
+            <section class="present" style="top: 148.5px; display: block;">
+                <p>
+                    元素水平分为3种：block水平，inline-block水平，inline水平，3种元素各有不同的表现。
+                    block水平默认情况下，继承父级宽度，铺满整行。多个元素竖直方向排列，可以设置宽高，竖直方向上的padding,margin有效。
+                    inline元素水平排列，多个inline水平的元素，会在一行里排列，不可以设置宽高，竖直方向上的padding,margin无效。
+                    inline-block水平元素，用时具有block水平和inline水平的特点，多个元素水平排列成一行。可以设置宽高，竖直方向上的padding,margin有效。
+                </p>
+            </section>
+
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p>
+                既然这样，实现九宫格效果，必然不能是9个block水平的元素或者是9个inline水平的元素，只能是inline-block的元素。
+                所以引出第一种九宫格布局。inline-block布局。固定尺寸的九宫格布局。
+            </p>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p>
+               关于九宫格的自适应，什么叫自适应，九宫格的自适应指的又是什么，认识css单位px、%与vw。
+            </p>
+        </section>
+        <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h4>px与%和vw，简述css单位</h4>
+            <p>px,%,vw的不同之处</p>
+            <p>
+                px：绝对单位，页面按精确像素展示 </p>
+                <p>vw：viewpoint-width，视窗宽度，1vw等于视窗宽度的1%。</p>
+                <p>vh：viewpoint-height，视窗高度，1vh等于视窗高度的1%。</p>
+                <p>%:百分比，以父级元素的尺寸为基准，乘以%后得到相应的尺寸。</p>
+           
+            <!-- <pre><code class="hljs kotlin">
+                    
+            </code></pre> -->
+            <p>既然这样就可以轻松的写出第一个九宫格展示图</p>
+        </section>
+        <section style="text-align: left; top: 84px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h4>2、float布局</h4>
+            <p>关于浮动</p>
+            <p></p>
+            <p>float 属性定义元素在哪个方向浮动。以往这个属性总应用于图像，使文本围绕在图像周围，不过在 CSS 中，任何元素都可以浮动。浮动元素会生成一个块级框，而不论它本身是何种元素。
+            </p>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>3、vw布局</h4>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>4、flex布局</h4>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>5、grid布局</h4>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>6、position布局</h4>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>7、line-height布局</h4>
+        </section>
+
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>3.常见问题</h3></section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h3>display:inline-block后的九宫格会折行？</h3>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>4 解决方案</h3></section>
+
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p>分析原因</p>
+            <p>解决办法</p>
+            <p>1、父级设置font-size为0</p>
+            <p>2、标签闭合</p>
+        </section>
+
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>5.编码实战</h3></section>
+        </section>
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <h3 style="text-align: center">6.扩展思考</h3>
+                <p>9宫格必须使用9个div吗？</p>
+
+            </section>
+            <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                <p>不一定</p>
+                
+                <p>直接看demo。</p>
+            </section>
+            <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                <p>3个div实现9宫格</p>
+                <p>1个div实现9宫格</p>
+            </section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h3>7.参考文献</h3>
+            <p>参考1：<a href="http://www.jb51.net/article/75985.htm">张鑫旭大神的博客</a></p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>8 更多讨论</h3>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            <p>讨论点1：以上提到的九宫格布局实现方案，还有别的实现方案吗？</p>
+            <p>讨论点2：选择哪种方案好？</p>
+            <p>讨论点3：初学者实现九宫格要注意的问题</p>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            <p>1：table布局方案，纯position定位方案</p>
+            <p>2：考虑兼容性的话float布局与inline-block布局最好，其他的布局方案或多或少不兼容低版本浏览器 </p>
+            <p>3：inline-block的问题，有必要清楚浮动吗？</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>BY : 杨亚洲</small>
+            </p>
+        </section>
+
+    </div>
+<div class="backgrounds"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background stack present" data-loaded="true" style="display: block;"><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up enabled" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+               
+                语法：
+                return[()[expression][]];
+                可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。
+            
+                用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression 被省略，
+                    或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+            </div></div>
+
+            <script src="./lib/reveal/js/head.min.js"></script>
+            <script src="./lib/reveal/reveal.js"></script>
+
+<script>
+
+
+    // 初始化幻灯片
+
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: './plugin/markdown/marked.js' },
+            { src: './plugin/markdown/markdown.js' },
+            { src: './plugin/notes/notes.js', async: true },
+            { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+
+
+</script>
+
+</body>
+</html>
