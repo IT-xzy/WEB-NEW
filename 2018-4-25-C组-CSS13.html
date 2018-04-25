@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>PPT</title>
+
+    <link rel="stylesheet" href="bootstrap/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="bootstrap/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="bootstrap/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>position定位有哪几种？各有什么特点？</h2>
+                <h3>小课堂</h3>
+                <p>分享人:火建强</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.绝对定位absolute</p>
+                <p>2.相对定位relative</p>
+                <p>3.固定定位fixed</p>
+                <p>4.各有什么特点</p>
+                <p>5.编码实战</p>
+                <p>6.更多讨论</p>
+            </section>
+            <section>
+                <h3>1.绝对定位</h3>
+            </section>
+            <section>
+                <p>使用absolut定位的元素脱离文档流后，就只能根据祖先类元素(父类以上)进行定位</p>
+            </section>
+            <section>
+                <h3>2.相对定位</h3>
+            </section>
+            <section>
+                <p>相对定位：相对于块级元素（或行内块）自身位置进行定位；</p>
+                <p>注意，在使用相对定位时，无论是否进行移动，元素仍然占据原来的空间。因此，移动元素会导致它覆盖其它框。</p>
+            </section>
+            <section>
+                <h3>3.固定定位</h3>
+            </section>
+            <section>
+                <h3>固定定位与绝对定位很类似，元素会完全从文档流中去除，但固定元素的偏移是相对于视窗。</h3>
+                <p>当元素的position属性设置为fixed时，这个元素就被固定了，被固定的元素不会随着滚动条的拖动而改变位置。在视野中，固定定位的元素的位置是不会改变的。</p>
+                <p>fixed与absolute最大的区别在于：absolute的”根元素“是可以被设置的，而fixed则其”根元素“固定为浏览器窗口。即当你滚动网页，其元素与浏览器窗口之间的距离是恒定不变的。</p>
+            </section>
+            <section>
+                <h3>4.各有什么特点</h3>
+            </section>
+            <section>
+                <p>absolute根据祖元素定位</p>
+                <p>relative根据自身位置进行相对定位</p>
+                <p>fiexd根据浏览器窗口定位</p>
+            </section>
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+            <section>
+                <h3>6.更多讨论</h3>
+                <p>z-index</p>
+                <p>什么是文档流？</p>
+            </section>
+            <section>
+                <p>z-index，又称为对象的层叠顺序，它用一个整数来定义堆叠的层次，整数值越大，则被层叠在越上面</p>
+                <a href="file:///D:/test/huuojianqiang/jyj/css/task13/home.html">
+                    <p>z-index属性</p>
+                </a>
+            </section>
+            <section>
+                <p>什么是文档流？</p>
+                <p>将窗体自上而下分成一行行, 并在每行中按从左至右的顺序排放元素,即为文档流。 只有三种情况会使得元素脱离文档流，分别是：浮动、绝对定位和相对定位。
+                </p>
+            </section>
+            <section>
+                <h3>7.参考文献</h3>
+                <p>
+                    <a href="https://www.cnblogs.com/xiaohuochai/p/5321487.html">相对定位和固定定位</a>
+                </p>
+                <p>
+                    <a href="https://www.cnblogs.com/benbendu/p/5811534.html">z-index</a>
+                </p>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    <small>武汉-web-12-火建强</small>
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="bootstrap/head.min.js"></script>
+    <script src="bootstrap/reveal.js"></script>
+
+    <script>
+
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [
+                { src: './plugin/markdown/marked.js' },
+                { src: './plugin/markdown/markdown.js' },
+                { src: './plugin/notes/notes.js', async: true },
+                { src: './plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+            ]
+        });
+    </script>
+</body>
+
+</html>
