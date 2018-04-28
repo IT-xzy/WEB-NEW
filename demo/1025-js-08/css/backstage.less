@@ -1,0 +1,503 @@
+@import "./module/reset.less";
+@import "./module/color.less";
+
+::-webkit-scrollbar {
+    display: none;
+}
+.wrap {
+    //主体ui-view+++
+    //登录页+++
+    .loginPage {
+		padding: 21.7rem 0;
+        background: url(../img/login/background.jpg) no-repeat bottom / cover;
+		.loginBar {
+            display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			text-align: center;
+			margin: 0 auto;
+			padding: 2rem 4rem;
+			border-radius: .5rem;
+			width: 30%;
+			height: 30rem;
+			background: rgba(255, 255, 255, .8);
+			.title {
+				font-size: 2rem;
+				color: @info;
+			}
+			.inputWrap {
+				padding: 1rem 1.5rem;
+                border-radius: .5rem;
+				height: 5rem;
+				text-align: right;
+				background: no-repeat @white left / contain;
+				background-origin: content-box;
+				> input {
+					padding-left: 1rem;
+					border-radius: 0;
+					height: 100%;
+					border: none;
+					border-left: 1px solid @gray02;
+					width: calc(~"100% - 3.5rem");
+					font-size: 2rem;
+					outline: none;
+				}
+			}
+			.username {
+				background-image: url(../img/login/icon_01.png);
+			}
+			.password {
+				background-image: url(../img/login/icon_02.png);
+            }
+            .infoHidden {
+                position: relative;
+                height: 1.4rem;
+                .info {
+                    position: absolute;
+                    width: 100%;
+                    font-size: 1.4rem;
+                    line-height: 1;
+                    color: @red;
+                }
+            }
+			> button {
+				padding: 1rem 0;
+			}
+		}
+    }
+    //后台页+++
+    .row {
+        //侧边栏+++
+        > nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: -10rem;
+            padding: 0;
+            border-radius: 0;
+            background: @darkBlue;
+            > button {
+                margin-bottom: 0;
+                .icon-bar {
+                    background: @white;
+                }
+            }
+            > h3 {
+                vertical-align: middle;
+                font-size: 2rem;
+                line-height: 5rem;
+                color: @white;
+            }
+            .navbar-collapse.in {
+                overflow-y: hidden;
+            }
+            //折叠+++
+            .collapse {
+                padding: 2rem 0 0;
+                .menuWrap {
+                    color: @white;
+                    .menuHeading {
+                        padding: 1.5rem;
+                        font-size: 1.6rem;
+                        line-height: 1;
+                        &:hover {
+                            background: fadeout(@white, 50%);
+                        }
+                    }
+                    .menuBody {
+                        padding: 0;
+                        .menuList {
+                            padding: 1.5rem 0 1.5rem 4rem;
+                            font-size: 1.4rem;
+                            line-height: 1;
+                            &:hover {
+                                background: fadeout(@white, 50%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        //artical列表样式+++
+        > div {
+            //上部导航+++
+            .header {
+                > li {
+                    font-size: 2rem;
+                    > a {
+                        color: @info;
+                        > span {
+                            vertical-align: middle;
+                            color: @lightOrange;
+                        }
+                    }
+                }
+            }
+            //内容ui-view+++
+            .contentWrap {
+                //article页面wrap+++
+                .row {
+                    //搜索+++
+                    .search {
+                        padding: 2rem 5rem;
+                        > form {
+                            padding: 2rem 2rem 1rem;
+                            border: 1px solid @gray02;
+                            border-radius: .5rem;
+                            box-shadow: 0 0 1px @gray02;
+                            > div {
+                                > div {
+                                    position: relative;
+                                    padding: .5rem 1.5rem .5rem 2rem;
+                                    > label {
+                                        float: left;
+                                        margin-top: .7rem;
+                                    }
+                                    > input {
+                                        float:right;
+                                        width: 65%;
+                                    }
+                                    .input-group-btn {
+                                        position: absolute;
+                                        right: 4.95rem;
+                                    }
+                                    > select {
+                                        float: right;
+                                        width: 65%;
+                                    }
+                                }
+                            }
+                            > div {
+                                > button {
+                                    margin: 0 .5rem;
+                                }
+                            }
+                        }
+                    }
+                    //表格+++
+                    .list {
+                        padding: 2rem 5rem;
+                        .panel {
+                            border: 1px solid @gray02;
+                            border-radius: .5rem;
+                            box-shadow: 0 0 1px @gray02;
+                            .panel-body {
+                                font-weight: 700;
+                                > button {
+                                    padding: .2rem .5rem;
+                                }
+                            }
+                            .panel-footer {
+                                padding: 2rem;
+                                background: @white;
+                                > table {
+                                    border: 1px solid @gray02;
+                                    border-radius: .5rem;
+                                    box-shadow: 0 0 1px @gray02;
+                                    background: @white;
+                                    > tbody {
+                                        > tr {
+                                            > td {
+                                                vertical-align: middle;
+                                                > a {
+                                                    padding: 0 1.5rem;
+                                                }
+                                            }
+                                            .banner {
+                                                padding: 0;
+                                                width: 15%;
+                                            }
+                                            .name {
+                                                width: 15%;
+                                            }
+                                        }
+                                    }
+                                }
+                                .pagination {
+                                    margin: 2rem 0;
+                                }
+                                form {
+                                    margin: 2rem 4rem 2rem 0;
+                                    #size {
+                                        width: 6rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                //添加+++
+                .add {
+                    padding: 2rem 10rem;
+                    .panel {
+                        border: 1px solid @gray02;
+                        border-radius: .5rem;
+                        box-shadow: 0 0 1px @gray02;
+                        .panel-body {
+                            font-weight: 700;
+                        }
+                        .panel-footer {
+                            display: inline-block;
+                            padding: 2rem 4rem;
+                            width: 100%;
+                            background: @white;
+                            .withInput {
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-around;
+                                padding: .5rem 0;
+                                > label {
+                                        margin: 0;
+                                    }
+                                > div {
+                                    width: 90%;
+                                    > select {
+                                        width: 47.5%;
+                                    }
+                                }
+                                > input {
+                                    width: 90%;
+                                }
+                                
+                            }
+                            > button {
+                                margin: 0 .5rem;
+                            }
+                            .upload {
+                                position: relative;
+                                border: 1px solid @gray02;
+                                border-radius: .5rem;
+                                margin-top: 2rem;
+                                padding: .5rem 0;
+                                box-shadow: 0 0 1px @gray02;
+                                .panel-body {
+                                    font-size: 1.8rem;
+                                    > button {
+                                        margin-left: .5rem;
+                                    }
+                                }
+                                .panel-footer {
+                                    padding-left: 0;
+                                    padding-right: 0;
+                                    > div {
+                                        > img {
+                                            width: 100%;
+                                            height: 20vw;
+                                        }
+                                    }
+                                    .uploadBlock {
+                                        > div {
+                                            margin-top: 1rem;
+                                        }
+                                        .uploadButton {
+                                            margin: 0;
+                                            width: 100%;
+                                            height: 20vw;
+                                            border: 3px dashed @black;
+                                            background: url(../img/drop.gif) no-repeat left / cover;
+                                            >input {
+                                                position: absolute;
+                                                width: .1px;
+                                                height: .1px;
+                                                z-index: -1;
+                                                overflow: hidden;
+                                                opacity: 0;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.bold {
+    font-weight: 700;
+}
+.orange {
+    color: @orange;
+}
+.bigsize {
+    font-size: 4rem;
+}
+
+//媒体查询++++++++++++++++++++++++++++++++++
+@media screen and (max-width: 1200px) {
+	.wrap {
+        //登录页+++
+		.loginPage {
+			padding: 18rem 0;
+			.loginBar {
+				width: 45%;
+			}
+        }
+        //后台页+++
+        .row {
+            //artical列表样式+++
+            > div {
+                //内容ui-view+++
+                .contentWrap {
+                    .row {
+                        //搜索+++
+                        .search {
+                            > form {
+                                > div {
+                                    > div {
+                                        > input {
+                                            width: 80%;
+                                        }
+                                        > select {
+                                            width: 80%;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    //添加+++
+                    .add {
+                        .panel {
+                            .panel-footer {
+                                .withInput {
+                                    > input {
+                                        width: 80%;
+                                    }
+                                    > div {
+                                        width: 80%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 992px) {
+	.wrap {
+        //登录页+++
+		.loginPage {
+			padding: 14rem 0;
+			.loginBar {
+				width: 60%;
+			}
+        }
+        //后台页+++
+        .row {
+            //侧边栏+++
+            > nav {
+                //折叠+++
+                .collapse {
+                    .menuWrap {
+                        .menuHeading {
+                            padding: 1.5rem 1rem;
+                        }
+                    }
+                }
+            }
+            > div {
+                .contentWrap {
+                    .row {
+                        //搜索+++
+                        .search {
+                            > form {
+                                > div {
+                                    > div {
+                                        > input {
+                                            width: 87%;
+                                        }
+                                        > select {
+                                            width: 87%;
+                                        }
+                                        .input-group-btn {
+                                            right: 4.55rem;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    //添加+++
+                    .add {
+                        .panel {
+                            .panel-footer {
+                                .withInput {
+                                    > div {
+                                        width: 80%;
+                                    }
+                                    > input {
+                                        width: 80%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+	.wrap {
+        //登录页+++
+		.loginPage {
+			padding: 12rem 0;
+			.loginBar {
+				width: 75%;
+			}
+        }
+        //后台页+++
+        .row {
+            > nav {
+                position: static;
+            }
+            //artical列表样式+++
+            > div {
+                //内容ui-view+++
+                .contentWrap {
+                    .row {
+                        //搜索+++
+                        .search {
+                            > form {
+                                > div {
+                                    > div {
+                                        > input {
+                                            width: 70%;
+                                        }
+                                        > select {
+                                            width: 70%;
+                                        }
+                                        .input-group-btn {
+                                            right: 4.7rem;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    //添加+++
+                    .add {
+                        padding: 2rem 5rem;
+                        .panel {
+                            .panel-footer {
+                                padding: 4rem 1.5rem;
+                                .withInput {
+                                    > div {
+                                        width: 70%;
+                                    }
+                                    > input {
+                                        width: 70%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

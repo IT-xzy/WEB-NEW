@@ -1,0 +1,145 @@
+﻿<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>葡萄藤PPT</title>
+	<link rel="stylesheet" href="./css/reveal/reveal.css">
+
+	<!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+	<link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+	<!-- syntax highlighting 代码高亮主题 -->
+	<link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+	<!-- 打印和PDF输出样式 -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+
+		link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+			'../css/reveal/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+	<style>
+		.reveal pre code {
+			background-color: #120;
+		}
+	</style>
+</head>
+
+<body>
+	<img src="../img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+	<map name="pttmap">
+		<area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+	</map>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h4>小课堂【上海】</h4>
+				<h4></h4>
+				<h4>分享人：钱小夏</h4>
+			</section>
+			<section>
+				<p>目录</p>
+				<p>1.行内元素水平居中</p>
+				<p>2.块状元素水平居中</p>
+				<p>3.单行文本垂直居中-父元素高度确定 position与float</p>
+				<p>4.vertical-align 实现垂直居中</p>
+				<p>5.绝对定位实现垂直居中</p>
+				<p>6.flex布局实现水平及垂直居中的布局</p>
+			</section>
+			<section>
+				<h3>1.行内元素水平居中的实现</h3>
+				<p>给父元素设置 text-align:center;</p>
+				<p>通过计算padding,margin等来实现（不推荐）</p>
+			</section>
+			<section>
+				<h3>2.1.定宽块状元素水平居中</h3>
+				<p>设置块状元素为 inline-block 水平，父元素设置text-align：center;</p>
+				<p>设置margin:0 auto;</p>
+				<h3>2.2不定宽块状元素水平居中</h3>
+				<p>给父元素设置 float，然后给父元素设置 position:relative 和 left:50%，子元素设置 position:relative 和 left: -50% 来实现水平居中。</p>
+			</section>
+			<section>
+				<h3>3.单行文本垂直居中-父元素高度确定</h3>
+				<p>父元素高度确定的单行文本的竖直居中的方法是通过设置父元素的 height 和 line-height 高度一致来实现的。
+					<br> (height: 该元素的高度，line-height: 顾名思义，行高（行间距），指在文本中，行与行之间的 基线间的距离 )。</p>
+				<p>弊端：当文字内容的长度大于块的宽时，就有内容脱离了块。</p>
+			</section>
+			<section>
+				<h3>4.vertical-align 实现垂直居中</h3>
+				<p>vertical-align 只对inlin-block 水平或者 inline 元素起作用</p>
+			</section>
+			<section>
+				<h3>5绝对定位实现垂直居中</h3>
+				<p>绝对定位配合transform实现垂直居中定位</p>
+			</section>
+			<section>
+				<h3>6.flex布局实现水平及垂直居中的布局</h3>
+				<p>flex实现水平垂直居中的方式非常简单，只需要设置元素在交叉轴上居中，即align-items:center;</p>
+				<P>flex设置水平方向布局适用于水平方向上两个及两个以上的元素，如果只有一个元素可以直接使用text-align或者verticl-align属性。</P>
+			</section>
+			<section>
+				<h3>应用场景与拓展延伸</h3>
+				<p>今天介绍的属性都非常简单，但是需要一定的熟练度，才能在布局应用时，面对不同情况，做出最优化，最简练的布局；所以我们的目标是：写最优雅的代码。</p>
+			</section>
+            <section>
+			<h4>鸣谢</h4>
+			<p>感谢大家观看</p>
+			<p>
+				By
+				<small style="vertical-align: middle">钱小夏</small>
+			</p>
+			</section>
+		</div>
+	</div>
+	<script src="./lib/reveal/js/head.min.js"></script>
+	<script src="./lib/reveal/reveal.js"></script>
+	<script>
+		// 以下为常见配置属性的默认值
+		// {
+		// 	controls: true, // 是否在右下角展示控制条
+		// 	progress: true, // 是否显示演示的进度条
+		// 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+		// 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+		// 	keyboard: true, // 是否启用键盘快捷键来导航
+		// 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+		// 	center: true, // 是否将幻灯片垂直居中
+		// 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+		// 	loop: false, // 是否循环演示
+		// 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+		// 	fragments: true, // 全局开启和关闭碎片。
+		// 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+		// 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+		// 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+		// 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+		// }
+		// 初始化幻灯片
+		Reveal.initialize({
+			history: false,
+			dependencies: [{
+					src: './plugin/markdown/marked.js'
+				},
+				{
+					src: './plugin/markdown/markdown.js'
+				},
+				{
+					src: './plugin/notes/notes.js',
+					async: true
+				},
+				{
+					src: './plugin/highlight/highlight.js',
+					async: true,
+					callback: function () {
+						hljs.initHighlightingOnLoad();
+					}
+				}
+			]
+		});
+	</script>
+</body>
+
+</html>
