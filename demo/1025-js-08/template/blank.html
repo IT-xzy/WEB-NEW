@@ -1,0 +1,55 @@
+<div ng-controller="blankCtrl">
+    <p>例1：ng-value中可以写变量，value会当成字符串显示，如果value想显示变量值，则需要加{{}}表达式（但是这里有个问题，就是在使用uib-progressbar的时候必须使用value，并且支持变量直接赋值）</p>
+    <p>value:</p><input type="text" value="{{ex1}}" ng-blur="fnex1()">
+    <p>ng-value:</p><input type="text" ng-value="ex1">
+    <br>
+    <br>
+    <br>
+    <p>例2：ng-model和ng-value同时存在时，value会读取ng-value的值；<br>在使用ng-options的时候必须要有ng-model，此时ng-value因为单向绑定的原因，值为undefined</p>
+    <input id="ex2" type="text" ng-model="modelEx2_1" ng-value="modelEx2_2" ng-blur="fnex2()">
+    <select id="ex2plus" ng-model="modelEx2_1plus" ng-value="modelEx2_2plus" ng-options="b.id as b.name for b in lists" ng-change="fnex2plus()"></select>
+    <br>
+    <br>
+    <h3>选择你的最爱</h3>  
+        <label ng-repeat="name in names" for="{{name}}">  
+            {{name}}  
+            <input type="radio"  
+                   ng-model="my.favorite"  
+                   ng-value="name"  
+                   id="{{name}}"  
+                   name="favorite" ng-change="fnex2_2plus()">  
+        </label>  
+    <div>你选择了 {{my.favorite}}</div>
+    <br>
+    <br>
+    <br>
+    <p>例3：ng-model会双向绑定value；<br>ng-value只会单向绑定value（赋值给value）；<br>引申：value中获取的值都是string</p>
+    <p>ng-model:</p><input id="ex3_1" type="text" ng-model="modelEx3_1" ng-blur="fnex3_1()" placeholder="ng-model">
+    <p>ng-value:</p><input id="ex3_2" type="text" ng-value="modelEx3_2" ng-blur="fnex3_2()" placeholder="ng-value">
+    <br>
+    <br>
+    <br>
+    <br>
+    <p>例4：和ng-show以及ng-hide来做对比，ng-hide会直接删除DOM节点，以及创建新的DOM节点</p>
+    <label for="ex4_1" ng-click="ifEx4_1 = !ifEx4_1">ng-if:</label><input class="btn btn-success" id="ex4_1" type="button" ng-if="ifEx4_1">
+    <label for="ex4_2" ng-click="ifEx4_2 = !ifEx4_2">ng-show:</label><input class="btn btn-warning" id="ex4_2" type="button" ng-show="ifEx4_2">
+    <label for="ex4_3" ng-click="ifEx4_3 = !ifEx4_3">ng-hide:</label><input class="btn btn-info" id="ex4_3" type="button" ng-hide="ifEx4_3">
+    <br>
+    <br>
+    <br>
+    <br>
+    <p>例5：ng-class的使用方法：1.字符串；2.数组；3.key/value对</p>
+    <p>第一种：</p>
+    <p ng-class="style">测试用字</p>
+    <input type="text" ng-model="style" placeholder="bold、orange、bigsize">
+    <p>第二种：</p>
+    <p ng-class="[style1, style2, style3]">测试用字</p>
+    <input type="text" ng-model="style1" placeholder="bold、orange、bigsize">
+    <input type="text" ng-model="style2" placeholder="bold、orange、bigsize">
+    <input type="text" ng-model="style3" placeholder="bold、orange、bigsize">
+    <p>第三种：</p>
+    <p ng-class="{'bold': style4, 'orange': style5, 'bigsize': style6}">测试用字</p>
+    <input type="checkbox" ng-model="style4" placeholder="true/false" style="width: 2rem; height: 2rem;">
+    <input type="checkbox" ng-model="style5" placeholder="true/false" style="width: 2rem; height: 2rem;">
+    <input type="checkbox" ng-model="style6" placeholder="true/false" style="width: 2rem; height: 2rem;">
+</div>

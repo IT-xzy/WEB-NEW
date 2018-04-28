@@ -1,0 +1,88 @@
+<div class="row" ng-controller="articleCtrl" data-ng-init="loadLists()">
+    <div class="row search">
+        <form class="row" name="searchForm" ng-submit="submitSearchForm()" novalidate>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <label for="title">标&emsp;&emsp;题</label>
+                    <input id="title" name="author" ng-model="modelTitle" class="form-control" type="text">
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <label for="author">创&ensp;建&ensp;者</label>
+                    <input id="author" name="author" ng-model="modelAuthor" class="form-control" type="text">
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <label for="publishTimeFrom">修改时间</label>
+                    <input id="publishTimeFrom" name="publishTimeFrom" ng-change="test()" class="form-control" type="text" uib-datepicker-popup="{{format}}" ng-model="modelDateFrom" ng-focus="open1()" is-open="popup1.opened" datepicker-options="dateOptionsFrom" current-text="今日" clear-text="清空" close-text="关闭">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <label for="publishTimeTo">&emsp;&#8212;&#8212;&emsp;</label>
+                    <input id="publishTimeTo" name="publishTimeTo" class="form-control" type="text" uib-datepicker-popup="{{format}}" ng-model="modelDateTo" ng-focus="open2()" is-open="popup2.opened" datepicker-options="dateOptionsTo" current-text="今日" clear-text="清空" close-text="关闭">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <label for="type">类&emsp;&emsp;型</label>
+                    <select id="type" name="type" class="form-control" ng-model="modelType" ng-options="type.id as type.name for type in types"></select>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <label for="status">状&emsp;&emsp;态</label>
+                    <select id="status" name="status" class="form-control" ng-model="modelStatus" ng-options="state.id as state.name for state in status"></select>
+                </div>
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-danger pull-right" ng-click="resetSearchForm(searchForm)">清空</button>
+                <button type="submit" class="btn btn-success pull-right" ng-disabled="searchForm.$pristine">搜索</button>
+            </div>
+        </form>
+    </div>
+    <div class="row list">
+        <div class="row panel panel-default">
+            <div class="panel-body">Article列表<button class="btn btn-success pull-right" ng-click="addNew()">+新增</button></div>
+            <div class="panel-footer table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center">序号</th>
+                            <th class="text-center">图片</th>
+                            <th class="text-center">标题</th>
+                            <th class="text-center">类型</th>
+                            <th class="text-center">创建者</th>
+                            <th class="text-center">创建时间</th>
+                            <th class="text-center">修改时间</th>
+                            <th class="text-center">状态</th>
+                            <th class="text-center">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody ui-sortable="sortableOptions" ng-model="lists">
+                        <tr ng-repeat="list in lists">
+                            <td class="text-center" ng-bind="$index + 1"></td>
+                            <td class="text-center banner"><img src="{{list.img}}"></td>
+                            <td class="text-center name" ng-bind="list.title"></td>
+                            <td class="text-center" ng-bind="list.type | typeFilter"></td>
+                            <td class="text-center" ng-bind="list.author"></td>
+                            <td class="text-center" ng-bind="list.createAt | date: 'yyyy-MM-dd HH:mm:ss'"></td>
+                            <td class="text-center" ng-bind="list.updateAt | date: 'yyyy-MM-dd HH:mm:ss'"></td>
+                            <td class="text-center" ng-bind="list.status | statusFilter"></td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-warning" ng-click="offline(list)" ng-bind="lineStatus(list)"></button>
+                                <input type="button" class="btn btn-info" value="编辑" ng-click="edit(list.id)">
+                                <input type="button" class="btn btn-danger" value="删除" ng-click="deleteList(list.id)">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <ul uib-pagination total-items="totalItems" max-size="5" items-per-page="itemsPerPage" ng-model="currentPage" ng-change="pageChange()" class="pagination pull-right" boundary-links="true" num-pages="numPages" first-text="第一页" last-text="最后一页" previous-text="&#8672;" next-text="&#8674;"></ul>
+                <form class="form-group form-inline pull-right" name="maxPageForm" novalidate>
+                    <label for="size">每页显示条数：</label>
+                    <input id="size" type="text" class="form-control text-center" ng-model="maxSizeInput" required>
+                    <input type="button" class="btn btn-info" value="确认" ng-click="pageMaximum()" ng-disabled="maxPageForm.$invalid" ng-blur="popoverOpen = false" popover-placement="top" uib-popover="请不要输入奇怪的符号" popover-animation="true" popover-trigger="'none'" popover-is-open="popoverOpen" popover-popup-close-delay="500">
+                    <input type="button" class="btn btn-warning" value="重置" ng-click="pageReset()" uib-tooltip="O.O" tooltip-placement="bottom">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
