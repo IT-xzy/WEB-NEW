@@ -1,0 +1,31 @@
+<div class="row" ng-controller="backstageCtrl" data-ng-init="loadAccordion()">
+	<nav role="navigation" class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+		<button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">
+			<span class="sr-only">切换导航</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<h3 class="text-center">后台管理系统</h3>
+		<div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
+			<div class="menuWrap" ng-repeat="menu in menus">
+				<div class="menuHeading" ng-click="menuCollapsed($index); menu.heading.status = !menu.heading.status">
+					<span class="glyphicon glyphicon-pencil"></span>
+					<span ng-bind="menu.heading.name"></span>
+					<span class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': !menu.heading.status, 'glyphicon-chevron-right': menu.heading.status}"></span>
+				</div>
+				<div class="menuBody" uib-collapse="menu.heading.status">
+					<div class="menuList" ui-sref="{{submenu.id}}" ng-repeat="submenu in menu.submenus" ng-bind="submenu.name"></div>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 pull-right">
+		<ul class="nav nav-tabs header">
+			<li role="presentation" class="pull-right" ng-click="logOut()"><a><span class="glyphicon glyphicon-off"></span></a></li>
+			<li role="presentation" class="pull-right"><a>user</a></li>
+			<li role="presentation" class="pull-right"><a>猎头</a></li>
+		</ul>
+		<div class="contentWrap" ui-view></div>
+	</div>
+</div>
