@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>demo</title>
+</head>
+<body>
+	<!-- 作用范围 -->
+	<div ng-controller="parentCtrl">
+	 	<p>Parent-test : {{test}}</p>
+	 	<p>Parent-cover : {{cover}}</p>
+	 	<div ng-controller="childCtrl">
+	     	<p>Child-test : {{childTest}}</p>
+	     	<p>Child-cover : {{cover}}</p>
+	 	</div>
+	</div> 
+
+	<!-- <div ng-controller="parentCtrl as parent">
+	    <p>Parent-test : {{parent.test}}</p>
+	    <p>Parent-cover : {{parent.cover}}</p>
+	    <div ng-controller="childCtrl as child">
+	        <p>Child-test : {{child.test}}</p>
+	        <p>Child-cover : {{child.cover}}</p>
+	    </div>
+	    <div ng-controller="childCtrl as parent">
+	        <p>Child-test : {{parent.test}}</p>
+	        <p>Child-cover : {{parent.cover}}</p>
+	    </div>
+	</div> -->
+
+	<!-- <div ng-controller="parentCtrl"></div> -->
+
+	<script src="https://cdn.bootcss.com/angular.js/1.6.9/angular.js"></script>
+	<script src="demo.js"></script>
+</body>
+</html>
