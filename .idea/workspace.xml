@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="186d6a94-e57f-4df0-b3a6-c4d4f3102f68" name="默认的" comment="默认的">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/css/reveal/reveal.css" afterPath="$PROJECT_DIR$/css/reveal/reveal.css" />
-      <change beforePath="$PROJECT_DIR$/demo/1043-css-2/flex布局.html" afterPath="$PROJECT_DIR$/demo/1043-css-2/flex布局.html" />
+      <change beforePath="$PROJECT_DIR$/0-index-WEB.html" afterPath="$PROJECT_DIR$/0-index-WEB.html" />
+      <change beforePath="$PROJECT_DIR$/2018-5-1-A组-css10.html" afterPath="$PROJECT_DIR$/2018-5-1-A组-css15.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,11 +18,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="2018-5-1-A组-css10.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css10.html">
+      <file leaf-file-name="2018-5-1-A组-css15.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css15.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1530">
-              <caret line="87" column="81" lean-forward="false" selection-start-line="87" selection-start-column="81" selection-end-line="87" selection-end-column="81" />
+            <state relative-caret-position="240">
+              <caret line="38" column="25" lean-forward="false" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="0-index-WEB.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/0-index-WEB.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="44" column="22" lean-forward="false" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -50,6 +60,7 @@
       <list>
         <option value="$PROJECT_DIR$/demo/1043-css-2/flex布局.html" />
         <option value="$PROJECT_DIR$/2018-5-1-A组-css10.html" />
+        <option value="$PROJECT_DIR$/0-index-WEB.html" />
       </list>
     </option>
   </component>
@@ -160,21 +171,37 @@
       <workItem from="1525151890046" duration="1284000" />
       <workItem from="1525156111347" duration="1326000" />
       <workItem from="1525161248544" duration="224000" />
-      <workItem from="1525162424065" duration="161000" />
+      <workItem from="1525162424065" duration="1385000" />
     </task>
+    <task id="LOCAL-00001" summary="默认的">
+      <created>1525162590317</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1525162590318</updated>
+    </task>
+    <task id="LOCAL-00002" summary="默认的">
+      <created>1525162619804</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1525162619804</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24940000" />
+    <option name="totallyTimeSpent" value="26164000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1744186" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1744186" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -198,12 +225,16 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="默认的" />
+    <option name="LAST_COMMIT_MESSAGE" value="默认的" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css10.html">
+    <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css15.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -211,7 +242,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css10.html">
+    <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css15.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -219,7 +250,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css10.html">
+    <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css15.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -227,7 +258,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css10.html">
+    <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css15.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -235,7 +266,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css10.html">
+    <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css15.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -243,7 +274,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css10.html">
+    <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css15.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -279,7 +310,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css10.html">
+    <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css15.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -315,7 +346,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css10.html">
+    <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css15.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3720">
           <caret line="129" column="25" lean-forward="false" selection-start-line="129" selection-start-column="25" selection-end-line="129" selection-end-column="25" />
@@ -330,7 +361,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css10.html">
+    <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css15.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2550">
           <caret line="105" column="106" lean-forward="false" selection-start-line="105" selection-start-column="106" selection-end-line="105" selection-end-column="106" />
@@ -352,7 +383,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css10.html">
+    <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css15.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2550">
           <caret line="105" column="106" lean-forward="false" selection-start-line="105" selection-start-column="106" selection-end-line="105" selection-end-column="106" />
@@ -377,13 +408,6 @@
     <entry file="file://$PROJECT_DIR$/1019-css-05.html" />
     <entry file="file://$PROJECT_DIR$/ID与class的区别.html" />
     <entry file="file://$PROJECT_DIR$/1019-css-05.html" />
-    <entry file="file://$PROJECT_DIR$/0-index-WEB.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-150">
-          <caret line="43" column="42" lean-forward="true" selection-start-line="43" selection-start-column="42" selection-end-line="43" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2018-4-24-A组-CSS7.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -483,10 +507,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css10.html">
+    <entry file="file://$PROJECT_DIR$/2018-5-1-A组-css15.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1530">
-          <caret line="87" column="81" lean-forward="false" selection-start-line="87" selection-start-column="81" selection-end-line="87" selection-end-column="81" />
+        <state relative-caret-position="240">
+          <caret line="38" column="25" lean-forward="false" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/0-index-WEB.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="44" column="22" lean-forward="false" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
           <folding />
         </state>
       </provider>
