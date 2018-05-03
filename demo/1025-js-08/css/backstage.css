@@ -1,0 +1,441 @@
+/*CSS RESET Start*/
+/*html5*/
+article,
+aside,
+dialog,
+footer,
+header,
+main,
+section,
+footer,
+nav,
+figure,
+menu {
+  display: block;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+  /*1rem=10px*/
+  font-size: 10px;
+}
+body {
+  font-family: arial, "Microsoft YaHei";
+  background: white;
+}
+input,
+textarea,
+select {
+  font-size: 100%;
+  font-family: arial;
+  font-family: inherit;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+form {
+  margin: 0;
+}
+h4,
+h5,
+h6 {
+  font-size: 1em;
+}
+ul,
+ol {
+  /*list type none*/
+  padding-left: 0;
+  list-style-type: none;
+}
+a img {
+  /*image with no-border*/
+  border: 0;
+}
+img {
+  max-width: 100%;
+  border: 0;
+}
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+button {
+  /*button with no-border&shadow*/
+  border-style: none;
+  outline-style: none;
+}
+/*CSS RESET END*/
+::-webkit-scrollbar {
+  display: none;
+}
+.wrap .loginPage {
+  padding: 21.7rem 0;
+  background: url(../img/login/background.jpg) no-repeat bottom / cover;
+}
+.wrap .loginPage .loginBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  margin: 0 auto;
+  padding: 2rem 4rem;
+  border-radius: .5rem;
+  width: 30%;
+  height: 30rem;
+  background: rgba(255, 255, 255, 0.8);
+}
+.wrap .loginPage .loginBar .title {
+  font-size: 2rem;
+  color: #5bc0de;
+}
+.wrap .loginPage .loginBar .inputWrap {
+  padding: 1rem 1.5rem;
+  border-radius: .5rem;
+  height: 5rem;
+  text-align: right;
+  background: no-repeat #fff left / contain;
+  background-origin: content-box;
+}
+.wrap .loginPage .loginBar .inputWrap > input {
+  padding-left: 1rem;
+  border-radius: 0;
+  height: 100%;
+  border: none;
+  border-left: 1px solid #c9c9c9;
+  width: calc(100% - 3.5rem);
+  font-size: 2rem;
+  outline: none;
+}
+.wrap .loginPage .loginBar .username {
+  background-image: url(../img/login/icon_01.png);
+}
+.wrap .loginPage .loginBar .password {
+  background-image: url(../img/login/icon_02.png);
+}
+.wrap .loginPage .loginBar .infoHidden {
+  position: relative;
+  height: 1.4rem;
+}
+.wrap .loginPage .loginBar .infoHidden .info {
+  position: absolute;
+  width: 100%;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: #f00;
+}
+.wrap .loginPage .loginBar > button {
+  padding: 1rem 0;
+}
+.wrap .row > nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: -10rem;
+  padding: 0;
+  border-radius: 0;
+  background: #363542;
+}
+.wrap .row > nav > button {
+  margin-bottom: 0;
+}
+.wrap .row > nav > button .icon-bar {
+  background: #fff;
+}
+.wrap .row > nav > h3 {
+  vertical-align: middle;
+  font-size: 2rem;
+  line-height: 5rem;
+  color: #fff;
+}
+.wrap .row > nav .navbar-collapse.in {
+  overflow-y: hidden;
+}
+.wrap .row > nav .collapse {
+  padding: 2rem 0 0;
+}
+.wrap .row > nav .collapse .menuWrap {
+  color: #fff;
+}
+.wrap .row > nav .collapse .menuWrap .menuHeading {
+  padding: 1.5rem;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+.wrap .row > nav .collapse .menuWrap .menuHeading:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+.wrap .row > nav .collapse .menuWrap .menuBody {
+  padding: 0;
+}
+.wrap .row > nav .collapse .menuWrap .menuBody .menuList {
+  padding: 1.5rem 0 1.5rem 4rem;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+.wrap .row > nav .collapse .menuWrap .menuBody .menuList:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+.wrap .row > div .header > li {
+  font-size: 2rem;
+}
+.wrap .row > div .header > li > a {
+  color: #5bc0de;
+}
+.wrap .row > div .header > li > a > span {
+  vertical-align: middle;
+  color: #f5c97b;
+}
+.wrap .row > div .contentWrap .row .search {
+  padding: 2rem 5rem;
+}
+.wrap .row > div .contentWrap .row .search > form {
+  padding: 2rem 2rem 1rem;
+  border: 1px solid #c9c9c9;
+  border-radius: .5rem;
+  box-shadow: 0 0 1px #c9c9c9;
+}
+.wrap .row > div .contentWrap .row .search > form > div > div {
+  position: relative;
+  padding: .5rem 1.5rem .5rem 2rem;
+}
+.wrap .row > div .contentWrap .row .search > form > div > div > label {
+  float: left;
+  margin-top: .7rem;
+}
+.wrap .row > div .contentWrap .row .search > form > div > div > input {
+  float: right;
+  width: 65%;
+}
+.wrap .row > div .contentWrap .row .search > form > div > div .input-group-btn {
+  position: absolute;
+  right: 4.95rem;
+}
+.wrap .row > div .contentWrap .row .search > form > div > div > select {
+  float: right;
+  width: 65%;
+}
+.wrap .row > div .contentWrap .row .search > form > div > button {
+  margin: 0 .5rem;
+}
+.wrap .row > div .contentWrap .row .list {
+  padding: 2rem 5rem;
+}
+.wrap .row > div .contentWrap .row .list .panel {
+  border: 1px solid #c9c9c9;
+  border-radius: .5rem;
+  box-shadow: 0 0 1px #c9c9c9;
+}
+.wrap .row > div .contentWrap .row .list .panel .panel-body {
+  font-weight: 700;
+}
+.wrap .row > div .contentWrap .row .list .panel .panel-body > button {
+  padding: .2rem .5rem;
+}
+.wrap .row > div .contentWrap .row .list .panel .panel-footer {
+  padding: 2rem;
+  background: #fff;
+}
+.wrap .row > div .contentWrap .row .list .panel .panel-footer > table {
+  border: 1px solid #c9c9c9;
+  border-radius: .5rem;
+  box-shadow: 0 0 1px #c9c9c9;
+  background: #fff;
+}
+.wrap .row > div .contentWrap .row .list .panel .panel-footer > table > tbody > tr > td {
+  vertical-align: middle;
+}
+.wrap .row > div .contentWrap .row .list .panel .panel-footer > table > tbody > tr > td > a {
+  padding: 0 1.5rem;
+}
+.wrap .row > div .contentWrap .row .list .panel .panel-footer > table > tbody > tr .banner {
+  padding: 0;
+  width: 15%;
+}
+.wrap .row > div .contentWrap .row .list .panel .panel-footer > table > tbody > tr .name {
+  width: 15%;
+}
+.wrap .row > div .contentWrap .row .list .panel .panel-footer .pagination {
+  margin: 2rem 0;
+}
+.wrap .row > div .contentWrap .row .list .panel .panel-footer form {
+  margin: 2rem 4rem 2rem 0;
+}
+.wrap .row > div .contentWrap .row .list .panel .panel-footer form #size {
+  width: 6rem;
+}
+.wrap .row > div .contentWrap .add {
+  padding: 2rem 10rem;
+}
+.wrap .row > div .contentWrap .add .panel {
+  border: 1px solid #c9c9c9;
+  border-radius: .5rem;
+  box-shadow: 0 0 1px #c9c9c9;
+}
+.wrap .row > div .contentWrap .add .panel .panel-body {
+  font-weight: 700;
+}
+.wrap .row > div .contentWrap .add .panel .panel-footer {
+  display: inline-block;
+  padding: 2rem 4rem;
+  width: 100%;
+  background: #fff;
+}
+.wrap .row > div .contentWrap .add .panel .panel-footer .withInput {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: .5rem 0;
+}
+.wrap .row > div .contentWrap .add .panel .panel-footer .withInput > label {
+  margin: 0;
+}
+.wrap .row > div .contentWrap .add .panel .panel-footer .withInput > div {
+  width: 90%;
+}
+.wrap .row > div .contentWrap .add .panel .panel-footer .withInput > div > select {
+  width: 47.5%;
+}
+.wrap .row > div .contentWrap .add .panel .panel-footer .withInput > input {
+  width: 90%;
+}
+.wrap .row > div .contentWrap .add .panel .panel-footer > button {
+  margin: 0 .5rem;
+}
+.wrap .row > div .contentWrap .add .panel .panel-footer .upload {
+  position: relative;
+  border: 1px solid #c9c9c9;
+  border-radius: .5rem;
+  margin-top: 2rem;
+  padding: .5rem 0;
+  box-shadow: 0 0 1px #c9c9c9;
+}
+.wrap .row > div .contentWrap .add .panel .panel-footer .upload .panel-body {
+  font-size: 1.8rem;
+}
+.wrap .row > div .contentWrap .add .panel .panel-footer .upload .panel-body > button {
+  margin-left: .5rem;
+}
+.wrap .row > div .contentWrap .add .panel .panel-footer .upload .panel-footer {
+  padding-left: 0;
+  padding-right: 0;
+}
+.wrap .row > div .contentWrap .add .panel .panel-footer .upload .panel-footer > div > img {
+  width: 100%;
+  height: 20vw;
+}
+.wrap .row > div .contentWrap .add .panel .panel-footer .upload .panel-footer .uploadBlock > div {
+  margin-top: 1rem;
+}
+.wrap .row > div .contentWrap .add .panel .panel-footer .upload .panel-footer .uploadBlock .uploadButton {
+  margin: 0;
+  width: 100%;
+  height: 20vw;
+  border: 3px dashed #000;
+  background: url(../img/drop.gif) no-repeat left / cover;
+}
+.wrap .row > div .contentWrap .add .panel .panel-footer .upload .panel-footer .uploadBlock .uploadButton > input {
+  position: absolute;
+  width: .1px;
+  height: .1px;
+  z-index: -1;
+  overflow: hidden;
+  opacity: 0;
+}
+.bold {
+  font-weight: 700;
+}
+.orange {
+  color: #fbb435;
+}
+.bigsize {
+  font-size: 4rem;
+}
+@media screen and (max-width: 1200px) {
+  .wrap .loginPage {
+    padding: 18rem 0;
+  }
+  .wrap .loginPage .loginBar {
+    width: 45%;
+  }
+  .wrap .row > div .contentWrap .row .search > form > div > div > input {
+    width: 80%;
+  }
+  .wrap .row > div .contentWrap .row .search > form > div > div > select {
+    width: 80%;
+  }
+  .wrap .row > div .contentWrap .add .panel .panel-footer .withInput > input {
+    width: 80%;
+  }
+  .wrap .row > div .contentWrap .add .panel .panel-footer .withInput > div {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 992px) {
+  .wrap .loginPage {
+    padding: 14rem 0;
+  }
+  .wrap .loginPage .loginBar {
+    width: 60%;
+  }
+  .wrap .row > nav .collapse .menuWrap .menuHeading {
+    padding: 1.5rem 1rem;
+  }
+  .wrap .row > div .contentWrap .row .search > form > div > div > input {
+    width: 87%;
+  }
+  .wrap .row > div .contentWrap .row .search > form > div > div > select {
+    width: 87%;
+  }
+  .wrap .row > div .contentWrap .row .search > form > div > div .input-group-btn {
+    right: 4.55rem;
+  }
+  .wrap .row > div .contentWrap .add .panel .panel-footer .withInput > div {
+    width: 80%;
+  }
+  .wrap .row > div .contentWrap .add .panel .panel-footer .withInput > input {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .wrap .loginPage {
+    padding: 12rem 0;
+  }
+  .wrap .loginPage .loginBar {
+    width: 75%;
+  }
+  .wrap .row > nav {
+    position: static;
+  }
+  .wrap .row > div .contentWrap .row .search > form > div > div > input {
+    width: 70%;
+  }
+  .wrap .row > div .contentWrap .row .search > form > div > div > select {
+    width: 70%;
+  }
+  .wrap .row > div .contentWrap .row .search > form > div > div .input-group-btn {
+    right: 4.7rem;
+  }
+  .wrap .row > div .contentWrap .add {
+    padding: 2rem 5rem;
+  }
+  .wrap .row > div .contentWrap .add .panel .panel-footer {
+    padding: 4rem 1.5rem;
+  }
+  .wrap .row > div .contentWrap .add .panel .panel-footer .withInput > div {
+    width: 70%;
+  }
+  .wrap .row > div .contentWrap .add .panel .panel-footer .withInput > input {
+    width: 70%;
+  }
+}
