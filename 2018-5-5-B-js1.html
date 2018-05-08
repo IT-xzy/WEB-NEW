@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        .reveal pre code {
+            background-color: #120;
+        }
+    </style>
+</head>
+<body>
+<img src="../img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h4>小课堂【萌新】</h4>
+            <h4 style="text-transform: none">JavaScript中的基本包装类型</h4>
+            <h4>分享人：汪胜</h4>
+        </section>
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <p>为了便于操作基本类型值，ECMAScript 提供了 3 个特殊的引用类型：Boolean、Number和 String。这些类型与其他引用类型相似，但同时也具有与各自的基本类型相应的特殊行为。实际上，每当读取一个基本类型值的时候，后台就会创建一个对应的基本包装类型的对象，从而能够调用一些方法来操作这些数据。</p>
+            </section>
+        </section>
+        <section>
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+            <section>
+               <p>new运算符</p>
+                <pre>
+                <code>
+                    var box = 'Mr. Lee';
+                    box.name = 'Lee';//无效属性
+                    box.age = function () {//无效方法
+                    return 100;
+                    };
+                    console.log(box);//Mr. Lee
+                    console.log(box.name);//undefined
+                    console.log(box.age());//错误
+                </code>
+                </pre>
+                <pre>
+                <code>
+               var box = new String('Mr. Lee');//new 运算符
+                box.name = 'Lee';//有效属性
+                box.age = function () {//有效方法
+                return 100;
+            };
+                 console.log(box);//Mr. Lee
+                 console.log(box.name);//Lee
+                 console.log(box.age());//100
+                </code>
+                </pre>
+            </section>
+            <section><p>
+                String、Boolean 和 Number都可以使用new操作符
+            </p></section>
+            <section>
+                <p>String类型</p>
+                <p>创建： var stringObject  =  new String("text");</p>
+                <p>属性：length: 表示字符串中包含多少个字符</p>
+                <p>方法： 1.charAt(): 返回对应位置的特定字符，参数为基于0的位置。
+                    2.charCodeAt(): 返回对应位置的字符编码，参数为基于0的位置。
+                </p>
+                <pre>
+                    <code>
+                    var stringValue =  new String("hello world");
+                    console.log(stringValue.charAt(1)); //e
+                    console.log(stringValue.charCodeAt(1)); //101
+                </code>
+                </pre>
+            </section>
+            <section>
+                <p>Boolean类型</p>
+                <pre>
+                <code>
+                var Booleanobject=new Boolean(true);
+                </code>
+                </pre>
+                <p>强调：布尔表达式中的所有对象都会被转换为true。</p>
+            </section>
+            <section>
+                <p>Number类型</p>
+                <p>Number 是原始数值的包装对象。</p>
+                <pre>
+            		<code>
+            		var numberobject=new Number(10);
+            		</code>
+            	</pre>
+            </section>
+            <section>
+                <p>Number具有的属性有最小值、最大值等。</p>
+                <p>Number 类型的方法</p>
+                <p>toString()将数值转化为字符串，并且可以转换进制</p>
+                <p>toLocaleString()根据本地数字格式转换为字符串</p>
+                <p>toFixed()将数字保留小数点后指定位数并转化为字符串</p>
+                <p>toExponential()将数字以指数形式表示，保留小数点后指定位数并转化为字符串</p>
+                <p>toPrecision()将数字以指数形式或点形式表示，保留小数点后面指定位数并转化为字符串</p>
+            </section>
+            <section>
+                <p>toFixed()方法：会按照指定的小数位返回数值的字符串表示</p>
+                <pre>
+                    <code>
+                      var num=10;
+                        console.log(num.toFixed(2));//10.00
+                    </code>
+                </pre>
+                <p>这里给toFixed()传入数值2，表示显示2位小数。</p>
+            </section>
+            <section>
+                 <pre>
+                    <code>
+                        var box = 1000.789;
+                        console.log(box.toString());//转换为字符串，传参可以转换进制
+                        console.log(box.toLocaleString());//本地形式，1,000.789
+                        console.log(box.toFixed(2));//小数点保留，1000.79
+                        console.log(box.toExponential());//指数形式，传参会保留小数点
+                        console.log(box.toPrecision(3));//指数或点形式，传参保留小数点
+                    </code>
+                </pre>
+            </section>
+        </section>
+        </section>
+        <section>
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+            <section><p>如何替换子字符串的内容？</p></section>
+        </section>
+
+
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            <p>使用replace()的方法</p>
+            <pre>
+                <code>
+                    var h = "cat, bat, sat, fat";
+            		console.log(h.replace("at", "ond"));
+            		console.log(h.replace(/at/g, "end"));
+                </code>
+            </pre>
+        </section>
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+            <h3>7.参考文献</h3>
+        </section>
+        <section style="text-align: left">
+            <p>一、javascript基本包装类型介绍</p>
+            <p>二、JavaScript:基本包装类型 - 萧萧弈寒 - 博客园</p>
+            <p>三、javaScript对象-基本包装类型的详解 - 心知梦圆 - 博客园</p>
+            <p>四、javascript学习——基本包装类型总结 - CSDN博客</p>
+            <p>五、js之基本包装类型 - 小小gogo - 博客园</p>
+        </section>
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                By
+                <small style="vertical-align: middle">汪胜</small>
+            </p>
+        </section>
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: './plugin/markdown/marked.js' },
+            { src: './plugin/markdown/markdown.js' },
+            { src: './plugin/notes/notes.js', async: true },
+            { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>

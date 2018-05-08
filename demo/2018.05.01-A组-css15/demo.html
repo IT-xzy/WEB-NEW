@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BFC</title>
+    <style>
+        .demo2 {
+            border: 10px solid #000000;
+            /*overflow:hidden;*/
+            background: #ffef86;
+        }
+        .child {
+            width: 100px;
+            height: 100px;
+            float: left;
+            background: #49b956;
+        }
+        .demo1 {
+            background: #bf8642;
+            overflow: hidden;
+        }
+        .parent {
+            /*overflow: hidden;*/
+        }
+        .kid {
+            width: 100px;
+            height: 100px;
+            margin: 100px;
+            background: #2571bf;
+        }
+        .float {
+            width: 100px;
+            height: 100px;
+            float: left;
+            background: #ffef86;
+        }
+        .bfc-button {
+            /*overflow: hidden;*/
+            color: #ff8d1d;
+            /*background: url(../demo-img.png) no-repeat*/
+        }
+    </style>
+</head>
+<body>
+<div class="demo1">
+    弗雷尔卓德
+    <div class="parent">
+        <p class="kid">丽桑卓</p>
+    </div>
+    <div class="parent">
+        <p class="kid">艾希</p>
+    </div>
+</div>
+<div class="demo2">
+    <div class="child ">
+        盖伦
+    </div>
+</div>
+<div class="demo3">
+    <div class="float">
+        击鼓，进军！
+        请不要烦我，
+    </div>
+    <div class="bfc-button">
+
+        <p>他们的生命已被依法剥夺</p>
+        <p>陷阵之志，有死无生!</p>
+        <p>即使敌众我寡，末将也能万军从中取敌将首级！</p>
+        <p>德玛西亚人从不退缩。</p>
+        <p>奉吾王之命，</p>
+        <p>没有人能突破我的枪围。</p>
+        <p>勇士之魂从未破灭，</p>
+        <p>即将凯旋！</p>
+        <p>胜利在呼唤，</p>
+        <p>勇往直前！</p>
+        <p>只有行动才能说明一切，</p>
+        <p>荣耀与毁灭同在，</p>
+        <p>命运已做出了选择，</p>
+        <p>交给我了。</p>
+    </div>
+</div>
+
+</body>
+</html>
