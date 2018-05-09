@@ -1,0 +1,13 @@
+header{
+    width: 100px;
+    width: 40px;
+    background: blue($color: #000000);
+    button{
+        width: 100px;
+        height: 100px;
+        .button-1{
+            @extend button;
+            margin-top: 40px;
+        }
+    } 
+}
