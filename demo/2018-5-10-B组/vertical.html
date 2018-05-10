@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模拟</title>
+    <style> 
+    body{
+        font-family:"\5B8B\4F53";
+    }
+    .box{
+        font-size: 50px;
+        background: blue;
+        line-height: 200px;
+        color: #333;
+        position: relative;
+    }
+    .xian{
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        margin-top: -1px;
+        height: 2px;
+        background: #333;
+    }
+   
+   
+    .style{
+        font-size: 50px;
+        background: yellow;
+        vertical-align: baseline;
+    }
+    .top{
+        line-height: 50px;
+        font-size: 30px;
+        vertical-align: top;
+        background: #fff;
+    }
+    .bottom{
+        line-height: 50px;
+        font-size: 30px;
+        vertical-align: bottom;
+        background: gray;
+    }
+    .middle{
+        font-size: 30px;
+        vertical-align: middle;
+        background: green;
+    }
+    .text-top{
+        font-size: 30px;
+        vertical-align: text-top;
+        background: red;
+    }
+    .text-bottom{
+        font-size: 30px;
+        vertical-align: text-bottom;
+        background: violet;
+    }
+    .sub{
+        font-size: 30px;
+        vertical-align: sub;
+        background:palegreen;
+    }
+    .super{
+        font-size: 30px;
+        vertical-align: super;
+        background:rebeccapurple;
+    }
+    span {
+        display: inline-block;
+    }
+ 
+    .pu{
+        display: inline-block;
+       
+        background: yellow;
+    }
+    .bu{
+        position: relative;
+        display: inline-block;
+       
+        background: yellow;
+        vertical-align: baseline;
+    }
+     .bu::after{
+        content: "";
+        position: absolute;
+        left: -100px;right: -100px;
+        top:50%;
+        transform: translateY(-50%) scaleY(.8);
+        height: 1px;
+        background: red;
+    }  
+    </style>
+</head>
+<body>
+    <div class="box">
+         <span class="bottom">x bottom</span><span class="text-top">x text-top</span><i class="pu">1x</i><i class="bu">2x</i><span class="text-bottom">x text-bottom </span><span class="top">x top</span>
+         <i class="pu">1x</i><i class="bu">2x</i><span class="sub">sub</span><span class="super">super</span>
+    </div>
+</body>
+</html>
