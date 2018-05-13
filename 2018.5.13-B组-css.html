@@ -1,0 +1,249 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<style>
+    .p-style>p {
+        font-size: 20px;
+        text-align: left;
+        padding-bottom: 20px;
+    }
+</style>
+
+<body>
+    <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h4>小课堂【上海】</h4>
+                <h4>[css]中的z-index初解和使用</h4>
+                <h4>分享人：郑佳威</h4>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+
+            <section class="p-style" style="font-family: 'Times New Roman'; text-transform:none;">
+                <!-- <h4 style="font-family: 'Times New Roman'; text-transform:none;">什么是Ajax？</h4> -->
+                <p>1、z-index是什么？</p>
+                <p>2、z-index 是怎么工作的？</p>
+                <p>3、我们可以利用z-index实现什么功能？</p>
+                <p>4、为什么有时一个有着较大z-index值的元素却显示在只有较小z-index值的元素的后面？</p>
+                <p>5、当一个设置了z-index值的定位元素与常规文档流中的元素相互重叠的时候，谁会被置于上方？</p>
+                <p>6、当定位元素与浮动元素相互重叠的时候，谁会被置于上方？</p>
+                <p>7、当定位元素被嵌套在其他定位元素中时会发生什么？</p>
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <!-- <h4 style="font-family: 'Times New Roman'; text-transform:none;">什么是Ajax？</h4> -->
+                <p style="text-align: left;">
+                    z-index是什么？ w3school给出的定义是：z-index 属性设置元素的堆叠顺序。拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。该属性设置一个定位元素沿 z 轴的位置，z 轴定义为垂直延伸到显示区的轴。如果为正数，则离用户更近，为负数则表示离用户更远。
+                </p>
+                <span style="color: black">关键词：X/Y/Z轴</span>
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <img style="width: 100% ;height: 100%" src="../../learngit/small class/IMG/Z轴和三维.jpg" alt="">
+                <span style="position: absolute; top: 3%; left: 30%; color: black;">
+                    <a href="../../learngit/small class/demo/demo1.html">demo1</a>
+                </span>
+            </section>
+
+            <section class="p-style" style="font-family: 'Times New Roman'; text-transform:none;">
+                <!-- <h4 style="font-family: 'Times New Roman'; text-transform:none;">什么是Ajax？</h4> -->
+                <h3>z-index的特性</h3>
+                <p>z-index有三种值，分别是auto自动，整数（正整数、0、负整数），inherit（继承）；</p>
+                <p>z-index只能在定位元素上有效（如position:relative）；</p>
+            </section>
+
+            <section>
+                <h3>2.知识剖析(z-index是怎么工作的？)</h3>
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <div style="text-align: left;">
+                    <p>层叠次序</p>
+                    <img src="../../learngit/small class/IMG/层叠次序.jpg" alt="">
+                    <p></p>
+                </div>
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <div style="text-align: left;">
+                    <p>层叠上下文和层叠层</p>
+                    <span style="position: absolute; top: 20%;">
+                        <a href="../../learngit/small class/demo/demo2.html">层叠上下文有什么用处？</a>
+                    </span>
+                    <img src="../../learngit/small class/IMG/层叠上下文.jpg" alt="">
+                </div>
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <div style="text-align: left;">
+                    <p>小结</p>
+                    <span>
+                        <a href="../../learngit/small class/demo/demo3.html">层叠间相互的关系</a>
+                    </span>
+                </div>
+            </section>
+
+            <section>
+                <h3>3.常见问题</h3>
+                <h3 class="p-style" style="letter-spacing: 2px">使用z-inex需要注意的地方
+                    <p>1、在开发中尽量避免层叠上下文的多层嵌套，因为层叠上下文嵌套过多的话容易产生混乱，如果对层叠上下文理解不够的话是不好把控的。</p>
+                    <p>2、非浮层元素（对话框等）尽量不要用z-index（通过层叠顺序或者dom顺序或者通过层叠上下文进行处理）</p>
+                    <p>3、z-index设置数值时尽量用个位数</p>
+                    <p>4、让absolute元素覆盖正常文档流内元素（不用设z-index，自然覆盖）</p>
+                    <p>5、让后一个absolute元素覆盖前一个absolute元素（不用设z-index，只要在HTML端正确设置元素顺序即可）</p>
+                </h3>
+                <br>
+            </section>
+
+            <section>
+                <h3>4.解决方案</h3>
+            </section>
+            <section class="" style="top: 275px; display: none;" aria-hidden="true">
+                <div style="text-align: left;">
+                    <h3>什么时候用z-index？</h3>
+                    <p>当absolute元素覆盖另一个absolute元素，且HTML端不方便调整DOM的先后顺序时，需要设置z-index: 1。非常少见的情况下多个absolute交错覆盖，或者需要显示最高层次的模态对话框时，可以设置z-index
+                        > 1</p>
+
+                </div>
+            </section>
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+
+
+            <section>
+                <h3>6.扩展思考</h3>
+            </section>
+            <section>
+                <div style="text-align: left;width: 110%">
+                    使用z-index可以做些什么？
+                </div>
+                <span>用纯css写导航栏
+                    <img src="../../learngit/small class/IMG/z-index-nav" alt="">
+                </span>
+            </section>
+
+            <section>
+                <span>用纯css写气泡
+                    <img src="../../learngit/small class/IMG/hubble-bubble" alt="">
+                </span>
+            </section>
+
+            <section>
+                <h3>7.参考文献</h3>
+            </section>
+            <section>
+                <h3>8.更多讨论</h3>
+            </section>
+            <section>
+                <p>讨论时间到，欢迎大家提问！
+                </p>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    By
+                    <small style="vertical-align: middle">郑佳威</small>
+                </p>
+                <p></p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
