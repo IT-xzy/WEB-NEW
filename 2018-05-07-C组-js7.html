@@ -26,7 +26,7 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     </script>
 </head>
@@ -38,8 +38,8 @@
 <div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
     <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
         <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
-            <h3>【Css-task5】flex布局实例</h3>
-            <p>分享人：高昕</p>
+            <h3>【JS-task6】angular之中，$state  $watch $scope $rootScope 分别是什么？</h3>
+            <p>分享人：冯亚超</p>
         </section>
         <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
             <p>目录</p>
@@ -55,96 +55,117 @@
         <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
             <h3>1.背景介绍</h3>
         </section>
-        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
-            <h3>FLEX布局是什么？</h3>
-            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
-                <p>2009年，W3C 提出了一种新的方案----Flex 布局，可以简便、完整、响应式地实现各种页面布局。目前，它已经得到了所有浏览器的支持，这意味着，现在就能很安全地使用这项功能。</p>
-            </section>
-
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">     
+			<p>AngularJs是一个用于设计动态web应用的结构框架,使得开发现代的单一页面应用程序变得更加容易。而且能够简化我们的工作流程，让我们只专心于业务逻辑和数据的处理.$scope $rootScope $watch 和 $state就是里面的几个方法，今天着重跟大家讨论一下这 几个方法</p>
+			<p></p>
         </section>
+
         <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
             <h3>2.知识剖析</h3>
         </section>
+		
         <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
-            <p>采用 Flex 布局的元素，称为 Flex 容器（flex container），简称"容器"。它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称"项目"。
+		    <h4>$SCOPE</h4>
+			<p>$scope在angularjs中，你可以把它理解成作用域，每个不同的controller，都具有它不同的作用域，所以 controller不同，他们的scope是不同的，那么，如果我们想象js那样，做一个全局变量该怎么办呢？这就要说 到rootScope了。</p>
+			<p></p>
+        </section>
 
-                任何一个容器都可以指定成flex布局</p>
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h4>$ROOTSCOPE</h4>
+		    <p>$rootScope就相当于一个全局作用域，所以我们保存在其中的东西是全局性的，在任一controller之中都能够使用。</p>
+			<p>scope是html和单个controller之间的桥梁，数据绑定就靠他了。rootscope是各个controller中scope的桥梁。 用rootscope定义的值，可以在各个controller中使用。</p>
         </section>
-        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
-            <section style="text-align: center; top: 330px; display: none;"><h3>3.常见问题</h3></section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h4>$WATCH</h4>
+			<p>相信使用过angularjs的同学都知道，ng中有个比较重要的特点，叫做双向绑定，那么这个双向绑定是如何实现的呢？ 当我们在对绑定的name属性进行修改的时候，angular内部的$digest循环级会执行一次，他执行的内容是检查我们的 $scope作用域的内容与上次执行$digest循环的时候是否有变化，若有变化就执行$watch()方法绑定的处理函数。从而 达到了监听作用域属性的效果。</p>
         </section>
-        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
-            <section style="text-align: center; top: 330px; display: none;"><h3>4 解决方案</h3></section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+			<p>$watch(watchExpression, listener, objectEquality);</p>
+			<p>watchExpression,需要监控的表达式</p>
+			<p>listener,处理函数，函数参数如下
+			function(newValue,oldValue, scope)</p>
+			<p>objectEquality,是否深度监听，如果设置为true,它告诉Angular检查所监控的对象中每一个属性的变化. 如果你希望监控数组的个别元素或者对象的属性而不是一个普通的值, 那么你应该使用它</p>
+			<p></p>
         </section>
-        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
-            <section style="text-align: center; top: 330px; display: none;"><h3>5.编码实战</h3>
-                <a href="demo.html"><h3>demo</h3></a></section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h4>$STATE</h4>
+			<p>在ajax技术发展普及之后，因为其不会留下历史记录方便浏览器访问和对于seo不友好的特点，一个新技术应运而生： 路由，$state就是路由中的一项服务。</p>
+			<p></p>
+		</section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p>$state.go()</p>
+			<p>$state.go()方法可以产生与a链接一样的效果，可以将此方法绑定给一个button按钮， 然后在按钮的点击事件中执行 $state.go()，就可以跳转到相应的页面。</p>
+		</section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p>$state.Params()</p>
+			<p>$stateParams 状态参数 在上面提及使用$stateparams来提取在url中的不同参数。该服务的作用是处理url的不同部分。例如，当上述的inbox状态是这样时： url: '/inbox/:inboxId/messages/{sorted}?from&to'//当用户访问者链接时：'/inbox/123/messages/ascending?from=10&to=20' $stateParams对象的值为： {inboxId: '123', sorted: 'ascending', from: 10, to: 20}</p>
+		</section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>3.常见问题</h3>
         </section>
-        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
-            <section style="text-align: center; top: 330px; display: none;"><h3>骰子</h3>
-            </section>
+     
+	    <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p>watch的深度监听是什么意思呢？有什么优缺点呢？</p>
         </section>
-            <section style="text-align: center; top: 330px; display: none;"><h3>圣杯布局</h3>
-            <p>圣杯布局（Holy Grail Layout）指的是一种最常见的网站布局。页面从上到下，分成三个部分：头部（header），躯干（body），尾部（footer）。其中躯干又水平分成三栏，从左到右为：导航、主栏、副栏。</p>
-            </section>
-        </section>    <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
-        <section style="text-align: center; top: 330px; display: none;"><h3>固定的底栏</h3>
-        <p>有时，页面内容太少，无法占满一屏的高度，底栏就会抬高到页面的中间。这时可以采用Flex布局，让底栏总是出现在页面的底部。</p>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>4.解决方案</h3>
         </section>
-    </section>
-        </section>    <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
-        <section style="text-align: center; top: 330px; display: none;"><h3>流式布局</h3>
-        <p>每行的项目数固定，会自动分行。</p>
-            <pre><code class="hljs mel">
-                语法：
-               flex: 0 0 25%;
-            </code></pre>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p>$watch在对待原始类型和引用类型会有不同的处理方式，这就要首先说一说$watch函数的第三个参数。在前面的例子中，我们知道，$watch函数有接收两个参数，第一个参数是需要监视的对象，第二个参数是在监视对象发生变化时需要调用的函数，实际上$watch还有第三个参数，它在默认情况下是false。在默认情况下，即不显式指明第三个参数或者将其指明为false时，我们进行的监视叫做“引用监视”。引用监视的原词的“reference watch”，它的意思是只要监视的对象引用没有发生变化，就不算它发生了变化。</p>
+        </section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p>如果我们将$watch的第三个变量设置为true，那么此时我们进行的监视叫做“全等监视”，原词是“equality watch”。此时，只要$watch的对象有一点风吹草动，它马上就跳出来</p>
+			<p>既然全等监视这么好，那么我们为什么不直接用全等监视呢？当然，任何事情都有好的坏的两个方面，全等监视固然是好，但是它在运行时需要先遍历整个监视对象，然后在每次$digest之前使用angular.copy()将整个对象深拷贝一遍然后在运行之后用angular.equal()将前后的对象进行对比，</p>
+        </section>
 
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>5.编码实战</h3>
         </section>
-    </section>
-        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
-            <section style="top: 330px; display: none;">
-                <h3 style="text-align: center">6.扩展思考</h3>
 
-            </section>
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p></p>
         </section>
-        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
-            <section style="top: 330px; display: none;">
-                <p>flex模拟栅格系统</p>
-                  <pre><code class="hljs mel">
-                语法：
-               flex: 0 0 25%;
-              @media only screen and (max-width: 768px) {
-                 .child1{
-                   flex: 0 0 50%;
-                  }
-                  }
-               @media only screen and (max-width: 425px) {
-                .child1{
-                  flex: 0 0 100%;
-                 }
-                 }
-            </code></pre>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>6.扩展思考</h3>
+        </section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+			<p></p>
+        </section>
 
-
-            </section>
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>7.参考文献</h3>
         </section>
-        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
-            <h3>7.参考文献</h3>
-            <p>参考：<a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html">Flex 布局教程：实例篇</a></p>
+		
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p>https://www.cnblogs.com/littlemonk/p/5484322.html</p>
+			<p>http://www.runoob.com/angularjs/angularjs-scopes.html</p>
+			<p></p>
         </section>
-        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <h3>8 更多讨论</h3>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>8 更多讨论</h3>
         </section>
-        <!--<section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">-->
-            <!--<p>2333333</p>-->
-        <!--</section>-->
-        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-
-            <h4>鸣谢</h4>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p></p>
+        </section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h4>鸣谢</h4>
             <p>感谢大家观看</p>
             <p>
-                <small>BY : 高昕</small>
+                <small>BY : 冯亚超</small>
             </p>
         </section>
 
@@ -159,8 +180,8 @@
                     或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
             </div></div>
 
-<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
-<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
 
 <script>
 

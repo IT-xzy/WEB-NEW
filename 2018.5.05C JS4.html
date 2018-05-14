@@ -6,13 +6,13 @@
 
     <title>葡萄藤PPT</title>
 
-    <link rel="stylesheet" href="./css/reveal/reveal.css">
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
 
     <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
-    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
 
     <!-- syntax highlighting 代码高亮主题 -->
-    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
 
     <style>
         .float {
@@ -38,7 +38,7 @@
 <div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
     <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
         <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
-            <h3>【Css-task5】flex布局实例</h3>
+            <h3>【JS-task4】杀人和投票的业务逻辑上有什么区别？</h3>
             <p>分享人：高昕</p>
         </section>
         <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
@@ -56,19 +56,13 @@
             <h3>1.背景介绍</h3>
         </section>
         <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
-            <h3>FLEX布局是什么？</h3>
+            <h3>业务逻辑是什么？</h3>
             <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
-                <p>2009年，W3C 提出了一种新的方案----Flex 布局，可以简便、完整、响应式地实现各种页面布局。目前，它已经得到了所有浏览器的支持，这意味着，现在就能很安全地使用这项功能。</p>
+                <p>不同的项目有不同的功能，不同的功能需要不同的实现，实现这些核心功能的代码就叫业务逻辑。</p>
             </section>
-
         </section>
         <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
             <h3>2.知识剖析</h3>
-        </section>
-        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
-            <p>采用 Flex 布局的元素，称为 Flex 容器（flex container），简称"容器"。它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称"项目"。
-
-                任何一个容器都可以指定成flex布局</p>
         </section>
         <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
             <section style="text-align: center; top: 330px; display: none;"><h3>3.常见问题</h3></section>
@@ -78,60 +72,41 @@
         </section>
         <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
             <section style="text-align: center; top: 330px; display: none;"><h3>5.编码实战</h3>
-                <a href="demo.html"><h3>demo</h3></a></section>
+                <a href="js-task2.html"><h3>demo</h3></a></section>
         </section>
         <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
-            <section style="text-align: center; top: 330px; display: none;"><h3>骰子</h3>
+            <section style="text-align: center; top: 330px; display: none;"><h3>杀人和投票页面区别之处</h3>
+                <p style="text-align: left">杀人：点击杀手弹出提示框；</p>
+                <p style="text-align: left">投票：杀手，平民都可以点击；</p>
+                <p style="text-align: left">杀人：确定后传值用于刷新法官页面到步骤1完成的状态</p>
+                <p style="text-align: left">投票：确定后传值用于重置有限状态机状态</p>
+                <p style="text-align: left">杀人：确定后天数不变，如果游戏结束天数+1且传个值用于隐藏游戏进程当天白天的信息</p>
+                <p style="text-align: left">投票：确定后天数+1，如果胜利天数不变</p>
             </section>
         </section>
-            <section style="text-align: center; top: 330px; display: none;"><h3>圣杯布局</h3>
-            <p>圣杯布局（Holy Grail Layout）指的是一种最常见的网站布局。页面从上到下，分成三个部分：头部（header），躯干（body），尾部（footer）。其中躯干又水平分成三栏，从左到右为：导航、主栏、副栏。</p>
+            <section style="text-align: center; top: 330px; display: none;"><h3>杀人和投票页面相同之处</h3>
+                <p style="text-align: left">1.根据法官页面传来值改变文本</p>
+                <p style="text-align: left">2.点击玩家提取序号，确定后存入死亡玩家数组，存活杀手或平民-1</p>
+                <p style="text-align: left">3.不选择玩家不能离开</p>
+                <p style="text-align: left">4.死亡玩家变色，且移除点击事件</p>
+                <p style="text-align: left">胜利判断</p>
             </section>
-        </section>    <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
-        <section style="text-align: center; top: 330px; display: none;"><h3>固定的底栏</h3>
-        <p>有时，页面内容太少，无法占满一屏的高度，底栏就会抬高到页面的中间。这时可以采用Flex布局，让底栏总是出现在页面的底部。</p>
-        </section>
-    </section>
-        </section>    <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
-        <section style="text-align: center; top: 330px; display: none;"><h3>流式布局</h3>
-        <p>每行的项目数固定，会自动分行。</p>
-            <pre><code class="hljs mel">
-                语法：
-               flex: 0 0 25%;
-            </code></pre>
-
-        </section>
-    </section>
         <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
             <section style="top: 330px; display: none;">
                 <h3 style="text-align: center">6.扩展思考</h3>
-
             </section>
         </section>
         <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
             <section style="top: 330px; display: none;">
-                <p>flex模拟栅格系统</p>
-                  <pre><code class="hljs mel">
-                语法：
-               flex: 0 0 25%;
-              @media only screen and (max-width: 768px) {
-                 .child1{
-                   flex: 0 0 50%;
-                  }
-                  }
-               @media only screen and (max-width: 425px) {
-                .child1{
-                  flex: 0 0 100%;
-                 }
-                 }
-            </code></pre>
+                <p>法官页面记录游戏进程</p>
+                <!--<pre><code class="hljs mel">-->
+            <!--</code></pre>-->
 
 
             </section>
         </section>
         <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
             <h3>7.参考文献</h3>
-            <p>参考：<a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html">Flex 布局教程：实例篇</a></p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>8 更多讨论</h3>

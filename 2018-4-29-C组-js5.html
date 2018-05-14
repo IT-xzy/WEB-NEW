@@ -26,7 +26,7 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     </script>
 </head>
@@ -38,8 +38,8 @@
 <div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
     <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
         <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
-            <h3>【Css-task5】flex布局实例</h3>
-            <p>分享人：高昕</p>
+            <h3>【JS-task5】前端垮域问题有哪些常用的解决方式？</h3>
+            <p>分享人：冯亚超</p>
         </section>
         <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
             <p>目录</p>
@@ -56,95 +56,128 @@
             <h3>1.背景介绍</h3>
         </section>
         <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
-            <h3>FLEX布局是什么？</h3>
-            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
-                <p>2009年，W3C 提出了一种新的方案----Flex 布局，可以简便、完整、响应式地实现各种页面布局。目前，它已经得到了所有浏览器的支持，这意味着，现在就能很安全地使用这项功能。</p>
-            </section>
-
+            <h3>什么是跨域?</h3>       
+			<p>跨域，指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器施加的安全限制。</p>
+			<p>所谓同源是指，域名，协议，端口均相同，不明白没关系，举几个栗子：</p>
+			<p>http://www.123.com/index.html 调用 http://www.123.com/server.php （非跨域）</p>
+			<p>http://www.123.com/index.html 调用 http://www.456.com/server.php （主域名不同:123/456，跨域）</p>
         </section>
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+			<p>http://abc.123.com/index.html 调用 http://def.123.com/server.php （子域名不同:abc/def，跨域）</p>
+			<p>http://www.123.com:8080/index.html 调用 http://www.123.com:8081/server.php （端口不同:8080/8081，跨域）</p>
+			<p>http://www.123.com/index.html 调用 https://www.123.com/server.php （协议不同:http/https，跨域）</p>
+			<p>请注意：localhost和127.0.0.1虽然都指向本机，但也属于跨域。</p>
+        </section>
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h4>什么是同源策略?</h4>
+            <p>同源策略/SOP（Same origin policy）是一种约定，由Netscape公司1995年引入浏览器，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，浏览器很容易受到XSS、CSFR等攻击。所谓同源是指"协议+域名+端口"三者相同，即便两个不同的域名指向同一个ip地址，也非同源。</p>
+            <p>同源策略限制以下几种行为： 1.) Cookie、LocalStorage 和 IndexDB 无法读取 2.) DOM 和 Js对象无法获得 3.) AJAX 请求不能发送</p>
+		</section>
         <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
             <h3>2.知识剖析</h3>
         </section>
         <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
-            <p>采用 Flex 布局的元素，称为 Flex 容器（flex container），简称"容器"。它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称"项目"。
+		    <h4>常见的跨域方式</h4>
+			<p>1.JSONP跨域</p>
+			<p>2.nginx反向代理</p>
+        </section>
 
-                任何一个容器都可以指定成flex布局</p>
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p>JSONP跨域</p>
+			<p>JSON(JavaScript Object Notation)和JSONP(JSON withPadding)虽然只有一个字母的差别，其实他们根本不是一回事儿：</p>
+			<p>JSON是一种数据交换格式，而JSONP是一种依靠开发人员的聪明才智创造出的一种非官方跨域数据交互协议。</p>
+			<p>我们拿谍战片来打个比方，JSON是地下党们用来书写和交换情报的“暗号”，而JSONP则是把用暗号书写的情报传递给自己同志时使用的接头方式。</p>
+			<p>一个是描述信息的格式，一个是信息传递双方约定的方法。</p>
         </section>
-        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
-            <section style="text-align: center; top: 330px; display: none;"><h3>3.常见问题</h3></section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p>Ajax直接请求普通文件存在跨域无权限访问的问题，只要是跨域请求，一律不准； 不过，Web页面上调用js文件时则不受是否跨域的影响（不仅如此，我们还发现凡是拥有”src”这个属性的标签都拥有跨域的能力， 比如（/script/、/img、/iframe/）； 恰巧我们已经知道有一种叫做JSON的纯字符数据格式可以简洁的描述复杂数据，更妙的是JSON还被js原生支持， 所以在客户端几乎可以随心所欲的处理这种格式的数据；</p>
         </section>
-        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
-            <section style="text-align: center; top: 330px; display: none;"><h3>4 解决方案</h3></section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p>这样子解决方案就呼之欲出了，web客户端通过与调用脚本一模一样的方式， 来调用跨域服务器上动态生成的js格式文件（一般以JSON为后缀），显而易见，服务器之所以要动态生成JSON文件， 目的就在于把客户端需要的数据装入进去。 客户端在对JSON文件调用成功之后，也就获得了自己所需的数据，剩下的就是按照自己需求进行处理和展现了， 这种获取远程数据的方式看起来非常像AJAX，但其实并不一样。 为了便于客户端使用数据，逐渐形成了一种非正式传输协议，人们把它称作JSONP， 该协议的一个要点就是允许用户传递一个callback参数给服务端，然后服务端返回数据时会将这个callback参数作为函数名来包裹住JSON数据，这样客户端就可以随意定制自己的函数来自动处理返回数据了。</p>
         </section>
-        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
-            <section style="text-align: center; top: 330px; display: none;"><h3>5.编码实战</h3>
-                <a href="demo.html"><h3>demo</h3></a></section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p>nginx反向代理</p>
+			<p>Nginx是一个HTTP服务器，可以将服务器上的静态文件（如HTML、图片）通过HTTP协议展现给客户端。 反向代理服务器：客户端本来可以直接通过HTTP协议访问某网站应用服务器，网站管理员可以在中间加上一个Nginx，客户端请求Nginx，Nginx请求应用服务器，然后将结果返回给客户端，此时Nginx就是反向代理服务器。 负载均衡:当网站访问量非常大，一台服务器已经不够用了。于是将同一个应用部署在多台服务器上，将大量用户的请求分配给多台机器处理。Nginx可以通过反向代理来实现负载均衡。</p>
         </section>
-        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
-            <section style="text-align: center; top: 330px; display: none;"><h3>骰子</h3>
-            </section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>3.常见问题</h3>
         </section>
-            <section style="text-align: center; top: 330px; display: none;"><h3>圣杯布局</h3>
-            <p>圣杯布局（Holy Grail Layout）指的是一种最常见的网站布局。页面从上到下，分成三个部分：头部（header），躯干（body），尾部（footer）。其中躯干又水平分成三栏，从左到右为：导航、主栏、副栏。</p>
-            </section>
-        </section>    <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
-        <section style="text-align: center; top: 330px; display: none;"><h3>固定的底栏</h3>
-        <p>有时，页面内容太少，无法占满一屏的高度，底栏就会抬高到页面的中间。这时可以采用Flex布局，让底栏总是出现在页面的底部。</p>
+     
+	    <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p>JSONP实现跨域原理?</p>
+			<p>nginx反向代理如何跨域?</p>
         </section>
-    </section>
-        </section>    <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
-        <section style="text-align: center; top: 330px; display: none;"><h3>流式布局</h3>
-        <p>每行的项目数固定，会自动分行。</p>
-            <pre><code class="hljs mel">
-                语法：
-               flex: 0 0 25%;
-            </code></pre>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>4.解决方案</h3>
+        </section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p></p>
+        </section>
 
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>5.编码实战</h3>
         </section>
-    </section>
-        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
-            <section style="top: 330px; display: none;">
-                <h3 style="text-align: center">6.扩展思考</h3>
 
-            </section>
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p></p>
         </section>
-        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
-            <section style="top: 330px; display: none;">
-                <p>flex模拟栅格系统</p>
-                  <pre><code class="hljs mel">
-                语法：
-               flex: 0 0 25%;
-              @media only screen and (max-width: 768px) {
-                 .child1{
-                   flex: 0 0 50%;
-                  }
-                  }
-               @media only screen and (max-width: 425px) {
-                .child1{
-                  flex: 0 0 100%;
-                 }
-                 }
-            </code></pre>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>6.扩展思考</h3>
+        </section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p>JSONP的优点和缺点</p>
+			<p>1、基于纯文本，跨平台传递极其简单；</p>
+			<p>2、Javascript原生支持，后台语言几乎全部支持；</p>
+			<p>3、轻量级数据格式，占用字符数量极少，特别适合互联网传递；</p>
+			<p>4、可读性较强，虽然比不上XML那么一目了然，但在合理的依次缩进之后还是很容易识别的；</p>
+			<p>5、容易编写和解析，当然前提是你要知道数据结构；</p>
+			<p></p>
+        </section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p>缺点</p>
+			<p>它只支持GET请求而不支持POST等其它类型的HTTP请求；</p>
+			<p>它只支持跨域HTTP请求这种情况，不能解决不同域的两个页面之间如何进行JavaScript调用的问题。</p>
+        </section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>7.参考文献</h3>
+        </section>
+		
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p>http://www.cnblogs.com/dowinning/archive/2012/04/19/json-jsonp-jquery.html</p>
+		    <p>https://www.cnblogs.com/2050/p/3191744.html</p>
+        </section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>8 更多讨论</h3>
+			<p>ajax和jsonp有什么不同?</p>
+        </section>
 
-
-            </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p>1、ajax和jsonp这两种技术在调用方式上“看起来”很像，目的也一样，都是请求一个url，然后把服务器返回的数据进行处理，因此jquery和ext等框架都把jsonp作为ajax的一种形式进行了封装；</p>
+			<p>2、但ajax和jsonp其实本质上是不同的东西。ajax的核心是通过XmlHttpRequest获取非本页内容，而jsonp的核心则是动态添加script标签来调用服务器提供的js脚本。</p>
+			<p>3、所以说，其实ajax与jsonp的区别不在于是否跨域，ajax通过服务端代理一样可以实现跨域，jsonp本身也不排斥同域的数据的获取。</p>
+		</section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p>4、还有就是，jsonp是一种方式或者说非强制性协议，如同ajax一样，它也不一定非要用json格式来传递数据，如果你愿意，字符串都行，只不过这样不利于用jsonp提供公开服务。</p>
+			<p>总而言之，jsonp不是ajax的一个特例，哪怕jquery等巨头把jsonp封装进了ajax，也不能改变着一点！</p>
         </section>
-        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
-            <h3>7.参考文献</h3>
-            <p>参考：<a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html">Flex 布局教程：实例篇</a></p>
-        </section>
-        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <h3>8 更多讨论</h3>
-        </section>
-        <!--<section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">-->
-            <!--<p>2333333</p>-->
-        <!--</section>-->
-        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-
-            <h4>鸣谢</h4>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h4>鸣谢</h4>
             <p>感谢大家观看</p>
             <p>
-                <small>BY : 高昕</small>
+                <small>BY : 冯亚超</small>
             </p>
         </section>
 
@@ -159,8 +192,8 @@
                     或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
             </div></div>
 
-<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
-<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
 
 <script>
 

@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -26,7 +26,7 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     </script>
 </head>
@@ -38,8 +38,8 @@
 <div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
     <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
         <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
-            <h3>【Css-task5】flex布局实例</h3>
-            <p>分享人：高昕</p>
+            <h3>【JS-1】js中有哪些基本类型和引用类型，有什么区别？</h3>
+            <p>分享人：陈静雯</p>
         </section>
         <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
             <p>目录</p>
@@ -56,95 +56,103 @@
             <h3>1.背景介绍</h3>
         </section>
         <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
-            <h3>FLEX布局是什么？</h3>
+            <h3>基本类型</h3>
             <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
-                <p>2009年，W3C 提出了一种新的方案----Flex 布局，可以简便、完整、响应式地实现各种页面布局。目前，它已经得到了所有浏览器的支持，这意味着，现在就能很安全地使用这项功能。</p>
+                <p style="text-align: left;">按值访问，可操作保存在变量中的实际的值。基本类型值指的是简单的数据段。</p>
+                <p style="text-align: left;">5种基本数据类型:Undefined、Null、String、Number、Boolean。</p>
             </section>
-
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <h3>引用类型类型</h3>
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true" >
+                <p style="text-align: left;">当复制保存着对象的某个变量时，操作的是对象的引用，但在为对象添加属性时，操作的是实际的对象。引用类型值指那些可能为多个值构成的对象。</p>
+                <p style="text-align: left;">常见的引用类型：object、Array、Function。</p>
+            </section>
         </section>
         <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
             <h3>2.知识剖析</h3>
         </section>
         <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
-            <p>采用 Flex 布局的元素，称为 Flex 容器（flex container），简称"容器"。它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称"项目"。
-
-                任何一个容器都可以指定成flex布局</p>
+            <h3>基本数据类型</h3>
         </section>
+        <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h4 style="text-align: center;font-size: 3rem;">Number</h4>
+            <p>Number类型包含整数和浮点数（浮点数数值必须包含一个小数点，且小数点后面至少有一位数字）两种值。</p>
+            <p>NaN:非数字类型。两大特点：1.涉及到的 任何关于NaN的操作，都会返回NaN。2. NaN不等于自身。</p>
+            <p>isNaN() 函数用于检查其参数是否是非数字值</p>
+        </section>
+        <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h4 style="text-align: center;font-size: 3rem;">String</h4>
+            <p>字符串是存储字符的变量,由双引号(" ")或单引号(' ')表示</p>
+            <p>字符串有length属性。可以取得字符串的长度。</p>
+            <p>字符串转换：转型函数String(),适用于任何数据类型（null,undefined 转换后为null和undefined）；toString()方法（null,undefined没有toString()方法）。</p>
+            
+        </section>
+        <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h4 style="text-align: center;font-size: 3rem;">Boolean</h4>
+            <p>只有两个值，true和false;在运算中true=1,false=0。</p>
+        </section>
+        <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h4 style="text-align: center;font-size: 3rem;">undefined</h4>
+            <p>只有一个值，即undefined值。使用var声明了变量，但未给变量初始化值，那么这个变量的值就是undefined。</p>      
+        </section>
+        <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h4 style="text-align: center;font-size: 3rem;">Null</h4>
+            <p>也是只有一个值的数据类型，null值表示一个空对象指针，使用typeof操作符检测null值会返回"object"</p>        
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h4  style="text-align: center;font-size: 3rem;">引用数据类型</h4>
+            <p style="text-align:left;">Object类型:带有属性和方法的特殊数据类型</p>
+            <p style="text-align:left;">Array:是使用单独的变量名来存储一系列的值。</p>
+            <p style="text-align:left;">Function:函数类型在JavaScript中也是对象</p>
+        </section>
+
         <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
             <section style="text-align: center; top: 330px; display: none;"><h3>3.常见问题</h3></section>
         </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h3>基本类型和引用类型的区别</h3>
+        </section>
+        <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+            <p>基本类型的变量是存放在栈区的（栈区指内存里的栈内存）</p>
+            <p>引用类型的值是同时保存在栈内存和堆内存中的对象</p>
+            <p>基本类型的比较是值的比较</p> 
+            <p>引用类型的比较是引用的比较</p>       
+        </section>
+
         <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
             <section style="text-align: center; top: 330px; display: none;"><h3>4 解决方案</h3></section>
-        </section>
-        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
-            <section style="text-align: center; top: 330px; display: none;"><h3>5.编码实战</h3>
-                <a href="demo.html"><h3>demo</h3></a></section>
-        </section>
-        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
-            <section style="text-align: center; top: 330px; display: none;"><h3>骰子</h3>
-            </section>
-        </section>
-            <section style="text-align: center; top: 330px; display: none;"><h3>圣杯布局</h3>
-            <p>圣杯布局（Holy Grail Layout）指的是一种最常见的网站布局。页面从上到下，分成三个部分：头部（header），躯干（body），尾部（footer）。其中躯干又水平分成三栏，从左到右为：导航、主栏、副栏。</p>
-            </section>
-        </section>    <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
-        <section style="text-align: center; top: 330px; display: none;"><h3>固定的底栏</h3>
-        <p>有时，页面内容太少，无法占满一屏的高度，底栏就会抬高到页面的中间。这时可以采用Flex布局，让底栏总是出现在页面的底部。</p>
-        </section>
-    </section>
-        </section>    <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
-        <section style="text-align: center; top: 330px; display: none;"><h3>流式布局</h3>
-        <p>每行的项目数固定，会自动分行。</p>
-            <pre><code class="hljs mel">
-                语法：
-               flex: 0 0 25%;
-            </code></pre>
 
         </section>
-    </section>
+
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>5.编码实战</h3></section>
+        </section>
         <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
             <section style="top: 330px; display: none;">
                 <h3 style="text-align: center">6.扩展思考</h3>
-
-            </section>
-        </section>
-        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
-            <section style="top: 330px; display: none;">
-                <p>flex模拟栅格系统</p>
-                  <pre><code class="hljs mel">
-                语法：
-               flex: 0 0 25%;
-              @media only screen and (max-width: 768px) {
-                 .child1{
-                   flex: 0 0 50%;
-                  }
-                  }
-               @media only screen and (max-width: 425px) {
-                .child1{
-                  flex: 0 0 100%;
-                 }
-                 }
-            </code></pre>
-
-
             </section>
         </section>
         <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
             <h3>7.参考文献</h3>
-            <p>参考：<a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html">Flex 布局教程：实例篇</a></p>
+            <p>参考1：<a href="https://www.cnblogs.com/xuniannian/p/7452086.html">JS中的六大数据类型</a></p>
+            <p>参考2：<a href="https://www.cnblogs.com/focusxxxxy/p/6390536.html">js基本类型和引用类型的区别</a></p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>8 更多讨论</h3>
         </section>
-        <!--<section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">-->
-            <!--<p>2333333</p>-->
-        <!--</section>-->
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            <p>讨论点1：Null和undefined的区别？</p>
+            <p>讨论点2：NaN是什么？</p>
+            <p>讨论点3：基本类型比较和引用类型比较的区别？</p>
+        </section>
+      
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
 
             <h4>鸣谢</h4>
             <p>感谢大家观看</p>
             <p>
-                <small>BY : 高昕</small>
+                <small>BY : 陈静雯</small>
             </p>
         </section>
 
