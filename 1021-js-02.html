@@ -1,0 +1,204 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h3>洗牌算法具体指的是什么</h3>
+            <p style="text-align: center;">深圳分院：林健凡</p>
+        </section>
+        <section>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <section>
+            <section>
+                <h3>什么是洗牌算法</h3>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 40px">
+                    简单来说<br>
+                    洗牌算法是一个用来将一个有限集合生成一个随机排列的算法（数组随机排序）<br>
+                    这个算法生成的随机排列是<span style="color:black">等概率</span>的
+                </p>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 40px">
+                    再简单一点，就是将一个数组打乱
+                </p>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 40px">
+                    伪随机（概率）<br>
+                    真随机（几率）
+                </p>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 31px">
+                    所谓伪随机，是指概率事件，就是出现得并不规律，但是大致上就是这么多次数。比如1％，如果是每100次为一周期，那么1％意味着，尽管你不确定这1次究竟会什么时候出现，但100次中必然出现1次，不多一次也不会少一次。概率事件之间相互影响，一旦这一次没有触发，那么下一次触发的概率就会变大
+                </p>
+                <p style="text-align:left;font-size: 31px">
+                    而真随机则是指几率。比如1％的几率，意味着你这次触发特殊事件是1％的可能性，下次也是，每一次都是。如果你这次失败，下次依然保持在1％的可能性。还是上面的例子，1%的几率，100次中可能出现100次，也可能1次都不会出现，几率事件不会互相影响，因为每一次都是一个独立的事件
+                </p>
+            </section>
+            
+        </section>
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            <section>
+                <h3>Fisher–Yates shuffle 洗牌算法</h3>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 40px">
+                    Fisher–Yates shuffle 洗牌算法原始版
+                </p>
+                <ul>
+                    <li>写下从 1 到 N 的数字</li>
+                    <li>取一个从 1 到 N 的数字的随机数 k</li>
+                    <li>从低位开始，得到第 k 个数字（这个数字还没有被取出），把它写在独立的一个列表的最后一位</li>
+                    <li>重复第 2 步，直到所有的数字都被取出</li>
+                    <li>第 3 步写出的这个序列，现在就是原始数字的随机排列</li>
+                </ul>
+            </section>
+            <section>
+                <p>计算机会花很多无用的时间去计算上述第 3 步的剩余数字</p>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 40px">
+                    Fisher–Yates shuffle 洗牌算法进化版
+                </p>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 40px">
+                    在每次迭代时将随机选出的这个数字排到数组的最后
+                </p>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 40px">
+                    时间复杂度是指执行算法所需要的计算工作量<br>
+                    空间复杂度是指执行这个算法所需要的内存空间
+                </p>
+            </section>
+            
+        </section>
+        <section>
+            <h3>3、常见问题</h3>
+        </section>
+        <section>
+            <p style="text-align:left;font-size: 40px">如何打乱数组排序</p>
+            <p style="text-align:left;font-size: 40px">是否真的解决了完全随机</p>
+        </section>
+        <section>
+            <h3>4、解决方案</h3>
+        </section>
+        <section>
+            <h3>Fisher–Yates Shuffle的JS实现</h3>
+        </section>
+        <section>
+            <h3>5、编码实战</h3>
+        </section>
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+            <h4>怎么保证这个算法得到的数组是完全随机的（即等概）？</h4>
+        </section>
+        <section>
+            <h3>7.参考文献</h3>
+        </section>
+        <section>
+            <p>参考一：<a href="https://www.zhihu.com/question/23810169">洗牌算法怎样才够乱</a></p><br>
+            <p>参考二： <a href="http://www.tuicool.com/articles/qIjqQzb">洗牌算法shuffle - caochao88</a></p><br>
+            <p>参考三： <a href="http://blog.jobbole.com/64897/">当随机不够随机：一个在线扑克游戏的教训</a></p><br>
+            <p>参考四： <a href="http://www.cnblogs.com/jkisjk/archive/2012/04/23/javascript_shuffle.html">随机问题之--洗牌算法</a></p>
+        </section>
+        <section>
+            <h3>8、更多讨论</h3>
+            <!--<p><a href="http://www.imooc.com/article/1848">资料链接</a></p>-->
+        </section>
+        <section>
+            <p>还有没有更简单的洗牌算法</p>
+        </section>
+        <section>
+            <p>javascript sort()方法</p>
+        </section>
+        <section>
+            <h4>鸣谢</h4>
+            <h3>感谢观看</h3>
+            <p><small>BY ︱林健凡</small></p>
+        </section>
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+  // 以下为常见配置属性的默认值
+  // {
+  // 	controls: true, // 是否在右下角展示控制条
+  // 	progress: true, // 是否显示演示的进度条
+  // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+  // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+  // 	keyboard: true, // 是否启用键盘快捷键来导航
+  // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+  // 	center: true, // 是否将幻灯片垂直居中
+  // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+  // 	loop: false, // 是否循环演示
+  // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+  // 	fragments: true, // 全局开启和关闭碎片。
+  // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+  // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+  // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+  // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+  // }
+  // 初始化幻灯片
+  Reveal.initialize({
+    history: true,
+    dependencies: [
+      { src: '../plugin/markdown/marked.js' },
+      { src: '../plugin/markdown/markdown.js' },
+      { src: '../plugin/notes/notes.js', async: true },
+      { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+    ]
+  });
+</script>
+</body>
+</html>

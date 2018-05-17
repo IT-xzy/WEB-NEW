@@ -1,0 +1,226 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>【js-05】</h2>
+            <h4>get与post的区别?application json与form表单的区别?</h4>
+            <p>分享人：张乾</p>
+        </section>
+
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+
+        <section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <h3>GET和POST是什么？</h3>
+                <p style="text-align: left;"> GET和POST是 HTTP协议中的两种发送请求的方法。</p>
+            </section>
+            <section>
+                <h3>HTTP又是什么？</h3>
+                <p style="text-align: left;"> HTTP是hypertext transfer protocol（超文本传输协议）的简写，
+                    它是TCP/IP协议的一个应用层协议，用于定义WEB浏览器与WEB服务器之间交换数据的过程。</p>
+                <p style="text-align: left;"> 客户端连上服务器后，向服务器请求某个web资源，称之为客户端向服务器发送了一个HTTP请求。
+                    一个完整的HTTP请求包括如下内容：一个请求行、若干消息头、以及实体内容</p>
+                <p style="text-align: left;">请求方式有：POST、GET、HEAD、OPTIONS、DELETE、TRACE、PUT，常用的有： GET、 POST</p>
+            </section>
+            <section>
+                <h3>application json与form 是什么？</h3>
+                <p style="text-align: left;"> 协议规定 POST 提交的数据必须放在消息主体（entity-body）中，但协议并没有规定数据必须使用什么编码方式。
+                    实际上，我们完全可以自己决定消息主体的格式，只要最后发送的 HTTP 请求满足上面的格式就可以。</p>
+                <p style="text-align: left;"> Content-Type的类型有很多种：可以参考对照表。</p>
+                <p style="text-align: left;"> 这里常用的两种类型：application/x-www-form-urlencoded 和 application/json</p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <h3>get和post的区别？</h3>
+                <p style="text-align: left;">
+                    get: 从服务器上获取数据,将表单中数据的按照variable=value的形式，添加到action所指向的URL后面，并且两者使用“?”连接，
+                    而各个变量之间使用“&”连接。</p>
+                <p style="text-align: left;">
+                    post: 向服务器传送数据,将表单中的数据放在form的数据体中，按照变量和值相对应的方式，传递到action所指向URL。
+                </p>
+                <p style="text-align: left;">
+                    get 和 post只是一种传递数据的方式，get也可以把数据传到服务器，他们的本质都是发送请求和接收结果。只是组织格式和数据量上面有差别。
+                </p>
+            </section>
+            <section>
+                <h3>GET和POST长度的限制问题</h3>
+                <p style="text-align: left;">GET</br>
+                    &nbsp&nbsp&nbsp&nbsp1.GET是通过URL提交数据，因此GET可提交的数据量就跟URL所能达到的最大长度有直接关系。</br>
+                    &nbsp&nbsp&nbsp&nbsp2.实际上HTTP协议对URL长度是没有限制的；限制URL长度大多数是浏览器或者服务器的配置参数。</br>
+                    POST</br>
+                    &nbsp&nbsp&nbsp&nbsp1.同样的，HTTP协议没有对POST进行任何限制，一般是受服务器配置限制或者内存大小。</br>
+                    &nbsp&nbsp&nbsp&nbsp2.PHP下可以修改php.conf的postmaxsize来设置POST的大小。</br>
+                </p>
+            </section>
+            <section>
+                <h3>GET和POST的安全性</h3>
+                <p style="text-align: left;">
+                    1.GET是通过URL方式请求，可以直接看到，明文传输。</br>
+                    2.POST是通过请求header请求，可以开发者工具或者抓包可以看到，同样也是明文的。</br>
+                    3.GET请求会保存在浏览器历史纪录中，还可能会保存在Web的日志中。</br>
+                </p>
+            </section>
+            <section>
+                <h3>GET幂等，POST不幂等</h3>
+                <p style="text-align: left;">幂等是指同一个请求方法执行多次和仅执行一次的效果完全相同。</br>
+                    1.按照RFC规范，PUT，DELETE和安全方法都是幂等的。虽说是规范，但服务端实现是否幂等是无法确保的。</br>
+                    2.引入幂等主要是为了处理同一个请求重复发送的情况，比如在请求响应前失去连接，如果方法是幂等的，就可以放心地重发一次请求。
+                    这也是浏览器在后退/刷新时遇到POST会给用户提示的原因： POST语义不是幂等的，重复请求可能会带来意想不到的后果。</br>
+                </p>
+            </section>
+            <section>
+                <img src="./img/2018.5.13-A组-js5/get&post.png"/>
+            </section>
+            <section>
+                <h3>application/x-www-form-urlencoded</h3>
+                <p style="text-align: left;">这应该是最常见的 POST 提交数据的方式了。浏览器的原生 form 表单，如果不设置 enctype 属性，
+                    那么最终就会以 application/x-www-form-urlencoded 方式提交数据。请求类似于下面这样</br>
+                    <img src="./img/2018.5.13-A组-js5/form.png"/>
+                </p>
+            </section>
+            <section>
+                <h3>application/json</h3>
+                <p style="text-align: left;">application/json 这个 Content-Type 作为响应头大家肯定不陌生。
+                    实际上，现在越来越多的人把它作为请求头，用来告诉服务端消息主体是序列化后的 JSON 字符串。
+                    由于 JSON 规范的流行，除了低版本 IE 之外的各大浏览器都原生支持 JSON.stringify，
+                    服务端语言也都有处理 JSON 的函数，使用 JSON 不会遇上什么麻烦。
+                    JSON 格式支持比键值对复杂得多的结构化数据，这一点也很有用。
+                    Google 的 AngularJS 中的 Ajax 功能，默认就是提交 JSON 字符串。</br>
+                </p>
+            </section>
+            <section>
+                <img src="./img/2018.5.13-A组-js5/json1.png"/>
+                <img src="./img/2018.5.13-A组-js5/json2.png"/>
+                </section>
+            </section>
+
+        </section>
+
+        <section>
+            <h3>3.常见问题</h3>
+            <p></p>
+        </section>
+
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+
+        <section>
+            <h3>5.代码实战</h3>
+        </section>
+
+        <section>
+            <section>
+                <h3>6.拓展思考</h3>
+                <p>put 和 delete 请求</p>
+            </section>
+            <section>
+                <p style="text-align: left;"> PUT：上传指定的 URI 表示。</p>
+                <p style="text-align: left;"> DELETE：删除指定资源。</p>
+                <p style="text-align: left;"> PUT，DELETE操作是幂等的。</p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>7.参考文献</h3>
+            </section>
+            <section>
+                <p style="text-align: left;">参考一:<a href="https://www.zhihu.com/question/28586791">get和post区别？—— 知乎</a></p>
+                <p style="text-align: left;">参考二:<a href="http://www.w3school.com.cn/tags/html_ref_httpmethods.asp" target="_blank">HTTP 方法：GET 对比 POST</a></p>
+            </section>
+        </section>
+
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p><small>BY : 张乾</small></p>
+        </section>
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: '../plugin/markdown/marked.js' },
+            { src: '../plugin/markdown/markdown.js' },
+            { src: '../plugin/notes/notes.js', async: true },
+            { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>

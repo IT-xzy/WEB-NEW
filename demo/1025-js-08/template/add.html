@@ -1,0 +1,51 @@
+<div class="row add" ng-controller="addCtrl" data-ng-init="loadEdit()">
+    <div class="row panel panel-default">
+        <div class="panel-body">
+            新增/编辑<button type="button" class="btn btn-warning pull-right" ng-click="back()">返回</button>
+        </div>
+        <form class="panel-footer" name="editForm" novalidate>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 withInput">
+                <label for="title">标题名称</label>
+                <input type="text" class="form-control" maxlength="20" name="title" id="title" ng-model="modelEditTitle" required>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 withInput">
+                <label for="type">类&emsp;&emsp;型</label>
+                <div>
+                    <select class="form-control pull-left" name="type" id="type" ng-model="modelEditType" ng-options="type.id as type.name for type in types" required></select>
+                    <select class="form-control pull-right" name="industry" id="industry" ng-model="modelEditIndustry" ng-options="industry.id as industry.name for industry in industries" ng-show="type3()"></select>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 withInput">
+                <label for="url">链&emsp;&emsp;接</label>
+                <input type="text" class="form-control" name="url" id="url" ng-model="modelEditUrl" required>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 withInput">
+                <label for="content">说&emsp;&emsp;明</label>
+                <input type="text" class="form-control" name="content" id="content" ng-model="modelEditContent">
+            </div>
+            <button type="button" class="btn btn-default" ng-click="isUploadCollapsed = !isUploadCollapsed">图片上传</button>
+            
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 panel panel-default upload" uib-collapse="isUploadCollapsed">
+                <div class="panel-body">
+                    图片上传
+                    <button class="btn btn-primary pull-right" ng-click="upload()" ng-blur="popoverOpen = false" popover-placement="top" uib-popover="请选择图片" popover-animation="true" popover-trigger="'none'" popover-is-open="popoverOpen" popover-popup-close-delay="500">点击此处上传</button>
+                    <button class="btn btn-danger pull-right" ng-click="clear()">清空图片</button>
+                </div>
+                <div class="panel-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <img src="./img/loading.gif" id="preview">
+                        <div id="preview_text"></div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 uploadBlock">
+                        <div class="uploadButton" id="dropArea">
+                            <input type="file" accept="image/png, image/jpg" name="image" id="uploadImage" ng-model="modelEditImg" onchange="angular.element(this).scope().click()">
+                        </div>
+                        <div><uib-progressbar class="progress-striped active" type="{{type}}" value="progress" animate="false"><b ng-bind="progress + '%'"></b></uib-progressbar></div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success pull-right"  ng-click="online(); editSubmit(modelEditId)" ng-disabled="editForm.$invalid" ng-blur="popoverOpen1 = false" popover-placement="right" uib-popover="请上传图片" popover-animation="true" popover-trigger="'none'" popover-is-open="popoverOpen1" popover-popup-close-delay="500">立即上线</button>
+            <button type="button" class="btn btn-info pull-right"  ng-click="offline(); editSubmit(modelEditId)" ng-disabled="editForm.$invalid" ng-blur="popoverOpen2 = false" popover-placement="left" uib-popover="请上传图片" popover-animation="true" popover-trigger="'none'" popover-is-open="popoverOpen2" popover-popup-close-delay="500">存为草稿</button>
+        </form>
+    </div>
+</div>
