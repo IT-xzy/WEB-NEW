@@ -1,0 +1,194 @@
+<!Doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>葡萄藤PPT</title>
+	<link rel="stylesheet" href="../css/reveal/reveal.css">
+
+	<!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+	<link rel="stylesheet" href="../css/reveal/theme/ptt.css">
+
+	<!-- syntax highlighting 代码高亮主题 -->
+	<link rel="stylesheet" href="../lib/reveal/css/zenburn.css">
+
+	<!-- 打印和PDF输出样式 -->
+	<script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+
+        link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+	<style>
+		.reveal pre code {
+			background-color: #120;
+		}
+	</style>
+</head>
+<body>
+<img src="../img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+	<area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+	<div class="slides">
+		<section>
+			<h4>小课堂【萌新】</h4>
+			<h4>手机分辨率和网页中的PX是一回事吗？</h4>
+			<h4>分享人：段俊超</h4>
+		</section>
+		<section>
+			<p>1.背景介绍</p>
+			<p>2.知识解析</p>
+			<p>3.常见问题</p>
+			<p>4.解决方案</p>
+			<p>5.编码实战</p>
+			<p>6.扩展思考</p>
+			<p>7.参考文献</p>
+		</section>
+		<section>
+			<h3>1.背景介绍</h3>
+		</section>
+		<section>
+			首先，什么是viewport。
+			通俗的讲，移动设备上的viewport就是设备的屏幕上能用来显示我们的网页的那一块区域。
+			再具体一点，就是浏览器上用来显示网页的那部分区域，但viewport又不局限于浏览器可视区域的大小，
+			它可能比浏览器的可视区域要大，也可能比浏览器的可视区域要小。
+		</section>
+		<section>
+			什么是绝对长度单位？什么是相对长度单位？
+		</section>
+		<section>
+			<p>
+				绝对长度单位：in（inch英寸）、cm（厘米）、mm（毫米）、pt（磅）、pc（pica）。 in、cm、mm和实际中的常用单位完全相同。
+				pt是标准印刷上常用的单位，72pt的长度为1英寸。
+				pc也是印刷上用的单位，1pc的长度为12磅。绝对长度单位，虽然理解起来很容易，但是在网页的设计中很少用到。
+			</p>
+			<p>
+				相对长度单位：是网页设计中使用最多的长度单位，包括px、em、rem等。
+			</p>
+		</section>
+		<section>
+			<h3>2.知识解析</h3>
+		</section>
+		<section>
+			什么是屏幕尺寸、屏幕分辨率、屏幕像素密度？
+		</section>
+		<section>
+			<p>
+				屏幕尺寸:指屏幕的对角线的长度，单位是英寸，1英寸=2.54厘米。常见的屏幕尺寸有4.2、4.7、5.5、6.0等。
+			</p>
+			<P>
+				屏幕分辨率：指在横纵向上的像素点数，单位是px，1px=1个像素点。 一般以纵向像素*横向像素来表示一个手机的分辨率，
+				如1960*1080。(这里的1像素值得是物理设备的1个像素点)
+			</P>
+			<P>
+				屏幕像素密度：屏幕上每英寸可以显示的像素点的数量，单位是ppi，即“pixels per inch”的缩写。
+				屏幕像素密度与屏幕尺寸和屏幕分辨率有关，在单一变化条件下，屏幕尺寸越小、分辨率越高，像素密度越大，反之越小
+			</p>
+		</section>
+		<section>
+			<p>
+				如何计算像素密度？
+				计算像素密度的公式： 通过勾股定理算出对角线的分辨率，然后在除以屏幕的尺寸
+			</p>
+			<p>
+				viewport的概念
+				移动设备上的viewport就是设备的屏幕上能用来显示我们的网页的那一块区域 一般来讲，
+				移动设备上的viewport都是要大于浏览器可视区域
+				的，这是因为考虑到移动设备的分辨率相对于 桌面电脑来说都比较小，所以为了能在移动设备上正常显示那些传统的为桌面浏览器设计
+				的网站， 移动设备上的浏览器都会把自己默认的viewport设为980px或1024px（也可能是其它值，这个是由设备自己决定的）， 但带来
+				的后果就是浏览器会出现横向滚动条，因为浏览器可视区域的宽度是比这个默认的viewport的宽度要小的。
+			</p>
+		</section>
+		<section>
+			width	设置layout viewport 的宽度，为一个正整数，或字符串"width-device"
+			initial-scale	设置页面的初始缩放值，为一个数字，可以带小数
+			minimum-scale	允许用户的最小缩放值，为一个数字，可以带小数
+			maximum-scale	允许用户的最大缩放值，为一个数字，可以带小数
+			height	设置layout viewport 的高度，这个属性对我们并不重要，很少使用
+			user-scalable	是否允许用户进行缩放，值为"no"或"yes", no 代表不允许，yes代表允许
+		</section>
+		<section>
+			<h3>3.常见问题</h3>
+		</section>
+		<section>
+			当UI设计师给一个图的时候，为什么同是一个尺寸（px）而两者的大小不一样
+		</section>
+		<section>
+			<h3>4.解决方案</h3>
+		</section>
+		<section>
+			在Android中，规定以160dpi为基准，1dp=1px。如果密度是320dpi，则1dp=2px，以此类推。 Android和IOS都会通过转
+			换系数让控件适应屏幕的尺寸。一个按钮给了44*44dp的大小，在160dpi密度的 时候，
+			按钮就是44*44px大小；在320dpi密度的时候，按钮就是88*88px的大小。不需要我们去书写多套尺寸
+		</section>
+		<section>
+			<h3>5.编码实战</h3>
+		</section>
+		<section>
+			<p>6.扩展思考</p>
+			移动端常用的方案有哪些？
+		</section>
+		<section>
+			简单方法简单解决(使用PX)
+			代表：拉钩网
+			弹性布局
+			开发原则：文字流式，控件弹性，图片等比缩放
+		</section>
+		<section>
+			使用rem布局
+			代表：网易、淘宝
+			使用rem布局结合在html上根据不同分辨率设置不同font-size有很多不好解决的麻烦， 网易是如何解决的呢？最根本的原因在于，
+			网易页面上html的font-size不是预先通过媒介查询在css里定义好的， 而是通过js计算出来的。
+		</section>
+		<section>
+			<h4>鸣谢</h4>
+			<p>感谢大家观看</p>
+			<p>
+				By
+				<small style="vertical-align: middle">段俊超</small>
+			</p>
+		</section>
+	</div>
+</div>
+<script src="../lib/reveal/js/head.min.js"></script>
+<script src="../lib/reveal/reveal.js"></script>
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: false,
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
