@@ -1,0 +1,283 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+<img src="../img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>【JS-04】js同步异步以及回调函数</h2>
+            <p>萌新</p>
+            <p>分享人：吴泽华</p>
+        </section>
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.更多讨论</p>
+            <p>8.参考文献</p>
+        </section>
+
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+
+        <section>
+            <p style="text-align: left">
+            <h3>什么是同步，什么是异步?</h3>
+            </p>
+
+        </section>
+        <section>
+            <p style="text-align: left">
+                同步指的是一次只能完成一件任务。如果有多个任务，就必须排队，前面一个任务完成，再执行后面一个任务，以此类推。
+            </p>
+            <p style="text-align: left">
+                异步指的是每一个任务有一个或多个回调函数（callback），前一个任务结束后，不是执行后一个任务，而是执行回调函数，后一个任务则是不等前一个任务结束就执行，所以程序的执行顺序与任务的排列顺序是不一致的、异步的。</p>
+
+        </section>
+        <section>
+            <p style="text-align: left">
+            <h3>回调是什么?</h3>
+            </p>
+
+        </section>
+        <section>
+            <p style="text-align: left">
+                英语callback翻译过来称为回调，callback在英文中"call back"两个单词的合体，你应该有听过"call me back"的英文，字面理解就是有客户打来电话给你，可是你正在电话中，客户会留言说请你等会有空时候再"回电"给它，在编程中其实语境是一样的
+            </p>
+
+        </section>
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            <section>
+
+                <p style="text-align: left">
+                    字面上的理解，回调函数就是一个参数，将这个函数作为参数传到另一个函数里面，当那个函数执行完之后，再执行传进去的这个函数。这个过程就叫做回调。
+                </p>
+                <p style="text-align: left">主函数的事先干完，回头再调用传进来的那个函数</p>
+            </section>
+        </section>
+        <section>
+            <pre>
+            <code>
+//定义主函数，回调函数作为参数
+function A(callback) {
+    callback();
+    console.log('我是主函数');
+}
+
+//定义回调函数
+function B(){
+    setTimeout("console.log('我是回调函数')", 3000);//模仿耗时操作
+}
+
+//调用主函数，将函数B传进去
+A(B);
+
+//输出结果
+我是主函数
+我是回调函数
+            </code>
+            </pre>
+
+        </section>
+        <section>
+            <section>
+            <p>我们先定义了主函数和回调函数，然后再去调用主函数，将回调函数传进去。</p>
+            <p>定义主函数的时候，我们让代码先去执行callback()回调函数，但输出结果却是后输出回调函数的内容。这就说明了主函数不用等待回调函数执行完，可以接着执行自己的代码。</p>
+            </section>
+        </section>
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            <section>
+                <h4>1.为什么在JavaScript中会经常见到回调？</h4>
+            </section>
+            <section>
+                <h4>2.有哪些常见异步回调函数？</h4>
+            </section>
+        </section>
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            <h4>1.为什么在JavaScript中会经常见到回调？</h4>
+            <p style="text-align: left">
+            <ul>
+                <li>
+                    javascript是单线程语音，在浏览器端只有一个使用者，但是事件或者ajax要求不能阻塞其他程序的进行。
+                </li>
+                <li>
+                    其一开始就是CPS风格设计事件异步处理的模型，用于配合异步回调函数的执行使用
+                </li>
+            </ul>
+            </p>
+        </section>
+        <section>
+            <pre>
+            <code>
+//直接风格
+                function func(x){
+                ruturn x
+                }
+            </code>
+            </pre>
+            <pre>
+            <code>
+//cps风格
+                function func(x,cb){
+                cb(x)
+                }
+            </code>
+            </pre>
+        </section>
+        <section>
+            <h4>2.有哪些常见的异步回调函数？</h4>
+            <p>1.点击事件
+                <br/> 2.Ajax请求
+                <br/> 3.定时器
+            </p>
+        </section>
+        <!--<section>-->
+            <!--<h4>浏览器处理点击事件的过程</h4>-->
+            <!--<p>-->
+            <!--<p>浏览器开启事件触发线程，等待用户动作，事件触发线程解析为响应事件，转移到javascript引擎线程，排队等候，等待javascript引擎的处理。</p>-->
+            <!--</p>-->
+            <!---->
+        <!--</section>-->
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+            <h4>异步函数有哪些优点和缺点？</h4>
+            <p>优点：</p>
+            <p style="text-align: left"> a）对CPU的使用率高。
+                <br>
+                b）不用考虑线程间同步互斥问题。
+                <br>
+                缺点：
+                <br>
+                a）实现较复杂，要把所有会导致阻塞的操作转化为异步操作。
+                <br>
+                b）并发性不好，在有的事件需要长时间占用CPU处理的情况下，其他事件会长时间等待得不到处理。
+                <br>
+                c）在多CPU时不如多线程高效。</p>
+        </section>
+        <section>
+            <h3>7.更多讨论</h3>
+        </section>
+        <section>
+            <h3>8.参考文献</h3>
+        </section>
+        <section>
+            <p>参考一：
+                <a href="https://www.cnblogs.com/woodyblog/p/6061671.html">js的单线程和异步</a>
+            </p>
+            <p>参考一：
+                <a href="http://blog.csdn.net/u014787301/article/details/51984998">深入理解javascript异步编程障眼法&&h5 web worker实现多线程</a>
+            </p>
+            <p>参考一：
+                <a href="https://www.cnblogs.com/sprying/archive/2013/05/26/3100639.html">谈谈JavaScript的异步实现- 小方- 博客园</a>
+            </p>
+        </section>
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>吴泽华</small>
+            </p>
+        </section>
+
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+        //        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [{
+            src: './plugin/markdown/marked.js'
+        },
+            {
+                src: './plugin/markdown/markdown.js'
+            },
+            {
+                src: './plugin/notes/notes.js',
+                async: true
+            },
+            {
+                src: './plugin/highlight/highlight.js',
+                async: true,
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+
+</html>

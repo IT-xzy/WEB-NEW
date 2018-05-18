@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>PPT</title>
+
+    <link rel="stylesheet" href="bootstrap/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="bootstrap/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="bootstrap/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>如何使用sass?</h2>
+                <h3>小课堂</h3>
+                <p>分享人:火建强</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <ul>
+                <p>1.什么是sass</p>
+                <p>2.安装rub</p>
+                <p>3.如何编译，以及编译的几种方式</p>
+                <p>4.各有什么特点</p>
+                <p>5.编码实战</p>
+                <p>6.更多讨论</p>
+                </ul>
+            </section>
+            <section>
+                <h3>1.什么是sass</h3>
+            </section>
+            <section>
+                <p>Sass 是一款强化 CSS 的辅助工具，它在 CSS 语法的基础上增加了变量 (variables)、嵌套 (nested rules)、混合 (mixins)、导入 (inline imports) 等高级功能，这些拓展令
+                    CSS 更加强大与优雅。使用 Sass 以及 Sass 的样式库（如 Compass）有助于更好地组织管理样式文件，以及更高效地开发项目。</p>
+            </section>
+            <section>
+                    <h3>SCSS 与 Sass 异同</h3><p>SCSS 是 Sass 3 引入新的语法，其语法完全兼容 CSS3，并且继承了 Sass 的强大功能。也就是说，任何标准的 CSS3 样式表都是具有相同语义的有效的 SCSS 文件。另外，SCSS 还能识别大部分 CSS hacks（一些 CSS 小技巧）和特定于浏览器的语法，</p>
+                    <img src="sass/sass.png" alt="">
+                </section>
+            <section>
+                <h3>有哪些常用的属性</h3>
+                <p>1、变量$</p>
+                <p>首先是变量($)用美元符号，用美元符号，而不用其他符号，是因为，在css中，美元符号没有任何实际意义，而且还很美观</p>
+                <p>视情况来使用</p>
+            </section>
+            <section>
+                <p>变量的引用</p>
+                <img src="sass/变量.png" alt="">
+                <p>起名不能使用属性名，例如，height、width等等</p>
+            </section>
+            <section>
+                <h3>2、嵌套</h3>
+                <img src="sass/5c4185b1-112b-4815-ad19-3d87d50708b8.png" alt="">
+            </section>
+            <section>
+                <h3>3、继承</h3>
+                <p>继承使用@extend</p>
+                <img src="sass/继承.png" alt="">
+            </section>
+            <section>
+                <h3>2.第一步
+                    <b>安装rub</b>
+                </h3>
+                <a href="http://www.ruby-lang.org/en/downloads/">地址</a>
+            </section>
+            <section>
+                <h3>3.如何编译，编译的几种方式</h3>
+            </section>
+            <section>
+                首先需要监听scss文件
+                <img src="sass/监听.png " alt="">
+            </section>
+            <section>
+                <a href="https://blog.csdn.net/soindy/article/details/68064863">四种编译方式</a>
+                <ul>
+                <li>嵌套输出方式 nested 它是默认值</li>
+                <li>展开输出方式 expanded
+                </li>
+                <li>紧凑输出方式 compact
+                </li>
+                <li>压缩输出方式 compressed 生产环境当中一般使用这个</li>
+                </ul>
+            </section>
+            <section>
+                <p>嵌套输出方式 nested</p>
+                <img src="sass/net.png" alt="">
+            </section>
+            <section>
+                <p>展开输出方式 expanded</p>
+                <img src="sass/ex.png" alt="">
+                <p>大括号另起一行</p>
+            </section>
+            <section>
+                <p>紧凑输出方式 compact</p>
+                <img src="sass/com.png" alt="">
+            </section>
+            <section>
+                <p>压缩输出方式 compressed</p>
+                <img src="sass/压缩.png" alt="">
+                <p>建议</p>
+            </section>
+            <section>
+                <h3>自动化编译</h3>
+                <a href="http://koala-app.com/index-zh.html">考拉</a>
+                <img src="sass/1080514-20170715023014790-137207998.gif" alt="">
+            </section>
+            <section>
+                <h3>5.编码实
+                    <a href="sass/ceshi.html">战</a>
+                </h3>
+            </section>
+            <section>
+                <h3>6.更多讨论</h3>
+                <p>less和sass有什么区别，学那个</p>
+            </section>
+            <section>
+                <h3>1.编译环境不一样</h3>
+                <p>Sass的安装需要Ruby环境，是在服务端处理的，而Less是需要引入less.js来处理Less代码输出css到浏览器，也可以在开发环节使用Less，然后编译成css文件，直接放到项目中，也有 Less.app、SimpleLess、CodeKit.app这样的工具，也有在线编译地址。</p>
+            </section>
+            <section>
+                <h3>2.变量符不一样</h3>
+                <p>Less是@，而Scss是$，而且变量的作用域也不一样。</p>
+            </section>
+            <section>
+                <h3>4.输出设置</h3>
+                <p>Less没有输出设置，Sass提供4中输出选项：nested, compact, compressed 和 expanded。</p>
+            </section>
+            <section>
+                <h3>5.Sass和Less的工具库不同</h3>
+                <p>Sass有工具库Compass, 简单说，Sass和Compass的关系有点像Javascript和jQuery的关系,Compass是Sass的工具库。在它的基础上，封装了一系列有用的模块和模板，补充强化了Sass的功能。</p>
+                <p>Less有UI组件库Bootstrap,Bootstrap是web前端开发中一个比较有名的前端UI组件库，Bootstrap的样式文件部分源码就是采用Less语法编写。</p>
+            </section>
+            <section>
+                <p>sass和less没有什么大的区别，只要会css，sass、less都会写</p>
+            </section>
+            <section>
+                <h3>7.参考文献</h3>
+                <ul>
+                <p>参考一:
+                    <a href="https://www.sass.hk/install/">官网</a>
+                </p>
+                <p>参考二:
+                    <a href="http://www.sohu.com/a/127625441_472885">CSS 预处理语言的模块化实践</a>
+                </p>
+                <p>参考三:
+                    <a href="http://www.ruanyifeng.com/blog/2012/06/sass.html">SASS用法指南（安装）</a>
+                </p>
+                <p>参考四:
+                        <a href="https://blog.csdn.net/soindy/article/details/68064863">四种编译方式</a>
+                </p>
+                <p>参考五:
+                    <a href="https://www.zhihu.com/question/22285654">less和sass现状</a>
+                </p>
+                </ul>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    <small>武汉-web-12-火建强</small>
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="bootstrap/head.min.js"></script>
+    <script src="bootstrap/reveal.js"></script>
+
+    <script>
+
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [
+                { src: './plugin/markdown/marked.js' },
+                { src: './plugin/markdown/markdown.js' },
+                { src: './plugin/notes/notes.js', async: true },
+                { src: './plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+            ]
+        });
+    </script>
+</body>
+
+</html>
