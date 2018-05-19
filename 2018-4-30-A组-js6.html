@@ -1,0 +1,405 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>【js-task06】CONTROLLER AS引入的意义及方法？</h2>
+            <h3>小课堂</h3>
+            <p>分享人：张峻</p>
+        </section>
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <p style="text-align: left">在Angular中，有几种不同的方式来声明和使用控制器。</p>
+                <p style="text-align: left">在最开始的时候我们对于angular在view上的绑定都必须使用直接的scope对象，对于controller来说我们也得必须注入$scope这个service</p>
+                <p style="text-align: left">angularjs从1.2版本开始带来了新语法Controller as。</p>
+                <p style="text-align: left">它使我们不需要把$scope作为依赖项。简洁了controller，同时我们可以使用this在控制器上直接添加我们想要的任何属性。</p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <h4>$scope和this究竟是什么</h4>
+                <p style="text-align: left">从引用方式，作用范围，对象对比三个方面做两者的比较：</p>
+            </section>
+            <section>
+                <h4 style="text-align: left">引用方式：</h4>
+                <p style="text-align: left;font-size: 22px;">1、$scope 只需要在注入中声明，后面就可以直接在附加数据对象：</p>
+                <pre>
+                    <code>
+controller:   
+
+var app = angular.module("myApp",[]);
+app.controller("testCtrl",function($scope) {
+    $scope.test = "一个例子"; //在$scope对象中加入test
+})
+                    </code>
+                </pre>
+                <pre>
+                    <code>
+html:          
+
+<div ng-controller="testCtrl">
+    {{test}}  // "一个例子"
+</div>                        
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <p style="text-align: left;font-size: 22px;">2、this 则采用了controller as(需要版本为ng 1.2+)写法：</p>
+                <pre>
+                    <code>
+controller:   
+
+app.controller("testCtrl",function() {
+    var this = vm;
+    vm.test = "一个例子"; //在this对象中加入test
+})                        
+                    </code>
+                </pre>
+                <pre>
+                    <code>
+html:
+
+<div ng-controller="testCtrl as vm">
+    {{vm.test}}  // "一个例子"
+</div>      
+<!-- vm为自己为当前控制器作的一个简略记号，也可以写作 testCtrl as b,
+    后面变量便可以在b中引出 如b.test -->                 
+                    </code>
+                </pre>
+                
+            </section>
+            <section>
+            <p style="text-align: left;font-size: 22px;">看到上面的用法是不是有点眼熟，让我们回忆一下js中的构造函数和实例：</p>
+            <pre>
+                <code>
+var MyClass = function(){
+    this.test = "一个例子";
+}           
+
+var myInstance = new MyClass();
+
+// 现在我们可以使用myInstance示例来访问MyClass的属性和方法。
+myInstance.test;   // "一个例子"
+                </code>
+            </pre>
+             
+            
+            </section>
+            <section>
+                <pre>
+                    <code>
+controller:   
+
+app.controller("testCtrl",function(vm) {
+    var this = vm;
+    vm.test = "一个例子"; //在this对象中加入test
+})                        
+
+html:
+
+<!-- vm为自己为当前控制器作的一个简略记号，也可以写作 testCtrl as b,
+    后面变量便可以在b中引出 如b.test -->
+<div ng-controller="testCtrl as vm">
+    {{vm.test}}  // "一个例子"
+</div>                       
+                    </code>
+                </pre>
+                <p style="text-align: left;font-size: 22px;">
+                app.controller('testCtrl',function(){})就是在定义一个名称为testCtrl的构造函数，testCtrl as vm就是在实例化，生成testCtrl的实例vm，然后就可以在vm中访问testCtrl里定义的变量和函数。</p>
+                <b style="text-align: left;font-size: 22px;">但是，Controller as的语法是将controller绑定了当前的$scope，而不是都绑向同一个$scope变量。</b>
+            </section>
+            <section>
+                <h4 style="text-align: left">作用范围：</h4>
+                <p style="text-align: left;font-size: 22px;">1、$scope 中的变量或数据对象我们可以全部拿到，并且上级控制器中的变量也可以在下级控制器中被获取到：</p>
+                <pre>
+                    <code style="height: 300px;">
+controller:   
+
+app.controller("parentCtrl",function($scope) {
+    $scope.test = "测试";
+    $scope.cover = "覆盖测试";
+})
+
+app.controller("childCtrl",function($scope) {
+    $scope.childTest = $scope.test;
+    $scope.cover = "子覆盖测试";
+})
+
+html:
+
+<div ng-controller="parentCtrl">
+    <p>Parent-test : {{test}}</p> 
+    <p>Parent-cover : {{cover}}</p>
+    <div ng-controller="childCtrl">
+        <p>Child-test : {{childTest}}</p>  
+        <p>Child-cover : {{cover}}</p>
+    </div>
+</div>                            
+                    </code>
+                </pre>
+                <p style="text-align: left;font-size: 22px;"> 我在父控制器 parentCtrl 中声明的test变量并未在子控制器 childCtrl 中做声明，而在 childCtrl 作用范围内的 child-test 中，test 却输出了”测试”；基于此我再做了一次覆盖测试，检测结果显示，当父子控制器同时存在相同的变量时， 父子控制器各自范围内的值不会被覆盖；</p>
+            </section>
+            <section>
+                <p style="text-align: left;font-size: 22px;">2、this 中的变量则只适用于当前控制器：</p>
+                <pre>
+                    <code>
+controller:   
+
+app.controller("parentCtrl",function($scope) {
+    var vm = this;
+    vm.test = "测试";
+    vm.cover = "覆盖测试";
+})
+
+app.controller("childCtrl",function($scope) {
+    var vm = this;
+    vm.cover = "子覆盖测试";
+})
+
+html:
+
+<div ng-controller="parentCtrl as parent">
+    <p>Parent-test : {{parent.test}}</p>    // "测试"
+    <p>Parent-cover : {{parent.cover}}</p>  // "覆盖测试"
+    <div ng-controller="childCtrl as child">
+        <p>Child-test : {{child.test}}</p>
+        <p>Child-cover : {{child.cover}}</p>  // "子覆盖测试"
+    </div>
+    <div ng-controller="childCtrl as parent">
+        <p>Child-test : {{parent.test}}</p>
+        <p>Child-cover : {{parent.cover}}</p>  // "子覆盖测试"
+    </div>
+</div>
+                    </code>
+                </pre>
+<p style="text-align: left;font-size: 22px;">在使用this的时候，各层级变量的命名空间是平行的状态，模板html中只可以拿到当前控制器下声明的变量。</p>
+            </section>
+            <section>
+                <h4 style="text-align: left">对象对比：</h4>
+                <p style="text-align: left;font-size: 22px;">vm与$scope实际上是不相等的。</p>
+                <pre>
+                    <code style="height: 160px;">
+app.controller("parentCtrl",function($scope) {
+    var vm = this;
+    $scope.abc = function() {
+        console.log(vm === $scope)
+    }
+})
+                    </code>
+                </pre>
+                <p style="text-align: left;font-size: 22px;">实际结构是</p>
+                <pre>
+                    <code style="height: 130px;">
+$scope: {
+    ...,
+    vm: Constructor,
+    ...
+}                             
+                    </code>
+                </pre>
+                <p style="text-align: left;font-size: 22px;">$scope中包含了一个变量vm: Constructor</p>
+            </section>
+            <section>
+                <h4 style="text-align: left;">由此我们可以得出结论：</h4>
+                <p style="text-align: left;font-size: 22px;">$scope 当控制器在写法上形成父子级关系时，子级没有的变量或方法父级会自动强加在子级身上，子级可以任意获取到当前父级的变量或方法，该种形式是不可逆的，即父级无法通过$scope获取到子级的任意变量或方法。
+                <br>
+                <br>
+                this 则像一个独立的个体，所有东西都是由自己管理，也就不存在父子级变量混淆关系了。
+                <br>
+                <br>
+                两种方式其实在性能上并无优劣之分，只有代码习惯的选择。
+                <br>
+                <br>
+                这或许可以取决于我们观察的角度，其实可以理解为私用跟公用的区别！</p>
+            </section>
+        </section>
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            <section>
+                <h4>controller as有哪些应用方式？</h4>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>4.解决方案</h3>
+            </section>
+            <section>
+                <p style="text-align: left;font-size: 22px;">在html中：</p>
+                <pre>
+                    <code>
+<div ng-controller="myCtrl as ctrl">
+    ...
+</div>                        
+                    </code>
+                </pre>
+                <p style="text-align: left;font-size: 22px;">在ui-rooter中：</p>
+                <pre>
+                    <code>
+$stateProvider
+    .state('myState', {
+        controller: 'myCtrl',
+        controllerAs: 'ctrl'
+    }) 
+
+// 或者  
+$stateProvider
+    .state('myState', {
+        controller: 'myCtrl as ctrl'
+    })                      
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <p style="text-align: left;font-size: 22px;">在directive中：</p>
+                <pre>
+                    <code>
+app.directive('myDirective', function () {
+    return {
+      restrict: 'EA',
+      replace: true,
+      scope: true,
+      templateUrl: 'xx.html',
+      controllerAs: 'vm', 
+      controller: function () {
+            var vm = this;        
+            console.log(vm);
+        } 
+      link: function () {}
+    };
+});                      
+                    </code>
+                </pre>
+            </section>
+        </section>
+
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+        <section>
+            <section>
+             <h3>6.扩展思考</h3>
+            </section>
+            <section>
+                <h4>为什么使用controllerAs？</h4>
+            </section>
+            <section>
+                <p style="text-align: left;font-size: 22px;">1、$scope是基于原型进行继承的，比如说当我们查找一个user对象时，angular会先查找当前$scope有没有user，如果没有的话就继续往上层$scope查找，直至$rootScope。
+                <img src="img/2018-4-30-A组-js6/1.png" alt="">   
+                <br>
+                而在controllerAs中，假设我们使用controllerAs
+                <br>
+                <b>UserCtrl as ctrl</b>
+                <br>
+                angular将控制器自身挂载在$scope上，user也变为ctrl.user，就不会存在上述的一层层查找的过程。在很多情况下，比如在嵌套的路由中，上述$scope基于原型的查找，有时候确实会提供一些便利，但这些都可以用服务来实现，也应该使用服务来实现。
+                </p>
+                <p style="text-align: left;"><img src="img/2018-4-30-A组-js6/2.png" alt="">  </p>
+            </section>
+            <section>
+                <p style="text-align: left;font-size: 22px;">2、大家在初次接触angular时一定会被推荐过将所有数据都绑定在$scope的一个对象上（比如$scope.data）来避免一些js中值的复制和对象的引用可能会造成的一些问题，而使用controllerAs后就不需要这一步了。</p>
+                <p style="text-align: left;font-size: 22px;">3、因为不使用$scope也就不能使用$on,$watch,$emit之类的方法，这些方法本来就应该尽量少用，这样就可以更好的控制项目中的代码。</p>
+                <p style="text-align: left;font-size: 22px;">4、便于新手学习，刚开始学习angular时对于$scope这个东西往往无法理解，而用controllerAs vm之后，则将vm（view model的简写）作为视图模型则比较好理解。</p>
+            </section>
+        </section>
+
+        <section>
+           <h3>7.参考文献</h3> 
+        </section>
+        <section>
+            <p>参考一：<a href="https://blog.csdn.net/baidu_31333625/article/details/53611208">AngularJS : this与$scope数通的暴露与通讯</a></p>
+            <p>参考二：<a href="http://echizen.github.io/tech/2015/09-24-and-this">angularjs 中 controller as 引入的意义</a></p>
+            <p>参考三：<a href="https://segmentfault.com/a/1190000006624138?_ea=1121830">使用controllerAs代替$scope</a></p> 
+        </section>
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p><small>BY :熊凡 | 张峻 </small></p>
+        </section>
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: './plugin/markdown/marked.js' },
+            { src: './plugin/markdown/markdown.js' },
+            { src: './plugin/notes/notes.js', async: true },
+            { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>
