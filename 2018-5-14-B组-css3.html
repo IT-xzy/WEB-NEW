@@ -1,0 +1,249 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+   
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h3>【CSS-task1】margin与padding用哪个好？</h3>
+            <p>分享人：杨亚洲</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <h3>标准盒模型</h3>
+                <img src="./img/1019-css-1/one.jpg" alt="">
+            </section>
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <h3>IE盒模型</h3>
+                <img src="./img/1019-css-1/two.jpg" alt="">
+            </section>
+         
+            <section class="present" style="top: 148.5px; display: block;">
+                <p>今天的小课堂，只需要了解标准盒模型，盒模型由内至外分别是content、padding、border、margin，
+                    其中可以使用百分比的有content,padding,margin，边框border则不可以用%单位
+                </p>
+            </section>
+            <section class="present" style="top: 148.5px; display: block;">
+                <p>
+                    元素水平分为3种：block水平，inline-block水平，inline水平，3种元素各有不同的表现。
+                </p>
+                <p>
+                        block水平默认情况下，水平竖直方向上的padding,margin有效。
+
+                </p>
+                <p>
+
+                    inline元素水平排列，竖直方向上的padding,margin无效。
+                </p>
+                <p>
+                    inline-block水平元素，水平竖直方向上的padding,margin有效。
+
+                </p>
+            </section>
+
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p>
+               简单讲讲margin与padding的语法，即一个值，两个值，三个值这些大家都应该明白了（DEMO1）
+             
+            </p>
+            
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p>
+                 今天主要讲讲别的东西，margin与padding的区别(个人理解)
+            </p>
+            <p>
+              区别一：pdding能增加元素的容器的可视区域，margin则会减少默认块级元素的可视区域(demo2)
+            </p>
+            <p>
+              区别二：margin有负值，padding不能使用负值。（demo1验证）
+            </p>
+        </section>
+        <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h4>margin与padding的%值，真的是继承父级width吗？</h4>
+            <p>请看demo3</p>
+            <p>结论，未使用绝对定位（固定定位）的元素内外边距的%值都是继承父级盒子，如果是绝对定位(固定定位)则是根据其继承关系的定位元素，没有就是根据html元素为基准</p>
+        </section>
+        <section style="text-align: left; top: 84px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h4>关于margin负值，padding不能负值</h4>
+            <p>Dome1演示</p>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>margin外边距重叠</h4>
+                <p>margin外边距重叠的种类</p>
+                <p>margin外边距重叠的前提1、正常的块级元素，（非浮动和绝对定位元素)</p>
+                <p>margin外边距重叠的前提2、(writing-model为正常流)</p>
+                <p>如何消除margin外边距重叠</p>
+        </section>
+        <section class="present" style="top: 148.5px; display: block;">
+                <p>（demo4）</p>
+        </section>
+        <section class="present" style="top: 148.5px; display: block;">
+                <h4>消除margin重叠的规则</h4>
+                <p>
+                    父级与子级消除margin重叠
+                </p>
+                <p>父级BFC化</p>
+                <p>父级有padding</p>
+                <p>父级有border</p>
+                <p>父级与子级之间没有inline水平元素</p>
+                <p>父级与最后一个子级之间发生margin-bottom重叠，父级没有设置height，max-height，min-height的限制</p>
+        </section>
+        <section class="present" style="top: 148.5px; display: block;">
+                <h4>空块级元素的消除重叠</h4>
+                <p>该元素没有border</p>
+                <p>该元素没有padding</p>
+                <p>该元素没有height，min-height的限制</p>
+                <p>该元素没有inline元素</p>
+                
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>margin:auto(DEMO5)</h4>
+                <h4>margin:auto的表现</h4>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>margin：负值的应用（demo6）</h4>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>3.常见问题</h3></section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h3>margin：auto为什么竖直方向不垂直居中</h3>
+            <p>是真的不起作用？还是height的关系（DEMO7）</p>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>4 解决方案</h3></section>
+
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+        </section>
+
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>5.编码实战</h3></section>
+        </section>
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <h3 style="text-align: center">6.扩展思考</h3>
+                <p>inline水平元素竖直方向上的padding的真的不生效？</p>
+
+            </section>
+            <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                <p>%值真的是继承父级的width</p>
+                <p></p>
+            </section>
+            <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                <p></p>
+                <p></p>
+            </section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h3>7.参考文献</h3>
+            <p>参考1：<a href="http://www.jb51.net/article/75985.htm">张鑫旭大神的博客</a></p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>8 更多讨论</h3>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            <p>讨论点1：margin与padding何时使用呢？</p>
+            <p>讨论点2：margin与padding配合使用的效果在哪里？(等高布局)</p>
+            <p></p>
+        </section>
+       
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>BY : 杨亚洲</small>
+            </p>
+        </section>
+
+    </div>
+<div class="backgrounds"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background stack present" data-loaded="true" style="display: block;"><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up enabled" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+               
+                语法：
+                return[()[expression][]];
+                可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。
+            
+                用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression 被省略，
+                    或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+            </div></div>
+
+            <script src="./lib/reveal/js/head.min.js"></script>
+            <script src="./lib/reveal/reveal.js"></script>
+
+<script>
+
+
+    // 初始化幻灯片
+
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: './plugin/markdown/marked.js' },
+            { src: './plugin/markdown/markdown.js' },
+            { src: './plugin/notes/notes.js', async: true },
+            { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+
+
+</script>
+
+</body>
+</html>
