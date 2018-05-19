@@ -1,0 +1,213 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+	<div class="slides">
+		<section>
+			<h3>【js-07】简述angular中constant和$filter的用法</h3>
+			<h4>深圳小课堂</h4>
+			<h4>分享人：张峻</h4>
+		</section>
+		<section>
+			<p>目录</p>
+			<p>1.背景介绍</p>
+			<p>2.知识剖析</p>
+			<p>3.常见问题</p>
+			<p>4.解决方案</p>
+			<p>5.编码实战</p>
+			<p>6.扩展思考</p>
+			<p>7.参考文献</p>
+			<p>8.更多讨论</p>
+		</section>
+		<section>
+			<h3>1.背景介绍</h3>
+		</section>
+		<section>
+			<p style="text-align: left">我们在使用AngularJS时常常需要在不同的控制器中使用到相同的数据，或者是有一些数据需要经常用到的，这时就需要一个全局常量 constant ，使用的时候只需要在控制器注入即可。</p>
+			<p style="text-align: left">假如我们需要把时间戳格式化成某种特定日期格式或者把数据转换大小写等等就需要用到 $filter 即过滤器，是AngularJS中用来处理数据以更好的方式展示给用户。</p>
+		</section>
+		<section>
+			<h3>2.知识剖析</h3>
+		</section>
+		<section>
+			<section>
+				<h4>constant</h4>
+				<p style="text-align: left">constant是一个非常有用的service（服务），它经常被用来在指令中提供默认配置。因此如果你正在创建一个指令，并且你想要在给指令传递可选参数的同时进行一个默认配置，一个constant就是一个好办法。作为一个constant，我们放入其中的值将不会改变。constant service 基本上会是一个基本类型的值或者是一个对象。</p>
+			</section>
+			<section>
+				<p style="text-align: left">下面我们来举个例子：</p>
+				<pre>
+					<code style="background-color: #1c1e20">
+var app = angular.module('app', []);
+ 
+app.constant('name', 'chentietou');
+ 
+app.controller('ctrl', function ($scope, name) {
+  $scope.myName = name;
+});
+
+<!-- html -->
+{{myName}}  // chentietou
+					</code>
+				</pre>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h4>filter</h4>
+				<p style="text-align: left">过滤器（filter）正如其名，作用就是接收一个输入，通过某个规则进行处理，然后返回处理后的结果。主要用在数据的格式化上，例如获取一个数组中的子集，对数组中的元素进行排序等。ng内置了一些过滤器，它们是：currency(货币)、date(日期)、filter(子串匹配)、json(格式化json对象)、limitTo(限制个数)、lowercase(小写)、uppercase(大写)、number(数字)、orderBy(排序)。总共九种。</p>
+				<p style="text-align: left">除此之外还可以自定义过滤器，这个就强大了，可以满足任何要求的数据处理。过滤器的内容非常简单，只要明白了内置的如何使用，自己如何定义一个filter就OK了</p>
+			</section>
+			<section>
+				<h4>filter的两种使用方法:</h4>
+				<p style="text-align: left">1. 在模板中使用filter</p>
+				<pre>
+					<code>
+<!-- 我们可以直接在{{}}中使用filter，跟在表达式后面用 | 分割，语法如下： -->
+
+{{ expression | filter }}
+
+<!-- 也可以多个filter连用，上一个filter的输出将作为下一个filter的输入 -->
+
+{{ expression | filter1 | filter2 | ... }}
+
+<!-- filter可以接收参数，参数用 : 进行分割，如下： -->
+
+{{ expression | filter:argument1:argument2:... }}
+
+<!-- 除了对{{}}中的数据进行格式化，我们还可以在指令中使用filter，
+	例如先对数组array进行过滤处理，然后再循环输出： -->
+
+<span ng-repeat="a in array | filter "></span>
+					</code>
+				</pre>
+			</section>
+			<section>
+				<p style="text-align: left">2. 在controller和service中使用filter</p>
+				<pre>
+					<code>
+<!-- 我们的js代码中也可以使用过滤器，方式就是我们熟悉的依赖注入，
+	例如我要在controller中使用currency过滤器，
+	只需将它注入到该controller中即可，代码如下：-->
+
+app.controller('test',function($scope,currencyFilter){
+    $scope.num = currencyFilter(123534);  
+}
+<!-- 在模板中使用{{num}}就可以直接输出$123,534.00了！在服务中使用filter也是同样的道理。 -->
+
+<!-- 此时你可能会有疑惑，如果我要在controller中使用多个filter，
+	难道要一个一个注入吗，这岂不太费劲了？
+	其实我们只需要使用ng提供了一个$filter服务就可以来调用所需的filter，
+	你只需注入一个$filter就够了，使用方法如下： -->
+
+$filter('过滤器名称')(需要过滤的对象,参数1,参数2,...); 
+
+app.controller('testC',function($scope,$filter){
+    $scope.num = $filter('currency')(123534);
+　　$scope.date = $filter('date')(new Date());  
+}
+					</code>
+				</pre>
+			</section>
+		</section>
+		<section>
+			<h3>3.常见问题</h3>
+		</section>
+		<section>
+			<p>如何使用angular中constant和$filter</p>
+		</section>
+		<section>
+			<h3>4.解决方案</h3>
+		</section>
+
+		<section>
+			<h3>5.编码实战</h3>
+		</section>
+		<section>
+			<a href="./demo/1030-js-7/demo.html" target="_blank">demo</a>
+		</section>
+		<section>
+			<h3>6.扩展思考</h3>
+		</section>
+		<section>
+			<h4>如何自定义过滤器</h4>
+		</section>
+		<section>
+			<h3>7.参考文献</h3>
+		</section>
+		<section>
+			<p style="text-align: left">参考一：<a href="https://www.cnblogs.com/lvdabao/p/3475426.html" target="_blank">走进AngularJs(七) 过滤器（filter）</a></p>
+			<p style="text-align: left">参考二：<a href="https://www.tuicool.com/articles/vmmeQvj" target="_blank">AngularJS的Filter用法详解</a></p>
+			<p style="text-align: left">参考三：<a href="https://www.cnblogs.com/lyy-2016/p/5691499.html" target="_blank">angularJS constant和value</a></p>
+		</section>
+		<section>
+			<h3>8.更多讨论</h3>
+		</section>
+		<section>
+			<h4>感谢观看</h4>
+			<small>BY : 张峻 </small>
+		</section>
+	</div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+  // 以下为常见配置属性的默认值
+  // {
+  // 	controls: true, // 是否在右下角展示控制条
+  // 	progress: true, // 是否显示演示的进度条
+  // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+  // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+  // 	keyboard: true, // 是否启用键盘快捷键来导航
+  // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+  // 	center: true, // 是否将幻灯片垂直居中
+  // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+  // 	loop: false, // 是否循环演示
+  // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+  // 	fragments: true, // 全局开启和关闭碎片。
+  // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+  // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+  // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+  // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+  // }
+  // 初始化幻灯片
+  Reveal.initialize({
+    history: true,
+    dependencies: [
+      { src: './plugin/markdown/marked.js' },
+      { src: './plugin/markdown/markdown.js' },
+      { src: './plugin/notes/notes.js', async: true },
+      { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+    ]
+  });
+</script>
+</body>
+</html>
