@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>【CSS-task10】请描述 BFC(Block Formatting Context) 及其如何工作</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/pdf.css' : 'css/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        section p {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>【CSS15】</h2>
+            <h3>BFC及其如何工作</h3>
+            <h4>分享人：陈星宇</h4>
+        </section>
+        <section>
+            <h3>目录</h3>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <h2>1.背景介绍</h2>
+        </section>
+        <section>
+            <p>在讲 BFC 之前，我们先来了解一下常见的定位方案，有三种常见方案:</p>
+            <h4>1.普通流 (normal flow)</h4>
+            <p>在普通流中，元素按照其在 HTML 中的先后位置至上而下布局，在这个过程中，行内元素水平排列，直到当行被占满然后换行，块级元素则会被渲染为完整的一个新行，除非另外指定，否则所有元素默认都是普通流定位，也可以说，普通流中元素的位置由该元素在 HTML 文档中的位置决定.
+            </p>
+        </section>
+        <section>
+            <h4>2.浮动 (float)</h4>
+            在浮动布局中，元素首先按照普通流的位置出现，然后根据浮动的方向尽可能的向左边或右边偏移，其效果与印刷排版中的文本环绕相似。
+        </section>
+        <section>
+            <h4>3.绝对定位 (absolute positioning)</h4>
+            在绝对定位布局中，元素会整体脱离普通流，因此绝对定位元素不会对其兄弟元素造成影响，而元素具体的位置由绝对定位的坐标决定.
+            <p>而BFC，它属于上述定位方案的普通流。</p>
+
+        </section>
+
+        <section>
+            <h2>2.知识剖析</h2>
+        </section>
+        <section>
+            <section>
+                <h3>BFC 概念</h3>
+                <p>Block Formatting Context，块级格式化上下文，一个独立的块级渲染区域，该区域拥有一套渲染规则来约束块级盒子的布局，且与区域外部无关。</p>
+                <p>具有 BFC 特性的元素可以看作是隔离了的独立容器，容器里面的元素不会在布局上影响到外面的元素，并且 BFC 具有普通容器所没有的一些特性。</p>
+            </section>
+            <section>
+                <h3>BFC特性及应用</h3>
+            </section>
+            <section>
+                <h3> 1.同一个 BFC 下外边距会发生折叠</h3>
+
+                <p>举个例子：两个 div（margin：100px） 元素都处于同一个 BFC 容器下, 所以第一个 div 的下边距和第二个div 的上边距发生了重叠，所以两个盒子之间距离只有 100px，而不是 200px。</p>
+                <p>首先这不是 CSS 的 bug，我们可以理解为一种规范，如果想要避免外边距的重叠，可以将其放在不同的 BFC 容器中。</p>
+            </section>
+            <section>
+                <h3> 2.BFC 可以包含浮动的元素（清除浮动）.</h3>
+                <p>我们都知道，浮动的元素会脱离普通文档流，来看一个例子</p>
+                <p>由于容器内元素浮动，脱离了文档流，所以容器只剩下
+                    边框（border）的高度。如果触发容器的 BFC，那么容器将会包裹浮动元素。</p>
+            </section>
+            <section>
+                <h3> 3.BFC 可以阻止元素被浮动元素覆盖</h3>
+                <p>先来看一个文字环绕效果：</p>
+                <p>这时候其实第二个元素有部分被浮动元素所覆盖，(但是文本信息不会被浮动元素所覆盖) 如果想避免元素被覆盖，可触第二个元素的 BFC 特性，在第二个元素中加入 overflow: hidden，就会变成：</p>
+                <p>这个方法可以用来实现两列自适应布局，效果不错</p>
+            </section>
+        </section>
+        <section>
+            <h2>3.常见的问题：</h2>
+        </section>
+        <section>
+            <h3>BFC特性的触发条件?</h3>
+        </section>
+        <section>
+            <h2>4.解决问题</h2>
+        </section>
+        <section>
+            <p>1. body 根元素</p>
+            <p>2.浮动元素：float 除 none 以外的值.</p>
+            <p>3.绝对定位元素：position (absolute、fixed)</p>
+            <p>4.display 为 inline-block、table-cells、flex</p>
+            <p>5.overflow 除了 visible 以外的值 (hidden、auto、scroll)</p>
+        </section>
+        <section>
+            <h2>5.编码实战</h2>
+        </section>
+        <section>
+            <h2>6.扩展思考</h2>
+        </section>
+        <section>
+            <h3>css3中的BFC,IFC,GFC和FFC</h3>
+        </section>
+        <section>
+            <p>IFC(Inline Formatting Contexts)直译为"内联格式化上下文"，IFC的line box（线框）高度由其包含行内元素中最高的实际高度计算而来（不受到竖直方向的padding/margin影响)</p>
+            <p>那么IFC一般有什么用呢？</p>
+            <p>水平居中：当一个块要在环境中水平居中时，设置其为inline-block则会在外层产生IFC，通过text-align：center，则可以使其水平居中。</p>
+            <p>垂直居中：创建一个IFC，用其中一个元素撑开父元素的高度，然后设置其vertical-align:middle，其他行内元素则可以在此父元素下垂直居中。</p>
+        </section>
+        <section>
+            <p>GFC(GridLayout Formatting Contexts)直译为"网格布局格式化上下文"，当为一个元素设置display值为grid的时候，此元素将会获得一个独立的渲染区域，我们可以通过在网格容器（grid container）上定义网格定义行（grid definition rows）和网格定义列（grid definition columns为每一个网格项目（grid item）定义位置和空间。</p>
+            <p>那么GFC有什么用呢，和table又有什么区别呢？首先同样是一个二维的表格，但GridLayout会有更加丰富的属性来控制行列，控制对齐以及更为精细的渲染语义和控制。</p>
+        </section>
+        <section>
+            <p>FFC(Flex Formatting Contexts)直译为"自适应格式化上下文"，display值为flex或者inline-flex的元素将会生成自适应容器（flex container）</p>
+            <p>Flex Box 由伸缩容器和伸缩项目组成。通过设置元素的 display 属性为 flex 或 inline-flex 可以得到一个伸缩容器。设置为 flex 的容器被渲染为一个块级元素，而设置为 inline-flex 的容器则渲染为一个行内元素。</p>
+        </section>
+
+        <section>
+            <h2>7.参考文献</h2>
+        </section>
+        <section>
+            <p>参考一：<a href="https://zhuanlan.zhihu.com/p/25321647">10 分钟理解 BFC 原理-----知乎专栏--作者：有酒</a></p>
+
+            <p>参考二：<a href="https://www.jianshu.com/p/e75f351e11f8" target="_blank">css3中的BFC,IFC,GFC和FFC(
+                作者：chenlzee)</a></p>
+        </section>
+        <section>
+            <h3>谢谢！</h3>
+        </section>
+    </div>
+</div>
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: false,
+        dependencies: [{
+            src: './plugin/markdown/marked.js'
+        },
+            {
+                src: './plugin/markdown/markdown.js'
+            },
+            {
+                src: './plugin/notes/notes.js',
+                async: true
+            },
+            {
+                src: './plugin/highlight/highlight.js',
+                async: true,
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+
+</html>
