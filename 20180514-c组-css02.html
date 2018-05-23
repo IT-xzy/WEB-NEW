@@ -5,18 +5,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>葡萄藤PPT</title>
-    <link rel="stylesheet" href="../css/reveal/reveal.css">
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
     <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
-    <link rel="stylesheet" href="../css/reveal/theme/ptt.css">
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
     <!-- syntax highlighting 代码高亮主题 -->
-    <link rel="stylesheet" href="../lib/reveal/css/zenburn.css">
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
     <!-- 打印和PDF输出样式 -->
     <script>
         var link = document.createElement('link');
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' :
-            '../css/reveal/print/paper.css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            './css/reveal/print/paper.css';
         document.getElementsByTagName('head')[0].appendChild(link);
     </script>
     <style>
@@ -63,7 +63,7 @@
                 <p style="text-align:left">
                     GitHub 是一个面向开源及私有软件项目的托管平台，因为只支持 Git 作为唯一的版本库格式进行托管，故名 GitHub。 付费用户可以建私人仓库，我们一般的免费用户只能使用公共仓库，也就是代码要公开。
                     <p style="text-align: center">
-                        <img src="../img/logo.png" width="400" height="332">
+                        <img src="./img/logo.png" width="400" height="332">
                     </p>
                 </p>
             </section>
@@ -83,7 +83,7 @@
                     <p>版本库：工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。</p>
                 </section>
                 <section style="text-align: left">
-                    <img src="../img/css02/stage.png">
+                    <img src="./img/css02/stage.png">
                 </section>
             </section>
             <section style="text-align: left">
@@ -110,7 +110,7 @@
 
                 </section>
                 <section>
-                    <img src="../img/css02/ssh.png" width="300" height="200">
+                    <img src="./img/css02/ssh.png" width="300" height="200">
                     <p>进入github官网，登陆个人账户后，settings--SSH and GPG keys--New SSH key,填上任意title， 在Key文本框里黏贴id_rsa.pub文件的内容。最后点击
                         Add SSH Key。</p>
                 </section>
@@ -199,8 +199,6 @@
                     controller: ['$scope', function ($scope) {
                         $scope.aa = 'ss1212'
                     }]
-
-
                 }
             })
     </script>
