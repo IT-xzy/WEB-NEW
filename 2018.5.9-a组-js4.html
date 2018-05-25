@@ -1,0 +1,289 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+
+
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h3>【JS-task04】如何实现数组的深拷贝和浅拷贝?</h3>
+            <h3>小课堂【西安】</h3>
+            <p>分享人：杨星</p>
+        </section>
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多提问</p>
+        </section>
+        <section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <h4> 1.深复制和浅复制</h4>
+                <p style="text-align: left">
+                    在JavaScript中，对于Object和Array这类引用类型值，他的复制有两种情况：深复制、浅复制。</p>
+                <p style="text-align: left"> 浅复制：浅复制是复制引用，复制后的引用都是指向同一个对象的实例，彼此之间的操作会互相影响</p>
+                <p style="text-align: left">
+                    深复制：深复制不是简单的复制引用，而是在堆中重新分配内存，并且把源对象实例的所有属性都进行新建复制，以保证深复制的对象的引用图不包含任何原有对象或对象图上的任何对象，复制后的对象与原来的对象是完全隔离的</p>
+
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <h4>浅拷贝</h4>
+                <p style="text-align: left">Js的数据类型分为两种，基本类型和引用类型</p>
+                <ul>
+                    <li>基本类型:是指Number、String、Boolean、null、undefined</li>
+                    <li>引用类型:是指对象、数组等，就是像这样的东西<br/>{ name: 'Larry', skill: 'Node.js' }</li>
+                    <li>引用类型跟基本类型最大的区别就在于他们的传值方式</li>
+                </ul>
+            </section>
+            <section>
+                <h4>基本类型是传 value，像是这样</h4>
+                <pre><code>
+                    var a = 10;
+                    var b = a;
+                    b = 20;
+
+                    console.log(a); // 10
+                    console.log(b); // 20
+                </code></pre>
+                <p>在修改b时并不会改到a</p>
+            </section>
+            <section>
+                <h4>但引用类型不同，引用类型传的是引用指针</h4>
+                <pre><code>
+                    var array1 = [0,1,2,3];
+                    var array2 = array1;
+                    array2[0] = 100;
+
+                    console.log(array1); // [100,1,2,3] <-- 数组第一位 被改到了
+                    console.log(array2); // [100,1,2,3]
+                </code></pre>
+                <ul style="text-align: left;display:block">
+                    <li>复制一份array1叫做array2</li>
+                    <li>然後把array2[0]改成100</li>
+                    <li>但卻不小心改到array1[0]</li>
+                    <li>因为他们根本就是同一个对象</li>
+                    <li>这就是所谓的浅复制</li>
+                </ul>
+            </section>
+            <section>
+                <p>为了避免这种错误发生就要写成这样</p>
+                <pre><code>
+                    var array1 = [0,1,2,3];
+                    var array2 = [array1[0],array1[1],array1[2],array1[3]];
+                    array2[0] = 100;
+
+                    console.log(array1); // [0,1,2,3] <-- 数组第一位没被改到了
+                    console.log(array2); // [100,1,2,3]
+                </code></pre>
+                <p style="text-align: left">
+                    这就是深拷贝，改变复制后的值并不会影响之前的值
+                </p>
+            </section>
+
+            <section>
+                <h4>如何实现数组的深复制？</h4>
+                <p style="text-align: left">slice和concat使用方法</p>
+                <p>slice()：
+                    语法：arrayObject.slice(start,end)
+                    slice() 方法可从已有的数组中返回选定的元素（请注意，该方法并不会修改数组，而是返回一个子数组）。</p>
+                <p>start：必需。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。
+                    end:可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start
+                    到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。
+                    返回值:返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素（如果 end 未被规定，那么 slice() 方法会选取从 start
+                    到数组结尾的所有元素）。</p>
+                <pre><code>
+                   <script type="text/javascript">
+                            var arr = new Array(3);
+                            arr[0] = "George";
+                            arr[1] = "John";
+                            arr[2] = "Thomas";
+
+                            document.write(arr + "<br />");
+                            document.write(arr.slice(1) + "<br />");
+                            document.write(arr);
+                        </script>George,John,Thomas<br>John,Thomas<br>George,John,Thomas
+
+                </code></pre>
+
+                <p style="text-align: left">concat()：
+
+                    concat() 方法用于连接两个或多个数组。 该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。
+
+                    语法：arrayObject.concat(arrayX,arrayX,......,arrayX)
+
+                    返回一个新的数组。该数组是通过把所有 arrayX 参数添加到 arrayObject 中生成的。如果要进行 concat() 操作的参 数是数组，那么添加的是数组中的元素，而不是数组。
+
+                    arrayX：必需。该参数可以是具体的值，也可以是数组对象。可以是任意多个。</p>
+            </section>
+            <section>
+                <p>Jq的$.extend</p>
+                <p>jQuery.extend() 函数用于将一个或多个对象的内容合并到目标对象。
+                    注意：1. 如果只为$.extend()指定了一个参数，则意味着参数target被省略。此时，target就是jQuery对象本身。通过这种方式，我们可以为全局对象jQuery添加新的函数。
+                    2. 如果多个对象具有相同的属性，则后者会覆盖前者的属性值。</p>
+                <pre><code>
+                    var arr = [['a','b'],0,1,2,{name:'old'}];
+                    var newArr = $.extend(true, [], arr);
+                    newArr[4].name = 'new';
+                    newArr[0].push('c');
+                    console.log(newArr);
+                    console.log(arr);
+                 </code>$.extend( target [, object1 ] [, objectN ] )指示是否深度合并
+$.extend( [deep ], target, object1 [, objectN ] )
+</pre>
+
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+            <section>
+                <div style="text-align:left ; padding:0 12% ;font-size:30px">
+                    <p>除了以上方法还有其他深复制数组的方法吗？</p>
+                </div>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>4.解决办法</h3>
+            </section>
+
+        </section>
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+        <section>
+            <section>
+                <h3>6、扩展思考</h3>
+            </section>
+
+        </section>
+        <section>
+            <section>
+                <h3>7、参考文献：</h3>
+                <div style="text-align:left ; padding:0% 12% ;font-size:34px">
+                    <p>参考一：
+                        <a href="http://larry850806.github.io/2016/09/20/shallow-vs-deep-copy/" target="_blank">
+                            [Javascript] 關於 JS 中的淺拷貝和深拷貝
+                        </a>
+                    </p>
+                    <p>参考二：
+                        <a href="http://jerryzou.com/posts/dive-into-deep-clone-in-javascript/" target="_blank">深入剖析
+                            JavaScript 的深复制</a>
+                    </p>
+                </div>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>8、更多提问</h3>
+            </section>
+        </section>
+        <section>
+            <p>谢谢大家</p>
+            <p>制作人：杨星</p>
+        </section>
+
+    </div>
+</div>
+<script>
+    angular.module("myApp", [])
+        .controller('demoCtrl', function ($scope) {
+            $scope.aa = 'as111111'
+        })
+        .directive('demoOne', function () {
+
+            return {
+                restrict: "AECM",
+                template: '<input type="text" ng-model="aa">',
+                replace: true,
+                scope: {},
+                controller: ['$scope', function ($scope) {
+                    $scope.aa = 'ss1212'
+                }]
+
+
+            }
+        })
+
+</script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    //  controls: true, // 是否在右下角展示控制条
+    //  progress: true, // 是否显示演示的进度条
+    //  slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    //  history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    //  keyboard: true, // 是否启用键盘快捷键来导航
+    //  overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    //  center: true, // 是否将幻灯片垂直居中
+    //  touch: true, // 是否在触屏设备上启用触摸滑动切换
+    //  loop: false, // 是否循环演示
+    //  rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    //  fragments: true, // 全局开启和关闭碎片。
+    //  autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    //  transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    //  transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    //  mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'},
+            {src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'},
+            {src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js', async: true},
+            {
+                src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
