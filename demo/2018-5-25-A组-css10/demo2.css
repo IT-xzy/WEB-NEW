@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+        /*select样式修改*/
+.box{
+    width: 500px;
+    margin: 50px auto;
+    position: relative;
+}
+.box select{
+    width: 200px;
+    height: 30px;
+    position: relative;
+    opacity: 0;
+    z-index: 999;
+}
+.select-bg{
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 30px;
+    border: 1px solid #32382e;
+    background: #1b91ff;
+    color: #fff;
+    line-height: 28px;
+    z-index: -1;
+}
+.ask {
+    text-align: center;
+    width: 500px;
+    margin: 50px auto;
+}
+
+
+            /*radio第一个例子*/
+/*input[type="radio"] {*/
+    /*display: none;*/
+/*}*/
+/*label:before {*/
+    /*content: "";*/
+    /*display: inline-block;*/
+    /*width: 16px;*/
+    /*height: 16px;*/
+    /*margin-right: 10px;*/
+    /*border-radius: 50%;*/
+    /*background-color: #3797fc;*/
+/*}*/
+/*input[type="radio"]:checked+label:before{*/
+    /*content: "\2022";!*\2022是一个字体图标*!*/
+    /*color: #f9f9f9;*/
+    /*font-size: 16px;*/
+    /*text-align: center;*/
+    /*line-height: 16px;*/
+/*}*/
+
+         /*radio第二个例子*/
+input[type="radio"] {
+    display: none;
+}
+i {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 50%;
+    border: 1px solid #909090;
+    color: #fff;
+}
+input[type="radio"]:checked+i {
+    border: 6px solid #0d99a5;
+    padding: 4px;
+}
+label i,label span {
+    vertical-align: middle;
+}
+.as {
+    display: flex;
+    justify-content: center;
+}
