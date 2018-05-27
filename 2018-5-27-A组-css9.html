@@ -7,13 +7,13 @@
 
 		<title>葡萄藤PPT</title>
 
-		<link rel="stylesheet" href="../css/reveal/reveal.css">
+		<link rel="stylesheet" href="css/reveal/reveal.css">
 
 		<!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
-		<link rel="stylesheet" href="../css/reveal/theme/ptt.css">
+		<link rel="stylesheet" href="css/reveal/theme/ptt.css">
 
 		<!-- syntax highlighting 代码高亮主题 -->
-		<link rel="stylesheet" href="../lib/reveal/css/zenburn.css">
+		<link rel="stylesheet" href="lib/reveal/css/zenburn.css">
 
 		<!-- 打印和PDF输出样式 -->
 		<script>
@@ -31,7 +31,7 @@
 	</head>
 
 	<body>
-		<img src="../img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+		<img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
 		<map name="pttmap">
     <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
 </map>
@@ -111,7 +111,7 @@
 							min-width 设备中的页面最小可见区域宽度</p>
 					</section>
 					<section>
-							<img src="shange.png"/>
+							<img src="img/2018-5-27-A组-css9/shange.png"/>
 						<p>.col-xs-:extra small&nbsp&nbsp&nbsp&nbsp&nbsp .col-sm-:small&nbsp&nbsp&nbsp&nbsp&nbsp .col-md-:medium &nbsp&nbsp&nbsp&nbsp&nbsp .col-lg-:large </p>
 					</section>
 
@@ -134,13 +134,31 @@
 						<p>
 							利用列重置，列偏移。
 						</p>
+                        <p>
+                            在&ltdiv class="col-xs-* col-sm-* col-md-* col-lg-*"&gt&lt/div&gt;
+
+                        通过给col附加不同的class前缀，以此对应不同的屏幕下，内容的宽度。
+                        </p>
 					</section>
 				</section>
 				<section>
 					<section>
 						<h3>5.编码实战</h3>
 					</section>
-
+					<section>
+					<div class="row logo">
+						<p>&ltdiv class="col-md-2 col-md-offset-1 col-xs-12 col-sm-12 col-lg-2 col-lg-offset-1 logo-alibaba"&gt
+						&lt/div&gt
+						&ltdiv class="col-md-2  col-xs-12 col-sm-12 col-lg-2  logo-jinshan"&gt
+						&lt/div>
+						&ltdiv class="col-md-2  col-xs-12 col-sm-12 col-lg-2  logo-huanxin"&gt
+						&lt/div>
+						&ltdiv class="col-md-2  col-xs-12 col-sm-12 col-lg-2  logo-ronglian"&gt
+						&lt/div>
+						&ltdiv class="col-md-2  col-xs-12 col-sm-12 col-lg-2  logo-qiniu">
+							&lt/div></p>
+						上面代码中的"col-md-2 col-xs-12 col-sm-12 col-lg-2"代表的是在屏幕分辨率大于992px时.col的列宽为2。小于992px时，.col的列宽为12，占据全部的宽度。
+					</section>
 					<section><a href="">demo</a></section>
 
 				</section>
@@ -182,8 +200,8 @@
 				</section>
 			</div>
 		</div>
-		<script src="../lib/reveal/js/head.min.js"></script>
-		<script src="../lib/reveal/reveal.js"></script>
+		<script src="lib/reveal/js/head.min.js"></script>
+		<script src="lib/reveal/reveal.js"></script>
 		<script>
 			// 以下为常见配置属性的默认值
 			// {
