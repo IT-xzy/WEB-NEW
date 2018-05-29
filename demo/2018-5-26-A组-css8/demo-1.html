@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        /*ol{*/
+            /*list-style-type: none;*/
+        /*}*/
+        .demo1 ol{
+            counter-reset: counter-name;
+        }
+        .demo1 ol li{
+            counter-increment: counter-name;
+        }
+        .demo1 ol li::before{
+            content:counter(counter-name,upper-roman)".";
+        }
+
+    </style>
+</head>
+<body>
+<div class="demo1">
+    <ol>
+        <li>西班牙</li>
+        <li>荷兰</li>
+        <li>德国</li>
+    </ol>
+</div>
+</body>
+</html>
