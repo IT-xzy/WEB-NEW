@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 62.5%;
+}
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8rem auto;
+    font-size: 200%;
+}
+input {
+    padding: 2rem;
+}
+p {
+    margin: 3rem;
+}
+
+.change {
+    -webkit-appearance: button;
+    border: 1px solid #000;
+    background-color: #999999;
+}
+.a {
+    text-align: center;
+}

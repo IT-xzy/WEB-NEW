@@ -1,0 +1,218 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h3>常见的排序算法</h3>
+                <p style="text-align: center;">上海分院：刘泽华</p>
+            </section>
+            <section>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <section>
+                    <h3></h3>
+                    <p>算法（Algorithm）是指解题方案的准确而完整的描述，是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制。也就是说，能够对一定规范的输入，在有限时间内获得所要求的输出。如果一个算法有缺陷，或不适合于某个问题，执行这个算法将不会解决这个问题。不同的算法可能用不同的时间、空间或效率来完成同样的任务。一个算法的优劣可以用空间复杂度与时间复杂度来衡量。</p>
+                </section>
+                <section>
+                    <h3>算法的特点</h3>
+                    <p style="text-align:left;font-size: 24px">
+                        1.有限性（Finiteness）：一个算法必须保证执行有限步之后结束。
+                    </p>
+                    <p style="text-align:left;font-size: 24px">
+                        2.确切性（Definiteness）： 一个算法的每一步骤必须有确切的定义。
+                    </p>
+                    <p style="text-align:left;font-size: 24px">
+                        3.输入（Input）：一个算法有零个或多个输入，以刻画运算对象的初始情况，所谓零个输入是指算法本身给定了初始条件。
+                    </p>
+                    <p style="text-align:left;font-size: 24px">
+                        4.输出（Output）：一个算法有一个或多个输出。没有输出的算法毫无意义。
+                    </p>
+                    <p style="text-align:left;font-size: 24px">
+                        5.可行性(Effectiveness)：算法中执行的任何计算步骤都是可以被分解为基本的可执行的操作步，即每个计算步都可以在有限时间内完成（也称之为有效性）。
+                    </p>
+                </section>
+                <section>
+                    <h3>常见的几种算法</h3>
+                    <p style="text-align:left;font-size: 40px">
+                        洗牌算法、快速排序、冒泡算法、选择排序、插入排序、希尔排序、归并排序
+                    </p>
+                </section>
+            </section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <section>
+                    <h3>快速排序</h3>
+                </section>
+                <section>
+                    <p style="text-align:left;font-size: 30px">
+                        思想： 快速排序思想：先找到一个基准点（一般指数组的中部），然后数组被该基准点分为两部分，依次与该基准点数据比较，如果比它小，放左边；反之，放右边。 左右分别用一个空数组去存储比较后的数据。最后递归执行上述操作，直到数组长度 小于等于1。
+                    </p>
+                    <p style="text-align:left;font-size: 30px">
+                        特点： 快速，常用。缺点是需要另外声明两个数组，浪费了内存空间资源。
+                    </p>
+                </section>
+                <section>
+                    <h3>冒泡排序</h3>
+                </section>
+                <section>
+                    <p style="text-align:left;font-size: 30px">
+                        思想： 冒泡排序思想：每一次对比相邻两个数据的大小，小的排在前面，如果前面的数据比后面的大就交换这两个数的位置。 这样一来，第一轮就可以选出一个最小的数放在最后面；那么经过n-1轮，就完成了所有数的排序。
+                    </p>
+                    <p style="text-align:left;font-size: 30px">
+                        要实现上述规则需要用到两层for循环，外层从第一个数到倒数第二个数，内层从外层的后面一个数到最后一个数。
+                    </p>
+                </section>
+                <section>
+                    <h3>经典洗牌算法</h3>
+                    <p style="text-align:left;font-size: 40px">
+
+                    </p>
+                </section>
+            </section>
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 40px">
+                    Array.prototype.sort 方法被许多 JavaScript 程序员误用来随机排列数组。
+                </p>
+                <p style="text-align:left;font-size: 30px">
+                    以下就是常见的完全错误的随机排列算法： function shuffle(arr){ return arr.sort(function(){ return Math.random() - 0.5; }); }
+                </p>
+            </section>
+            <section>
+                <h3>4.解决方案</h3>
+            </section>
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+            <section>
+                <h3>6.扩展思考</h3>
+            </section>
+            <section>
+                <p>
+                    怎么理解各种排序算法的时间复杂度和空间复杂度？
+                </p>
+                <p>
+                    算法优劣评价术语 稳定性: 稳定：如果 a 原本在 b 前面，而 a = b，排序之后 a 仍然在 b 的前面；
+                </p>
+                <p>
+                    不稳定：如果 a 原本在 b 的前面，而 a = b，排序之后 a 可能会出现在 b 的后面；
+                </p>
+                <p>
+                    排序方式: 内排序：所有排序操作都在内存中完成，占用常数内存，不占用额外内存。 外排序：由于数据太大，因此把数据放在磁盘中，而排序通过磁盘和内存的数据传输才能进行，占用额外内存。
+                </p>
+
+            </section>
+            <section>
+                <h3>7.参考文献</h3>
+            </section>
+            <section>
+                <p>
+                    js实现两种实用的排序算法——冒泡、快速排序
+                </p>
+            </section>
+            <section>
+                <h3>8.更多讨论</h3>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <h3>感谢观看</h3>
+                <p>
+                    <small>BY——刘泽华</small>
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+            // 	center: true, // 是否将幻灯片垂直居中
+            // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+            // 	loop: false, // 是否循环演示
+            // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+            // 	fragments: true, // 全局开启和关闭碎片。
+            // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+            // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+            // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+            // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+            // }
+            // 初始化幻灯片
+            Reveal.initialize({
+                history: true,
+                dependencies: [{
+                        src: '../plugin/markdown/marked.js'
+                    },
+                    {
+                        src: '../plugin/markdown/markdown.js'
+                    },
+                    {
+                        src: '../plugin/notes/notes.js',
+                        async: true
+                    },
+                    {
+                        src: '../plugin/highlight/highlight.js',
+                        async: true,
+                        callback: function () {
+                            hljs.initHighlightingOnLoad();
+                        }
+                    }
+                ]
+            });
+    </script>
+</body>
+
+</html>
