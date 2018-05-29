@@ -1,0 +1,416 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+   
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h3>Css-task3-css有哪些选择器，优先级如何计算？</h3>
+            <p>分享人：李晓斐</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+               <p>要使用css对HTML页面中的元素实现一对一，一对多或者多对一的控制，这就需要用到CSS选择器。
+                    HTML页面中的元素就是通过CSS选择器进行控制的。</p>
+                    <p>ID选择器</p>
+                    <p>类选择器</p>
+                    <p>css复合选择器</p>
+                    <p>属性选择器</p>
+                    <p>子元素选择器</p>
+                    <p>相邻兄弟元素选择器</p>
+                    <p>伪类选择器</p>
+                    <p>伪元素选择器</p>
+            </section>
+
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                         <p>ID选择器</p>
+                         <p>类选择器</p>
+                         <p>css复合选择器</p>
+                         <p>属性选择器</p>
+                         <p>子元素选择器</p>
+                         <p>相邻兄弟元素选择器</p>
+                         <p>伪类选择器</p>
+                         <p>伪元素选择器</p>
+                 </section>
+
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p>ID选择器</p>
+            <p>ID 选择器前面有一个 # 号,也称为棋盘号或井号，后面紧跟id名,必须以字母开头,大小写都可以。</p>
+            <p>*ID选择器优先级非常高，所以确定在整个页面为一出现时，才可以使用ID选择器，否则在后续维护时不能被很好的更新。</p>
+            
+        </section>
+        
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p>类选择器</p>
+            <p>类选择器是对html标签中class属性进行选择。css类选择器的选择符是“.”</p>
+            <p>标签可以包含多个类选择器，在class标签中用空格隔开。</p>
+            
+
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true" >
+            <p>css复合选择器</p>
+               <p> 复合选择器是由两个或多个的基础选择器，通过不同方式组合而成的。具体如下</p>
+               <p>1.标签指定式选择器。第一个为标签选择器，第二个为id/class选择器 </p>
+               <img src="./标签选择器.png">
+               <p>2.后代选择器。后代元素选择器，匹配所有属于E元素后代的F元素，E和F之间用空格分隔  </p>
+               <img src="./后代选择器.png">
+              
+               </section>
+
+               <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true" >
+                    <p>css复合选择器</p>
+                       <p>3.并集选择器。是各个选择器通过逗号链接而成的，任何形式的选择器都可以作为并集选择器的一部分。  </p>
+                       <img src="./并集选择器.png">
+                      
+                </section>
+
+
+
+
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                   <p>子元素选择器,只选择某个元素的子元素。子选择器使用了大于号 ">"（子结合符）。
+                        子结合符两边可以有空白符，这是可选的。 </p>
+                    <img src="./子元素选择器.png">    
+                   <p>相邻兄弟选择器可选择紧接在另一元素后的元素，且二者有相同父元素。</p> 
+                   <img src="./相邻兄弟选择器.png">
+
+                  
+                   
+        </section>
+        
+        
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p>css属性选择器,属性选择器可以根据元素的属性及属性值来选择元素。</p>
+            <img src="./属性选择器.png">
+            
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <ul>伪类
+            <li>:link 向未被访问的链接添加样式。</li>
+            <li>:visited	向已被访问的链接添加样式。</li>
+            <li>:hover	当鼠标悬浮在元素上方时，向元素添加样式。</li>
+            <li>:active	向被激活的元素添加样式。</li>
+            <li>:focus	向拥有键盘输入焦点的元素添加样式。</li>
+            <li>顺序问题lv hao原则  电商
+            </li>
+            <li>提示：在 CSS 定义中，a:hover 必须被置于 a:link 和 a:visited 之后，才是有效的。
+
+               提示：在 CSS 定义中，a:active 必须被置于 a:hover 之后，才是有效的。</li>
+            </ul>           
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>伪元素</p>
+                <p>CSS 伪元素用于向某些选择器设置特殊效果。</p>
+                <ul></ul>
+                <li>:first-line 伪元素
+                        "first-line" 伪元素用于向文本的首行设置特殊样式。</li>
+                <li>:first-letter 伪元素
+                        "first-letter" 伪元素用于向文本的首字母设置特殊样式</li>
+                <li>:first-child 选择属于其父元素的首个子元素的每个 <p> 元素，并为其设置样式：</li>
+                <li>CSS2 - :before 伪元素
+                        ":before" 伪元素可以在元素的内容前面插入新内容。</li>
+                <li>CSS2 - :after 伪元素
+                        ":after" 伪元素可以在元素的内容之后插入新内容。</li>        
+                </ul>
+        </section>
+
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>3.常见问题</h3>
+                <p>css选择器的优先级？</p>
+            
+            </section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>4 解决方案</h3>
+            <p>
+            https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity </p>
+            <p>http://www.cnblogs.com/aaronjs/p/3156809.html</p>
+            <p>https://blog.csdn.net/lzm18064126848/article/details/53471141</p>
+            <p>https://www.oschina.net/translate/writing-efficient-css-selectors</p>
+            <p>Google 资深web开发工程师Steve Souders对CSS选择器的效率从高到低做了一个排序：
+
+                    1.id选择器（#myid）2.类选择器（.myclassname）3.标签选择器（div,h1,p）4.相邻选择器（h1+p）5.子选择器（ul < li）6.后代选择器（li a）7.通配符选择器（*）8.属性选择器（a[rel="external"]）9.伪类选择器（a:hover,li:nth-child）</p>
+                    
+            </section>
+        </section>
+
+
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>5.编码实战</h3>
+                
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>demo</h3>
+                <a href="https://hipicklerick.github.io/WEB-NEW/demo/demo0430-css-task3.html"></a>
+            </section>
+            
+        </section>
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <h3 style="text-align: center">6.扩展思考</h3>
+
+            </section>
+        
+
+            </section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h3>7.参考文献</h3>
+            <p>https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity</p>
+            <p>http://www.w3school.com.cn/css/css_selector_type.asp</p>
+            <p>http://www.cnblogs.com/aaronjs/p/3156809.html</p>
+            <p>https://www.oschina.net/translate/writing-efficient-css-selectors</p>
+
+            </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>8 更多讨论</h3>
+        </section>
+        <!--<section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">-->
+            <!--<p>2333333</p>-->
+        <!--</section>-->
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+
+            <h4>鸣谢</h4>
+            <p>感谢观看</p>
+            <p>
+                <small>BY : 李晓斐</small>
+            </p>
+        </section>
+
+    </div>
+<div class="backgrounds"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background stack present" data-loaded="true" style="display: block;"><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up enabled" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+               
+                语法：
+                return[()[expression][]];
+                可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。
+            
+                用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression 被省略，
+                    或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+            </div></div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+    //    原始类型对象直接赋值不会相互影响
+    //    var a = 1;
+    //
+    //    var b = a;
+    //    b = 10;
+    //    console.log(a); // 1
+    ////
+    //    var a = 'hello';
+    //    var b = a;
+    //    b = 'world';
+    //    console.log(a); // hello
+    //
+    //    var a = true;
+    //    var b = a;
+    //    b = false;
+    //    console.log(a);
+
+    //数组浅复制
+    //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+    //    ];
+    //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+    //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+    //    console.log(a)//那么现在打印a 是什么结果呢
+    //
+    //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+    //    var arrtoo = arr.slice(1);
+    //    arrtoo[2] = "set Map";
+    //    console.log(arr);//One,Two,Three
+    //    console.log(arrtoo);//One,set Map,Three
+
+    //
+    //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+    //    var arrtooo = arr1.concat(111111);
+    //    arrtooo[1] = "set Map To";
+    //    console.log(arr1);//One,Two,Three
+    //    console.log(arrtooo);//One,set Map To,Three
+
+    //
+    //    var b=[1,2,3,4,5];   //concat的链接
+    //    var c=[6,7,8,9];
+    //    var d =[4,4,22]
+    //    console.log(b.concat(c,d))
+
+    var a = {name: 'yy', age: 26};  //对象的浅拷贝哦
+    var b = new Object();
+    b.name = a.name;
+    b.age = a.age;
+    b.name = 'xx';
+    console.log(a);//Object { name="yy", age=26}
+    console.log(b);//Object { name="xx", age=26}
+
+    var d = {            //对象的浅拷贝哦 第一种
+        name: 'd',
+        oc: {
+            age: 32
+        },
+        oad: {
+            adds: {
+                bb: 12
+            }
+        }
+    };
+    var deepCopy = function (source) {
+        var result = {};
+        for (var key in source) {
+            result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+        }
+        return result
+    };
+
+    var c = deepCopy(d);
+    c.name = 'c';
+    c.oc = {
+        age: 49
+    };
+    console.log(c);
+    console.log(d);
+
+
+    //    var person = {    //第二种深拷贝
+    //        name: 'aa',
+    //        friends: ['da', 'dsa', 'gf']
+    //    };
+    //
+    //    var aPerson = Object.create(person, {
+    ////        name: {
+    ////            value: "gee"
+    ////        }
+    //    });
+    //
+    //    console.log(person.name);
+    //    console.log(aPerson.friends)
+
+    var Chinese = {
+        nation: '中国'
+
+    }
+    var Doctor = {
+        career: '医生'
+    }
+
+    function extendCopy(p) {
+        var c = {};
+        for (var i in p) {
+            c[i] = p[i];
+        }
+        c.uber = p;
+        return c;
+    }
+
+    var Doctor = extendCopy(Chinese);
+    Doctor.career = '医生';
+    console.log(Doctor); // 中国
+    Chinese.birthPlaces = ['北京', '上海', '香港'];
+    var Doctor = extendCopy(Chinese);
+    Doctor.birthPlaces.push('厦门');
+
+</script>
+
+</body>
+</html>
