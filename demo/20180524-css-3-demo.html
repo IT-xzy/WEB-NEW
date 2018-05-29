@@ -6,67 +6,64 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
    <style>
+
+       .test-2{
+           background: pink;
+           width: 100px;
+       }
    
-   /* li.first-line{
-        background: pink; 
-    }
-   ul li img{
-        display: none; 
-   }
-   html,body,p,ul{
-       padding: 0;
-       margin: 0;
-   }
+/* 标签选择器 */
+   
+   /* li .test-2{
+       visibility:hidden;
+   } */
 
-   .leader-poto+.keqiang{
-       display: none;
-   }
+/* 后代选择器 */
 
-   a:active{
-       background: pink;
-   }
-
-   ul{
-       padding-bottom: 500px;
-   }
-   input:focus{color: pink;}
-
-   h1:before{content:"2018.05.24";}
-
-   li:first-child{color: pink;} */
-
-/* h3:after{
-    content: "20180524"
-} */
-/* .test + li{
-    color:red;
-} */
-
-/* ul > li{
-    color: red;
-} */
-
-   /*属性  */
-
-/* a[href] {
-    color:red;
-} */
-
-/* li::first-line{
-    font-size: 100px;
-} */
-
-
- ul > li{
+/* ul li{
     visibility: hidden;
-} 
+} */
 
-.test-2{
-    border: 1px solid pink;
-    background: pink;
-    width: 100px;
-   
+/* 并集选择器 */
+
+/* html,body,ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+} */
+
+/* 子元素 */
+
+/* ul>li{
+    color: red;
+
+} */
+
+/* 相邻兄弟 */
+
+/* li .test-2{
+    visibility: hidden;
+} */
+
+/* 属性 */
+
+/* div[class]{
+    visibility: hidden;
+} */
+
+
+   /* ::first-line ::first-letter */
+
+h3::first-line{
+    font-size: 1px;
 }
+
+   /* ::before ::after */
+
+   h3::before{
+       content: "20180524";
+
+   }
 
 </style>
 
