@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>f12 console一下 示例代码都在sources里面</p>
+<script>
+    // //关于异步
+    // console.log( "1" );
+    // setTimeout(function() {
+    //     console.log( "2" )
+    // }, 0 );
+    // setTimeout(function() {
+    //     console.log( "3" )
+    // }, 0 );
+    // setTimeout(function() {
+    //     console.log( "4" )
+    // }, 0 );
+    // console.log( "5" );
+    //
+    //
+    // //promise的用法
+    // let pro = new Promise(function(resolve,reject){
+    //     //假设condition的值为true
+    //     var timeOut = Math.random() * 2;
+    //
+    //     if(timeOut < 1){
+    //         //调用操作成功方法
+    //         resolve( '操作成功');
+    //         //状态：pending->fulfilled
+    //     }else{
+    //         //调用操作异常方法
+    //         reject( '操作异常');
+    //         //状态：pending->rejected
+    //     }
+    // });
+    //
+    // //用then处理操作成功，catch处理操作异常
+    // pro.then(function (res) {
+    //
+    //     //操作成功的处理程序
+    //     console.log('这个时候可以取到resolve方法里返回的数据'+res)
+    //
+    // }).catch(function (error) {
+    //
+    //     //操作失败的处理程序
+    //     console.log("这个时候可以取到reject方法里返回的数据" +error)
+    //
+    // });
+    //
+    //
+    // //.then的用法
+    // function test(resolve, reject) {
+    //     var timeOut = Math.random() * 2;
+    //     console.log('set timeout to: ' + timeOut + ' seconds.');
+    //     setTimeout(function () {
+    //         if (timeOut < 1) {
+    //             console.log('call resolve()...');
+    //             resolve('200 OK');
+    //         }
+    //         else {
+    //             console.log('call reject()...');
+    //             reject('timeout in ' + timeOut + ' seconds.');
+    //         }
+    //     }, timeOut * 1000);
+    // }
+    //
+    // var p1 = new Promise(test);
+    //
+    // p1.then(requestA)
+    //     .then(requestB)
+    //     .then(requestC)
+    //     .catch(requestErr);
+    //
+    // function requestA(result) {
+    //     console.log('成功：' + result);
+    //     return "成功了。下一个是B";
+    // }
+    // function requestB(res){
+    //     console.log("上一步的结果："+res);
+    //     console.log('请求B成功');
+    //     return '请求C，下一个就是你了';
+    //
+    // }
+    // function requestC(res){
+    //     console.log("上一步的结果："+res);
+    //     console.log('请求C成功');
+    //
+    // }
+    // function requestErr(result){
+    //     console.log("失败："+result);
+    // }
+    //
+    //
+    // function cook(){
+    //     console.log('开始做饭。');
+    //     var p = new Promise(function(resolve, reject){        //做一些异步操作
+    //         setTimeout(function(){
+    //             console.log('做饭完毕！');
+    //             resolve('鸡蛋炒饭');
+    //         }, 1000);
+    //     });
+    //     return p;
+    // }
+    //
+    // //吃饭
+    // function eat(data){
+    //     console.log('开始吃饭：' + data);
+    //     var p = new Promise(function(resolve, reject){        //做一些异步操作
+    //         setTimeout(function(){
+    //             console.log('吃饭完毕!');
+    //             resolve('一块碗和一双筷子');
+    //         }, 2000);
+    //     });
+    //     return p;
+    // }
+    // function wash(data){
+    //     console.log('开始洗碗：' + data);
+    //     var p = new Promise(function(resolve, reject){        //做一些异步操作
+    //         setTimeout(function(){
+    //             console.log('洗碗完毕!');
+    //             resolve('干净的碗筷');
+    //         }, 2000);
+    //     });
+    //     return p;
+    // }
+    // function end(data){
+    //     console.log(data);
+    // }
+    // cook()
+    //     .then(eat)
+    //     .then(wash)
+    //     .then(end);
+    //
+    //
+    // // 做饭
+    // function cook(){
+    //     console.log('开始做饭。');
+    //     var p = new Promise(function(resolve, reject){        //做一些异步操作
+    //         setTimeout(function(){
+    //             console.log('做饭失败！');
+    //             reject('烧焦的米饭');
+    //         }, 1000);
+    //     });
+    //     return p;
+    // }
+    //
+    //
+    // cook().catch(function(data){
+    //     console.log(data+"好好吃")
+    // });
+    // console.log(new Date());
+    //
+    //
+    // //promise all（）
+    // let pro1 = new Promise(function(resolve){
+    //     setTimeout(function () {
+    //         resolve('实例1操作成功');
+    //     },5000);
+    // });
+    //
+    // //创建实例pro2
+    // let pro2 = new Promise(function(resolve){
+    //     setTimeout(function () {
+    //         resolve('实例2操作成功');
+    //     },1000);
+    // });
+    //
+    //
+    // Promise.all([pro1,pro2]).then(function(result){
+    //     console.log(result);
+    //     console.log(new Date());
+    // });
+    //
+    // console.log(new Date());
+    //
+    //
+    // //promise race（）
+    // let pro1 = new Promise(function(resolve){
+    //     setTimeout(function () {
+    //         resolve('实例1操作成功');
+    //     },1000);
+    // });
+    //
+    // //初始化实例pro2
+    // let pro2 = new Promise(function(resolve,reject){
+    //     setTimeout(function () {
+    //         reject('实例2操作失败');
+    //     },2000);
+    // });
+    //
+    // Promise.race([pro2,pro1]).then(function(result){
+    //     console.log(result);
+    //
+    // }).catch(function(error){
+    //     console.log(error);
+    //     console.log(new Date());
+    // });
+</script>
+</body>
+
+</html>
