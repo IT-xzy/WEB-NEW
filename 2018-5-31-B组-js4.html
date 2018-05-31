@@ -4,8 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>            return的用法是什么？若用在for循环中，还会执行下一次循环吗？
-    </title>
+    <title>return的用法是什么？若用在for循环中，还会执行下一次循环吗？</title>
 
     <link rel="stylesheet" href="./css/reveal/reveal.css">
 
@@ -88,10 +87,9 @@
                    return "字符串"//返回字符串
                 }
                 console.log(string());
-                function object(){
+                function arr(){
                   return [1,2,3,4]//返回数组
                 }
-                console.log(object())
                 console.log(arr());
                 function object(){
                 return {"name":"cxx", "age":13}//返回对象
@@ -191,10 +189,15 @@
             <section>
                 <p style="text-align: left">在jq中使用return false实际上它完成了3件事：
                     1.event.preventDefault()<br/>
+                    preventDefault() 方法阻止元素发生默认的行为 <br>
                     2.event.stopPropagation()<br/>
+                    event.stopPropagation()阻止捕获和冒泡阶段中当前事件的进一步传播 <br>
                     3.终止函数的执行并返回结果。<br/>
                     jq的return false会同时阻止浏览器默认事件的发生，阻止事件的冒泡，并且返回函数值，而在原生js中，return并不能阻止事件的冒泡.
                 </p>
+            </section>
+            <section>
+                JS中return False 就相当于终止符,终止默认的事件行为
             </section>
         </section>
         <section style="text-align: left">
