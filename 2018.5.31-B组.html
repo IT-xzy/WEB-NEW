@@ -1,0 +1,201 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+
+        <section>
+            <h4>小课堂【萌新】</h4>
+            <h4>【CSS】请描述 BFC(Block Formatting Context) 及其如何工作</h4>
+            <h4>分享人：计翔于</h4>
+        </section>
+
+        <section>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+
+        <section>
+            <p>1.背景介绍</p>
+        </section>
+
+        <section>
+            <p>什么是BFC</p>
+            <p>Block Formatting Context，中文直译为块级格式上下文。 </p>
+            <p>BFC就是一种布局方式，在这种布局方式下，盒子们自所在的containing block顶部一个接一个垂直排列，水平方向上撑满整个宽度（除非内部盒子自己建立了新的BFC）。 两个相邻的BFC之间的距离由margin决定。在同一个BFC内部，两个垂直方向相邻的块级元素的margin会发生“塌陷”。</p>
+            <p>这里也间接指出了垂直相邻盒子margin合并的解决办法：就是给这两个盒子也创建BFC。</p>
+            <p>BFC的特点就是,内部和外部相互独立,互不影响</p>
+        </section>
+
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+
+        <section>
+            <h4>BFC布局规则 </h4>
+            <p>1、内部的Box会在垂直方向，一个接一个地放置。</p>
+            <p>2、Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠</p>
+            <p>3、 每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。</p>
+            <p>4、 BFC的区域不会与float box重叠。</p>
+            <p>5、BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。</p>
+            <p>6、计算BFC的高度时，浮动元素也参与计算</p>
+        </section>
+
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+
+        <section>
+            <h4>有哪些方式能够触发BFC模式呢？</h4>
+            <h4>BFC有哪些应用？</h4>
+        </section>
+
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+
+        <section>
+            <h4>有哪些方式能够触发BFC模式呢？</h4>
+            <p>1、根元素</p>
+            <p>2、float属性不为none</p>
+            <p>3、position为absolute或fixed</p>
+            <p>4、display为inline-blcok、table-cell、table-caption、flex、inline-flex</p>
+            <p>5、overflow不为visible</p>
+        </section>
+
+        <section>
+            <h4>BFC有哪些应用？</h4>
+        </section>
+
+        <section>
+            <h4>1. 清除内部浮动 </h4>
+            <p>我们在布局时经常会遇到这个问题：对子元素设置浮动后，父元素会发生高度塌陷，也就是父元素的高度变为0。解决这个问题，只需要把把父元素变成一个BFC就行了。常用的办法是给父元素设置overflow:hidden。</p>
+        </section>
+
+        <section>
+            <h4>2. 垂直margin合并 </h4>
+            <p>在CSS当中，相邻的两个盒子的外边距可以结合成一个单独的外边距。这种合并外边距的方式被称为折叠，并且因而所结合成的外边距称为折叠外边距。 折叠的结果： </p>
+            <p>两个相邻的外边距都是正数时，折叠结果是它们两者之间较大的值。 </p>
+            <p>两个外边距一正一负时，折叠结果是两者的相加的和。这个同样可以利用BFC解决。</p>
+        </section>
+
+        <section>
+            <h4>3. 创建自适应两栏布局 </h4>
+            <p>在很多网站中，我们常看到这样的一种结构，左图片+右文字的两栏结构。</p>
+            <p>如何创建BFC</p>
+            <p>float属性不为none</p>
+            <p>overflow不为visible(可以是hidden、scroll、auto)</p>
+            <p>position为absolute或fixed</p>
+            <p>display为inline-block、table-cell、table-caption</p>
+        </section>
+
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+
+        <section>
+            <h4>Block Formatting Context在产生什么作用</h4>
+            <p>1.Block Formatting Context可以阻止边距折叠（margin collapsing）。</p>
+            <p>2.Block Formatting Context可以包含内部元素的浮动。</p>
+        </section>
+
+        <section>
+            <h3>7.参考文献</h3>
+
+        </section>
+        <section>
+            <a href="http://caibaojian.com/bfc.html">http://caibaojian.com/bfc.html</a> <br>
+            <a href="https://www.cnblogs.com/AliceX-J/p/5221951.html">https://www.cnblogs.com/AliceX-J/p/5221951.html</a>
+        </section>
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+        <section>
+            <p>BFC还有哪些应用?</p>
+        </section>
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                By
+                <small style="vertical-align: middle">计翔于</small>
+            </p>
+        </section>
+
+
+    </div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    //  controls: true, // 是否在右下角展示控制条
+    //  progress: true, // 是否显示演示的进度条
+    //  slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    //  history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    //  keyboard: true, // 是否启用键盘快捷键来导航
+    //  overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    //  center: true, // 是否将幻灯片垂直居中
+    //  touch: true, // 是否在触屏设备上启用触摸滑动切换
+    //  loop: false, // 是否循环演示
+    //  rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    //  fragments: true, // 全局开启和关闭碎片。
+    //  autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    //  transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    //  transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    //  mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js' },
+            { src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js' },
+            { src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js', async: true },
+            { src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>
