@@ -1,0 +1,264 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>return的用法是什么？若用在for循环中，还会执行下一次循环吗？</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>【JS-task4】</h2>
+            <h3>return的用法是什么？若用在for循环中，还会执行下一次循环吗？</h3>
+            <h4>分享人：陈星宇</h4>
+        </section>
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <section>
+            <h3>什么是return?</h3>
+            <section>
+                <p>return 语句会终止函数的执行，并返回函数的值。</p>
+            </section>
+            <section>
+               <pre><code>
+                语法：
+                return value;
+                可选项 value指定返回的值。如果忽略则返回undefined.
+            </code></pre>
+                <p>在函数中 ，return 语句用于终止一个函数的执行，并返回值value。如果value被省略，
+                    或在函数内没有 return 语句被执行，则函数返回undefined。</p>
+            </section>
+
+        </section>
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            <h3>return语句的用法</h3>
+        </section>
+        <section style="text-align: left">
+            <h4>1、中止函数的执行，并返回函数执行的结果</h4>
+            <p>语法为：return+表达式</p>
+            <p> return 返回的值可以是任何数据类型</p>
+            <pre><code>
+                function type(){
+                   var a=1;
+                   var b=2;
+                   return a+b;//返回数值
+                   alert('a')
+                  }
+                type();
+                console.log(type());
+                function string(){
+                   return "字符串"//返回字符串
+                }
+                console.log(string());
+                function arr(){
+                  return [1,2,3,4]//返回数组
+                }
+                console.log(arr());
+                function object(){
+                return {"name":"cxx", "age":13}//返回对象
+                }
+                console.log(object());
+            </code></pre>
+        </section>
+        <section style="text-align: left">
+            <h4>2、使用return阻止某些浏览器默认的行为</h4>
+            <p>语法为：return false;</p>
+            <p>可以在a标签中实践一下。</p>
+            <p>请看demo的例子：</p>
+        </section>
+        <section>
+             <pre>
+                 <code>
+                     <span class="ojbk">
+                         <a id="btn1" href="https://www.baidu.com/">按钮1</a>
+                         <a id="btn2" href="https://www.baidu.com/">按钮2</a>
+                     </span>
+                     <script>
+                         $('#btn1').on('click',function () {//点击按钮1要发生的事
+                             alert("按钮1测试弹窗（默认情况会跳转）");
+                             return true;
+                         });
+                         $('#btn2').on('click',function () {//点击按钮2要发生的事
+                             alert("按钮2测试弹窗（return false阻止默认跳转）");
+                             return false;
+                         });
+                     </script>
+                 </code>
+             </pre>
+        </section>
+        <section style="text-align: left">
+            <section style="text-align: center"><h3>3.常见问题</h3></section>
+        </section>
+        <section style="text-align: left">
+            <section>
+                <h3>若return用在for循环中，还会执行下一次循环吗？</h3>
+            </section>
+            <section>
+                <h3>除了return之外，还有哪些语句可以跳出循环？</h3>
+            </section>
+        </section>
+        <section style="text-align: left">
+            <section style="text-align: center"><h3>4 解决方案</h3></section>
+        </section>
+        <section>
+            <p>代码示例:</p>
+            <pre><code>
+                function jumpLoop() {
+                   result = []
+                   for(var i=0;i<10;i++){
+                      result.push(i)
+                      if(i===8){
+                         return result;
+                      }
+                   }
+                }
+                console.log(jumpLoop())
+            </code></pre>
+            <p>我们可以看到，for循环只返回return所返回的值，并不会执行下一次循环。</p>
+        </section>
+        <section>
+            <h4>除了return之外，还有哪些语句可以跳出循环？</h4>
+            <section>
+                <p>break</p>
+                <pre><code>
+                    for(var i=0;i<=10;i++){
+                       console.log(i);
+                       if(i==5){break;}
+                    }
+                </code></pre>
+                <p>上面这个break实例，输出的结果为：12345，当i的值等于5的时候直接通过break跳出了循环，不再继续往下运行。</p>
+            </section>
+            <section>
+                <p>continue</p>
+                <pre>
+                    <code>
+                        for(var i=1;i<=10;i++){
+                            if (i === 3||i===7) continue;
+                            console.log(i);
+                        }
+                    </code>
+                </pre>
+                <p>上面这个continue实例，输出的结果为：124568910，当i的值等于3或者7的时候直接跳过，继续执行循环。</p>
+            </section>
+        </section>
+        <section style="text-align: left">
+            <section style="text-align: center"><h3>5.编码实战</h3></section>
+        </section>
+        <section>
+            <section>
+                <h3 style="text-align: center">6.扩展思考</h3>
+                <p>jq的return false 和原生的return false有什么区别</p>
+            </section>
+            <section>
+                <p style="text-align: left">在jq中使用return false实际上它完成了3件事：
+                    1.event.preventDefault()<br/>
+                    preventDefault() 方法阻止元素发生默认的行为 <br>
+                    2.event.stopPropagation()<br/>
+                    event.stopPropagation()阻止捕获和冒泡阶段中当前事件的进一步传播 <br>
+                    3.终止函数的执行并返回结果。<br/>
+                    jq的return false会同时阻止浏览器默认事件的发生，阻止事件的冒泡，并且返回函数值，而在原生js中，return并不能阻止事件的冒泡.
+                </p>
+            </section>
+            <section>
+                JS中return False 就相当于终止符,终止默认的事件行为
+            </section>
+        </section>
+        <section style="text-align: left">
+            <h3>7.参考文献</h3>
+            <p>参考1：<a href="https://stackoverflow.com/questions/1357118/event-preventdefault-vs-return-false">event.preventDefault() vs. return false</a></p>
+            <p>参考2：<a href="http://www.jb51.net/article/30388.htm">javascript中break，continue和return语句用法小结</a></p>
+            <p>参考2：<a href="http://blog.csdn.net/gmd_web/article/details/50371841"> js中return的用法</a></p>
+        </section>
+        <section>
+            <h3>8 更多讨论</h3>
+        </section>
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>BY :包腾飞|陈树威|陈星宇</small>
+            </p>
+        </section>
+    </div>
+</div>
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: false,
+        dependencies: [{
+            src: './plugin/markdown/marked.js'
+        },
+            {
+                src: './plugin/markdown/markdown.js'
+            },
+            {
+                src: './plugin/notes/notes.js',
+                async: true
+            },
+            {
+                src: './plugin/highlight/highlight.js',
+                async: true,
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>

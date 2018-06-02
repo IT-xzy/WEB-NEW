@@ -1,0 +1,220 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+   
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h3>【JS】函数声明和函数表达式的区别？</h3>
+            <p>分享人：杨亚洲</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <h3>什么是函数表达式？</h3>
+                    <p>这是MDN上关于函数表达式的介绍</p>
+                    <img src="./img/1019-css-1/three.png" alt="">
+                    <p>这是另一种函数表达式的介绍</p>                
+                    <img src="./img/1019-css-1/four.png" alt="">
+            </section>
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <h3>什么是函数声明</h3>
+                <img src="./img/1019-css-1/five.png" alt="">
+                <br>简单的demo看一下
+            </section>
+         
+            <section class="present" style="top: 148.5px; display: block;">
+                <p>
+                    既然知道了函数表达式和函数声明，那么如何区分他们？</p>
+                <P>
+                    如果没有函数名称，那么肯定不是函数声明方式。
+
+                区分带有函数名称的代码是函数声明还是函数表达式要通过它所在的上下文来判断：
+
+                如果代码作为一个运算数存在，那么它就是一个表达式方式，否则就是函数声明方式。
+                </p>
+            </section>
+            <section class="present" style="top: 148.5px; display: block;">
+                <p>
+                    先看看他们之间的区别：
+                </p>
+                <p>
+                    1、函数声明会被提升到当前作用域的顶部，函数表达式则不会。
+
+                </p>
+                <p>
+                    2、函数声明一定会有函数名，而函数表达式一般不会有函数名。
+                </p>
+                <p>
+                        3、函数声明不是一个完整的语句，所以不能出现在if-else,for循环，finally，try catch语句以及with语句中。
+                        （ECMA规范只允许他们作为顶级语句，但是有的浏览器并不遵循这个规则。）
+                </p>
+                <p>直接看demo</p>
+
+            </section>
+
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p>
+              函数（变量）提升指的到底是什么？怎么解释这个东西
+            </p>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p>
+                我讲过一次关于执行环境和作用域的小课堂。就拿全局执行环境来说的话，当我们打开网页的时候，全局执行环境创建，
+                这时候会创建这个执行环境的变量对象（活动对象），写好作用域链，并将this指向这个活动对象。
+                </p>
+                第二步，会扫描整个执行环境中的函数声明，以及var 变量声明。都会提升到当前执行环境的顶端，不过函数声明是完整的
+                var关键字只是声明变量，并未对其初始化。
+            </p>
+            <p>
+                第三步：按顺序依次执行代码。
+            </p>
+        </section>
+        <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h4>还有其他种类的函数表达式吗？</h4>
+            <p>请看demo2</p>
+            
+        </section>
+        <section style="text-align: left; top: 84px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h4>关于函数的调用</h4>
+            <p>接着上面的话题，怎么判断一个函数是函数表达式还是函数声明</p>
+            <p>Dome3演示</p>
+        </section>
+      
+       
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>4 解决方案</h3></section>
+
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+        </section>
+
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>5.编码实战</h3></section>
+        </section>
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <h3 style="text-align: center">6.扩展思考</h3>
+                <p>函数声明一定会提升吗？一定会提升到当前作用域的顶部吗？</p>
+                <p>不一定，demo4</p>
+
+            </section>
+            <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                <p></p>
+                <p></p>
+            </section>
+            <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                <p></p>
+                <p></p>
+            </section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h3>7.参考文献</h3>
+            <p>参考1：<a href="http://www.jb51.net/article/118167.htm"></a></p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>8 更多讨论</h3>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            <p>到底使用函数使用还是函数表达式？</p>
+            <p>dome4</p>
+            <p></p>
+        </section>
+       
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>BY : 杨亚洲</small>
+            </p>
+        </section>
+
+    </div>
+<div class="backgrounds"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background stack present" data-loaded="true" style="display: block;"><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up enabled" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+               
+                语法：
+                return[()[expression][]];
+                可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。
+            
+                用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression 被省略，
+                    或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+            </div></div>
+
+            <script src="./lib/reveal/js/head.min.js"></script>
+            <script src="./lib/reveal/reveal.js"></script>
+
+<script>
+
+
+    // 初始化幻灯片
+
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: './plugin/markdown/marked.js' },
+            { src: './plugin/markdown/markdown.js' },
+            { src: './plugin/notes/notes.js', async: true },
+            { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+
+
+</script>
+
+</body>
+</html>
