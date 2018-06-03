@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+    /* 在这里定义了样式 */
+        .red {
+            background-color: red;
+        }
+        .green {
+            background-color: green;
+        }
+        .border {
+            border: 3px solid #000;
+        }
+    </style>
+</head>
+<body ng-controller="testCtrl">
+
+    <!-- ng-if、ng-show、ng-hide -->
+    <div style="margin-bottom: 20px;border:1px solid #000;padding-bottom:10px;padding:10px;">
+        <h2 style="margin:10px;">
+            ng-if、ng-show、ng-hide演示
+        </h2>
+        <input type="text" ng-model="test">
+        <div ng-if="test === 'ng-if'">当ng-if的表达式的值是true，我会显示出来的</div>
+        <div ng-show="test === 'show'">当ng-show的表达式的值是true，我会显示出来的</div>
+        <div ng-hide="test === 'hide'">当ng-hide的表达式的值是true，我会消失出来的</div>
+    </div>
+
+    <!-- ng-class -->
+    <div style="margin-bottom: 20px;border:1px solid #000;padding-bottom:10px;padding:10px;">
+        <h2>ng-class</h2>
+        <h4>1、使用字符串</h4>
+        <input type="text" ng-model="style">
+        <div ng-class="style" style="margin-top: 20px;margin-bottom: 20px;">这里会变色</div>
+        <h4>2、使用对象</h4>
+        <input type="text" ng-model="style2">
+        <div ng-class="{red: style2 === 'red'}" style="margin-top: 20px;margin-bottom: 20px;">这里会变色</div>
+        <h4>3、使用数组</h4>
+        <input type="text" ng-model="style3"><br>
+        <input type="text" ng-model="style4">
+        <div ng-class="[style3, style4]" style="margin-top: 20px;margin-bottom: 20px;">这里会变色</div>
+        <h4>4、使用三元表达式</h4>
+        <input type="text" ng-model="style5">
+        <div ng-class="style5 === 'red' ? 'red' : 'green'" style="margin-top: 20px;margin-bottom: 20px;">这里会变色</div>
+    </div>
+    
+    <!-- ng-option用法 -->
+    <div style="margin-bottom: 20px;border:1px solid #000;padding-bottom:10px;padding:10px;">
+        <h2>ng-option</h2>
+        <h2 style="margin:10px;">
+            <span style="color:#ff6600">label</span> for <span style="color:#ff6600">value</span> in <span style="color:#ff6600">array</span>
+        </h2>
+        <select ng-model="myColor1" ng-options="color.name for color in colors">
+        </select>
+        <div>选择之后myColor的值：{{myColor1}}</div>
+    </div>
+
+    <div style="margin-bottom: 20px;border:1px solid #000;padding-bottom:10px;padding:10px;">
+        <h2 style="margin:10px;">
+            <span style="color:#ff6600">select</span> as <span style="color:#ff6600">label</span> for <span style="color:#ff6600">value</span> in <span style="color:#ff6600">array</span>
+        </h2>
+        <select ng-model="myColor2" ng-options="color.shade as color.name for color in colors"></select>
+        <div>选择之后myColor的值：{{myColor2}}</div>
+    </div>
+
+    <div style="margin-bottom: 20px;border:1px solid #000;padding-bottom:10px;padding:10px;">
+        <h2 style="margin:10px;">
+            <span style="color:#ff6600">label</span> group by <span style="color:#ff6600">group </span> for <span style="color:#ff6600">value</span> in <span style="color:#ff6600">array</span>
+        </h2>
+        <select ng-model="myColor3" ng-options="color.name group by color.shade for color in colors"></select>
+        <div>选择之后myColor的值：{{myColor3}}</div>
+    </div>
+
+    <div style="margin-bottom: 20px;border:1px solid #000;padding-bottom:10px;padding:10px;">
+        <h2 style="margin:10px;">
+            <span style="color:#ff6600">select</span> as <span style="color:#ff6600">label</span> group by <span style="color:#ff6600">group </span> for <span style="color:#ff6600">value</span> in <span style="color:#ff6600">array</span>
+        </h2>
+        <select ng-model="myColor4" ng-options="color.name as color.name group by color.shade for color in colors"></select>
+        <div>选择之后myColor的值：{{myColor4}}</div>
+    </div>
+
+    <div style="margin-bottom: 20px;border:1px solid #000;padding-bottom:10px;padding:10px;">
+        <h2 style="margin:10px;">
+            <span style="color:#ff6600">select</span> as <span style="color:#ff6600">label</span> group by <span style="color:#ff6600">group </span> for <span style="color:#ff6600">value</span> in <span style="color:#ff6600">array</span> track by <span style="color:#ff6600">trackexpr</span>
+        </h2>
+        <select ng-model="myColor5" ng-options="color.name as color.name group by color.shade for color in colors track by color.name"></select>
+        <div>选择之后myColor的值：{{myColor5}}</div>
+    </div>
+
+    <div style="margin-bottom: 20px;border:1px solid #000;padding-bottom:10px;padding:10px;">
+        <h2 style="margin:10px;">
+            <span style="color:#ff6600">label</span> for <span style="color:#ff6600">(key,value) </span> in <span style="color:#ff6600">object</span>
+        </h2>
+        <select ng-model="obj1" ng-options="key for (key, value) in object"></select>
+        <div>选择之后obj的值：{{obj1}}</div>
+    </div>
+
+    <div style="margin-bottom: 20px;border:1px solid #000;padding-bottom:10px;padding:10px;">
+        <h2 style="margin:10px;">
+            <span style="color:#ff6600">select</span> as <span style="color:#ff6600">label</span> for <span style="color:#ff6600">(key,value) </span> in <span style="color:#ff6600">object</span>
+        </h2>
+        <select ng-model="obj2" ng-options="key as key for (key, value) in object"></select>
+        <div>选择之后obj的值：{{obj2}}</div>
+    </div>
+
+    <div style="margin-bottom: 20px;border:1px solid #000;padding-bottom:10px;padding:10px;">
+        <h2 style="margin:10px;">
+            <span style="color:#ff6600">label</span> group by <span style="color:#ff6600">group</span> for <span style="color:#ff6600">(key,value) </span> in <span style="color:#ff6600">object</span>
+        </h2>
+        <select ng-model="obj3" ng-options="key group by value for (key, value) in object"></select>
+        <div>选择之后obj的值：{{obj3}}</div>
+    </div>
+
+    <div style="margin-bottom: 20px;border:1px solid #000;padding-bottom:10px;padding:10px;">
+        <h2 style="margin:10px;">
+            <span style="color:#ff6600">select</span> as <span style="color:#ff6600">label</span> group by <span style="color:#ff6600">group</span> for <span style="color:#ff6600">(key,value) </span> in <span style="color:#ff6600">object</span>
+        </h2>
+        <select ng-model="obj4" ng-options="key as key group by value for (key, value) in object"></select>
+        <div>选择之后obj的值：{{obj4}}</div>
+    </div>
+
+    <!-- ng-value -->
+    <div style="margin-bottom: 20px;border:1px solid #000;padding-bottom:10px;padding:10px;">
+        <h2>ng-value</h2>
+        <label>name:</label>
+        <input type="text" ng-model="name" placeholder="名字"> 
+        <label>nickName:</label>
+        <input type="text" ng-model="nickName" placeholder="外号"><br>
+        <label>name+nickName:</label>
+        <input type="text" ng-value="name + nickName" placeholder="最终名字"><br>
+        他的名字叫{{name}}
+        他的外号{{nickName}}
+    </div>
+
+    <!-- ng-click -->
+    <div style="margin-bottom: 20px;border:1px solid #000;padding-bottom:10px;padding:10px;">
+        <h2>ng-click</h2>
+        <button type="button" ng-click="fn1();fn2()">点我</button>
+        点击后弹出弹框
+    </div>
+
+    <!-- JS -->
+    <script src="https://cdn.bootcss.com/angular.js/1.6.7/angular.min.js"></script>
+    <script type="text/javascript">
+        var app = angular.module("myApp",[]);
+        app.controller("testCtrl",["$scope", function($scope){
+            $scope.colors = [
+                {name:'black', shade:'dark'},
+                {name:'white', shade:'light'},
+                {name:'red', shade:'dark'},
+                {name:'blue', shade:'dark'},
+                {name:'yellow', shade:'light'}
+            ];
+            $scope.object = {
+                dark: "black",
+                light: "red",
+                lai: "red"
+            };
+
+            $scope.fn1 = function(){
+                alert("我被弹出来了");
+            }
+            $scope.fn2 = function(){
+                alert("我又被弹出来了");
+            }
+        }]);
+    </script>
+</body>
+</html>
