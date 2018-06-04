@@ -1,0 +1,290 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+
+        p {
+            text-align: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+        <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+            <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+                <h3>【JS-1】js中的基本类型和引用类型的区别</h3>
+                <p>分享人：郑佳威</p>
+            </section>
+            <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>1.背景介绍</h3>
+            </section>
+            <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+                <!-- <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true"> -->
+                <h3>基本类型有哪些</h3>
+                <p>1、undefined 类型表示不存在定义，声明变量但没有初始化，这个变量的值就是undefined； 注意：在任何一个引用变量值设置为undefined都是错误的，</p>
+                <p>2、null 类型，表示一个值被定义了，定义为空值； 使用场景为 定义变量准备在将来用于保存对象；所以引用值可以是null而不会是undefined；</p>
+                <p>undefined和null的区别：js诞生的时候只设置了null作为“无”的值。最初的设计是null是表示一个“无”的对象，转为数值时为0； | undefined表示“无”的原始值，转为数值时为NaN；红宝书上说引入undefined就是为了正式的区分空对象指针与未经初始化的变量，变量设置为null就是空对象指针，没有设置就是未经初始化！</p>
+            </section>
+            <section class="present" style="top: 148.5px; display: block; text-align: left">
+                <p>3、Boolean类型，字面值为true和false</p>
+                <p>4、number类型，字面量格式可以是十进制、八进制（八进制第一位必须是0）、十六进制（前两位必须是0x）</p>
+                <p>5、String类型 由零个或多个16位Unicode字符组成的字符序列</p>
+                <p>6、symbol类型，ES5 的对象属性名都是字符串，这容易造成属性名的冲突。比如，你使用了一个他人提供的对象，但又想为这个对象添加新的方法（mixin 模式），新方法的名字就有可能与现有方法产生冲突。如果有一种机制，保证每个属性的名字都是独一无二的就好了，这样就从根本上防止属性名的冲突。这就是
+                    ES6 引入Symbol的原因</p>
+
+            </section>
+
+
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>引用类型有哪些</h3>
+                <p>引用类型统称为object类型，细分的话有：Object 类型、Array 类型、Date 类型、RegExp 类型、Function 类型 等。</p>
+            </section>
+
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>2.知识剖析</h3>
+            </section>
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>两种类型在添加属性时候的区别</h3>
+                <p>demo</p>
+                <h3>结论</h3>
+                <p>
+                    引用类型可以动态的给添加属性，
+                    <br>但是基本类型的值是不可变也不可以复制的
+                </p>
+            </section>
+
+            <section style="text-align: left; top: 84px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h3>变量的不同内存分配</h3>
+                <p>看图片栈空间和堆空间</p>
+                <p>
+                    原始值：存储在栈（stack）中的简单数据段，也就是说，它们的值直接存储在变量访问的位置。这是因为这些原始类型占据的空间是固定的，所以可将他们存储在较小的内存区域 – 栈中。这样存储便于迅速查寻变量的值。
+                </p>
+                <p>
+                    引用值：存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存地址。这是因为：引用值的大小会改变，所以不能把它放在栈中，否则会降低变量查寻的速度。相反，放在变量的栈空间中的值是该对象存储在堆中的地址。地址的大小是固定的，所以把它存储在栈中对变量性能无任何负面影响。
+                </p>
+
+            </section>
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>两种类型在复制值的什么有什么区别？</h3>
+                <p>demo 画图</p>
+                <h3>结论</h3>
+                <p>
+                    * 基本类型复制值的时候，会重新在变量对象上创建一个新值，然后把值赋值到新变量分配的空间上来（理解为栈中的空间）；
+                    <br>
+                    <br> * 引用类型复制时，也会在储存在变量对象中的值复制一份放到为新变量分配的空间上来，但是不同的是新复制的值是一个指针，指向原值所在堆内存中的地址；
+                </p>
+            </section>
+
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h3>两种类型在传递值的时候有什么区别？</h3>
+                <p>demo 画图</p>
+                <p>结论 没有差别，红宝书70页在传递参数章节的第一句话就明确表明 “ECMAScript中所有的函数都是按值传递的”；
+                    <br>但是按照刚刚讲过的，引用类型不管是在添加属性还是复制值的时候都是操作的引用的，为什么在传递参数的时候就不是按引用而是按照值传递的呢？</p>
+                <p>
+                    引用重新赋值在堆内存中有新的地址,
+                </p>
+            </section>
+
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+
+                <h3>总结</h3>
+                <p>1、基本类型的值是不可变的， 引用类型的值是可变得；</p>
+                <p>2、基本类型比较的是值的比较，其中分== ， 和=== 的比较是不同的， 引用类型比较的是引用地址是不是一样的；</p>
+                <P>3、传递参数时都是按照值传递的</P>
+                <p>4、、因为传参时传入对象会改变原有值，所以就有了纯函数，纯函数的定义方式；通过JSON.stringify将对象变为一个字符串，然后再通过JSON.parse将字符串变回对象。通过该操作会生成一个新的对象。</p>
+            </section>
+
+
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+                <section style="text-align: center; top: 330px; display: none;">
+                    <h3>3.常见问题</h3>
+                </section>
+            </section>
+
+
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+                <section style="text-align: center; top: 330px; display: none;">
+                    <h3>4 解决方案</h3>
+                </section>
+            </section>
+
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+            </section>
+
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+                <section style="text-align: center; top: 330px; display: none;">
+                    <h3>5.编码实战</h3>
+                </section>
+            </section>
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <h3 style="text-align: center">6.扩展思考</h3>
+
+                </section>
+                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                </section>
+                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                    <p></p>
+                    <p></p>
+                </section>
+            </section>
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h3>7.参考文献</h3>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h3>8 更多讨论</h3>
+                <code>
+                    function changeAgeAndReference(person) { person.age = 25; person = { name: 'John', age: 50 }; return person; } var personObj1
+                    = { name: 'Alex', age: 30 }; var personObj2 = changeAgeAndReference(personObj1); console.log(personObj1);
+                    // -> ? console.log(personObj2); // -> ?
+                </code>
+            </section>
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            </section>
+
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    <small>BY : 郑佳威</small>
+                </p>
+            </section>
+
+        </div>
+        <div class="backgrounds">
+            <div class="slide-background past" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background stack present" data-loaded="true" style="display: block;">
+                <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+                <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+            </div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+        </div>
+        <div class="progress" style="display: block;">
+            <span style="width: 260.19px;"></span>
+        </div>
+        <aside class="controls" style="display: block;">
+            <button class="navigate-left enabled" aria-label="previous slide"></button>
+            <button class="navigate-right enabled" aria-label="next slide"></button>
+            <button class="navigate-up enabled" aria-label="above slide"></button>
+            <button class="navigate-down" aria-label="below slide"></button>
+        </aside>
+        <div class="slide-number" style="display: none;"></div>
+        <div class="speaker-notes" data-prevent-swipe=""></div>
+        <div class="pause-overlay"></div>
+        <div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+
+            语法： return[()[expression][]]; 可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。 用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression
+            被省略， 或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 初始化幻灯片
+
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: './plugin/markdown/marked.js'
+                },
+                {
+                    src: './plugin/markdown/markdown.js'
+                },
+                {
+                    src: './plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: './plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+
+</body>
+
+</html>
