@@ -1,0 +1,472 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>如何使用sass?</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h3>【css-task11】如何使用sass?</h3>
+            <p>分享人：陈皓宇</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section class="stack present" style="top: 0; display: block;" data-previous-indexv="1">
+            <h3>为什么要选择CSS预处理语言</h3>
+
+            <p style="text-align: justify">
+                我们学web的都知道CSS。CSS是一门描述性的语言，它有一些自身的局限性，只能一行一行单纯地描述，
+                并不能像其他的编程语言那样使用变量、循环、运算等方式来操作；还有，不利于代码的复用性、模块化等。
+                CSS预处理器的出现，使得我们可以像操作JavaScript那样以“编程”的方式来书写CSS。
+                在CSS预处理器中，我们可以使用变量、循环、函数等方式来简化操作，提高开发效率
+                CSS预处理器，说白了就是用编程方式来写CSS的一类语言，来解决CSS的局限性，就这么简单。
+            </p>
+            <p>国内常用的有less和sass，这节，我们选择sass来讲。</p>
+        </section>
+        <section>
+            <h3>为何选择sass？</h3>
+            <p style="text-align: justify">
+                仁者见仁智者见智。个人选择Sass的原因：<br>
+                1、Sass也是成熟的CSS预处理器之一，而且有一个稳定，强大的团队在维护；<br>
+                2、Sass对于我来说参考的教程多；<br>
+                3、Sass有一些成熟稳定的框架。特别是Compass、Foundation之类；<br>
+                4、还有一个原因是国外讨论Sass的同行要多于LESS，出于这几个原因，
+                我想我学习或者使用Sass更容易一些，
+                碰到问题更有参考资料， 更有朋友帮忙解决；<br>
+                5、bootstrap的4.0+版本用了。
+                <br>
+                这是自身看法，仅供参考。<br>
+            </p>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h4>sass使用</h4>
+            <p style="text-align: justify">
+                sass基于Ruby语言开发而成，因此安装sass前需要安装Ruby。<br>
+                （注:mac下自带Ruby无需在安装Ruby!）
+                先从官网下载Ruby并安装。然后再安装sass即可。
+                安装好sass，之后我们就可以直接写sass，写好之后把Sass编译成sass。
+                编译方法很多，比如命令行编译，软件koala编译，
+                我们常用的编辑器也可以webstorm，sublime也可以实时编译。<br>
+                那么，sass到底该怎么写呢？
+            </p>
+            <p>可以参考:sass中文网站地址_https://www.sass.hk/install/</p>
+        </section>
+        <section>
+            <h4>sass的语法</h4>
+            <p>1、Sass 变量</p>
+            <p>2、Sass 继承</p>
+            <p>4、Sass 占位符</p>
+            <p>3、Sass 混合宏</p>
+        </section>
+        <section>
+            <h4>sass的语法</h4>
+            <img src="img/2018-6-3-A组/clipboard.png" alt="">
+            <p style="text-align: justify">
+                tip:实际上，在sass的大 多数地方，中划线命名的内容和下划线命名的内容是互通的，
+                比如bg-color和bg_color是一样，除了变量，也包括对混合器和Sass函数的命名。
+            </p>
+        </section>
+        <section>
+            <p>变量</p>
+            <pre><code>
+                    $fontSize: 12px;
+                    body{
+                    font-size:$fontSize;
+                    }
+
+                    body{
+                    font-size:12px;
+                    }
+                </code></pre>
+        </section>
+        <section>
+            <h3>什么时候创建变量？</h3>
+            <p>我的建议，创建变量只适用于感觉确有必要的情况下。
+                不要为了某些骇客行为而声明新变量，这丝毫没有作用。
+                只有满足所有下述标准时方可创建新变量：
+                该值至少重复出现了两次；
+                该值至少可能会被更新一次；
+                该值所有的表现都与变量有关（非巧合）。
+                基本上，没有理由声明一个永远不需要更新或者只在单一地方使用变量。</p>
+        </section>
+        <section>
+            <p>继承</p>
+            <pre>
+                <code>
+                    .btn {
+                          border: 1px solid #ccc;
+                          padding: 6px 10px;
+                          font-size: 14px;
+                        }
+
+                        .btn-primary {
+                          background-color: #f36;
+                          color: #fff;
+                          @extend .btn;
+                        }
+
+                        .btn-second {
+                          background-color: orange;
+                          color: #fff;
+                          @extend .btn;
+                        }
+                </code>
+            </pre>
+        </section>
+        <section>
+            <p>
+            当在局部范围（选择器内、函数内、混合宏内...）
+            声明一个已经存在于全局范围内的变量时， 局部变量就成为了全局变量的影子。
+            基本上局部变量只会在局部范围内覆盖全局变量。
+            </p>
+            <pre><code>
+                    $color: orange !default;//定义全局变量
+                    .block {
+                      color: $color;//调用全局变量
+                    }
+                    em {
+                      $color: red;//定义局部变量（全局变量 $color 的影子）
+                      a {
+                        color: $color;//调用局部变量
+                      }
+                    }
+                </code></pre>
+        </section>
+        <section>
+            <h3>占位符（%placeholder）</h3>
+            <p>
+                Sass 中的占位符 %placeholder 功能是一个很强大，
+                很实用的一个功能，这也是我非常喜欢的功能。
+                他可以取代以前 CSS 中的基类造成的代码冗余的情形。因为 %placeholder 声明的代码，如果不被 @extend 调用的话，不会产生任何代码。
+            </p>
+            <pre><code>
+                    %mt5 {
+                              margin-top: 5px;
+                            }
+                            %pt5{
+                              padding-top: 5px;
+                            }
+
+                            .btn {
+                              @extend %mt5;
+                              @extend %pt5;
+                            }
+
+                            .block {
+                              @extend %mt5;
+
+                              span {
+                                @extend %pt5;
+                              }
+                            }
+                </code></pre>
+        </section>
+        <section>
+            <h3>混合宏</h3>
+            <p>我个人的看法：混合宏，其实就是是带入了函数的思想</p>
+            <p>(1)不传参数</p>
+            <p>(2)传参数</p>
+        </section>
+        <section>
+            <h3>(1)不传参数</h3>
+            <pre><code>
+                @mixin border-radius
+                {
+                  -webkit-border-radius: 5px;
+                   border-radius: 5px;
+                }
+            </code></pre>
+            <p>我们在后面用@include调用它就可以了</p>
+        </section>
+        <section>
+            <h3>(2)传参的mixin</h3>
+            <pre><code>
+                @mixin center($width,$height)
+                {
+                width: $width;
+                height: $height;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-top: -($height) / 2;
+                margin-left: -($width) / 2;
+                }
+            </code></pre>
+            <pre><code>
+                .box-center
+                {
+                @include center(500px,300px);
+                }
+            </code></pre>
+        </section>
+        <section>
+            <h3>3.常见问题</h3>
+            <p>
+                上面的几种方式，有些很像，我们如何在适当的时候用适当的方法？
+                比如什么时候用继承，什么时候用占位符？
+            </p>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>4.解决方案</h3>
+            <p style="text-align: justify">
+                继承和占位符的用法很像，都是用@exdent，
+                都是多来传递定量的属性为主，但是！！！
+                编译出来的 CSS 代码和使用继承基本上是相同，
+                只是不会在代码中生成占位符 mt 的选择器。
+                那么占位符和继承的主要区别的，"占位符是独立定义，
+                不调用的时候是不会在 CSS 中产生任何代码；
+                继承是首先有一个基类存在，不管调用与不调用，
+                基类的样式都将会出现在编译出来的 CSS 代码中。"
+            </p>
+        </section>
+        <section>
+            <p>然而，混合宏是用在一些复杂的多属性的调用，或者是复杂的逻辑，
+                而且它是唯一能传递参数的！！</p>
+            <img src="img/2018-6-3-A组/clipboard%202.png" alt="">
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>5.编码实战</h3>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>6.扩展思考</h3>
+           <p style="text-align: justify">
+               问题：sass和less的不同？
+               <br>
+            1,变量名称的不同，less是@，sass是$;<br>
+            2,Sass的安装需要Ruby环境，是在服务端处理的，
+            而Less是需要引入less.js来处理Less代码输出css到浏览器;
+            ，也可以在开发环节使用Less，然后编译成css文件，直接放到项目中; <br>
+            3，sass支持条件语句，比如if else for等，less不支持; <br>
+            4,sass可以设置输出类型，
+                nested：嵌套缩进的css代码
+                expanded：展开的多行css代码
+                compact：简洁格式的css代码
+                compressed：压缩后的css代
+                less不可以
+            </p>
+
+        </section>
+
+
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>7.参考文献</h3>
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p style="text-align: justify">http://www.manongjc.com/sass/sass_tutorial.html <br>
+                码农Sass 教程 - Sass入门学习 <br>
+                https://www.sass.hk/install/ <br>
+                sass中文网 <br>
+                https://www.zhihu.com/question/22285654/answer/20909926 <br>
+                sass/scss 和 less的区别 <br>
+                https://www.cnblogs.com/wangpenghui522/p/5467560.html</p>
+
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>8 更多讨论</h3>
+            <p></p>
+        </section>
+
+
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>BY : 陈皓宇</small>
+            </p>
+        </section>
+
+    </div>
+    <div class="backgrounds"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background stack present" data-loaded="true" style="display: block;"><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up enabled" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+</div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+    //    原始类型对象直接赋值不会相互影响
+    //    var a = 1;
+    //
+    //    var b = a;
+    //    b = 10;
+    //    console.log(a); // 1
+    ////
+    //    var a = 'hello';
+    //    var b = a;
+    //    b = 'world';
+    //    console.log(a); // hello
+    //
+    //    var a = true;
+    //    var b = a;
+    //    b = false;
+    //    console.log(a);
+    //数组浅复制
+    //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+    //    ];
+    //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+    //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+    //    console.log(a)//那么现在打印a 是什么结果呢
+    //
+    //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+    //    var arrtoo = arr.slice(1);
+    //    arrtoo[2] = "set Map";
+    //    console.log(arr);//One,Two,Three
+    //    console.log(arrtoo);//One,set Map,Three
+    //
+    //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+    //    var arrtooo = arr1.concat(111111);
+    //    arrtooo[1] = "set Map To";
+    //    console.log(arr1);//One,Two,Three
+    //    console.log(arrtooo);//One,set Map To,Three
+    //
+    //    var b=[1,2,3,4,5];   //concat的链接
+    //    var c=[6,7,8,9];
+    //    var d =[4,4,22]
+    //    console.log(b.concat(c,d))
+    var a = {name: 'yy', age: 26};  //对象的浅拷贝哦
+    var b = new Object();
+    b.name = a.name;
+    b.age = a.age;
+    b.name = 'xx';
+    console.log(a);//Object { name="yy", age=26}
+    console.log(b);//Object { name="xx", age=26}
+    var d = {            //对象的浅拷贝哦 第一种
+        name: 'd',
+        oc: {
+            age: 32
+        },
+        oad: {
+            adds: {
+                bb: 12
+            }
+        }
+    };
+    var deepCopy = function (source) {
+        var result = {};
+        for (var key in source) {
+            result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+        }
+        return result
+    };
+    var c = deepCopy(d);
+    c.name = 'c';
+    c.oc = {
+        age: 49
+    };
+    console.log(c);
+    console.log(d);
+    //    var person = {    //第二种深拷贝
+    //        name: 'aa',
+    //        friends: ['da', 'dsa', 'gf']
+    //    };
+    //
+    //    var aPerson = Object.create(person, {
+    ////        name: {
+    ////            value: "gee"
+    ////        }
+    //    });
+    //
+    //    console.log(person.name);
+    //    console.log(aPerson.friends)
+    var Chinese = {
+        nation: '中国'
+    }
+    var Doctor = {
+        career: '医生'
+    }
+    function extendCopy(p) {
+        var c = {};
+        for (var i in p) {
+            c[i] = p[i];
+        }
+        c.uber = p;
+        return c;
+    }
+    var Doctor = extendCopy(Chinese);
+    Doctor.career = '医生';
+    console.log(Doctor); // 中国
+    Chinese.birthPlaces = ['北京', '上海', '香港'];
+    var Doctor = extendCopy(Chinese);
+    Doctor.birthPlaces.push('厦门');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>【js-09】</h2>
+            <h4>什么是promise?</h4>
+            <p>分享人:马扬睿</p>
+        </section>
+
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+
+        <section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <h4>什么是promise?</h4>
+                <p style="text-align: left;">
+                    一个 Promise 就是一个代表了异步操作最终完成或者失败的对象。主要用于异步计算，表示一个现在将来或者永远不可能用到的值。
+                </p>
+            </section>
+            <section>
+                <p style="text-align: left;">promise如果按用途来解释的话<br/>
+                    1：主要用于异步计算<br/>
+                    2：主要用于异步操作队列化，按照期望的顺序执行，返回预期的结果<br/>
+                    3：可以在对象之间传递和操作promise,帮助我们处理队列
+                </p>
+            </section>
+            <section>
+                <div>异步操作的常见语法<br/></div>
+                <div>document.getElementById("start").addEventlistener("click",start,false)</div>
+                <div>function start(){}</div>
+                <div>或者jQuery</div>
+                <div>$(".start").on("click",start)</div>
+            </section>
+            <section>
+                <div>
+                    我们也可以简单地理解为：可以改变程序正常执行顺序的操作就可以看成是异步操作。
+                    <p>（1）所有同步任务都在主线程上执行，形成一个执行栈（execution context stack）。</p>
+                    <p>（2）主线程之外，还存在一个"任务队列"（task queue）。只要异步任务有了运行结果，就在"任务队列"之中放置一个事件。</p>
+                    <p>（3）一旦"执行栈"中的所有同步任务执行完毕，系统就会读取"任务队列"，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。</p>
+                    <p>(4）主线程不断重复上面的第三步。</p>
+                </div>
+            </section>
+            <section>
+                <p>同步操作有什么缺点呢？</p>
+            </section>
+            <section>
+                <p>比如你去了一个饭店，想点菜，让服务员给你拿个菜单</p>
+                <p>服务员说好的，等这桌吃完了我服务完这一桌就给你拿</p>
+                <p>你是不是很生气，我只是拿个菜单而已</p>
+                <p>这就是同步操作的缺点，如果有一个非常耗时的操作，那么后面的进程都无法进行了</p>
+                <p>所以"异步模式"非常重要。在浏览器端，耗时很长的操作都应该异步执行，避免浏览器失去响应，最好的例子就是Ajax操作。</p>
+            </section>
+        </section>
+        <section>
+            <section><h3>2：知识剖析</h3></section>
+            <section>
+                <p>
+                    $.ajax({
+                    success:function(res1){
+                </p>
+                <p> //------请求B 开始----
+                    $.ajax({
+                    success:function(res2){
+                </p>
+                <p> //----请求C 开始---
+                    $.ajax({
+                    success:function(res3){
+                    }
+                    });</p>
+                <p> //---请求C 结束---
+
+
+                    }
+                    });
+                    //------请求B 结束-----</p>
+                <p> }
+                    });
+                    //------请求A 结束---------</p>
+            </section>
+            <section>
+                <div>
+                    上面的案例，假设请求C需要依赖请求B返回的数据，所以，C只能放在B的success函数内；B需要依赖A请求得到的数据作为参数，所以，B只能放在A的success函数内；也就是：请求A包含着请求B，请求B又包含了请求C。
+                    就这样，请求顺序为：请求A -> 请求B -> 请求C，最后你也能顺利的完成了任务。
+                </div>
+            </section>
+            <section>
+                <p> 但是这样写，会有一些缺点：</p>
+                <p>1.
+                    如果存在多个请求操作层层依赖的话，那么以上的嵌套就有可能不止三层那么少了，加上每一层还会有复杂的业务逻辑处理，代码可读性也越来越差，不直观，调试起来也不方便。如果多人开发的时候没有足够的沟通协商，大家的代码风格不一致的话，更是雪上加霜，给后面的维护带来极大的不便。</p>
+                <p>2. 如果请求C的需要依赖A和B的结果，但是请求A和B缺互相独立，没有依赖关系，以上的实现方式，就使得B必须得到A请求完成后才可以执行，无疑是消耗了更多的等待时间。</p>
+            </section>
+            <section>
+                <div>
+                    既然使用这种回调函数层层嵌套（又称：回调地狱）的形式存在缺点，ES6想了办法治它，所以就有了Promise的出现了。
+
+                    那么我们就知道了：Promise对象能使我们更合理、更规范地进行处理异步操作。
+                </div>
+            </section>
+
+
+        </section>
+        <section>
+            <section>
+                <h3>3：常见问题</h3>
+            </section>
+            <section>
+                promise怎么用呢？
+            </section>
+            <section>
+                <a href="demo/2018-05-31demo.html">看一下demo把</a>
+            </section>
+        </section>
+        <section>
+            <section>
+                Promise all() 和 promise Race()
+            </section>
+            <section>
+                Promise.all( )方法：接受一个数组作为参数，数组的元素是Promise实例对象，当参数中的实例对象的状态都为fulfilled时，Promise.all( )才会有返回。
+            </section>
+            <section>
+                上述案例，我们创建了两个Promise实例：pro1和pro2，我们注意两个setTimeout的第二个参数，分别是5000毫秒和1000毫秒，当我们调用Promise.all(
+                )方法的时候，会延迟到5秒才控制台会输出结果。
+
+                因为1000毫秒以后，实例pro2进入了成功fulfilled状态；此时，Promise.all(
+                )还不会有所行动，因为实例pro1还没有进入成功fulfilled状态；等到了5000毫秒以后，实例pro1也进入了成功fulfilled状态，Promise.all(
+                )才会进入then方法，然后在控制台输出：["实例1操作成功","实例2操作成功"]。
+
+                这个方法有什么用呢？一般这样的场景：我们执行某个操作，这个操作需要得到需要多个接口请求回来的数据来支持，但是这些接口请求之前互不依赖，不需要层层嵌套。这种情况下就适合使用Promise.all(
+                )方法，因为它会得到所有接口都请求成功了，才会进行操作。
+            </section>
+            <section>
+                另一个类似的方法是Promise.race()方法：它的参数要求跟Promise.all(
+                )方法一样，不同的是，它参数中的promise实例，只要有一个状态发生变化（不管是成功fulfilled还是异常rejected），它就会有返回，其他实例中再发生变化，它也不管了。
+            </section>
+        </section>
+        <section>
+            <section><h3>5.代码实战</h3></section>
+            <section>看demo就可以啦</section>
+        </section>
+
+        <section>
+            <h3>6.拓展思考</h3>
+            <p>什么是回调地狱？</p>
+            <p>
+                由于回调函数是异步的，在上面的代码中每一层的回调函数都需要依赖上一层的回调执行完，所以形成了层层嵌套的关系最终形成类似上面的回调地狱，但代码以此种形式展现时无疑是不利于我们阅读与维护的，此时就要想办法改进这种代码形式。</p>
+        </section>
+
+        <section>
+            <section>
+                <h3>7.参考文献</h3>
+            </section>
+            <section>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN</a></p>
+                <p><a href="https://www.jianshu.com/p/c98eb98bd00c">看这一篇就够了！浅谈ES6的Promise对象</a></p>
+            </section>
+        </section>
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>BY : 马扬睿</small>
+            </p>
+        </section>
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
