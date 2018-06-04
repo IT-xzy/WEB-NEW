@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <title>葡萄藤PPT</title>
-
     <link rel="stylesheet" href="./css/reveal/reveal.css">
 
     <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
@@ -16,6 +15,28 @@
 
     <!-- 打印和PDF输出样式 -->
     <script>
+  <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+  <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+   <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+<style type="text/css">
+        p {
+            font-size: 30px !important;
+            letter-spacing: 2px;
+            line-height: 50px !important;
+            text-align: left;
+            text-indent: 2em;
+        }
+
+        a {
+            color: #fff !important;
+        }
+    </style>
+    <!-- 打印和PDF输出样式 -->
+<script>
         var link = document.createElement('link');
         link.rel = 'stylesheet';
         link.type = 'text/css';
@@ -23,6 +44,14 @@
             '../css/reveal/print/paper.css';
         document.getElementsByTagName('head')[0].appendChild(link);
     </script>
+            './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <link rel="stylesheet" type="text/css" href="./css/reveal/print/paper.css">
+    <script type="text/javascript" src="../plugin/markdown/marked.js"></script>
+    <script type="text/javascript" src="../plugin/markdown/markdown.js"></script>
+    <script type="text/javascript" src="../plugin/notes/notes.js"></script>
+    <script type="text/javascript" src="../plugin/highlight/highlight.js"></script>
 </head>
 <body>
 <img src="../img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
@@ -129,10 +158,12 @@
 
     </div>
 </div>
-
 <script src="./lib/reveal/js/head.min.js"></script>
 <script src="./lib/reveal/reveal.js"></script>
 
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
 <script>
         // 以下为常见配置属性的默认值
         // {
@@ -175,7 +206,11 @@
             ]
         });
     </script>
-    <script>
+
+ 
+
+<script>
+
         //过滤掉小于 10 的数组元素：
         //代码：
         document.getElementById("a").onclick = isBigEnough();
