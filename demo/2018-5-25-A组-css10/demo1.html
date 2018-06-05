@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="demo1.css">
+    <title>demo1</title>
+</head>
+<body>
+<!--基本样式-->
+<div class="center">
+    <select class="select">
+        <option class="a" value ="volvo">Volvo</option>
+        <option class="a" value ="saab">Saab</option>
+        <option class="a" value="opel">Opel</option>
+        <option class="a" value="audi">Audi</option>
+    </select>
+</div>
+
+<!--不加lable-->
+<div class="center">
+    <p>性别</p>
+    <form action="#">
+        <input type="radio" name="sex" value="male">男的
+        <br/>
+        <input type="radio" name="sex" value="female" >女的
+    </form>
+    <p>(没加label)</p>
+</div>
+
+<div class="center">
+    <p>sex</p>
+    <form action="#">
+        <input class="change"  type="radio" name="sex" id="male" >
+        <label for="male">Male</label>
+        <br/>
+        <input class="change"  type="radio" name="sex" id="female">
+        <label for="female">Female</label>
+    </form>
+    <p>(加了label)</p>
+</div>
+
+
+</body>
+</html>

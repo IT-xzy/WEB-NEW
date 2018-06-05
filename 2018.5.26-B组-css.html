@@ -1,0 +1,276 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<style>
+    .p-style>p {
+        font-size: 20px;
+        text-align: left;
+        padding-bottom: 20px;
+    }
+</style>
+
+<body>
+    <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h4>小课堂【上海】</h4>
+                <h4>组件化开发&sass文件组织</h4>
+                <h4>分享人：郑佳威</h4>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <p style="font-size: 30px;letter-spacing: 3px;">
+                    假如现在有个项目，需要几个人共同协作完成，如果没有分工的话，小李在header中添加一个颜色，小王又在header添加一个按钮，这样子合作虽然暂时看起来没有问题，但是某一天，小李和小王同时想要在页面添加一个nav导航栏，这样就产生了冲突，而且万一哪天某个地方出现了bug导致整个页面都崩了，那现在是不是要找到这个出bug的部分是谁写的，然后让他去修改，我们开发项目的时候，一般用的是git这样的版本管理工具，在这个部分你添加一笔他添加一笔，最后都分不清楚是谁添的这一笔；这就导致一个管理很混乱的局面，并且出了问题大家可以互相推脱，做不到一个准确问责的状态！
+                </p>
+            </section>
+            <section style="text-align: left">
+                假如现在又有个项目，但是吧，这个分工方式和上面那个有点区别，小王呢只负责写header页眉的部分，老李负责写main主内容和footer的部分；回头这个项目再给出现了一个大bug导致整个页面都崩了，一排查，是小王写的header出现了问题，现在，小王苦逼去修改他写的header了，老李呢，按时回家抱老婆去了！
+                <br>
+                <br>
+            </section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <h4>
+                    什么是组件化开发？
+                </h4>
+                <p>
+                    1、页面上的每个 独立的 可视/可交互区域视为一个组件；像例子中，把header，main，footer独立出来就是把他们当成一个个的组件；
+                    <br>
+                    <img src="https://github.com/fouber/blog/raw/master/201508/assets/modular_2.png" alt="">
+                    <img src="https://raw.githubusercontent.com/fouber/blog/master/201508/assets/components.png" alt="">
+                </p>
+            </section>
+            <!-- <section>
+                整个Web应用由页面组成
+                <br>
+                <img src="https://github.com/fouber/blog/raw/master/201508/assets/constructor.png" alt="">
+            </section> -->
+
+            <section>
+                <h4>为什么要使用组件化开发？他有什么优势？</h4>
+                <p>
+                    1、每个组件对应一个工程目录，组件所需的各种资源都在这个目录下就近维护；（重点） 组件化的开发的最有价值的地方就是就近维护原则，每个开发者都将清楚的知道，自己所开发的维护的功能单元，其代码必然存在于对应的组件目录里，在那个目录下能找到有关这个功能单元的所有内部逻辑，什么样css样式，js啦，HTML页面结构啦，都在这个文件里，当需要修改的时候，直接去所对应的文件夹中找就好了！
+                </p>
+            </section>
+            <section>
+                一个组件一个目录，资源就近维护
+                <br>
+                <img src="https://github.com/fouber/blog/raw/master/201508/assets/modular-component.png" alt="">
+            </section>
+            <section>
+                <p>
+                    2、由于组件具有独立性，因此组件与组件之间可以 自由组合；
+                </p>
+                <p>
+                    3、页面只不过是组件的容器，负责组合组件形成功能完整的界面；
+                </p>
+            </section>
+            <section>
+                组件可组合，组件的JS可依赖其他JS模块，CSS可依赖其他CSS单元
+                <br>
+                <img src="https://github.com/fouber/blog/raw/master/201508/assets/modular_4.png" alt="">
+            </section>
+            <section>
+                <p>
+                    4、当不需要某个组件，或者想要替换组件时，可以整个目录删除/替换。
+                </p>
+                <p>
+                    5、系统功能都被分支到独立的模块和组件中，开发者之间不会产生开发时序的依赖，大幅提升并行的开发效率，并且允许随时加入新成员认领组件开发或者维护工作；
+                </p>
+            </section>
+
+            <section>
+                工程化、模块化、和组件化分别是什么？
+            </section>
+
+            <section>
+                <h4>
+                    工程化
+                </h4>
+                最基础的工程化思想就是将页面的结构、样式和动作分离，工程化是一种思想而不是某种技术，用做工程的思维看待和开发自己的项目，而不是直接撸起袖子一个页面一个页面开些；要盖一栋大楼，假如我们不进行工程化的考量那就是一上来掂起瓦刀、砖块就开干，直到把大楼垒起来，这样做往往意味着中间会出现错误，要推倒重来或是盖好以后结构有问题但又不知道出现在哪谁的责任甚至会在某一天轰然倒塌，那我们如果用工程化的思想去做，就会先画图纸、确定结构、确定用料和预算以及工期，另外需要用到什么工种多少人等等，我们会先打地基再建框架再填充墙体这样最后建立起来的高楼才是稳固的合规的，什么地方出了问题我们也能找到源头和负责人。
+            </section>
+
+            <section>
+                <h4>模块化</h4>
+                工程化是一个更高层次的思想，那么组件化和模块化就是工程思想下相对具体的开发方式；模块化就是假设需要在A页面写一个样式或者功能，这个功能还需要在项目的其他位置使用，这时候把这个功能分离出来编写，实现复用还可以分而治之，
+            </section>
+
+            <section>
+                <h4>组件化</h4>
+                组件化将页面视为一个容器，页面上各个独立部分例如：头部、导航、焦点图、侧边栏这些都视为组件，不同的页面根据内容的需要，去盛放相关组件就可以组成完成的页面。
+            </section>
+
+            <section style="text-align: left">
+                <h3>3.常见问题</h3>
+                如果css代码量比较庞大的，会出现这么几个问题：
+                <br> 1、无法快速确切的知道一个类的作用；
+                <br> 2、无法快速确定一个类在哪里被使用；
+                <br> 3、新增一个类是否会造成冲突；
+                <br> 为了解决以上问题，可以将页面的每一个功能模块（）作为一个独立的组件，然后对组件的内容进行合理的命名（比如button），从而有助于确定一个css代码和相关页面结构的功能，
+            </section>
+
+            <section>
+                <h4>sass文件组织</h4>
+                <soan style="text-align: left">CSS预处理器的特点之一是可以把你的代码分割成很多个文件，而且不会影响性能。这都要归功于Sass的@import命令，只要在你的开发环境下，你调用不管多少文件，最终将编译出一个CSS样式文件。</soan>
+                <span style="text-align: left">多个文件中开发，最终合并输出一个文件
+                    </>
+                    <h5>为什么要创建文件夹？</h5>
+                    <span style="text-align: left">
+                        在家里，你也不会把所有的纸张放在一个盒子里。你可能会使用一个文件夹。一个用于房子上，一个用于银行，一个用于账单等等。 你在创建CSS的架构的时候也应该如此：你不只是把所有的Sass文件放在一个文件夹下，你会将他们分类。
+                    </span>
+            </section>
+            <section>
+                <h3>4.解决方案</h3>
+            </section>
+
+            <section>
+                项目中都会包括几个常用的文件目录：
+                <p style="text-align: left">
+                    css：主要放置.css文件
+                </p>
+                <p style="text-align: left">
+                    js：主要放置.js文件
+                </p>
+                <p style="text-align: left">
+                    images：主要放置图片文件
+                </p>
+                <p style="text-align: left">
+                    html：主要放置.html或.php之类文件（我一般喜欢直接放在项目根录下
+                </p>
+            </section>
+
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+
+            <section>
+                <h3>6.扩展思考</h3>
+            </section>
+            <section>
+
+            </section>
+
+            <section>
+                <h3>7.参考文献</h3>
+                <p>http://www.w3cplus.com/preprocessor/architecture-sass-project.html</p>
+                <p>http://www.w3cplus.com/preprocessor/how-to-create-project-with-sass.html</p>
+                <p>http://www.softwhy.com/article-25-1.html</p>
+            </section>
+            <section>
+                <h3>8.更多讨论</h3>
+            </section>
+            <section>
+                <p>讨论时间到，欢迎大家提问！
+                </p>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    By
+                    <small style="vertical-align: middle">郑佳威</small>
+                </p>
+                <p></p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
