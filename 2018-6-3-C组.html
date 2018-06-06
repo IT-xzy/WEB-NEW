@@ -1,51 +1,49 @@
-<!DOCTYPE html>
-<!-- saved from url=(0049)https://ptteng.github.io/PPT/PPT/js02-JOSN.html#/ -->
-<html class=" js no-mobile desktop no-ie chrome chrome68 ppt-section ppt-section w-1536 gt-240 gt-320 gt-480 gt-640 gt-768 gt-800 gt-1024 gt-1280 gt-1440 lt-1680 lt-1920 no-portrait landscape gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch retina fontface domloaded"
-    id="js02-josn-page">
+<!doctype html>
+<html xmlns:list-style="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>json是什么，如何处理转义</title>
+    <title>葡萄藤PPT</title>
 
-    <link rel="stylesheet" href="./json是什么，如何处理转义_files/reveal.css">
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
 
     <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
-    <link rel="stylesheet" href="./json是什么，如何处理转义_files/ptt.css">
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
 
     <!-- syntax highlighting 代码高亮主题 -->
-    <link rel="stylesheet" href="./json是什么，如何处理转义_files/zenburn.css">
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
 
     <!-- 打印和PDF输出样式 -->
     <script>
         var link = document.createElement('link');
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            '../css/reveal/print/paper.css';
         document.getElementsByTagName('head')[0].appendChild(link);
     </script>
-    <link rel="stylesheet" type="text/css" href="./json是什么，如何处理转义_files/paper.css">
-    <script type="text/javascript" src="./json是什么，如何处理转义_files/marked.js.下载"></script>
-    <script type="text/javascript" src="./json是什么，如何处理转义_files/markdown.js.下载"></script>
-    <script type="text/javascript" src="./json是什么，如何处理转义_files/notes.js.下载"></script>
-    <script type="text/javascript" src="./json是什么，如何处理转义_files/highlight.js.下载"></script>
+    <style>
+        .reveal pre code {
+            background-color: #120;
+        }
+    </style>
 </head>
 
 <body>
-    <img src="./json是什么，如何处理转义_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
     <map name="pttmap">
-        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
     </map>
-    <div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
-        <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.873);">
-            <section class="present" style="top: 178.5px; display: block;">
-                <h2>json是什么，如何处理转义</h2>
-                <h3>小课堂【武汉】</h3>
-                <p>分享人：火建强</p>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h4>小课堂【武汉】</h4>
+                <h4 style="text-transform: none">json是什么，如何处理转义？</h4>
+                <h4>分享人：火建强</h4>
             </section>
-            <section hidden="" aria-hidden="true" class="future" style="top: 1px; display: block;">
+            <section>
                 <p>目录</p>
                 <p>1.背景介绍</p>
                 <p>2.知识剖析</p>
@@ -56,212 +54,143 @@
                 <p>7.参考文献</p>
                 <p>8.更多讨论</p>
             </section>
-            <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
-                <h3>1.背景介绍</h3>
-            </section>
-            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
-                <section style="top: 330px; display: none;">
-                    <h3>J O S N是什么？</h3>
-                    <p>
-                        JSON 是适用于 Ajax 应用程序的一种有效格式，原因是它使 JavaScript 对象和字符串值之间得以快速转换 JSON是一种传递对象的语法，对象可以是name/value对，数组和其他对象。
-                    </p>
+            <section>
+                <section>
+                    <h3>1.背景介绍</h3>
                 </section>
-                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
-                    <p>JSON是一个提供了stringify和parse方法的内置对象</p>
-                    <p>stringify将js对象转化为符合json标准的字符串</p>
-                    <p>parse将符合json标准的字符串转化为js对象</p>
+                <section>
+                    <p style="text-align: left;text-indent: 4rem;font-size:1.7rem">在JSON出现之前，人们一直用XML来传递数据。因为XML是一种纯文本格式，所以它适合在网络上交换数据。XML本身不算复杂，但是，加上DTD、XSD、XPath、XSLT等一大堆复杂的规范以后 ，XML使用起来很繁琐。后来，出现了JSON。JSON是道格拉斯·克罗克福特（DouglasCrockford）在2001年开始推广使用的数据格式，在2005年-2006年正式成为主流的数据格式，雅虎和谷歌就在那时候开始广泛地使用JSON格式。</p>
                 </section>
             </section>
-            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-                <h3>2.知识剖析</h3>
-            </section>
-            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
-                <section style="top: 330px; display: none;">
-                    <h3>JSON.parse</h3>
-                    <p>JSON.parse的参数包含转移字符的时候会遇到两次转义的问题，其实第一次是字符串本身的转义，第二次是将真正转为js对象的转义。 </p>
+            <section>
+                <section>
+                    <h3>2.知识剖析</h3>
                 </section>
-                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
-                    <p>举例如下： 例子一：将字符串'{"a":"b","b":"\\\\"}'传递给JSON.parse，首先解析器提取单引号括起来的字符串时认为第一个\转义第二个\ 第三个\转义第四个\， 也就是说实际可输出字符串是{"a":"b","b":"\\"}（可通过console.log('{"a":"b","b":"\\\\"}')验证），之后正式转为js对象的时候还有一次转义，
-                        也就是实际输出字符转中的第一个\转义第二个\（此时只有两个\）。 所以console.log(JSON.parse('{"a":"b","b":"\\\\"}') );输出结果为Object {a:
-                        "b", b: "\"}， 也就是说实际显示的数据为一个\（实际可输出一个\说明在此之前还有一个\）。 </p>
+                <section>
+                    <p>JSON简介</p>
+                    <p style="text-align: left;text-indent: 4rem;">JSON (JavaScript Object Notation, JS 对象标记) 是一种轻量级的数据交换格式。它基于 ECMAScript (w3c制定的js规范)的一个子集，采用完全独立于编程语言的文本格式来存储和表示数据。简洁和清晰的层次结构使得
+                        JSON 成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率。数据传输是我们在敲代码时，经常遇到的一个场景,前后端交互。给数据一个统一的格式有利于我们编写和解析数据。json，是一种数据格式，在与后端的数据交互中有较为广泛的应用。</p>
                 </section>
-                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
-
-
-                    例子二：
-                    <pre>                    <code class="hljs stata">
-                        <span class="hljs-keyword">var</span> obj = {a : <span class="hljs-string">"b"</span>,b : <span class="hljs-string">"\\"</span>,c : {b : <span class="hljs-string">"\\"</span>,a : {b : <span class="hljs-string">"\\"</span>}}};&lt;<span class="hljs-keyword">br</span>&gt;
-                        <span class="hljs-keyword">var</span> json_str = JSON.stringify(obj);&lt;<span class="hljs-keyword">br</span>&gt;
-                        console.<span class="hljs-built_in">log</span>( JSON.stringify(obj) );&lt;<span class="hljs-keyword">br</span>&gt;
-                        console.<span class="hljs-keyword">dir</span>(JSON.<span class="hljs-keyword">parse</span>(json_str));&lt;<span class="hljs-keyword">br</span>&gt;
-                        console.<span class="hljs-keyword">dir</span>(JSON.<span class="hljs-keyword">parse</span>('{<span class="hljs-string">"a"</span>:<span class="hljs-string">"b"</span>,<span class="hljs-string">"b"</span>:<span class="hljs-string">"\\\\"</span>,<span class="hljs-string">"c"</span>:{<span class="hljs-string">"b"</span>:<span class="hljs-string">"\\\\"</span>,<span class="hljs-string">"a"</span>:{<span class="hljs-string">"b"</span>:<span class="hljs-string">"\\\\"</span>}}}'));&lt;<span class="hljs-keyword">br</span>&gt;
+                <section>
+                    <div style="display:inline-block;vertical-align:top;">
+                        <p>JSON语法</p>
+                        <ul style="list-style: none">
+                            <li>数据在名称/值对中</li>
+                            <li>数据由逗号分隔</li>
+                            <li>大括号保存对象</li>
+                            <li>中括号保存数组</li>
+                        </ul>
+                    </div>
+                    &emsp;&emsp;&emsp;&emsp;&emsp;
+                    <div style="display:inline-block">
+                        <p>JSON值</p>
+                        <ul style="list-style: none">
+                            <li>数字(整数/浮点数)</li>
+                            <li>字符串</li>
+                            <li>布尔值(true/false)</li>
+                            <li>数组(中括号中)</li>
+                            <li>对象(大括号中)</li>
+                            <li>null</li>
+                        </ul>
+                    </div>
+                </section>
+                <section>
+                    <pre>
+                    <code style="background-color: #1c1e20">
+  var json = {"password":123456,"name":"myname","Booleans":true,"Array":[x,y,z],"object":{}}
                     </code>
-                        </pre>
-                    <p>
-                        根据转义规则，实际输出一个\在这个\之前必定有一个\。所以如上第一行输出按照书写来说为'{"a":"b","b":"\\\\","c":{"b":"\\\\","a":{"b":"\\\\"}}}'，可通过第三条输出来验证。 总结，如果想在js对象中出现一个\，需要在json字符串中出现四个\
-                        。
-                    </p>
-
+                </pre> JSON嵌套
+                    <pre>
+                    <code style="background-color: #1c1e20">
+                      myObj = {
+                          "name":"jnshu",
+                          "alexa":1000,
+                          "sites": {
+                              "site1":"www.jnshu.com",
+                              "site2":"m.jnshu.com",
+                              "site3":"c.jnshu.com"
+                          }
+                      }
+                      console.log(myObj)
+                    //输出结果：
+                    Object {name: "jnshu", alexa: 1000, sites: Object}
+                    </code>
+                </pre>
+                </section>
+                <section>
+                    <p>JSON使用</p>
+                    <p>JSON.parse()将字符串转化为对象</p>
+                    <p>JSON.stringify()将对象转化为字符串</p>
+                    <pre>
+                    <code>
+                        var str = '{ "name": "cxh", "sex": "man" }';//  JSON字符串
+                        var obj = JSON.parse(str); //由JSON字符串转换为JSON对象
+                          //读取
+                        Alert(obj.name);
+                        Alert(obj.sex);
+                        var a = { "name": "cxh", "sex": "man" };//JSON对象
+                        var b =JSON.stringify(a); //将JSON对象转化为JSON字符
+                    </code>
+                </pre>
                 </section>
             </section>
-            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <section>
                 <h3>3.常见问题</h3>
             </section>
-            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
-                <section style="top: 330px; display: none;">
-                    <h3>
-                        特殊字符导致json字符串转换成json对象出错
-                    </h3>
-                    <p>
-                        对于其他的其他的特殊字符 1.双引号（"），如果正确出现双引号应为\\\" 2.\n，如想想出现正确的换行需要json字符串中是\\n，其实是先对\n中的\转义，n变成了普通字符，在解析为js对象的时候n与之前的\（只有一个\了）被解释为换行。如下的两个与此类似。
-                        3.\r，\\r 4.\t，\\t
-                    </p>
-                    <p>
-                        <a href="http://blog.csdn.net/robotech_er/article/details/40260377" target="_blank">http://blog.csdn.net/robotech_er/article/details/40260377</a>
-                    </p>
-                </section>
+            <section>
+                <p>如何处理转义</p>
             </section>
-            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-                <h3>4.解决方案</h3>
-            </section>
-            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
-                <section style="top: 330px; display: none;">
-                    <h3>JSON.stringify 语法</h3>
+            <section>
+                <section>
+                    <h3>4.解决方案</h3>
                 </section>
-                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
-                    <p>
-                        语法： JSON.stringify(value [, replacer] [, space]) value：是必须要的字段。就是你输入的对象，比如数组啊，类啊等等。 replacer：这个是可选的。它又分为2种方式，一种是方法，第二种是数组。
-                        情况一：我们先说数据，通过我们后面的实验可以知道，它是和第一个有关系的。一般来说，我们系列化后的结果是通过键值对来进行表示的。 比如说：
-                        <br> name:"lan",age:25
-                        <br>
-                    </p>
+                <section>
+                    <p>在用JSON.parse解析JSON对象时会对其中的转义符进行两次解析</p>
                 </section>
-                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
-                    <p>
-                        情况二：如果是方法，那很简单，就是说把系列化后的每一个对象（记住 是每一个）传进方法里面进行处理。 space：很好理解，用什么来做分隔符的。 1.如果省略的话，那么显示出来的值 就没有分隔符。直接输出来 2.如果是一个数字的话，那么它就定义缩进几个字符，当然
-                        如果大于10 ，则最大值为10. 3.如果是一些转义字符，比如“\t”，表示回车，那么它每行一个回车。 4.如果仅仅是字符串，OK，就在每行输出值的时候把这些字符串附加上去就OK。当然，最大长度也是10个字符。
-                    </p>
+                <section>
+                    <p style="text-align: left;text-indent: 4rem;">将字符串'{"a":"b","b":"\\\\"}'传递给JSON.parse()，首先解析器提取单引号括起来的字符串时认为第一个\转义第二个\ ,第三个\转义第四个\， 也就是说实际可输出字符串是{"a":"b","b":"\\"}（可通过console.log('{"a":"b","b":"\\\\"}')验证），之后正式转为js对象的时候还有一次转义，
+                        也就是实际输出字符转中的第一个\转义第二个\（此时只有两个\）。 所以console.log(JSON.parse('{"a":"b","b":"\\\\"}') );输出结果为Object {a:
+                        "b", b: "\"}， 也就是说实际显示的数据为一个\（实际可输出一个\说明在此之前还有一个\）。</p>
                 </section>
-                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                <section>
+                    <p>总结：JSON.parse的参数包含转移字符的时候会遇到两次转义的问题，其实第一次是字符串本身的转义，第二次是真正转为js对象的转义。</p>
+                </section>
 
-                    <pre>                    <code class="hljs kotlin">
-                        <span class="hljs-variable"><span class="hljs-keyword">var</span> obj</span>={
-                        webName:<span class="hljs-string">"脚本之家"</span>,
-                        url:<span class="hljs-string">"jb51.net"</span>,
-                        age:<span class="hljs-string">"2"</span>
-                        }
-                        <span class="hljs-variable"><span class="hljs-keyword">var</span> str</span>=JSON.stringify(obj)
-                        console.log(str);
-                    </code>
-                </pre>
-                </section>
-                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
-                    <pre>                    <code class="hljs mipsasm">
-                        var student = new Object()<span class="hljs-comment">;</span>
-                        student.name = <span class="hljs-string">"Lanny"</span><span class="hljs-comment">;</span>
-                        student.age = <span class="hljs-string">"25"</span><span class="hljs-comment">;</span>
-                        student.location = <span class="hljs-string">"China"</span><span class="hljs-comment">;</span>
-                        var <span class="hljs-keyword">json </span>= <span class="hljs-keyword">JSON.stringify(student);
-</span>                        alert(student)<span class="hljs-comment">;</span>
-                    </code>
-                </pre>
+            </section>
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+            <section>
+                <section>
+                    <h3>6.扩展思考</h3>
                 </section>
             </section>
-            <!--<section>-->
-            <!--<h3>5.编码实战</h3>-->
-            <!--</section>-->
-            <!--<section>-->
-
-            <!--</section>-->
-            <!--<section>-->
-            <!--<h3>6.扩展思考</h3>-->
-            <!--</section>-->
-            <!--<section>-->
-            <!--<p class="fragment">问题一</p>-->
-
-            <!--</section>-->
-            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-                <h3>5.参考文献</h3>
+            <section>
+                <h3>7.参考文献</h3>
             </section>
-            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-                <p>参考一：
-                    <a href="http://blog.csdn.net/robotech_er/article/details/40260377" target="_blank">参考一</a>
-                </p>
-                <p>参考一：
-                    <a href="http://www.jb51.net/article/29893.htm" target="_blank">参考二</a>
-                </p>
+            <section>
+                <p>JSON对象 -- JavaScript 标准参考教程（alpha）</p>
+                <p>JSON.stringify 语法实例讲解</p>
+                <p>JSON.parse() - JavaScript</p>
             </section>
-            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <section>
                 <h3>8.更多讨论</h3>
             </section>
-            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-                <p>JSON处理转义时出现无法特殊字符无法处理时怎么办？凉拌？</p>
-            </section>
-            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <section>
                 <h4>鸣谢</h4>
                 <p>感谢大家观看</p>
                 <p>
-                    <small>BY : HjQ</small>
+                    By
+                    <small style="vertical-align: middle">火建强</small>
                 </p>
             </section>
-
-        </div>
-        <div class="backgrounds">
-            <div class="slide-background present" data-loaded="true" style="display: block;"></div>
-            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
-            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
-            <div class="slide-background stack future" style="display: none;">
-                <div class="slide-background present" style="display: none;"></div>
-                <div class="slide-background future" style="display: none;"></div>
-                <div class="slide-background future" style="display: none;"></div>
-            </div>
-            <div class="slide-background future" style="display: none;"></div>
-            <div class="slide-background stack future" style="display: none;">
-                <div class="slide-background present" style="display: none;"></div>
-                <div class="slide-background future" style="display: none;"></div>
-                <div class="slide-background future" style="display: none;"></div>
-                <div class="slide-background future" style="display: none;"></div>
-            </div>
-            <div class="slide-background future" style="display: none;"></div>
-            <div class="slide-background stack future" style="display: none;">
-                <div class="slide-background present" style="display: none;"></div>
-            </div>
-            <div class="slide-background future" style="display: none;"></div>
-            <div class="slide-background stack future" style="display: none;">
-                <div class="slide-background present" style="display: none;"></div>
-                <div class="slide-background future" style="display: none;"></div>
-                <div class="slide-background future" style="display: none;"></div>
-                <div class="slide-background future" style="display: none;"></div>
-                <div class="slide-background future" style="display: none;"></div>
-            </div>
-            <div class="slide-background future" style="display: none;"></div>
-            <div class="slide-background future" style="display: none;"></div>
-            <div class="slide-background future" style="display: none;"></div>
-            <div class="slide-background future" style="display: none;"></div>
-            <div class="slide-background future" style="display: none;"></div>
-        </div>
-        <div class="progress" style="display: block;">
-            <span style="width: 0px;"></span>
-        </div>
-        <aside class="controls" style="display: block;">
-            <button class="navigate-left" aria-label="previous slide"></button>
-            <button class="navigate-right enabled" aria-label="next slide"></button>
-            <button class="navigate-up" aria-label="above slide"></button>
-            <button class="navigate-down" aria-label="below slide"></button>
-        </aside>
-        <div class="slide-number" style="display: none;"></div>
-        <div class="speaker-notes" data-prevent-swipe=""></div>
-        <div class="pause-overlay"></div>
-        <div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
-            json是什么，如何处理转义 小课堂【武汉】 分享人：火建强
         </div>
     </div>
 
-    <script src="./json是什么，如何处理转义_files/head.min.js.下载"></script>
-    <script src="./json是什么，如何处理转义_files/reveal.js.下载"></script>
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
 
     <script>
-
         // 以下为常见配置属性的默认值
         // {
         // 	controls: true, // 是否在右下角展示控制条
@@ -280,20 +209,17 @@
         // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
         // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
         // }
-
         // 初始化幻灯片
         Reveal.initialize({
             history: true,
             dependencies: [
-                { src: '../plugin/markdown/marked.js' },
-                { src: '../plugin/markdown/markdown.js' },
-                { src: '../plugin/notes/notes.js', async: true },
-                { src: '../plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+                { src: './plugin/markdown/marked.js' },
+                { src: './plugin/markdown/markdown.js' },
+                { src: './plugin/notes/notes.js', async: true },
+                { src: './plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
             ]
         });
     </script>
-
-
 </body>
 
 </html>
