@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>shuffle-1</title>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    button{
+        /*position: fixed;*/
+        bottom: 0;
+        width: 80%;
+        height: 3rem;
+        margin: 1rem;
+    }
+    .height{
+        float: left;
+        width: 1.5rem;
+        margin-right: 1rem;
+        text-align: center;
+        background: orange;
+    }
+</style>
+<body>
+<div class="height" style="height: 10px">1</div>
+<div class="height" style="height: 20px">2</div>
+<div class="height" style="height: 30px">3</div>
+<div class="height" style="height: 40px">4</div>
+<div class="height" style="height: 50px">5</div>
+<div class="height" style="height: 60px">6</div>
+<div class="height" style="height: 70px">7</div>
+<div class="height" style="height: 80px">8</div>
+<div class="height" style="height: 90px">9</div>
+<div class="height" style="height: 100px">10</div>
+<button onclick="shuffle()">数组乱序</button>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    function shuffle(array) {
+        var array = ["1","2","3","4","5","6","7","8","9","10"];
+        var z=0;
+        var _array = array.concat();
+        for (var i = _array.length; i--; ) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = _array[i];
+            _array[i] = _array[j];
+            _array[j] = temp;
+            var x=i+1;
+            var y=j+1;
+            z=z+1;
+            console.log("第"+z+"步:第"+x+"位数字与第"+y+"位数字交换位置");
+            console.log(_array);
+        }
+        console.log("最终数组顺序"+_array);
+        console.log(_array);
+        for (var i=0;i<=9;i++){
+            $(".height").eq(i).css("height",_array[i]+"0px");
+            $(".height").eq(i).text(_array[i]);
+        }
+
+
+    }
+</script>
+</body>
+</html>
