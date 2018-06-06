@@ -13,7 +13,7 @@ var wh=/\W/ ;   //非字符规则
 
 //var guizhe=/\d/; // 正则
 // qq号检测
-  var guizhe=/^[1-9]\d{4,12}/
+ // var guizhe=/^[1-9]\d{4,12}/
 // 邮箱检测
 //var guizhe=/^([0-9a-zA-Z])+\@([a-zA-Z0-9])+\.([a-zA-Z])+$/
 var mas="test()"
