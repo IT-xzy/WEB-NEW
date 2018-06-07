@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)https://ptteng.github.io/PPT/PPT/JS-11-Mini-Program.html#/13 -->
+<html xmlns="http://www.w3.org/1999/html" class=" js no-mobile desktop no-ie chrome chrome65 ppt-section ppt-section gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch no-retina fontface domloaded w-1366 gt-240 gt-320 gt-480 gt-640 gt-768 gt-800 gt-1024 gt-1280 lt-1440 lt-1680 lt-1920 no-portrait landscape" id="js-11-mini-program-page"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title></title>
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+	<link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+	<!-- syntax highlighting 代码高亮主题 -->
+	<link rel="stylesheet" href="./lib/reveal/css/zenburn.css"
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+    <img src="img/demo/logo.png">
+</map>
+<div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section style="top: 178.5px; display: none;" class="past" hidden="" aria-hidden="true">
+            <h2>【JS-11】什么是强缓存和协商缓存？</h2>
+
+            <h3>小课堂</h3>
+            <p style="text-align: center;">分享人：禚洪宇</p>
+        </section>
+        <section style="top: 3px; display: none;" class="past" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+			
+            <p><img src="./阿萨德.jpg" alt=""></p>
+        </section>
+        <section style="top: 0px; display: none;" class="stack past" data-previous-indexv="0" hidden="" aria-hidden="true">
+            <section style="top: 267px; display: none;" class="" aria-hidden="true">
+                <h3>1.背景介绍</h3>
+            </section>
+            <section class="future" aria-hidden="true" style="top: 129px; display: none;" hidden="">
+                <h4 style="text-align: left;">
+                    浏览器缓存
+                </h4>
+                <p class="fragment" style="float:left;text-align: left;text-indent: 2cm">
+                    浏览器缓存（browser caching）是浏览器储存的用户最近请求过的文档
+                </p>
+                <img class="fragment" style="width: 350px" src="https://upload-images.jianshu.io/upload_images/19811-d777ce96e2dc0f5a.png">
+            </section>
+
+            <section class="future" aria-hidden="true" style="top: 129px; display: none;" hidden="">
+                <p style="text-align: left;">优点：</p>
+
+                <ol style="float: left;">
+                    <li>减少冗余的数据传输</li>
+                    <li>减少服务器的负担</li>
+                    <li>加快客户端加载网页的速度</li>
+                </ol>
+
+            </section>
+        </section>
+
+        <section style="top: 0px; display: none;" class="stack past" data-previous-indexv="0" hidden="" aria-hidden="true">
+            <section style="top: 267px; display: none;" class="" aria-hidden="true">
+                <h3>2.知识剖析</h3>
+            </section>
+            <section class="future" aria-hidden="true" style="top: 38.5px; display: none;" hidden="">
+                <h4 >2.1 强制缓存</h4>
+                <p  style="text-align:left;text-indent: 2cm">
+                    直接从缓存中获取资源而不经过服务器；与强制缓存有关的header有两个
+                </p>
+                <ol class="fragment" style="font-size: 26px;">
+                    <li>expires</li>
+                    <p style="text-align:left;text-indent: 2cm">它的值是GMT格式的绝对时间，如果发送请求的时间在expires设置的时间之前，那么缓存有效，否则就会发送请求至服务器来获取资源。</p>
+                </ol>
+                <ol class="fragment" style="font-size: 26px;">
+                    <li>cache-control:max-age=number</li>
+                    <p style="text-align:left;text-indent: 2cm">该字段主要是利用max-age值来进行判断，max-age是一个相对值，设置一个有效期。</p>
+                    <p>Cache-Control利用客户端时间进行判断，相对于Expires更安全</p>
+                </ol>
+            </section>
+            <section class="future" aria-hidden="true" style="top: 38.5px; display: none;" hidden="">
+                <ol>
+                    <p>cache-control字段的其它值：</p>
+                    <li>no-cache：不使用本地缓存，需要使用缓存协商</li>
+                    <li>no-store：禁止浏览器缓存数据，每次请求都会向服务器发送请求</li>
+                    <li>public：可以被所有的用户缓存，包括终端用户和CDN代理商</li>
+                    <li>private：只能被终端用户的浏览器缓存，不允许CDN等中继缓存服务器对其缓存</li>
+                </ol>
+                <p class="fragment" style="text-align:left;">Tip:cache-control的优先级高于Expires</p>
+            </section>
+            <section style="text-align: left; top: 21.5px; display: none;" class="future" aria-hidden="true" hidden="">
+                <h4 >2.2 协商缓存</h4>
+
+                <p style="text-align:left;">协商缓存是由服务器来判断缓存资源是否可用</p>
+                <!-- <img class="fragment" style="border:0;float: left;" src="https://images2015.cnblogs.com/blog/408483/201605/408483-20160525182843100-1556227104.png">
+                <img class="fragment" style="border:0;float: right; width: 530px" src="https://images2015.cnblogs.com/blog/408483/201605/408483-20160525182943272-204994049.png"> -->
+            </section>
+
+            <section style="text-align: left; top: 21.5px; display: none;" class="future" aria-hidden="true" hidden="">
+                <p>1. Etag/If-None-Match</p>
+                <ol>
+                    <p>Etag:（Entity Tag的缩写）可以是唯一标识资源的任何东西，配合cache-control使用</p>
+                    <li>1 Etag：第一次请求，web服务器响应请求时，告诉浏览器当前资源在服务器中的唯一标识（生成规则由服务器决定）</li>
+                    <li>2 If-None-Match：第二次请求携带，值为上一次请求返回的Etag值</li>
+                </ol>
+            </section>
+
+            <section style="text-align: left; top: 21.5px; display: none;" class="future" aria-hidden="true" hidden="">
+                <p>2. Last-Modified/If-Modified-Since</p>
+                <p >二者的值都是GMT格式的时间字符串，具体过程：</p>
+                <ol class="fragment">
+                    <li>浏览器第一次跟服务器请求一个资源，服务器在返回这个资源的同时，在respone的header加上Last-Modified的header，这个header表示这个资源在服务器上的最后修改时间</li>
+                    <li>
+浏览器再次跟服务器请求这个资源时，在request的header上加上If-Modified-Since的header，这个header的值就是上一次请求时返回的Last-Modified的值</li>
+
+                </ol>
+            </section>
+
+            <section style="text-align: left; top: 21.5px; display: none;" class="future" aria-hidden="true" hidden="">
+                
+                <p style="text-align:left;">总结：</p>
+                <img class="fragment" style="border:0;float: left;" src="https://images2015.cnblogs.com/blog/408483/201605/408483-20160525182843100-1556227104.png">
+                <img class="fragment" style="border:0;float: right; width: 530px" src="https://images2015.cnblogs.com/blog/408483/201605/408483-20160525182943272-204994049.png">
+            </section>
+        </section>
+        <section style="top: 267px; display: none;" class="past" hidden="" aria-hidden="true">
+            <section style="top: 267px; display: none;" class="" aria-hidden="true">
+                <h3 style="text-align: center">3. 常见问题</h3>
+            </section>
+            <section style="top: 267px; display: none;" class="" aria-hidden="true">
+                <p>Last-Modified与Etag有什么区别？</p>
+            </section>
+        </section>
+        <section style="top: 267px; display: none;" class="past" hidden="" aria-hidden="true">
+            <section style="top: 267px; display: none;" class="" aria-hidden="true">
+                <h3 style="text-align: center">4. 解决方案</h3>
+            </section>
+            <section style="top: 267px; display: none;" class="" aria-hidden="true">
+                <ol>
+                    <li>Last-Modified标注的最后修改时间只能精确到秒级</li>
+                    <li>如果某些文件会被定期生成，当有时内容并没有任何变化，但Last-Modified却改变了，导致文件没法使用缓存</li>
+                </ol>
+            </section>
+        </section>
+        <section style="top: 267px; display: none;" class="past" hidden="" aria-hidden="true">
+            <h3>5.编码实战</h3>
+        </section>
+        <section style="text-align: left; top: 178px; display: block;" class="past" hidden="" aria-hidden="true">
+
+            <section style="top: 267px; display: none;" class="" aria-hidden="true">
+                <h3 style="text-align: center">6.扩展思考</h3>
+            </section>
+            <section style="top: 267px; display: none;" class="" aria-hidden="true">
+                <p>如何对缓存进行性能优化？</p>  
+                <p class="fragment">https://www.zhihu.com/question/20790576</p>          
+            </section>
+        </section>
+        
+        <section style="top: 267px; display: block;" class="past" hidden="" aria-hidden="true">
+            <h3>7.参考文献</h3>
+            <p style="text-align: left">参考一：
+                <a href="http://www.cnblogs.com/wonyun/p/5524617.html">
+                    http协商缓存VS强缓存
+                </a>
+            </p>
+            <p style="text-align: left">参考二：
+                <a href="http://caibaojian.com/browser-cache.html">
+                    浏览器的协商缓存与强缓存
+                </a>
+            </p>
+            <p style="text-align: left">参考三：
+                <a href="https://www.zhihu.com/question/20790576">
+                    知乎
+                </a>
+            </p>
+            <p style="text-align: left">参考四：
+                <a href="http://www.cnblogs.com/lyzg/p/5125934.html">
+                    浏览器缓存知识小结及应用
+                </a>
+            </p>
+        </section>
+        
+        <section style="text-align: left; top: 66px; display: block;" hidden="" aria-hidden="true" class="future">
+            <h3 style="text-align: center">8.更多讨论</h3>
+        </section>
+        <section style="top: 245.5px; display: block;" hidden="" aria-hidden="true" class="future">
+            <h4>感谢观看</h4>
+            <p>
+                <small>BY :禚洪宇</small>
+            </p>
+        </section>
+    </div>
+</div>
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+
+
+
+
+</body></html>
