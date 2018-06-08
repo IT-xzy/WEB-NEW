@@ -1,0 +1,369 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+   
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h3>【JS-task2】洗牌算法的证明</h3>
+            <p>分享人：田迪生</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <h3>什么是洗牌算法?</h3>
+			<p>洗牌算法是我们常见的随机问题，在玩游戏、随机排序时经常会碰到。</p>
+			<p>本质是让一个数组内的元素随机排列，即数组乱序。</p>
+        </section>
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h4>如何证明数组乱序的随机性能？</h4>
+            <p>对于任意数组,数组中元素个数n >= 2，n为自然数。</p>
+            <p>如果可以证明经过这个算法将数组乱序，数组中每个元素出现在 n 个位置任意一个位置的概率都是 1/n,即可以说明随机性良好。</p>
+		</section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h4>数组乱序以及证明</h4>
+			<p>1.如何实现数组乱序</p>
+			<p>2.如何证明某个给定命题在整个（或者局部）自然数范围内成立</p>
+        </section>
+
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h4>如何实现数组乱序</h4>
+			<p>Fisher–Yates Shuffle</p>
+			<p>关于数组乱序，正确的解法应该是 Fisher–Yates Shuffle。</p>
+			<p>实现原理：遍历数组元素，将其与之前的任意元素交换。</p>
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h4>如何证明某个给定命题在整个（或者局部）自然数范围内成立</h4>
+            <p>数学归纳法</p>
+            <p>数学归纳法（Mathematical Induction, MI）是一种数学证明方法，通常被用于证明某个给定命题在整个（或者局部）自然数范围内成立。</p>
+            <p>最简单和常见的数学归纳法是证明当n等于任意一个自然数时某命题成立。证明分下面两步：</p>
+            <p>1.证明当n= 1时命题成立。</p>
+            <p>2.假设n=m时命题成立，那么可以推导出在n=m+1时命题也成立。（m代表任意自然数）</p>
+        </section>
+		
+
+		
+
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>3.常见问题</h3>
+        </section>
+     
+	    <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p>常见的概率计算?</p>
+			<p>相互独立事件与互斥事件的区别和联系?</p>
+        </section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>4.解决方案</h3>
+        </section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h4>常见的概率计算?</h4>
+		    <p>定理：设A、B是互不相容事件（AB=φ），则：P（A∪B）=P（A）+P（B）</p>
+		    <p>条件概率：已知事件B出现的条件下A出现的概率，称为条件概率，记作：P(A|B)
+                条件概率计算公式：
+                当P(A)>0，P(B|A)=P(AB)/P(A)
+                当P(B)>0，P(A|B)=P(AB)/P(B) </p>
+            <p>乘法公式 P(AB)=P(A)×P(B|A)=P(B)×P(A|B)</p>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h4>相互独立事件</h4>
+            <p> 相互独立事件: 事件A(或B)是否发生对事件B(A)发生的概率没有影响，这样的两个事件叫做相互独立事件。</p>
+            <p>相互独立事件同时发生的概率P(A*B) =P(A) *P(B)</p>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h4>互斥事件</h4>
+            <p>互斥事件:指的是不可能同时发生的两个事件。</p>
+            <p> 例如：事件A和B的交集为空，A与B就是互斥事件，也叫互不相容事件。也可叙述为：不可能同时发生的事件。</p>
+            <p> 如A∩B为不可能事件（A∩B=Φ），那么称事件A与事件B互斥，其含义是：事件A与事件B在任何一次试验中不会同时发生。</p>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h4>相互独立事件与互斥事件的区别和联系?</h4>
+            <p>区别∶
+                相互独立事件之间的发生互不影响，但可能会同时发生。
+                互斥事件是不可能同时发生的事件，即交集为零，但可能会产生相互影响。</p>
+            <p>联系∶
+                相互独立事件可能是互斥事件也可能不是互斥事件，而互斥事件一定不是独立事件。
+              </p>
+        </section>
+
+
+
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>5.编码实战</h3>
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h4>关于数组乱序的一个小例子</h4>
+            <a href="shuffle-1.html">shuffle</a>
+        </section>
+
+
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>6.扩展思考</h3>
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h4>如何使用数学归纳法证明数组乱序的随机性</h4>
+            <p>证明：数组中元素个数n >= 2，n为自然数,经过该算法将数组乱序，数组中每个元素出现在 n 个位置任意一个位置的概率都是 1/n.</p>
+        </section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p>1.当n=2时,根据算法，显然有 1/2 的概率两个数交换，有 1/2 的概率两个数不交换，因此对 n = 2 的情况，元素出现在每个位置的概率都是 1/2，满足随机性要求。</p>
+			<p>2、假设n=m时，算法的随机性符合要求。事件C:当数组中有m个元素时，元素出现的每个位置。P(C)=1/m</p>
+			<p>事件A:元素出现在末尾位置。 P(A)=1/(m+1)</p>
+			<p>事件B:元素出现在非末尾位置。A、B为相互对立事件,P(B)=1-P(A)=m/(m+1)</p>
+			<p>在元素出现在非末尾位置的条件下，元素出现在其他m个位置的概率。P(BC)</p>
+
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p>根据概率计算的乘法法则P(AB)=P(A)×P(B|A)=P(B)×P(A|B)</p>
+            <p>P(BC)==P(B)×P(C|B)=P(C)×P(B|C)</p>
+            <p>事件B和事件C为相互独立事件</p>
+            <p>P(C|B)=P(C),P(B|C)=P(B)</p>
+            <p>综上所述,P(BC)=P(B)×P(C)=[m/(m+1)]×[1/m]=1/(m+1)</p>
+            <p>即可证明n=m+1</p>
+            <p>结论：对于任意大于等于2的自然数n，算法随机性均符合要求。</p>
+        </section>
+
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>7.参考文献</h3>
+        </section>
+		
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <a href="https://segmentfault.com/a/1190000005875191">也谈前端面试常见问题之『数组乱序』</a><br/>
+            <a href="https://baike.baidu.com/item/%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3%E6%B3%95">数学归纳法</a>
+        </section>
+
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>BY : 田迪生</small>
+            </p>
+        </section>
+
+    </div>
+<div class="backgrounds"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background stack present" data-loaded="true" style="display: block;"><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up enabled" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+               
+                语法：
+                return[()[expression][]];
+                可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。
+            
+                用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression 被省略，
+                    或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+            </div></div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+    //    原始类型对象直接赋值不会相互影响
+    //    var a = 1;
+    //
+    //    var b = a;
+    //    b = 10;
+    //    console.log(a); // 1
+    ////
+    //    var a = 'hello';
+    //    var b = a;
+    //    b = 'world';
+    //    console.log(a); // hello
+    //
+    //    var a = true;
+    //    var b = a;
+    //    b = false;
+    //    console.log(a);
+
+    //数组浅复制
+    //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+    //    ];
+    //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+    //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+    //    console.log(a)//那么现在打印a 是什么结果呢
+    //
+    //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+    //    var arrtoo = arr.slice(1);
+    //    arrtoo[2] = "set Map";
+    //    console.log(arr);//One,Two,Three
+    //    console.log(arrtoo);//One,set Map,Three
+
+    //
+    //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+    //    var arrtooo = arr1.concat(111111);
+    //    arrtooo[1] = "set Map To";
+    //    console.log(arr1);//One,Two,Three
+    //    console.log(arrtooo);//One,set Map To,Three
+
+    //
+    //    var b=[1,2,3,4,5];   //concat的链接
+    //    var c=[6,7,8,9];
+    //    var d =[4,4,22]
+    //    console.log(b.concat(c,d))
+
+    var a = {name: 'yy', age: 26};  //对象的浅拷贝哦
+    var b = new Object();
+    b.name = a.name;
+    b.age = a.age;
+    b.name = 'xx';
+    console.log(a);//Object { name="yy", age=26}
+    console.log(b);//Object { name="xx", age=26}
+
+    var d = {            //对象的浅拷贝哦 第一种
+        name: 'd',
+        oc: {
+            age: 32
+        },
+        oad: {
+            adds: {
+                bb: 12
+            }
+        }
+    };
+    var deepCopy = function (source) {
+        var result = {};
+        for (var key in source) {
+            result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+        }
+        return result
+    };
+
+    var c = deepCopy(d);
+    c.name = 'c';
+    c.oc = {
+        age: 49
+    };
+    console.log(c);
+    console.log(d);
+
+
+    //    var person = {    //第二种深拷贝
+    //        name: 'aa',
+    //        friends: ['da', 'dsa', 'gf']
+    //    };
+    //
+    //    var aPerson = Object.create(person, {
+    ////        name: {
+    ////            value: "gee"
+    ////        }
+    //    });
+    //
+    //    console.log(person.name);
+    //    console.log(aPerson.friends)
+
+    var Chinese = {
+        nation: '中国'
+
+    }
+    var Doctor = {
+        career: '医生'
+    }
+
+    function extendCopy(p) {
+        var c = {};
+        for (var i in p) {
+            c[i] = p[i];
+        }
+        c.uber = p;
+        return c;
+    }
+
+    var Doctor = extendCopy(Chinese);
+    Doctor.career = '医生';
+    console.log(Doctor); // 中国
+    Chinese.birthPlaces = ['北京', '上海', '香港'];
+    var Doctor = extendCopy(Chinese);
+    Doctor.birthPlaces.push('厦门');
+
+</script>
+
+</body>
+</html>
