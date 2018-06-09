@@ -1,0 +1,253 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>葡萄藤PPT</title>
+    <link rel="stylesheet" href="../css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="../css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="../lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+
+        link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        .reveal pre code {
+            background-color: #120;
+        }
+    </style>
+</head>
+<body>
+<img src="../img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h4>小课堂【萌新】</h4>
+            <h4>flex弹性布局</h4>
+            <h4>分享人：段俊超</h4>
+        </section>
+        <section>
+            <p>1.背景介绍</p>
+            <p>2.知识解析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+        </section>
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <section>
+            <p>
+                1.背景介绍
+                常用的WEB布局有哪些？
+                1.静态布局
+                2.弹性布局
+                3.流式布局
+                4.自适应布局
+                5.响应式布局
+            </p>
+        </section>
+        <section>
+            <p>FLEX布局是什么？
+            </p>
+            2009年，W3C提出了一种新的布局方案----Flex 布局，可以简便、完整、响应式地实现各种页面布局。
+            目前，它已经得到了所有浏览器的支持，这意味着，现在就能很安全地使用这项功能。
+        </section>
+        <section>
+            使用flex布局的容器（flex container），它内部的元素自动成为flex项目（flex item）。容器拥有两根隐形的轴，水平的主轴（main axis），和竖直的交叉轴。
+            主轴开始的位置，即主轴与右边框的交点，称为main start；主轴结束的位置称为main end；交叉轴开始的位置称为cross start；
+            交叉轴结束的位置称为cross end。item按主轴或交叉轴排列，item在主轴方向上占据的宽度称为main size，在交叉轴方向上占据的宽度称为cross size。
+        </section>
+        <section>
+            <h3>2.知识解析</h3>
+        </section>
+        <section>
+            <h3>一，怎么运用FLEX布局</h3>
+            flex布局非常灵活，任一容器都可以指定为flex布局。块状只需要display属性规定为flex即可。 行内元素也可以指定为flex布局，将display属性设置为inline-flex。
+            还有WebKit内核的浏览器需要加上-webkit前缀。 需要注意的是设置成为flex布局之后，子元素的float，clear，vertical-align就会失效。
+        </section>
+        <section>
+            <p>二，基本概念</p>
+            采用flex布局的元素就被称为flex容器（flex contain），它的所有子元素称为flex项目（flex item）。 容器默认存在两根轴线，一根主轴（main axis）一根交叉轴（cross axis）。
+            项目默认沿主轴排列，单个项目占据的主轴空间叫main size，占据的交叉轴空间叫cross size。
+        </section>
+        <section>
+            <p> 三. FLEX-BOX容器属性</p>
+            <p>flex-box(容器)和flex-item(项目)各自都有不同的属性。通过对它们进行不同的设置来对整体布局进行调整以达到想要的效果。</p>
+        </section>
+        <section>
+            <p>  四、容器属性详述</p>
+            　    <span>　1.flex-direction</span>
+            　　　　<p>决定主轴的方向，即项目排列的方向，有四个可能的值：row(默认)|row-reverse|column|column-reverse</p>
+            　　　　<p>row:主轴为水平方向，项目沿主轴从左至右排列</p>
+            　　　　<p>column：主轴为竖直方向，项目沿主轴从上至下排列</p>
+        </section>
+        <section>
+            　<p>row-reverse：主轴水平，项目从右至左排列，与row反向</p>
+            　　　　<p>column-reverse：主轴竖直，项目从下至上排列，与column反向</p>
+        </section>
+        <section>
+            <p>1.flex-wrap</p>
+            　　　<p>默认情况下，item排列在一条线上，即主轴上，flex-wrap决定当排列不下时是否换行以及换行的方式，可能的值nowrap(默认)|wrap|wrap-reverse</p>
+            　　　　<p>nowrap：自动缩小项目，不换行</p>
+            　　　　<p>wrap：换行，且第一行在上方</p>
+            　　　　<p>wrap-reverse：换行，第一行在下面</p>
+        </section>
+        <section>
+            <p>2、flex-flow</p>
+            　　　　<p>是flex-direction和flex-wrap的简写形式，如：row wrap|column wrap-reverse等。默认值为row nowrap，即横向排列 不换行。</p>
+        </section>
+        <section>
+            <h3>3、justify-content</h3>
+            　　　决定item在主轴上的对齐方式，可能的值有flex-start（默认），flex-end，center，space-between，space-around。当主轴沿水平方向时，具体含义为
+            　　　　　<p> flex-start：左对齐</p>
+            　　　　　　<p>flex-end：右对齐</p>
+        </section>
+        <section>
+                        <p>center：居中对齐</p>
+            　　　　　　<p>space- between：两端对齐</p>
+            　　　　　　<p>space-around：沿轴线均匀分布</p>
+        </section>
+        <section>
+            <p>4、align-items</p>
+            　　<p>决定了item在交叉轴上的对齐方式，可能的值有flex-start|flex-end|center|baseline|stretch，当主轴水平时，其具体含义为</p>
+            　　　　<p>flex-start：顶端对齐</p>
+            　　　　<p>flex-end：底部对齐</p>
+        </section>
+        <section>
+                    <p>center：竖直方向上居中对齐</p>
+            　　　　<p>baseline：item第一行文字的底部对齐</p>
+            　　　　<p>stretch：当item未设置高度时，item将和容器等高对齐</p>
+        </section>
+        <section>
+            <p>5、align-content</p>
+            　　<p>该属性定义了当有多根主轴时，即item不止一行时，多行在交叉轴轴上的对齐方式。注意当有多行时，定义了align-content后，align-items属性将失效。align-content可能值含义如下（假设主轴为水平方向）：</p>
+            　　　　　　<p>flex-start：左对齐</p>
+            　　　　　　<p>flex-end：右对齐</p>
+        </section>
+        <section>
+                      　<p>center：居中对齐</p>
+                      　<p>space- between：两端对齐</p>
+            　　　　　　<p>space-around：沿轴线均匀分布</p>
+            　　　　　　<p>stretch：各行将根据其flex-grow值伸展以充分占据剩余空间</p>
+        </section>
+        <section>
+            五、flex item属性详述
+        </section>
+        <section>
+            item的属性在item的style中设置。item共有如下六种属性
+        </section>
+        <section>
+            　<p>1、order</p>
+            　　　　<p>order的值是整数，默认为0，整数越小，item排列越靠前，</p>
+        </section>
+        <section>
+            　<p>2、flex-grow</p>
+            　　　　<p>定义了当flex容器有多余空间时，item是否放大。默认值为0，即当有多余空间时也不放大；可能的值为整数，表示不同item的放大比例，</p>
+        </section>
+        <section>
+            　<p>3、flex-shrink</p>
+            　　　　<p>定义了当容器空间不足时，item是否缩小。默认值为1，表示当空间不足时，item自动缩小，其可能的值为整数，表示不同item的缩小比例。flex-grow</p>
+        </section>
+        <section>
+            <p>4、flex-basis</p>
+            　　　　<p>表示项目在主轴上占据的空间，默认值为auto。</p>
+        </section>
+        <section>
+        　<p>5、flex</p>
+        　　　　<p>flex属性是flex-grow、flex-shrink和flex-basis三属性的简写总和。</p>
+        </section>
+        <section>
+            　<p>6、align-self</p>
+            　　　　<p>align-self属性允许item有自己独特的在交叉轴上的对齐方式，它有六个可能的值。默认值为auto</p>
+            　　　　　<p>　auto：和父元素align-self的值一致</p>
+            　　　　　<p>　flex-start：顶端对齐</p>
+        </section>
+        <section>
+                        <p>flex-end：底部对齐</p>
+            　　　　　　<p>center：竖直方向上居中对齐</p>
+            　　　　　　<p>baseline：item第一行文字的底部对齐</p>
+            　　　　　　<p>stretch：当item未设置高度时，item将和容器等高对齐</p>
+        </section>
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+            <section>
+            <p>1.display:flex可以复合使用吗？</p>
+                2.flex缺点？
+            </section>
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+           <p>1. 可以的，一个元素可以是一个display的子元素同时也是另外一个display的父元素。</p>
+            <p>2.后期维护不易，删改其中项目可能会影响整体布局。</p>
+        </section>
+        <section>
+            <p>5.编码实战</p>
+        </section>
+        <section>
+            <section>
+            </section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                By
+                <small style="vertical-align: middle">段俊超</small>
+            </p>
+        </section>
+    </div>
+</div>
+<script src="../lib/reveal/js/head.min.js"></script>
+<script src="../lib/reveal/reveal.js"></script>
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: false,
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
