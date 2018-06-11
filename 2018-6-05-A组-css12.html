@@ -1,0 +1,283 @@
+﻿<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>葡萄藤PPT</title>
+
+		<link rel="stylesheet" href="css/reveal/reveal.css">
+
+		<!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+		<link rel="stylesheet" href="css/reveal/theme/ptt.css">
+
+		<!-- syntax highlighting 代码高亮主题 -->
+		<link rel="stylesheet" href="lib/reveal/css/zenburn.css">
+
+		<!-- 打印和PDF输出样式 -->
+		<script>
+			var link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+			document.getElementsByTagName('head')[0].appendChild(link);
+		</script>
+		<style>
+			.reveal pre code {
+				background-color: #120;
+			}
+		</style>
+	</head>
+
+	<body>
+		<img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+		<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h3>开发过程中应该遵守哪些编码规范和class命名规范？</h3>
+					<h4>小课堂【深圳-WEB-A组】</h4>
+					<h4>分享人：李榕涛</h4>
+
+				</section>
+				<section>
+					<p>目录</p>
+					<p>1.背景介绍</p>
+					<p>2.知识剖析</p>
+					<p>3.常见问题</p>
+					<p>4.解决方案</p>
+					<p>5.编码实战</p>
+					<p>6.扩展思考</p>
+					<p>7.参考文献</p>
+					<p>8.更多讨论</p>
+				</section>
+				<section>
+					<section>
+						<h3>1.背景介绍</h3>
+					</section>
+					<section>
+						<p>
+							1、好的编码规范可以尽可能的减少一个软件的维护成本，并且几乎没有任何一个软件，在其整个生命周期中，均由最初的开发人员来维护；<br>
+
+							2、好的编码规范可以改善软件的可读性，可以让开发人员尽快而彻底地理解新的代码；<br>
+
+							3、好的编码规范可以最大限度的提高团队开发的合作效率；<br>
+
+							4、长期的规范性编码还可以让开发人员养成好的编码习惯，甚至锻炼出更加严谨的思维。<br>
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>2.知识剖析</h3>
+					</section>
+					<section>
+						<h2>基本准则</h2>
+						<p>
+							符合web标准，语义化html，结构表现行为分离，兼容性优良。页面性能方面，代码要求简洁明了有序，尽可能的减小服务器负载，保证最快的解析速度。
+						</p>
+					</section>
+					<section>
+						<h2>html规范</h2>
+						<p>
+							1、页面的第一行添加标准模式声明&lt!DOCTYPE html&gt <br>
+
+							2、页面title是极为重要的不可缺少的一项 <br>
+
+							3、按照从上至下、从左到右的视觉顺序书写html结构 <br>
+
+							4、代码缩进：tab键设置四个空格（通常在软件右下角设置相应空格大小） <br>
+
+							5、html中除了开头的DOC和'UTF-8'或者head里特殊情况可以大写外，其他都为小写，css类都为小写 <br>
+
+							6、建议为html根元素指定lang属性，从而为文档设置正确的语言lang="zh-CN" <br>
+
+							7、不同doctype在不同浏览器下会触发不同的渲染模式< meta http-equiv="X-UA-Compatible" content="IE=Edge"> <br>
+
+							8、非特殊情况下样式文件必须外链至< head >...< /head>之间;非特殊情况下JavaScript文件必须外链至页面底部 <br>
+
+
+
+						</p>
+					</section>
+					<section>
+						9、尽可能减少div嵌套 <br>
+
+						10、在页面中尽量避免使用style属性,即style="…";写在相应的样式文件中 <br>
+
+						11、对于属性的定义，确保全部使用双引号，绝不要使用单引号 <br>
+
+						12、背景图片请尽可能使用sprite技术,减小http请求 <br>
+
+						13、给区块代码及重要功能(比如循环)加上注释,方便后台添加功能 <br>
+
+						14、不要使用@import,与&ltlink&lg标签相比,@import指令要慢很多,不光增加了额外的请求次数,还会导致不可预料的问题。 <br>
+					</section>
+					<section>
+						<h2>CSS规范</h2>
+						<h4>排版规范</h4>
+						<p>1、如果是在html中写内联的css，则必须写成单行 <br>
+
+							2、每一条规则的大括号{前后加空格 <br>
+
+							3、属性名冒号之前不加空格，冒号之后加空格 <br>
+
+							4、每一个属性值后必须添加分号，并且分号后加空格 <br>
+
+							5、多个selector共用一个样式集，则多个selector必须写成多行形式 <br>
+
+						</p>
+					</section>
+					<section>
+						<h3>class命名</h3>
+						<p>1、规则命名中，一律采用小写加中划线的方式，不允许使用大写字母或_ <br>
+
+							2、命名避免使用中文拼音，应该采用更简明有语义的英文单词进行组合 <br>
+
+							3、不允许通过1、2、3等序号进行命名；避免class与id重名 <br>
+
+							4、class用于标识某一个类型的对象，命名必须言简意赅 <br>
+
+							5、尽可能提高代码模块的复用，样式尽量用组合的方式 <br>
+
+							6、规则名称中不应该包含颜色（red/blue）、定位（left/right）等与具体显示效果相关的信息。应该用意义命名，而不是样式显示结果命名</p>
+					</section>
+					<section>
+						<h3>CSS书写规范</h3>
+						<p>1、CSS有些属性是可以缩写的，比如padding,margin,font等等，这样精简代码同时又能提高用户的阅读体验。 <br>
+
+							2、去掉小数点前的“0” <br>
+
+							3、简写命名——很多用户都喜欢简写类名，但前提是要让人看懂你的命名。 <br>
+
+							4、16进制颜色代码缩写——有些颜色代码是可以缩写的，我们就尽量缩写吧，提高用户体验为主。 <br>
+
+							5、长名称或词组可以使用中横线来为选择器命名。 <br>
+
+							6、不要随意使用Id——id在JS是唯一的，不能多次使用，而使用class类选择器却可以重复使用，另外id的优先级优先与class，所以id应该按需使用，而不能滥用。 <br>
+
+							7、有多个选择器时，选择器必须独占一行 <br>
+
+							8、选择器的嵌套层级不应该大于三级，位置靠后的限制条件应该尽可能的准确。 <br>
+						</p>
+					</section>
+					<section>
+						<h3>书写顺序</h3>
+						<p>布局方式、位置（position, top, right, z-index, display, float等） <br>
+							尺寸（width, height, padding, margin） <br>
+							文本相关（font, line-height, letter-spacing, color- text-align等） <br>
+							视觉效果（background, borde，animation, transition） <br>
+							以提高代码的可读性。
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>3.常见问题</h3>
+					</section>
+					<section>
+						<p>
+							如何高效精简的命名CSS？
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>4.解决方案</h3>
+					</section>
+					<section>
+						<p>
+							1.面向属性命名
+						</p>
+                        <p>
+                            2.三无原则命名
+                        </p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>5.编码实战</h3>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>6.扩展思考</h3>
+					</section>
+					<section>
+						<p>CSS样式分离之再分离</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>7.参考文献</h3>
+					</section>
+					<section>
+						参考一：<a href="http://www.zhangxinxu.com/wordpress/?p=1098">张鑫旭</a><br>
+						参考二：<a href="https://www.jianshu.com/p/24d4c7108c69">简书</a><br>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>8.更多讨论</h3>
+					</section>
+				</section>
+				<section>
+					<h4>鸣谢</h4>
+					<p>感谢大家观看</p>
+					<p>
+						By
+						<small style="vertical-align: middle">李榕涛</small>
+					</p>
+				</section>
+			</div>
+		</div>
+		<script src="lib/reveal/js/head.min.js"></script>
+		<script src="lib/reveal/reveal.js"></script>
+		<script>
+			// 以下为常见配置属性的默认值
+			// {
+			// 	controls: true, // 是否在右下角展示控制条
+			// 	progress: true, // 是否显示演示的进度条
+			// 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+			// 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+			// 	keyboard: true, // 是否启用键盘快捷键来导航
+			// 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+			// 	center: true, // 是否将幻灯片垂直居中
+			// 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+			// 	loop: false, // 是否循环演示
+			// 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+			// 	fragments: true, // 全局开启和关闭碎片。
+			// 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+			// 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+			// 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+			// 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+			// }
+			// 初始化幻灯片
+			Reveal.initialize({
+				history: true,
+				dependencies: [{
+						src: '../plugin/markdown/0marked.js'
+					},
+					{
+						src: '../plugin/markdown/markdown.js'
+					},
+					{
+						src: '../plugin/notes/notes.js',
+						async: true
+					},
+					{
+						src: '../plugin/highlight/highlight.js',
+						async: true,
+						callback: function() {
+							hljs.initHighlightingOnLoad();
+						}
+					}
+				]
+			});
+		</script>
+	</body>
+
+</html>
