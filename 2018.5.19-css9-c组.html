@@ -5,7 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <title>葡萄藤PPT</title>
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
 
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
   <link rel="stylesheet" href="./css/reveal/reveal.css">
 
     <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
@@ -32,6 +41,9 @@
         link.rel = 'stylesheet';
         link.type = 'text/css';
         link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
             './css/reveal/print/paper.css';
         document.getElementsByTagName('head')[0].appendChild(link);
     </script>
@@ -40,7 +52,6 @@
     <script type="text/javascript" src="../plugin/markdown/markdown.js"></script>
     <script type="text/javascript" src="../plugin/notes/notes.js"></script>
     <script type="text/javascript" src="../plugin/highlight/highlight.js"></script>
-    
 </head>
 <body>
 <img src="../img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
@@ -149,6 +160,10 @@
 </div>
 <script src="./lib/reveal/js/head.min.js"></script>
 <script src="./lib/reveal/reveal.js"></script>
+
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
 <script>
         // 以下为常见配置属性的默认值
         // {
@@ -191,7 +206,11 @@
             ]
         });
     </script>
+
+ 
+
 <script>
+
         //过滤掉小于 10 的数组元素：
         //代码：
         document.getElementById("a").onclick = isBigEnough();

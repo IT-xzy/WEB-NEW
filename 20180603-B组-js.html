@@ -1,0 +1,272 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        .reveal pre code {
+            background-color: #120;
+        }
+    </style>
+</head>
+<body>
+<img src="../img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h4>小课堂【深圳】</h4>
+            <h4>简述JS中的this指向</h4>
+            <h4>分享人：许永坚</h4>
+        </section>
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <p>1.this是JavaScript语言中定义的众多关键字之一。 this 是一个特殊的标识符关键字 —— 在每个 function 中自
+                    动根据作用域(scope) 确定, 指向的是此次调用的 “所有者,owner”。它的特殊在于它自动定义于每一个函数域内。</p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <p> 概念的区分：</p>
+                 <p>   变量：全局中的变量可以称之为window这个对象的属性；</p>
+                  <p>  函数（function）：全局中的函数可以称之为window这个对象的方法；</p>
+                  <p>  属性：其实就是你声明的对象中的变量；</p>
+                <p>  方法：其实就是你声明的对象中的函数；</p>
+                <p> 对象中的属性这个概念对应着变量，对象中的方法这个概念对应着函数。</p>
+            </section>
+            <section>
+                 <pre>
+                <code>
+    huahua = 'wang';
+    function cuihua() {
+    	alert('我叫翠花');
+    }//全局变量,与函数
+    shuangdan = {
+        dan:'两个',
+    	myname:function () {alert('我叫李双蛋')}
+    };//对象的属性与方法；
+                   </code>
+                </pre>
+            </section>
+            <section>
+                <p>作用域和上下文：</p>
+                <p>函数的每次调用都有与之紧密相关的作用域和上下文。</p>
+                <p>从根本上来说，作用域是基于函数的，而上下文是基于对象的。</p>
+                <p>换句话说，作用域涉及到所被调用函数中的变量访问，并且不同的调用场景是不一样的。</p>
+                <p>上下文始终是this关键字的值， 它是拥有（控制）当前所执行代码的对象的引用。</p>
+            </section>
+            <section>
+                <p>2. this指向的是谁?</p>
+                <p>在所有 function 中, this 的值都是根据</p>
+                <p>上下文(context, 函数在调用时刻所处</p>
+                <p>的环境)来决定的。this 的作用域(scope) 与函数</p>
+                <p>定义的位置没有关系, 而是取决于函数在哪里被调用</p>
+            </section>
+            <section>
+                <pre>
+                    <code>
+    brand = 'Nissan';
+    myCar = {brand:'honda'};
+
+    getBrand = function () {
+        console.log(this.brand);
+    };
+
+    myCar.getBrand = getBrand;
+
+    myCar.getBrand();//honda
+
+    getBrand();//nissan
+     // 函数是哪个对象的方法, 在函数中, this 就绑定到这个对象。
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <p>解析：</p>
+                <p>现在myCar.getBrand()；和getBrand()指向的都是同一个函数，</p>
+                <p>但是里面的this是不同的，因为它取决于 getBrand() 在哪个上下文中调用。</p>
+                <p>因此第一个函数调用对应的是 mycar对象， 第二个函数调用对应的是window.</p>
+                <p>现在就知道了， 函数是哪个对象的方法, 在函数中, this 就绑定到这个对象。</p>
+            </section>
+            <section>
+                <pre>
+                    <code>
+                在函数中, this 取决于函数是怎么调用的。分三种情况:
+
+                3.1在简单函数调用(Simple Function Call)中使用this
+                第一种情形是直接调用一个独立的函数。
+
+                function simpleCall(){
+                console.log(this);}
+
+                simpleCall();// output: the Window object
+
+                在这种情况下,this值没有被 call 设置。
+                this 又必须是一个对象, 所以他的值默认为全局对象。
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <pre>
+                    <code>
+    3.2. 在对象的方法(Object’s Method)中使用
+    this将函数保存为对象的属性, 这样就转化为一个方法, 可以通过对象调用这个方法。
+    当函数被当成对象的方法来调用时, 里面的 this 值就被设置为调用方法的对象。
+
+    var message = {
+       content: "I'm a JavaScript!",
+       showContent: function() {
+           console.log(this.content);
+       }
+    };
+    message.showContent();// output: I'm a JavaScript!
+
+    // 还是那句话函数是哪个对象的方法, 在函数中, this 就绑定到这个对象。
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <pre>
+                    <code>
+    3.3. 我们可以通过 new 操作符来调用函数。在这种情况下,这个函数
+	就变成了构造函数(也就是一个对象工厂).
+    当一个函数作为构造器使用时(通过 new 关键字), 它的 this 值绑定到新
+	创建的那个对象。如果没使用 new 关键字, 那么他就只是一
+	个普通的函数, this 将指向 window 对象。
+    function Message(content){
+        this.cont = content;
+        this.showCont = function(){
+            console.log(this.cont);
+        };
+    }
+    var message = new Message("I'm JavaScript Ninja!");
+    message.showCont();
+
+    在上面的示例中, 有一个名为 Message() 的构造函数。通过
+    使用 new 操作符创建了一个全新的对象，名为 message。同时还通过传给
+    构造函数一个字符串, 作为新对象的content属性。
+                    </code>
+                </pre>
+            </section>
+        </section>
+        </section>
+        <section>
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+            <!--<section>-->
+                <!--<p>关于在什么样的场合使用this </p>-->
+            <!--</section>-->
+        </section>
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+        <section>
+            <section>
+                <h3>6.扩展思考</h3>
+            </section>
+        </section>
+        <section>
+            <section>
+            <h3>7.参考文献</h3>
+            </section>
+            <section style="text-align: left">
+                <a href="https://blog.csdn.net/renfufei/article/details/48666975" target="blanke">掌握JS中的“this” (一) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  作者：‘铁锚’</a><br>
+                <p></p>
+                <a href="https://www.cnblogs.com/sxhlf/p/6726976.html" target="blanke">JavaScript的作用域和上下文  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  作者：‘荆棘中的百合花’</a><br>
+                <p></p>
+                <a href="http://biaoyansu.com/12.25" target="blanke">this - 是个啥 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作者：表严肃</a>
+
+            </section>
+        </section>
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                By
+                <small style="vertical-align: middle">许永坚</small>
+            </p>
+        </section>
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: './plugin/markdown/marked.js' },
+            { src: './plugin/markdown/markdown.js' },
+            { src: './plugin/notes/notes.js', async: true },
+            { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>
