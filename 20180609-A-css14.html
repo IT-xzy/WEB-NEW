@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>从bootstrap看组件化</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- css-28-sassinsublime主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2 style="font-size: 1.5em">【CSS-task14】
+                    <span>从bootstrap看组件化</span>
+                </h2>
+                <p>分享人：陈占乐</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    如果css代码量比较庞大，那么就有可能给我们带来这样的困扰
+                </p>
+                <p style="text-align: left;">
+                    （1）无法快速确切知道一个类的作用
+                </p>
+                <p style="text-align: left;">
+                    （2）无法快速确定一个类在哪里被使用
+                </p>
+                <p style="text-align: left;">
+                    （3）新增一个类是否会造成冲突
+                </p>
+                <p style="text-align: left;">
+                    为了解决这个问题，可以将页面的每一个功能模块作为一个独立组件，然后对组件相关内容进行合理的命名，从而有助于我们确定一个css代码和相关页面结构的功能，也可以有效的防止冲突，提高代码的复用率。
+                </p>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    Component，中文称为组件，或者构件。使用非常比较广泛，它的核心意义在于复用，相对模块，对于依赖性有更高的要求。
+                </p>
+                <p style="text-align: left;">
+                    Module, 中文为模块或模组。它的核心意义是分离职责，属于代码级模块化的产出。它本身是提供服务的功能逻辑，是一组具有一定内聚性代码的组合，职责明确。
+                </p>
+                <p style="text-align: left;">
+                    组件(Component)和模块(Module)又是一对容易混淆的名词，也常常被用来相互替换。从设计上来看，组件强调复用，模块强调职责(内聚、分离)，或者说组件是达到可复用要求的模块
+                </p>
+            </section>
+            <section>
+                <h4>从任务看组件化</h4>
+                <img style="width: 300px;" src="img/20180609-A-css14/1.png">
+                <img style="width: 300px;" src="img/20180609-A-css14/7-2.png" alt="">
+                <img style="width: 300px;" src="img/20180609-A-css14/8-1.png" alt="">
+            </section>
+            <section>
+                <h4>bootstrap 简介</h4>
+                <p style="text-align: left;">
+                    Bootstrap，来自 Twitter，是目前很受欢迎的前端UI框架。Bootstrap 是基于 HTML、CSS、JavaScript 的，它简洁灵活，使得 Web 开发更加快捷。它由Twitter的设计师Mark Otto和Jacob
+                    Thornton合作开发，是一个CSS/HTML框架。Bootstrap提供了优雅的HTML和CSS规范，bootstrap3即是由动态CSS语言Less写成。
+                </p>
+
+            </section>
+
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <h4>文件组成</h4>
+                <img src="img/20180609-A-css14/bootstrap.png">
+            </section>
+            <section>
+                <h4>使用</h4>
+                <img src="img/20180609-A-css14/bootstrap-boxmodel.jpg" alt="">
+            </section>
+            <section>
+                <h4>使用</h4>
+                <img src="img/20180609-A-css14/bootstrap-compont.png" alt="">
+            </section>
+
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+            <section>
+                <h4>怎么实现组件化</h4>
+            </section>
+
+
+            <section>
+                <h3>4.解决方案</h3>
+            </section>
+            <section>
+                <h4>组件化方法</h4>
+                <p style="text-align: left;"> 在CSS上，保证代码上的模块化，具有独立作用域； 内部的布局，字体的变化(不包括颜色这类是不可控的)只由其最外层容器影响。 概括的说就是，组件内部的布局只受容器变化影响。 在容器不受外部影响变化的前提下，内部容器的样式不被外部所影响</p>
+                               
+            </section>
+
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+            <section>
+                <h4>十宫格改造为栅格系统</h4>
+            </section>
+
+            <section>
+                <h3>6.扩展思考</h3>
+            </section>
+            <section>
+                <h4>css 阶段能做组件化吗？</h4>
+                <p style="text-align: left; padding-left: 200px;">1 不能，组件化是HTML、css、JavaScript三方共同作用</p>
+                <p style="text-align: left; padding-left: 200px;">2 目前只能叫做样式库，自己的整理和总结</p>
+
+            </section>
+
+            <section>
+                <h3>7.参考文献</h3>
+            </section>
+            <section>
+                <p style="text-align: left; padding-left: 180px">
+                    参考一
+                    <a href="https://blog.csdn.net/chenchun91/article/details/53375041">前端组件化开发</a>
+                </p>
+                <p style="text-align: left; padding-left: 180px">
+                    参考二
+                    <a href="http://www.cnblogs.com/jesse131/p/5966145.html">Bootstrap源码分析系列之整体架构</a>
+                </p>
+
+            </section>
+
+            <section>
+                <h3>8.更多讨论</h3>
+            </section>
+
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>BY : 陈占乐 </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: './plugin/markdown/marked.js'
+                },
+                {
+                    src: './plugin/markdown/markdown.js'
+                },
+                {
+                    src: './plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: './plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
