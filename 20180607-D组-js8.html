@@ -7,13 +7,13 @@
 
     <title>葡萄藤PPT</title>
 
-    <link rel="stylesheet" href="./css/reveal/reveal.css">
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
 
     <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
-    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
 
     <!-- syntax highlighting 代码高亮主题 -->
-    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
 
     <style>
         .float {
@@ -41,7 +41,7 @@
     <div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
         <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
             <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
-                <h3>【JS-7】简述angular 中constant和$filter的用法？</h3>
+                <h3>【JS-8】angular js常用指令 ng-blur、ng-change、ng-focus、ng-disabled是如何运用到表单验证中的？</h3>
                 <p>分享人：陈静雯</p>
             </section>
             <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
@@ -60,43 +60,57 @@
             </section>
             <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
                 <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
-                    <p style="text-align: left;">AngularJS中有时在不同的控制器中使用到同一个变量，需要在ng-app或控制器中定义的全局变量。angularjs自身有二种设置全局变量的方法，constant()是其中的一种方法。</p>
-                    <p style="text-align: left;">Filter作用就是接收一个输入，通过某个规则进行处理，然后给用户返回处理后的结果。Filter可以用在模板、控制器、或者服务，同时也会很容易自定义一个Filter过滤器。</p>
+                    <p style="text-align: left;">表单验证是javascript中的高级选项之一。JavaScript 可用来在数据被送往服务器前对 HTML 表单中的这些输入数据进行验证。</p>                    
+                </section>
+            </section>
+            <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+                <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <p style="text-align: left;">angularjs中表单验证的方法，除了ng-message之外还有ng-blur、ng-change、ng-focus和ng-disabled。</p>                    
                 </section>
             </section>
             <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
                 <h3>2.知识剖析</h3>
             </section>
-            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
-                <h4>定义全局变量的三种方法</h4>
-                <p>1.通过var 直接定义global variable。</p>
-                <p>2.用angularjs constant来设置全局变量。</p>
-                <p>3.用angularjs value来设置全局变量 。</p>
+            <section style="text-align: left; top: 106px; display: block;" class="present">
+                <h3>ng-blur<br></h3>
+                ng-blur 指令用于告诉 AngularJS HTML 元素在失去焦点时需要执行的表达式。<br>
+                AngularJS 中的 ng-blur 指令不会覆盖原生的 onblur 事件， 如果触发该事件，ng-blur 表达式与原生的 onblur 事件都会执行。<br>
+                语法:&lt; element ng-blur="expression"&gt;<!-- element --><br>
+                &lt; a &gt;, &lt; input &gt;, &lt; select &gt;, &lt; textarea &gt;,窗口对象支持。   
             </section>
-            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
-                <h4>constant和value的区别</h4>
-                <p>1.value不可以在config里注入，但是constant可以；</p>
-                <p>2.value可以修改，但是constant不可以修改，一般直接用constant配置一些需要经常使用的数据。</p>
+            <section style="text-align: left; top: 106px; display: block;" class="present">
+                <h3>ng-focus<br></h3>
+                ng-focus 指令用于告诉 AngularJS 在 HTML 元素获取焦点时需要执行的操作。<br>
+                ng-focus 指令不会覆盖元素的原始 onfocus 事件, 事件触发时，ng-focus 表达式与原始的 onfocus 事件将都会执行。<br>
+                语法：&lt; element ng-focus="expression"&gt;&lt; /element&gt;<br>
+                &lt; a&gt;, &lt; input&gt;, &lt; select&gt;, &lt; textarea&gt;, 和 window 对象都支持该指令。
+            </section>
+            <section style="text-align: left; top: 0px; display: block;" class="present">
+                <h3>ng-change<br></h3>
+                ng-change 指令用于告诉 AngularJS 在 HTML 元素值改变时需要执行的操作。<br>
+                ng-change 指令需要搭配 ng-model 指令使用。<br>
+                AngularJS ng-change 指令指令不会覆盖原生的 onchange 事件, 如果触发该事件，ng-change 表达式与原生的 onchange 事件都会执行。<br>
+                ng-change 事件在值的每次改变时触发，它不需要等待一个完成的修改过程，或等待失去焦点的动作。<br>
+                ng-change 事件只针对输入框值的真实修改，而不是通过 JavaScript 来修改。<br>
+                语法：&lt; element ng-change="expression"&gt;&lt; /element&gt;<br>
+                &lt; input&gt;, &lt; select&gt;, 和  &lt; textarea&gt; 元素支持。
+            </section>
+            <section style="text-align: left; top: 129px; display: block;" class="present">
+                <h3>ng-disabled<br></h3>
+                ng-disabled 指令设置表单输入字段的 disabled 属性(input, select, 或 textarea)。<br>
+                如果 ng-disabled 中的表达式返回 true 则表单字段将被禁用。<br>
+                语法:&lt; input ng-disabled="expression"&gt;&lt; /input&gt;<br>
+                &lt; input&gt;, &lt; select&gt;, 和 &lt; textarea&gt; 元素都支持该指令。
             </section>
 
-            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
-                
-            <section style="top: 55px; display: block;" class="present">
-                <h4>$filter过滤器</h4>
-				<p style="text-align: left">filter是用来格式化数据用的</p>
-				<p style="text-align: left">基本原型</p>
-				<p style="text-align: left">{{expression | filter}}</p>
-				<p style="text-align: left">多个filter连用版</p>
-				<p style="text-align: left">{{expression | filter1 | filter2}}</p>
-				<p style="text-align: left">传入参数版</p>
-				<p style="text-align: left">{{expression | filter:1:2}}</p>
-			</section>
-            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
-                <h4>$filter内置过滤器</h4>
-                <p>ng内置了9种过滤器，分别是：currency(货币)、date(日期)、filter(子串匹配)、json(格式化json对象)、limitTo(限制个数)、lowercase(小写)、uppercase(大写)、number(数字)、orderBy(排序)。</p>               
-            </section>
-            
-
+            <!-- <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <pre><code class="hljs kotlin">
+                <span class="hljs-variable"><span class="hljs-keyword">var</span> array1</span>=<span class="hljs-number">new Array("1","2","3")</span>;
+                <span class="hljs-variable"><span class="hljs-keyword">var</span> array2</span><span class="hljs-number"></span>;
+                array2</span>=<span class="hljs-number">array1.slice(0)</span>;
+                alert(array2);//返回1,2,3
+                </code></pre>
+            </section> -->
             <!-- <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
                 <pre><code class="hljs kotlin">
                     <span class="hljs-variable"><span class="hljs-keyword">var</span> array1</span>=<span class="hljs-number">new Array("1","2","3")</span>;
@@ -111,7 +125,7 @@
                 </section>
             </section>
             <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
-                <h4>angularjs中如何使用constant和$filter</h4>
+                <h4>如何使用上面的指令实现表单验证</h4>
             </section>
             <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
                 <section style="text-align: center; top: 330px; display: none;">
@@ -145,11 +159,16 @@
                 </section>
             </section>
             <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
-                <p>如何自定义过滤器</p>
+                <p>上面这些与ng-message相比的区别和优缺点在哪里？</p>
             </section>
 
-
             <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h3>7.参考文献</h3>
+            </section>
+            <section class="present" style="top: 267px; display: block;">
+                <p><a href="#">菜鸟教程</a></p>
+            </section>
+            <!-- <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
                 <h3>7.参考文献</h3>
                 <p>参考1：
                     <a href="https://blog.csdn.net/sourcecode_poet/article/details/53509748">angularJS三种定义全局变量的方法</a>
@@ -160,7 +179,7 @@
                 <p>参考3：
                     <a href="http://www.jb51.net/article/99859.htm">AngularJS过滤器filter用法总结</a>
                 </p>
-            </section>
+            </section> -->
             <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
                 <h3>8 更多讨论</h3>
             </section>

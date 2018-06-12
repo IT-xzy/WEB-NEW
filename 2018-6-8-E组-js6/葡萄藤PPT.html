@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!-- saved from url=(0091)file:///C:/Users/LALH/Desktop/PPT%20-%20%E5%89%AF%E6%9C%AC/PPT/console%20and%20debug.html#/ -->
+<html class=" js no-mobile desktop no-ie chrome chrome62 c:-section users-section lalh-section desktop-section ppt%20-%20%e5%89%af%e6%9c%ac-section ppt-section w-1366 gt-240 gt-320 gt-480 gt-640 gt-768 gt-800 gt-1024 gt-1280 lt-1440 lt-1680 lt-1920 no-portrait landscape gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch no-retina fontface domloaded" id="console%20and%20debug-page"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./葡萄藤PPT_files/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./葡萄藤PPT_files/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./葡萄藤PPT_files/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script><link rel="stylesheet" type="text/css" href="./葡萄藤PPT_files/paper.css"><script type="text/javascript" src="./葡萄藤PPT_files/marked.js.下载"></script><script type="text/javascript" src="./葡萄藤PPT_files/markdown.js.下载"></script><script type="text/javascript" src="./葡萄藤PPT_files/notes.js.下载"></script><script type="text/javascript" src="./葡萄藤PPT_files/highlight.js.下载"></script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.768857);">
+        <section class="present" style="top: 133px; display: block;">
+          <h2>【JS-6】<span style="text-transform:lowercase">域名，COOKIE是什么？有什么用处？COOKIE SESSION的区别?COOKIE的失效期？</span></h2>
+            <h3>小课堂</h3>
+            <p>分享人:陈丹婷</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 3px; display: block;">
+            <p>目录</p>
+            <p>1.背景介绍</p>           
+            <!-- <p>1.具体执行的操作</p> -->
+            <p>2.常见问题</p>
+            <p>3.更多讨论</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <!-- <h4>当我们输入URI，按下回车发生了什么？</h4>
+            <p>回车键按下</p>
+            <p>解析URL</p>
+            <p>检查 HSTS 列表</p>
+            <p>>DNS查询</p>
+            <p>TCP连接的建立（三次握手）</p> -->
+            <p>域名是什么？ 要解释域名是什么，我们应当知道一些互联网的基本概念 我们实现互联网的方式中有一个网络层的概念，这个网络层在实体层和链接层上。网络层引入了一套地址，用来区分不同的计算机是否属于同一个子网络， 建立“主机到主机”的通信基础。这套地址就是“网络地址”，也就是我们常说的网址
+            互联网实现的方式还规定了许多协议，其中规定网络地址的协议，叫做IP协议。IP协议定义的地址就是我们常说的IP地址。 IP地址是一个32位的二进制数，通常被分割为4个“8位二进制数”（也就是4个字节）。 IP地址通常用“点分十进制”表示成（a.b.c.d）的形式，其中，a,b,c,d都是0~255之间的十进制整数。
+            例：点分十进IP地址（100.4.5.6），实际上是32位二进制数（01100100.00000100.00000101.00000110）。 
+</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+        <p>IP地址用来建立互联网通信，它具有唯一性，只有知道对方主机的IP地址，我们才能和对方主机互相通信。而这一串IP地址是非常难记的. 这时候域名登场了。域名（Domain Name）是IP地址的映射，每个域名对应一个唯一的IP地址。通俗的讲，域名就是IP地址的代表。
+        有了域名，我们就不用去记一长串的数字地址，而是可以用几个有意义的词来代替。 比如我们官网的域名是:www.jnshu.com，对应的ip地址就是 121.41.226.206 。我们不论输入 121.41.226.206还是www.jnshu.com，都可以访问我们的官网。
+        </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p>域名分成顶级域名，二级域名，三级域名等，比较少有四级域名。一个完整的域名由二个或二个以上部分组成，各部分之间用英文的句号"."来分隔， 最右边部分称为顶级域名（TLD，也称为一级域名，包含一个合法字符串，和一个域名后缀），顶级域名的左边部分字符串到下个"."为止称为二级域名（SLD），
+            二级域名的左边部分称为三级域名，以此类推，每一级的域名控制它下一级域名的分配。 例如jnshu.com是一级域名，www.jnshu.com是二级域名,test.skill.ptteng.com是三级域名。 顶级域名[1] 又分为两类：　一是国家顶级域名，例如中国是cn，美国是us，日本是jp等。二是国际顶级域名，
+            例如表示工商企业的.Com，表示网络提供商的.net，表示非盈利组织的.org等</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p>使用域名访问网站的时候，实际上是先经过域名系统DNS (Domain Name Server)将域名解析成计算机识别的IP地址（二进制数字串）， 系统再通过这个IP地址建立主机与主机的通信基础。Hosts 文件也可以解析域名，用来提高解析效率。
+            在进行 DNS 请求以前，系统会先检查自己的 Hosts 文件中是否有这个地址映射关系，如果有则调用这个 IP 地址映射， 如果没有再向已知的 DNS 服务器提出域名解析。也就是说 Hosts 的请求级别比 DNS 高。 当 Hosts 文件里面有对应的
+            IP 时，它就会直接访问那个 IP，可以跳过 DNS 的解析这一步，提高解析效率。
+            </p>
+        </section>
+     
+    <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+    <p>cookie\session是什么？ Web应用程序是使用HTTP协议传输数据的。HTTP协议是无状态的协议。一旦数据交换完毕，客户端与服务器端的连接就会关闭， 再次交换数据需要建立新的连接。这就意味着服务器无法从连接上跟踪会话。即用户A购买了一件商品放入购物车内，
+    当再次购买商品时服务器已经无法判断该购买行为是属于用户A的会话还是用户B的会话了。要跟踪该会话，必须引入一种机制。 Cookie就是这样的一种机制。它可以弥补HTTP协议无状态的不足。所以出现了Cookie机制是为了辩别用户身份，进行会话跟踪而存储在客户端上的数据；
+</p>
+    </section>
+
+    <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+        <p> cookie是什么？ cookie指某些网站为了辨别用户身份、进行 session 跟踪而储存在用户本地终端上的数据（通常经过加密）。 “Cookie”是小量信息，由网络服务器发送出来以存储在网络浏览器上，从而下次这位独一无二的访客又回到该网络服务器时，
+        可从该浏览器读回此信息。让浏览器记住这位访客的特定信息，如上次访问的位置、花费的时间或用户首选项（如样式表）。 客户端请求服务器，服务器就使用response向客户端浏览器颁发一个Cookie。客户端浏览器会把Cookie保存起来。当浏览器再请求该网站时，
+        浏览器把请求的网址连同该Cookie一同提交给服务器。服务器检查该Cookie，以此来辨认用户状态。</p>
+    </section>
+
+    <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+        <h4>常见问题</h4>
+    </section>
+
+    <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+        <p>域名有什么用？ COOKIE的用处是什么？ COOKIE的有效期？ COOKIE、session有什么区别？</p>
+    </section>
+
+    <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+        <p>域名有什么用？ 1、IP地址比较难记忆，因而使用域名来标识网站地址，方便我们访问和记忆，这是域名最本质的作用。 2、建网站，域名是一个网站的重要元素，一个好域名可以让网站在推广过程中更加省力，在用户脑中留下深刻印象。 3、投资赚钱。除了做网站以外，还有很多人注册域名是拿来投资，也有了不少专做域名投资的人，称为“米农”。
+        因为域名具有唯一性，注册一个少一个。（新浪微博域名 weibo.com 花了800万的代价才买回来的。）</p>
+    </section>
+
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <!-- <p><small>BY : 沁修 | 王义山</small></p> -->
+        </section>
+
+    </div>
+<div class="backgrounds"><div class="slide-background present" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 0px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px 1px 1px 1px);">
+           
+            分享人：陈丹婷
+        </div></div>
+
+<script src="./葡萄藤PPT_files/head.min.js.下载"></script>
+<script src="./葡萄藤PPT_files/reveal.js.下载"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: '../plugin/markdown/marked.js' },
+            { src: '../plugin/markdown/markdown.js' },
+            { src: '../plugin/notes/notes.js', async: true },
+            { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+
+
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status He</body></html>
