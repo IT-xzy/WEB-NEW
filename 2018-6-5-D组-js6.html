@@ -1,0 +1,184 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h3>如何使用ui-router？</h3>
+                <p style="text-align: center;">上海分院：刘泽华</p>
+            </section>
+            <section>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <section>
+                    <p>
+                        Angular.js 是一个用来构建“富客户端”的神奇JavaScript框架。但是事实却是许多开发者却不使用其内置的路由模块。反而使用AngularUI项目的UI-Router模块来代替之。 这是因为UI-Router有两个重要的特性：
+                        <br>* 多样化视图
+                        <br>* 嵌入式视图
+                    </p>
+                </section>
+                <section>
+
+                    <p style="text-align:left;font-size: 24px">
+                        多样化视图
+                        <br>大多数的应用程序都可以分解为一个一个区块。最简单的情况，一个应用程序有头部（header）,主体内容（main contentarea），以及一个尾部（footer）。通常一个应用程序会有一个额外的侧边栏（sidebar
+                        ）在页面的左边或者右边,大多数用例中，这些区块将同时显示在页面上。
+                        <br>Angular.js 的内置路由ngRoute只允许一个视图（ng-view）出现在页面上。
+                        <br>UI-Router支持多样化视图，并且每一个视图都有自己相应的控制，所以每个区块都是封装好，可以复用到整个应用程序需要的地方。
+                    </p>
+                </section>
+                <section>
+                    嵌入式视图
+                    <br>常见的例子中，一个应用的嵌入式页面一般是主页的详情页面，更具体的说，就是列表的详情页面。许多应用程序，都有列表页面，点击其中一个列表元素，可以进入到列表的详情页面。更进一步说，你点击列表中一个行的连接，进入一个可查看详情页面或是一个可编辑的表单。
+                    <br>如果列表页面和详情页面是单独分开的（或者他们被Angujar.js回调），使用Angular.js的内置路由ngRoute 是非常容易完成的。然而，如果你想要保持列表不变，而详情页面出现在列表的右边或者下面，这样就变得非常具有挑战性了。
+                </section>
+            </section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+
+                <section>
+                    <p style="text-align:left;font-size: 30px">
+                        第一行，声明AngularJS模块, 并把ui-router传入AngularJS主模块，所有的结合起来我们就得到了Angular模块。
+                    </p>
+                    <p style="text-align:left;font-size: 30px">
+                        与集成的ngRoute服务不同的是，UI-Router可以将视图嵌套，因为它基于的是操作状态而仅非URL。与传统做法使用ng-view不同的是，在ngRoute里需要使用ui-view服务。当在ui-router中处理路由和状态时，开发者的重心是当前的状态是什么以及在哪一个页面里。
+                    </p>
+                </section>
+                <section>
+                    <p style="text-align:left;font-size: 30px">
+                        和ngRoute一样，为特定状态指定的模板将会放在ui-view元素中。在这些模板中也可以包含自己的ui-view,这就是在同一个路由下实现嵌套视图的方法。要定义一个路由，与传统的方法相同：使用.config方式，但使用的不是$routeProvider而是$stateProvider。
+                    </p>
+                </section>
+                <section>
+                    <p>$stateProvider：管理状态定义、当前状态和状态转换。包含触发状态转换的事件和回调函数，异步解决目标状态的任何依赖项，更新$location到当前状态。由于状态包含关联的 url，通过$urlRouterProvider生成一个路由规则来执行转换的状态。
+                    </p>
+                </section>
+
+                <section>
+                    <p>$urlRouterProvider：管理了一套路由规则列表来处理当$location发生变化时如何跳转。最低级的方式是，规则可以是任意函数，来检查$location，并在处理完成时候返回true。支持正则表达式规则和通过$urlMatcherFactory编译的UrlMatcher对象的
+                        url 占位符规则。</p>
+                </section>
+            </section>
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+            <section>
+
+            </section>
+            <section>
+                <h3>4.解决方案</h3>
+            </section>
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+            <section>
+                <h3>6.扩展思考</h3>
+            </section>
+
+            <section>
+                <h3>7.参考文献</h3>
+            </section>
+
+            <section>
+                <h3>8.更多讨论</h3>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <h3>感谢观看</h3>
+                <p>
+                    <small>BY——刘泽华</small>
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+            // 	center: true, // 是否将幻灯片垂直居中
+            // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+            // 	loop: false, // 是否循环演示
+            // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+            // 	fragments: true, // 全局开启和关闭碎片。
+            // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+            // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+            // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+            // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+            // }
+            // 初始化幻灯片
+            Reveal.initialize({
+                history: true,
+                dependencies: [{
+                        src: '../plugin/markdown/marked.js'
+                    },
+                    {
+                        src: '../plugin/markdown/markdown.js'
+                    },
+                    {
+                        src: '../plugin/notes/notes.js',
+                        async: true
+                    },
+                    {
+                        src: '../plugin/highlight/highlight.js',
+                        async: true,
+                        callback: function () {
+                            hljs.initHighlightingOnLoad();
+                        }
+                    }
+                ]
+            });
+    </script>
+</body>
+
+</html>
