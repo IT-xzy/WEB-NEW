@@ -1,0 +1,286 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+    <style>
+        .text-justify{
+            text-align: justify;
+        }
+    </style>
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h4>小课堂【萌新】</h4>
+            <h4>如何使用正则表达式</h4>
+            <h4>分享人：汪胜</h4>
+        </section>
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section style="text-align: left;text-indent: 4rem;font-size:1.7rem;">
+                <p>在1951 年,一位名叫史蒂芬·克林（Stephen Kleene）的数学科学家发表了一篇题目是《神经网事件的表示法》的论文，利用称之为正则集合的数学符号来描述此模型，引入了正则表达式的概念。正则表达式被作为用来描述其称之为“正则集的代数”的一种表达式，因而采用了“正则表达式”这个术语。很长时间之后，正则表达式在各种计算机语言或各种应用领域得到了广大的应用和发展。</p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section style="text-align: left;text-indent: 4rem;font-size:1.7rem;">
+                <p style="text-align: center;">正则表达式简介</p>
+                <p>正则表达式是对字符串（包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为“元字符”））操作的一种逻辑公式，就是用事先定义好的一些特定字符、及这些特定字符的组合，组成一个“规则字符串”，这个“规则字符串”用来表达对字符串的一种过滤逻辑。正则表达式是一种文本模式，模式描述在搜索文本时要匹配的一个或多个字符串。</p>
+                <p>正则表达式（英语：Regular Expression，在代码中常简写为regex、regexp或RE）使用单个字符串来描述、匹配一系列符合某个句法规则的字符串搜索模式。搜索模式可用于文本搜索和文本替换。</p>
+                <p>正则表达式是由一个字符序列形成的搜索模式。当你在文本中搜索数据时，你可以用搜索模式来描述你要查询的内容。正则表达式可以是一个简单的字符，或一个更复杂的模式。正则表达式可用于所有文本搜索和文本替换的操作。</p>
+                <p>正则表达式中包含三种元素：量词、元字符、修饰符。</p>
+            </section>
+            <section style="text-align: left">
+                <p style="text-align: center">如何使用正则表达式</p>
+                <pre>
+            <code class="hljs">
+                语法
+                /正则表达式主体/修饰符(可选)
+                其中修饰符是可选的。
+
+                举例：
+                方式一：直接量语法
+                var test = /jnshu/;
+                var test = /jnshu/i;
+                方式二：创建 RegExp 对象的语法
+                var test = new RegExp("jnshu");
+                var test = new RegExp("jnshu","i");
+            </code>
+        </pre>
+            </section>
+            <section style="text-align: left">
+                <p style="text-align: center">test()方法</p>
+                test() 方法是一个正则表达式方法。</br>
+                test() 方法用于检测一个字符串是否匹配某个模式，如果字符串中含有匹配的文本，则返回 true，否则返回 false。
+                <pre>
+                <code class="hljs">
+/123456/.test("12345");            // false
+/123456/.test("123456");           // true
+/123456/.test("x123456y");         // true        只要包含了指定的字符串，则为true
+                </code>
+            </pre>
+            </section>
+            <section>
+                <p>修饰符</p>
+                修饰符是影响整个正则规则的特殊符号，会对匹配结果和部分内置函数行为产生不同的效果。
+                <pre>
+                <code class="hljs">
+        i   执行对大小写不敏感的匹配。
+        g   执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）。
+        m   执行多行匹配。
+        y   执行“粘性”搜索,匹配从目标字符串的当前位置开始，可以使用y标志。
+                </code>
+            </pre>
+            </section>
+            <section style="text-align: left;text-indent: 4rem;">
+                <p style="text-align: center">元字符</p>
+                <p>元字符是拥有特殊含义的字符。利用元字符，我们可以控制字符串匹配的方式，例如：只在每一行的开始或结束位置匹配指定的模式，匹配固定距离的子串，匹配不出现的字符等等。</p>
+            </section>
+            <section>
+                <p>常用元字符</p>
+                <pre>
+                    <code class="hljs" style="max-height: 450px">
+\d : 匹配数字      等价于[0-9]
+\D : 匹配非数字    等价于[^\d]
+\s : 匹配空白符
+\S : 匹配非空白符  等价于[^\s]
+\w : 用于匹配字母，数字或下划线字符（例如程序中的变量字符）  等价于[A-Za-z0-9_]
+\W : 用于匹配所有与\w不匹配的字符   等价于[^\w]
+举例：
+/\d/.test("123");              // true
+/\d/.test("1ab");              // true
+/\D/.test("1ab");              // true
+/\D/.test("112");              // false
+
+字符类
+匹配一类字符中的一个
+[abc]: a或b或c
+[0-9]: 一个数字
+[^0-9]: 非数字的一个字符
+[a-z]: 一个字母
+.    : 任一字符（换行除外）
+
+多选分支
+或
+/thi(c|n)k/    ===    /thi[cn]k/        // thick或think
+
+锚点
+匹配一个位置
+^ :起始位置
+$ :结尾位置
+\b :单词边界
+举例：
+/^http:/       /^http:/.test("http://www.jnshu.com")   //true
+/\.jpg$/       /\.jpg$/.test("1.jpg")                  // true
+/\bis\b/       /\bis\b/.test("this is tom")            // true
+
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <p>如果要在正则表达式中使用元字符本身的话该怎么办？</p>
+            </section>
+            <section>
+                <p>转义符</p>
+                使用的方法是把一个反斜杠（\）放在元字符前面，这样元字符就失去了特殊的意义，还原会它本身代表的字符意义。
+                <pre>
+                    <code class="hljs">
+举例：
+/http:\/\//     /http:\/\//.test("http://www.jnshu.com")        // true
+                    </code>
+                </pre>
+            </section>
+            <section style="text-align: left;text-indent: 4rem;font-size:1.7rem;">
+                <p style="text-align: center;">量词</p>
+                <p>正则表达式的量词分别是贪婪，惰性，支配性:
+                <p>贪婪量词：贪婪表达式会为所有可能的模式发现尽可能多的匹配。</p>
+                <p>惰性量词: 用问号来指定，这个量词匹配满足模式所需的最少字符数。因此也称作懒惰的，最少匹配的，非贪婪的、或不贪婪的。</p>
+                <p>支配量词：只尝试匹配整个字符串。如果整个字符串不能产生匹配，不做进一步尝试。</p>
+                <b>惰性量词和贪婪量词的工作方式正好是相反的。</b>
+            </section>
+            <section>
+                表示这3种量词：
+                <pre>
+                    <code class="hljs">
+ 贪   婪        惰   性       支   配               描   述
+    ？           ？？           ？+               零次或一次出现
+    *            *？            *+                零次或多次出现
+    +            +？            ++                一次或多次出现
+    {n}          {n}？          {n}+              恰好n次出现
+    {n，m}       {n，m}？       {n，m}+           至少n次，最多m次出现
+    {n，}        {n，}？        {n，}+            至少n次出现
+
+举例：
+/\d*/.test("abc")       // true     数字可以出现0次到无穷次，所以是对的
+/\d+/.test("abc")       // false    数字至少出现1次到无穷次，所以是错的
+/\d+/.test("1abc")      // true     数字至少出现1次到无穷次，所以是对的
+/https?:/.test("http://www.jnshu.com")       // true     s可以出现0次到1次，所以是对的
+/https?:/.test("https://www.jnshu.com")      // true
+/https?:/.test("httpss://www.jnshu.com")     // false    s后面是：所以是错的
+                    </code>
+                </pre>
+            </section>
+            <section style="text-align: left;text-indent: 4rem;">
+                <p style="text-align: center">贪婪匹配原则</p>
+                <p style="text-align: left">在JavaScript中，正则表达式进行匹配时默认使用的是贪婪匹配原则，即尽可能多的匹配字符串。例如，使用正则表达式/1{3,4}/来匹配字符串1111111，得到的结果为：1111和111。即先匹配4个字符，然后才匹配3个字符。</p>
+            </section>
+        </section>
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            如何利用正则表达式获取URL中各部分的值？
+        </section>
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+                 <pre>
+                <code>
+		var url = "http://www.jnshu.com:8080/index.html?user=chenapo&age=99#home";
+		var reg = /(https?:)\/\/([^\/]+)(\/[^\?]*)?(\?[^#]*)?(#.*)?/;
+		var arr = url.match(reg);
+		console.log(arr);
+                   </code>
+                </pre>
+        </section>
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+            <p>常用正则表达式有哪些？</p>
+            <a href="http://www.cnblogs.com/zfc2201/archive/2012/12/18/2824107.html" target="_blank">链接</a>
+        </section>
+        <section>
+            <h3>7.参考文献</h3>
+        </section>
+        <section>
+            <p>w3school在线教程/菜鸟教程</p>
+            <p>正则表达式的量词解释</p>
+        </section>
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                By
+                <small style="vertical-align: middle">汪胜</small>
+            </p>
+        </section>
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    //  controls: true, // 是否在右下角展示控制条
+    //  progress: true, // 是否显示演示的进度条
+    //  slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    //  history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    //  keyboard: true, // 是否启用键盘快捷键来导航
+    //  overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    //  center: true, // 是否将幻灯片垂直居中
+    //  touch: true, // 是否在触屏设备上启用触
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: './plugin/markdown/marked.js'},
+            {src: './plugin/markdown/markdown.js'},
+            {src: './plugin/notes/notes.js', async: true},
+            {
+                src: './plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
