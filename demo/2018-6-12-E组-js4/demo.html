@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>demo</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<style type="text/css">
+		.wrap {
+			padding: 20px;
+		}
+		.box {
+			margin: 0 auto 10px;
+			padding: 10px;
+			width: 1000px;
+			border: 1px solid #000;
+		}
+		p {
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body ng-controller="myCtrl">
+	<div class="wrap">
+		<div class="box">
+			<h2>alert警告框</h2>
+			<p>基本用法：</p>
+			<button type="button" class="btn btn-success" ng-click="alert1()">点我</button>	
+			<p>内容里面可以放html语言:</p>	
+			<button type="button" class="btn btn-success" ng-click="alert2()">再点我</button>	
+			<p>我们可以在回调函数中再插入一个alert对话框:</p>	
+			<button type="button" class="btn btn-success" ng-click="alert3()">还点我</button>	
+		</div>
+
+		<div class="box">
+			<h2>confirm确认框</h2>
+			<button type="button" class="btn btn-success" ng-click="confirm()">点我</button>	
+		</div>
+		<div class="box">
+			<h2>prompt提示框</h2>
+			<button type="button" class="btn btn-success" ng-click="prompt()">点我</button>	
+		</div>
+		<div class="box">
+			<h2>dialog自定义对话框</h2>
+			<p>基本用法：</p>
+			<button type="button" class="btn btn-success" ng-click="dialog1()">点我</button>	
+			<p>稍微复杂点的用法：</p>
+			<button type="button" class="btn btn-success" ng-click="dialog2()">再点我</button>
+		</div>
+	</div>
+	
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootbox.js/4.4.0/bootbox.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.6.9/angular.js"></script>
+
+	<script>
+		var app = angular.module("myApp",[]);
+		app.controller("myCtrl", function ($scope, $timeout) {
+			// alert
+			$scope.alert1 = function(){
+				bootbox.alert("确定上线吗？")
+			};
+			$scope.alert2 = function(){
+				bootbox.alert("确定<b>上线</b>吗？")
+			};
+			$scope.alert3 = function(){
+				bootbox.alert({ 
+					size: "small",  // 对话框大小
+					title: "确定上线吗？",  // 标题
+					message: "确定上线",   // 内容
+					callback: function(){   // 回调函数
+						bootbox.alert("上线成功")
+					}
+				})
+			};
+
+			// confirm
+			$scope.confirm = function(){
+				bootbox.confirm({
+					size: "small",
+					message: "确定上线吗？",
+					callback: function(result){
+						if(result === true) {
+							bootbox.alert("上线成功")
+						}else {
+							bootbox.alert("取消上线")
+						}
+					}
+				})
+			};
+
+			// prompt
+			$scope.prompt = function(){
+				bootbox.prompt({
+					size: "small",
+					title: "你最喜欢做的事？",
+					callback: function(result){
+						bootbox.alert("你喜欢的是 " + result)
+					}
+				})
+			};
+
+			// dialog
+			$scope.dialog1 = function(){
+
+				bootbox.dialog({
+					message: '这里是内容'
+				});
+
+			// 	var dialog11 = bootbox.dialog({
+			// 		message: 'loading',
+			// 		closeButton: false
+			// 	});
+			// 	$timeout(function() { // 3秒后关闭对话框
+			// 		dialog11.modal('hide');
+			// 	}, 3000);
+			};
+			$scope.dialog2 = function(){
+				bootbox.dialog({ 
+					size: "large",
+					title: "自定义对话框标题",
+					message: '自定义对话框内容',
+					buttons: {
+						cancel: {
+							label: "这里可以自定义取消按钮", // 自定义按钮名字
+							className: "btn-danger",  // 自定义类名
+							callback: function(){  // 自定义回调函数
+								console.log("你点击了取消按钮")
+							}
+						},
+						ok: {
+							label: "这里可以自定义确认按钮",
+							className: "btn-success",
+							callback: function(){
+								console.log("你点击了确认按钮")
+							}
+						},
+						noclose: {
+						    label: "这里是自定义的按钮，并且不关闭对话框",
+						    className: 'btn-warning',
+						    callback: function(){
+						    	console.log("你点击了自定义的按钮")
+						       return false;  // 返回false才能不关闭对话框
+						    }
+						}
+					}
+				})
+			}
+		})
+	</script>
+</body>
+</html>
