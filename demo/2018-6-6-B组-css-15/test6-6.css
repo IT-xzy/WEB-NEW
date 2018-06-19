@@ -1,0 +1,18 @@
+div {
+    width: 100px;
+    height: 100px;
+    background: blue;
+    /* transition: width 2s; */
+    -webkit-transition: width 2s;
+    /* Safari and Chrome */
+}
+
+div:hover {
+    width: 300px;
+}
+.text{
+    height: 50px;
+    width: 500px;
+    -webkit-box-shadow: 0 0 30px 2px #333;
+
+}

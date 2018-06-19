@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' :
+            '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        .reveal pre code {
+            background-color: #120;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h3>如何使用bootstrap栅格系统？</h3>
+                <h4>小课堂【北京-WEB-A组】</h4>
+                <h4>分享人：刘仁瑞</h4>
+
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <section>
+                    <h3>1.背景介绍</h3>
+                </section>
+                <section>
+                    <p>Bootstrap，来自 Twitter，是目前最受欢迎的前端框架。Bootstrap 是基于 HTML、CSS、JAVASCRIPT 的，它简洁灵活，使得 Web 开发更加快捷。</p>
+                </section>
+                <section>
+                    <p>Bootstrap提供了优雅的HTML和CSS规范，它是由动态CSS语言less写成。Bootstrap一经推出后颇受欢迎，一直是GitHub上的热门开源项目，包括NASA的MSNBC（微软全国广播公司）的Breaking
+                        News都使用了该项目。 国内一些移动开发者较为熟悉的框架，如WeX5前端开源框架等，也是基于Bootstrap源码进行性能优化而来。</p>
+                    <p>这里需要说明一下最新的Bootstrap4，是采用sass来编写的。</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>2.知识剖析</h3>
+                </section>
+                <section>
+                    <b>工作原理</b>
+                    <p>网格系统的实现原理非常简单，仅仅是通过定义容器大小，平分12份(也有平分成24份或32份，但12份是最常见的)，再调整内外边距，最后结合媒体查询，就制作出了强大的响应式网格系统。Bootstrap框架中的网格系统就是将容器平分成12份。</p>
+                    <p>在使用的时候大家可以根据实际情况重新编译LESS（或Sass）源码来修改12这个数值（也就是换成24或32，当然你也可以分成更多，但不建议这样使用）。</p>                   
+                </section>
+                <section>
+                    <b>使用规则</b>
+                    <p>1.行(.row)必须包含在容器（.container）中，以便为其赋予合适的对齐方式和内距(padding)。</p>
+                    <img src="img/2018-6-7-A组-css9/1.png" />
+                </section>
+                <section>
+                    <p>2.在行(.row)中可以添加列(.column)，但列数之和不能超过平分的总列数，比如12。如：</p>
+                    <img src="img/2018-6-7-A组-css9/2.png" />
+                </section>
+                <section>
+                    <p>3.具体内容应当放置在列容器（column）之内，而且只有列（column）才可以作为行容器(.row)的直接子元素</p>
+                </section>
+                <section>
+                    <p>4.类似 .row 和 .col-sm-4 这种预定义的类，可以用来快速创建栅格布局。</p>
+                </section>
+                <section>
+                    <p>5.通过设置内距（padding）从而创建列与列之间的间距。然后通过为第一列和最后一列设置负值的外距（margin）来抵消内距(padding)的影响</p>
+                    <img src="img/2018-6-7-A组-css9/3.png" />
+                </section>
+                <section>
+                    <b>栅格选项</b>
+                    <img src="img/2018-6-7-A组-css9/4.png" />
+                    
+                </section>
+                <section>
+                    <p>从上面的截图可以看出来，Bootstrap针对不同尺寸的屏幕（包括手机、平板、PC等等）设置了不同的样式类，这样让开发人员在开发时可以有更多的选择。根据我的理解：如果在一个元素上使用多个不同的上面的样式类，那么元素会根据在不同尺寸选择最合适（匹配最理想的）的样式类。简单的举例进行说明：比如在一个元素上我们使用了两个样式类：.col-md-和.col-lg。可以对照上面的截图来看</p>
+                    <p>第一种情况：尺寸>=1200px;那么会选择.col-lg。
+                        <br />
+                        第二种情况：尺寸>=992px 并且尺寸<=1200px;那么会选择.col-md。
+                        <br />
+                        第三种情况：如果尺寸<992px;那么这两个样式类都将不会作用于元素上</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    <p>如何设置5列占满宽度？</p>
+                </section>
+                <section>
+                    <p>格栅系统的15px有什么作用？</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+                <section>
+                    <p>每列设置宽度20%</p>
+                    <P>也就是100%除以列数。</P>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>5.编码实战</h3>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>6.扩展思考</h3>
+                </section>
+                <section>
+                    <p>格栅系统布局的是通过什么方法实现的？</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>7.参考文献</h3>
+                </section>
+                <section>
+                    参考一：
+                    <a href="http://www.runoob.com/bootstrap/bootstrap-tutorial.html">菜鸟教程</a>
+                    <br> 参考二：
+                    <a href="http://www.bootcss.com/">bootstrap中文网</a>
+                    <br> 参考三：
+                    <a href="https://www.cnblogs.com/chessYu/p/7337018.html">博客园</a>
+                    <br> 参考四：
+                    <a href="https://www.cnblogs.com/harris-peng/p/5516947.html">博客园</a>
+                    <br>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>8.更多讨论</h3>
+                </section>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    By 刘仁瑞
+                </p>
+            </section>
+        </div>
+    </div>
+    <script src="lib/reveal/js/head.min.js"></script>
+    <script src="lib/reveal/reveal.js"></script>
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        //  controls: true, // 是否在右下角展示控制条
+        //  progress: true, // 是否显示演示的进度条
+        //  slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        //  history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        //  keyboard: true, // 是否启用键盘快捷键来导航
+        //  overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        //  center: true, // 是否将幻灯片垂直居中
+        //  touch: true, // 是否在触屏设备上启用触摸滑动切换
+        //  loop: false, // 是否循环演示
+        //  rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        //  fragments: true, // 全局开启和关闭碎片。
+        //  autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        //  transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        //  transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        //  mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
