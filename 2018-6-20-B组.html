@@ -1,0 +1,297 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h3>【JS-task05】JS中的原型链是什么？</h3>
+            <h3>小课堂【上海】</h3>
+            <p>分享人：杨亚洲</p>
+        </section>
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多提问</p>
+        </section>
+        <section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <h4> 1.构造函数</h4>
+                <p style="text-align: left">
+                    构造函数 ，是一种特殊的方法。主要用来在创建对象时初始化对象。每个构造函数都有prototype(原型)属性。
+                </p>
+            </section>
+            <section>
+                <h4> 2.原型模式</h4>
+                <p style="text-align: left">
+                    每个函数都有prototype(原型)属性，这个属性是一个指针，指向一个对象，这个对象的用途是包含特定类型的所有实例共享的属性和方法，即这个原型对象是用来给实例共享属性和方法的。 而同样的构造函数的原型对象上也有一个指针（constructor构造函数），指向构造函数本身。
+                </p>
+            </section>
+            <section>
+                <h4> 3.实例对象</h4>
+                <p style="text-align: left">
+                    实例对象是通过new操作符+构造函数的形式，生成的对象。实例对象里面有一个内部属性[[prototype]],指向构造函数的原型对象。
+                    先搞清楚这三者之间的关系吧
+                </p>
+            </section>
+
+
+            <section>
+                <img src="../img/js-9-prototype-chenshuwei/function.png" width="700px">
+            </section>
+
+            <section>
+                    <h4> 4._proto_的指向</h4>
+                    <p style="text-align: left">
+                            _proto_的指向是根据创建该对象的创建方式来区分的。现阶段主要有3种。
+                            <p>
+                                a、字面量的形式
+                                </p>
+                               
+                               <p>
+                                   b、构造函数模式
+                                </p>
+                               
+                               <p>
+                                   c、Object.create()
+                                </p>
+                               
+                    </p>
+                </section>
+            <section >
+                <img src="../img/js-9-prototype-chenshuwei/prototype-chain.png">
+            </section>
+            <section>
+                <h4>原型链</h4>
+                <p style="text-align: left">
+                        我们知道构造函数里面有一个属性是prototype，这个属性是一个指针指向构造函数的原型对象，而原型对象里面
+                        同样有一个指针（constructor）,指向原型对象。而对构造函数的实来说，它有一个内部指针[[prototype]]指向构造函数
+                        的原型对象。如果这个原型对象是另外一个构造函数的实例，那么此时原型对象又包含一个内部指针[[prototype]]指向
+                        另一个构造函数的原型对象，如此层层递进，就构成的实例与原型的链条，也就是所谓的原型链    
+                </p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <h4>构造函数</h4>
+                <p style="text-align: left">构造函数 ，是一种特殊的方法。主要用来在创建对象时初始化对象。 即为对象变量赋初始值。每个构造函数的实例都将共享构造函数的初始值。 构造函数的出现是为了解决使用Object构造函数和字面量表示法不方便创建大量重复对象的问题。
+                </p>
+            </section>
+            <section>
+                <h4>传统创建对象实例的方法</h4>
+                <pre><code>
+                    var person={
+                                name:'张女士',
+                                age:'80',
+                                gender:'女'
+                                };
+                    console.log(person)
+            </code></pre>
+                <p>这个方法如果用于创建大量相同属性和方法的对象时，会产生大量重复代码</p>
+            </section>
+            <section>
+                <h4>构造函数的方法</h4>
+                <pre><code>
+                //构造函数方法创建对象实例
+                function Person(name,age,gender) {
+                   this.name=name;
+                   this.age=age;
+                   this.gender=gender;
+                   this.say=function () {
+                   alert(this.name)
+                    }
+                }
+                var person1=new Person('钟女士',80,'女');
+                var person2=new Person('张女士',80,'女');
+                console.log(person2)
+                console.log(person1)
+            </code></pre>
+            </section>
+            <section>
+                <h4>原型模式</h4>
+                <p style="text-align: left">使用构造函数的问题是，每个方法都要在每个实例上重新创建一遍，即在构造函数的不同实例上的同名函数是不相等的。而我们创建每个构造函数都有一个prototype(原型)属性，这个属性是个指针，指向一个对象，而这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法，我们使用这个原型对象来共享实例的属性和方法的模式就叫原型模式</p>
+            </section>
+            <section>
+                <div>
+                    <pre><code>
+                    //原型模式创建对象
+                    function Person(){
+                    }
+                    Person.prototype.name='钟女士';
+                    Person.prototype.age=80;
+                    Person.prototype.gender='女';
+                    var person1= new Person();
+                    console.log(person1)
+                    //简写原型模式
+                    Person.prototype={
+                    constructor:Person
+                    name:'钟女士'，
+                    age:80,
+                    gender:'女'
+                    }
+                </code></pre>
+                    <p style="text-align: left">注：每个原型对象都有constructor属性，由于简写模式重写了默认的prototype对象，所以constructor也会被重新定义，不再指向他的构造函数，所以可以自己写一个constructor属性指向他的构造函数</p>
+                </div>
+            </section>
+            <section>
+                <h4>原型链</h4>
+                <p style="text-align: left">每个构造函数都有原型对象，每个构造函数实例都包含一个指向原型对象的内部指针（__proto__），如果我们让第一个构造函数的原型对象等于第二个构造函数的实例，结果第一个构造函数的原型对象将包含一个指向第二个原型对象的指针，再然第三个原型对象等于第一个构造函数的实例，这样第三个原型对象也将包含指向第一个原型对象的指针，以此类推，就够成了实例于原型的链条，这就是原型链的基本概念</p>
+            </section>
+            <section>
+                <pre><code>
+                        function One(){
+                        }
+                        function Two(){
+                        }
+                        function Three(){
+                        }
+                        Two.prototype=new One();
+                        Three.prototype=new Two();
+                        var three=new Three();
+                        console.log(three);
+                        console.log(three.__proto__===Three.prototype) //true
+                        console.log(three.__proto__.__proto__===Two.prototype) //true   
+                        console.log(three.__proto__.__proto__.__proto__===One.prototype)  //true
+                        console.log(three.__proto__.__proto__.__proto__.__proto__===Object.prototype)  //true
+             </code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+            <section>
+                <div style="text-align:left ; padding:0% 12% ;font-size:30px">
+                    <p>若想访问一个对象的原型，应该使用什么方法？</p>
+                </div>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>4.解决办法</h3>
+            </section>
+            <section>
+                <div style="text-align:left ; padding:0% 12% ;font-size:30px">
+                    <h4>在对象实例中，访问对象原型的方法</h4>
+                    <p>1、使用_proto_属性</p>
+                    <p>此属性是浏览器支持的一个属性，并不是ECMAScript里的属性</p>
+                    <p>2.Object.getPrototypeOf</p>
+                    <p>3.使用constructor.prototype的方法</p>
+                    <p>对于不支持_proto_的浏览器，可以使用constructor，访问到对象的构造函数，在用prototype访问到原型</p>
+                    <h4>在构造函数中，访问对象原型的方法</h4>
+                    <p>1.使用prototype属性</p>
+                </div>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>6、扩展思考</h3>
+            </section>
+            <section>
+                    <div style="text-align:left ; padding:0% 12% ;font-size:30px">
+                        Function 也是构造函数？
+                        所以Function.__proto__指向Function.prototype?
+                    </div>
+                </section>
+        </section>
+        <section>
+            <section>
+                <h3>7、参考文献：</h3>
+                <div style="text-align:left ; padding:0% 12% ;font-size:34px">
+                    <p>参考一：
+                        <a target="_blank">JavaScript高级程序设计</a>
+                    </p>
+                    <p>参考二：
+                        <a href="https://github.com/xufei/blog/issues/18" target="_blank">作用域与事件</a>
+                    </p>
+                </div>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>8、更多提问</h3>
+            </section>
+        </section>
+        <section>
+            <p>谢谢大家</p>
+            <p>制作人：杨亚洲</p>
+        </section>
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: './plugin/markdown/marked.js' },
+            { src: './plugin/markdown/markdown.js' },
+            { src: './plugin/notes/notes.js', async: true },
+            { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>
