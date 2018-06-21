@@ -1,0 +1,224 @@
+﻿<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+    </map>
+    <div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+        <div class="slides" style="width: 960px; height: 700px; zoom: 1.15586;">
+            <section class="present" style="top: 178px; display: block;">
+                <h2>$scope $rootScope $watch $state 是什么？</h2>
+                <p>分享人: 刘泽华</p>
+            </section>
+
+
+            <section hidden="" aria-hidden="true" class="future" style="top: 66.5px; display: block;">
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.参考文献</p>
+            </section>
+
+            <!-- 1 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 0px; display: block;">
+                <section style="top: 267px; display: block;">
+                    <h3>1.背景介绍</h3>
+                </section>
+                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                    <h4>AngularJS Scope作用域</h4>
+                    <p style="text-align: left">
+                        Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的纽带。
+                        <br> 它与数据模型相关联，同时也是表达式执行的上下文。
+                        <br> 有了$scope 就在视图和控制器之间建立了一个通道，基于作用域视图在修改数据时会立刻更新$scope，同样的$scope发生改变时也会立刻重新渲染视图。
+                        <br>
+                    </p>
+                </section>
+            </section>
+
+
+            <!-- 2 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <h3>2.知识剖析</h3>
+                </section>
+                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                    <p>
+                        $scope是一个把view（一个DOM元素）连结到controller上的对象。 在我们的MVC结构里，这个 $scope 将成为model，它提供一个绑定到DOM元素（以及其子元素）上的excecution context。
+                        <br> $scope 实际上就是一个JavaScript对象，controller和view都可以访问它，所以我们可以利用它在两者间传递信息。 在这个 $scope 对象里，我们既可以存储数据，又可以存储将要运行在view上的函数。
+                    </p>
+                </section>
+                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                    $watch是一个scope函数，用于监听模型变化
+                    <br> $watch(watchExpression, listener, objectEquality){ ... };
+                    <br> watchExpression：$watch方法的第一个参数是一个函数，它通常被称为watch函数，它的返回值声明需要监听的变量；
+                    <br> listener:第二个参数是listener，在变量发生改变的时候会被调用。和传统的事件注册和监听没有什么本质上的差别，差别仅在于AngularJS能够自动注册绝大多数的change事件并进行监听。
+                    <br> objectEquality：是否深度监听，如果设置为true,它告诉Angular检查所监控的对象中每一个属性的变化。
+                </section>
+
+            </section>
+
+            <!-- 3 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <h3>3.常见问题</h3>
+                    如何自定义$watch?
+                </section>
+            </section>
+
+            <!-- 4 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <h3>4.解决方案</h3>
+                </section>
+            </section>
+
+
+            <!-- 5 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <h3>5.编码实战</h3>
+                </section>
+            </section>
+
+            <!-- 6 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <h3>6.参考文献</h3>
+                    <p>参考一：
+                        <a href="http://yuankeqiang.lofter.com/post/8de51_1454f93" target="_blank">Angular.js中使用$watch监听模型变化</a>
+                    </p>
+                    <p>参考二：
+                        <a href="http://blog.csdn.net/u010451286/article/details/50635839" target="_blank">关于$watch应用的一些小技巧</a>
+                    </p>
+                </section>
+            </section>
+            </section>
+
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>BY: 刘泽华</p>
+            </section>
+        </div>
+        <div class="backgrounds">
+            <div class="slide-background past" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background stack present" data-loaded="true" style="display: block;">
+                <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+                <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+            </div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+        </div>
+        <div class="progress" style="display: block;">
+            <span style="width: 260.19px;"></span>
+        </div>
+        <aside class="controls" style="display: block;">
+            <button class="navigate-left enabled" aria-label="previous slide"></button>
+            <button class="navigate-right enabled" aria-label="next slide"></button>
+            <button class="navigate-up enabled" aria-label="above slide"></button>
+            <button class="navigate-down" aria-label="below slide"></button>
+        </aside>
+        <div class="slide-number" style="display: none;"></div>
+        <div class="speaker-notes" data-prevent-swipe=""></div>
+        <div class="pause-overlay"></div>
+        <div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+
+            语法： return[()[expression][]]; 可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。 用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression
+            被省略， 或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 初始化幻灯片
+
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: './plugin/markdown/marked.js'
+                },
+                {
+                    src: './plugin/markdown/markdown.js'
+                },
+                {
+                    src: './plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: './plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+
+</body>
+
+</html>
