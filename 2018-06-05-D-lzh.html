@@ -64,7 +64,7 @@
     <div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
         <div class="slides" style="width: 960px; height: 700px; zoom: 1.21757;">
             <section class="present" style="top: 188.5px; display: block;">
-                <h2>如何使用ui-router？&nbsp;</h2>
+                <h2>什么是原型</h2>
 
 
 
@@ -73,350 +73,47 @@
                 分享人：刘泽华
             </section>
             <section hidden="" aria-hidden="true" class="future" style="top: 126.5px; display: block;">
-                <p style="text-align: center;">1、创建页面 </p>
-                <p style="text-align: center;">2、导入js文件</p>
-                <p style="text-align: center;">3、嵌套路由</p>
-                <p style="text-align: center;">4、通过views实现多视图,嵌套页面跳转</p>
-                <p style="text-align: center;">5、UI-ROUTER相较与NG-ROUTER的优点</p>
-
-                <!--<p style="text-align: center;">4.浮动</p>-->
-                <!--<p style="text-align: center;">5.编码实战</p>-->
-                <!--<p style="text-align: center;">6.扩展思考</p>-->
-                <!--<p style="text-align: center;">7.参考文献</p>-->
-                <!--<p style="text-align: center;">8.更多讨论</p>-->
+                一. 普通对象与函数对象 JavaScript 中，万物皆对象！但对象也是有区别的。分为普通对象和函数对象，Object 、Function 是 JS 自带的函数对象。下面举例说明 凡是通过 new Function() 创建的对象都是函数对象，其他的都是普通对象。f1,f2,归根结底都是通过
+                new Function()的方式进行创建的。Function Object 也都是通过 New Function()创建的。
             </section>
             <!--1.背景介绍-->
             <section hidden="" aria-hidden="true" class="stack future" style="top: 0px; display: block;">
                 <section style="top: 267px; display: block;">
-                    <h3>1、创建页面</h3>
+                    我们要记住两个概念（构造函数，实例）： person1 和 person2 都是 构造函数 Person 的实例 一个公式： 实例的构造函数属性（constructor）指向构造函数。
                 </section>
-                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
-                    <p>
-                        要实现上文那个demo效果，我们需要创建如下页面： app.js 这是路由的配置页面 index.html 通常叫做index.html是单页面的首页，里面导入了各种css样式、库，插件，框架之类的。 PageTab.html 进入index.html首先展示的视图页面，下面几个是PageTab下面的嵌套页面
-                        Page-1.html Page-2.html Page-3.html
 
-                    </p>
-                    <p>
-
-
-
-                    </p>
-                    <p>
-
-                    </p>
-
-                </section>
-                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
-                    <p>
-
-
-                    </p>
-                </section>
             </section>
             <!--2.知识剖析-->
             <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
-                <h3>2、导入js文件</h3>
-                <section style="top: 330px; display: none;">
-                    <p>
-                        script src="https://cdn.bootcss.com/angular.js/1.4.6/angular.js"
-                        <br>
-                        <br> script src="https://cdn.bootcss.com/angular-ui-router/1.0.0-rc.1/angular-ui-router.min.js"
 
-
-
-                    </p>
-                    <p>
-
-
-                    </p>
-                    <p>
-
-                    </p>
-
-                </section>
 
             </section>
             <!--2.1 JS有哪些数据类型？-->
             <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
-                <section style="top: 330px; display: none;">
-                    <b>3、嵌套路由</b>
-                </section>
-                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
-                    <p>
-                    </p>
-                    <pre>                    <code class="hljs xquery">
-         var myApp = angular.module(<span class="hljs-string">"myApp"</span>, [<span class="hljs-string">"ui.router"</span>]);
-//这里叫做App模块，这将告诉HTML页面这是一个AngularJS作用的页面，并把ui-router注入AngularJS主模块，它的内容由AngularJS引擎来解释。
-myApp.config(<span class="hljs-keyword">function</span> ($stateProvider, $urlRouterProvider) {
-    //这一行声明了把 $stateProvider 和 $urlRouteProvider 路由引擎作为函数参数传入，这样我们就可以为这个应用程序配置路由了.
-    $urlRouterProvider.when(<span class="hljs-string">""</span>, <span class="hljs-string">"/PageTab"</span>);
-    //如果没有路由引擎能匹配当前的导航状态，默认将路径路由至 PageTab.html, 那它就像switch case语句中的default选项.就是一个默认的视图选项
-    $stateProvider
-        //这一行定义了会在main.html页面第一个显示出来的状态（就是进入页面先加载的html），作为页面被加载好以后第一个被使用的路由.
-        .state(<span class="hljs-string">"PageTab"</span>, {//导航用的名字
-            url: <span class="hljs-string">"/PageTab"</span>,//#+标识符，这里就是url地址栏上面的标识符，通过标识符，进入不同的html页面
-            templateUrl: <span class="hljs-string">"PageTab.html"</span>//这里是html的路径，这是跟标识符相对应的html页面
-        })
-        .state(<span class="hljs-string">"PageTab.Page1"</span>, {//引号里面代表Page1是PageTab的子页面，用.隔开
-            url:<span class="hljs-string">"/Page1"</span>,
-            templateUrl: <span class="hljs-string">"Page-1.html"</span>
-        })
-        .state(<span class="hljs-string">"PageTab.Page2"</span>, {//需要跳转页面的时候，就是用这双引号里面的地址
-            url:<span class="hljs-string">"/Page2"</span>,
-            templateUrl: <span class="hljs-string">"Page-2.html"</span>
-        })
-        .state(<span class="hljs-string">"PageTab.Page3"</span>, {
-            url:<span class="hljs-string">"/Page3"</span>,
-            templateUrl: <span class="hljs-string">"Page3.html"</span>
-        });
-});
-                    </code>
-                    </pre>
-                    <p></p>
-                    <p>
+                    在上面我们给 A 添加了 四个属性：name、age、job、sayName。其实它还有一个默认的属性：constructor
 
-                    </p>
-
-
-
-
-                    <p>
-
-                    </p>
-                </section>
-                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
-                    <div style="text-indent:2em">
-                        <p style="text-align: left">
-
-                        </p>
-                        <p style="text-align: left">
-
-                        </p>
-                        <p style="text-align: left">
-
-                        </p>
-                        <p>
-
-
-                        </p>
-                    </div>
-                </section>
-                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
-                    <div style="text-indent:2em">
-                        <p style="text-align: left">
-
-                        </p>
-                        <p style="text-align: left">
-                        </p>
-                        <!--<pre>-->
-                        <!--<code>-->
-                        <!--</code>-->
-                        <!--</pre>-->
-                    </div>
-                </section>
-                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
-                    <b></b>
-                </section>
-                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
-                    <div style="text-indent:2em">
-
-                    </div>
-                </section>
-                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
-                    <!--<p style="text-align: center;">用户信息</p>-->
-                    <!--<p>scope: scope.userInfo <br/> 对应接口 wx.getUserInfo</p>-->
-                </section>
-                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
-                    <!--<p style="text-align: center;">地理位置</p>-->
-                    <!--<p>scope:scope.userLocation <br/> 对应接口wx.getLocation, wx.chooseLocation  </p>-->
-                </section>
-                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
-                    <!--<p>通讯地址</p>-->
-                    <!--<p>scope: scope.address <br/> 对应接口wx.chooseAddress</p>-->
-                </section>
-                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
-                    <!--<p>发票抬头</p>-->
-                    <!--<p>scope:scope.invoiceTitle <br/> 对应接口wx.chooseInvoiceTitle</p>-->
-                </section>
-                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
-                    <!--<p>微信运动步数</p>-->
-                    <!--<p>scope:scope.werun <br/> 对应接口wx.getWeRunData</p>-->
-                </section>
-                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
-                    <!--<p>录音功能</p>-->
-                    <!--<p>scope:scope.record<br/> 对应接口  wx.startRecord</p>-->
-                    <!--<p>保存到相册</p>-->
-                    <!--<p>scope.writePhotosAlbum<br>wx.saveImageToPhotosAlbum, wx.saveVideoToPhotosAlbum</p>-->
-                    <!--<p>  摄像头</p>-->
-                    <!--<p>scope.camera</p>-->
-                </section>
-
+                    在默认情况下，所有的原型对象都会自动获得一个 constructor（构造函数）属性，这个属性（是一个指针）指向 prototype 属性所在的函数（Person）
+                    
+                    上面这句话有点拗口，我们「翻译」一下：A 有一个默认的 constructor 属性，这个属性是一个指针，指向 Person。即：
+                    Person.prototype.constructor == Person
+                    
+                    在上面第二小节《构造函数》里，我们知道实例的构造函数属性（constructor）指向构造函数 ：person1.constructor == Person
+                    
+                    这两个「公式」好像有点联系：
+                    
+                    person1.constructor == Person
+                    Person.prototype.constructor == Person
+                    person1 为什么有 constructor 属性？那是因为 person1 是 Person 的实例。
+                    那 Person.prototype 为什么有 constructor 属性？？同理， Person.prototype （你把它想象成 A） 也是Person 的实例。
+                    也就是在 Person 创建的时候，创建了一个它的实例对象并赋值给它的 prototype，基本过程如下：
+                    
+                     var A = new Person();
+                     Person.prototype = A;
+                    结论：原型对象（Person.prototype）是 构造函数（Person）的一个实例。
             </section>
             <!--3.常见问题-->
             <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
-                <h3>4、通过views实现多视图</h3>
-                <p>
-                    在ui-view=""的双引号里面，ui-view展示的页面是根据app.js设置的url对应的html来展示的
-                    <br> 嵌套页面跳转
-                    <br> 导航里面的名字必须是“父页面的名字.子页面的名字”
-                </p>
-                <pre>                <code class="hljs dust"><span class="xml">
-                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>下面这几个按钮是在主页面下面再嵌套一层的页面<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-                        <span class="hljs-comment">&lt;!--ui-sref跳转--&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width:100px"</span> <span class="hljs-attr">ui-sref</span>=<span class="hljs-string">".Page1"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span>&gt;</span>Page-1<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width:100px"</span> <span class="hljs-attr">ui-sref</span>=<span class="hljs-string">".Page2"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span>&gt;</span>Page-2<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width:100px"</span> <span class="hljs-attr">ui-sref</span>=<span class="hljs-string">".Page3"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span>&gt;</span>Page-3<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
- </span></code><div><code class="hljs dust"><span class="xml">
-     <span class="hljs-comment">&lt;!--PageTap嵌套的视图html展示的地方--&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">ui-view</span>=<span class="hljs-string">""</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                </span></code>
-                </div></pre>
 
-
-
-
-
-
-
-                <p></p>
-
-
-                <p>
-
-
-
-
-                </p>
-                <!--<pre>-->
-                <!--<code>-->
-                <!--position: absolute;-->
-                <!--left: 50%;-->
-                <!--top: 50%;-->
-                <!--width:200px;-->
-                <!--height:100px;-->
-                <!--margin-left:-100px;-->
-                <!--margin-top:-50px;-->
-                <!--</code>-->
-                <!--</pre>-->
-                <section style="top: 330px; display: none;">
-                    <p>
-
-                    </p>
-                </section>
-
-            </section>
-            <!--<section>-->
-            <!--<B>不固定高宽div垂直居中的方法</B>-->
-            <!--<p>-->
-            <!--不固定高宽div垂直居中的方法-->
-
-            <!--方法一：-->
-
-            <!--用一个“ghost”伪元素（看不见的伪元素）和 inline-block / vertical-align 可以搞定居中，非常巧妙。但是这个方法要求待居中的元素是 inline-block，不是一个真正通用的方案。-->
-
-            <!--代码如下-->
-            <!--</p>-->
-            <!--<pre>-->
-
-
-            <!--</pre>-->
-            <!--</section>-->
-            <!--4.解决方案-->
-            <!--<section>-->
-            <!--<p>-->
-            <!--<pre>-->
-            <!--<code>-->
-            <!--/* This parent can be any width and height */-->
-            <!--.block {-->
-            <!--text-align: center;-->
-            <!--}-->
-
-            <!--/* The ghost, nudged to maintain perfect centering */-->
-            <!--.block:before {-->
-            <!--content: '';-->
-            <!--display: inline-block;-->
-            <!--height: 100%;-->
-            <!--vertical-align: middle;-->
-            <!--margin-right: -0.25em; /* Adjusts for spacing */-->
-            <!--}-->
-
-            <!--/* The element to be centered, can-->
-            <!--also be of any width and height */-->
-            <!--.centered {-->
-            <!--display: inline-block;-->
-            <!--vertical-align: middle;-->
-            <!--width: 50%;-->
-            <!--}-->
-            <!--</code>-->
-            <!--</pre>-->
-            <!--</p>-->
-            <!--</section>-->
-            <!--<section>-->
-            <!--<p>-->
-
-            <!--3、h5技术，window.localStorage存储数据<br>-->
-
-            <!--优点：储存空间大，有5M存储空间。<br>-->
-
-            <!--缺点：不是所有浏览器都支持。<br>-->
-            <!--</p>-->
-            <!--</section>-->
-
-            <!--<section>-->
-            <!--<pre>-->
-            <!--<code>-->
-            <!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">-->
-            <!--<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">-->
-            <!--<head>-->
-            <!--<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">-->
-            <!--<title>haorooms不固定高度div写法</title>-->
-
-            <!--<style>-->
-            <!--.center {-->
-            <!--position: fixed;-->
-            <!--top: 50%;-->
-            <!--left: 50%;-->
-            <!--background-color: #000;-->
-            <!--width:50%;-->
-            <!--height: 50%;-->
-            <!-- -webkit-transform: translateX(-50%) translateY(-50%);-->
-            <!--}-->
-
-
-            <!--</style>-->
-            <!--</head>-->
-            <!--<body>-->
-            <!--<div> "center"></div>-->
-            <!--</body>-->
-            <!--</html>-->
-            <!--</code>-->
-            <!--</pre>-->
-
-            <!--</section>-->
-            <!--6.拓展思考-->
-            <!--<section>-->
-            <!--<h3>6.拓展思考</h3>-->
-            <!--</section>-->
-            <!--<section>-->
-            <!--<p>可以在什么地方安置获取授权的按钮？</p>-->
-            <!--<p>比如在直播小程序中，可以设置当用户发表评论时，获取用户的头像信息和名称，然后调用发表。</p>-->
-            <!--</section>-->
-            <!--<section>-->
-            <!--<h3>7.参考文献</h3>-->
-            <!--<p>微信公共平台——授权：https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html</p>-->
-            <!--<P>用户拒绝授权CSDN：https://blog.csdn.net/qq_28189091/article/details/75417073</P>-->
-            <!--</section>-->
-            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-                <h3>5、UI-Route相较与ng-router的优点</h3>
-                <p>
-                    <br> 视图不能嵌套,这意味着$scope会发生不必要的重新载入。
-
-                    <br> 同一URL下不支持多个视图。这一需求也是常见的：我们希望导航栏用一个视图（和相应的控制器）、内容部分用另一个视图（和相应的控制器）。
-
-                </p>
             </section>
             <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
                 <p style="text-align: center">感谢大家观看</p>
