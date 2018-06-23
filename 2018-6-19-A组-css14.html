@@ -1,0 +1,222 @@
+﻿<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>葡萄藤PPT</title>
+
+		<link rel="stylesheet" href="css/reveal/reveal.css">
+
+		<!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+		<link rel="stylesheet" href="css/reveal/theme/ptt.css">
+
+		<!-- syntax highlighting 代码高亮主题 -->
+		<link rel="stylesheet" href="lib/reveal/css/zenburn.css">
+
+		<!-- 打印和PDF输出样式 -->
+		<script>
+			var link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+			document.getElementsByTagName('head')[0].appendChild(link);
+		</script>
+		<style>
+			.reveal pre code {
+				background-color: #120;
+			}
+		</style>
+	</head>
+
+	<body>
+		<img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+		<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h3>为什么要做组件库？</h3>
+					<h4>小课堂【深圳-WEB-A组】</h4>
+					<h4>分享人：李榕涛</h4>
+
+				</section>
+				<section>
+					<p>目录</p>
+					<p>1.背景介绍</p>
+					<p>2.知识剖析</p>
+					<p>3.常见问题</p>
+					<p>4.解决方案</p>
+					<p>5.编码实战</p>
+					<p>6.扩展思考</p>
+					<p>7.参考文献</p>
+					<p>8.更多讨论</p>
+				</section>
+				<section>
+					<section>
+						<h3>1.背景介绍</h3>
+					</section>
+					<section>
+						<p>
+							传统开发方式效率低以及维护成本高的主要原因在于很多时候是将一个系统做成了整块应用，
+							而且往往随着业务的增长或者变更，系统的复杂度会呈现指数级的增长，
+							经常出现的情况就是一个小小的改动或者一个小功能的增加可能会引起整体逻辑的修改，造成牵一发而动全身。
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>2.知识剖析</h3>
+					</section>
+					<section>
+						<p>
+							在软件时代，就一直遵从着两个原则来解决这个问题
+
+							　　内聚性:又称块内联系。指模块的功能强度的度量，即一个模块内部各个元素彼此结合的紧密程度的度量。若一个模块内各元素（语名之间、程序段之间）联系的越紧密，则它的内聚性就越高。<br/>
+							　　耦合性：也称块间联系。指软件系统结构中各模块间相互联系紧密程度的一种度量。模块之间联系越紧密，其耦合性就越强，模块的独立性则越差。模块间耦合高低取决于模块间接口的复杂性、调用的方式及传递的信息。<br/>
+							　　所谓高内聚是指一个软件模块是由相关性很强的代码组成，只负责一项任务，也就是常说的单一责任原则。<br/>
+						</p>
+					</section>
+					<section>
+						<p>
+							一个完整的系统，模块与模块之间，尽可能的使其独立存在。也就是说，让每个模块，尽可能的独立完成某个特定的子功能。模块与模块之间的接口，尽量的少而简单。如果某两个模块间的关系比较复杂的话，
+							最好首先考虑进一步的模块划分。这样有利于修改和组合。<br/>
+							　　组件化并不是一个十分难以理解的词语，他就像我们组装电脑一样，由不同的组件构成，例如显示器，显卡，cpu，风扇，硬盘等，对应着来看可以分为头部，导航栏，侧边栏，底部等一系列的组件，
+							这些组件就像电脑一样，当某个部件出了问题不会影响其他的部件，我们可以很快的确认电脑哪个地方出现了问题，我们还可以升级电脑，同理，我们也可以通过更换修改组件来进行功能拓展。<br/>
+
+						</p>
+					</section>
+
+				</section>
+				<section>
+					<section>
+						<h3>3.常见问题</h3>
+					</section>
+					<section>
+						<p>
+							为什么要进行组件化？
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>4.解决方案</h3>
+					</section>
+					<section>
+						<p>
+							从开发者角度来看：<br>
+
+							在CSS上，保证代码上的模块化，具有独立作用域；<br>
+
+							内部的布局，字体的变化(不包括颜色这类是不可控的)只由其最外层容器影响；<br>
+
+							在容器不受外部影响变化的前提下，内部容器的样式不被外部所影响。<br>
+
+							从公司角度来看：<br>
+
+							业务划分更佳清晰，新人接手更佳容易，可以按组件分配开发任务；<br>
+
+							项目可维护性更强，提高开发效率；<br>
+
+							更好排查问题，某个组件出现问题，直接对组件进行处理；<br>
+
+							开发测试过程中，可以只编译自己那部分代码，不需要编译整个项目代码。<br>
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>5.编码实战</h3>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>6.扩展思考</h3>
+					</section>
+					<section>
+						<p>组件化与模块化的区别？</p>
+					</section>
+					<section>
+						<p>模块化强调的是 拆分 ，无论是从业务角度还是从架构、技术角度，模块化首先意味着将代码、数据等内容按照其职责不同分离，使其变得更加容易维护、迭代，使开发人员可以分而治之。
+							例如一个完整的系统可以拆分为功能模块，架构模块，而功能模块又可以拆分为商品浏览模块、订单模块、购物车模块、消息模块、支付模块，
+							而架构模块可以拆分成数据存储模块，数据请求模块，缓存模块，数据处理模块等。<br>
+					</section>
+					<section>
+						<p>
+							组件化则着重于 可重用性 ，不管是界面上反复使用的用户头像按钮，还是处理数据的流程中的某个部件，只要可以被反复使用，并且进行了高度封装，
+							只能通过接口访问，一个网站可以分为导航组件，头部组件，留言组件，底部组件等等。<br>
+							模块化的诉求是解耦，组件化的诉求是好用，但是他们的思想都是通过分治来让开发人员的工作变得更加轻松，让软件系统具有更优秀的可用性和可靠性。</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>7.参考文献</h3>
+					</section>
+					<section>
+						参考一：<a href="https://www.zhihu.com/question/29735633/answer/117582393">知乎</a><br>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>8.更多讨论</h3>
+					</section>
+				</section>
+				<section>
+					<h4>鸣谢</h4>
+					<p>感谢大家观看</p>
+					<p>
+						By
+						<small style="vertical-align: middle">李榕涛</small>
+					</p>
+				</section>
+			</div>
+		</div>
+		<script src="lib/reveal/js/head.min.js"></script>
+		<script src="lib/reveal/reveal.js"></script>
+		<script>
+			// 以下为常见配置属性的默认值
+			// {
+			// 	controls: true, // 是否在右下角展示控制条
+			// 	progress: true, // 是否显示演示的进度条
+			// 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+			// 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+			// 	keyboard: true, // 是否启用键盘快捷键来导航
+			// 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+			// 	center: true, // 是否将幻灯片垂直居中
+			// 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+			// 	loop: false, // 是否循环演示
+			// 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+			// 	fragments: true, // 全局开启和关闭碎片。
+			// 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+			// 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+			// 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+			// 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+			// }
+			// 初始化幻灯片
+			Reveal.initialize({
+				history: true,
+				dependencies: [{
+						src: '../plugin/markdown/0marked.js'
+					},
+					{
+						src: '../plugin/markdown/markdown.js'
+					},
+					{
+						src: '../plugin/notes/notes.js',
+						async: true
+					},
+					{
+						src: '../plugin/highlight/highlight.js',
+						async: true,
+						callback: function() {
+							hljs.initHighlightingOnLoad();
+						}
+					}
+				]
+			});
+		</script>
+	</body>
+
+</html>
