@@ -1,0 +1,371 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>常见Dom操作有哪些</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- css-28-sassinsublime主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2 style="font-size: 1.5em">【JS-task2】
+                    <span>常见DOM操作有哪些</span>
+                </h2>
+                <p>分享人：陈占乐</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    DOM是“ Document Object Model ”的缩写，简称“ 文档对象模型 ”
+                </p>
+                <p style="text-align: left;">
+                    在浏览器中当前载入的文档用文档对象模型来表示。这是一个由浏览器生成的“树结构”，使编程语言可以很容易的访问HTML结构 — 例如浏览器自己在呈现页面时，使用它将样式和其他信息应用于正确的元素，而页面呈现完成以后，可以用JavaScript操作DOM，重构整个
+                    HTML 文档，添加、移除、改变或重排页面上的内容。
+                </p>
+                <p style="text-align: left;">
+                    全局变量document对象就是整个DOM树的根节点。文档中每个元素和文本在树中都有它们自己的入口 — 称之为节点Node。
+                </p>
+            </section>
+
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <h4>DOM 操作CRUD - 增删改查</h4>
+                <p style="text-align: left;">
+                    Create：动态增加DOM 节点
+                </p>
+                <p style="text-align: left;">
+                    Delete：删除DOM 节点
+                </p>
+                <p style="text-align: left;">
+                    Update：更新DOM 节点的内容
+                </p>
+                <p style="text-align: left;">
+                    Read：获取DOM 节点
+                </p>
+            </section>
+            <section>
+                <h4>获取</h4>
+                <p style="text-align: left;">
+                    1 Document.getElementById()
+                </p>
+                <p style="text-align: left;">
+                    2 Document.getElementsByTagName()
+                </p>
+                <p style="text-align: left;">
+                    3 Document.getElementsByClassName()
+                </p>
+                <p style="text-align: left;">
+                    4 Document.querySelector()
+                </p>
+                <p style="text-align: left;">
+                    5 Document.querySelectorAll()
+                </p>
+                <p style="text-align: left;">
+                    6 父节点Node.parentNode
+                </p>
+                <p style="text-align: left;">
+                    7 子节点Node.children || Node.childNodes
+                </p>
+            </section>
+            <section>
+                <h4>获取</h4>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>节点类型nodeType</td>
+                            <td>节点名称nodeName</td>
+                            <td>节点值nodeValue</td>
+                        </tr>
+                        <tr>
+                            <td>元素节点</td>
+                            <td>HTML标签的名称（大写）</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>属性节点</td>
+                            <td>属性的名称</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>文本节点</td>
+                            <td>元素节点或属性节点中的文本内容；值永远是#text</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>注释节点</td>
+                            <td>文档注释，形式为&lt;!-- comment text --></td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td>文档节点</td>
+                            <td>DOM 树的根节点；值永远是#document</td>
+                            <td>9</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h4>更新</h4>
+                <p style="text-align: left;">
+                    1 修改节点的文本
+                </p>
+                <p style="text-align: left;width: 110%;">
+                    innerHTML属性
+                    <br>不但可以修改一个DOM节点的文本内容，还可以直接通过HTML片段修改DOM节点内部的子树
+                </p>
+                <p style="text-align: left;">
+                    innerText或textContent属性
+                </p>
+                <p style="text-align: left;">
+                    2 修改节点的css
+                </p>
+                <p style="text-align: left;width: 110%;">
+                    Node.style.cssProperty
+                    <br>获取的是DOM节点上 style 属性定义的样式即行内样式，‘—’在JavaScript中无效，所以需要在JavaScript中改写为驼峰式命名
+                </p>
+                <p style="text-align: left;width: 110%;">
+                    Node.setAttribute()
+                    <br>像上面一样直接设置行内样式；预定义样式，设置相应的类名，实现css、js 的分离，不生成行内样式。
+                </p>
+            </section>
+            <section>
+                <h4>增加</h4>
+                <p style="text-align: left;">
+                    1 创建节点
+                </p>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>方法</td>
+                            <td>说明</td>
+                        </tr>
+                        <tr>
+                            <td>createElement()</td>
+                            <td>元素节点</td>
+                        </tr>
+                        <tr>
+                            <td>createTextNode()</td>
+                            <td>文本节点</td>
+                        </tr>
+                        <tr>
+                            <td>createComment()</td>
+                            <td>文本节点</td>
+                        </tr>
+                        <tr>
+                            <td>createDocumentFragment()</td>
+                            <td>文档碎片节点</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h4>增加</h4>
+                <p style="text-align: left;">
+                    2 添加节点
+                </p>
+                <p style="text-align: left;width: 130%;margin-left: -100px;">
+                    innerHTML
+                    <br>空DOM节点插入新的DOM节点,非空DOM节点会直接替换掉原来的所有子节点
+                </p>
+                <p style="text-align: left;width: 120%;margin-left: -100px;">
+                    appendChild() Node.appendChild()
+                    <br>把一个子节点添加到父节点的最后一个子节点;如果节点已经存在于当前文档树，这个节点会从原先的位置删除，再插入到新的位置。
+                </p>
+                <p style="text-align: left;width: 120%;margin-left: -100px;">
+                    insertBefore() parentNode.insertBefore(newNode , thisNode)
+                    <br>在指定节点的前面插入新节点,重点是要获取参考节点
+                </p>
+                <p style="text-align: left;width: 120%;margin-left: -100px;">
+                    cloneNode() Node.cloneNode(deep)
+                    <br>appendChild()方法存在副作用，cloneNode()复制节点副本，不会删除原节点。参数deep是否采用深度克隆,如果为true,则该节点的所有后代节点也都会被克隆,如果为false,则只克隆该节点本身
+                </p>
+            </section>
+            <section>
+                <h4>删除</h4>
+                <p style="text-align: left;">
+                    Node.removeChild()
+                    <br>需要删除的节点和其父节点的引用；
+                </p>
+                <p style="text-align: left;">
+                    Node.parentNode.removeChild(this)
+                    <br>删除一个仅基于自身引用的节点;
+                </p>
+            </section>
+
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+            <section>
+                <p>在指定节点后面插入节点；在指定节点的前面插入子节点</p>
+            </section>
+
+
+            <section>
+                <h3>4.解决方案</h3>
+            </section>
+            <section>
+                <h4>在指定节点的前面插入子节点</h4>
+                <pre>
+                    <code>
+                        function appendChildPre(parent , newNode){
+                            if(parent.length>=1){
+                                // 如果存在子节点，则在第一个子节点的前面添加
+                                parent.insertBefore(newNode , parent.firstNode);
+                            }else{
+                                // 如果不存在，则在最后添加
+                                parent.appendChild(newNode);
+                            }
+                        }
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h4>在指定节点的后面插入节点</h4>
+                <pre>
+                    <code>
+                        function insertAfter(newNode, thisNode){
+                            var parent = thisNode.parentNode;
+                            if (parent.lastChild == thisNode) {
+                                // 如果父节点的最后一个节点是指定节点，则直接添加
+                                parent.appendChild(newNode);
+                            }else {
+                                parent.insertBefore(newNode , thisNode.nextSibling);
+                                //如果不是，则在指定节点的下一个节点前面插入
+                            }
+                        }
+                    </code>
+                </pre>
+            </section>
+
+            <section>
+                <h3>5.编码实战</h3>
+                <a href="demo/20180623-B-js2/demo.html">demo</a>
+            </section>
+
+            <section>
+                <h3>6.扩展思考</h3>
+            </section>
+
+            <section>
+                <h3>7.参考文献</h3>
+            </section>
+            <section>
+                <p style="text-align: left; padding-left: 180px">
+                    参考一
+                    <a href="https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents">MDN文档操作</a>
+                </p>
+                <p style="text-align: left; padding-left: 180px">
+                    参考二
+                    <a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001434499851683f7f8d6b7717343248a75d5e7f930def4000">廖雪峰 JavaScript 教程</a>
+                </p>
+                <p style="text-align: left; padding-left: 180px">
+                    参考三
+                    <a href="http://www.itxueyuan.org/javascript/jiaocheng_7/">JavaScript 教程</a>
+                </p>
+
+            </section>
+
+            <section>
+                <h3>8.更多讨论</h3>
+            </section>
+
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>BY : 陈占乐 </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: './plugin/markdown/marked.js'
+                },
+                {
+                    src: './plugin/markdown/markdown.js'
+                },
+                {
+                    src: './plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: './plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
