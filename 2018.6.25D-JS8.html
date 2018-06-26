@@ -1,0 +1,305 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>葡萄藤PPT</title>
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h3>【JS-task8】ES6有哪些新特性</h3>
+            <p>分享人：高昕</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。
+                    它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。</p>
+            </section>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>2.知识剖析</h3>
+                <p>下面是介绍下ES6中的解构赋值</p>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4> 解构赋值</h4>
+                <p>ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。</p>
+                <pre><code class="hljs mel">
+let a = 1;
+let b = 2;
+let c = 3;
+ES6允许写成这样：
+let [a, b, c] = [1, 2, 3];
+            </code></pre>
+                上面代码表示，可以从数组中提取值，按照对应位置，对变量赋值。
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <P>数组的解构，数组的元素是按次序排列的，变量的取值由它的位置决定 。</P>
+
+                <pre><code class="hljs mel">
+    const color = ['red', 'blue']
+    const [first, second] = color
+    console.log(first) //'red'
+    console.log(second) //'blue'
+            </code></pre>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h4></h4>
+            而对象的属性没有次序，变量必须与属性同名，才能取到正确的值。
+            <pre><code class="hljs mel">
+    const people = {
+        name: 'lux',
+        age: 20
+    }
+    const { name, age } = people
+
+            </code></pre>
+        </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4></h4>
+                对象的解构，变量和属性名对应即可，跟顺序无关,也可以起一个别名。
+                <pre><code class="hljs mel">
+let { foo: baz } = { foo: 'aaa', bar: 'bbb' };
+baz // "aaa"
+
+let obj = { first: 'hello', last: 'world' };
+let { first: f, last: l } = obj;
+f // 'hello'
+l // 'world'
+            </code></pre>
+                对象的解构赋值的内部机制，是先找到同名属性，然后再赋给对应的变量。真正被赋值的是后者，而不是前者。
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <P>解构不成功的值</P>
+                    当解构不成功值为undefined
+                <pre><code class="hljs mel">
+var [a,b] = [1];
+console.log(a,b); //1 undefined
+            </code></pre>
+            </section>
+
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>默认值</h4>
+                    只有当值全等与undefined时才会起作用
+                <pre><code class="hljs mel">
+var [a,b = 2] = [1];
+console.log(a,b); //1 2
+
+var [a,b = 2] = [1,null];
+console.log(a,b); //1 null
+            </code></pre>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>默认值也可以引用解构赋值中的其他变量，但是这个变量必须已经声明</h4>
+
+                <pre><code class="hljs mel">
+let [a,b = a] = [1];
+console.log(a,b); //1 1
+
+let [a = b,b = 1] = [];
+console.log(a,b); //Uncaught ReferenceError: b is not defined
+            </code></pre>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>解构的用途</h4>
+                <h4>交换变量</h4>
+                <pre><code class="hljs mel">
+let a = 1;
+let b = 2;
+[a,b] = [b,a];
+console.log(a,b); //2 1
+            </code></pre>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                    <h4>从函数返回多个值</h4>
+                    <pre><code class="hljs mel">
+// 返回一个数组
+function example() {
+  return [1, 2, 3];
+}
+let [a, b, c] = example();
+
+// 返回一个对象
+function example() {
+  return {
+    foo: 1,
+    bar: 2
+  };
+}
+let { foo, bar } = example();
+            </code></pre>
+                </section>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>只取需要的值</h4>
+                <pre><code class="hljs mel">
+let arr = [
+  {
+    title:1111,
+    love:{
+      one:'one_1',
+      two:'two_1'
+    }
+  },
+  {
+    title:2222,
+    love:{
+      one:'one_2',
+      two:'two_2'
+    }
+  }
+];
+
+for(let {title,love:{two}} of arr){
+  console.log(title,two);
+}
+            </code></pre>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4> 提取 JSON 数据</h4>
+                解构赋值对提取 JSON 对象中的数据，尤其有用
+                <pre><code class="hljs mel">
+let jsonData = {
+  id: 42,
+  status: "OK",
+  data: [867, 5309]
+};
+
+let { id, status, data: number } = jsonData;
+
+console.log(id, status, number);
+// 42, "OK", [867, 5309]
+            </code></pre>
+            </section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>3 常见问题</h3>
+                <p>解构赋值还有什么用法？</p>
+            </section>
+
+        </section>
+
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>4 解决方案</h3></section>
+        </section>
+        <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h3>简写</h3>
+
+            <pre><code class="hljs mel">
+let {log,warn} = console;
+log('hello');
+console.log('hello')
+            </code></pre>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>5.编码实战</h3></section>
+        </section>
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <h3 style="text-align: center">6.扩展思考</h3>
+            </section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h3>7.参考文献</h3>
+            <a href="http://es6.ruanyifeng.com">ECMAScript 6 入门</a>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>8 更多讨论</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>制作人：高昕 </small>
+            </p>
+        </section>
+
+    </div>
+    <div class="backgrounds"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background stack present" data-loaded="true" style="display: block;"><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up enabled" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+</div></div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+
+</script>
+
+</body>
+</html>

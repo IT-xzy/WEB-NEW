@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>demo</title>
+  <style>
+    .outer {
+      width: 300px;
+      padding: 10px;
+      margin: 10px;
+      background-color: grey;
+    }
+    .inner {
+      height: 30px;
+      margin: 10px 0;
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+  <div class="outer">
+    <div class="inner back">点击在后面添加一个节点</div>
+    <div class="inner before">点击在前面添加一个节点</div>
+    <div class="inner delete">删除节点</div>
+  </div>
+  <div class="clone outer">克隆前面节点</div>
+  
+  <script>
+  var outer = document.querySelector('.outer'),
+  back = outer.querySelector('.back'),
+  before = outer.querySelector('.before'),
+  deleteNode =outer.querySelector('.delete'),
+  clone = document.querySelector('.clone');
+  
+
+  back.onclick = function(){
+    var divNode = document.createElement('div'),
+    attNode = divNode.setAttribute('class','inner'),
+    textNode = document.createTextNode('新节点');
+    
+    divNode.appendChild(textNode);
+    outer.appendChild(divNode);
+  }
+  before.onclick = function(){
+    var divNode = document.createElement('div'),
+    attNode = divNode.setAttribute('class','inner'),
+    textNode = document.createTextNode('新节点');
+
+    divNode.appendChild(textNode);
+    outer.insertBefore(divNode,before);
+  }
+  deleteNode.onclick = function(){
+    outer.removeChild(deleteNode);
+  }
+  clone.onclick = function(){
+    var dupNode = outer.cloneNode(true);
+    document.body.appendChild(dupNode);
+  }
+  </script>
+</body>
+</html>
