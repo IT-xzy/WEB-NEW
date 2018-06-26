@@ -1,0 +1,158 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h3>小程序的授权机制</h3>
+            <p style="text-align: center;">深圳分院：林健凡</p>
+        </section>
+        <section>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <section>
+            <section>
+                <h3>什么是小程序</h3>
+            </section>
+            <section>
+                <p style="text-align: left;font-size: 40px">
+                    微信小程序，简称小程序，英文名Mini Program，是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或搜一下即可打开应用。体现了“用完即走”的理念，用户不用关心是否安装太多应用的问题。应用将无处不在，随时可用，但又无需安装卸载。对于开发者而言，小程序开发门槛相对较低，难度不及APP，能够满足简单的基础应用，适合生活服务类线下商铺以及非刚需低频应用的转换。小程序能够实现消息通知、线下扫码、公众号关联等七大功能。
+                </p>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 40px">
+                    小程序里面的授权，是对特定接口的授权。
+                </p>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 40px">
+                    在微信小程序里，使用一些接口的时候需要得到用户的授权，用户同意以后我们就可以得到相应的权限，去做一些事情。比如获取用户微信帐号相关信息，得到用户的位置，保存到相册等等。
+                </p>
+            </section>
+            <section>
+                <p style="text-align:left;font-size: 40px">
+                    比如我想知道用户微信帐号相关的信息。先用 wx.getSetting 检查一下用户当前对我们的小程序的授权状态，如果发现用户还没有授权小程序查看他的用户信息，就去调用 wx.authorize 弹出对话窗提醒用户是否要授权小程序得到他的用户信息。用户如果按了同意，接下来我们就可以使用 wx.getUserInfo 这个接口去得到用户相关的信息了，比如他的头像，名字等等。
+                </p>
+            </section>
+        </section>
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            <p style="text-align:center;font-size: 40px">
+                wx.authorize
+            </p>
+        </section>
+        <section>
+            <h3>3、常见问题</h3>
+        </section>
+        <section>
+            <p style="text-align:left;font-size: 28px">
+                现在，小程序获取用户信息，是通过直接调用接口的方式进行的。当小程序调用接口时，微信会询问用户是否同意授权，同意后，小程序就可以获取用户的信息。<br>
+                这种获取用户信息的方式，本身没什么问题。但许多小程序，都不约而同地选择在用户刚启动小程序的时候，就立刻要求获取用户信息。<br>
+                这样做，会让用户觉得奇怪，甚至产生警惕的心理，进而选择拒绝授权自己的个人信息。<br>
+                如果小程序没有相应机制应对，会极大地影响用户体验。
+            </p>
+        </section>
+        <section>
+            <p style="text-align:left;font-size: 28px">
+                在新的用户信息获取机制之下，小程序将不再使用传统的接口调用方式，主动向用户请求个人资料；取而代之的是按钮触发方式，变成用户需要使用微信登录时，小程序再被动获取相应信息。
+            </p>
+        </section>
+        <section>
+            <h3>4、解决方案</h3>
+        </section>
+        <section>
+            <h3>5、编码实战</h3>
+        </section>
+        <section>
+            <h3>6、扩展思考</h3>
+        </section>
+        <section>
+            <h3>7、参考文献</h3>
+        </section>
+        <section>
+            https://developers.weixin.qq.com/miniprogram/dev/api/authorize.html
+        </section>
+        <section>
+            <h3>8、更多讨论</h3>
+        </section>
+        <section>
+            <h4>鸣谢</h4>
+            <h3>感谢观看</h3>
+            <p><small>BY ︱林健凡</small></p>
+        </section>
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+  // 以下为常见配置属性的默认值
+  // {
+  // 	controls: true, // 是否在右下角展示控制条
+  // 	progress: true, // 是否显示演示的进度条
+  // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+  // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+  // 	keyboard: true, // 是否启用键盘快捷键来导航
+  // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+  // 	center: true, // 是否将幻灯片垂直居中
+  // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+  // 	loop: false, // 是否循环演示
+  // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+  // 	fragments: true, // 全局开启和关闭碎片。
+  // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+  // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+  // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+  // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+  // }
+  // 初始化幻灯片
+  Reveal.initialize({
+    history: true,
+    dependencies: [
+      { src: '../plugin/markdown/marked.js' },
+      { src: '../plugin/markdown/markdown.js' },
+      { src: '../plugin/notes/notes.js', async: true },
+      { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+    ]
+  });
+</script>
+</body>
+</html>
