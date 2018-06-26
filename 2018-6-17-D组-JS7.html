@@ -7,13 +7,13 @@
 
     <title>葡萄藤PPT</title>
 
-    <link rel="stylesheet" href="../css/reveal/reveal.css">
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
 
     <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
-    <link rel="stylesheet" href="../css/reveal/theme/ptt.css">
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
 
     <!-- syntax highlighting 代码高亮主题 -->
-    <link rel="stylesheet" href="../lib/reveal/css/zenburn.css">
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
 
     <style>
         .float {
@@ -41,7 +41,7 @@
     <div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
         <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
             <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
-                <h3>【JS-8】angular js常用指令 ng-blur、ng-change、ng-focus、ng-disabled是如何运用到表单验证中的？</h3>
+                <h3>【JS-7】angular js中的依赖注入是什么？有什么作用？与不用依赖注入的其他框架相比，有何优点？</h3>
                 <p>分享人：陈静雯</p>
             </section>
             <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
@@ -60,48 +60,61 @@
             </section>
             <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
                 <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
-                    <p style="text-align: left;">表单验证是javascript中的高级选项之一。JavaScript 可用来在数据被送往服务器前对 HTML 表单中的这些输入数据进行验证。</p>                    
-                </section>
-            </section>
-            <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
-                <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
-                    <p style="text-align: left;">angularjs中表单验证的方法，除了ng-message之外还有ng-blur、ng-change、ng-focus和ng-disabled。</p>                    
+                    <p style="text-align: left;">wiki 上的解释是：依赖注入（Dependency Injection，简称DI）是一种软件设计模式，在这种模式下，一个或更多的依赖（或服务）被注入（或者通过引用传递）到一个独立的对象（或客户端）中，然后成为了该客户端状态的一部分。
+                        该模式分离了客户端依赖本身行为的创建，这使得程序设计变得松耦合，并遵循了依赖反转和单一职责原则。与服务定位器模式形成直接对比的是，它允许客户端了解客户端如何使用该系统找到依赖</p>                    
                 </section>
             </section>
             <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
                 <h3>2.知识剖析</h3>
             </section>
             <section style="text-align: left; top: 106px; display: block;" class="present">
-                <h3>ng-blur<br></h3>
-                ng-blur 指令用于告诉 AngularJS HTML 元素在失去焦点时需要执行的表达式。<br>
-                AngularJS 中的 ng-blur 指令不会覆盖原生的 onblur 事件， 如果触发该事件，ng-blur 表达式与原生的 onblur 事件都会执行。<br>
-                语法:&lt; element ng-blur="expression"&gt;<!-- element --><br>
-                &lt; a &gt;, &lt; input &gt;, &lt; select &gt;, &lt; textarea &gt;,窗口对象支持。   
+                <p style="text-align: left;">在Angular中，依赖注入可谓无孔不入。通常在两种场景（函数）下会使用到依赖注入：</p>
+                <p style="text-align: left;">工厂方法定义的组件（components）：如directive，factory，filter，provider，controller等。这些工厂函数需要注册到某个模块上。controller比较特殊，它虽然也是一种组件，但是特别之处是它与某个DOM元素关联，因此可以注入$scope service，而其他组件只能注入$rootScope service。</p> 
+                <p style="text-align: left;">模块提供的run/config方法。</p>           
             </section>
             <section style="text-align: left; top: 106px; display: block;" class="present">
-                <h3>ng-focus<br></h3>
-                ng-focus 指令用于告诉 AngularJS 在 HTML 元素获取焦点时需要执行的操作。<br>
-                ng-focus 指令不会覆盖元素的原始 onfocus 事件, 事件触发时，ng-focus 表达式与原始的 onfocus 事件将都会执行。<br>
-                语法：&lt; element ng-focus="expression"&gt;&lt; /element&gt;<br>
-                &lt; a&gt;, &lt; input&gt;, &lt; select&gt;, &lt; textarea&gt;, 和 window 对象都支持该指令。
+                <!-- <h3>ng-focus<br></h3> -->
+                <p style="text-align: left;">AngularJS 提供很好的依赖注入机制。constant,value,factory,service和provider5个核心组件用来作为依赖注入。</p>
+                <p style="text-align:left;">在Angular中，factory，service和value本质上都是一种provider，Angular会执行如下代码定义这些provider：</p>
+                <pre><code class="hljs kotlin">
+                    myApp.config(function($provide) { </br> 
+                        $provide.provider('sayHello', function() {  </br> 
+                          this.$get = function() {  </br> 
+                            return function(name) {  </br> 
+                              alert("Hello, cat " + name);  </br> 
+                            };  
+                          };  
+                        });  
+                      });    
+                </code></pre>
             </section>
             <section style="text-align: left; top: 0px; display: block;" class="present">
-                <h3>ng-change<br></h3>
-                ng-change 指令用于告诉 AngularJS 在 HTML 元素值改变时需要执行的操作。<br>
-                ng-change 指令需要搭配 ng-model 指令使用。<br>
-                AngularJS ng-change 指令指令不会覆盖原生的 onchange 事件, 如果触发该事件，ng-change 表达式与原生的 onchange 事件都会执行。<br>
-                ng-change 事件在值的每次改变时触发，它不需要等待一个完成的修改过程，或等待失去焦点的动作。<br>
-                ng-change 事件只针对输入框值的真实修改，而不是通过 JavaScript 来修改。<br>
-                语法：&lt; element ng-change="expression"&gt;&lt; /element&gt;<br>
-                &lt; input&gt;, &lt; select&gt;, 和  &lt; textarea&gt; 元素支持。
+                <pre><code class="hljs kotlin">
+                    myApp.factory("sayHello", ...);  
+                    myApp.service("sayHello", ...);  
+                    myApp.value("Cat", ...);  
+                </code></pre>
             </section>
-            <section style="text-align: left; top: 129px; display: block;" class="present">
+            <section class="present" style="top: 94.5px; display: block;">
+                <h4>总结</h4>
+                <p style="text-align: left;">所有的供应商都只被实例化一次，也就说他们都是单例的</p>
+                <p style="text-align: left;">除了constant，所有的供应商都可以被装饰器(decorator)装饰</p>
+                <p style="text-align: left;">value就是一个简单的可注入的值</p>
+                <p style="text-align: left;">service是一个可注入的构造器</p>
+                <p style="text-align: left;">factory是一个可注入的方法</p>
+                <p style="text-align: left;">decorator可以修改或封装其他的供应商，当然除了constant</p>
+                <p style="text-align: left;">provider是一个可配置的factory</p>    
+            </section>
+            <section class="present" style="top: 94.5px; display: block;">
+                <p style="text-align: left;">Angular在加载模块时经过两个阶段：config和run。传入config函数的方法会在当前模块加载时执行；传入run函数的方法会在所有模块加载结束后执行。因此，在config阶段即可配置多个provider，但是在config阶段，只有provider可以注入，因此自定义的service无法注入到config中。这也好理解，因为config阶段是对service进行配置的而不是使用service本身。</p>
+            </section>
+            <!-- <section style="text-align: left; top: 129px; display: block;" class="present">
                 <h3>ng-disabled<br></h3>
                 ng-disabled 指令设置表单输入字段的 disabled 属性(input, select, 或 textarea)。<br>
                 如果 ng-disabled 中的表达式返回 true 则表单字段将被禁用。<br>
                 语法:&lt; input ng-disabled="expression"&gt;&lt; /input&gt;<br>
                 &lt; input&gt;, &lt; select&gt;, 和 &lt; textarea&gt; 元素都支持该指令。
-            </section>
+            </section> -->
 
             <!-- <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
                 <pre><code class="hljs kotlin">
@@ -125,28 +138,37 @@
                 </section>
             </section>
             <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
-                <h4>如何使用上面的指令实现表单验证</h4>
+                <h4>angular中引入依赖注入的方式</h4>
             </section>
             <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
                 <section style="text-align: center; top: 330px; display: none;">
                     <h3>4 解决方案</h3>
                 </section>
             </section>
-            <!-- <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
-                <p>jquery.extend()</p>
-                <p>语法：jQuery.extend( [deep ], target, object1 [, objectN ] )</p>
-                <p>将两个或更多对象的内容合并到第一个对象。</p>
-                <p> deep：可选。 Boolean类型 指示是否深度合并对象，默认为false。如果该值为true，且多个对象的某个同名属性也都是对象，则该"属性对象"的属性也将进行合并。</p>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <p>显式注入声明</p>
                 <pre><code class="hljs typescript">
-                    <span class="hljs-keyword">var</span> arr = [[<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>],<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,{name:<span class="hljs-string">'old'</span>}];
-                    <span class="hljs-keyword">var</span> newArr = $.extend(<span class="hljs-literal">true</span>, [], arr);
-                    newArr[<span class="hljs-number">4</span>].name = <span class="hljs-string">'new'</span>;
-                    newArr[<span class="hljs-number">0</span>].push(<span class="hljs-string">'c'</span>);
-                    <span class="hljs-built_in">console</span>.log(newArr);
-                    <span class="hljs-built_in">console</span>.log(arr);
-                </code>
-            </pre>
-            </section> -->
+                    var MyController = function($scope, greeter) {</br>
+                        // ...</br>
+                    }</br>
+                    MyController.$inject = ['$scope', 'greeter'];</br>
+                    someModule.controller('MyController', MyController);</br>
+                </code></pre>
+                <p>行内注入声明</p>
+                <pre><code class="hljs typescript">
+                someModule.controller('MyController', ['$scope', 'greeter', function($scope, greeter) {</br>
+                    // ...</br>
+                }]);</br>
+                </code></pre>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <p>推断式注入声明</p>
+                <pre><code class="hljs typescript">
+                    someModule.controller('MyController', function($scope, greeter) {</br>
+                        // ...</br>
+                      });</br>
+                </code></pre>
+            </section>
 
             <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
                 <section style="text-align: center; top: 330px; display: none;">
@@ -159,27 +181,25 @@
                 </section>
             </section>
             <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
-                <p>上面这些与ng-message相比的区别和优缺点在哪里？</p>
+                <p>与不用依赖注入的其他框架相比，有何优点？ </p>
             </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <p>高内聚，低耦合。耦合性非常低，也就是说每个对象都可以轻易被替换而不影响其他对象。</p>
+            </section>          
+            
 
             <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
                 <h3>7.参考文献</h3>
             </section>
-            <section class="present" style="top: 267px; display: block;">
-                <p><a href="#">菜鸟教程</a></p>
-            </section>
-            <!-- <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
                 <h3>7.参考文献</h3>
                 <p>参考1：
-                    <a href="https://blog.csdn.net/sourcecode_poet/article/details/53509748">angularJS三种定义全局变量的方法</a>
+                    <a href="https://www.cnblogs.com/tongbiao/p/6830118.html">理解angularjs中的依赖注入</a>
                 </p>
                 <p>参考2：
-                        <a href="https://www.cnblogs.com/zhujierong/p/6136716.html">AngularJS内置9种过滤器</a>
-                    </p>
-                <p>参考3：
-                    <a href="http://www.jb51.net/article/99859.htm">AngularJS过滤器filter用法总结</a>
+                    <a href="https://blog.csdn.net/fangjuanyuyue/article/details/50726208">深入理解angular依赖注入</a>
                 </p>
-            </section> -->
+            </section>
             <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
                 <h3>8 更多讨论</h3>
             </section>
