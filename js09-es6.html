@@ -1,0 +1,381 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+    <style>
+        .text-justify {
+            text-align: justify;
+        }
+    </style>
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' :
+            './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+<img src="./img/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h3>【JS-task8】ES6有哪些新特性</h3>
+            <p>分享人：黄震</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。
+                    它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。</p>
+            </section>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>2.知识剖析</h3>
+            <p>下面是介绍几个ES6的新特性</p>
+        </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>箭头函数 </h4>
+                ES6很有意思的一部分就是函数的快捷写法。也就是箭头函数。箭头函数最直观的三个特点。
+
+                不需要 function 关键字来创建函数,
+                有时可以省略 return 关键字,
+                继承当前上下文的 this 关键字。
+                <pre><code class="hljs mel">
+                    var f = v => v;
+                    f();
+                    console.log('f()', f());
+                    
+                    var g = function (v) {
+                        return v;
+                        console.log('v', v);
+                    }
+                    g();
+                    console.log('g()', g());
+                    
+                 
+            </code></pre>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4> 当你的函数有且仅有一个参数的时候，是可以省略掉括号的。
+                    当你函数返回有且仅有一个表达式的时候可以省略{} 和 return；例如:</h4>
+                <pre><code class="hljs mel">
+                    var h = () => 5;
+                    h();
+                    console.log('h()', h());
+                    
+                    var i = function () {
+                        return 5;
+                    }
+                    i();
+                    console.log('i()', i());
+            </code></pre>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4> 解构赋值</h4>
+                ES5我们提取对象中的信息形式如下：
+                <pre><code class="hljs mel">
+                        let [a,b,c]=[1,[2,3],[4]];
+                        console.log(a,b,c);
+const people = {
+        name: 'lux',
+        age: 20
+    }
+    const name = people.name
+    const age = people.age
+            </code></pre>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>使用ES6</h4>
+              现在，解构能让我们从对象或者数组里取出数据存为变量，例如
+                <pre><code class="hljs mel">
+                        var l = [1, 2, 3].map(function (x) {
+                            return x * x;
+                        })
+                        console.log('l', l);
+                        let n = [1, 2, 3].map(x => x * x);
+                        console.log('n', n);
+            </code></pre>
+            </section>
+        <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+          <P> 函数参数默认值</P>
+            不使用ES6
+            为函数的参数设置默认值
+            <pre><code class="hljs mel">
+function foo(height, color)
+{
+    var height = height || 50;
+    var color = color || 'red';
+    //...
+}
+            </code></pre>
+           但是，当参数的布尔值为false时，是会出事情的！比如，我们这样调用foo函数：
+            foo(0, "")
+            <P>因为0的布尔值为false，这样height的取值将是50。同理color的取值为‘red’。</P>
+        </section>
+
+        <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+         <h4>使用ES6</h4>
+
+                   <pre><code class="hljs mel">
+function foo(height = 50, color = 'red')
+{
+    // ...
+}
+            </code></pre>
+        </section>
+        <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h4>模板字符串</h4>
+            <p>不使用ES6</p>
+
+            <pre><code class="hljs mel">
+var name = 'Your name is ' + first + ' ' + last + '.'
+            </code></pre>
+        </section>
+        <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h4>使用ES6,将变量放在大括号之中：</h4>
+
+            <pre><code class="hljs mel">
+var name = `Your name is ${first} ${last}.`
+            </code></pre>
+        </section>
+        <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h4>多行字符串</h4>
+            不使用ES6
+            使用“\n\t”将多行字符串拼接起来：
+            <pre><code class="hljs mel">
+var roadPoem = 'Then took the other, as just as fair,\n\t'
+    + 'And having perhaps the better claim\n\t'
+    + 'Because it was grassy and wanted wear,\n\t'
+    + 'Though as for that the passing there\n\t'
+    + 'Had worn them really about the same,\n\t'
+
+            </code></pre>
+        </section>
+        <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h4>使用ES6</h4>
+            将多行字符串放在反引号之间就好了：
+            <pre><code class="hljs mel">
+var roadPoem = `Then took the other, as just as fair,
+    And having perhaps the better claim
+    Because it was grassy and wanted wear,
+    Though as for that the passing there
+    Had worn them really about the same,`
+            </code></pre>
+        </section>
+
+        <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h4> 对象属性简写</h4>
+            不使用ES6
+            对象中必须包含属性和值，显得非常多余：
+            <pre><code class="hljs mel">
+  function people(name, age) {
+        return {
+            name: name,
+            age: age
+        };
+    }
+            </code></pre>
+        </section>
+        <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h4> 使用ES6</h4>
+            键值对重名，ES6可以简写如下
+            <pre><code class="hljs mel">
+   function people(name, age) {
+        return {
+            name,
+            age
+        };
+    }
+            </code></pre>
+        </section>
+
+
+
+        </section>
+
+
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>3 常见问题</h3>
+                <p>Spread Operator展开运算符有什么用途?</p>
+            </section>
+
+        </section>
+
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>4 解决方案</h3></section>
+        </section>
+
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>5.编码实战</h3></section>
+        </section>
+        <section style="text-align: left; top: 84px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h4>ES6中另外一个好玩的特性就是Spread Operator 也是三个点儿...接下来就展示一下它的用途。</h4>
+            <p>组装对象或者数组：</p>
+            <pre><code class="hljs mel">
+               //数组
+    const color = ['red', 'yellow']
+    const colorful = [...color, 'green', 'pink']
+    console.log(colorful) //[red, yellow, green, pink]
+
+    //对象
+    const alp = { fist: 'a', second: 'b'}
+    const alphabets = { ...alp, third: 'c' }
+    console.log(alphabets) //{ "fist": "a", "second": "b", "third": "c"
+
+            </code></pre>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            <p>有时候我们想获取数组或者对象除了前几项或者除了某几项的其他项</p>
+            <pre><code class="hljs mel">
+               //数组
+    const number = [1,2,3,4,5]
+    const [first, ...rest] = number
+    console.log(rest) //2,3,4,5
+    //对象
+    const user = {
+        username: 'lux',
+        gender: 'female',
+        age: 19,
+        address: 'peking'
+    }
+    const { username, ...rest } = user
+    console.log(rest) //{"address": "peking", "age": 19, "gender": "female"
+
+            </code></pre>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            <p>es6的升序降序</p>
+            <pre><code class="hljs mel">
+                    // 排序
+                    // 常规升序排序
+                    arr = [1, 4, 5, 3, 2, 6];
+                    var o = arr.sort(function (a, b) {
+                        return a - b;
+                    });
+                    console.log('o', o, "//常规升序排序");
+                    //es6降序
+                    var p = arr.sort((a, b) => b - a);
+                    console.log('p', p, "//es6降序");
+            </code></pre>
+
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            <p>对于 Object 而言，还可以用于组合成新的 Object 。
+                (ES2017 stage-2 proposal) 当然如果有重复的属性名，右边覆盖左边</p>
+            <pre><code class="hljs mel">
+              const first = {
+        a: 1,
+        b: 2,
+        c: 6,
+    }
+    const second = {
+        c: 3,
+        d: 4
+    }
+    const total = { ...first, ...second }
+    console.log(total) // { a: 1, b: 2, c: 3, d: 4 }
+
+            </code></pre>
+
+        </section>
+
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <h3 style="text-align: center">6.扩展思考</h3>
+            </section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h3>7.参考文献</h3>
+            <a href="https://blog.fundebug.com/2017/08/21/10-best-es6-feature/">10个最佳ES6特性</a></br>
+            <a href="https://www.jianshu.com/p/287e0bb867ae"> ES6这些就够了</a></br>
+            <a href="http://es6.ruanyifeng.com">ECMAScript 6 入门</a>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>8 更多讨论</h3>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>制作人：高昕  | 黄震 </small>
+            </p>
+        </section>
+
+    </div>
+    <div class="backgrounds"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background stack present" data-loaded="true" style="display: block;"><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up enabled" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+</div></div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+<!-- http://www.ruanyifeng.com/blog/2012/06/internet_protocol_suite_part_ii.html -->
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触
+    Reveal.initialize({
+        history: true,
+        dependencies: [{
+                src: './plugin/markdown/marked.js'
+            },
+            {
+                src: './plugin/markdown/markdown.js'
+            },
+            {
+                src: './plugin/notes/notes.js',
+                async: true
+            },
+            {
+                src: './plugin/highlight/highlight.js',
+                async: true,
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+
+</html>
