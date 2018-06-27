@@ -1,0 +1,210 @@
+
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="../img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>【js-01】</h2>
+            <h4>JS中有哪些基本类型和引用类型？有什么区别？</h4>
+            <p>分享人：陈皓宇</p>
+        </section>
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <section>
+            <h4>ECMAScript与JavaScript的区别</h4>
+            <p style="text-align: left;">ECMAScript：由ECMA-262制定的标准，用于实现通用的脚本语言。ECMAScript提供了脚本语言需要遵守的规则、细节和规范。</p>
+            <p style="text-align: left;">JavaScript：通用脚本编程语言，它遵循了ECMAScript标准。</p>
+            <p style="text-align: left;">换句话说，JavaScript是ECMAScript的方言。
+                通过阅读ECMAScript标准，你可以学会怎样实现一个脚本语言；而通过阅读JavaScript文档，你可以学会怎样使用脚本语言编程。</p>
+        </section>
+        <section>
+            <h4>基本类型介绍</h4>
+            <p style="text-align: left;">基本类型值指的是简单的数据段，ECMAScript中有5种简单数据类型(也成为基本数据类型)：Undefined、Null、Boolean、Number、String。<p>
+        </section>
+        <section>
+            <h4>引用类型介绍</h4>
+            <p style="text-align: left;">在ECMAScript中，引用类型是一种数据结构，用于将数据和功能组织在一起。它也常被称为类，但着称呼并不妥当。引用类型有时候也被称为对象定义，因为他们描述的是一类对象所具有的属性和方法。</p>
+            <p style="text-align: left;">ECMAScript 还提供了 3 个特殊的引用类型：Boolean、Number 和String</p>
+
+        </section>
+        <section>
+            javascript和其他语言不同，其不允许直接访问内存中的位置，也就是说不能直接操作对象的内存空间，那我们操作啥呢？ 实际上，是操作对象的引用，
+            所以引用类型的值是按引用访问的。
+            准确地说，引用类型的存储需要内存的栈区和堆区（堆区是指内存里的堆内存）共同完成，栈区内存保存变量标识符和指向堆内存中该对象的指针，
+            也可以说是该对象在堆内存的地址。
+        </section>
+        <section>
+            在JavaScript中，将一个变量赋值为undefined或null，老实说，几乎没区别。
+            <p>既然undefined和null的含义与用法都差不多，为什么要同时设置两个这样的值，这不是无端增加JavaScript的复杂度，令初学者困扰吗？Google公司开发的JavaScript语言的替代品Dart语言，就明确规定只有null，没有undefined！</p>
+            <p>这与JavaScript的历史有关。1995年JavaScript诞生时，最初像Java一样，只设置了null作为表示"无"的值。
+                根据C语言的传统，null被设计成可以自动转为0。</p>
+        </section>
+        <section>
+            但是，JavaScript的设计者Brendan Eich，觉得这样做还不够，有两个原因。
+            首先，null像在Java里一样，被当成一个对象。但是，JavaScript的数据类型分成原始类型（primitive）和合成类型（complex）两大类，Brendan Eich觉得表示"无"的值最好不是对象。
+            其次，JavaScript的最初版本没有包括错误处理机制，发生数据类型不匹配时，往往是自动转换类型或者默默地失败。Brendan Eich觉得，如果null自动转为0，很不容易发现错误。
+            因此，Brendan Eich又设计了一个undefined。
+        </section>
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            <h4 style="text-align: left;">基本类型：Undefined、Null、Boolean、Number、String</h4>
+            <h4 style="text-align: left;">引用类型：Object、Array、Date、RegExp、function</h4>
+        </section>
+        <section>
+            <h3>基本类型</h3>
+            <p style="text-align: left;">ECMAScript基本数据类型：Undefined、Null、Boolean、Number、String。<p>
+        </section>
+        <section>
+            <h3>Undefined</h3>
+            <p style="text-align: left;">Undefined：只有一个值，即特殊的undefined。在使用var声明变量但未对其加以初始化时，这个变量的值就是undefined。这个值表示变量不含有值,可以通过将变量的值设置为 null 来清空变量。<p>
+        </section>
+        <section>
+            <h3>Null</h3>
+            <p style="text-align: left;">Null：第二个只有一个值的数据类型，null值表示一个空对象指针，所以使用typeof操作符检测null值会返回"object"。<p>
+        </section>
+        <section>
+            <h3>Boolean</h3>
+            <p style="text-align: left;">Boolean：该类型只有两个字面值：true和false。但这两个值与数字值不是一回事，true不一定等于1，false也不一定等于0。<p>
+        </section>
+        <section>
+            <h3>Number</h3>
+            <p style="text-align: left;">Number：该类型使用IEEE754格式来表示整数和浮点数值。<p>
+            <p style="text-align: left;">特殊数值：NaN，表示一个本来要返回数值的操作数未返回数值的情况。</p>
+            <p style="text-align: left;">1.任何涉及NaN的操作都会返回NaN。</p>
+            <p style="text-align: left;">2.NaN与任何值都不相等，包括本身。</p>
+        </section>
+        <section>
+            <h3>String</h3>
+            <p style="text-align: left;">String：用于表示由零或者多个16位Unicode字符组成的字符序列，即字符串。字符串由双引号(" ")或单引号(' ')表示。<p>
+        </section>
+        <section>
+            <h4>引用类型</h4>
+            <p style="text-align: left;">ECMAScript引用类型：Object类型，Array类型，Date类型，RegExp类型，function类型。还有基本包装类型，也是一种引用类型：Boolean、Number、String。<p>
+            <ul>
+                <li>Object类型：对创建对象的函数的引用。</li>
+                <li>Array类型：数组的处理。</li>
+                <li>Date类型：处理日期的。</li>
+                <li>RegExp类型：正则表达式的相关操作。</li>
+                <li>function类型：函数类型在JavaScript中也是对象。</li>
+                <li>Boolean：和布尔值对应的引用类型。可以创建boolean对象</li>
+                <li>Number：和基本数据类型的数值对应的引用类型。可以创建对象和调用本身的方法。</li>
+                <li>String：字符串对象的引用类型。</li>
+            </ul>
+        </section>
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            <h3>基本类型和引用类型有什么区别？</h3>
+        </section>
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            <p style="text-align: left;">1.声明变量时不同的内存分配</p>
+            <p style="text-align: left;">2.不同的内存分配机制也带来了不同的访问机制</p>
+            <p style="text-align: left;">3.复制变量时的不同</p>
+            <p style="text-align: left;">4.参数传递的不同</p>
+        </section>
+        <section>
+            <h3>5.代码实战</h3>
+        </section>
+        <section>
+            <h3>6.拓展思考</h3>
+            <p></p>
+        </section>
+        <section>
+            <h3>7.参考文献</h3>
+        </section>
+        <section>
+            <p style="text-align: left;">参考一:JavaScript高级程序设计</p>
+            <p style="text-align: left;">参考二:<a href="http://www.w3school.com.cn/js/js_datatypes.asp" target="_blank">JavaScript数据类型</a></p>
+            <p style="text-align: left;">参考三:<a href="http://www.w3school.com.cn/js/pro_js_referencetypes.asp" target="_blank">ECMAScript引用类型</a></p>
+        </section>
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p><small>BY : 陈皓宇/宜康/张乾</small></p>
+        </section>
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: './plugin/markdown/marked.js' },
+            { src: './plugin/markdown/markdown.js' },
+            { src: './plugin/notes/notes.js', async: true },
+            { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>
