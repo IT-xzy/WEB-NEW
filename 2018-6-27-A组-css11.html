@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="../css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="../css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="../lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="../img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>【CSS-task11】</h2>
+            <h3>小课堂【深圳第11期】</h3>
+            <p>分享人：叶泽彪</p>
+        </section>
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <section>
+            <p>1.1什么是Sass</p>
+            <p>Sass 是一款强化 CSS 的辅助工具，是预编译器。它在 CSS 语法的基础上增加了变量、嵌套、混合、导入等高级功能。</p>
+            <p>1.2诞生背景</p>
+            <p>CSS不是一个完美的语言。CSS简单易学，却也能迅速制造严重的混淆，尤其是在工程浩大的项目中。这就是 Sass 出现的契机，作为一种元语言，通过提供额外的功能和工具可以改善 CSS 的语法。 同时，保留了 CSS 的原有特性。Sass 存在的关键不是将 CSS 变成一种全功能编程语言，它只是想修复缺陷。Sass 只在 CSS 的基础上添加了几个额外功能。</p>
+        </section>
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            <p>SassScript
+                在 CSS 属性的基础上 Sass 提供了一些名为 SassScript 的新功能。 SassScript 可作用于任何属性，允许属性使用变量、算数运算等额外功能。</p>
+               <p> 变量 $
+                变量以美元符号$开头，赋值方法与 CSS 属性的写法一样
+                示例：
+            </p>
+            <img src="img/demo/var.png">
+        </section>
+        <section>
+            <p>全局变量，局部变量</p>
+            <p>变量支持块级作用域，嵌套规则内定义的变量只能在嵌套规则内使用（局部变量），不在嵌套规则内定义的变量则可在任何地方使用（全局变量）。将局部变量转换为全局变量可以添加 !global 声明。</p>
+
+             <p>   全局变量：任何地方都可使用
+
+            </p>
+            <img src="img/var2.png">
+        </section>
+        <section>
+            <p>局部变量：只能在嵌套规则内使用</p>
+            <img src="img/var3.png">
+        </section>
+        <section>
+            <p>数字运算</p>
+            <p>SassScript 支持数字的加减乘除、取整等运算 (+, -, *, /, %)</p>
+        </section>
+        <section>
+            <p>加法</p>
+            <img src="img/demo/jia.png">
+        </section>
+        <section>
+            <p>乘法</p>
+            <img src="img/demo/cheng.png">
+        </section>
+        <section>
+            <p>除法</p>
+            <p>以下三种情况 / 将被视为除法运算符号：
+                （1）如果值，或值的一部分，是变量或者函数的返回值
+                （2）如果值被圆括号包裹
+                （3）如果值是算数表达式的一部分
+            </p>
+            <img src="img/demo/chu.png">
+        </section>
+        <section>
+            <h2>嵌套</h2>
+            <p>嵌套规则</p>
+            <p>Sass 允许将一套 CSS 样式嵌套进另一套样式中，内层的样式将它外层的选择器作为父选择器。它可以避免重复书写父选择器，使结构更加清晰明了，样式的可读性更高。
+            </p>
+            <img src="img/demo/qiantao1.png">
+        </section>
+        <section>
+            <p>父选择器 &</p>
+            <p>嵌套应用于 :hover 的伪类时则不能简单地用嵌套了，这时候就需要使用父选择器 &。父选择器 & 可以简单地理解为用 & 来表示父标签。
+            </p>
+            <img src="img/demo/qiantao2.png">
+        </section>
+        <section>
+            <p>混合器</p>
+            <p>@mixin 混合器可以包含选择器和选择器中的属性，通过 @include 来传参，这样就可以非常方便的复用需要常用的样式了。</p>
+            <img src="img/demo/mix.png">
+        </section>
+        <section>
+            <p>选择器继承</p>
+            <p>选择器继承是说一个选择器可以继承另一个选择器定义的所有样式。这个通过@extend语法实现
+                如果页面的header和footer的样式有共同之处，便可以在footer 使用 @extend来继承 header 的样式，免去重复书写。
+            </p>
+            <img src="img/demo/xuanze.png">
+        </section>
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            <p>有些观点认为不要使用选择器嵌套比较好，其中原因有：
+                1.增加编译难度，编译生成的css文件父类过多
+                2.使得最终代码难以阅读，选择器越具体会使得声明语句越冗长
+                3.混淆选择器路径和探索下一级选择器的错误率很高
+            </p>
+        </section>
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            <p>
+                使用一致的类命名空间来命名
+                这样第一个标签类名可以写成myapp，myapp下的头部组件则可以写成myapp-Header，Header下的链接元素则可以写成myapp-Header-link。当使用选择器嵌套的时候，配合使用父选择器&，这样各个部分的结构就很清晰明了，不会混淆。
+            </p>
+            <img src="img/demo/ques.png">
+        </section>
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+        <section>
+            <h3>6.扩展思考</h3>
+            <p>Less与Sass的差异</p>
+            <p>1.编译环境不同，Less是基于JavaScript运行,所以Less是在客户端处理。Sass是基于Ruby的，是在服务器端处理的。</p>
+            <p>2.变量符不一样，Less是@，而Scss是$，而且变量的作用域也不一样。</p>
+            <p>3.输出设置，Less没有输出设置，Sass提供4中输出选项：nested, compact, compressed 和 expanded。</p>
+            <p>4.Sass支持条件语句，可以使用if{}else{},for{}循环等等。而Less不支持。</p>
+            <p>5.Sass和Less的工具库不同，Sass有工具库Compass,	Less有UI组件 Bootstrap</p>
+        </section>
+        <section>
+            <h3>7.参考文献</h3>
+        </section>
+        <section>
+            <p>参考一：<a href="https://www.sass.hk/" target="_blank">Sass中文网</a></p>
+            <p>参考二：<a href="https://www.sasscss.com/" target="_blank">Sass中文网2</a></p>
+            <p>参考三：<a href="https://llp0574.github.io/2016/11/17/css-architecture/#3-use-consistent-class-namespacing" target="_blank">一个健壮且可扩展的 CSS 架构所需的8个简单规则</a></p>
+            <p>参考二：<a href="http://www.cnblogs.com/wangpenghui522/p/5467560.html" target="_blank">Less与Sass 的区别</a></p>
+        </section>
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p><small>BY : 叶泽彪</small></p>
+        </section>
+
+    </div>
+</div>
+
+<script src="../lib/reveal/js/head.min.js"></script>
+<script src="../lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: '../plugin/markdown/marked.js' },
+            { src: '../plugin/markdown/markdown.js' },
+            { src: '../plugin/notes/notes.js', async: true },
+            { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status He
