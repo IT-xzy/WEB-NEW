@@ -1,0 +1,176 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>【js-11】</h2>
+            <h4>如何开发小程序</h4>
+            <p>分享人：孟广旭</p>
+        </section>
+
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+
+        <section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <h4>什么是小程序</h4>
+                <p style="text-align: left;"> 小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。
+                    也体现了“用完即走”的理念，用户不用关心是否安装太多应用的问题。应用将无处不在，随时可用，但无需安装卸载。</p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>小程序特点：</section>
+            <section>
+            <p>1.H5是由W3C做的一个开放标准规范，微信小程序是腾讯自己的封闭规范。</p>
+            </section>
+            <section>
+
+            <p>2.运行环境不一样，H5的是开放的，可以运行在任何符合H5标准的容器（浏览器等）内，微信小程序相对来说是封闭的，只能在微信里运行（目前是这样），但是未来应该会越来越开发。</p>
+            </section>
+            <section>
+                <p>3.开发方式不一样，H5就是一个网页，所有网页开发技术都可以应用在H5开发上，微信小程序必须符合微信制定的规范。从实际开发体验看，做一个微信小程序更像是做了一个App，但是不需要这么强的去做适配。</p>
+            </section>
+            <section>
+                <p>4.获取到的权限不一样，H5作为一个网页，被封闭在浏览器这个沙箱内。但是微信可以赋予微信小程序更多特殊权限，比如录音，视频，罗盘，扫一扫，模板消息，客服消息，分享等，这些都是和微信无缝衔接的。在微信里，微信小程序毫无疑问要比H5的体验好很多，除了不能支持长按识别二维码外。</p>
+            </section>
+            <section>怎么去做一个小程序？</section>
+            <section>流程就是五步：注册-认证-研发-审核-发布。</section>
+            <section>
+            1.目前个人无法去注册小程序，仅允许企业、政府、媒体和其他各类组织加入，也就是说你必须有一个营业执照。因为“个人”不可控的因素太多，我们知道微信是一个非常严谨的团队。
+            </section>
+            <section>
+            2.类目：除了黄赌毒绝不能做外，竞猜、抽奖、算命、抽签，星座运势也是明令禁止的。
+            </section>
+            <section>
+            3.小程序研发的成本相对来说还是比较高的。关于小程序开发工程师哪里找？前端开发人员（做APP、JS的）的经验和知识多半可以直接套用在小程序开发上；小程序服务器开发和H5、App的服务器开发没什么区别。
+            </section>
+            <section>
+            4.开发工具：必须使用微信官方的开发工具编译打包上传。敲代码的时候，随便用哪个编辑器都行。目前各个编辑器对微信小程序的智能提示都不是十分好，但是小程序这么火，相信会越来越完善的。因为，小程序和微信绑定的关系，个人感觉还是使用官方的工具比较好。
+            </section>
+            <section>
+            5.“社交名片”是在内测的时候进行提交，审核非常快。现在相对审核会比较快一点。审核会有一点坑，因为被拒理由通常会很含糊，比如“按钮无法点击”，但又不明确究竟是哪个按钮。另外，据我所知，目前参与小程序审核的都是微信团队内部的人士，基本每个按钮都会点，从这一点来看，微信对小程序还是非常重视的。
+            </section>
+        </section>
+
+        <section>
+            <h3>3.常见问题</h3>
+
+        </section>
+
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+
+        <section>
+            <h3>5.代码实战</h3>
+        </section>
+        <section>
+        <section>
+            <h3>6.拓展思考</h3>
+        </section>
+            <section>1.小程序的未来</section>
+        <section>
+            <p>
+                线下：场景和服务。几个例子，同程旅游直接就在景点出放置小程序二维码，游客直接就能在小程序中购票；公交信息查询，公交车站站牌设二维码，等车的时候我可以知道公交车的动态；医院，排队挂号，提供咨询。这里有一个共性，这些场景都是想去用的时候就去用，但是频次又不太高。更深入一点，未来可以将微信卡包、附近的门店与小程序结合起来，实现线下引流、转化、维护的一个完整闭环。</p>
+            <p>线上：群插件、表单收集。比如公司收集中午吃什么，收集投票信息。</p>
+        </section>
+        </section>
+        <section>
+            <section>
+                <h3>7.参考文献</h3>
+            </section>
+            <section>
+                <p style="text-align: left;">参考一:<a href="https://developers.weixin.qq.com/miniprogram/design/index.html">微信小程序设计指南</a></p>
+            </section>
+        </section>
+
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p><small>BY : 孟广旭</small></p>
+        </section>
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: '../plugin/markdown/marked.js' },
+            { src: '../plugin/markdown/markdown.js' },
+            { src: '../plugin/notes/notes.js', async: true },
+            { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>
