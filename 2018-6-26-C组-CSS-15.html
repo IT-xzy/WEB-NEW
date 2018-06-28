@@ -18,12 +18,12 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = window.location.search.match( /print-pdf/gi ) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     </script>
 </head>
 <body>
-    <img src="../img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
     <map name="pttmap">
     <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
 </map>
@@ -98,17 +98,17 @@
             </section>
             <section>
                 <p>DOM结构</p>
-                <img src="../img/css-15-How browsers work/htmldom.png" style="background: #ffffff;zoom: 2">
+                <img src="img/2018-6-26-C组-CSS-15/htmldom.png" style="background: #ffffff;zoom: 2">
             </section>
         </section>
 
         <section>
             <section>
-                <h3>二:处理 CSS 标记并构建 CSSDOM 树。</h3>
+                <h3>二:处理 CSS 标记并构建 CSSOM 树。</h3>
                 <p style="text-align: left">与DOM 类似，我们需要对 CSS 构建树。首先CSS 字节转换成字符，接着转换成令牌和节点，最后链接到一个称为“CSS 对象模型”(CSSOM) 的树结构内</p>
             </section>
             <section>
-                <h4>CSSDOM创建过程</h4>
+                <h4>CSSOM创建过程</h4>
                 <ol>
                     <li>解析器先创建一个CSSStyleSheet对象，然后在对样式进行解析时，创建CSSStyleRule，并添加到已解析的样式对象列表中。</li>
                     <li> 解析完后，样式表中的所有样式规则都转化成了Webkit的内部模型对象CSSStyleRule对象。</li>
@@ -118,11 +118,11 @@
             </section>
             <section>
                 <p style="text-align: left;">一个层级样式表（CSS）是由一系列的规则组成的，每一条规则是由一个选择器和若干条声明组成的。每条声明是一个键值对，由属性和值组成。</p>
-                <img src="../img/css-15-How browsers work/cssrule.png" style="background: #ffffff;">
+                <img src="img/2018-6-26-C组-CSS-15/cssrule.png" style="background: #ffffff;">
             </section>
             <section>
-                <h4>CSSDOM树示意图</h4>
-                <img src="../img/css-15-How browsers work/cssdom.png" style="background: #ffffff;zoom: 1.5">
+                <h4>CSSOM树示意图</h4>
+                <img src="img/2018-6-26-C组-CSS-15/cssdom.png" style="background: #ffffff;zoom: 1.5">
             </section>
         </section>
 
@@ -141,7 +141,7 @@
             <section>
                 <h4>DOM 树与 CSSOM 树融合成渲染树</h4>
                 <p>若DOM节点似枝桠,CSS规则就是红花绿叶</p>
-                <img src="../img/css-15-How browsers work/hecheng.png" style="background: #ffffff;zoom: 1.5">
+                <img src="img/2018-6-26-C组-CSS-15/hecheng.png" style="background: #ffffff;zoom: 1.5">
             </section>
         </section>
 
@@ -310,8 +310,8 @@
     </div>
 </div>
 
-<script src="../lib/reveal/js/head.min.js"></script>
-<script src="../lib/reveal/reveal.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
 
 <script>
     // 以下为常见配置属性的默认值
