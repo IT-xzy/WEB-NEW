@@ -1,0 +1,349 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+    <img src="../img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <!-- 首页 -->
+        <section>
+            <h2>【CSS-task15】浏览器渲染原理</h2>
+            <h3>小课堂【武汉小课堂】</h3>
+            <p>分享人：严泽浩</p>
+        </section>
+        <!-- 目录 -->
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <!-- 背景介绍 -->
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <!-- 背景介绍详情 -->
+        <section>
+            <p style="text-align: left;">从耗时的角度，浏览器请求、加载、渲染一个页面，时间花在下面五件事情上: </p>
+            <ol>
+                <li>DNS 查询</li>
+                <li>TCP 连接</li>
+                <li>HTTP 请求即响应</li>
+                <li>服务器响应</li>
+                <li>客户端渲染</li>
+            </ol>
+        </section>
+        <section>
+            <h3>客户端渲染---浏览器渲染原理</h3>
+        </section>
+        <section>
+            <p style="text-align: left;">浏览器渲染（渲染树构建、布局及绘制），又可以分为下面五个步骤：</p>
+            <ol>
+                <li>处理 HTML 标记并构建 DOM 树。</li>
+                <li>处理 CSS 标记并构建 CSSOM 树。</li>
+                <li>将 DOM 与 CSSOM 合并成一个渲染树。</li>
+                <li>根据渲染树来布局，以计算每个节点的几何信息。</li>
+                <li>将各个节点绘制到屏幕上。</li>
+            </ol>
+        </section>
+
+        <!-- 知识剖析 -->
+
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            <section>
+                <h3>一:处理 HTML标记并构建DOM树。</h3>
+                <p style="text-align: left;">当浏览器接收到服务器响应来的HTML文档后，会遍历文档节点，生成DOM树。
+                        需要注意的是，DOM树的生成过程中可能会被CSS和JS的加载执行阻塞。</p>
+            </section>
+            <section>
+                <p>浏览器处理过程</p>
+                <ol>
+                    <li>转换：浏览器从磁盘或网络读取 HTML 的原始字节，然后根据指定的文件编码格式（例如 UTF-8 ）将其转换为相应字符</li>
+                    <li>符号化：浏览器将字符串转换为 W3C HTML5 标准 指定的各种符号</li>
+                    <li>词法分析：发射的符号转换为 对象 ，定义它们的属性与规则</li>
+                    <li>DOM 构建：因为 HTML 标记定义不同标签间的相互关系（某些标签嵌套在其他标签中），所以创建的对象在树状数据结构中互相链接，树状数据结构还捕获原始标记中定义的父子关系：比如 HTML 对象是 body 对象的父对象， body 是 paragraph 对象的父对象等等</li>
+                </ol>
+            </section>
+            <section>
+                <p>DOM结构</p>
+                <img src="../img/css-15-How browsers work/htmldom.png" style="background: #ffffff;zoom: 2">
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>二:处理 CSS 标记并构建 CSSDOM 树。</h3>
+                <p style="text-align: left">与DOM 类似，我们需要对 CSS 构建树。首先CSS 字节转换成字符，接着转换成令牌和节点，最后链接到一个称为“CSS 对象模型”(CSSOM) 的树结构内</p>
+            </section>
+            <section>
+                <h4>CSSDOM创建过程</h4>
+                <ol>
+                    <li>解析器先创建一个CSSStyleSheet对象，然后在对样式进行解析时，创建CSSStyleRule，并添加到已解析的样式对象列表中。</li>
+                    <li> 解析完后，样式表中的所有样式规则都转化成了Webkit的内部模型对象CSSStyleRule对象。</li>
+                    <li>所有的CSSStyleRule对象都存储在CSSStyleSheet对象中。</li>
+                    <li>然后将CSSStyleSheet对象转换为CSSRuleSet对象。后面就基于这些CSSRuleSet对象来决定每个页面中的元素样式。</li>
+                </ol>
+            </section>
+            <section>
+                <p style="text-align: left;">一个层级样式表（CSS）是由一系列的规则组成的，每一条规则是由一个选择器和若干条声明组成的。每条声明是一个键值对，由属性和值组成。</p>
+                <img src="../img/css-15-How browsers work/cssrule.png" style="background: #ffffff;">
+            </section>
+            <section>
+                <h4>CSSDOM树示意图</h4>
+                <img src="../img/css-15-How browsers work/cssdom.png" style="background: #ffffff;zoom: 1.5">
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>三:将 DOM 与 CSSOM 合并成一个渲染树。</h3>
+                <p style="text-align: left">DOM 树与 CSSOM 树融合成渲染树，其中渲染树只包括渲染页面需要的节点</p>
+            </section>
+            <section>
+                <h4>渲染树的构建</h4>
+                <ul>
+                    <li>通过DOM树和CSS规则树我们便可以构建渲染树。浏览器会先从DOM树的根节点开始遍历每个可见节点。对每个可见节点，找到其适配的CSS样式规则并应用。</li> <br>
+                    <li>渲染树构建完成后，每个节点都是可见节点并且都含有其内容和对应规则的样式。这也是渲染树与DOM树的最大区别所在。渲染树是用于显示，那些不可见的元素当然就不会在这棵树中出现了</li>
+                </ul>
+            </section>
+            <section>
+                <h4>DOM 树与 CSSOM 树融合成渲染树</h4>
+                <p>若DOM节点似枝桠,CSS规则就是红花绿叶</p>
+                <img src="../img/css-15-How browsers work/hecheng.png" style="background: #ffffff;zoom: 1.5">
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3 style="text-align: left;">四:根据渲染树来布局，以计算每个节点的几何信息。</h3>
+                <ol>
+                    <li>布局阶段会从渲染树的根节点开始遍历</li>
+                    <li>确定每个节点对象在页面上的确切位置(由css布局方式决定)</li>
+                    <li>然后确定每个节点对象内部的尺寸(由盒子模型决定)</li>
+                    <li>精确地捕获每个元素在屏幕内的确切位置与大小</li>
+                </ol>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>五:将各个节点绘制到屏幕上。</h3>
+                <p style="text-align: left;">
+                    根据渲染树布局，计算CSS样式，即每个节点在页面中的大小和位置等几何信息。
+                    HTML默认是流式布局的，CSS和js会打破这种布局，改变DOM的外观样式以及大小和位置
+                    。这时就要提到两个重要概念：replaint(重绘)和reflow(回流)。
+                </p>
+            </section>
+            <section>
+                <ol>
+                    <li>replaint(重绘) : 屏幕的一部分重画，不影响整体布局，
+                        比如某个CSS的背景色变了，但元素的几何尺寸和位置不变。
+                        所以重绘不会影响到其他元素
+                    </li> <br>
+                    <li>reflow(回流) ： 意味着元件的几何尺寸变了，我们需要重新验证并计算渲染树。
+                        这会影响到其他元素的尺寸和位置,是渲染树的一部分或全部发生了变化。
+                    </li>
+                </ol>
+            </section>
+            <section>
+                <h4>性能优化</h4>
+                <ul>
+                    <li>reflow的性能消耗要比repaint的大,所以我们要尽量避免reflow</li>
+                    <li>避免设置多项内联样式，使用常用的class方式进行设置样式，以避免设置样式时访问dom的低效率。</li>
+                    <li>牺牲平滑度满足性能：动画精度太强，会造成更多的repaint/reflow，牺牲精度，能满足性能的损耗，获取性能和平滑度的平衡。</li>
+                    <li>避免使用table进行布局，
+                        table每个元素的大小以及内容的改变，都会导致整个table进行重新计算，造成大幅度的repaint或者reflow。
+                        改用div则可以针对性的repaint和避免不必要的reflow。
+                    </li>
+                </ul>
+            </section>
+        </section>
+        
+        <!-- 常见问题 -->
+
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            <p>问题1:如何针对css进行性能优化？</p>
+        </section>
+
+        <!-- 解决方案 -->
+
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            <h3>加载性能优化</h3>
+            <ul>
+                <li>尽量将样式写在单独的css文件里面，在head元素中引用</li>
+                <li>css属性按照顺序声明:先显示定位布局类属性，后盒模型等自身属性，最后是文本类及修饰类属性。</li>
+                <li>避免使用复杂的选择器，层级越少越好</li>
+                <li>不使用@import,因为这会影响css文件的加载速度</li>
+            </ul>
+        </section>
+        <section>
+            <section>
+                <h3>选择器性能优化</h3>
+                <p style="text-align: left;">CSS选择器对性能的影响源于浏览器匹配选择器和文档元素时所消耗的时间，
+                    所以优化选择器的原则是应尽量避免使用消耗更多匹配时间的选择器。
+                    而在这之前我们需要了解CSS选择器匹配的机制
+                </p>
+            </section>
+            <section>
+                <h3>CSS选择器匹配的机制</h3>
+                <p style="text-align: left;"><p style="text-align: left;">
+                    CSS选择器是从右到左进行规则匹配(这样做更高效)
+                    只要当前选择符的左边还有其他选择符，样式系统就会继续向左移动，直到找到和规则匹配的选择符，
+                    或者因为不匹配而退出。我们把最右边选择符称之为关键选择器。
+                </p>
+            </section>
+            <section>
+                <h3> CSS 选择器的执行效率从高到低</h3>
+                <ol>
+                    <li>id选择器（#myid）</li>
+                    <li>类选择器（.myclassname）</li>
+                    <li>标签选择器（div,h1,p）</li>
+                    <li>相邻选择器（h1+p）</li>
+                    <li>子选择器（ul < li）</li>
+                    <li>后代选择器（li a）</li>
+                    <li>通配符选择器（*）</li>
+                    <li>属性选择器（a[rel="external"]）</li>
+                    <li>伪类选择器（a:hover, li:nth-child）</li>
+                </ol>
+            </section>
+        </section>
+
+        <!-- 编码实战 -->
+
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+
+        <!-- 拓展思考 -->
+
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+            <section>
+                <h3>问题一:css渲染阻塞的原因及解决办法</h3>
+            </section>
+            <section>
+                <h4>原因分析</h4>
+                <p style="text-align: left">css的加载并不会导致html解析和渲染的停止，但是会影响到js脚本的执行。
+                    因为js脚本不仅可以读取修改到dom，也可以读取修改到cssom。
+                    故在js脚本执行前，browser必须保证到css文件完全加载并解析完成，即cssom树完全构建好。
+                    这就导致了js执行的延迟，也因此导致html解析和渲染延迟。 
+                </p>
+            </section> 
+            <section>
+                <h4>解决方法</h4>
+                <p style="text-align: left;">
+                    1、在引入顺序上，css资源的引入要优于js脚本的引入 <br>
+                    2、对css进行精简并尽快提供 <br>
+                    3、可以用媒体类型（会加载不会阻塞） <br>
+                    4、用媒体查询（会记载，只有在符合的设备上才会进行阻塞）<br>
+                </p>
+            </section>
+        </section>
+
+        <!-- 参考文献 -->
+
+        <section>
+            <h3>7.参考文献</h3>
+        </section>
+        <section style="text-align: left;">
+            <p>参考一：<a href="http://taligarsiel.com/Projects/howbrowserswork1.htm" target="_blank">How browsers work ? </a></p>
+            <p>参考二：<a href="http://www.codeweblog.com/how-browsers-work-%E4%B8%AD%E6%96%87%E7%89%88/" target="_blank">[译]浏览器是如何工作的 </a></p>
+            <p>参考三：<a href="https://baijiahao.baidu.com/s?id=1593097105869520145&wfr=spider&for=pc" target="_blank">十分钟读懂浏览器渲染流程 </a></p>
+            <p>参考四：<a href="https://www.jianshu.com/p/a2cb1e3a79be" target="_blank">DOM渲染机制与常见性能优化 </a></p>
+        </section>
+
+        <!-- 更多讨论 -->
+
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+        <section>
+            <p style="text-align: left;">讨论点一:为了提高性能,我们在编写HTML和css文件时还有哪些方法?</p>
+        </section>
+
+        <!-- 鸣谢 -->
+        
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p><small>BY : 严泽浩</small></p>
+        </section>
+    </div>
+</div>
+
+<script src="../lib/reveal/js/head.min.js"></script>
+<script src="../lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: '../plugin/markdown/marked.js' },
+            { src: '../plugin/markdown/markdown.js' },
+            { src: '../plugin/notes/notes.js', async: true },
+            { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status He
