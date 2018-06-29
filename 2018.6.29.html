@@ -7,25 +7,25 @@
 
     <title>葡萄藤PPT</title>
 
-    <link rel="stylesheet" href="../css/reveal/reveal.css">
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
 
     <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
-    <link rel="stylesheet" href="../css/reveal/theme/ptt.css">
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
 
     <!-- syntax highlighting 代码高亮主题 -->
-    <link rel="stylesheet" href="../lib/reveal/css/zenburn.css">
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
 
     <!-- 打印和PDF输出样式 -->
     <script>
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = window.location.search.match( /print-pdf/gi ) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     </script>
 </head>
 <body>
-<img src="../img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
 <map name="pttmap">
     <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
 </map>
@@ -135,8 +135,8 @@
     </div>
 </div>
 
-<script src="../lib/reveal/js/head.min.js"></script>
-<script src="../lib/reveal/reveal.js"></script>
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
 
 <script>
 
@@ -163,10 +163,10 @@
     Reveal.initialize({
         history: true,
         dependencies: [
-            { src: '../plugin/markdown/marked.js' },
-            { src: '../plugin/markdown/markdown.js' },
-            { src: '../plugin/notes/notes.js', async: true },
-            { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+            { src: './plugin/markdown/marked.js' },
+            { src: './plugin/markdown/markdown.js' },
+            { src: './plugin/notes/notes.js', async: true },
+            { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
         ]
     });
 </script>
