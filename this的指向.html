@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this的指向</title>
+</head>
+<body>
+<h1>this的指向</h1>
+<div>
+    <p>1.纯粹的作为函数调用：全局函数中，this指向window</p>
+    <pre>
+        function a(){
+        console.log(this);
+        }
+        a();</pre>
+    <P> 2.作为对象方法的调用：当函数被作为某个对象的方法调用时，this就是那个对象</P>
+    <pre>
+        var name = '火影';
+        var person2 = {
+            name: '水影',
+            sayName: function() {
+            console.log(this.name);
+             }
+         };
+    var sayNameWin = person2.sayName;
+    person2.sayName(); //水影
+    sayNameWin(); //火影   作为 window 的方法被调用的</pre>
+    <P> 3.作为构造函数调用：this指向新对象</P>
+    <pre>
+        function Person3(name) {
+        this.name = name;
+        console.log(this);
+        }
+    var person3 = new Person3('张飒');
+    console.log(person3.name);  //张飒</pre>
+    <P> 4.apply、call调用：this指向改变后的调用这个函数的对象</P>
+    <pre>
+        var person4 = {
+        name: '人才'
+        };
+        function fn() {
+        console.log(this); //Object {name: "人才"}
+        console.log(this.name); //人才
+        }
+
+        fn.apply(person4);</pre>
+
+
+
+</div>
+<script>
+    //1.全局环境中的this
+    function a(){
+        console.log(this);
+    }
+    a();
+    //2.作为对象方法的调用：当函数被作为某个对象的方法调用时，this就是那个对象
+    var name = '火影';
+    var person2 = {
+        name: '水影',
+        sayName: function() {
+            console.log(this.name);
+        }
+    };
+    var sayNameWin = person2.sayName;
+    person2.sayName(); //水影
+    sayNameWin(); //火影   作为 window 的方法被调用的
+
+    //3.作为构造函数被调用的时候，this 代表它即将 new 出来的对象
+    function Person3(name) {
+        this.name = name;
+        console.log(this);
+    }
+    var person3 = new Person3('张飒');
+    console.log(person3.name);  //张飒
+//    console.log(person3);  //这个时候会出现什么呢?A{name:"张飒"}B{name:name}C{name:undefind}
+
+
+    //4.作为 call/apply/bind 方法的调用,作为 call/apply/bind 方法被调用的时候指向传入的值
+    var person4 = {
+        name: '人才'
+    };
+    function fn() {
+        console.log(this); //Object {name: "人才"}
+        console.log(this.name); //人才
+    }
+
+    fn.apply(person4);
+</script>
+</body>
+</html>
