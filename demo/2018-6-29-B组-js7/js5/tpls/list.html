@@ -42,8 +42,12 @@
         <ui-view></ui-view>
         <!-- 1111111 -->
         <h1 style="color: red ">
-            {{A}}
+            {{A.b}} <br> 
         </h1>
+        <br>
+        <br> 自定义函数：
+        <h1 style="color: rgb(61, 8, 8) " ng-repeat="  x in Arr2 | reverse "><span>{{x}}</span> </h1>
+        
         <br/>
         <br/>
         <!-- 22222222 -->
@@ -75,7 +79,7 @@
         <p style="color: rgb(0, 0, 0);font-size: 20px "> 用法3 参数expression使用object）
         </p>
         <!-- 用法3 参数expression使用object）： -->
-        <div style="color: rgb(9, 255, 9);font-size: 30px " ng-repeat="u in Arr | filter:{age: 18}">
+        <div style="color: rgb(9, 255, 9);font-size: 30px " ng-repeat="u in Arr | filter:{age:18}">
             <span>"老婆 ":{{u.name}}</span>
             <span>"年龄 ":{{u.age}}</span>
         </div>
