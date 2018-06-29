@@ -1,0 +1,244 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+    <style>
+        .text-justify{
+            text-align: justify;
+        }
+    </style>
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h4>小课堂【萌新】</h4>
+            <h4 style="text-transform: none">对一个数组 filter、some、map、foreach的操作分别有什么作用</h4>
+            <h4>分享人：汪胜</h4>
+        </section>
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section style="text-align: left;text-indent: 4rem;">
+                <div style="text-align:left ; padding:0 12% ;font-size:30px">
+                    <p style="text-align: left">在js语言中，数组对象（即Array类型）是一种非常常用的类型，ECMAScript数组的每一项可以保存任何类型的数据。</p>
+                    <p style="text-align: left">数组对象的方法有很多：“转换方法”、“栈方法”、“队列方法”、“重排序方法”、“操作方法”、“迭代方法”等。</p>
+                    <p style="text-align: left">这次就针对“迭代方法”的内容进行介绍。</p>
+                </div>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <div style="text-align:left ; padding:0 12% ;font-size:30px">
+                    <p>迭代方法</p>
+                    <p> filter()、some()、map()、forEach()</p>
+                </div>
+            </section>
+            <section style="text-align: left">
+                <div style="text-align:left ; padding:0 12% ;font-size:30px">
+                    <p>每个方法都接收两个参数：</p>
+                    <p>1、要在每一项上运行的函数。</p>
+                    <p>2、运行该函数的作用域对象—this（可选）。</p>
+                    <pre>
+<code style="background-color: #1c1e20; font-size:24px;">
+    array.filter(function () {
+
+        //do your staff here;
+
+    }, this);
+
+</code>
+                    </pre>
+                </div>
+            </section>
+            <section>
+                <div style="text-align:left ; padding:0 12% ;font-size:30px">
+                    <p>传入这些方法中的函数参数本身会接收三个参数：</p>
+                    <p>1、数组项的值；</p>
+                    <p>2、该项在数组中的位置；</p>
+                    <p>3、数组对象本身；</p>
+                    <pre>
+<code style="background-color: #1c1e20; font-size:24px;">
+    array.forEach(function (item, index, array) {
+
+        //do your staff here;
+
+    }, this);
+
+</code>
+                    </pre>
+                </div>
+            </section>
+            <section>
+                <div style="text-align:left ; padding:0 12% ;font-size:30px">
+                    <p>对一个数组 filter、some、map、foreach的操作分别有什么作用</p>
+                </div>
+            </section>
+            <section>
+                <div style="text-align:left ; padding:0% 12% ;font-size:30px">
+                    <p style="text-align: left">filter()：对数组中的每一项运行给定函数，返回该函数会返回true 的项组成的数组。</p>
+                    <p style="text-align: left">some()：对数组中的每一项运行给定函数，如果该函数对任一项返回true，则返回true。</p>
+                    <p style="text-align: left">map()：对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组。</p>
+                    <p style="text-align: left">forEach()：对数组中的每一项运行给定函数。这个方法没有返回值。</p>
+                </div>
+            </section>
+            <section>
+                <pre>
+                    <code>
+                           var arr = [1,2,3,4,5];
+        console.log(arr.filter(function (item,index,array) {
+            console.log('item='+item+',index='+index+',array='+array);
+            return item>2;
+        }));
+                    </code>
+                </pre>
+                <p>
+                    filter() 把原数组arr每一项返回为true的项，重新组成数组，并打印出该数组每个索引的值和数组长度。
+                </p>
+            </section>
+
+            <section style="text-align: left;">
+                <pre>
+                <code>
+                var arr = [1,2,3,4,5];
+
+                console.log(arr.some(function (item,index,array) {
+                console.log('item='+item+',index='+index+',array='+array);
+                return item>2;
+                }));
+                </code>
+                </pre>
+                <!--<p>通过 demo，可以看出 every() ，在遍历数组项的时候，第一项的值就已经为false了，所以直接返回false不再继续执行后面的迭代。</p>-->
+                <p>some() ，在遍历数组项的时候，当第一个满足函数体的项出现，就直接返回true，并且不再执行后面的迭代。</p>
+            </section>
+
+            <section>
+                <pre>
+                    <code>
+                           var arr = [1,2,3,4,5];
+            console.log(arr.map(function (item,index,array) {
+            console.log('item='+item+',index='+index+',array='+array);
+            return item>2;
+        }));
+                    </code>
+                </pre>
+                <p>
+                    map() 把原数组arr的每一项迭代返回的结果，重新组成数组，并打印出该数组每个索引的值和数组长度。
+                </p>
+            </section>
+            <section>
+                <pre>
+                    <code>
+                        var arr = [1,2,3,4,5];
+                        console.log(arr.forEach(function (item,index,array) {
+                        console.log('item='+item+',index='+index+',array='+array);
+                        return item>2;
+                        }));
+                    </code>
+                </pre>
+                <p>
+                    forEach()：对数组中的每一项运行给定函数，这个方法并没有返回值。 forEach() ，只是对每个数组项运行指定的函数体，这个迭代方式并没有返回值。
+                </p>
+            </section>
+        </section>
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+            <h3>7.参考文献</h3>
+        </section>
+        <section>
+            <p>Js 数组——filter()、map()、some()、every()、forEach()、lastIndexOf()、indexOf()</p>
+            <p>js数组操作--使用迭代方法替代for循环</p>
+        </section>
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                By
+                <small style="vertical-align: middle">汪胜</small>
+            </p>
+        </section>
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    //  controls: true, // 是否在右下角展示控制条
+    //  progress: true, // 是否显示演示的进度条
+    //  slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    //  history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    //  keyboard: true, // 是否启用键盘快捷键来导航
+    //  overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    //  center: true, // 是否将幻灯片垂直居中
+    //  touch: true, // 是否在触屏设备上启用触
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: './plugin/markdown/marked.js'},
+            {src: './plugin/markdown/markdown.js'},
+            {src: './plugin/notes/notes.js', async: true},
+            {
+                src: './plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
