@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="domTree.png" alt="" srcset="">
+    <pre>
+
+
+
+
+    </pre>
+    <img src="demo1.png" alt="" srcset=""> 
+    <table border="1">
+        <tr id="tr1">
+            <th>Firstname</th>
+            <th>Lastname</th>
+        </tr>
+        <tr id="tr2">
+            <td>Peter</td>
+            <td>Griffin</td>
+        </tr>
+    </table>  
+    <input type="button" onclick="getInnerHTML()" value="点击显示第一行中的InnerHTML" />
+    <pre>
+
+    </pre>
+    <input type="button" onclick="insertInnerHTML()" value="点击插入第二行中的InnerHTML" />
+    <input type="button" onclick="changecolor()" value="点击改变第一行背景色" />
+    </table>
+</body>
+<script type="text/javascript">
+    function getInnerHTML() {
+        alert(document.getElementById("tr1").innerHTML);
+    };
+    function insertInnerHTML() {
+        document.getElementById("tr2").innerHTML=("<td>王花花</td>"+"<td>韩跑跑</td>");
+    };
+    function changecolor() {
+        document.getElementById("tr1").style.backgroundColor="red";
+    };
+</script>
+
+</html>

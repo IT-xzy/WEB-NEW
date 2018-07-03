@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<style>
+    .p-style>p {
+        font-size: 20px;
+        text-align: left;
+        padding-bottom: 20px;
+    }
+</style>
+
+<body>
+    <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h4>小课堂【上海】</h4>
+                <h4>盒子模型</h4>
+                <h4>分享人：何岳</h4>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <p style="font-size: 30px;letter-spacing: 3px;">前言</p>
+                <p style="font-size: 30px;text-align: left;">盒子模型，英文即box model。无论是div、span、还是a都是盒子。</p>
+                <p style="font-size: 30px;text-align: left;">但是，图片、表单元素一律看作是文本，它们并不是盒子。这个很好理解，比如说，一张图片里并不能放东西，它自己就是自己的内容。</p>
+            </section>
+            <!--<section style="text-align: left">
+                假如现在又有个项目，但是吧，这个分工方式和上面那个有点区别，小王呢只负责写header页眉的部分，老李负责写main主内容和footer的部分；回头这个项目再给出现了一个大bug导致整个页面都崩了，一排查，是小王写的header出现了问题，现在，小王苦逼去修改他写的header了，老李呢，按时回家抱老婆去了！
+                <br>
+                <br>
+            </section>-->
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                    <h3>盒子中的区域</h3>
+                    <p style="font-size: 30px;text-align: left;">1.width&height</p>
+                    <p style="font-size: 30px;text-align: left;">2.padding</p>
+                    <p style="font-size: 30px;text-align: left;">3.border</p>
+                    <p style="font-size: 30px;text-align: left;">4.margin</p>
+            
+                </section>
+            <section>
+                <h3>
+                    盒子的种类
+                </h3>
+                <p>
+                    标准盒子模型
+                    <br>
+                    <img src="img/2018.6.23-A组-css1/norm.png" alt="">
+                </p>
+            </section>
+            <section>
+                    <p>
+                        IE盒子模型
+                        <br>
+                        <img src="img/2018.6.23-A组-css1/IE.png" alt="">
+                    </p>
+                </section>
+            <section>
+                <p>认识width、height</p>
+            </section>
+            <section>
+                <p>认识padding</p>
+                <p>*{
+                    margin: 0; 
+                    padding: 0; 
+                }
+                    </p>
+                <p style="text-align: left; word-wrap:break-word; " >但是，*的效率不高，所以我们使用并集选择器，罗列所有的标签：
+                        body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td
+                        {
+                            margin:0; 
+                            padding:0; }
+                        </p>
+            </section>
+            <section>
+                <p>认识border
+                    <br>
+                        <img src="img/2018.6.23-A组-css1/border-style.png" alt="">
+                    
+                </p>
+
+            </section>
+           
+
+            <section>
+                <h3>3.常见问题</h3>
+                如何选择是使用大属性和小属性
+                <br>  </section>
+
+            <section>
+                <h3>4.解决方案</h3>
+                什么简单用什么,要懂得利用小属性层叠大属性
+            </section>
+
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+
+            <section>
+                <h3>6.扩展思考</h3>
+            </section>
+
+            <section>
+                <h3>7.参考文献</h3>
+                <p>http://www.cnblogs.com/smyhvae/p/7256371.html</p>
+            </section>
+            <section>
+                <h3>8.更多讨论</h3>
+            </section>
+            <section>
+                <p>讨论时间到，欢迎大家提问！
+                </p>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    By
+                    <small style="vertical-align: middle">何岳</small>
+                </p>
+                <p></p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
