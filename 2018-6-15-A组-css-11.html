@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)https://it-xzy.github.io/WEB-NEW/2018-6-3-A%E7%BB%84-css11.html -->
+<html class=" js no-mobile desktop no-ie chrome chrome66 web-new-section w-1858 gt-240 gt-320 gt-480 gt-640 gt-768 gt-800 gt-1024 gt-1280 gt-1440 gt-1680 lt-1920 no-portrait landscape gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch no-retina fontface domloaded" id="2018-6-3-a%e7%bb%84-css11-page"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>如何使用sass?</title>
+
+    <link rel="stylesheet" href="./如何使用sass__files/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./如何使用sass__files/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./如何使用sass__files/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script><link rel="stylesheet" type="text/css" href="./如何使用sass__files/paper.css"><script type="text/javascript" src="./如何使用sass__files/marked.js.下载"></script><script type="text/javascript" src="./如何使用sass__files/markdown.js.下载"></script><script type="text/javascript" src="./如何使用sass__files/notes.js.下载"></script><script type="text/javascript" src="./如何使用sass__files/highlight.js.下载"></script>
+</head>
+<body>
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal center default" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; zoom: 1.20857;">
+        <section class="past" style="top: 233.5px; display: none;" hidden="" aria-hidden="true">
+            <h3>【css-task11】如何使用sass?</h3>
+            <p>分享人：金俊</p>
+        </section>
+        <section class="past" style="top: 1.5px; display: none;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section class="past" style="top: 266.5px; display: none;" hidden="" aria-hidden="true">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section class="stack past" style="top: 0px; display: none;" data-previous-indexv="1" hidden="" aria-hidden="true">
+            <h3>关于sass</h3>
+
+            <p style="text-align: justify">
+                Sass 的开发文档中如此描述自己：
+
+Sass 是 CSS 的一个扩展,它使 CSS 的使用起来更加优雅和强大。<br>
+
+Sass 的终极目标是解决 CSS 的缺陷。<br>
+如我们所知，CSS 并不是一个完美的语言。CSS 虽然简单易学，却也能迅速制造严重的混淆，尤其是在工程浩大的项目中。
+
+这就是 Sass 出现的契机，作为一种元语言，通过提供额外的功能和工具可以改善 CSS 的语法。同时，保留了 CSS 的原有特性。<br>
+
+
+            
+						
+						            </p>
+            
+        </section>
+				<section class="stack past" style="top: 0px; display: none;" data-previous-indexv="1" hidden="" aria-hidden="true">
+				            <h3></h3>
+				
+				            <p style="text-align: justify">
+				            
+				
+				Sass 存在的关键不是将 CSS 变成一种全功能编程语言，它只是想修复缺陷。正因如此，学习 Sass 如同学习 CSS 一样简单：它只在 CSS 的基础上添加了几个额外功能。
+				<br>
+				
+				使用这些功能的方式却是多种多样的。有一些是好的，有一些是坏的，还有一些令人费解。本节课就是为了提供一个Sass样式指南,给你一个统一的和历经实践的方式来编写 Sass 代码。
+				            
+										
+										            </p>
+				            
+				        </section>
+	
+	
+				
+				
+        <section class="past" style="top: 1.5px; display: none;" hidden="" aria-hidden="true">
+            <h3>为何选择sass？</h3>
+            <p style="text-align: justify">
+            
+忽略其他特性，Sass 对自己的定位首先是一个预处理器。其最主要的竞争对手包括 Less，一个基于 NodeJS 的预处理器，因著名 CSS 框架 Bootstrap（在 v4 版本之前）的使用而声名鹊起,现在其也已经使用Sass。此外还有 Stylus，该预处理器对编写形式无所限制，学习难度稍高。
+
+为什么选择 Sass 胜过其他预处理器？，这始终是一个待解决的问题。<br />
+
+
+            </p>
+        </section>
+				<section class="stack past" style="top: 0px; display: none;" data-previous-indexv="1" hidden="" aria-hidden="true">
+					<p style="text-align: justify"> Sass 它最大程度保留了 CSS 的原生特性。<br />
+				Sass 的设计基于非常坚实的设计原则：大部分的设计顺其自然的来源于核心设计师们的信条，比如添加额外的功能会增加语言的复杂度，但以实用性衡量极具价值的话便得以保留；<br />
+		  	同时，使用 Sass 来美化一个块级元素，那么美化前后的效果应该是可预见和可推理的。<br />
+				同时，Sass 比其他预处理器更加关注细节。<br />
+			 Sass 与 CSS 在细节上的一致性，并确保所有的常用方式具有高度一致的表现。<br />
+			Sass 的目标是解决开发者遇到的切实问题，提供高效的函数化解 CSS 的短板。
+
+</P></section>
+				
+        <section class="past" style="top: 266.5px; display: none;" hidden="" aria-hidden="true">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section class="past" style="top: 50px; display: none;" hidden="" aria-hidden="true">
+            <h4>为什么需要一个样式指南</h4>
+            <p style="text-align: justify">
+                一个样式指南并不是一份便于阅读并使代码处于理想状态的文档。<br />
+								它在一个项目的生命周期中是一份关键文档，描述了编写代码的方式和采用这样方式的原因。<br />
+								它可能在小项目中显得有些矫枉过正，但却能在保持代码库整洁，提高可扩展性和可维护性上提供诸多便利。<br />
+
+                    不用多说相信你也可以理解，参与项目的开发者越多，代码样式指南就越显的必要。<br />
+										与之相同，项目的规模越大，代码样式指南也会越加重要。
+										
+										
+										
+               
+            </p>
+            
+        </section>
+				
+				
+				   <section class="past" style="top: 50px; display: none;" hidden="" aria-hidden="true">
+				        
+				            <p style="text-align: justify">
+				            样式指南（注意不是视觉风格指南）用于团队是一个很有价值工具：<br />
+
+    长时间内便于创建和维护项目<br />
+    便于不同能力的和专业的开发使用<br />
+    便于任何时间加入团队的不同开发人员<br />
+    便于新员工培训<br />
+    便于开发人员创建代码库<br />
+
+				            </p>
+				            
+				        </section>
+								
+								
+								
+												   <section class="past" style="top: 50px; display: none;" hidden="" aria-hidden="true">
+												        <h4>核心原则</h4>
+												            <p style="text-align: justify">
+												        整个样式指南中传授的，那就是：Sass 以简为美，简约至上。<br />
+
+
+
+同时，CSS 是一门简单的语言，那么 Sass 在书写常规 CSS 的时候就不应该更复杂。<br />
+KISS principle (Keep It Simple Stupid) 在这里是一个核心原则，甚至在有些情况下要优先于DRY principle (Don’t Repeat Yourself)。<br />
+
+有时候，一点点重复可以更好的保持代码的可维护性，而不是建立一个头重脚轻、臃肿复杂、不可维护的系统。<br />
+
+实用胜过完美。有些时候，你可能会发现自己违背了这里所描述的规则。如果感觉自己的方式有道理，那就继续。<br />
+<br />
+												            </p>
+												            
+												        </section>
+																
+																
+																
+
+												   <section class="past" style="top: 50px; display: none;" hidden="" aria-hidden="true">
+																				        <h4>语法格式</h4>
+
+																				            <p style="text-align: justify">
+	 当几个开发者在同一项目中编写 CSS 时，迟早会陷入各自为政的境地。<br />
+	 编码样式指南通过规范统一的样式，不仅防止了这种混乱现象，也减轻了阅读和维护代码的难度。<br />
+
+概括地说，我们希望做到（受 CSS Guidelines 所启发）：<br />
+使用两个空格代表缩进，而不是使用tab键；<br />
+理想上，每行保持为80个字符宽度；<br />
+正确书写多行CSS规则；<br />
+有意义的使用空格。<br />
+																
+																				            </p>
+																				            
+																				        </section>
+  <section class="past" style="top: 50px; display: none;" hidden="" aria-hidden="true">
+																				        <h4>字符串</h4>
+
+																				            <p style="text-align: justify">
+字符串在 CSS 和 SCSS 中都占有重要地位。大多数的 CSS 值不是长度就是标识符，所以遵循固定的编程规范处理 Sass 中的字符串是非常重要的一项工作。
+
+编码
+为了避免潜在的字符编码问题，强力建议在入口文件中通过 @charset 指令使用 UTF-8 编码格式。
+请确保该指令是文件的第一条语句，并排除其他字符编码声明。
+
+@charset 'utf-8';
+																
+																				            </p>
+																				            
+																				        </section>																
+																
+  <section class="past" style="top: 50px; display: none;" hidden="" aria-hidden="true">
+																				        <h4>数字</h4>
+
+																				            <p style="text-align: justify">
+	数字
+在 Sass 中，数字类型包括了长度、持续时间、频率、角度以及无单位数值等等。Sass 允许在运行中计算这些度量值。
+
+零值
+当数字小于 1 时，应该在小数点前写出 0. 永远不要显示小数尾部的 0。
+<pre><code>
+// Yep
+.foo {
+  padding: 2em;
+  opacity: 0.5;
+}
+
+// Nope
+.foo {
+  padding: 2.0em;
+  opacity: .5;
+}
+单位
+当定义长度时，0 后面不需要加单位。
+
+// Yep
+$length: 0;
+
+// Nope
+$length: 0em;
+						</code></pre>												
+																				            </p>
+																				            
+																				        </section>																
+																
+																
+	 <section class="past" style="top: 50px; display: none;" hidden="" aria-hidden="true">
+																					        <h4>计算</h4>
+	
+																					            <p style="text-align: justify">
+		 
+最高级运算应该始终被包裹在括号中。这么做不仅是为了提高可读性，也是为了防止一些 Sass 强制要求对括号内内容计算的极端情况。
+<pre><code>
+// Yep
+.foo {
+  width: (100% / 3);
+}
+
+// Nope
+.foo {
+  width: 100% / 3;
+}
+</code></pre>																	
+																					            </p>
+																					            
+																					        </section>															
+																
+		  <section class="past" style="top: 50px; display: none;" hidden="" aria-hidden="true">
+																						        <h4>颜色</h4>
+		
+																						            <p style="text-align: justify">
+			 
+颜色在 CSS 中占有重要地位。当涉及到操纵色彩时，Sass 通过提供少数的函数功能，最终成为了极具价值的助手。
+
+
+颜色格式
+为了尽可能简单地使用颜色，我建议颜色格式要按照以下顺序排列：
+
+HSL 值;
+RGB 值;
+十六进制（使用小写并尽可能简写）
+																		
+																						            </p>
+																						            
+																						        </section>														
+																
+	 <section class="past" style="top: 50px; display: none;" hidden="" aria-hidden="true">
+																							        <h4>注释</h4>
+			
+																							            <p style="text-align: justify">
+				 
+
+理想上，任何 CSS 规则集之前都应该使用 C 风格注释来解释 CSS 块的核心。这个注释也要记录对规则集特定部分编号的解释。比如：</p>
+<pre><code>
+/**
+ * Helper class to truncate and add ellipsis to a string too long for it to fit
+ * on a single line.
+ * 1. Prevent content from wrapping, forcing it on a single line.
+ * 2. Add ellipsis at the end of the line.
+ */
+.ellipsis {
+  white-space: nowrap; /* 1 */
+  text-overflow: ellipsis; /* 2 */
+  overflow: hidden;
+}
+</code></pre>
+<p style="text-align: justify">
+基本上，任何不能明显看出意义的地方都应该注释，但不要随处注释。记住不要注释太多，掌握尺度让每一处注释都有意义。
+
+当注释 Sass 的一个特定部分时，应该使用 Sass 单行注释而不是 C 风格的注释块。这么做将不会输出注释。
+																			
+																							            </p>
+																							            
+																							        </section>														
+																																
+																
+				
+      <section class="past" style="top: 50px; display: none;" hidden="" aria-hidden="true">
+
+
+            <h3>3.常见问题</h3>
+            <p style="text-align: justify">
+                选择器嵌套</br>
+								Sass 中一个正在被众多开发者滥用的功能，就是选择器嵌套。选择器嵌套为样式表作者提供了一个通过局部选择器的相互嵌套实现全局选择的方法。
+								选择器嵌套最大的问题是将使最终的代码难以阅读。开发者需要花费巨大精力计算不同缩进级别下选择器具体的表现效果。CSS 最终的表现效果往往不是浅显易懂的。
+
+选择器越具体则声明语句越冗长，而且对最近选择器的引用(&)也越频繁。在某些时候，出现混淆选择器路径和探索下一级选择器的错误率很高，这非常不值得。
+            </p>
+        </section>
+        <section class="past" style="top: 95px; display: block;" hidden="" aria-hidden="true">
+            <h3>4.解决方案</h3>
+            <p style="text-align: justify">
+            
+
+为了防止此类情况，建议嵌套不要超过三层，我的意见比较激进，建议尽量避免使用嵌套。
+            </p>
+        </section>
+        <section class="past" style="top: 38.5px; display: block;" hidden="" aria-hidden="true">
+            <p style="text-align: justify">例外:</br>
+首先，在最外层选择器中嵌套伪类和伪元素是被允许，也是受推荐的。</p>
+<pre><code>
+.foo {
+  color: red;
+
+  &:hover {
+    color: green;
+  }
+
+  &::before {
+    content: 'pseudo-element';
+  }
+}
+</code></pre>
+<p style="text-align: justify">
+使用选择器嵌套选择伪类和伪元素不仅仅有道理的（因为它的处理功能与选择器紧密相关），而且有助于保持总体的一致性。</p>
+
+
+           
+        </section>
+ <section class="future" style="top: 48.5px; display: block;" hidden="" aria-hidden="true">
+           
+           <p style="text-align: justify">
+               当然，如果使用类似 .is-active 类名来控制当前选择器状态，也可以这样使用选择器嵌套。</p>
+<pre><code>
+.foo {
+  // …
+
+  &.is-active {
+    font-weight: bold;
+  }
+}
+</code></pre>
+ <p style="text-align: justify">
+这并不是最重要的，当一个元素的样式在另一个容器中有其他指定的样式时，可以使用嵌套选择器让他们保持在同一个地方。</p>
+<pre><code>
+.foo {
+  // …
+
+  .no-opacity & {
+    display: none;
+  }
+}
+</code></pre>
+ <p style="text-align: justify">
+这所有的一切，有些是无关紧要的细节，关键是要保持一致性。如果你觉得完全有信心搞定选择器嵌套，然后你就使用了选择器嵌套。可你还要确保你的整个团队也能搞定选择器的嵌套。</p>
+            </p>
+
+        </section>
+        <section class="present" style="top: 266.5px; display: block;">
+            <h3>5.编码实战</h3>
+        </section>
+        <section class="future" style="top: 48.5px; display: block;" hidden="" aria-hidden="true">
+            <h3>6.扩展思考</h3>
+           <p style="text-align: justify">
+               问题：sass和less的不同？ 
+               <br>
+            1,变量名称的不同，less是@，sass是$;<br>
+            2,Sass的安装需要Ruby环境，是在服务端处理的，
+            而Less是需要引入less.js来处理Less代码输出css到浏览器;
+            ，也可以在开发环节使用Less，然后编译成css文件，直接放到项目中; <br>
+            3，sass支持条件语句，比如if else for等，less不支持; <br>
+            4,sass可以设置输出类型，
+                nested：嵌套缩进的css代码
+                expanded：展开的多行css代码
+                compact：简洁格式的css代码
+                compressed：压缩后的css代
+                less不可以
+            </p>
+
+        </section>
+
+
+
+        <section class="future" style="top: 266.5px; display: block;" hidden="" aria-hidden="true">
+            <h3>7.参考文献</h3>
+        </section>
+
+        <section class="future" style="top: 128px; display: none;" hidden="" aria-hidden="true">
+            <p style="text-align: justify">http://www.manongjc.com/sass/sass_tutorial.html <br>
+                码农Sass 教程 - Sass入门学习 <br>
+                https://www.sass.hk/install/ <br>
+                sass中文网 <br>
+                https://www.zhihu.com/question/22285654/answer/20909926 <br>
+                sass/scss 和 less的区别 <br>
+                https://www.cnblogs.com/wangpenghui522/p/5467560.html</p>
+
+        </section>
+
+        <section class="future" style="top: 266.5px; display: none;" hidden="" aria-hidden="true">
+            <h3>8 更多讨论</h3>
+            <p></p>
+        </section>
+
+
+
+        <section class="future" style="top: 212.5px; display: none;" hidden="" aria-hidden="true">
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>BY : 金俊</small>
+            </p>
+        </section>
+
+    </div>
+    <div class="backgrounds"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background stack past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 1470.92px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+            5.编码实战
+        </div>
+</div>
+
+<script src="./如何使用sass__files/head.min.js.下载"></script>
+<script src="./如何使用sass__files/reveal.js.下载"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+		
+		
+		
+
+
+		
+		
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+    //    原始类型对象直接赋值不会相互影响
+    //    var a = 1;
+    //
+    //    var b = a;
+    //    b = 10;
+    //    console.log(a); // 1
+    ////
+    //    var a = 'hello';
+    //    var b = a;
+    //    b = 'world';
+    //    console.log(a); // hello
+    //
+    //    var a = true;
+    //    var b = a;
+    //    b = false;
+    //    console.log(a);
+    //数组浅复制
+    //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+    //    ];
+    //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+    //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+    //    console.log(a)//那么现在打印a 是什么结果呢
+    //
+    //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+    //    var arrtoo = arr.slice(1);
+    //    arrtoo[2] = "set Map";
+    //    console.log(arr);//One,Two,Three
+    //    console.log(arrtoo);//One,set Map,Three
+    //
+    //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+    //    var arrtooo = arr1.concat(111111);
+    //    arrtooo[1] = "set Map To";
+    //    console.log(arr1);//One,Two,Three
+    //    console.log(arrtooo);//One,set Map To,Three
+    //
+    //    var b=[1,2,3,4,5];   //concat的链接
+    //    var c=[6,7,8,9];
+    //    var d =[4,4,22]
+    //    console.log(b.concat(c,d))
+    var a = {name: 'yy', age: 26};  //对象的浅拷贝哦
+    var b = new Object();
+    b.name = a.name;
+    b.age = a.age;
+    b.name = 'xx';
+    console.log(a);//Object { name="yy", age=26}
+    console.log(b);//Object { name="xx", age=26}
+    var d = {            //对象的浅拷贝哦 第一种
+        name: 'd',
+        oc: {
+            age: 32
+        },
+        oad: {
+            adds: {
+                bb: 12
+            }
+        }
+    };
+    var deepCopy = function (source) {
+        var result = {};
+        for (var key in source) {
+            result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+        }
+        return result
+    };
+    var c = deepCopy(d);
+    c.name = 'c';
+    c.oc = {
+        age: 49
+    };
+    console.log(c);
+    console.log(d);
+    //    var person = {    //第二种深拷贝
+    //        name: 'aa',
+    //        friends: ['da', 'dsa', 'gf']
+    //    };
+    //
+    //    var aPerson = Object.create(person, {
+    ////        name: {
+    ////            value: "gee"
+    ////        }
+    //    });
+    //
+    //    console.log(person.name);
+    //    console.log(aPerson.friends)
+    var Chinese = {
+        nation: '中国'
+    }
+    var Doctor = {
+        career: '医生'
+    }
+    function extendCopy(p) {
+        var c = {};
+        for (var i in p) {
+            c[i] = p[i];
+        }
+        c.uber = p;
+        return c;
+    }
+    var Doctor = extendCopy(Chinese);
+    Doctor.career = '医生';
+    console.log(Doctor); // 中国
+    Chinese.birthPlaces = ['北京', '上海', '香港'];
+    var Doctor = extendCopy(Chinese);
+    Doctor.birthPlaces.push('厦门');
+</script>
+
+
+
+<link rel="stylesheet" type="text/css" href="chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/css/content.css"></body><loom-container id="lo-engage-ext-container"><loom-shadow data-reactroot="" classname="resolved"></loom-shadow></loom-container></html>
