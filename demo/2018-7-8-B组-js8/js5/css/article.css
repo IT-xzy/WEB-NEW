@@ -1,0 +1,28 @@
+.box {
+  max-width: 680px;
+  min-height: 80px;
+  margin: 10px;
+  padding: 10px 15px;
+  border: solid 1px #00ff9d;
+  color: #ff0000; 
+  font-size: 25px;
+}
+span{
+  font-size: 25px;
+color: #ff0000
+}
+.box span {
+  font-size: 25px;
+  display: block;
+}
+.box input {
+  font-size: 25px;
+  display: block;
+  background: #68cdd5;
+}
+input[type="text"] {
+  font-size: 25px;
+  /* width: 280px; */
+  margin: 5px 0;
+}
+
