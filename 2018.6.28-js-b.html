@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>小课堂</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- css-28-sassinsublime主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="../img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>【JS-task1】
+                    <span style="text-transform:lowercase">简述js面向对象</span>
+                </h2>
+                <h3>小课堂【上海】</h3>
+                <p>分享人：王旭东</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <p>“面向对象编程”（Object-Oriented Programming，缩写为OOP）是目前主流的编程范式。它的核心思想是将真实世界中各种复杂的关系，抽象为一个个对象，然后由对象之间的分工与合作，完成对真实世界的模拟。
+                    面向对象的语言有一个标志，就是类的概念，通过类可以创建任意多个具有相同属性和方法的对象。ECMAScript中没有类的概念，它的对象与基于类的语言中的对象有所不同。
+
+                </p>
+            </section>
+
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+
+            <section>
+                <p>1.对象</p>
+                        <p style="text-align: left;"> ECMA-262 把对象定义为:无序属性的集合，其属性可以包含基本值、对象或者函数。严格来讲，这就相当于说对象是一组没有特定顺序的值。对象的每个属性或方法都有一个名字，而每个名字都映射到一个值。正因为这样(以及其他将要讨论的原因).我们可以把
+                            ECMAScript 的对象想象成散列表:无非就是一组名值对，其中值可以是数据或函数。</p>
+            </section>
+
+
+            <section>
+                1).数据属性
+数据属性指包含一个数据值的位置，可在该位置读取或写入值，有4个供述其行为的特性：
+[[configurable]]:表示能否通过 delete 删除属性从而重新定义属性.能否修改属性的特性，或者能否把属性修改为访问器属性。默认为true;
+[[Enumerable]]:表示能否通过 for-in 循环返回属性。默认为true;
+[[Writable]]:表示能否修改属性的值。默认true;
+[[Value]]:包含该属性的数据值。读取/写入都是该值。默认为undefined;
+            </section>
+            <section>
+                2).访问器属性
+                访问器属性不包含数据值。它包含一对 getter 和 setter 函数(这两个函数都不是必需的)。读取访问器属性时，调用 getter 函数，返回有效的值；写入访问器属性时，调用 setter 函数并传入新值并设置。该属性有以下4个特征：
+                      [[Configurable]]:是否可通过delete删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为数据属性，默认值为true。
+                      [[Enumerable]]:是否可通过for-in循环属性；
+                      [[Get]]:读取属性时调用，默认：undefined;
+                      [[Set]]:写入属性时调用，默认：undefined;
+                      访问器属性不能直接定义，必须使用defineProperty()来定义.如：
+            </section>
+
+            <section>
+                2.3 创建对象
+使用Object构造函数或对象字面量都可以创建对象，缺点是创建多个对象时，会产生大量的重复代码。因此使用用工厂模式的变体来解决问题。
+            </section>
+            <section>
+                使用自定义的构造函数来创建对象，它与工厂方法区别在于：
+1.没有显式地创建对象
+2.直接将属性和方法赋值给this对象；
+3.没有return语句；
+            </section>
+            <section>
+                3).原型模式
+
+                JS每个函数都有一个prototype(原型)属性，这个属性是一个指针，指向一个对象，它是所有通过new操作符使用函数创建的实例的原型对象。原型对象最大特点是，所有对象实例共享它所包含的属性和方法，也就是说，所有在原型对象中创建的属性或方法都直接被所有对象实例共享。
+            </section>
+          
+            <section>
+                <h3>4.常见问题</h3>
+              
+            </section>
+            <section>
+                <h3>4.解决方案</h3>
+               
+            </section>
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+            <section>
+                <h3>6.扩展思考</h3>
+            </section>
+            
+          
+            <section>
+                <h3>7.参考文献</h3>
+            </section>
+            <section>
+                <p>参考一
+                    <a href="http://developer.51cto.com/art/201109/289286.htm">51cto</a>
+                </p>
+                <p>参考二
+                    <a href="http://blog.csdn.net/yueguanghaidao/article/details/9568071">博客</a>
+                </p>
+            </section>
+            <section>
+                <h3>8.更多讨论</h3>
+            </section>
+            <section>
+                <p>讨论</p>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>BY : 王旭东 </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: './plugin/markdown/marked.js'
+                },
+                {
+                    src: './plugin/markdown/markdown.js'
+                },
+                {
+                    src: './plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: './plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,241 @@
+<!doctype html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>葡萄藤PPT</title>
+
+  <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+  <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+  <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+  <!-- syntax highlighting 代码高亮主题 -->
+  <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+  <!-- 打印和PDF输出样式 -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+</head>
+
+<body>
+  <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+  <map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h3>ES6有哪些新特性？</h3>
+        <p style="text-align: center;">西安分院：马扬睿</p>
+      </section>
+      <section>
+        <p>1.背景介绍</p>
+        <p>2.知识剖析</p>
+        <p>3.常见问题</p>
+        <p>4.解决方案</p>
+        <p>5.编码实战</p>
+        <p>6.扩展思考</p>
+        <p>7.参考文献</p>
+        <p>8.更多讨论</p>
+      </section>
+      <section>
+        <h3>1.背景介绍</h3>
+      </section>
+      <section>
+        <section>
+          <h3>ES6有哪些新特性？</h3>
+        </section>
+        <section>
+          <p>ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。
+            它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。</p>
+        </section>
+        <section>
+          <h5>我们来看看都加了哪些新特性</h1>
+          <p>let 和 const关键字</p>
+          <p>变量的结构赋值</p>
+          <p>字符串，数值的扩展</p>
+          <p>数组，对象的扩展</p>
+          <p>函数的扩展</p>
+           <p>for...of</p>
+          <p>还有一些新的数据结构且听下回分解</p>
+        </section>
+      </section>
+      <section>
+        <h3>2.知识剖析</h3>
+      </section>
+      <section>
+        <section>
+          <h3>let和const关键字有什么不同</h3>
+        </section>
+        <section>
+          <p style="text-align:left;font-size: 40px">
+          let 关键字可以避免变量提升，它只在块级作用域内起作用
+          </p>
+          <p style="text-align:left;font-size: 40px">
+            const关键字也是同样，避免变量提升，只在块级作用域里起作用，const就是constant的意思
+            他声明一个只读的常量，一旦声明不可修改。
+          </p>
+        </section>
+        <section>
+          <p>解构赋值</p>
+        </section>
+        <section>
+          <p>ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。</p>
+          <p>数组的解构赋值</p>
+          <p>对象的解构赋值</p>
+          <p>字符串的解构赋值</p>
+          <p>数值和布尔值的解构赋值</p>
+        </section>
+        <section>
+          <p>字符串的扩展</p>
+          <p>模板字符串</p>
+          <p>模板标签</p>
+          <p>repeat函数</p>
+          <p>includes函数</p>
+          <p>startsWith和endWith</p>
+          <p>codePointAt()和String.fromCodePoint函数</p>
+        </section>
+        <section>
+          <p>数值的扩展</p>
+          <p>Number.isNaN</p>
+          <p>Number.isFinite</p>
+          <p>Number.parseInt</p>
+          <p>Number.parseFloat</p>
+          <p>Number.isInteger</p>
+          <p>极小常量</p>
+          <p>安全整数</p>
+          <p>几个Math方法</p>
+        </section>
+        <section>
+          <p>数组的扩展</p>
+          <p>Array.of()函数</p>
+          <p>Array.from( )函数</p>
+          <p>find( )函数</p>
+          <p>findIndex( )函数</p>
+          <p>fill( )函数</p>
+          <p>entries( )函数</p>
+          <p>keys( )函数</p>
+          <p>values( )函数</p>
+        </section>
+        <section>
+          <p>对象的扩展</p>
+          <p>更简洁的表示法</p>
+          <p>属性名可以是表达式</p>
+          <p>Object.is( )函数</p>
+          <p>严格相等和抽象相等</p>
+          <p>Object.assign()函数</p>
+          <p>Object.getPrototypeOf( )函数</p>
+          <p>Object.setPrototypeOf()函数</p>
+          <p>javascript的面向对象</p>
+        </section>
+        <section>
+          <p>函数的扩展</p>
+          <p>设置默认参数</p>
+          <p>rest参数</p>
+          <p>扩展运算符</p>
+          <p>箭头函数</p>
+          <p>箭头函数this的使用</p>
+        </section>
+        <section>
+            <p>for....of的用法</p>
+            <p>写法简洁</p>
+            <p>可以break终止循环</p>
+            <p>可以获取索引</p>
+        </section>
+      </section>
+      <section>
+        <h3>3、常见问题</h3>
+      </section>
+      <section>
+        <p>es6的兼容问题如何解决</p>
+      </section>
+      <section>
+        <h3>4、解决方案</h3>
+      </section>
+      <section>
+        <h3>Babel()</h3>
+      </section>
+      <section>
+        <h3>5、编码实战</h3>
+      </section>
+      <section>
+        <h3>6.扩展思考</h3>
+      </section>
+      <section>
+        <h4>es6还有哪些特性？</h4>
+      </section>
+      <section>
+        <h3>7.参考文献</h3>
+      </section>
+      <section>
+        <p>参考一：<a href="http://es6.ruanyifeng.com/#docs/string">ECMA入门</a></p><br>
+        <p>参考二： <a href="https://mp.weixin.qq.com/s/t4mt_jznCLkxsftvP325Rg">趣味ES6</a></p><br
+      </section>
+    </section>
+      <section>
+        <h3>8、更多讨论</h3>
+        <!--<p><a href="http://www.imooc.com/article/1848">资料链接</a></p>-->
+      </section>
+      <section>
+        <h4>鸣谢</h4>
+        <h3>感谢观看</h3>
+        <p><small>BY ︱马扬睿</small></p>
+      </section>
+    </div>
+  </div>
+
+  <script src="./lib/reveal/js/head.min.js"></script>
+  <script src="./lib/reveal/reveal.js"></script>
+
+  <script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+      history: true,
+      dependencies: [{
+          src: '../plugin/markdown/marked.js'
+        },
+        {
+          src: '../plugin/markdown/markdown.js'
+        },
+        {
+          src: '../plugin/notes/notes.js',
+          async: true
+        },
+        {
+          src: '../plugin/highlight/highlight.js',
+          async: true,
+          callback: function() {
+            hljs.initHighlightingOnLoad();
+          }
+        }
+      ]
+    });
+  </script>
+</body>
+
+</html>
