@@ -1,0 +1,470 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+    <!-- 打印和PDF输出样式 -->
+    <style>
+        button{
+            width: 100px;
+            height: 150px;
+            font-size: 32px;
+        }
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $(".btn").click(function(){
+                var index = $(".btn").index(this);
+                $(this).css({"background":"#272822","color":"#ffffff",});
+                $("#demo").append(this);
+            });
+        })
+        $(function(){
+            $(".btn2").click(function(){
+                var index = $(".btn2").index(this);
+                $(this).css({"background":"#272822","color":"#ffffff",});
+                $(this).appendTo("#demo2");
+            });
+        })
+        $(function(){
+            $(".btn3").click(function(){
+                var index = $(".btn3").index(this);
+                $(this).css({"background":"#272822","color":"#ffffff",});
+                $(".btn3").eq(index).before("<button>空</button>");
+                $("#demo3").append(this);
+            });
+        })
+        $(function(){
+            $(".btn4").click(function(){
+                var index = $(".btn4").index(this);
+                var last  = $(".btn4").last().text();
+                var txt   = $(this).text();
+                console.log(last);
+                $(this).css({"background":"#272822","color":"#ffffff",});
+                $(this).text(last);
+                $(".btn4").last().text(txt);
+                // $("#demo5").append(this);
+            });
+        })
+    </script>
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+</head>
+<body>
+    <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <!-- 首页 -->
+        <section>
+            <h2>【JS-task03】洗牌算法具体指的是什么？</h2>
+            <h3>小课堂【武汉小课堂】</h3>
+            <p>分享人：严泽浩</p>
+        </section>
+        <!-- 目录 -->
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <!-- 背景介绍 -->
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <!-- 背景介绍详情 -->
+        <section>
+            <h3 style="text-align: center;">洗牌算法具体指的是什么？ </h3>
+            <p style="text-align: left;">
+                从字面意义上讲,就是实现洗牌的具体方法,
+                洗牌的目的是什么呢?在不考虑出老千的情况下,洗过的牌要足够乱才好,牌面随机分布,越乱越好!
+                在科研,计算机科学等很多领域都需要运用到概率分布的随机性, 
+                所以说洗牌算法本质上是把一个给定元素集合打乱成为一个无序元素集合
+            </p>
+            <img src="img/2018-7-5-C组-JS-3/timg.gif" width="60%">
+        </section>
+        
+        <!-- 知识剖析 -->
+
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+
+        <!-- Fisher and Yates算法 -->
+
+        <section>
+            <section>
+                <h3 style="text-align: center;">Fisher–Yates shuffle 洗牌算法概述 </h3>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    简单来说 Fisher–Yates shuffle 算法是一个用来将一个有限集合生成一个随机排列的算法（数组随机排序）。
+                    这个算法生成的随机排列是等概率的,同时这个算法非常高效。
+                    这是一个正确且高效的算法,在我们需要解决概率分布的随机性问题时,用这个就对了!(秒天秒地秒空气)
+                </p>
+                <img src="img/2018-7-5-C组-JS-3/18499447168F460C1E3840CD09E1425A7FFC651DA.gif" width="30%">
+            </section>
+            
+            <section>
+                <h3 style="text-align: center;">Fisher and Yates 的原始版</h3>
+                <p style="text-align: left;">
+                    Fisher–Yates shuffle 的原始版本，
+                    最初描述在 1938 年的 Ronald Fisher 和 Frank Yates 写的书中，
+                    他们使用纸和笔去描述了这个算法，并使用了一个随机数表来提供随机数。
+                    它给出了 1 到 N 的数字的的随机排列，具体步骤如下：
+                </p>
+                <ol>
+                    <li>写下从 1 到 N 的数字</li>
+                    <li>取一个从 1 到剩下的数字（包括这个数字）的随机数 k</li>
+                    <li>从低位开始，得到第 k 个数字（这个数字还没有被取出），把它写在独立的一个列表的最后一位</li>
+                    <li>重复第 2 步，直到所有的数字都被取出</li>
+                    <li>第 3 步写出的这个序列，现在就是原始数字的随机排列</li>
+                </ol>
+            </section>
+            <section>
+                <h3>第一次玩牌</h3>
+                <p  style="width: 1500px;position: relative;right: 270px;" id="demo4">
+                    <button class="btn3">3</button>
+                    <button class="btn3">4</button>
+                    <button class="btn3">5</button>
+                    <button class="btn3">6</button>
+                    <button class="btn3">7</button>
+                    <button class="btn3">8</button>
+                    <button class="btn3">9</button>
+                    <button class="btn3">10</button>
+                    <button class="btn3">J</button>
+                    <button class="btn3">Q</button>
+                    <button class="btn3">K</button>
+                    <button class="btn3">A</button>
+                    <button class="btn3">2</button>
+                </p>
+                <p id="demo3" style="width: 1500px;position: relative;right: 270px;"></p>
+                <p style="text-align: left;">注意:已经证明如果第 2 步取出的数字是真随机的，那么最后得到的排序一定也是。</p>
+            </section>
+            <section>
+                <h3>效果示意</h3>
+                <img src="img/2018-7-5-C组-JS-3/1.gif" height="20%"> <br> <hr>
+                <h3>数学证明</h3>
+                <img src="http://latex.codecogs.com/gif.latex?\dpi{200}&space;P=\frac{n-1}{n}\times&space;\frac{n-2}{n-1}\times&space;\cdot&space;\cdot&space;\cdot&space;\times&space;\frac{n-i&plus;1}{n-i&plus;2}\times&space;\frac{1}{n-i&plus;1}=&space;\frac{1}{n}" title="P=\frac{n-1}{n}\times \frac{n-2}{n-1}\times \cdot \cdot \cdot \times \frac{n-i+1}{n-i+2}\times \frac{1}{n-i+1}= \frac{1}{n}"  >
+            </section>
+        </section>
+        
+        <!-- Knuth-Durstenfeld-Shuffle算法 -->
+
+        <section>
+            <section>
+                <h3>Knuth-Durstenfeld-Shuffle算法</h3>
+            </section>
+            <section>
+                <h3>改动原因</h3>
+                <p style="text-align: left;">
+                    Fisher and Yates 的原始版是由自然语言描述的,他默认了人类不会选择自己已经选过的牌, <br>
+                    然而计算机并没有这么聪明,计算机对于选过的牌是没有概念的,你必须告诉它如何处理这种情况,
+                    否则它会重复选择,随着剩余元素的减少,它的效率会越来越低
+                    到最后这种方法捞一张牌上来无疑是大海捞针 <br>
+                    所以我们需要针对计算机做出进一步的优化
+                </p>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    Knuth 和 Durstenfeld  在Fisher 等人的基础上对算法进行了改进，
+                    在原始数组上对数字进行交互，减小了空间复杂度
+                    该算法的基本思想和 Fisher 类似，每次从未处理的数据中随机取出一个数字，
+                    然后把该数字放在数组的尾部，即数组尾部存放的是已经处理过的数字
+                </p>
+                <ol>
+                    <li>写下从 1 到 N 的数字</li>
+                    <li>取一个从 1 到剩下的数字（包括这个数字）的随机数 k</li>
+                    <li>从低位开始，从未处理的数据中得到第 k 个数字（这个数字还没有被取出），把它与当前未取出数列的最后一位数字进行交换</li>
+                    <li>重复第 2 步，直到所有的数字都被交换</li>
+                    <li>第 3 步将取出的数进行循环交换,直到所以数都交换了一边,得到了一个随机排列的数组</li>
+                </ol>
+            </section>
+            <section>
+                <h3>再次玩牌</h3>
+                <p  style="width: 1500px;position: relative;right: 270px;" id="demo5">
+                    <button class="btn4">3</button>
+                    <button class="btn4">4</button>
+                    <button class="btn4">5</button>
+                    <button class="btn4">6</button>
+                    <button class="btn4">7</button>
+                    <button class="btn4">8</button>
+                    <button class="btn4">9</button>
+                    <button class="btn4">10</button>
+                    <button class="btn4">J</button>
+                    <button class="btn4">Q</button>
+                    <button class="btn4">K</button>
+                    <button class="btn4">A</button>
+                    <button class="btn4">2</button>
+                </p>
+            </section>
+            <section>
+                <h3>效果示意</h3>
+                <img src="img/2018-7-5-C组-JS-3/3.gif" height="20%">
+            </section>
+        </section>
+
+        <!-- Inside-Out Algorithm算法 -->
+
+        <section>
+            <section>
+                <h3 style="text-align: center;">Fisher–Yates shuffle变体:Inside-Out Algorithm算法 </h3>
+            </section>
+            <section>
+                <h3>各有优劣</h3>
+                <p style="text-align: left;">
+                    Knuth-Durstenfeld Shuffle 是一个内部打乱的算法，算法完成后原始数据被直接打乱，
+                    尽管这个方法可以节省空间，但在有些应用中可能需要保留原始数据，所以需要另外开辟一个数组来存储生成的新序列。<br>
+                    Inside-Out Algorithm 算法的基本思想是从前向后扫描数据，
+                    把位置i的数据随机插入到第i个（包括第i个）位置中（假设为k），这个操作是在新数组中进行，
+                    然后把原始数据中位置k的数字替换新数组位置i的数字。其实效果相当于新数组中位置k和位置i的数字进行交互。
+                </p>
+            </section>
+            <section>
+                <h3>再次玩牌</h3>
+                <p  style="width: 1500px;position: relative;right: 270px;">
+                    <button class="btn">3</button>
+                    <button class="btn">4</button>
+                    <button class="btn">5</button>
+                    <button class="btn">6</button>
+                    <button class="btn">7</button>
+                    <button class="btn">8</button>
+                    <button class="btn">9</button>
+                    <button class="btn">10</button>
+                    <button class="btn">J</button>
+                    <button class="btn">Q</button>
+                    <button class="btn">K</button>
+                    <button class="btn">A</button>
+                    <button class="btn">2</button>
+                </p>
+                <p id="demo" style="width: 1500px;position: relative;right: 270px;"></p>
+            </section>
+            <section>
+                <h3>效果示意</h3>
+                <img src="img/2018-7-5-C组-JS-3/2.gif" height="20%">
+            </section>
+        </section>
+
+        <!-- Sattolo算法 -->
+
+        <section>
+            <section>
+                <h3 style="text-align: center;">Fisher–Yates shuffle的变体:Sattolo算法 </h3>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    Sandra Sattolo于1986年发布了一种非常相似的算法
+                    当打算使用普通的Fisher-Yates shuffle时，很容易不经意间就实现了Sattolo算法
+                </p>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    核心思想和Fisher–Yates shuffle算法完全一致,
+                    区别在于:在原始数组上对数字进行交互，减小了空间复杂度
+                    每次从未处理的数据中随机取出一个数字，
+                    然后把该数字放在整个数组的尾部，即数组尾部存放的是已经处理过的数字,
+                    具体步骤如下：
+                </p>
+                <ol>
+                    <li>写下从 1 到 N 的数字</li>
+                    <li>取一个从 1 到剩下的数字（包括这个数字）的随机数 k</li>
+                    <li>从低位开始，从未处理的数据中得到第 k 个数字（这个数字还没有被取出），把它写在当前列表的最后一位</li>
+                    <li>重复第 2 步，直到所有的数字都被取出</li>
+                    <li>第 3 步在当前序列的基础上,改造成了一个随机排列的数列</li>
+                </ol>
+            </section>
+            <section>
+                <h3>再次玩牌</h3>
+                <p  style="width: 1500px;position: relative;right: 270px;" id="demo2">
+                    <button class="btn2">3</button>
+                    <button class="btn2">4</button>
+                    <button class="btn2">5</button>
+                    <button class="btn2">6</button>
+                    <button class="btn2">7</button>
+                    <button class="btn2">8</button>
+                    <button class="btn2">9</button>
+                    <button class="btn2">10</button>
+                    <button class="btn2">J</button>
+                    <button class="btn2">Q</button>
+                    <button class="btn2">K</button>
+                    <button class="btn2">A</button>
+                    <button class="btn2">2</button>
+                </p>
+            </section>
+            <section>
+                <h3>效果示意</h3>
+                <img src="img/2018-7-5-C组-JS-3/2.gif" height="20%">
+            </section>
+        </section>
+        
+        <!-- 常见问题 -->
+
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            <p>问题1:如何评判一个洗牌算法的优劣</p>
+        </section>
+
+        <!-- 解决方案 -->
+
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            <section>
+                <h3>评判一个洗牌算法优劣的标准有哪些?</h3>
+                <ul>
+                    <li>算法必须是正确的,可以使用数学方法证明其正确性</li>
+                    <li>算法应该是友好的，便于人们理解和交流，并且是机器可执行的</li>
+                    <li>算法需要足够健壮，即当输入的数据非法或不合理时，也能适当的做出正确的反应或进行相应的处理</li>
+                    
+                </ul>
+            </section>
+            <section>
+                <h3>核心概念:算法复杂度</h3>
+                <p style="text-align: left;">算法复杂度是指算法在编写成可执行程序后，运行时所需要的资源，资源包括时间资源和内存资源。</p>
+            </section>
+            <section style="text-align: left;">
+                <h4>时间复杂度是指执行算法所需要的计算工作量</h4>
+                <ul>
+                    <li>最优时间复杂度 (Best-Case)</li>
+                    <li>平均时间复杂度 (Average-Case)</li>
+                    <li>最差时间复杂度 (Worst-Case)</li>
+                </ul> <hr>
+                <h4>空间复杂度是指执行这个算法所需要的内存空间</h4>
+                <ul>
+                    <li>算法程序所占的空间；</li>
+                    <li>输入的初始数据所占的存储空间；</li>
+                    <li>算法执行过程中所需要的额外空间。</li>
+                </ul>
+            </section>
+        </section>
+
+        <!-- 编码实战 -->
+
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+
+        <!-- 拓展思考 -->
+
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+            <section>
+                <h3>问题一:由计算机生成的随机数满足概率分布的随机性吗?</h3>
+            </section>
+            <section>
+                <h3>伪随机数的概念</h3>
+                <p style="text-align: left">
+                    伪随机数是用确定性的算法计算出来的似来自[0,1]均匀分布的随机数序列。
+                    并不真正的随机，但具有类似于随机数的统计特征，如均匀性、独立性等。
+                    在计算伪随机数时，若使用的初值（种子）不变，那么伪随机数的数序也不变。
+                    伪随机数可以用计算机大量生成，在模拟研究中为了提高模拟效率，一般采用伪随机数代替真正的随机数。
+                    模拟中使用的一般是循环周期极长并能通过随机数检验的伪随机数，以保证计算结果的随机性。
+                </p>
+            </section> 
+            <section>
+                <h4>伪随机数的生成方法主要有以下3种：</h4>
+                <ul>
+                    <li>直接法（Direct Method）根据分布函数的物理意义生成。缺点是仅适用于某些具有特殊分布的随机数，如二项式分布、泊松分布。</li>
+                    <li>逆转法（Inversion Method）该方法原理简单、编程方便、适用性广。伪随机数生成器（PRNG）一般采用逆转法，其基础是均匀分布</li>
+                    <li>接受拒绝法（Acceptance-Rejection Method）</li>
+                </ul>
+            </section>
+        </section>
+
+        <!-- 参考文献 -->
+
+        <section>
+            <h3>7.参考文献</h3>
+        </section>
+        <section style="text-align: left;">
+            <p>参考一：<a href="https://gaohaoyang.github.io/2016/10/16/shuffle-algorithm/">Fisher–Yates shuffle 洗牌算法</a></p>
+            <p>参考二：<a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle" target="_blank">Fisher–Yates shuffle From Wikipedia</a></p>
+            <p>参考三：<a href="https://bost.ocks.org/mike/shuffle/compare.html" target="_blank">Will It Shuffle?from Mike Bostock</a></p>
+            <p>参考四：<a href="https://bost.ocks.org/mike/shuffle/" target="_blank">Fisher-Yates Shuffle from Mike Bostock</a></p>
+        </section>
+
+        <!-- 更多讨论 -->
+
+        <section>
+            <h3>8.更多讨论</h3>
+            <section>
+                <p>伪随机?真随机?宇宙中是否存在真正的随机?</p>
+            </section>
+        </section>
+
+        <!-- 鸣谢 -->
+        
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p><small>BY : 严泽浩</small></p>
+        </section>
+    </div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: '../plugin/markdown/marked.js' },
+            { src: '../plugin/markdown/markdown.js' },
+            { src: '../plugin/notes/notes.js', async: true },
+            { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status He
