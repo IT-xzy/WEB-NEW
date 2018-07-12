@@ -325,7 +325,7 @@ body {
   margin: auto;
   overflow: visible;
   z-index: 1;
-  text-align: center;
+  /*text-align: center;*/
   -webkit-perspective: 600px;
           perspective: 600px;
   -webkit-perspective-origin: 50% 40%;
