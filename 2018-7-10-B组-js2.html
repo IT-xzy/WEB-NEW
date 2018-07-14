@@ -1,0 +1,296 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' :
+            '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        .reveal pre code {
+            background-color: #120;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h3>常见Dom操作有哪些？</h3>
+                <h4>小课堂【北京-WEB-B组】</h4>
+                <h4>分享人：刘仁瑞</h4>
+
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <section>
+                    <h3>1.背景介绍</h3>
+                </section>
+                <section>
+                    <h4>DOM （文档对象模型(Document Object Model)）</h4>
+
+                    <p>
+                        <br /> DOM（文档对象模型）是针对HTML 和XML 文档的一个API（应用程序编程接口）。
+                        <br />DOM描 绘了一个层次化的节点树，允许开发人员添加、移除和修改页面的某一部分。
+                        <br />DOM脱胎于 Netscape 及微软公司创始的DHTML（动态HTML），但现在它已经成为表现和操作页面标记的真正的跨 平台、语言中立的方式。
+                    </p>
+                </section>
+                <section>
+                    <p>1998 年10 月DOM１级规范成为W3C 的推荐标准，为基本的文档结构及查询提供了接口。
+                        <br />目前IE、Firefox、Safari、Chrome 和Opera 都非常完善地实现了DOM。</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>2.知识剖析</h3>
+                </section>
+                <section>
+                    <h4>什么是DOM</h4>
+                    <p>
+                        <br />DOM 是 Document Object Model（文档对象模型）的缩写。
+                        <br /> DOM是中立于平台和语言的接口，它允许程序和脚本动态地访问和更新文档的内容、结构和样式。
+                        <br /> 在 HTML DOM中，所有事物都是节点。DOM 是被视为节点树的 HTML。</p>
+                </section>
+                <section>
+                    <h4>什么是DOM节点</h4>
+                    <p>
+                        <br /> HTML 文档中的所有内容都是节点
+                        <br /> 整个文档是一个文档节点
+                        <br /> 每个 HTML 元素是元素节点
+                        <br /> HTML 元素内的文本是文本节点
+                        <br /> 每个 HTML 属性是属性节点
+                        <br /> 注释是注释节点
+                    </p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    <h4>常见的DOM操作有哪些？</h4>
+                    <p>
+                        <br />1.查找节点
+                        <br />2.新建节点
+                        <br />3.添加新节点
+                        <br />4.删除节点
+                        <br />5.修改节点
+                        <br />
+                        <br />我们用到最多的是element类型，用于表现HTML元素，提供了对元素标签名、子节点及特性的访问。
+                    </p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+                <section>
+                    <p>查找节点
+                        <br />
+                        <br /> document.getElementById('#id'); 通过id查找元素，大小写敏感，如果有多个id只找到第一个
+                        <br />
+                        <br /> document.getElementsByClassName('.class');通过类名查找元素，返回拥有指定class的对象集合,有length属性，可以通过索引号访问里面的某一个元素
+                        <br />
+                        <br /> document.getElementsByTagName('标签名');通过标签名查找元素，返回拥有指定标签名的对象集合
+                    </p>
+                </section>
+                <section>
+                    <p>
+
+                        <br /> document.getElementsByName('name');通过name属性查号查找，返回一个节点集合，有length属性，可以通过索引号访问
+                        <br />
+                        <br />html5新加标签（ie8+）
+                        <br />document.querySelector(); // 返回单个node，如果有多个匹配元素就返回第一个
+                        <br />document.querySelectorAll(); // 返回一个nodeList集合
+
+                    </p>
+                </section>
+                <section>
+                    <h4>新建节点</h4>
+                    <p>创建元素，只是创建出来并未添加到html中，需要与appendChild 配合使用
+                        <br /> document.createElement('元素名');
+                        <br /> 创建新的元素节点
+                        <br /> document.createAttribute('属性名');
+                        <br /> 创建新的属性节点
+                        <br /> document.createTextNode('文本内容');
+                        <br /> 创建新的文本节点
+                        <br /> document.createComment('注释节点');
+                        <br /> 创建新的注释节点
+                        <br /> document.createDocumentFragment( );
+                        <br /> 创建文档片段节点
+                        <br /> 节点.cloneNode(true);
+                        <br /> 克隆节点（需要接受一个参数来表示是否复制元素）
+                    </p>
+                </section>
+                <section>
+                    <h4>添加节点</h4>
+                    <p>
+                        <br />appendChild ()
+                        <br />用法是： parent.appendChild(child)
+                        <br />会将child节点添加到parent里的最后面，如果子节点原本就存在，会移除原节点，添加新节点到最后，但是事件会保留
+                        <br />
+                        <br />insertBefore()
+                        <br />用法是 parent.insertBefore(newNode,refNode);
+                        <br />refNode 是必须传的 不传会报错,如果 refNode 是undefined 和null 就会将新节点传入到parent节点的最后
+                        <br />
+                        <br />replaceChild()
+                        <br />用法是：parent.replaceChild(newChild, oldChild);
+                    </p>
+                </section>
+                <section>
+                    <h4>删除节点</h4>
+                    <p>
+                        <br /> parentNode.removeChild( existingChild );
+                        <br />删除已有的子节点，返回值为删除节点
+                        <br />
+                        <br /> element.removeAttribute('属性名');
+                        <br />删除具有指定属性名称的属性，无返回值
+                        <br />
+                        <br /> element.removeAttributeNode( attrNode );
+                        <br />删除指定属性，返回值为删除的属性
+                    </p>
+                </section>
+                <section>
+                    <h4>修改节点</h4>
+                    <p>
+                        <br />element.innerText='新增文本内容';常用来添加文本节点
+                        <br />
+                        <br />element.innerHTML="可带标签的内容";
+                        <br />
+                        <br /> element.setAttribute( attributeName, attributeValue );
+                        <br />添加属性节点，修改属性值
+                        <br />
+                        <br />elem.style.样式
+                        <br />直接修改节点样式
+                    </p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>5.编码实战</h3>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>6.扩展思考</h3>
+                </section>
+                <section>
+                    <h4>DOM事件</h4>
+                    <p>
+                        <br /> 允许 JavaScript 对 HTML 事件作出反应
+                        <br /> onclick 事件——当用户点击时
+                        <br /> onload 事件——用户进入
+                        <br /> onunload 事件——用户离开
+                        <br /> onmouseover事件——鼠标移入
+                        <br /> onmouseout事件——鼠标移出
+                        <br /> onmousedown事件——鼠标按下
+                        <br /> onmouseup 事件——鼠标抬起
+                    </p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>7.参考文献</h3>
+                </section>
+                <section>
+                    参考一：《JavaScript高级程序设计》
+                    <br> 参考二：
+                    <a href="https://blog.csdn.net/dl2295630178/article/details/70231056">CSDN</a>
+                    <br> 参考三：
+                    <a href="http://www.w3school.com.cn/htmldom/">w3school</a>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>8.更多讨论</h3>
+                </section>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    By 刘仁瑞
+                </p>
+            </section>
+        </div>
+    </div>
+    <script src="lib/reveal/js/head.min.js"></script>
+    <script src="lib/reveal/reveal.js"></script>
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        //  controls: true, // 是否在右下角展示控制条
+        //  progress: true, // 是否显示演示的进度条
+        //  slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        //  history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        //  keyboard: true, // 是否启用键盘快捷键来导航
+        //  overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        //  center: true, // 是否将幻灯片垂直居中
+        //  touch: true, // 是否在触屏设备上启用触摸滑动切换
+        //  loop: false, // 是否循环演示
+        //  rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        //  fragments: true, // 全局开启和关闭碎片。
+        //  autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        //  transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        //  transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        //  mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>

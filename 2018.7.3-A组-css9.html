@@ -1,0 +1,408 @@
+<<<<<<< HEAD
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<style>
+    .p-style>p {
+        font-size: 20px;
+        text-align: left;
+        padding-bottom: 20px;
+    }
+</style>
+
+<body>
+    <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h4>小课堂【上海】</h4>
+                <h4>bootstrap</h4>
+                <h4>分享人：何岳</h4>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <p style="font-size: 30px;letter-spacing: 3px;">前言</p>
+                <p style="font-size: 30px;text-align: left;">打个比方：如果需要做一个ppt，是从空白页开始制作块呢？还是下载一个模板，将图片文字替换进去更快呢？ 所以使用bootstrap框架的可以速度和效率的生成一个html5网页</p>
+                <p style="font-size: 30px;text-align: left;">Bootstrap来自Twitter，是目前最受欢迎的前端框架。Bootstrap 是基于 HTML、CSS、JAVASCRIPT 的，它简洁灵活，使得 Web 开发更加快捷。</p>
+            </section>
+
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+
+            <section>
+                <h3>如何关联bootstrap</h3>
+                <p style="font-size: 30px;text-align: left;">1.1下载编译后的bootstrap文档,link标签本地关联</p>
+                <p style="font-size: 30px;text-align: left;">1.2引用cdn,如下:</p>
+                <p style="font-size: 30px;text-align: left;">&lt;link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"&gt;</p>
+                <p style="font-size: 30px;text-align: left;">&lt;script&gt; src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"&lt;/script&gt;</p>
+                <p style="font-size: 30px;text-align: left;">&lt;script&gt; src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"&lt;/script&gt;</p>
+            </section>
+
+            <section>
+                <h3>如何进行栅格布局</h3>
+                <p style="font-size: 30px;text-align: center;">认识container，row，column</p>
+            </section>
+
+            <section>
+                <h3>每种格栅的临界点</h3>
+                <p style="font-size: 30px;text-align: center;">sm——min-width: 768px</p>
+                <p style="font-size: 30px;text-align: center;">md——min-width: 992px</p>
+                <p style="font-size: 30px;text-align: center;">lg——min-width:1200px</p>
+            </section>
+
+            <section>
+                <h3>混合使用格栅</h3>
+                <p style="font-size: 30px;text-align: center;">我们假设设备宽度为x</p>
+                <p style="font-size: 30px;text-align: center;">768px≤x＜992px,会按照col-sm-x排列</p>
+                <p style="font-size: 30px;text-align: center;">992px≤x＜1200px,会按照col-md-x排列</p>
+                <p style="font-size: 30px;text-align: center;">x≥1200px,会按照col-lg-x排列</p>
+            </section>
+
+            <section>
+                <h3>格栅位置的推拉（在bootatrap 3中使用push/pull来实现）</h3>
+                <p style="font-size: 30px;text-align: left;">push和pull可以用来给元素换位置 比如： 左边的push(推到)右边，右边的pull(拉到)左边</p>
+            </section>
+
+            <section>
+                <h3>格栅的嵌套使用</h3>
+                <p style="font-size: 30px;text-align: left;">在分下来的格栅中依然可以再插入一个row并且下级依然可以再嵌套</p>
+            </section>
+
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+
+            <section>
+                <h3>4.解决方案</h3>
+            </section>
+
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+
+            <section>
+                <h3>6.扩展思考</h3>
+            </section>
+
+            <section>
+                <h3>7.参考文献</h3>
+                <p>http://www.runoob.com/bootstrap/bootstrap-tutorial.html</p>
+            </section>
+            <section>
+                <h3>8.更多讨论</h3>
+            </section>
+            <section>
+                <p>讨论时间到，欢迎大家提问！
+                </p>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>By
+                    <small style="vertical-align: middle">何岳</small>
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+=======
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<style>
+    .p-style>p {
+        font-size: 20px;
+        text-align: left;
+        padding-bottom: 20px;
+    }
+</style>
+
+<body>
+    <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h4>小课堂【上海】</h4>
+                <h4>bootstrap</h4>
+                <h4>分享人：何岳</h4>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <p style="font-size: 30px;letter-spacing: 3px;">前言</p>
+                <p style="font-size: 30px;text-align: left;">打个比方：如果需要做一个ppt，是从空白页开始制作块呢？还是下载一个模板，将图片文字替换进去更快呢？ 所以使用bootstrap框架的可以速度和效率的生成一个html5网页</p>
+                <p style="font-size: 30px;text-align: left;">Bootstrap来自Twitter，是目前最受欢迎的前端框架。Bootstrap 是基于 HTML、CSS、JAVASCRIPT 的，它简洁灵活，使得 Web 开发更加快捷。</p>
+            </section>
+
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+
+            <section>
+                <h3>如何关联bootstrap</h3>
+                <p style="font-size: 30px;text-align: left;">1.1下载编译后的bootstrap文档,link标签本地关联</p>
+                <p style="font-size: 30px;text-align: left;">1.2引用cdn,如下:</p>
+                <p style="font-size: 30px;text-align: left;">&lt;link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"&gt;</p>
+                <p style="font-size: 30px;text-align: left;">&lt;script&gt; src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"&lt;/script&gt;</p>
+                <p style="font-size: 30px;text-align: left;">&lt;script&gt; src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"&lt;/script&gt;</p>
+            </section>
+
+            <section>
+                <h3>如何进行栅格布局</h3>
+                <p style="font-size: 30px;text-align: center;">认识container，row，column</p>
+            </section>
+
+            <section>
+                <h3>每种格栅的临界点</h3>
+                <p style="font-size: 30px;text-align: center;">sm——min-width: 768px</p>
+                <p style="font-size: 30px;text-align: center;">md——min-width: 992px</p>
+                <p style="font-size: 30px;text-align: center;">lg——min-width:1200px</p>
+            </section>
+
+            <section>
+                <h3>混合使用格栅</h3>
+                <p style="font-size: 30px;text-align: center;">我们假设设备宽度为x</p>
+                <p style="font-size: 30px;text-align: center;">768px≤x＜992px,会按照col-sm-x排列</p>
+                <p style="font-size: 30px;text-align: center;">992px≤x＜1200px,会按照col-md-x排列</p>
+                <p style="font-size: 30px;text-align: center;">x≥1200px,会按照col-lg-x排列</p>
+            </section>
+
+            <section>
+                <h3>格栅位置的推拉（在bootatrap 3中使用push/pull来实现）</h3>
+                <p style="font-size: 30px;text-align: left;">push和pull可以用来给元素换位置 比如： 左边的push(推到)右边，右边的pull(拉到)左边</p>
+            </section>
+
+            <section>
+                <h3>格栅的嵌套使用</h3>
+                <p style="font-size: 30px;text-align: left;">在分下来的格栅中依然可以再插入一个row并且下级依然可以再嵌套</p>
+            </section>
+
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+
+            <section>
+                <h3>4.解决方案</h3>
+            </section>
+
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+
+            <section>
+                <h3>6.扩展思考</h3>
+            </section>
+
+            <section>
+                <h3>7.参考文献</h3>
+                <p>http://www.runoob.com/bootstrap/bootstrap-tutorial.html</p>
+            </section>
+            <section>
+                <h3>8.更多讨论</h3>
+            </section>
+            <section>
+                <p>讨论时间到，欢迎大家提问！
+                </p>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>By
+                    <small style="vertical-align: middle">何岳</small>
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+>>>>>>> fa0b1ad900bc456f1ed6e9ddf00d9bc611fe0bfe
+</html>

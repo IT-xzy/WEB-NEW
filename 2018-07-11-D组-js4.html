@@ -1,0 +1,239 @@
+﻿<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+    </map>
+    <div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+        <div class="slides" style="width: 960px; height: 700px; zoom: 1.15586;">
+            <section class="present" style="top: 178px; display: block;">
+                <h2>什么是回调函数？</h2>
+                <p>分享人: 刘泽华</p>
+            </section>
+
+
+            <section hidden="" aria-hidden="true" class="future" style="top: 66.5px; display: block;">
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.参考文献</p>
+            </section>
+
+            <!-- 1 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 0px; display: block;">
+                <section style="top: 267px; display: block;">
+                    <h3>1.背景介绍</h3>
+                </section>
+
+                <section>
+                    回调函数就是一个通过函数指针调用的函数。如果你把函数的指针（地址）作为参数传递给另一个函数，当这个指针被用为调用它所指向的函数时，我们就说这是回调函数。回调函数不是由该函数的实现方直接调用，而是在特定的事件或条件发生时由另外的一方调用的，用于对该事件或条件进行响应。
+                </section>
+                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                    <P>想弄明白回调函数，首先的清楚地明白函数的规则。在javascript中，函数是比较奇怪的，但它确确实实是对象。确切地说，函数是用Function()构造函数创建的Function对象。Function对象包含一个字符串，字符串包含函数的javascript代码。</P>
+                </section>
+                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                    因此很容易让一个函数作为参数来进行传递，并且发挥它应有的功能。
+                    <p style="text-align: left">function fn(arg1, arg2, callback){
+                        <br> var num = Math.ceil(Math.random() * (arg1 - arg2) + arg2);
+                        <br> callback(num);　　//传递结果
+                        <br> }
+                        <br> fn(10, 20, function(num){
+                        <br> console.log("Callback called! Num: " + num);
+                        <br> });　　　　//结果为10和20之间的随机数 </p>
+                </section>
+            </section>
+
+
+            <!-- 2 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <h3>2.知识剖析</h3>
+                </section>
+                <section>
+                    你到一个商店买东西，刚好你要的东西没有货，于是你在店员那里留下了你的电话，过了几天店里有货了，店员就打了你的电话，然后你接到电话后就到店里去取了货。在这个例子里，你的电话号码就叫回调函数，你把电话留给店员就叫登记回调函数，店里后来有货了叫做触发了回调关联的事件，店员给你打电话叫做调用回调函数，你到店里去取货叫做响应回调事件。
+                </section>
+                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                    <h4>什么是回调或者高阶函数?</h4>
+                    <p>一个回调函数，也被称为高阶函数，是一个被作为参数传递给另一个函数。一个回调函数本质上是一种编程模式（为一个常见问题创建的解决方案），因此，使用回调函数也叫做回调模式。</p>
+                </section>
+                <section>
+                    <h3>一个常见的回调函数</h3>
+                    $("#btn_1").click(function() {
+                    <br> alert("Btn 1 Clicked");
+                    <br> });
+                    <br>
+                </section>
+            </section>
+
+            <!-- 3 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    回调函数在各种语言中都很常见，而它们和js中的回调函数还是有一定区别的。
+                    <br> 很多人都以为回调函数是异步的，在js中回调函数和是同步还是异步并没有关系。
+                    <br> 回调函数会在调用它的时候进入队列执行，至于是同步执行还是异步执行，则取决于这个回调函数本身的执行方式
+                    <br>
+                </section>
+
+                <section>
+                    回调函数易混淆点——传参 如果回调函数需要传参，如何做到，这里介绍两种解决方案。
+                    <br> 将回调函数的参数作为与回调函数同等级的参数进行传递
+                    <br> 回调函数的参数在调用回调函数内部创建 回调函数参数在调用回调函数内部创建
+                </section>
+            </section>
+
+            <!-- 4 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <h3>4.解决方案</h3>
+                </section>
+            </section>
+
+
+            <!-- 5 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <h3>5.编码实战</h3>
+                </section>
+            </section>
+
+            <!-- 6 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <h3>6.参考文献</h3>
+                    <p>什么是回调函数？</p>
+                    <p>https://www.jb51.net/article/54750.htm</p>
+                </section>
+            </section>
+            </section>
+
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>BY: 刘泽华</p>
+            </section>
+        </div>
+        <div class="backgrounds">
+            <div class="slide-background past" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background stack present" data-loaded="true" style="display: block;">
+                <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+                <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+            </div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+        </div>
+        <div class="progress" style="display: block;">
+            <span style="width: 260.19px;"></span>
+        </div>
+        <aside class="controls" style="display: block;">
+            <button class="navigate-left enabled" aria-label="previous slide"></button>
+            <button class="navigate-right enabled" aria-label="next slide"></button>
+            <button class="navigate-up enabled" aria-label="above slide"></button>
+            <button class="navigate-down" aria-label="below slide"></button>
+        </aside>
+        <div class="slide-number" style="display: none;"></div>
+        <div class="speaker-notes" data-prevent-swipe=""></div>
+        <div class="pause-overlay"></div>
+        <div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+
+            语法： return[()[expression][]]; 可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。 用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression
+            被省略， 或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 初始化幻灯片
+
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: './plugin/markdown/marked.js'
+                },
+                {
+                    src: './plugin/markdown/markdown.js'
+                },
+                {
+                    src: './plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: './plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+
+</body>
+
+</html>
