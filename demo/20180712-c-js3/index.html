@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        button{
+            display: block;
+            margin: 20px auto;
+            padding: 5px;
+            background: #ffaa22;
+            color: #fff;
+            min-width: 200px;
+            border: 1px solid #ffaa22;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="window_lhref()">我是url传参</button>
+    <button onclick="setSession()">我是存sessionStorage</button>
+    <button onclick="getSession()">我是取sessionStorage</button>
+    <button onclick="setLocation()">我是存locationStorage</button>
+    <button onclick="getLocation()">我是取locationStorage</button>
+    <button onclick="setCookie()">我是存cookie</button>
+    <button onclick="getCookie()">我是取cookie</button>
+
+    
+    <form action="page2.html" method="get">
+        <input type="text" name="user" value="laozhang">
+        <input type="text" name="pwd" value="666666">
+        <input type="submit" value="通过传递参数">
+    </form>    
+        
+</body>
+<script src="main.js"></script>
+</html>
