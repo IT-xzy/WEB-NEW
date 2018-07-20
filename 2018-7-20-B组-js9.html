@@ -1,0 +1,267 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h3> angularjs双向绑定后，发生了什么事情？是什么可以让view层和controller层进行绑定的？ </h3>
+                <p>上海分院：顾配如</p>
+            </section>
+            <section>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <section>
+                    <h3>什么是双向绑定</h3>
+                    <p>双向数据绑定是 AngularJS 的核心机制之一。当 view 中有任何数据变化时，会更新到 model ，当 model 中数据有变化时，view 也会同步更新</p>
+                </section>
+                <section>
+                    <h3>双向数据绑定的原理？</h3>
+                    <p>Angular 在 scope 模型上设置了一个 监听队列，用来监听数据变化并更新 view 。 每次绑定一个东西到 view 上时 AngularJS 就会往 watch队列里插入一条 watch队列里插入一条watch，用来检测它监视的
+                        model 里是否有变化的东西。
+                        <br> 当你写下表达式如{{ val }}时，AngularJS在幕后会为你在scope模型上设置一个watcher（表达式将被 Angular 编译成一个监视函数），它用来在数据发生变化的时候更新view,
+                        这里的watcher和你会在AngularJS中设置的watcher是一样的：
+                    </p>
+                </section>
+                <section>
+                    <p> •将数据附加到 Scope 上，数据自身不会对性能产生影响，如果没有监视器来监视这个属性，那个这个属性在不在 Scope 上是无关重要的；Angular 并不会遍历 Scope 上的属性，它将遍历所有的观察器。
+                        <br> •每个监视函数是在每次 $digest 过程中被调用的。因此，我们要注意观察器的数量以及每个监视函数或者监视表达式的性能。</p>
+                </section>
+            </section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <section>
+                    <h3>angularjs双向绑定后，发生了什么事情？ 什么让view层和Controller层进行绑定的？
+                    </h3>
+                    <p>Angular双向绑定通过watch,digest和apply实现的。</p>
+                </section>
+                <section>
+                    <h3>watch序列</h3>
+                    <p>watch监控model中是否有变化，会记录last值，也就是改变后的值，每一个model都会增加一个watch到watch队列中。</p>
+                    <p>传递给$watch()的第二个参数称为监听器函数，当aModel的值发生变化时，它就被调用。我们很容易理解，当aModel的值发生改变，这个监听器就会被调用来更新HTML中的表达式。但是，还有一个很重要的问题！Angular是怎么判断什么时候调用这个监听器函数的呢？换句话说，AngularJS是如何知道aModel值是何时发生改变的，从而它可以调用相应的监听器函数呢？它是否定期运行一个函数来检查
+                        scope 模型的值是否已经改变了？好，这就是 $digest 循环的步骤。</p>
+                </section>
+                <section>
+                    <p>在 $digest 周期中，watcher 会被触发。当一个 watcher 被触发时，AngularJS将评估 scope 模型，如果它发生了变化，则调用相应的监听器函数。那么，我们的下一个问题是，这个
+                        $digest 循环是何时开始的。</p>
+                </section>
+                <section>
+                    <h3>$digest循环是在什么时候以各种方式开始的？</h3>
+                    <p>当浏览器接收到可以被 angular context 处理的事件时，digest循环就会触发，，遍历所有的watch，最后更新 dom。假设你通过ng-click指令在处理程序函数中更改了一个scope模型。在这种情况下，AngularJS会通过调用
+                        $digest() 自动触发一个 $digest 循环。当 $digest 循环开始的时候，它就会触发每一个 watcher。这些 watcher 会检查scope模型的当前值是否与上次计算得到的值不同。如果不同，则执行相应的监听器函数。因此，如果在视图中有任何表达式，它们将被更新。除了ng-click之外，还有其他一些内置的指令/服务可以让你更改模型（例如ng-model、$timeout
+                        等），并自动触发一个 $digest 循环。</p>
+                </section>
+                <section>
+                    <h3>举个例子</h3>
+                    <p>click 时会产生一次更新的操作（至少触发两次 $digest 循环）
+                        <br> •按下按钮 •浏览器接收到一个事件，进入到 angular context
+                        <br> •digest循环开始执行，查询每个watch 是否变化
+                        <br> •由于监视 scope.val的 scope.val的watch 报告了变化，因此强制再执行一次 $digest 循环
+                        <br> •新的 $digest 循环未检测到变化 •浏览器拿回控制器，更新 $scope. val.新值对应的 dom
+                    </p>
+                </section>
+                <section>
+                    到目前为止还不错！但是，这里有一个小问题。在上面的例子中，Angular并不直接调用 $digest()。相反，它调用 $scope.$apply()，而 $scope.$apply() 又会调用 $rootScope.$digest()。因此，一个
+                    $digest 循环开始于 $rootScope，随后会访问所有的child scopes，并在此过程中调用child scopes中的watchers。 现在，假设你将一个ng-click指令附加到一个按钮，并将一个函数名传递给它。当单击按钮时，AngularJS将函数调用包装在
+                    $scope.$apply() 中。因此，你的函数照常执行，更改模型（如果有的话），并开始一个 $digest 循环来确保你的更改反映在视图中。 注意：$scope.$apply() 自动调用 $rootScope.$digest()。$apply()
+                    函数有两种形式。第一种接受一个函数作为参数，执行这个函数，并触发一个 $digest 循环。第二种则不需要任何参数，在调用时只触发一个 $digest 循环
+
+                </section>
+                <section>
+                    <h3>$apply</h3>
+                    进行数据变化检查的实际上是$digest函数,但是我们往往不是直接使用$digest，而是使用$apply，$apply接收表达式或者函数作为参数后调用$digest来更新绑定部门以及监控器。实际上，Angular几乎在所有提供的代码中添加了$apply，如ng-click，初始controller，$http的回调操作，在这，你并不需要亲自调用
+                    $apply，而且重复的调用会引起错误。因此，当你运行了一个新阶段，并且这部分并不属于Angular库的情况下才需要使用$apply。这有一段关于setTimeout的代码，在经过了2000毫秒的延迟之后，代码进入执行了一个新的阶段，但是Angular并不知道数据有更新，因此更新并不会被显示。我们应该用angular
+                    JS提供的timeout方法，这样它就会被自动用 timeout方法，这样它就会被自动用apply方法包起来了
+                </section>
+                <section>
+                    <h3>•什么时候用$apply()</h3>
+                    <p>那我们到底什么时候需要去调用apply()方法呢？情况非常少，实际上几乎我们所有的代码都包在scope.apply()里面，像ng−click，controller的初始化，http的回调函数等。在这些情况下，我们不需要自己调用，实际上我们也不能自己调用，否则在apply()方法里面再调用
+                        apply()方法会抛出错误。如果我们需要在一个新的执行序列中运行代码时才真正需要用到它，而且当且仅当这个新的执行序列不是被angular JS的库的方法创建的，这个时候我们需要将代码用 scope.apply()包起来。</p>
+                </section>
+                <section>
+                    <h3>$digest 循环会运行多少次？</h3>
+                    <p>$digest 循环的上限是 10 次（超过 10次后抛出一个异常，防止无限循环）。 $digest 循环不会只运行一次。在当前的一次循环结束后，它会再执行一次循环用来检查是否有 models 发生了变化。
+                        这就是脏检查（Dirty Checking），它用来处理在 listener 函数被执行时可能引起的 model 变化。因此 digest循环会持续运行直到model不再发生变化，或者 digest循环会持续运行直到model不再发生变化，或者digest
+                        循环的次数达到了 10 次（超过 10 次后抛出一个异常，防止无限循环）。 当 $digest 循环结束时，DOM 相应地变化。
+                    </p>
+                </section>
+                <section>
+
+                    <head>脏检查如何被触发</head>
+                    <p>angular 会在可能触发 UI 变更的时候进行脏检查：这句话并不准确。实际上脏检查是digest执行的，另一个更常用的用于触发脏检查的函数apply——其实就是 $digest 的一个简单封装（还做了一些抓异常的工作）。 通常写代码时我们无需主动调用 apply或 apply或digest
+                        是因为 angular 在外部对我们的回调函数做了包装。例如常用的 ng-click，这是一个指令（Directive），$digest过程的逻辑就是检查watcher列表中的每一项，看当前值与上次的值是否相同，如果不同则调用listener回调函数。这就是dirty-checking的核心逻辑，
+                    </p>
+                </section>
+                <section>
+                    <h3>apply()和 apply()和digest() 的区别？</h3>
+                    <p>apply是 apply是scope（或者是 direcvie 里的 link 函数中的 scope）的一个函数，调用它会强制一次 digest循环（除非当前正在执行循环，这种情况下会抛出一个异常，这是我们不需要在那里执行
+                        digest循环（除非当前正在执行循环，这种情况下会抛出一个异常，这是我们不需要在那里执行apply 的标志）。
+                    </p>
+                </section>
+                <section>apply()和 apply()和digest() 有两个区别。
+                    <br> •1） 最直接的差异是， $apply 可以带参数，( //无参 $scope.$apply() //有参 $scope.$apply(function(){ ... }))它可以接受一个函数，然后在应用数据之后，调用这个函数。所以，一般在集成非
+                    Angular 框架（比如jQuery）的代码时，可以把代码写在这个里面调用。
+                    <br> •2） 当调用 digest的时候，只触发当前作用域和它的子作用域上的监控，但是当调用 digest的时候，只触发当前作用域和它的子作用域上的监控，但是当调用apply 的时候，会触发作用域树上的所有监控。
+                </section>
+            </section>
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+            <section>
+                <h3>在 AngularJS 中使用 $watch注意事项？</h3>
+            </section>
+            <section>
+                <h3>4.解决方案</h3>
+            </section>
+            <section>
+                如果要监听的是一个对象，那还需要第三个参数,表示比较的是对象的值而不是引用，如果不加第三个参数 true ，在 data.name 变化时，不会触发相应操作，因为引用的是同一引用。
+            </section>
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+            <section>
+                <h3>6.扩展思考</h3>
+            </section>
+            <section>
+                <h3>脏检查慢吗？</h3>
+            </section>
+            <section>
+                说实话脏检查效率是不高，但是也谈不上有多慢。简单的数字或字符串比较能有多慢呢？十几个表达式的脏检查可以直接忽略不计；上百个也可以接受；成百上千个就有很大问题了。绑定大量表达式时请注意所绑定的表达式效率。建议注意一下几点： •表达式（以及表达式所调用的函数）中少写太过复杂的逻辑
+                •不要连接太长的 filter（往往 filter 里都会遍历并且生成新数组） •不要访问 DOM 元素。
+                <br> 1、使用单次绑定减少绑定表达式数量 单次绑定（One-time binding 是 Angular 1.3 就引入的一种特殊的表达式，它以 :: 开头，当脏检查发现这种表达式的值不为 undefined 时就认为此表达式已经稳定，并取消对此表达式的监视。这是一种行之有效的减少绑定表达式数量的方法，与
+                ng-repeat 连用效果更佳，但过度使用也容易引发 bug。
+                <br> 2、善用 ng-if 减少绑定表达式的数量
+
+            </section>
+            <section>
+                <h3>脏检查的范围</h3>
+            </section>
+            <section>
+                angular 会对所有绑定到 UI 上的表达式做脏检查。其实，在 angular 实现内部，所有绑定表达式都被转换为 scope. scope.watch()。每个 watch记录了上一次表达式的值。有ng−bind="a"即有 watch记录了上一次表达式的值。有ng−bind="a"即有scope.watch(
+                ′ a ′ ,callback)，而 watch(′a′,callback)，而scope.$watch 可不会管被 watch 的表达式是否跟触发脏检查的事件有关。
+                <br> 举个例子
+                <br> 问：点击 TEST 这个按钮时会触发脏检查吗？触发几次？
+                <br> 首先：ng-click="" 什么都没有做。angular 会因为这个事件回调函数什么都没做就不进行脏检查吗？不会。
+                <br> 然后：#span1 被隐藏掉了，会检查绑定在它上面的表达式吗？尽管用户看不到，但是 scope. scope.watch('content', callback) 还在。就算你直接把这个 span 元素干掉，只要
+                watch 表达式还在，要检查的还会检查。
+
+            </section>
+            <section>
+                <br> 再次：重复的表达式会重复检查吗？会。
+                <br> 最后：别忘了 ng-show="false"。可能是因为 angular 的开发人员认为这种绑定常量的情况并不多见，所以 $watch 并没有识别所监视的表达式是否是常量。常量依旧会重复检查。
+                <br> 所以：
+                <br> 答：触发三次。一次 false，一次 content，一次 content
+            </section>
+            <section>
+                <br> 所以说一个绑定表达式只要放在当前 DOM 树里就会被监视，不管它是否可见，不管它是否被放在另一个 Tab 里，更不管它是否与用户操作相关。
+                <br> 另外，就算在不同 Controller 里构造的 scope也会互相影响，别忘了angular还有全局的 scope也会互相影响，别忘了angular还有全局的rootScope，你还可以 scope. scope.emit。angular
+                无法保证你绝对不会在一个 controller 里更改另一个 controller 生成的 scope，包括 自定义指令（Directive）生成的 scope 和 Angular 1.5 里新引入的组件（Component）。
+            </section>
+            <section>
+                <h3>7.参考文献</h3>
+            </section>
+            <section>
+
+            </section>
+            <section>
+                <h3>8.更多讨论</h3>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <h3>感谢观看</h3>
+                <p>
+                    <small>BY——顾配如</small>
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+            // 	center: true, // 是否将幻灯片垂直居中
+            // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+            // 	loop: false, // 是否循环演示
+            // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+            // 	fragments: true, // 全局开启和关闭碎片。
+            // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+            // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+            // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+            // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+            // }
+            // 初始化幻灯片
+            Reveal.initialize({
+                history: true,
+                dependencies: [{
+                        src: '../plugin/markdown/marked.js'
+                    },
+                    {
+                        src: '../plugin/markdown/markdown.js'
+                    },
+                    {
+                        src: '../plugin/notes/notes.js',
+                        async: true
+                    },
+                    {
+                        src: '../plugin/highlight/highlight.js',
+                        async: true,
+                        callback: function () {
+                            hljs.initHighlightingOnLoad();
+                        }
+                    }
+                ]
+            });
+    </script>
+</body>
+
+</html>
