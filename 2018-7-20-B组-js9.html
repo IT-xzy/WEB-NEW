@@ -129,8 +129,8 @@
                 <section>
 
                     <head>脏检查如何被触发</head>
-                    <p>angular 会在可能触发 UI 变更的时候进行脏检查：这句话并不准确。实际上脏检查是digest执行的，另一个更常用的用于触发脏检查的函数apply——其实就是 $digest 的一个简单封装（还做了一些抓异常的工作）。 通常写代码时我们无需主动调用 apply或 apply或digest
-                        是因为 angular 在外部对我们的回调函数做了包装。例如常用的 ng-click，这是一个指令（Directive），$digest过程的逻辑就是检查watcher列表中的每一项，看当前值与上次的值是否相同，如果不同则调用listener回调函数。这就是dirty-checking的核心逻辑，
+                    <p>angular 会在可能触发 UI 变更的时候进行脏检查：这句话并不准确。实际上脏检查是digest执行的，另一个更常用的用于触发脏检查的函数apply——其实就是 $digest 的一个简单封装（还做了一些抓异常的工作）。
+                        通常写代码时我们无需主动调用 apply或 apply或digest 是因为 angular 在外部对我们的回调函数做了包装。例如常用的 ng-click，这是一个指令（Directive），$digest过程的逻辑就是检查watcher列表中的每一项，看当前值与上次的值是否相同，如果不同则调用listener回调函数。这就是dirty-checking的核心逻辑，
                     </p>
                 </section>
                 <section>
@@ -202,7 +202,7 @@
                 <h3>7.参考文献</h3>
             </section>
             <section>
-
+                <p>https://www.cnblogs.com/zhoulujun/p/8881414.html</p>
             </section>
             <section>
                 <h3>8.更多讨论</h3>
