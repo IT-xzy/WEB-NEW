@@ -1,0 +1,204 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h3> angular2 创建应用，获取HTTP请求、配置路由</h3>
+                <p>上海分院：郑佳威</p>
+            </section>
+            <section>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <section>
+                    <p>
+                        速度与性能:
+                        <br> 1/代码生成 Angular会把你的模板转换成代码，针对现代JavaScript虚拟机进行高度优化，轻松获得框架提供的高生产率，同时又能保留所有手写代码的优点。
+                    </p>
+                    <p>
+                        <br>2/统一平台 在服务端渲染应用的首屏，像只有HTML和CSS的页面那样几乎瞬间展现，支持 Node.js®、.NET、PHP，以及其它服务器，为通过SEO来优化站点铺平了道路。
+                    </p>
+                    <p>
+                        <br>3/代码拆分 借助新的组件路由器，Angular可以实现快速加载。自动代码拆分机制可以让用户仅仅加载那些用于渲染所请求页面的代码
+                    </p>
+                </section>
+            </section>
+            <section>
+                <p>生产率</p>
+                <p>1/模板 通过简单而强大的模板语法，快速创建UI视图。
+                </p>
+                <p>2/Angular CLI 命令行工具：快速进入构建环节、添加组件和测试，然后立即部署。
+                </p>
+                <p>3/各种 IDE 在常用IDE和编辑器中获得智能代码补全、实时错误反馈及其它反馈等特性
+                </p>
+                <p></p>
+            </section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <p>1、创建新应用，大致介绍创建出来的文件夹和文件是干嘛用的</p>
+                <p>2、添加新组件并添加内容</p>
+                <p>3、配置HTTP请求</p>
+                <p>4、配置路由</p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+            </section>
+            <section>
+                <p>
+                    <code>
+                        1、 angular cli 命令行
+                        <br> ng new 文件名 （创建新的应用）
+                    </code>
+                </p>
+                <p>
+                    2、 ng serve --port **
+                    <br> 自定义端口号并开启应用
+                </p>
+                <p>
+                    <code>
+                        3、 ng generate component 组件名
+                        <br> 创建一个新组件
+                    </code>
+                </p>
+            </section>
+            <section>
+                <section>
+                    <p>
+                    </p>
+                </section>
+                <section>
+                    <p>
+                    </p>
+                </section>
+            </section>
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+            <section>
+            </section>
+            <section>
+            </section>
+
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+            <section>
+                <h3>6.扩展思考</h3>
+                <p>angular1 和 angular 之间有哪些显著的区别/ 希望大家能发到群里</p>
+            </section>
+
+            <section>
+            </section>
+            <section>
+                <h3>7.参考文献</h3>
+            </section>
+            <section>
+                <p>
+                </p>
+            </section>
+            <section>
+                <h3>8.更多讨论</h3>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <h3>感谢观看</h3>
+                <p>
+                    <small>BY——郑佳威</small>
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        controls: true; // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+            // 	center: true, // 是否将幻灯片垂直居中
+            // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+            // 	loop: false, // 是否循环演示
+            // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+            // 	fragments: true, // 全局开启和关闭碎片。
+            // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+            // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+            // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+            // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+            // }
+            // 初始化幻灯片
+            Reveal.initialize({
+                history: true,
+                dependencies: [{
+                        src: '../plugin/markdown/marked.js'
+                    },
+                    {
+                        src: '../plugin/markdown/markdown.js'
+                    },
+                    {
+                        src: '../plugin/notes/notes.js',
+                        async: true
+                    },
+                    {
+                        src: '../plugin/highlight/highlight.js',
+                        async: true,
+                        callback: function () {
+                            hljs.initHighlightingOnLoad();
+                        }
+                    }
+                ]
+            });
+    </script>
+</body>
+
+</html>
