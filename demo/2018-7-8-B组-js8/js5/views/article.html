@@ -1,0 +1,39 @@
+<!-- <div>
+    <p>scope参数选择不同值时的作用域情况对比</p>
+    <span>parent</span>
+    <div class="box" >
+        <span>parentName：{{parentName}}</span>
+        <input type="text" ng-model="parentName">
+        <span>scopeName：{{scopeName}}</span>
+        <input type="text" ng-model="scopeName">
+    </div>
+    <span>scop=False共享父作用域 </span>
+    <dir-f class="box"></dir-f> 
+    <span>scope=True继承父作用域，并且新建独立作用域 </span>
+    <dir-t class="box"></dir-t> 
+    <span>scope={}不继承父作用域，创建新的独立作用域</span>
+    <dir-o-n class="box"></dir-o-n> 
+    <span>scope={attrs}不继承父作用域，创建新的独立作用域</span>
+    <dir-o class="box"></dir-o> 
+</div>
+<accordion>
+    <expander class="expander"
+              ng-repeat="expander in expanders"
+              expander-title="expander.title">
+        {{expander.text}}
+    </expander>
+</accordion> -->
+<hello-world></hello-world>
+<hello-world2 title='我是第二个directive'></hello-world2>
+<hello></hello>
+
+
+父亲:{{name}}
+<input ng-model="name" />
+<div my-directive></div>
+</div>
+<script type='text/ng-template' id='hello.html'>
+    <div>
+        <h1>Hi 我是阿强</h1>
+    </div>
+</script>
