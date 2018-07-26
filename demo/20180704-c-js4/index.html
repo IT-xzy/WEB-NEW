@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event Delegate</title>
+    <style type="text/css">
+        #ull {
+            width: 600px;
+            background: red;
+        }
+
+        #ull li {
+            margin: 20px;
+            width: 100px;
+            height: 2rem;
+            background: orange;
+        }
+
+        .dsn {
+            display: none;
+        }
+
+        .dsb {
+            width: 400px;
+            display: block;
+        }
+        #box {
+            margin-top: 200px;
+            margin-bottom: 200px;
+        }
+    
+        #ul2 li {
+            float: left;
+            margin:50px ;
+            width: 50px;
+            height: 50px;
+            background: #fff;
+        }
+        #ul2 {
+            overflow: hidden;
+            background: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div>实现的功能是点击四个儿子分别弹出123</div>
+    <ul id="ull">
+        <li class="li4" data-index="0">老大</li>
+        <li class="li4" data-index="1">老二</li>
+        <li class="li4" data-index="2">老三</li>
+        <li class="li4" data-index="3">老四</li>
+    </ul>
+    <p class="dsn">普通的做法是在每个li上添加onclick事件
+        <br>我们看看有多少次的dom操作，首先要找到ul，然后遍历li，然后点击li的时候，又要找一次目标的 li的位置，才能执行最后的操作，每次点击都要找一次li
+    </p>
+    <button id="btn1">show</button>
+
+    <div id="box">
+        <input data-index="0" type="button" id="add" value="添加" />
+        <input data-index="1" type="button" id="remove" value="删除" />
+        <input data-index="2" type="button" id="move" value="移动" />
+        <input data-index="3" type="button" id="select" value="选择" />
+    </div>
+    <ul id="ul2">
+        <li id="red"></li>
+        <li id="orange"></li>
+    </ul>
+    
+    <button id="add1">新增</button>
+    
+    
+
+</body>
+<script src="main.js"></script>
+
+</html>

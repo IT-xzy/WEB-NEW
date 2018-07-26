@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : 'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides"
+         style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h2>【CSS-task13】</h2>
+            <h3>如何做默认样式重置？resetting 和normalizing  之间有什么区别？
+</h3>
+            <p>分享人：叶泽彪</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+        <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <section>
+            <h4>CSS Reset</h4>
+            <p>css reset的功能就是把网页标签样式使用 css 重置。html 标签是有它默认的样式的，例如：h2标签表示标题，通常会对文字进行加粗，并且会让文字变大；p是段落标签，表示一个段落，通常会与其他文字空开一段距离。
+            </p>
+            <p>内核不同的浏览器，它对于网页标签的解析是不同的。比如，a标签添加链接后，在chrome里点击的时候显示红色。在edge里点击则不会显示红色。这样，同一个网页，在不同浏览器的浏览下，就会发生较大的区别，可能在某浏览器中是正常的，在另一个浏览器中，就不正常了。不同浏览器的默认样式可能会干扰我们实际想要的效果，所以我们需要一个确定的、一致的、跨浏览器的默认样式作为基础，这就是为什么要使用CSS重置。
+            </p>
+        </section>
+        <section>
+            <h4>Normalize.css</h4>
+            <p>Normalize.css 只是一个很小的CSS文件，但它在默认的HTML元素样式上提供了跨浏览器的高度一致性。相比于传统的CSS reset，Normalize.css是一种现代的、为HTML5准备的优质替代方案。
+            </p>
+        </section>
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            <h4>CSS Reset</h4>
+            <p> 目前在网络上，已经有很多关于css reset的框架，例如雅虎的 YUI 等，我们可以下载下来看看他们是怎么写的，是怎么处理的。同时也可以直接在网页中引用。但是对于小的页面，并不推荐这种做法，那些大的框架，适合大型网站使用，里面几乎对所有的html标签进行了css reset，而我们制作的小页面，并不需要太多的标签，如果使用那么多无用的css reset代码，会导致页面体积变大。推荐的做法是，根据自己页面用到的标签，去寻找相应的css reset代码。
+            </p>
+        </section>
+        <section>
+            <h4>Normalize.css</h4>
+            <h5> Normalize.css支持包括手机浏览器在内的超多浏览器，同时对HTML5元素、排版、列表、嵌入的内容、表单和表格都进行了一般化。</h5>
+            <P>1.保护有用的浏览器默认样式而不是完全去掉它们</P>
+            <P>2.一般化的样式：为大部分HTML元素提供</P>
+            <P>3.修复浏览器自身的bug并保证各浏览器的一致性</P>
+            <P>4.优化CSS可用性：用一些小技巧</P>
+            <P>5.解释代码：用注释和详细的文档来</P>
+        </section>
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            <h4>Normalize.css和传统Css Reset的区别</h4>
+        </section>
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            <h4>1. Normalize.css 保护了有价值的默认值</h4>
+          	<p>
+          		Reset通过为几乎所有的元素施加默认样式，强行使得元素有相同的视觉效果。Normalize.css保持了许多默认的浏览器样式。这就意味着你不用再为所有公共的排版元素重新设置样式。当一个元素在不同的浏览器中有不同的默认值时，Normalize.css会力求让这些样式保持一致并尽可能与现代标准相符合。
+          	</p>
+        </section>
+        <section>
+            <h4>2. Normalize.css 修复了浏览器的bug</h4>
+          	<p>
+          		它修复了常见的桌面端和移动端浏览器的bug。这往往超出了Reset所能做到的范畴。关于这一点，Normalize.css修复的问题包含了HTML5元素的显示设置、预格式化文字的font-size问题、在IE9中SVG的溢出、许多出现在各浏览器和操作系统中的与表单相关的bug。
+          	</p>
+        </section>
+        <section>
+            <h4>3. Normalize.css 不会让你的调试工具变的杂乱</h4>
+          	<p>
+          		使用Reset最让人困扰的地方莫过于在浏览器调试工具中大段的继承链。在Normalize.css中就不会有这样的问题，因为在Normalize.css中对多选择器的使用时非常谨慎的，仅会有目的地对目标元素设置样式。
+          	</p>
+        </section>
+        <section>
+            <h4>4. Normalize.css 是模块化的</h4>
+          	<p>
+          		这个项目已经被拆分为多个相关却又独立的部分，这使得你能够很容易也很清楚地知道哪些元素被设置了特定的值。因此这能让你自己选择性地移除掉某些永远不会用到部分（比如表单的一般化）。
+        </section>
+        <section>
+            <h4>5. Normalize.css 拥有详细的文档</h4>
+          	<p>
+          		Normalize.css的代码基于详细而全面的跨浏览器研究与测试。这个文件中拥有详细的代码说明并在Github Wiki中有进一步的说明。这意味着你可以找到每一行代码具体完成了什么工作、为什么要写这句代码、浏览器之间的差异，并且你可以更容易地进行自己的测试。
+          	</p>
+        </section>
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+            <h4>CSS Reset 的不足</h4>
+            <p>1.不当地破坏了所有浏览器的基本样式，例如使用*{margin:0;padding:0},去掉ol,ul的列表样式，使得一些语义元素缺乏恰当的样式表现。</p>
+			<p>2.粗暴的reset使得一些交互控件外观在浏览器下失调，例如去掉了outline，使得交互控件缺乏视觉反馈。</p>
+			<p>3.增加浏览器样式计算成本，有一定的性能负担，因为引入了很多针对元素的全局规则。</p>
+        </section>
+        <section>
+            <h3>7.参考文献</h3>
+        </section>
+        <section>
+            <p>参考一：<a href="http://www.qianxingzhem.com/post-610.html" target="_blank">潜行者m</a></p>
+            <p>参考二：<a href="http://jerryzou.com/posts/aboutNormalizeCss/" target="_blank">咀嚼之味</a></p>
+            <p>参考三：<a href="https://www.zhihu.com/question/23554164" target="_blank">知乎：到底该不该用 CSS reset？</a></p>          
+        </section>
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+        <section>
+            <p>1.比较常用的 CSS RESET 有哪些</p>
+            <p>2.该不该使用通配符重置样式，为什么</p>
+            <p>3.各浏览器的默认样式主要有哪些差别</p>
+        </section>
+        <section>
+            <p>感谢大家观看</p>
+            <p><small>BY : 叶泽彪</small></p>
+        </section>
+    </div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status He

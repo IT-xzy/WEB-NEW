@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<style>
+    .p-style>p {
+        font-size: 20px;
+        text-align: left;
+        padding-bottom: 20px;
+    }
+</style>
+
+<body>
+    <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h4>小课堂——上海分院</h4>
+                <h4>sass的简单介绍</h4>
+                <h4>分享人：何岳</h4>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <p style="font-size: 30px;letter-spacing: 3px;">前言</p>
+                <p style="font-size: 30px;text-align: left;">sass是css的预处理器，它提供了许多便利的写法方法</p>
+                <p style="font-size: 30px;text-align: left;">可以使用变量，常量，嵌套，函数，混合，继承等功能，让css的开发变得更加简单可维护。</p>
+                <p style="font-size: 30px;text-align: left;">直接写出来的sass文件其实就是普通的文本文件，以.sass或.scss作为文件后缀名。</p>
+                <p style="font-size: 30px;text-align: left;">里面可以直接使用css语法以及sass特有的语法特性，完成后通常需要经过编译成合法的css文件以供浏览器使用。</p>
+            </section>
+
+
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <section>
+                    <h3>sass的安装</h3>
+                    <p style="font-size: 30px;text-align: left;">sass基于Ruby语言开发而成，因此安装sass前需要安装Ruby。（注:mac下自带Ruby无需在安装Ruby!）</p>
+                    <p style="font-size: 30px;text-align: left;">window下安装SASS首先需要安装Ruby，先从官网下载Ruby并安装。安装过程中请注意勾选Add Ruby executables to your PATH添加到系统环境变量。</p>
+                    <p style="font-size: 30px;text-align: left;">安装完成后需测试安装有没有成功,运行CMD输入以下命令：</p>
+                    <p style="font-size: 30px;text-align: left;">ruby -v</p>
+                    <p style="font-size: 30px;text-align: left;">安装成功会打印ruby 2.2.2p95 (2015-04-13 revision 50295) [i386-mingw32]</p>
+                </section>
+                <section>
+                    <p style="font-size: 30px;text-align: left;">ruby安装完成后输入以下命令安装sass和compass</p>
+                    <p style="font-size: 30px;text-align: left;">gem install sass gem install compass</p>
+                    <p style="font-size: 30px;text-align: left;">安装完成后用如下命令来确认sass和compass的安装成功</p>
+                    <p style="font-size: 30px;text-align: left;">sass -v</p>
+                    <p style="font-size: 30px;text-align: left;">Sass 3.x.x (Selective Steve)</p>
+                    <p style="font-size: 30px;text-align: left;">compass -v</p>
+                    <p style="font-size: 30px;text-align: left;">Compass 1.x.x (Polaris)</p>
+                    <p style="font-size: 30px;text-align: left;">Copyright (c) 2008-2015 Chris Eppstein</p>
+                    <p style="font-size: 30px;text-align: left;">Released under the MIT License.</p>
+                    <p style="font-size: 30px;text-align: left;">Compass is charityware.</p>
+                    <p style="font-size: 30px;text-align: left;">Please make a tax deductable donation for a worthy cause: http://umdf.org/compass</p>
+                </section>
+                <section>
+                    <h3>sass的编译</h3>
+                    <p style="font-size: 30px;text-align: left;">命令行编译;</p>
+                    <p style="font-size: 30px;text-align: left;">编译软件koala</p>
+                    <p style="font-size: 30px;text-align: left;">使用vscode中的Live Sass Compiler插件来实现scss文件的实时编译</p>
+                </section>
+            </section>
+            <section>
+                <h3>变量</h3>
+                <p style="font-size: 30px;text-align: left;">Sass 让人们受益的一个重要特性就是它为 CSS 引入了变量。你可以把反复使用的 CSS 属性值 定义成变量，然后通过变量名来引用它们，而无需重复书写这一属性值。</p>
+                <p style="font-size: 30px;text-align: left;">变量的定义是以$符号开头，加上变量名</p>
+                <p style="font-size: 30px;text-align: left;">见demo</p>
+                <p style="font-size: 30px;text-align: left;">变量的注意事项</p>
+                <p style="font-size: 30px;text-align: left;">1、变量需要提前声明才能使用，因为编译是从上往下进行的，如果在还未声明变量的地方使用，会找不到这个变量。</p>
+                <p style="font-size: 30px;text-align: left;">2、变量都是全局变量，如果在大括号内部定义的变量则属于局部变量。</p>
+            </section>
+
+            <section>
+                <h3>嵌套</h3>
+                <p style="font-size: 30px;text-align: left;">通常所用到的选择器嵌套是这样的，将新的选择器放到父级选择器当中，并且可以无限多级嵌套。</p>
+                <p style="font-size: 30px;text-align: left;">见demo</p>
+            </section>
+
+            <section>
+                <h3>继承</h3>
+                <p style="font-size: 30px;text-align: left;">如果存在两个class，他们有一些不同但又有许多相似之处，以前的做法可能是把所有样式重复声明两次。但是有sass之后更好的做法是创建一个基础的class，然后在第二个class中用@extend继承它，同时还可以添加一些额外的样式，或者对某些样式进行重写。比如我们之前学过bootstrap的按钮的构建思想，是对基础样式进行附加和重写，而现在想要定义自己的样式时就可以很方便地进行这一操作了。首先声明一个标准样式的class，然后继承这个样式，然后设置不同的主题色：</p>
+                <p style="font-size: 30px;text-align: left;">见demo</p>
+            </section>
+
+            <section>
+                <h3>混合</h3>
+                <p style="font-size: 30px;text-align: left;">当出现大段大段重用样式代码时，独立的变量就难以应付，这个时候可以通过sass的混合器@mixin 和 @include 实现大段样式的重用。在定义mixin时，需要在前面添加@符号，使用时需要用@include来引用该@mixin：</p>
+                <p style="font-size: 30px;text-align: left;">见demo</p>
+            </section>
+
+            <section>
+                <h3>导入</h3>
+                <p style="font-size: 30px;text-align: left;">导入规则可以从外部文件导入mixin混合器等等。在sass中有一个命名惯例，被导入的样式文件名用下划线做前缀。导入的语法是@import “xxx”，这里的xxx不需要带文件后缀和下划线前缀。也就是说导入“_style.sass”或者“_style.scss”的时候，只需要写@import
+                    “style”就可以了：</p>
+                <p style="font-size: 30px;text-align: left;">见demo</p>
+
+            </section>
+
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+
+            <section>
+                <h3>4.解决方案</h3>
+            </section>
+
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+
+            <section>
+                <h3>6.扩展思考</h3>
+            </section>
+
+            <section>
+                <h3>7.参考文献</h3>
+                <p>https://blog.csdn.net/chase_sky/article/details/73825796</p>
+            </section>
+            <section>
+                <h3>8.更多讨论</h3>
+            </section>
+            <section>
+                <p>讨论时间到，欢迎大家提问！
+                </p>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>By
+                    <small style="vertical-align: middle">何岳</small>
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
