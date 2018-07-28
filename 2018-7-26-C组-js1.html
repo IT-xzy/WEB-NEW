@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>葡萄藤PPT</title>
+
+	<link rel="stylesheet" href="./css/reveal/reveal.css">
+
+	<!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+	<link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+	<!-- syntax highlighting 代码高亮主题 -->
+	<link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+	<!-- 打印和PDF输出样式 -->
+	<script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+	<area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+</map>
+<div class="reveal">
+	<div class="slides">
+		<section>
+			<h3>【JS-Task1】定时器有哪些用法？</h3>
+			<h4>小课堂【深圳-WEB-C组】</h4>
+			<p>分享人：韩鹏</p>
+		</section>
+
+		<section>
+			<p>目录</p>
+			<p>1.背景介绍</p>
+			<p>2.知识剖析</p>
+			<p>3.常见问题</p>
+			<p>4.解决方案</p>
+			<p>5.编码实战</p>
+			<p>6.扩展思考</p>
+			<p>7.参考文献</p>
+			<p>8.更多讨论</p>
+		</section>
+
+		<section>
+			<section>
+				<h3>1.背景介绍</h3>
+			</section>
+			<section>
+                    <br>什么是定时器？
+                    <br>
+                    <br> JS提供了一些原生方法来实现延时去执行某一段代码。
+                    <br>
+                    <br> 我们在JS中一般会使用以下两种定时器
+                    <br>
+                    <br> setTimeout()　　setInterval()
+                </section>
+                <section>
+                    <p>setTimeout() </p>
+                    <br />
+                    <p>指定延迟时间之后来执行代码</p>
+                    <br />
+                    <p>只执行一次，不会循环。</p>
+                </section>
+                <section>
+                    <p>setInterval() </p>
+                    <br />
+                    <p>每隔指定的时间执行代码</p>
+                    <br />
+                    <p>重复执行，无限循环</p>
+                </section>
+		</section>
+
+		<section>
+			<section>
+				<h3>2.知识剖析</h3>
+			</section>
+			<section>
+                <p>setTimeout</p>
+                <br>
+                <p>语法：window.setTimeout(code, millisecs);</p>
+                <br>
+                <p>code:必需。要调用的函数或执行的JavaScript代码。</p>
+                <br>
+                <p>millisecs:必需。在执行代码前需等待的毫秒数。</p>
+                <br>
+            </section>
+            <section>
+                <p>调用函数格式(假设有一个clock()函数):</p>
+                <br>
+                <p> setTimeout("clock()",1000)</p>
+                <p> 或</p>
+                <p> setTimeout(clock,1000)</p>
+            </section>
+			<section>
+                <p>setInterval</p>
+                <br>
+                <p>语法：window.setInterval(code,millisecs);</p>
+                <br>
+                <p>code：必需。要调用的函数或要执行的代码串。</p>
+                <br>
+                <p>millisecs：必须。周期性执行或调用 code 之间的时间间隔，以毫秒计。</p>
+                <br>
+                <p>调用函数格式同上。</p>
+            </section>
+            <section>
+            	<h4>清除定时器</h4>
+            	<br>
+            	<p>与生成定时器的方法相对应的有两种清除定时器的方法：</p>
+            	<br>
+            	<p>clearTimeout(timer) &nbsp; & &nbsp; clearInterval(timer)</p>
+            </section>
+            <section>
+            	<p>每次调用定时器，都会返回一个整型的值，该值便是用来取消定时器循环的。</p>
+            	<br>
+            	<p>为了更方便的清除指定定时器，可以在使用定时器的时候，定义一个变量来记录定时器的返回值。比如：</p>
+                <p>var timer = setTimeOut(test,1000);</p>
+                <p>清除的时候便可以直接使用以上方法。</p>
+            </section>
+		</section>
+		<section>
+			<section>
+				<h3>3.常见问题</h3>	
+			</section>
+			<section>
+				<h4>setInterval多次调用后执行频率为什么越来越快？</h4>
+				<br>
+				<p>setInterval() 的运行模式是按照指定的周期（以毫秒计）来调用函数或计算表达式。</p>
+            	<p>这就使得在某个多次执行或者重复执行事件中创建的setInterval()都会独立的保留下来。</p>
+			</section>
+			<section>
+				<p>当我们给定时器定义一个返回值（变量 timer ）之后，每次重复调用该定时器，便会重新赋予 timer 一次的值，所以在多次调用定时器之后，使用 timer 清除的时候只能清除掉最近一次调用的定时器。</p>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h3>4.解决方案</h3>
+			</section>
+			<section>
+				<h4>方案一：</h4>
+				<br>
+				<p>清除定时器</p>
+				<br>
+				<p>即在每次调用定时器之前先将之前调用的定时器清除掉，然后再重新进行调用。</p>
+			</section>
+			<section>
+				<h4>方案二：</h4>
+				<br>
+				<p>给调用定时器的事件加一个限制</p>
+				<br>
+				<p>即当一个事件调用定时器之后，将定时器的调用无效化。（可以看成给定时器加了一个开关）</p>
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h3>5.代码实战</h3>
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h3>6.拓展思考</h3>
+			</section>
+			<section>
+				若参数 millisecs 为 0 ，会发生什么？
+			</section>
+			<section>
+				<p>Javascript是单线程执行的，也就是无法同时执行多段代码，当某一段代码正在执行的时候，所有后续的任务都必须等待，形成一个队列，一旦当前任务执行完毕，再从队列中取下一个任务。这也常被称为“阻塞式执行”。</p>
+    			<p>如果代码中设定了一个setTimeout,那么浏览器便会在合适的时间，将代码插入到任务队列中，如果这个时间设为0，就代表立即插入到队列，但不是立即执行，仍要等待前面代码执行完毕。所以setTimeout并不能保证执行的时间，是否及时执行取决于javascript 线程拥挤还是空闲。</p>
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h3>7.参考文献</h3>
+			</section>
+			<section>
+				<p>参考一：<a href="https://www.jb51.net/article/99174.htm">脚本之家</a></p>
+				<p>参考二：<a href="https://www.cnblogs.com/pelli/p/6225858.html">博客园</a></p>
+				<p>参考三：<a href="http://www.w3school.com.cn/jsref/met_win_settimeout.asp">W3Cschool</a></p>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h3>8.更多讨论</h3>
+			</section>
+			<section>
+				<p>如何动态的改变时间间隔（seconds）？</p>
+				<br>
+				<p>使用定时器都可以实现什么功能？</p>
+			</section>
+		</section>
+		<section>
+			<h4>鸣谢</h4>
+			<p>感谢大家观看</p>
+			<p>
+				BY : 韩鹏
+			</p>
+		</section>
+	</div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: './plugin/markdown/marked.js' },
+            { src: './plugin/markdown/markdown.js' },
+            { src: './plugin/notes/notes.js', async: true },
+            { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>
