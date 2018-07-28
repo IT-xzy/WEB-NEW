@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)https://ptteng.github.io/PPT/PPT/JS-11-Mini-Program.html#/13 -->
+<html xmlns="http://www.w3.org/1999/html" class=" js no-mobile desktop no-ie chrome chrome65 ppt-section ppt-section gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch no-retina fontface domloaded w-1366 gt-240 gt-320 gt-480 gt-640 gt-768 gt-800 gt-1024 gt-1280 lt-1440 lt-1680 lt-1920 no-portrait landscape" id="js-11-mini-program-page"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>前端如何进行网站性能优化？</title>
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+    <img src="img/demo/logo.png">
+</map>
+<div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section style="top: 178.5px; display: none;" class="past" hidden="" aria-hidden="true">
+            <h3>【JS-10】如何进行网站性能优化？ </h3>
+            <p style="text-align: center;">分享人：陈星宇</p>
+        </section>
+        <section style="top: 3px; display: none;" class="past" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+            <p><img src="./阿萨德.jpg" alt=""></p>
+        </section>
+        <section style="top: 0px; display: none;" class="stack past" data-previous-indexv="0" hidden="" aria-hidden="true">
+            <section style="top: 267px; display: none;" class="" aria-hidden="true">
+                <h3>1.背景介绍</h3>
+            </section>
+            <section class="future" aria-hidden="true" style="top: 129px; display: none;" hidden="">
+                <h4 style="text-align: left;text-indent: 2cm">
+                    前端优化的目的
+                </h4>
+                <p class="fragment" style="text-align: left;">&emsp;&emsp;1. 用户：体验好</p>
+                <p class="fragment" style="text-align: left;">&emsp;&emsp;2. 服务商：节省资源</p>
+                <p class="fragment" style="text-align: left;">&emsp;&emsp;简而言之，就是在不影响系统运行正确性的前提下，使之运行地更快，完成特定功能所需的时间更短。</p>
+
+            </section>
+        </section>
+
+        <section style="top: 0px; display: none;" class="stack past" data-previous-indexv="0" hidden="" aria-hidden="true">
+            <section style="top: 267px; display: none;" class="" aria-hidden="true">
+                <h3>2.知识剖析</h3>
+            </section>
+            <section class="future" aria-hidden="true" style="top: 38.5px; display: none;" hidden="">
+                <h4 >2.1 优化途径</h4>
+                <p style="text-align:left">1、页面级</p>
+                <p style="text-align:left">&emsp;&emsp;HTTP请求数、脚本加载、内联脚本位置等</p>
+                <p style="text-align:left">2、代码级</p>
+                <p tyle="text-align:left">&emsp;&emsp;DOM操作优化、CSS选择符优化、图片及HTML结构优化等</p>
+            </section>
+            <section style="text-align: left; top: 21.5px; display: none;" class="future" aria-hidden="true" hidden="">
+                <h4>一、页面级优化</h4>
+                <p style="text-align:left">
+                    1、减少HTTP 请求数——最重要最有效的方法
+                </p>
+                <p style="text-align:left">
+                    &emsp;&emsp;减少时间成本和资源成本
+                </p>
+            </section>
+            <section style="text-align: left; top: 21.5px; display: none;" class="future" aria-hidden="true" hidden="">
+                <h5>途径</h5>
+                <p class="fragment">（1）从设计实现层面简化页面</p>
+                <p class="fragment">
+                    （2）合理设置 HTTP缓存
+                    <br>
+                    原则:能缓存越多越好，能缓存越久越好
+                </p>
+                <p class="fragment">
+                    （3）资源合并与压缩
+                </p>
+                <p class="fragment">
+                    （4）CSS Sprites
+                </p>
+
+            </section>
+            <section style="text-align: left; top: 21.5px; display: none;" class="future" aria-hidden="true" hidden="">
+                <h5>途径</h5>
+                <p class="fragment">
+                    （5）、Inline Images——转化为编码<br>
+                </p>
+
+                <pre class="fragment">
+                    <code class="hljs mipsasm" style="padding:0">
+                        let fr = new FileReader();
+                        $scope.max = $scope.file.size;//文件大小
+                        fr.readAsDataURL($scope.file);
+                        fr.onprogress = function($event){
+                            $scope.value = $event.loaded;
+                        }
+                        fr.onload = function ($event){//预览图片
+                            preview.src = $event.target.result;
+                        }
+                    </code>
+                </pre>
+                <P class="fragment">缺点：增大了页面的体积，而且无法利用浏览器缓存</P>
+            </section>
+            <section style="text-align: left; top: 21.5px; display: none;" class="future" aria-hidden="true" hidden="">
+                <p class="fragment">
+                    （6）<a href="../../小课堂demo/性能优化.html">图片懒加载</a>
+                    <br>
+                    &emsp;&emsp;图片地址缓存在 Textarea标签中，待用户往下滚屏的时候才 “惰性” 加载
+                </p>
+            </section>
+            <section style="text-align: left; top: 21.5px; display: none;" class="future" aria-hidden="true" hidden="">
+                <h3>一、页面级优化</h3><br>
+                <p style="text-align:left">
+                    1、减少HTTP 请求数——最重要最有效的方法
+                </p>
+                <p class="fragment">2、外部脚本置底</p>
+                <p class="fragment">3、异步执行inline脚本</p>
+                <p class="fragment">4、Lazy Load Javascript</p>
+                <p class="fragment">5、将 CSS放在head中</p>
+
+            </section>
+            <section style="text-align: left; top: 21.5px; display: none;" class="future" aria-hidden="true" hidden="">
+                <p >6、减少不必要的 HTTP跳转</p>
+                <p class="fragment">
+                    &emsp;&emsp;有/会认为是目录，没/会认为是文件。
+                    加了/浏览器会指向一个目录，目录的话会读取默认文件index等等。没有/会先尝试读取文件，如果没有文件再找与该文件同名的目录，最后才读目录下的默认文件。
+                    网址没有加上/会给服务器增加一个查找是否有同名文件的过程。</p>
+                <p class="fragment">7、避免重复的资源请求</p>
+            </section>
+            <section style="text-align: left; top: 21.5px; display: none;" class="future" aria-hidden="true" hidden="">
+                <h3>二、代码级优化</h3>
+                <h4>1、JavaScript</h4>
+                <p class="fragment">(1)DOM</p>
+                <p class="fragment">a. HTML Collection</p>
+                <p class="fragment">在遍历的时候可以将 length属性、成员保存到局部变量后再使用局部变量。</p>
+                <p class="fragment">b. Reflow & Repaint</p>
+                <p class="fragment">
+                    Reflow(回流/重排):元素<br>
+                    Repaint(重绘): 属性<br>
+                </p>
+
+            </section>
+            <section style="text-align: left; top: 21.5px; display: none;" class="future" aria-hidden="true" hidden="">
+                <pre class="fragment">
+                    <code class="hljs mipsasm" style="padding:0">
+                        var el = document.getElementById('demo');
+                        el.style.broderLeft = '1px';
+                        el.style.broderRight = '2px';
+                        el.style.padding = '5px';
+                    </code>
+                </pre>
+                <p class="fragment">优化：减少此类操作</p>
+            </section>
+            <section style="text-align: left; top: 21.5px; display: none;" class="future" aria-hidden="true" hidden="">
+                <p>(2)减少作用域链查找</p>
+                <pre class="fragment">
+    <code class="hljs mipsasm" style="padding:0">
+            低效率的写法：
+            // 全局变量
+            var globalVar = 1;
+            function myCallback(info){
+                 for( var i = 100000; i--;){
+                    //每次访问 globalVar 都需要查找到作用域链最顶端，本例中需要访问 100000 次
+                    globalVar += i;
+                 }}
+
+            更高效的写法：
+            // 全局变量 var globalVar = 1;
+            function myCallback(info){
+                //局部变量缓存全局变量
+                var localVar = globalVar;
+                for( var i = 100000; i--;){
+                    //访问局部变量是最快的
+                    localVar += i;
+                }
+                //本例中只需要访问 2次全局变量在函数中只需要将 globalVar中内容的值赋给localVar 中区
+                globalVar = localVar;
+             }
+    </code>
+                    </pre>
+                <p class="fragment">要减少作用域链查找还应该减少闭包的使用</p>
+            </section>
+            <section style="text-align: left; top: 21.5px; display: none;" class="future" aria-hidden="true" hidden="">
+                <p>(3)避免使用with（obj）｛｝、evel（）Function</p>
+                <p class="fragment">(4)数据访问</p>
+                <p class="fragment">
+                    &emsp;&emsp;Javascript中的数据访问包括直接量 (字符串、正则表达式 )、变量、对象属性以及数组，
+                    其中对直接量和局部变量的访问是最快的，对对象属性以及数组的访问需要更大的开销.当出现以下情况时，建议将数据放入局部变量：
+                </p>
+                <p class="fragment">&emsp;&emsp;a. 对任何对象属性的访问超过 1次</p>
+                <p class="fragment">&emsp;&emsp;b. 对任何数组成员的访问次数超过 1次</p>
+
+            </section>
+            <section style="text-align: left; top: 21.5px; display: none;" class="future" aria-hidden="true" hidden="">
+                <p>(4)字符串拼接</p>
+                <p class="fragment">
+                    "+" :<br>
+                    效率低：因为每次运行都会开辟新的内存并生成新的字符串变量，然后将拼接结果赋值给新变量；<br>
+                    优化方法：join()
+                </p>
+            </section>
+            <section style="text-align: left; top: 21.5px; display: none;" class="future" aria-hidden="true" hidden="">
+                <h4>2 CSS选择符</h4>
+                <p>ul li a { color: #444; }</p>
+
+            </section>
+        </section>
+        <section style="top: 267px; display: none;" class="past" hidden="" aria-hidden="true">
+
+            <section style="top: 267px; display: none;" class="" aria-hidden="true">
+                <h3>3.常见问题</h3>
+            </section>
+            <section style="top: 267px; display: none;" class="" aria-hidden="true">
+                <h4>3.1 &emsp;HTTP缓存怎样设置？</h4>
+                <h4 class="fragment">3.2 &emsp;链接后面是否带“/”？</h4>
+            </section>
+            <section style="top: 267px; display: none;" class="" aria-hidden="true">
+
+            </section>
+
+        </section>
+        <section style="top: 267px; display: none;" class="past" hidden="" aria-hidden="true">
+            <section style="top: 267px; display: none;" class="" aria-hidden="true">
+                <h3>4.解决方案</h3>
+            </section>
+            <section style="top: 267px; display: none;" class="" aria-hidden="true">
+                <h4>3.1 &emsp;HTTP缓存怎样设置？</h4>
+                <pre class="fragment">
+                    <code class="hljs mipsasm" style="padding:0">
+                        meta http-equiv="Cache-Control" content="max-age=7200"
+                        meta http-equiv="expires" content="someGMT"
+                    </code>
+                </pre>
+            </section>
+        </section>
+
+
+        </section>
+        <section style="top: 267px; display: none;" class="past" hidden="" aria-hidden="true">
+            <h3>5.编码实战</h3>
+        </section>
+        <section style="text-align: left; top: 178px; display: block;" class="past" hidden="" aria-hidden="true">
+            <section style="top: 267px; display: none;" class="" aria-hidden="true">
+                <h3 style="text-align: center">6.扩展思考</h3>
+            </section>
+
+        </section>
+
+        <section style="top: 267px; display: block;" class="past" hidden="" aria-hidden="true">
+            <h3>7.参考文献</h3>
+            <p style="text-align: left">参考一：
+                <a href="https://www.zhihu.com/question/21658448">
+                    Web前端应该从哪些方面来优化网站?
+                </a>
+            </p>
+            <p style="text-align: left">参考二：
+                <a href="https://yq.aliyun.com/articles/429326">
+                    HTML优化
+                </a>
+            </p>
+
+        </section>
+
+        <section style="text-align: left; top: 66px; display: block;" hidden="" aria-hidden="true" class="future">
+            <h3 style="text-align: center">8.更多讨论</h3>
+
+        </section>
+        <section style="top: 245.5px; display: block;" hidden="" aria-hidden="true" class="future">
+            <h4>感谢观看</h4>
+            <p>
+                <small>BY :禚洪宇|陈星宇</small>
+            </p>
+        </section>
+    </div>
+</div>
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+
+
+
+
+</body></html>
