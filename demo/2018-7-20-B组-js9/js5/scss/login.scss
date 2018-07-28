@@ -1,0 +1,69 @@
+@import "../../common/all";
+@import "mystyle";
+.background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background: url(../../img/bg.png) center/cover no-repeat;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 5rem;
+    padding-bottom: .1rem;
+    background: rgba(231, 231, 231, .9);
+    @media (max-width: 768px) {
+        width: 2.5rem;
+    }
+    .title {
+        font-size: .18rem;
+        line-height: .5rem;
+        color: #03a9f4;
+    }
+    form {
+        width: 80%;
+    }
+    .input-box {
+        position: relative;
+        background: #fff;
+        margin: .15rem 0;
+        border-radius: .07rem;
+        img {
+            position: absolute;
+            left: .1rem;
+            top: .14rem;
+            width: .25rem;
+            padding-right: .06rem;
+            border-right: .01rem solid #ccc;
+        }
+        input {
+            width: 100%;
+            text-indent: .4rem;
+            line-height: .5rem;
+            border-radius: .07rem;
+        }
+    }
+    .tip,
+    .red-word,
+    .word-account {
+        color: red;
+        line-height: .3rem;
+    }
+    #login {
+        width: 100%;
+        line-height: .5rem;
+        color: #fff;
+        background: #03a9f4;
+        border-radius: .07rem;
+        &:hover {
+            color: #333;
+        }
+    }
+    .bg-disabled {
+        opacity: .3;
+    }
+}

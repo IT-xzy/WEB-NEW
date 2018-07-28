@@ -1,0 +1,10 @@
+<div class="ask" ng-show="askShow">
+    <div class="ask-box">
+        <p>提示</p>
+        <p ng-bind="askText"></p>
+        <div>
+            <button class="bg-orange" ng-click="cancle()" ng-show="cancleButton">取消</button>
+            <button class="bg-blue" ng-click="confirm()">确定</button>
+        </div>
+    </div>
+</div>
