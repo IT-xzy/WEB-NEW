@@ -1,0 +1,430 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>如何使用Bootbox</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+</head>
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h4>小课堂【萌新】</h4>
+            <h4 style="text-transform: none">如何使用Bootbox</h4>
+            <h4>分享人：汪胜</h4>
+        </section>
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section style="text-align: left;text-indent: 4rem;">
+                <p>写网页的时候，有很多的地方都有用到弹出模拟框的效果，弹出模拟框带有默认的效果。默认的弹出模拟框有一定的局限性：界面不美观，功能实现较复杂。</p>
+                <p>Bootbox.js是一个小型的JavaScript库，基于 Twitter 的 Bootstrap 开发。它允许你创建使用编程对话框。可以快速定制，创建自己所需的模态框，可以方便的更改它的样式。</p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <p> 该库提供了三个旨在模仿其原生JavaScript等效项的函数。它们确切的函数名是灵活的，因此每个可以采取各种参数来定制标签和指定默认值，但它们最基本是这样：
+                </p>
+            </section>
+            <section>
+                <p>警告</p>
+                <pre>
+                    <code>
+                        bootbox.alert(message, callback)
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <p>提示</p>
+                <pre>
+                    <code>
+                        bootbox.prompt(message, callback)
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <p>确认</p>
+                <pre>
+                    <code>
+                        bootbox.confirm(message, callback)
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <p>Bootbox库还提供了一个自定义模态框的函数，你也可以使用它来创建自己的自定义对话框：</p>
+                <pre>
+                    <code>
+                        bootbox.dialog(options)
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <p>bootbox的引入</p>
+                <p style="text-align: left">bootbox的所有版本都是在Bootstrap和jQuery的基础之上编写的，因此，使用 bootbox，还要引入jQuery和bootbox。引入需要注意两点</p>
+                <p style="text-align: left; ">第一，bootstrap，jQuery和bootbox的版本要对应</p>
+                <p style="text-align: left;">第二，注意引用的顺序</p>
+            </section>
+            <section style="font-size: 1.9rem;">
+                <p style="text-align: left!important;">对应版本</p>
+                <table>
+                    <tr>
+                        <th>Bootbox version</th>
+                        <th>Min. Bootstrap version</th>
+                        <th>Max. Bootstrap</th>
+                        <th>Min. jQuery</th>
+                    </tr>
+                    <tr>
+                        <td>4.x.x Latest</td>
+                        <td>3.0.0</td>
+                        <td>3.3.x</td>
+                        <td>1.9.1</td>
+                    </tr>
+                    <tr>
+                        <td>3.x.x</td>
+                        <td>2.2.2</td>
+                        <td>2.3.2</td>
+                        <td>1.8.3</td>
+                    </tr>
+                    <tr>
+                        <td>2.x.x	</td>
+                        <td>2.0.0</td>
+                        <td>2.0.4</td>
+                        <td>1.7.1</td>
+                    </tr>
+                    <tr>
+                        <td>1.x.x	</td>
+                        <td>1.3.0</td>
+                        <td>1.4.0</td>
+                        <td>1.7.1</td>
+                    </tr>
+                </table>
+                <p style="text-align: left!important;">引入顺序</p>
+                <p style="text-align: left!important;"><1>jQuery</p>
+                <p style="text-align: left!important;"><2>Bootstrap</p>
+                <p style="text-align: left!important;"><3>Bootbox</p>
+            </section>
+            <section>
+    <pre>
+        <code><script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+        </code>
+    </pre>
+                <pre>
+        <code>
+               $(".demo").click(function () {
+//        alert警告框
+
+//         原生警告框
+//         alert("按钮被点击")
+
+//         最基础用法
+//        bootbox.alert("你已点击按钮");
+
+//        带回调函数
+//        bootbox.alert("你已点击按钮",function () {
+//            $(".demo").css("background","skyblue")
+//        });
+
+
+//        带回调函数的另一种写法
+//        bootbox.alert({
+//            message: "你已点击按钮",
+//            callback: function () {
+//                $(".demo").css("background","skyblue");
+//            }
+//        });
+
+//        不带回调函数
+//        bootbox.alert("你已点击按钮");
+//        function bg() {
+//            $(".demo").css("background","skyblue")
+//        }
+//        bg();
+
+//        改变弹出框的大小
+//        bootbox.alert({
+//            message: "你已点击按钮",
+////            size: "small"
+//            size: "large"
+//        });
+
+//        点击背景退出
+//        bootbox.alert({
+//            message: "你已点击按钮",
+//            backdrop: true
+//        });
+
+
+//prompt提示框（带input输入框的弹出框）
+
+//        基本输入提示框
+//        bootbox.prompt("我是标题",function(result){ $("#test").append("你输入的是：" + result); });
+
+//        带文本输入的提示框
+//        bootbox.prompt({
+//            title: "请输入文本信息",
+//            inputType: 'textarea',
+//            callback: function (result) {
+//                $("#test").append("你的输入的文本是："+ result);
+//            }
+//        });
+
+//        带选项的提示框
+//        bootbox.prompt({
+//            title: "请选择",
+//            inputType: 'checkbox',
+//            inputOptions: [
+//                {
+//                    text: 'Choice One',
+//                    value: '1'
+//                },
+//                {
+//                    text: 'Choice Two',
+//                    value: '2'
+//                },
+//                {
+//                    text: 'Choice Three',
+//                    value: '3'
+//                }
+//            ],
+//            callback: function (result) {
+//                $("#test").append("你的选择是："+ result);
+//            }
+//        });
+
+//        带日期输入的提示框
+//        bootbox.prompt({
+//            title: "请选择日期",
+//            inputType: 'date',
+//            callback: function (result) {
+//                $("#test").append("你选择的日期是："+ result);
+//            }
+//        });
+//        带邮件输入的提示框
+//        bootbox.prompt({
+//            title: "请输入邮箱",
+//            inputType: 'email',
+//            callback: function (result) {
+//                $("#test").append("你输入的邮箱是："+ result);
+//            }
+//        });
+
+//          带数字输入的提示框
+//        bootbox.prompt({
+//            title: "请输入数字",
+//            inputType: 'number',
+//            callback: function (result) {
+//                $("#test").append("你输入的数字是："+ result);
+//            }
+//        });
+
+//        带密码输入的提示框
+//        bootbox.prompt({
+//            title: "请输入密码",
+//            inputType: 'password',
+//            onEscape: false,
+//            callback: function (result) {
+//                $("#test").append("你输入的密码是："+ result);
+//            }
+//        });
+
+//        带下拉选项的提示框
+//        bootbox.prompt({
+//            title: "This is a prompt with select!",
+//            inputType: 'select',
+//            inputOptions: [
+//                {
+//                    text: 'Choose one...',
+//                    value: ''
+//                },
+//                {
+//                    text: 'Choice One',
+//                    value: '1'
+//                },
+//                {
+//                    text: 'Choice Two',
+//                    value: '2'
+//                },
+//                {
+//                    text: 'Choice Three',
+//                    value: '3'
+//                }
+//            ],
+//            callback: function (result) {
+//                $("#test").append("你的选择是："+ result);
+//            }
+//        });
+
+//        带时间输入的提示框
+//        bootbox.prompt({
+//            title: "请选择时间",
+//            inputType: 'time',
+//            callback: function (result) {
+//                $("#test").append("你选择的时间是："+ result);
+//            }
+//        });
+
+
+//        confirm确认框
+//        基础使用方法
+//        bootbox.confirm("点击确认或取消", function(result){ $("#test").append("你选择的是："+ result); });
+
+//        自定义按钮文字和颜色
+//        bootbox.confirm({
+//            message: "点击确认或取消",
+//            buttons: {
+//                confirm: {
+//                    label: '确认',
+//                    className: 'btn-success'
+//                },
+//                cancel: {
+//                    label: '取消',
+//                    className: 'btn-danger'
+//                }
+//            },
+//            callback: function (result) {
+//                $("#test").append("你选择的是："+ result);
+//            }
+//        });
+
+//        更复杂的确认选框
+//        bootbox.confirm({
+//            title: "杀死他?",
+//            message: "你确定要杀死该玩家？杀死后无法撤销！",
+//            buttons: {
+//                cancel: {
+//                    label: '<i class="glyphicon glyphicon-remove"></i> 取消'
+//                },
+//                confirm: {
+//                    label: '<i class="glyphicon glyphicon-ok"></i> 确定'
+//                }
+//            },
+//            callback: function (result) {
+//                $("#test").append("你选择的是："+ result);
+//            }
+//        });
+
+//        自定义模态框
+//        bootbox.dialog({
+//            message: '<p class="text-center">Please wait while we do something...</p>',
+//            closeButton: false,
+//            backdrop:true,
+//            onEscape:true
+//        });
+
+
+    })
+        </code>
+    </pre>
+            </section>
+        </section>
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+            <h3>7.参考文献</h3>
+        </section>
+        <section>
+            <p><a href="http://bootboxjs.com/" target="_blank">Bootbox官网</a></p>
+        </section>
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                By
+                <small style="vertical-align: middle">汪胜</small>
+            </p>
+        </section>
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: './plugin/markdown/marked.js'},
+            {src: './plugin/markdown/markdown.js'},
+            {src: './plugin/notes/notes.js', async: true},
+            {
+                src: './plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>详解AngularJS服务</title>
+
+  <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+  <!-- css-28-sassinsublime主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+  <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+  <!-- syntax highlighting 代码高亮主题 -->
+  <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+  <!-- 打印和PDF输出样式 -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+      './css/reveal/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+  <style>
+    .code {
+      white-space: pre;
+      text-align: left;
+      font-size: 50%;
+      margin-left: 5rem !important;
+    }
+
+    .code2 {
+      white-space: pre-line;
+      text-align: left;
+      font-size: 80% !important;
+
+    }
+
+    p {
+      font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+  <map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+  </map>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h2 style="font-size: 1.5em">
+          <span>详解AngularJS服务</span>
+        </h2>
+        <p>分享人：胡云鹤</p>
+      </section>
+      <section>
+        <p>目录</p>
+        <p>1.背景介绍</p>
+        <p>2.知识剖析</p>
+        <p>3.常见问题</p>
+        <p>4.解决方案</p>
+        <p>5.扩展思考</p>
+        <p>6.编码实战</p>
+        <p>7.参考文献</p>
+        <p>8.更多讨论</p>
+      </section>
+
+      <section>
+        <h3>1.背景介绍</h3>
+      </section>
+      <section>
+        <h4>什么是AngularJS服务?</h4>
+        <p style="text-align: left;">
+          Services are designed to be the glue between controllers, the minions of data, the slaves of functionality, the worker-bees
+          of our application.
+        </p>
+        <p style="font-size: 80%;text-align: justify">services是被用来设计成controller之间的胶水，数据的走狗，方法的奴隶，它就是我们程序的工蜂！</p>
+      </section>
+      <section>
+        <h3>2.知识剖析</h3>
+      </section>
+
+      <section>
+        <h4>常见AngularJS内置服务</h4>
+        <ul>
+          <dl>
+            <dt>$http</dt>
+            <dd>向服务器发送请求并接受响应数据</dd>
+            <dt>$location</dt>
+            <dd>获取路径及修改路径服务</dd>
+            <dt>$setTimeout</dt>
+            <dd>对应于原生setTimeout方法</dd>
+            <dt>$interval</dt>
+            <dd>对应于原生interval方法</dd>
+          </dl>
+        </ul>
+      </section>
+      <section>
+        <h3>自定义服务</h3>
+        <h3>&nbsp</h3>
+        <h4>1. factory</h4>
+        <h4>2. service</h4>
+        <h4>3. provider</h4>
+      </section>
+      <section>
+        <h4>创建自定义服务的方法</h4>
+        <dl style="text-align: left;display: block">
+          <dt>factory</dt>
+          <dd style="font-size: 60%">factory()让我们通过返回一个包含service方法和数据的对象来定义一个service</dd>
+        </dl>
+        <p style="font-size: 60%;text-align: justify;margin: 0 36px;">实际上factory方式创建的服务，作用就i是返回一个有属性有方法的对象，我们可以在controller或其他服务中调用这个对象的的方法和属性</p>
+        <p class="code" style="font-size:50%">
+            angular.module('myApp',[]).factory('myService',function () {
+              var name = 'default';
+              var service = {
+                setName: function (val) {
+                  name = val;
+                },
+                getName: function () {
+                  return name;
+                }
+              }
+              return service;
+            });
+        </p>
+      </section>
+      <section>
+        <h4>service</h4>
+        <dl>
+          <dt>
+            service
+          </dt>
+          <dd>
+            与factory类似，通过service方式创建自定义服务，相当于new的一个对象：var s = new myService();只要把属性和方法添加到this上才可以在controller里调用。
+          </dd>
+        </dl>
+      </section>
+      <section>
+        <h4>provider</h4>
+        <dl>
+          <dt>
+            provider
+          </dt>
+          <dd>
+            如果我们需要在使用service对象之前对其服务进行配置，那么我们应该使用provider来创建服务.
+          </dd>
+        </dl>
+      </section>
+      <section>
+        <h3>3.常见问题</h3>
+      </section>
+      <section style="width: 100%;">
+        <h4>
+          provider方法创建的服务在config方法中注入失败
+        </h4>
+        <p>假设我们通过provider创建了一个'myProvider'服务</p>
+        <div class="code" style="font-size: 80%;">
+          angular.module('myApp')
+          .config(function(myProviderProvider){
+            // do something
+          })
+
+        </div>
+          <p style="font-size: 80%;text-align: center">需要注意的是： 在注入provider时，名字应该是: providerName + provider</p>
+      </section>
+
+      <section>
+        <h3>4.解决方案</h3>
+      </section>
+
+      <section>
+        <h3>5.编码实战</h3>
+        <dl>
+          <dt>controller之间的胶水</dt>
+          <dd>在controller之间传递数据</dd>
+          <dt>数据的走狗</dt>
+          <dd>传递http请求的数据</dd>
+          <dt>方法的奴隶</dt>
+          <dd>将方法封装到服务里便于复用</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h3>6.参考文献</h3>
+      </section>
+      <section>
+        <p style="text-align: left; padding-left: 180px">
+          参考一
+          <a href="https://www.cnblogs.com/wangnuo/p/6297673.html">AngularJS系统学习之Factory, Service, Provider</a>
+        </p>
+        <p style="text-align: left; padding-left: 180px">
+            参考二
+            <a href="https://www.jb51.net/article/111829.htm">详解Angular中的自定义服务Service、Provider以及Factory</a>
+          </p>
+      </section>
+
+      <section>
+        <h3>8.更多讨论</h3>
+      </section>
+
+      <section>
+        <h4>鸣谢</h4>
+        <p>感谢大家观看</p>
+      </section>
+
+      </div>
+      </div>
+
+      <script src="./lib/reveal/js/head.min.js"></script>
+      <script src="./lib/reveal/reveal.js"></script>
+
+      <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+          history: true,
+          dependencies: [{
+              src: './plugin/markdown/marked.js'
+            },
+            {
+              src: './plugin/markdown/markdown.js'
+            },
+            {
+              src: './plugin/notes/notes.js',
+              async: true
+            },
+            {
+              src: './plugin/highlight/highlight.js',
+              async: true,
+              callback: function () {
+                hljs.initHighlightingOnLoad();
+              }
+            }
+          ]
+        });
+      </script>
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>葡萄藤PPT</title>
+
+	<link rel="stylesheet" href="./css/reveal/reveal.css">
+
+	<!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+	<link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+	<!-- syntax highlighting 代码高亮主题 -->
+	<link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+	<!-- 打印和PDF输出样式 -->
+	<script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+<body>
+<img src="../img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+	<area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+	<div class="slides">
+		<section>
+			<h2>【CSS-task8】</h2>
+			<h3>小课堂 上海</h3>
+				<h4>路由</h4>
+				<p>分享人：王旭东</p>
+		</section>
+		<section>
+			<h3>目录</h3>
+			<h4>1.背景介绍</h4>
+			<h4>2.知识剖析</h4>
+			<h4>3.常见问题</h4>
+			<h4>4.解决方案</h4>
+			<h4>5.编码实战</h4>
+			
+			<h4>6.参考文献</h4>
+			
+		</section>
+		<section>
+			<h3>1.背景介绍</h3>
+		</section>
+		<section>
+			<h4>1.背景介绍</h4>
+			<p>angular路由
+
+				路由 (route) ，几乎所有的 MVC(VM) 框架都应该具有的特性，因为它是前端构建单页面应用 (SPA) 必不可少的组成部分。
+				
+				那么，对于 angular 而言，它自然也有 内置 的路由模块：叫做 ngRoute 。
+				
+				不过，大家很少用它，因为它的功能太有限，往往不能满足开发需求！！
+				
+				于是，一个基于 ngRoute 开发的 第三方路由模块 ，叫做 ui.router ，受到了大家的“追捧”。</p>
+		</section>
+		<section>
+			<h3>2.知识剖析</h3>
+		</section>
+		<section>
+			
+			<p> ngRoute vs ui.router
+				首先，无论是使用哪种路由，作为框架额外的附加功能，它们都将以 模块依赖 的形式被引入，简而言之就是：在引入路由 源文件 之后，你的代码应该这样写(以 ui.router 为例)：
+				
+				angular.module("myApp", ["ui.router"]); // myApp为自定义模块，依赖第三方路由模块ui.router
+				这样做的目的是： 在程序启动(bootstrap)的时候，加载依赖模块(如：ui.router)，将所有 挂载 在该模块的 服务(provider) ， 指令(directive) ， 过滤器(filter) 等都进行注册 ，那么在后面的程序中便可以调用了。</p>
+
+		</section>
+		<section>
+			<p>
+				$urlRouterProvider(服务提供者) --------- 用来配置路由重定向
+$urlRouter(服务)
+$stateProvider(服务提供者) --------- 用来配置路由
+$state(服务) --------- 用来显示当前路由状态信息，以及一些路由方法（如：跳转）
+$stateParams(服务) --------- 用来存储路由匹配时的参数
+ui-view(指令) --------- 路由模板渲染，对应的dom相关联
+ui-sref(指令)
+			</p>
+		</section>
+		<section>
+			这样一看，其实 ui.router 和 ngRoute 大体的设计思路，对应的模块划分都是一致的(毕竟是同一个团队开发)，不同的地方在于功能点的实现和 增强 。
+
+那么问题来了： ngRoute 弱在哪些方面， ui.router 怎么弥补了这些方面?
+		</section>
+		<section>
+			<p>我们在html中利用ng-view指令定义了两个区块，于是两个div中显示了相同的内容，这很合乎情理，但却不是我们想要的，但是又不能为力，因为，在ngRoute中：</p>
+        <p>1.视图没有名字进行唯一标志，所以它们被同等的处理。</p>
+        <p>2.路由配置只有一个模板，无法配置多个。</p>
+        </section>
+        <section>
+			ui.router工作原理
+			路由，大致可以理解为：一个 查找匹配 的过程。
+			
+			对于前端 MVC(VM) 而言，就是将 hash值 (#xxx)与一系列的 路由规则 进行查找匹配，匹配出一个符合条件的规则，然后根据这个规则，进行数据的获取，以及页面的渲染。
+			
+			所以，接下来：
+			
+			第一步，学会如何创建路由规则？
+			第二步，了解路由查找匹配原理？
+
+        </section>
+		<section>
+			
+       <p>$stateProvider</p>
+          <p> .state('home', {</p>
+	       <p> url: '/abc',</p>
+	       <p> template: 'hello world'</p>
+
+		  <p>	1.规则名：'home'</p>
+		<p>	2.匹配的url：'/abc'</p>
+		<p>3.对应的模板：'hello world'</p>	
+		</section>
+            <section>
+				<p>angular 在刚开始的$digest时， $rootScope 会触发 $locationChangeSuccess 事件（angular在每次浏览器hash change的时候也会触发 $locationChangeSuccess事件）</p>
+                 <p>ui.router 监听了 $locationChangeSuccess 事件，于是开始通过遍历一系列rules，进行路由查找匹配</p>
+				 <p>当匹配到路由后，就通过 $state.transitionTo(state,...) ，跳转激活对应的state</p>
+				 <p>最后，完成数据请求和模板的渲染</p>
+			</section>
+
+		<section>
+			<h3>5.编码实战</h3>
+		</section>
+		<section>
+            <h3>6.参考文献</h3>
+            https://blog.csdn.net/gaojbsunny/article/details/54017782
+		</section>
+		
+		
+		
+		<section>
+			<h4>鸣谢</h4>
+			<p>感谢大家观看</p>
+			<p><small>BY : 王旭东</small></p>
+		</section>
+	</div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: './plugin/markdown/marked.js' },
+            { src: './plugin/markdown/markdown.js' },
+            { src: './plugin/notes/notes.js', async: true },
+            { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>

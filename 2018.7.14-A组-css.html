@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class=" no-mobile desktop no-ie chrome chrome67 web-new-section gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch no-retina fontface js no-mobile desktop no-ie chrome chrome67 web-new-section gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch no-retina fontface domloaded w-526 gt-240 gt-320 gt-480 lt-640 lt-768 lt-800 lt-1024 lt-1280 lt-1440 lt-1680 lt-1920 portrait no-landscape" id="2018-page"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script><link rel="stylesheet" type="text/css" href="../css/reveal/print/paper.css">
+    <link rel="stylesheet" type="text/css" href="../css/reveal/print/paper.css">
+    <script type="text/javascript" src="https://ptteng.github.io/PPT/plugin/markdown/marked.js"></script>
+    <script type="text/javascript" src="https://ptteng.github.io/PPT/plugin/markdown/markdown.js"></script>
+    <script type="text/javascript" src="https://ptteng.github.io/PPT/plugin/notes/notes.js"></script>
+    <script type="text/javascript" src="https://ptteng.github.io/PPT/plugin/highlight/highlight.js"></script><script type="text/javascript" src="https://ptteng.github.io/PPT/plugin/markdown/marked.js"></script><script type="text/javascript" src="https://ptteng.github.io/PPT/plugin/markdown/markdown.js"></script><script type="text/javascript" src="https://ptteng.github.io/PPT/plugin/notes/notes.js"></script><script type="text/javascript" src="https://ptteng.github.io/PPT/plugin/highlight/highlight.js"></script>
+</head>
+
+<body>
+    <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank">
+    </map>
+    <div class="reveal center slide" role="application" data-transition-speed="default" data-background-transition="fade">
+        <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.493125);">
+
+            <section class="present" style="top: 237px; display: block;">
+                <h4></h4>
+                <h4>z-index初解，工作原理</h4>
+                <h4>分享人：曾健</h4>
+
+            </section>
+
+            <section class="future" style="top: 36px; display: block;" hidden="" aria-hidden="true">
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>1.背景介绍</p>
+            </section>
+
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <p>
+                     1.含义：z-index属性指定了元素及其子元素的[z顺序]，而[z顺序]可以决定当元素
+                    发生覆盖的时候，哪个元素在上面。通常一个较大的z-index值的元素会覆盖较低的
+                    那一个（前提是元素支持z-index值）。
+                    
+
+                    
+                </p>
+
+
+            </section>
+           
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <p>
+                    2.z-index的值
+                    <ul>
+                        <li>z-index:auto;默认值</li>
+                        <li>z-index：&lt;integer&gt;;整数值</li>
+                        <li>z-index：inherit;继承</li>
+                    </ul> 
+                    
+
+                    
+                </p>
+
+
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <h4>3.基本特性</h4>
+                <ol>
+                    <li>支持负值；</li>
+                    <li>支持css3&nbsp;animation动画； </li>
+                    <li>在css2.1时代，需要和定位元素配合使用；</li>
+                </ol>
+            </section>
+           
+
+            <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                <h3>2.知识剖析</h3>
+            </section>
+
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <h4>z-index一般只对定位元素有作用</h4>
+                <img src="E:/linshi_img/q1.png" alt="">
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <p>如果定位元素z-index没有发生嵌套</p>
+                <ol>
+                    <li>后来居上的准则</li>
+                    <li>哪个大哪个上</li>
+
+                </ol>
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <p>后来居上</p>
+HTML的dom流是分先后顺序的，一般来讲两个元素他们的css特性基本没什么差别的时候，当发生重叠的时候，一般是由后面一个覆盖前面一个                <p></p>
+                <img src="E:/linshi_img/q2.png" alt="">
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <p>哪个大哪个上</p>
+                <img src="E:/linshi_img/q3.png" alt="">
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <h4>如果定位元素z-index发生嵌套</h4>
+                <p>祖先优先的原则</p>
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <p>祖先优先原则</p>
+                <img src="E:/linshi_img/q4.png" alt="">
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <p>但前提条件是z-index的值是数值非auto</p>
+                <img src="E:/linshi_img/q5.png" alt="">
+            </section>
+            <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                <h3>3.常见问题</h3>
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <p>为什么z-index为auto，祖先优先原则就不起作用了？</p>
+                <img src="E:/linshi_img/q6.png" alt="">
+            </section>
+            <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                <h3>4.解决方案</h3>
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <img src="E:/linshi_img/q7.png" alt="">
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <img src="E:/linshi_img/q8.png" alt="">
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <img src="E:/linshi_img/q9.png" alt="">
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                
+                <img src="E:/linshi_img/a1.png" alt="">
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <img src="E:/linshi_img/a2.png" alt="">
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                    <p>层叠水平</p>
+                <img src="E:/linshi_img/a3.png" alt="">
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <img src="E:/linshi_img/a4.png" alt="">
+            </section>
+            <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>5.编码实战</h3>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                        <h3>6.扩展思考</h3>
+                    </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <p>理解元素的层叠顺序</p>
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <p>层叠顺序-stacking&nbsp;order</p>
+                表示元素发生层叠的时候有着特定的垂直显示顺序。
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <h4>著名的7阶层叠水平</h4>
+                <img src="E:/linshi_img/a5.png" alt="">
+            </section>
+            <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                <h3>7.参考</h3>
+
+            </section>
+            <section class="future" style="top: 264px; display: none;" hidden="" aria-hidden="true">
+                <p>参考一：<a href="https://www.imooc.com/video/11627">深入理解z-index
+  
+                    </a></p>
+               
+            </section>
+            <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                <h3>8.更多讨论</h3>
+                <p>1.为何需要层叠顺序</p>
+                <p>2.为何是这个层叠顺序</p>
+                <p>3.内联元素真的会覆盖浮动元素？</p>
+               
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                   <p> 1.为何需要层叠顺序？</p>
+                   <p>因为层叠顺序的意义就是规范元素重叠时候的呈现规则</p>
+                </section>
+                <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                        <p> 2.为何是这个层叠顺序</p>
+                        <p>因为这种层叠顺序更符合页面加载的功能和视觉呈现！</p>
+                     </section>
+                     <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                            <img src="E:/linshi_img/a6.png" alt="">
+                            <p>内容是页面中最重要的实体，因此层叠水平要高</p>
+                         </section>
+                         <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                                <p>3.内联元素真的会覆盖浮动元素？</p>
+                                
+                             </section>
+                             <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                                   <img src="E:/linshi_img/a7.png" alt="">
+                                    
+                                 </section>
+                         
+                     
+            <section class="future" style="top: 212.5px; display: none;" hidden="" aria-hidden="true">
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    By
+                    <small style="vertical-align: middle">曾健</small>
+                </p>
+            </section>
+
+
+        </div>
+        <div class="backgrounds"><div class="slide-background present" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div>
+        <div class="progress" style="display: block;">
+            <span style="width: 0px;"></span>
+        </div>
+        <aside class="controls" style="display: block;">
+            <button class="navigate-left" aria-label="previous slide"></button>
+            <button class="navigate-right enabled" aria-label="next slide"></button>
+            <button class="navigate-up" aria-label="above slide"></button>
+            <button class="navigate-down" aria-label="below slide"></button>
+        </aside>
+        <div class="slide-number" style="display: none;"></div>
+        <div class="speaker-notes" data-prevent-swipe=""></div>
+        <div class="pause-overlay"></div>
+        <div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+            </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        //  controls: true, // 是否在右下角展示控制条
+        //  progress: true, // 是否显示演示的进度条
+        //  slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        //  history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        //  keyboard: true, // 是否启用键盘快捷键来导航
+        //  overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        //  center: true, // 是否将幻灯片垂直居中
+        //  touch: true, // 是否在触屏设备上启用触摸滑动切换
+        //  loop: false, // 是否循环演示
+        //  rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        //  fragments: true, // 全局开启和关闭碎片。
+        //  autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        //  transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        //  transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        //  mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+
+
+
+
+
+</body></html>
