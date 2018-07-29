@@ -20,7 +20,7 @@
     <!--<link rel="stylesheet" href="./葡萄藤PPT_files/zenburn.css">-->
     <style>
         p{
-            text-align: left;
+            text-align: center;
             /*font-size: 25px;*/
         }
         .smallp p{
@@ -48,7 +48,7 @@
 <div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
     <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.768857);">
         <section class="present" style="top: 133px; display: block;">
-            <h3>【css-15】<span>常见的CSS和JS框架</span></h3>
+            <h3>【JS-3】<span>有限状态机是什么？如何使用有限状态机实现任务四</span></h3>
             <h3>小课堂</h3>
             <h4>分享人:姜学倩</h4>
         </section>
@@ -67,89 +67,27 @@
             <h3>1.背景介绍</h3>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
-            <h4>1.什么是库?什么是框架？</h4>
-            <p>库：库是有用功能的有组织的集合。库的典型功能包括处理字符串、日期、HTML DOM元素、
-                事件、Cookie、动画、网络请求等。每个函数将值返回给调用应用程序，但是你可以从中选择
-                参数来应用。库是更多是一个封装好的特定的集合，提供给开发者使用，而且是特定于某一方
-                面的集合（方法和函数），库没有控制权，控制权在使用者手中，在库中查询需要的功能在
-                自己的应用中使用，我们可以从封装的角度理解库.</p>
+            <h4>1.什么是有限状态机?</h4>
+            <p>有限状态机（英语：finite-state machine，缩写：FSM）又称有限状态自动机，简称状态机，
+                是表示有限个状态以及在这些状态之间的转移和动作等行为的数学模型。</p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
-            <h4>1.什么是库?什么是框架？</h4>
-            <p>框架：框架顾名思义就是一套架构，会基于自身的特点向用户提供一套相当于叫完整的解决方案，
-                而且控制权的在框架本身，使用者要找框架所规定的某种规范进行开发。框架是一个应用程序的骨架，
-                它要求你以特定的方式处理软件设计，并在某些点插入自己的逻辑。 通常框架提供事件、
-                存储和数据绑定等功能。</p>
+            <p>状态存储关于过去的信息，就是说：它反映从系统开始到现在时刻的输入变化。
+                转移指示状态变更，并且用必须满足确使转移发生的条件来描述它。
+                动作是在给定时刻要进行的活动的描述。有多种类型的动作：<br>
+                进入动作（entry action）：在进入状态时进行<br>
+                退出动作：在退出状态时进行<br>
+                输入动作：依赖于当前状态和输入条件进行<br>
+                转移动作：在进行特定转移时进行</p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
             <h3>2.知识剖析</h3>
         </section>
-        <section hidden="" aria-hidden="true" class="future smallp" style="top: 330px; display: none;">
-            <h4>CSS常用的框架和库</h4>
-            </p>
-        </section>
-        <section hidden="" aria-hidden="true" class="future smallp" style="top: 330px; display: none;">
-            <h4>Foundation</h4>
-            <p>Foundation框架总体来看要比Bootstrap略显高大上一点，但他们俩的设计理念都是非常清楚的，
-                Bootstrap有引导的意思，它尝试处理你项目中的一切所需。Foundation有基础、地基及支柱的意思，
-                给你项目中强有力的创造与支持。相对于Bootstrap丰富的组件及插件，Foundation仅提供了
-                有限的几种元素，其目标是，即使你使用预定义的UI元素，也不应该与大家的网站长得太像。
-                而Bootstrap则致力于提供所有定义好的元素，这样使得看起来许多网站都差不多。
-                Foundation默认不带图标集，它推荐使用开源字体图标。与Bootstrap一样，
-                Foundation使用网格流式布局将网页划分为12列，针对不同的设备显示不同的列数，实现响应式布局。</p>
-            <a href="https://foundation.zurb.com/sites.html">https://foundation.zurb.com/sites.html</a>
-        </section>
-        <section hidden="" aria-hidden="true" class="future smallp" style="top: 330px; display: none;">
-            <h4>JS流行库和框架</h4>
-
-        </section>
-        <section hidden="" aria-hidden="true" class="future smallp" style="top: 330px; display: none;">
-            <h4>Jq</h4>
-            <p>jQuery是最常用的JavaScript库，它革命性的在客户端开发，将CSS选择器引入到DOM节点检索
-                加链接来应用事件处理程序、动画和Ajax调用。jQuery近年来备受青睐，对于一个很需要
-                JavaScript功能的项目来说，jQuery绝对是一个可行的选择。</p>
-            <a href="https://jquery.com/">https://jquery.com/</a>
-        </section>
-        <section hidden="" aria-hidden="true" class="future smallp" style="top: 330px; display: none;">
-            <h4>React</h4>
-            <p>React 起源于 Facebook 的内部项目，因为该公司对市场上所有 JavaScript MVC 框架，都不满意，就决定自己写一套，
-                用来架设Instagram 的网站。做出来以后，发现这套东西很好用，就在2013年5月开源了。
-                React声称是一个用于构建用户界面的JavaScript库，它专注于MVC开发的“View”部分，
-                并且可以轻松创建保留状态的UI组件。 它是实现虚拟DOM的第一个库， 内存结构计算差异，
-                有效地更新页面。</p>
-            <a href="https://reactjs.org/">https://reactjs.org/</a>
-        </section>
-        <section hidden="" aria-hidden="true" class="future smallp" style="top: 330px; display: none;">
-            <h4>Angular</h4>
-            <p>AngularJS [1]  诞生于2009年，由Misko Hevery 等人创建，后为Google所收购。是一款优秀的前端JS框架，已经被用于Google的多款产品当中。
-               </p>
-        </section>
-        <section hidden="" aria-hidden="true" class="future smallp" style="top: 330px; display: none;">
-            <h4>Vue</h4>
-            <p>Vue.js是一个构建数据驱动的 web 界面的渐进式框架。由在美的谷歌工程师尤雨溪开发。Vue.js 的目标是通过尽可能简单的 API 实现响应的数据绑定和组合的视图组件.
-                它不仅易于上手，还便于与第三方库或既有项目整合。Vue.js 自身不是一个全能框架——它只聚焦于视图层。
-                因此它非常容易学习，非常容易与其它库或已有项目整合。
-                另一方面，在与相关工具和支持库一起使用时，Vue.js 也能完美地驱动复杂的单页应用。</p>
-            <a href="https://cn.vuejs.org/">https://cn.vuejs.org/</a>
-        </section>
-        <section hidden="" aria-hidden="true" class="future smallp" style="top: 330px; display: none;">
-            <h4>Backbone</h4>
-            <p>支持jquery，自带路由，对象化视图，强大的sync机制减少页面大小从而加快页面显示。</p>
-            <a href="http://backbonejs.org/">http://backbonejs.org/</a>
-        </section>
-        <section hidden="" aria-hidden="true" class="future smallp" style="top: 330px; display: none;">
-            <h4>Ember</h4>
-            <p>一个用于创建 web 应用的 JavaScript MVC 框架，采用基于字符串的Handlebars模板，支持双向绑定、观察者模式、
-                计算属性（依赖其他属性动态变化）、自动更新模板、路由控制、状态机等。 
-                Ember使用自身扩展的类来创建Ember对象、数组、字符串、函数，提供大量方法与属性用于操作。</p>
-            <a href="https://www.emberjs.com/">https://www.emberjs.com/</a>
-        </section>
-
         <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
             <h3>3.常见问题</h3>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
-            <h3>库和框架区别？</h3>
+            <p>javascript-state-machine创建的对象是如何满足状态机模型的要求的：</p>
             <!--<p>从Web开发人员的角度：-->
                 <!--库可以很容易地被另一个库替换。但框架不能。-->
                 <!--如果您不喜欢jquery日期选择器库，则可以使用其他日期选择器替换，例如bootstrap日期选择器或pickadate。-->
@@ -162,12 +100,12 @@
 
         <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
             <!--<h3>库和框架区别？</h3>-->
-            <p>库是您从代码中调用的模块，框架是调用代码的模块。</p>
-            <p>这仅仅是一个集合的例程（函数式编程）或类定义（面向对象编程）。背后的原因只是代码重用，即获取已由其他开发人员编写的代码。
-                类或例程通常在特定于域的区域中定义特定操作。例如，有一些数学库可以让开发人员只需调用函数而无需重做算法如何工作的实现。
-                在框架中，所有的控制流都已存在，并且我们应该用我们的代码填写一堆预定义的白点。框架通常更复杂。它定义了一个框架，
-                应用程序定义了自己的特征以填充框架。通过这种方式，适当时框架将调用您的代码。好处是开发人员不需要担心设计是否良好，
-                而只需要实现特定于域的功能。</p>
+            <p>可以用状态来描述事物，并且任一时刻，事物总是处于一种状态</p>
+            <p>事物拥有的状态总数是有限的</p>
+            <p>通过触发事物的某些行为，可以导致事物从一种状态过渡到另一种状态</p>
+            <p>事物状态变化是有规则的，A状态可以变换到B，B可以变换到C，A却不一定能变换到C</p>
+            <p>同一种行为，可以将事物从多种状态变成同种状态，但是不能从同种状态变成多种状态</p>
+
             <!--<a href="https://www.jianshu.com/p/29d7311161ba">React和react-router, react-redux结合起来才叫框架，本身只是充当一个前端渲染的库而已</a>-->
         </section>
 
@@ -175,17 +113,25 @@
             <h3>5.编码实战</h3>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>5.编码实战-恋爱小游戏</h3>
+            <img src="1203%20(1).png" alt="">
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>5.编码实战-任务四</h3>
+            <img src="1203%20(2).png" alt="">
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>6.拓展思考</h3>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <h3>1.js框架之间学起来有关联吗？</h3>
-            <h3>2.哪个框架比较受欢迎？</h3>
-            <h3>3.哪个框架对新手比较友好？</h3>
+            <!--<h3>1.js框架之间学起来有关联吗？</h3>-->
+            <!--<h3>2.哪个框架比较受欢迎？</h3>-->
+            <!--<h3>3.哪个框架对新手比较友好？</h3>-->
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>7.参考文献</h3>
-            <p>参考资料:https://blog.csdn.net/bluesky1215/article/details/68922920</p>
-            <p>参考资料：https://stackoverflow.com/questions/148747/what-is-the-difference-between-a-framework-and-a-library?noredirect=1&lq=1</p>
+            <p>参考资料:https://zh.wikipedia.org/zh-hans/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA</p>
+            <p>参考资料:https://github.com/jakesgordon/javascript-state-machine</p>
             <!--<p>参考资料：https://www.jianshu.com/p/e75f351e11f8 <b>css3中的BFC,IFC,GFC和FFC</b></p>-->
             <!--<p>参考资料：https://zhuanlan.zhihu.com/p/25321647 <b>10 分钟理解 BFC 原理</b></p>-->
             <!-- <p><small>BY : 沁修 | 王义山</small></p> -->
@@ -195,9 +141,9 @@
             <h3>8.更多讨论</h3>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <h3>1.我们该学哪些框架？</h3>
-            <h3>1.框架的学习有推荐顺序吗？</h3>
-            <h3>1.Angular框架该学习哪个？</h3>
+            <!--<h3>1.我们该学哪些框架？</h3>-->
+            <!--<h3>1.框架的学习有推荐顺序吗？</h3>-->
+            <!--<h3>1.Angular框架该学习哪个？</h3>-->
         </section>
 
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
