@@ -48,7 +48,7 @@
 <div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
     <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.768857);">
         <section class="present" style="top: 133px; display: block;">
-            <h3>【JS-3】<span>有限状态机是什么？如何使用有限状态机实现任务四</span></h3>
+            <h3>【JS-4】<span>如何阻止事件冒泡与默认事件</span></h3>
             <h3>小课堂</h3>
             <h4>分享人:姜学倩</h4>
         </section>
@@ -67,71 +67,70 @@
             <h3>1.背景介绍</h3>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
-            <h4>1.什么是有限状态机?</h4>
-            <p>有限状态机（英语：finite-state machine，缩写：FSM）又称有限状态自动机，简称状态机，
-                是表示有限个状态以及在这些状态之间的转移和动作等行为的数学模型。</p>
-        </section>
-        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
-            <p>状态存储关于过去的信息，就是说：它反映从系统开始到现在时刻的输入变化。
-                转移指示状态变更，并且用必须满足确使转移发生的条件来描述它。
-                动作是在给定时刻要进行的活动的描述。有多种类型的动作：<br>
-                进入动作（entry action）：在进入状态时进行<br>
-                退出动作：在退出状态时进行<br>
-                输入动作：依赖于当前状态和输入条件进行<br>
-                转移动作：在进行特定转移时进行</p>
+            <h4>1.什么是事件?</h4>
+            <p style="text-align: left">事件是文档或浏览器窗口中发生的特定的交互瞬间。</p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
             <h3>2.知识剖析</h3>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h4>1.什么是冒泡事件?</h4>
+            <p style="text-align: left">在一个对象上触发某类事件（比如单击onclick事件），如果此对象定义了此事件的处理程序，那么此事件就会调用这个处理程序，
+                如果没有定义此事件处理程序或者事件返回true，那么这个事件会向这个对象的父级对象传播，
+                从里到外，直至它被处理（父级对象所有同类事件都将被激活），或者它到达了对象层次的最顶层，即document对象（有些浏览器是window）。</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h4>1.什么是默认事件?</h4>
+            <p style="text-align: left">浏览器的一些默认的行为。例如：点击超链接跳转,滑动滚轮控制滚动条</p>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
             <h3>3.常见问题</h3>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
-            <p>javascript-state-machine创建的对象是如何满足状态机模型的要求的：</p>
-            <!--<p>从Web开发人员的角度：-->
-                <!--库可以很容易地被另一个库替换。但框架不能。-->
-                <!--如果您不喜欢jquery日期选择器库，则可以使用其他日期选择器替换，例如bootstrap日期选择器或pickadate。-->
-                <!--如果您不喜欢构建产品的AngularJS，则不能只替换任何其他框架。您必须重写整个代码库。-->
-                <!--与Frameworks相比，大多数库的学习曲线要​​少得多。例如：underscore.js是一个库，Ember.js是一个框架。</p>-->
+            <p>如何阻止事件冒泡和默认事件</p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
             <h3>4.解决方案</h3>
         </section>
 
         <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
-            <!--<h3>库和框架区别？</h3>-->
-            <p>可以用状态来描述事物，并且任一时刻，事物总是处于一种状态</p>
-            <p>事物拥有的状态总数是有限的</p>
-            <p>通过触发事物的某些行为，可以导致事物从一种状态过渡到另一种状态</p>
-            <p>事物状态变化是有规则的，A状态可以变换到B，B可以变换到C，A却不一定能变换到C</p>
-            <p>同一种行为，可以将事物从多种状态变成同种状态，但是不能从同种状态变成多种状态</p>
-
-            <!--<a href="https://www.jianshu.com/p/29d7311161ba">React和react-router, react-redux结合起来才叫框架，本身只是充当一个前端渲染的库而已</a>-->
+            <h3>阻止事件冒泡——<span>event.stopPropagation()</span></h3>
+            <img src="s.png" alt="">
         </section>
-
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>阻止事件冒泡——<span>cancelBubble</span></h3>
+            <img src="sp.png" alt="">
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>阻止默认事件——<span>event.preventDefault()</span></h3>
+            <img src="e.png" alt="">
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>阻止默认事件——<span>returnValue</span></h3>
+            <img src="event0.png" alt="">
+            <img src="ie4.png" alt="">
+        </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>5.编码实战</h3>
-        </section>
-        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <h3>5.编码实战-恋爱小游戏</h3>
-            <img src="1203%20(1).png" alt="">
-        </section>
-        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <h3>5.编码实战-任务四</h3>
-            <img src="1203%20(2).png" alt="">
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>6.拓展思考</h3>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <!--<h3>1.js框架之间学起来有关联吗？</h3>-->
-            <!--<h3>2.哪个框架比较受欢迎？</h3>-->
-            <!--<h3>3.哪个框架对新手比较友好？</h3>-->
+            <h3></h3>
+            <h3>1.什么是事件捕获？</h3>
+            <p style="text-align: left">事件捕获：事件由根元素获取并沿DOM树向下分发  最不具体的逐级传递到最具体的
+                举例 html -> body -> div -> span</p>
+            <h3>2.不是所有的事件都能冒泡。</h3>
+            <p style="text-align: left">以下事件不冒泡：blur、focus、load、unload。</p>
+            <h3>3.事件冒泡作用？</h3>
+            <p style="text-align: left"> 允许多个操作被集中处理（把事件处理器添加到一个父级元素上，避免把事件处理器添加到多个子级元素上），它还可以让你在对象层的不同级别捕获事件。</p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>7.参考文献</h3>
-            <p>参考资料:https://zh.wikipedia.org/zh-hans/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA</p>
-            <p>参考资料:https://github.com/jakesgordon/javascript-state-machine</p>
+            <p>参考资料http://www.cnblogs.com/Essence/p/4266618.html</p>
+            <p>参考资料:https://www.jb51.net/article/42492.htm</p>
             <!--<p>参考资料：https://www.jianshu.com/p/e75f351e11f8 <b>css3中的BFC,IFC,GFC和FFC</b></p>-->
             <!--<p>参考资料：https://zhuanlan.zhihu.com/p/25321647 <b>10 分钟理解 BFC 原理</b></p>-->
             <!-- <p><small>BY : 沁修 | 王义山</small></p> -->

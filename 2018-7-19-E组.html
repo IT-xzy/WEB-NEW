@@ -1,0 +1,276 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        .reveal pre code {
+            background-color: #120;
+        }
+    </style>
+</head>
+<body style="text-align: center">
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h3>小课堂</h3>
+            <h3>事件循环？</h3>
+            <h3>分享人：杨亚洲 </h3>
+        </section>
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section style="text-align: left; font-size: 30px">
+                <h3>什么是单线程？</h3>
+                <p>
+                        JavaScript语言的一大特点就是单线程，也就是说，同一个时间只能做一件事。那么，为什么JavaScript不能有多个线程呢？这样能提高效率啊。
+
+                        JavaScript的单线程，与它的用途有关。作为浏览器脚本语言，JavaScript的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。比如，假定JavaScript同时有两个线程，一个线程在某个DOM节点上添加内容，另一个线程删除了这个节点，这时浏览器应该以哪个线程为准？
+        
+                        所以，为了避免复杂性，从一诞生，JavaScript就是单线程，这已经成了这门语言的核心特征，将来也不会改变。
+                </p>
+            </section>
+            <section style="text-align: left; font-size: 30px">
+                <p>
+                    Js 是单线程，js代码从上到下依次执行，比如我们写了两个函数，肯定是上面的函数先执行，下面的函数后执行。
+                    但是这种单线程有一个非常大的问题，那就是遇到耗时的任务，后面的任务只能等待它执行完，才能进行。
+                    比如ajax 请求，它从服务器上获取数据，这本来就耗时间, 如果网络再慢，就更耗时间，那么我们只能等待返回结果，
+                    结果出来之后再向下执行，等待的过程中，用户什么都不能做，如果是在渲染阶段，也会阻止渲染UI, 用户只能看到空白页面，体验太差。
+                </p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <h3>任务队列</h3>
+                <p style="text-align: left; font-size: 30px">
+                        单线程就意味着，所有任务需要排队，前一个任务结束，才会执行后一个任务。如果前一个任务耗时很长，后一个任务就不得不一直等着。
+                        如果排队是因为计算量大，CPU忙不过来，倒也算了，但是很多时候CPU是闲着的，
+                        因为IO设备（输入输出设备）很慢（比如Ajax操作从网络读取数据），不得不等着结果出来，再往下执行。
+                        但由于类似ajax网络请求、setTimeout时间延迟、DOM事件的用户交互等，这些任务并不消耗 CPU，是一种空等，资源浪费，因此出现了所谓的异步
+                        JavaScript语言的设计者意识到，这时主线程完全可以不管IO设备，挂起处于等待中的任务，先运行排在后面的任务。等到IO设备返回了结果，再回过头，把挂起的任务继续执行下去。
+                        吧任务挂起来，形成的执行任务的队列是任务队列。
+                </p>
+            </section>
+            <section style="text-align: center; font-size: 30px">
+                <h3>同步任务，异步任务？</h3>
+                <p style="text-align: left; font-size: 30px">
+                        于是，所有任务可以分成两种，一种是同步任务（synchronous），
+                        另一种是异步任务（asynchronous）。同步任务指的是，在主线程上排队执行的任务，
+                        只有前一个任务执行完毕，才能执行后一个任务；
+                    </p>
+                    <p>
+                            异步任务指的是，不进入主线程、而进入"任务队列"（task queue）的任务，
+                            只有"任务队列"通知主线程，某个异步任务可以执行了，该任务才会进入主线程执行。
+
+                </p>
+            </section>
+
+            <section>
+                <h3>异步执行的运行机制如下。</h3>
+                <p>
+                （1）所有同步任务都在主线程上执行，形成一个执行栈（execution context stack）。
+                </p>
+                <p>
+                    （2）主线程之外，还存在一个"任务队列"（task queue）。只要异步任务有了运行结果，就在"任务队列"之中放置一个事件。
+                </p>
+                <p>
+                    
+                    （3）一旦"执行栈"中的所有同步任务执行完毕，系统就会读取"任务队列"，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。
+                </p>
+
+                <p>
+
+                    （4）主线程不断重复上面的第三步。
+                </p>
+
+
+            </section>
+            <section>
+                <h3>看图</h3>
+                　执行的大意：
+            　　　　<p>
+
+                同步环境执行(step1) -> 事件循环1(step4) -> 事件循环2(step4的重复)…
+            </p>
+
+            　　其中的异步进程有：
+            <p>
+
+                　　　　a、类似onclick等，由浏览器内核的DOM binding模块处理，事件触发时，回调函数添加到任务队列中；
+            </p>
+            <p>
+
+                　　　　b、setTimeout等，由浏览器内核的Timer模块处理，时间到达时，回调函数添加到任务队列中；
+            </p>   
+            <p>
+
+                　　　　c、Ajax，由浏览器内核的Network模块处理，网络请求返回后，添加到任务队列中。
+            </p>
+                        </section>
+            <section>
+                <img src="img/1019-css-1/z6.png">
+            </section>
+
+        </section>
+        <section>
+            <section>
+                <h3>3.常见问题<br></h3>
+            </section>
+            <section>
+                <p style="text-align: center">
+                    1、所谓的优先级究竟是什么？
+                </p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>4.解决方案</h3>
+            </section>
+            <section style="text-align: left">
+                <h3>E6的新的事件机制</h3>
+                <p>微观任务队列,ES6标准中任务队列存在两种类型，
+                    <p>
+                        一种就是上边提到的一些队列，比如setTimeout、网络请求Ajax、用户I\O等都属于宏观任务队列（macrotask queue），
+                    </p>
+                    <p>
+                            另一种是微观任务队列（microtask queue），Promise就属于微观任务队列。
+
+                        </p>
+            </section>
+            
+            <section>
+                <p>
+                          添加了微观任务队列之后事件循环有什么变化呢？在执行栈执行的过程中会把属于微观任务队列的任务分配到相应的微观任务队列中去。而在调用栈执行空之后，主线程读取任务队列时，会先读取所有微观任务队列，然后读取一个宏观任务队列，再读取所有的微观任务队列。如图：</p>
+
+                </p>
+            </section>
+            <section>
+                <p>
+                    <img src="img/1019-css-1/z7.png" alt="">
+                </p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>6.扩展思考</h3>
+            </section>
+            <section>
+              
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>7.参考文献</h3>
+            </section>
+            <section>
+                <p >
+                    参考一：
+                    <a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html">Event loop</a><br>
+                    参考二
+                    <a href="https://kongchenglc.github.io/blog/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF20171026/">ES6新的事件机制</a><br>
+                </p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>8.更多讨论</h3>
+                <p>如果创建多线程</p>
+            </section>
+            <section>
+                <p>为了利用多核CPU的计算能力，HTML5提出Web Worker标准，
+                    允许JavaScript脚本创建多个线程，但是子线程完全受主线程控制，
+                    且不得操作DOM。所以，这个新标准并没有改变JavaScript单线程的本质。</p>
+            </section>
+        </section>
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                By
+                <small style="vertical-align: middle">杨亚洲</small>
+            </p>
+        </section>
+    </div>
+</div>
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
