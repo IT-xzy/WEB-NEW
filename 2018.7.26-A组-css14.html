@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<style>
+    .p-style>p {
+        font-size: 20px;
+        text-align: left;
+        padding-bottom: 20px;
+    }
+</style>
+
+<body>
+    <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h4>小课堂——上海分院</h4>
+                <h4>组件化的简单介绍</h4>
+                <h4>分享人：何岳</h4>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <h3>什么是组件？</h3>
+                <p style="font-size: 30px;text-align: left;">组件(Component)。它的核心意义在于代码复用。功能相对单一或者独立，在整个系统的代码层次上位于最底层，被其他代码所依赖。</p>
+                <h3>什么是模块？</h3>
+                <p style="font-size: 30px;text-align: left;">模块(Module)。它的核心意义在于分离职责。它的关注点在于功能划分。 例如： 视频通话、语音通话等功能就可以被分为不同的模块</p>
+            </section>
+            <section>
+                <h3>为什么要做组件库？</h3>
+                <p style="font-size: 30px;text-align: left;">传统开发方式效率低以及维护成本高的主要原因在于很多时候是将一个系统做成了整块应用，而且往往随着业务的增长或者变更，系统的复杂度会呈现指数级的增长，经常出现的情况就是一个小小的改动或者一个小功能的增加可能会引起整体逻辑的修改，造成牵一发而动全身。</p>
+            </section>
+            <section>
+                <h3>组件化的意义</h3>
+                <p style="font-size: 30px;text-align: left;">1.为前端提供了很好的分治策略，可以实现独立维护，可维护性强</p>
+                <p style="font-size: 30px;text-align: left;">2.组件具有独立性，组件之间可以自由组合</p>
+                <p style="font-size: 30px;text-align: left;">3.页面只不过是组件的容器，负责组合组件即可形成功能完整的界面</p>
+            </section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <section>
+                    <h3>组件开发的原则</h3>
+                    <p style="font-size: 30px;text-align: left;">标准性</p>
+                    <p style="font-size: 30px;text-align: left;">任何一个组件都应该遵守一套标准，可以使得不同区域的开发人员据此标准开发出一套标准统一的组件。</p>
+                    <p style="font-size: 30px;text-align: left;">组合性</p>
+                    <p style="font-size: 30px;text-align: left;">组件之前应该是可以组合的。我们知道前端页面的展示都是一些HTML DOM的组合，而组件在最终形态上也可以理解为一个个的HTML片段。那么组成一个完整的界面展示，肯定是要依赖不同组件之间的组合，嵌套以及通信。</p>
+                </section>
+                <section>
+                    <p style="font-size: 30px;text-align: left;">重用性</p>
+                    <p style="font-size: 30px;text-align: left;">任何一个组件应该都是一个可以独立的个体，可以使其应用在不同的场景中。</p>
+                    <p style="font-size: 30px;text-align: left;">可维护性</p>
+                    <p style="font-size: 30px;text-align: left;">任何一个组件应该都具有一套自己的完整的稳定的功能，仅包含自身的，与其它组件无关的逻辑，使其更加的容易理解，使其更加的容易理解，同时大大减少发生bug的几率。</p>
+                </section>
+            </section>
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+
+            <section>
+                <h3>4.解决方案</h3>
+            </section>
+
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+
+            <section>
+                <h3>6.扩展思考</h3>
+            </section>
+
+            <section>
+                <h3>7.参考文献</h3>
+                <p>http://www.w3cplus.com/preprocessor/architecture-sass-project.html</p>
+                <p>https://blog.csdn.net/chenchun91/article/details/53375041</p>
+            </section>
+            <section>
+                <h3>8.更多讨论</h3>
+            </section>
+            <section>
+                <p>讨论时间到，欢迎大家提问！
+                </p>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>By
+                    <small style="vertical-align: middle">何岳</small>
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,283 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .left {
+            text-align: left;
+        }
+        ul {
+            text-align: left;
+        }
+        p {
+            text-align: left;
+        }
+    </style>
+
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : 'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides"
+         style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h2>【CSS-task15】</h2>
+            <h3>请描述 BFC(Block Formatting Context) 及其如何工作
+            </h3>
+            <p>分享人:钟华俊</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+        <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <section>
+            <h4>block</h4>
+            <p class="left">BFC全称是Block fomatting context，直译为"块级格式化上下文"。我们来拆分理解一
+                下，首先了解Block；Box是盒子模型,是CSS布局中的基本单位，BOX有几种类型我们大概了解一下；
+
+            </p>
+            <ul>块盒block box：
+                block box块盒有以下特性：
+                <li>当元素的CSS属性display为block，list-item或 table时，它是块级元素 block-level；</li>
+                <li>视觉上呈现为块，竖直排列；</li>
+                 <li>块级盒参与块格式化上下文；</li>
+            </ul>
+        </section>
+        <section>
+            <ul>
+                行内盒inline box:
+                <li>当元素的CSS属性display为inline，inline-block或inline-table时，称它为行内级元素；</li>
+                <li>视觉上它将内容与其它行内级元素排列为多行；典型的如段落内容，有文本(可以有多种格式譬如着重)，或图片，
+                    都是行内级元素；</li>
+                <li>行内级元素生成行内级盒(inline-level boxes)，参与行内格式化上下文(inline formatting context)。
+                    同时参与生成行内格式化上下文的行内级盒称为行内盒(inline boxes)。所有display:inline的非替换元素生成的
+                    盒是行内盒；</li>
+            </ul>
+        </section>
+        <section>
+            <h4>fomatting context</h4>
+            <p class="left">Formatting context是W3C CSS2.1规范中的一个概念。它是页面中的一块渲染区域，并且有一套渲染规则，
+                它决定了其子元素将如何<b>定位，以及和其他元素的关系、相互作用。</b></p>
+            <p>CSS2.1 中只有BFC、IFC（行级格式化上下文），CSS3中还增加了GFC（网格布局格式化上下文）和FFC（自适应格式化上
+                下文）。</p>
+        </section>
+        <section>
+            <h3>几种常见的定位布局</h3>
+            <ul>
+                常规流：
+                <li>常规流中，盒子一个接着一个排列;</li>
+                <li>在块级格式化上下文里面， 它们竖着排列；</li>
+                <li>在行内格式化上下文里面， 它们横着排列;</li>
+                <li>当position为static或relative，并且float为none时会触发常规流；</li>
+            </ul>
+            <ul>
+                浮动：
+                <li>浮动元素首先按照普通流的位置出现，然后根据浮动的方向尽可能的向左或右偏移，
+                    常规流环绕在它的周边；</li>
+            </ul>
+            <ul>
+                绝对定位：
+                <li>绝对定位布局中，元素会整体脱离常规流，不影响常规流的布局；</li>
+            </ul>
+            <p>了解了以上的概念我们开始进入主题。</p>
+        </section>
+
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            <h4>BFC定义：</h4>
+            <p class="left">BFC是一个独立的渲染区域，只有Block-level box参与， 它规定了内部的Block-level Box如何布局，并
+                且与这个区域外部毫不相干。BFC可以被理解为一种容器，一种被隔离起来了的独立容器，容器里面的元素不会在布局上
+                影响到外面的元素，并且 BFC具有普通容器没有的一些特性，例如可以包含浮动元素等等；</p>
+        </section>
+        <section>
+            <h4>BFC的布局规则：</h4>
+            <ul>
+                <li>内部的盒会在垂直方向一个接一个排列（可以看作BFC中有一个常规流）；</li>
+                <li>BFC的区域不会与float的元素区域重叠</li>
+                <li>计算BFC的高度时，浮动子元素也参与计算</li>
+                <li>每个元素的左外边距与包含块的左边界相接触（从左向右），即使浮动元素也是如此。</li>
+                <li>垂直方向上的距离由margin决定，属于同一个BFC的两个相邻Box的margin会发生重叠，与方向无关。</li>
+                <li>BFC是一个隔离的独立容器，容器里面的子元素不会影响到外面元素</li>
+                上面罗列的一条条特性可能有点抽象，但是我们可以结合之前学习CSS中的特性对它们来加以理解；比如：CSS中块级
+                元素会垂直排列；浮动元素会尽量接近往左或右上方；竖直方向的两个元素的margin会重叠、 等等。
+            </ul>
+        </section>
+
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            <p>BFC在什么情况下会发生，或者说BFC有什么触发条件？</p>
+            <p>BFC有什么实际的作用？</p>
+        </section>
+
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            <p>1.BFC有什么触发条件？</p>
+            <ul>
+                在CSS2.1中规定，满足下列CSS声明之一的元素便会生成BFC
+                <li>根元素</li>
+                <li>float的值不为none</li>
+                <li>overflow的值不为visible</li>
+                <li>display的值为inline-block、table-cell、table-caption</li>
+                <li>position的值为absolute或fixed</li>
+            </ul>
+        </section>
+        <section>
+            <p>2.BFC有什么实际的作用？</p>
+            <ul>
+                实际用途
+                <li>防止margin重叠（塌陷）</li>
+                <li>可以包含浮动元素——清除内部浮动</li>
+                <li>防止与浮动元素重叠——自适应两栏布局</li>
+            </ul>
+        </section>
+
+
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+            <h4>haslayout</h4>
+            <p>谈到BFC就有很多人引申到haslayout，那么haslayout又是什么呢，它和BFC有什么关系，或者说有什么共同点呢？</p>
+            <p>haslayout是IE7-浏览器的特有属性。Layout是IE浏览器渲染引擎的一个内部组成部分。渲染引擎采用了'hasLayout'属
+                性，属性值可以为true或者flase，当一个元素的hasLayout为true时，我们就说这个元素有一个布局（Layout），或者
+                拥有布局，这个时候就不用依赖其包含块了而是靠自身内容。</p>
+        </section>
+        <section>
+            <ul>
+                默认触发hasLayout的HTML标签：
+                <li>根元素</li>
+                <li>html,body</li>
+                <li>table,tr,th,td</li>
+                <li>img</li>
+                <li>input,button,select,textarea,fieldset</li>
+            </ul>
+
+            <ul>
+                可以触发hasLayout的CSS属性：
+                <li>display:inline-block</li>
+                <li>height/width:除了auto</li>
+                <li>float:left/right</li>
+                <li>position:absolute</li>
+                <li>zoom(IE专有属性，设置或检索对象的缩放比例):除了normal</li>
+            </ul>
+        </section>
+        <section>
+            <h5>与BFC的共同点</h5>
+            <p>1.可以实现不和浮动元素重叠</p>
+            <p>2.可以清除元素内部浮动</p>
+            <p>3.能解决嵌套元素边距折叠的问题</p>
+        </section>
+
+        <section>
+            <h3>7.参考文献</h3>
+            <p>参考资料：http://www.cnblogs.com/elcarim5efil/p/4745796.html</p>
+            <p>——学习块格式化上下文（BlockFormattingContext）</p>
+            <p>参考资料：http://www.cnblogs.com/lhb25/p/inside-block-formatting-ontext.html</p>
+            <p>——前端精选文摘：BFC 神奇背后的原理</p>
+            <p>参考资料：http://www.cnblogs.com/ILYljhl/p/3169419.html</p>
+            <p>——BFC与hasLayout之间的故事</p>
+        </section>
+
+        <section>
+            <h3>8.更多讨论</h3>
+            <p>由BFC引发的关于position的思考？</p>
+            <p>BFC 与 hasLayout 的比较？</p>
+        </section>
+
+        <section>
+            <p>鸣谢</p>
+            <p>感谢大家观看</p>
+            <p><small>BY : 钟华俊</small></p>
+        </section>
+
+    </div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status He

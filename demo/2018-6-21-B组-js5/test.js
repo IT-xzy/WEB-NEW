@@ -1,47 +1,47 @@
-// function fn1(f) {
-//     alert(1);
-//     f();
-// };
+function fn1(f) {
+    alert(1);
+    f();
+};
 
-// function fn2(f) {
-//     alert(2);
-//     f();
-// };
+function fn2(f) {
+    alert(2);
+    f();
+};
 
-// function fn3() {
-//     alert(3);
+function fn3() {
+    alert(3);
 
-// };
+};
 
-// fn1(function () {
-//     fn2(fn3);
-// });
+fn1(function () {
+    fn2(fn3);
+});
 
 //回调函数
 // 同步回调
-// function A(callback){
-//     console.log("I am A");
-//     callback();  //调用该函数
-// }
-// function B(){
-//    console.log("I am B");
-// }
-// A(B);
+function A(callback){
+    console.log("I am A");
+    callback();  //调用该函数
+}
+function B(){
+   console.log("I am B");
+}
+A(B);
 
 // 异步回调
 function f1(n, callback) {　
-    // setTimeout(function () {
-    // var count = 0,
-    //     i, j;
+    setTimeout(function () {
+    var count = 0,
+        i, j;
 
-    // for (i = n; i > 0; --i) {
-    //     for (j = n; j > 0; --j) {
-    //         count += 1;
-    //     }
-    // };
+    for (i = n; i > 0; --i) {
+        for (j = n; j > 0; --j) {
+            count += 1;
+        }
+    };
     console.log(1);
 
-    // }, 1000)
+    }, 1000)
     callback();
     console.log(2);
 }
@@ -60,8 +60,8 @@ function f3() {
 }
 
 f1(100000, f3);
-// f2();
-// f3();
+f2();
+f3();
 
 //事件监听
 
