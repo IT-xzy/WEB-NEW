@@ -1,0 +1,263 @@
+﻿<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+    </map>
+    <div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+        <div class="slides" style="width: 960px; height: 700px; zoom: 1.15586;">
+            <section class="present" style="top: 178px; display: block;">
+                <h2>Vue组件</h2>
+                <p>分享人: 刘泽华</p>
+            </section>
+
+
+            <section hidden="" aria-hidden="true" class="future" style="top: 66.5px; display: block;">
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.参考文献</p>
+            </section>
+
+            <!-- 1 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 0px; display: block;">
+                <section style="top: 267px; display: block;">
+                    <h3>1.背景介绍</h3>
+                </section>
+                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                    Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。
+                </section>
+            </section>
+
+
+            <!-- 2 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <h3>2.知识剖析</h3>
+                </section>
+                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                    组件是可复用的 Vue 实例，且带有一个名字：在这个例子中是 <button-counter>。我们可以在一个通过 new Vue 创建的 Vue 根实例中，把这个组件作为自定义元素来使用
+                    因为组件是可复用的 Vue 实例，所以它们与 new Vue 接收相同的选项，例如 data、computed、watch、methods 以及生命周期钩子等。仅有的例外是像 el 这样根实例特有的选项。
+                </section>
+                <section>
+                        data 必须是一个函数
+                        当我们定义这个 <button-counter> 组件时，你可能会发现它的 data 并不是像这样直接提供一个对象：
+                        
+                        data: {
+                          count: 0
+                        }
+                        取而代之的是，一个组件的 data 选项必须是一个函数，因此每个实例可以维护一份被返回对象的独立的拷贝：
+                        
+                        data: function () {
+                          return {
+                            count: 0
+                          }
+                        }
+
+                </section>
+
+                <section>
+                        为了能在模板中使用，这些组件必须先注册以便 Vue 能够识别。这里有两种组件的注册类型：全局注册和局部注册。至此，我们的组件都只是通过 Vue.component 全局注册的：
+
+                        Vue.component('my-component-name', {
+                          // ... options ...
+                        })
+
+
+                </section>
+
+                <section>
+                        通过 Prop 向子组件传递数据
+                        早些时候，我们提到了创建一个博文组件的事情。问题是如果你不能向这个组件传递某一篇博文的标题或内容之类的我们想展示的数据的话，它是没有办法使用的。这也正是 prop 的由来。
+                        
+                        Prop 是你可以在组件上注册的一些自定义特性。当一个值传递给一个 prop 特性的时候，它就变成了那个组件实例的一个属性。为了给博文组件传递一个标题，我们可以用一个 props 选项将其包含在该组件可接受的 prop 列表中：
+                        
+                        Vue.component('blog-post', {
+                          props: ['title'],
+                          template: '<h3>{{ title }}</h3>'
+                        })
+                        一个组件默认可以拥有任意数量的 prop，任何值都可以传递给任何 prop。在上述模板中，你会发现我们能够在组件实例中访问这个值，就像访问 data 中的值一样。
+                        
+                        一个 prop 被注册之后，你就可以像这样把数据作为一个自定义特性传递进来：
+
+                </section>
+
+                <section>
+                    通过事件向父级组件发送消息
+
+
+                </section>
+
+                <section>
+                        定义组件名的方式有两种：
+
+                        使用 kebab-case
+                        Vue.component('my-component-name', { /* ... */ })
+                        当使用 kebab-case (短横线分隔命名) 定义一个组件时，你也必须在引用这个自定义元素时使用 kebab-case，例如 <my-component-name>。
+                        
+                        使用 PascalCase
+                        Vue.component('MyComponentName', { /* ... */ })
+                        当使用 PascalCase (驼峰式命名) 定义一个组件时，你在引用这个自定义元素时两种命名法都可以使用。也就是说 <my-component-name> 和 <MyComponentName> 都是可接受的。注意，尽管如此，直接在 DOM (即非字符串的模板) 中使用时只有 kebab-case 是有效的。
+                </section>
+
+            </section>
+
+            <!-- 3 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <h3>3.常见问题</h3>
+                </section>
+            </section>
+
+            <!-- 4 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <h3>4.解决方案</h3>
+                </section>
+            </section>
+
+
+            <!-- 5 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <h3>5.编码实战</h3>
+                </section>
+            </section>
+
+            <!-- 6 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <h3>6.参考文献</h3>
+                    Vue中文文档
+                </section>
+            </section>
+            </section>
+
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>BY: 刘泽华</p>
+            </section>
+        </div>
+        <div class="backgrounds">
+            <div class="slide-background past" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background stack present" data-loaded="true" style="display: block;">
+                <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+                <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+            </div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+        </div>
+        <div class="progress" style="display: block;">
+            <span style="width: 260.19px;"></span>
+        </div>
+        <aside class="controls" style="display: block;">
+            <button class="navigate-left enabled" aria-label="previous slide"></button>
+            <button class="navigate-right enabled" aria-label="next slide"></button>
+            <button class="navigate-up enabled" aria-label="above slide"></button>
+            <button class="navigate-down" aria-label="below slide"></button>
+        </aside>
+        <div class="slide-number" style="display: none;"></div>
+        <div class="speaker-notes" data-prevent-swipe=""></div>
+        <div class="pause-overlay"></div>
+        <div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+
+            语法： return[()[expression][]]; 可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。 用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression
+            被省略， 或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 初始化幻灯片
+
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: './plugin/markdown/marked.js'
+                },
+                {
+                    src: './plugin/markdown/markdown.js'
+                },
+                {
+                    src: './plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: './plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+
+</body>
+
+</html>
