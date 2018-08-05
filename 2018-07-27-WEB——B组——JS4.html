@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<!-- saved from url=(0091)file:///C:/Users/LALH/Desktop/PPT%20-%20%E5%89%AF%E6%9C%AC/PPT/console%20and%20debug.html#/ -->
+<html class=" js no-mobile desktop no-ie chrome chrome62 c:-section users-section lalh-section desktop-section ppt%20-%20%e5%89%af%e6%9c%ac-section ppt-section w-1366 gt-240 gt-320 gt-480 gt-640 gt-768 gt-800 gt-1024 gt-1280 lt-1440 lt-1680 lt-1920 no-portrait landscape gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch no-retina fontface domloaded" id="console%20and%20debug-page"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+    <!--<link rel="stylesheet" href="./葡萄藤PPT_files/reveal.css">-->
+
+    <link rel="stylesheet" href="css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="css/reveal/theme/ptt.css">
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="lib/reveal/css/zenburn.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <!--<link rel="stylesheet" href="./葡萄藤PPT_files/ptt.css">-->
+    <!-- syntax highlighting 代码高亮主题 -->
+    <!--<link rel="stylesheet" href="./葡萄藤PPT_files/zenburn.css">-->
+    <style>
+        p{
+            text-align: center;
+            /*font-size: 25px;*/
+        }
+        .smallp p{
+            font-size: 25px;
+            /*line-height: 30px;*/
+        }
+        .moresmallp p{
+            font-size: 18px;
+        }
+    </style>
+    <!-- 打印和PDF输出样式 -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script><link rel="stylesheet" type="text/css" href="./葡萄藤PPT_files/paper.css"><script type="text/javascript" src="./葡萄藤PPT_files/marked.js.下载"></script><script type="text/javascript" src="./葡萄藤PPT_files/markdown.js.下载"></script><script type="text/javascript" src="./葡萄藤PPT_files/notes.js.下载"></script><script type="text/javascript" src="./葡萄藤PPT_files/highlight.js.下载"></script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.768857);">
+        <section class="present" style="top: 133px; display: block;">
+            <h3>【JS-4】<span>如何阻止事件冒泡与默认事件</span></h3>
+            <h3>小课堂</h3>
+            <h4>分享人:姜学倩</h4>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 3px; display: block;">
+            <h4>目录</h4>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h4>1.什么是事件?</h4>
+            <p style="text-align: left">事件是文档或浏览器窗口中发生的特定的交互瞬间。</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h4>1.什么是冒泡事件?</h4>
+            <p style="text-align: left">在一个对象上触发某类事件（比如单击onclick事件），如果此对象定义了此事件的处理程序，那么此事件就会调用这个处理程序，
+                如果没有定义此事件处理程序或者事件返回true，那么这个事件会向这个对象的父级对象传播，
+                从里到外，直至它被处理（父级对象所有同类事件都将被激活），或者它到达了对象层次的最顶层，即document对象（有些浏览器是window）。</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h4>1.什么是默认事件?</h4>
+            <p style="text-align: left">浏览器的一些默认的行为。例如：点击超链接跳转,滑动滚轮控制滚动条</p>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>3.常见问题</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <p>如何阻止事件冒泡和默认事件</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>4.解决方案</h3>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>阻止事件冒泡——<span>event.stopPropagation()</span></h3>
+            <img src="s.png" alt="">
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>阻止事件冒泡——<span>cancelBubble</span></h3>
+            <img src="sp.png" alt="">
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>阻止默认事件——<span>event.preventDefault()</span></h3>
+            <img src="e.png" alt="">
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>阻止默认事件——<span>returnValue</span></h3>
+            <img src="event0.png" alt="">
+            <img src="ie4.png" alt="">
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>5.编码实战</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>6.拓展思考</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3></h3>
+            <h3>1.什么是事件捕获？</h3>
+            <p style="text-align: left">事件捕获：事件由根元素获取并沿DOM树向下分发  最不具体的逐级传递到最具体的
+                举例 html -> body -> div -> span</p>
+            <h3>2.不是所有的事件都能冒泡。</h3>
+            <p style="text-align: left">以下事件不冒泡：blur、focus、load、unload。</p>
+            <h3>3.事件冒泡作用？</h3>
+            <p style="text-align: left"> 允许多个操作被集中处理（把事件处理器添加到一个父级元素上，避免把事件处理器添加到多个子级元素上），它还可以让你在对象层的不同级别捕获事件。</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>7.参考文献</h3>
+            <p>参考资料http://www.cnblogs.com/Essence/p/4266618.html</p>
+            <p>参考资料:https://www.jb51.net/article/42492.htm</p>
+            <!--<p>参考资料：https://www.jianshu.com/p/e75f351e11f8 <b>css3中的BFC,IFC,GFC和FFC</b></p>-->
+            <!--<p>参考资料：https://zhuanlan.zhihu.com/p/25321647 <b>10 分钟理解 BFC 原理</b></p>-->
+            <!-- <p><small>BY : 沁修 | 王义山</small></p> -->
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>8.更多讨论</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <!--<h3>1.我们该学哪些框架？</h3>-->
+            <!--<h3>1.框架的学习有推荐顺序吗？</h3>-->
+            <!--<h3>1.Angular框架该学习哪个？</h3>-->
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>鸣谢</h4>
+            <h4>感谢大家观看</h4>
+        </section>
+
+    </div>
+    <div class="backgrounds"><div class="slide-background present" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 0px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px 1px 1px 1px);">
+
+    分享人：姜学倩
+</div></div>
+
+<script src="./葡萄藤PPT_files/head.min.js.下载"></script>
+<script src="./葡萄藤PPT_files/reveal.js.下载"></script>
+
+<script>
+  // 以下为常见配置属性的默认值
+  // {
+  // 	controls: true, // 是否在右下角展示控制条
+  // 	progress: true, // 是否显示演示的进度条
+  // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+  // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+  // 	keyboard: true, // 是否启用键盘快捷键来导航
+  // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+  // 	center: true, // 是否将幻灯片垂直居中
+  // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+  // 	loop: false, // 是否循环演示
+  // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+  // 	fragments: true, // 全局开启和关闭碎片。
+  // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+  // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+  // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+  // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+  // }
+  // 初始化幻灯片
+  Reveal.initialize({
+    history: true,
+    dependencies: [
+      { src: '../plugin/markdown/marked.js' },
+      { src: '../plugin/markdown/markdown.js' },
+      { src: '../plugin/notes/notes.js', async: true },
+      { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+    ]
+  });
+</script>
+
+
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status He</body></html>
+
