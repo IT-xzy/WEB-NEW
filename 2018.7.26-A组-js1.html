@@ -1,0 +1,452 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+    </map>
+    <div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+        <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+            <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+                <h3>【js-task1】JavaScript数据类型和常用方法</h3>
+                <p>分享人：王刚</p>
+            </section>
+            <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>1.背景介绍</h3>
+            </section>
+            <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+                <h3>数据类型</h3>
+                <p>JavaScript有五种基本数据类型：</p>
+                <p>字符串（String）、数字(Number)、布尔(Boolean)、空（Null）、未定义（Undefined）</p>
+                <p>一种复杂数据类型：</p>
+                <p>Object 对象</p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>2.知识剖析</h3>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h4>undefined</h4>
+                <p>
+                    undefined类型只有一个值，即undefined。 在使用var声明变量但未对齐进行初始化时。这个变量的值就是undefined.
+                </p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h4>null</h4>
+                <p>
+                    Null类型也同样是只有一个值的数据类型。值为null。 null值表示一个空对象指针。 如果定义的变量准备在之后保存一个对象，那需要将该变量保存为null值。
+                </p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h4>boolean</h4>
+                <p>
+                    boolean类型只有两个字面值true和false。
+                </p>
+                <p>
+                    但是在JavaScript中所有类型的值都有与这两个boolean值等价的值。 可以使用转型函数Boolean()，将一个值转换为相应的boolean值。
+                </p>
+                <p>
+                    只需记住以下几个值转换为false，其他的都为true。 false "" 空字符串 0和NaN null undefined
+                </p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h4>number</h4>
+                <p>整数 var a = 11; var b = 0xA; //16进制的10
+                </p>
+                <p>浮点数值 所谓浮点数则是在数值中包含一个小数点，并且小数点后至少有一位数字。 var a = 1.1; 由于保存浮点数值需要的内存空间是保存整数的两倍，所以在js中如果小数点后面没有数字或者浮点数值本身表示一个整数，那么这个值就会被转换为整数。
+                    比如：var b = 1.； var c = 1.0;
+                </p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>
+                    在js中最小数值Number.MIN_VALUE,在大多数浏览器这个值为5e-324；
+                    最大数值为Number.MAX_VALUE，在大多数浏览器中为1.7976931348623157e+308；
+                    如果在计算中某一次结果得到了一个超过js数值范围的值，那么这个值将被自动转换为Infinity，即正无穷；如果这个值是负的则为-Infinity，即负无穷。
+                </p>
+                <p>
+                    因为在js中正负无穷不是能够参与计算的数值，所以在某些情况我们需要确定一个数值是否是有穷的。
+                    需要使用isFinite函数，这个函数如果参数在最小与最大数值之间则会返回true。
+                </p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <p>
+                        NaN值，即非数值（not a number）。
+                        这个数值用来表示一个本来要返回数值的操作未返回数值的情况。
+                    </p>
+                    <p>
+                        NaN本身有两个特点：
+                        任何涉及NaN的计算都会返回NaN。
+                        NaN与任何值都不相等，包括NaN本身。
+                        NaN == NaN //这个返回值是false.
+                    </p>
+                    <p>
+                        使用isNaN（）函数来判断参数是否为NaN。
+                        isNaN（）接收到一个参数后，会尝试将这个值转换为数值，任何不能被转换为数值的值都会返回true。
+                        isNaN(NaN) //true
+                        isNaN(10) //false
+                        isNaN("10") //false
+                        isNaN("ABC") //true
+                    </p>
+                </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h4>字符串</h4>
+                <p>字符串是存储字符（比如 "Bill Gates"）的变量。 字符串可以是引号中的任意文本。可以使用单引号或双引号
+                </p>
+                <p>
+                    var a = "abc"; var a ='abc';
+                </p>
+                <p>使用双引号表示的字符串和单引号表示的字符串完全相同，但是以双引号开头的字符串也必须以双引号结尾。 而以单引号开头的字符串必须以单引号结尾。 var a = 'abc"; 这样左右引号不匹配的会产生语法错误
+                </p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h4>String类型的特点</h4>
+                <p>js中的字符串是不可变的，字符串一旦创建，它们的值就固定了，要改变某个变量保存的字符串，首先就要销毁原来的字符串，然后再用另一个包含新值的字符串填充该变量</p>
+                <p>var a = "abc"; a = a + "d";
+                </p>
+                <p>
+                    可以使用toString方法将一个值转换为字符串。 var age = 11; var b = age.toString(); //这样就获得了一个字符串"11"
+                </p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>
+                    在不知道要转换的值是否null or undefined的情况下，可以使用转型函数String(),这个函数能够将任何类型的值转换为字符串
+                </p>
+                <p>它遵循以下转换规则：</p>
+                <p>
+                    如果值有toSring方法，则调用该方法返回相应的结果； 如果值为null，则返回"null"。undefined亦然。
+                </p>
+                <p>
+                    var a = true; var b; alert(String(a));//弹出"true" alert(String(b));//弹出"undefined"
+                </p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <h4>object</h4>
+                    <p>
+                        js的对象就是一组数组和功能的集合
+                        可以通过执行new操作符后跟要创建的对象类型的名称来创建。
+                        对象由花括号分隔。在括号内部，对象的属性以名称和值对的形式 (name : value) 来定义。属性由逗号分隔
+                    </p>
+                    <p>
+                            var person={firstname:"John", lastname:"Doe", id:5566};
+                            例子中的对象 (person) 有三个属性：firstname、lastname 以及 id。
+                            调用对象中的属性有两种方式。
+                            name=person.lastname;
+                            name=person["lastname"];
+                    </p>
+                </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>3.常见问题</h3>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>如何判断数值类型</p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>4.解决方案</h3>
+                <p>可以使用typeof操作符来检测变量的数据类型。
+                        它会返回undefined、boolean、string、number、object、function。
+                        对null会返回object。</p>
+            </section>
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>5.编码实战</h3>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>6.扩展思考</h3>
+                <p>数组属于那种数据类型</p>
+            </section>
+
+
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>7.参考文献</h3>
+            </section>
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>1.JavaScript高级程序设计</p>
+                <p>2.head first JavaScript</p>
+
+            </section>
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>8 更多讨论</h3>
+                <p></p>
+            </section>
+
+
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    <small>BY : 王刚</small>
+                </p>
+            </section>
+
+        </div>
+        <div class="backgrounds">
+            <div class="slide-background past" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background stack present" data-loaded="true" style="display: block;">
+                <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+                <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+            </div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+        </div>
+        <div class="progress" style="display: block;">
+            <span style="width: 260.19px;"></span>
+        </div>
+        <aside class="controls" style="display: block;">
+            <button class="navigate-left enabled" aria-label="previous slide"></button>
+            <button class="navigate-right enabled" aria-label="next slide"></button>
+            <button class="navigate-up enabled" aria-label="above slide"></button>
+            <button class="navigate-down" aria-label="below slide"></button>
+        </aside>
+        <div class="slide-number" style="display: none;"></div>
+        <div class="speaker-notes" data-prevent-swipe=""></div>
+        <div class="pause-overlay"></div>
+        <div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+
+            语法： return[()[expression][]]; 可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。 用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression
+            被省略， 或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+        //    原始类型对象直接赋值不会相互影响
+        //    var a = 1;
+        //
+        //    var b = a;
+        //    b = 10;
+        //    console.log(a); // 1
+        ////
+        //    var a = 'hello';
+        //    var b = a;
+        //    b = 'world';
+        //    console.log(a); // hello
+        //
+        //    var a = true;
+        //    var b = a;
+        //    b = false;
+        //    console.log(a);
+
+        //数组浅复制
+        //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+        //    ];
+        //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+        //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+        //    console.log(a)//那么现在打印a 是什么结果呢
+        //
+        //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+        //    var arrtoo = arr.slice(1);
+        //    arrtoo[2] = "set Map";
+        //    console.log(arr);//One,Two,Three
+        //    console.log(arrtoo);//One,set Map,Three
+
+        //
+        //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+        //    var arrtooo = arr1.concat(111111);
+        //    arrtooo[1] = "set Map To";
+        //    console.log(arr1);//One,Two,Three
+        //    console.log(arrtooo);//One,set Map To,Three
+
+        //
+        //    var b=[1,2,3,4,5];   //concat的链接
+        //    var c=[6,7,8,9];
+        //    var d =[4,4,22]
+        //    console.log(b.concat(c,d))
+
+        var a = {
+            name: 'yy',
+            age: 26
+        }; //对象的浅拷贝哦
+        var b = new Object();
+        b.name = a.name;
+        b.age = a.age;
+        b.name = 'xx';
+        console.log(a); //Object { name="yy", age=26}
+        console.log(b); //Object { name="xx", age=26}
+
+        var d = { //对象的浅拷贝哦 第一种
+            name: 'd',
+            oc: {
+                age: 32
+            },
+            oad: {
+                adds: {
+                    bb: 12
+                }
+            }
+        };
+        var deepCopy = function (source) {
+            var result = {};
+            for (var key in source) {
+                result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+            }
+            return result
+        };
+
+        var c = deepCopy(d);
+        c.name = 'c';
+        c.oc = {
+            age: 49
+        };
+        console.log(c);
+        console.log(d);
+
+
+        //    var person = {    //第二种深拷贝
+        //        name: 'aa',
+        //        friends: ['da', 'dsa', 'gf']
+        //    };
+        //
+        //    var aPerson = Object.create(person, {
+        ////        name: {
+        ////            value: "gee"
+        ////        }
+        //    });
+        //
+        //    console.log(person.name);
+        //    console.log(aPerson.friends)
+
+        var Chinese = {
+            nation: '中国'
+
+        }
+        var Doctor = {
+            career: '医生'
+        }
+
+        function extendCopy(p) {
+            var c = {};
+            for (var i in p) {
+                c[i] = p[i];
+            }
+            c.uber = p;
+            return c;
+        }
+
+        var Doctor = extendCopy(Chinese);
+        Doctor.career = '医生';
+        console.log(Doctor); // 中国
+        Chinese.birthPlaces = ['北京', '上海', '香港'];
+        var Doctor = extendCopy(Chinese);
+        Doctor.birthPlaces.push('厦门');
+    </script>
+
+</body>
+
+</html>
