@@ -1,0 +1,257 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>简述原型链及作用</title>
+
+  <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+  <!-- css-28-sassinsublime主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+  <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+  <!-- syntax highlighting 代码高亮主题 -->
+  <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+  <!-- 打印和PDF输出样式 -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+      './css/reveal/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+</head>
+
+<body>
+  <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+  <map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+  </map>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h2 style="font-size: 1.5em">【JS-task4】
+          <span>简述原型(链)及作用</span>
+        </h2>
+        <p>分享人：胡云鹤</p>
+      </section>
+      <section>
+        <p>目录</p>
+        <p>1.背景介绍</p>
+        <p>2.知识剖析</p>
+        <p>3.常见问题</p>
+        <p>4.解决方案</p>
+        <p>5.编码实战</p>
+        <p>6.参考文献</p>
+        <p>7.更多讨论</p>
+      </section>
+
+      <section>
+        <h3>1.背景介绍</h3>
+      </section>
+      <section>
+        <h4>什么是原型?</h4>
+        <p style="text-align: left;">
+            我们创建的每个函数都有一个 prototype （原型）属性，这个属性是一个指针，指向一个对象，而这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法。
+        </p>
+      </section>
+
+      <section>
+        <h4>理解原型对象</h4>
+        <p style="text-align: left;font-size:80%;">
+            无论什么时候，只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个 prototype属性，这个属性指向函数的原型对象。在默认情况下，所有原型对象都会自动获得一个 constructor（构造函数）属性，这个属性包含一个指向 prototype 属性所在函数的指针。
+        </p>
+        <div>
+          <img src="./img/2018.07.02-B-JS2/prototype.png" alt="" srcset="">
+        </div>
+      </section>
+
+      <section>
+          <h4>什么是原型链?</h4>
+          <p style="text-align: left;">
+              假如我们让原型对象等于另一个类型的实例，结果会怎么样呢？显然，此时的原型对象将包含一个指向另一个原型的指针，相应地，另一个原型中也包含着一个指向另一个构造函数的指针。如此层层递进，就构成了实例与原型的链条。这就是所谓原型链的基本概念。
+          </p>
+        </section>
+        <section>
+          <div>
+            <img src="./img/2018.07.02-B-JS2/prototype2.png" alt="">
+          </div>
+        </section>
+        <section>
+          <div>
+            <img src="./img/2018.07.02-B-JS2/prototype3.png" alt="">
+          </div>
+        </section>
+        <section>
+          <div>
+            <img src="./img/2018.07.02-B-JS2/prototype4.png" alt="">
+          </div>
+        </section>
+      <section>
+        <h3>2.知识剖析</h3>
+      </section>
+
+      <section>
+        <dl>
+          <dt>属性覆盖</dt>
+          <dd style="font-size: 0.7em; margin:0.8rem 0 0.8rem 2rem;">
+            当为对象实例添加一个属性时，这个属性就会屏蔽原型对象中保存的同名属性；换句话说，添加这个属性只会阻止我们访问原型中的那个属性，但不会修改那个属性。即使将这个属性设置为 null ，也只会在实例中设置这个属性，而不会恢复其指向原型的连接。不过，使用 delete 操作符则可以完全删除实例属性，从而让我们能够重新访问原型中的属性。
+          </dd>
+          <script>
+            var Student = function (params) {
+
+            }
+            Student.prototype = {
+              "job":["web","java","pm","qa"],
+              "corp":"xiuzhenyuan",
+              "sayHello":function(){
+                console.log("hi!");
+              }
+            }
+            var stu1 = new Student();
+            stu1.job = "web";
+            var stu2 = new Student();
+            stu2;
+          </script>
+        </dl>
+      </section>
+
+      <section>
+        <h3>3.常见问题</h3>
+      </section>
+      <section>
+          <h4>原型的动态性</h4>
+          <div style="width: 100%;height:95vh;">
+            <img src="./img/2018.07.02-B-JS2/prototype5.png">
+          </div>
+      </section>
+      <section>
+          <h4>原型(链)中引用类型的问题</h4>
+          <script>
+            function SuperType(){
+              this.color = ["red","blue","yellow"];
+              this.sayHello = function(){
+                console.log("hi");
+              }
+            }
+            function SubType(){
+              SuperType.call(this);
+            }
+            SubType.prototype = new SuperType();
+            var sub1 = new SubType();
+            var sub2 = new SubType();
+          </script>
+      </section>
+
+      <section>
+        <h3>4.解决方案</h3>
+        <dl>
+          <dt>
+            借用构造函数
+          </dt>
+          <dd>
+              这种技术的基本思想相当简单，即在子类型构造函数的内部调用超类型构造函数
+          </dd>
+          <dt>组合继承</dt>
+          <dd>也叫做伪经典继承，指的是将原型链和借用构造函数的技术组合到一块，从而发挥二者之长的一种继承模式。</dd>
+        </dl>
+        <script>
+          function inheritPrototype(subType,superType) {
+            var prototype = Object.create(superType.prototype);
+            prototype.constructor = subType;
+            subType.prototype = prototype;
+          }
+          var SuperType = function(name){
+            this.name = name;
+            this.colors = ["red","blue"];
+          }
+          SuperType.prototype.sayName = function (params) {
+            console.log(this.name);
+          }
+          var SubType = function (name) {
+            SuperType.call(this,name);
+          }
+          inheritPrototype(SubType,SuperType);
+        </script>
+      </section>
+
+      <section>
+        <h3>5.编码实战</h3>
+      </section>
+
+      <section>
+        <h3>7.参考文献</h3>
+      </section>
+      <section>
+        <p style="text-align: left; padding-left: 180px">
+          参考一
+          <a href="http://39.108.71.175/js%20programming%20design.pdf">JavaScript高级程序设计</a>
+        </p>
+
+      </section>
+
+      <section>
+        <h3>8.更多讨论</h3>
+      </section>
+
+      <section>
+        <h4>鸣谢</h4>
+        <p>感谢大家观看</p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="./lib/reveal/js/head.min.js"></script>
+  <script src="./lib/reveal/reveal.js"></script>
+
+  <script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+      history: true,
+      dependencies: [{
+          src: './plugin/markdown/marked.js'
+        },
+        {
+          src: './plugin/markdown/markdown.js'
+        },
+        {
+          src: './plugin/notes/notes.js',
+          async: true
+        },
+        {
+          src: './plugin/highlight/highlight.js',
+          async: true,
+          callback: function () {
+            hljs.initHighlightingOnLoad();
+          }
+        }
+      ]
+    });
+  </script>
+</body>
+
+</html>

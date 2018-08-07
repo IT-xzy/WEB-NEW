@@ -1,0 +1,205 @@
+<!doctype html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>葡萄藤PPT</title>
+
+  <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+  <!-- PPT主题,可以在/css/reveal/theme/中选择其他主题,目前暂时只能使用该模板 -->
+  <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+  <!-- syntax highlighting 代码高亮主题 -->
+  <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+  <!-- 打印和PDF输出样式 -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+</head>
+
+<body>
+  <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+  <map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h2>检测数据类型的方法有哪些？</h2>
+
+        <h3>【西安分院】</h3>
+
+        <p style="text-align: center;">分享人：胡玉周</p>
+      </section>
+      <section>
+        <p>目录</p>
+        <p>1.背景介绍</p>
+        <p>2.知识剖析</p>
+        <p>3.常见问题</p>
+        <p>4.解决方案</p>
+        <p>5.编码实战</p>
+        <p>6.扩展思考</p>
+        <p>7.参考文献</p>
+        <p>8.更多讨论</p>
+      </section>
+      <section>
+        <h3>1.背景介绍</h3>
+      </section>
+      <section>
+        <p>JS的数据类型</p>
+        <p style="text-align: left">ECMAScript中有5种简单的数据类型：Undefined,Null,Boolean,Number,String.</br>还有一种复杂的数据类型--Object
+        </br>我们经常需要判断一些数据类型再做回调函数，对于后端的接口如果传的数据类型不符，也经常会报错，而且数据类型的判断也是面试的一大必考题</p>
+        <p>我们需要了解什么</p>
+        <p style="text-align: left">1.判断数据类型的几种方法<br>2.各方法的区别<br>
+      </section>
+      <section>
+        <h3>2.知识剖析</h3>
+      </section>
+      <section>
+        <p>判断数据类型共有四种方法：</p>
+        <p>1.typeof</p>
+        <p>2.instanceof</p>
+        <p>3.constructor</p>
+        <p>4.Object.prototype.toString.call</p>
+      </section>
+      <section>
+        <h3>3.常见问题</h3>
+      </section>
+      <section>
+        <p>各方法的区别</p>
+      </section>
+      <section>
+        <h3>4.解决方案</h3>
+      </section>
+      <section>
+        <p>1.最常见的判断方法typeof</p>
+        <p style="text-align: left">
+          </br>console.log(typeof "") //string;
+          </br>console.log(typeof 1) //number;
+          </br>console.log(typeof true) //boolean;
+          </br>console.log(typeof null) //object;
+          </br>console.log(typeof undefined) //undefined;
+          </br>console.log(typeof []) //object;
+          </br>console.log(typeof function(){}) //function;
+          </br>console.log(typeof {}) //object;
+          </br>可以看到，typeof对于基本数据类型判断是没有问题的，但是遇到引用数据类型（如：Array）是不起作用的。
+      </section>
+      <section>
+        <p>2.判断已知对象类型的方法instanceof</p>
+        <p style="text-align: left;font-size:2rem;">
+          </br>console.log("1" instanceof String);//false
+          </br> console.log(true instanceof Boolean);//false
+          </br>// console.log(null instanceof Null);//报错
+          </br> // console.log(undefined instanceof Undefined);//报错
+          </br> console.log([] instanceof Array);//true
+          </br> console.log(function(){} instanceof Function);//true
+          </br> console.log({} instanceof Object);//true
+          </br>可以看到instanceof判断引用数据类型，可以得到正确的结果，基础类型却不行，而null和undefined浏览器直接报错。尤其是null，其实这是js设计的一个败笔，早期准备更改null的类型为null，由于当时已经有大量网站使用了null，如果更改，将导致很多网站的逻辑出现漏洞问题，就没有更改过来，于是一直遗留到现在。作为学习者，我们只需要记住就好。
+          </br>
+      </section>
+      <section>
+        <p>3、根据对象的constructor判断： constructor</p>
+        <p style="text-align: left;font-size:2rem;">
+        </br>console.log(("1").constructor === String);//true
+      </br>console.log((1).constructor === Number);//true
+    </br>console.log((true).constructor === Boolean);//true
+  </br>//console.log((null).constructor === Null);//报错
+</br>//console.log((undefined).constructor === Undefined);//报错
+</br>console.log(([]).constructor === Array);//true
+</br>console.log((function() {}).constructor === Function);//true
+</br>console.log(({}).constructor === Object);//true
+</br>（这里依然抛开null和undefined）乍一看，constructor似乎完全可以应对基本数据类型和引用数据类型，都能检测出数据类型，事实上并不是如此，来看看为什么：
+      </section>
+      <section style="text-align: left;">
+        </br>  function Fn(){};
+      </br>Fn.prototype=new Array();
+    </br>var f=new Fn();
+  </br>console.log(f.constructor===Fn);//false
+</br>  console.log(f.constructor===Array);//true
+<p>我声明了一个构造函数，并且把他的原型指向了Array的原型，所以这种情况下，constructor也显得力不从心了。</p>
+<p>注意： constructor 在类继承时会出错</p>
+      </section>
+      <section>
+        <p>4.万能的Object.prototype.toString.call</p>
+        <p style="text-align: left;font-size:1.8rem;">
+  </br>function Type() { };
+</br>var toString = Object.prototype.toString;
+</br>console.log(toString.call(new Date) === '[object Date]');//true
+</br>console.log(toString.call(new String) ==='[object String]');//true
+</br>console.log(toString.call(new Function) ==='[object Function]');//true
+</br>  console.log(toString.call(Type) ==='[object Function]');//true
+</br>console.log(toString.call('str') ==='[object String]');//true
+</br>console.log(toString.call(Math) === '[object Math]');//true
+</br>console.log(toString.call(true) ==='[object Boolean]');//true
+</br>console.log(toString.call(/^[a-zA-Z]{5,20}$/) ==='[object RegExp]');//true
+</br>console.log(toString.call({name:'wenzi', age:25}) ==='[object Object]');//true
+</br>console.log(toString.call([1, 2, 3, 4]) ==='[object Array]');//true
+</br>console.log(toString.call(undefined) === '[object Undefined]');//true
+</br>console.log(toString.call(null) === '[object Null]');//true
+
+      </section>
+      <section>
+        <h3>5.编码实战</h3>
+      </section>
+
+      <section>
+        <h3>6.扩展思考</h3>
+      </section>
+
+        </section>
+        <section>
+            <h3>7.参考文献</h3>
+        </section>
+        <section>
+            <p style="text-align: left ">js检测数据类型的四种方法：<a href="https://www.cnblogs.com/zt123123/p/7623409.html " target="_blank ">https://www.cnblogs.com/zt123123/p/7623409.html</a></p>
+        </section>
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+
+        <section>
+            <h4>感谢观看</h4>
+            <p><small>BY :胡玉周 </small></p>
+        </section>
+    </div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js "></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js "></script>
+
+<script>
+
+  // 以下为常见配置属性的默认值
+  // {
+  // 	controls: true, // 是否在右下角展示控制条
+  // 	progress: true, // 是否显示演示的进度条
+  // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+  // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+  // 	keyboard: true, // 是否启用键盘快捷键来导航
+  // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc "或"o "键来切换概览模式
+  // 	center: true, // 是否将幻灯片垂直居中
+  // 	touch: true, // 是否在触屏设备上启用触
+  Reveal.initialize({
+    history: true,
+    dependencies: [
+      {src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'},
+      {src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'},
+      {src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js', async: true},
+      {
+        src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js', async: true, callback: function () {
+        hljs.initHighlightingOnLoad();
+      }
+      }
+    ]
+  });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .left {
+            text-align: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : 'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides"
+         style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h2>【JS-task2】</h2>
+            <h3>函数表达式和函数声明有什么区别？
+            </h3>
+            <p>分享人：叶泽彪</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+        <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <section>
+            <h4>函数声明</h4>
+            <p class="left">函数声明可以定义命名的函数变量，而无需给变量赋值。函数声明是一种独立的结构，
+                不能嵌套在非功能模块中。可以将它类比为 变量声明。就像变量声明必须以“var”开头一样，函数
+                声明必须以“function”开头。函数名在自身作用域和父作用域内是可获取的。</p>
+        </section>
+        <section>
+            <h4>函数表达式</h4>
+            <p class="left">函数表达式将函数定义为表达式语句（通常是变量赋值）的一部分。通过函数表达式定
+                义的函数可以是命名的，也可以是匿名的。函数表达式不能以“function”开头。函数名在作用域外
+                是不可获取的。</p>
+        </section>
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            <p class="left"> JavaScript 中需要创建函数的话，有两种方法：函数声明、函数表达式，各自写法如下：</p>
+            <p> 函数声明</p>
+            <img src="img/2018-07-25-C组-js2/function.png" style="min-width: 30%"/>
+            <p>函数表达式</p>
+            <img src="img/2018-07-25-C组-js2/var.png" style="min-width: 30%"/>
+        </section>
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            <p>函数表达式和函数声明有什么区别？</p>
+        </section>
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            <img src="img/2018-07-25-C组-js2/test.png" style="min-width: 40%"/></br>
+            <img src="img/2018-07-25-C组-js2/alert1.png" style="min-width: 30%"/>
+            <img src="img/2018-07-25-C组-js2/alert2.png" style="min-width: 30%"/>
+        </section>
+        <section class="left">
+          	<p>以上代码alert的时候，alert(t1)的时候显示的是t1的函数，alert(t2)的时候显示的是undefined
+                原因在于JavaScript中存在一种变量声明被提升的机制，也就是说变量（函数）的声明会被提升到作
+                用域的最前面，即使写代码的时候是写在最后面，也还是会被提升至最前面。t1是函数声明，被提升
+                到作用域最前面，所以alert(t1)依然取得到t1。t2是函数表达式，没有被提升，仍然按照从上往下
+                读取，所以alert(t2)取不到t2的值</p>
+        </section>
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+            <h4>函数声明运行规则：</h4>
+            <p class="left">函数声明只能出现在程序或函数体内。从句法上讲，它们 不能出现在Block（块）（{ ... }）中，
+                例如不能出现在 if、while 或 for 语句中。因为 Block（块） 中只能包含Statement语句， 而不能包含函数声
+                明这样的源元素。另一方面，仔细看一看规则也会发现，唯一可能让表达式出现在Block（块）中情形，就是让它作
+                为表达式语句的一部分。但是，规范明确规定了表达式语句不能以关键字function开头。而这实际上就是说，函数
+                表达式同样也不能出现在Statement语句或Block（块）中（因为Block（块）就是由Statement语句构成的）。</p>
+        </section>
+        <section>
+            <h3>7.参考文献</h3>
+        </section>
+        <section class="left">
+            <p>参考一：<a href="https://libuchao.com/2012/06/25/function-declaration-vs-function-expression" target="_blank">函数声明 VS 函数表达式</a></p>
+            <p>参考二：<a href="http://www.nowamagic.net/librarys/veda/detail/1630" target="_blank">JavaScript探秘：函数声明与函数表达式</a></p>
+            <p>参考三：<a href="https://github.com/Wscats/Good-text-Share/issues/73" target="_blank">关于Javascript的函数声明和函数表达式</a></p>
+        </section>
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+        <section>
+            <p>感谢大家观看</p>
+            <p><small>BY : 叶泽彪</small></p>
+        </section>
+    </div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status He

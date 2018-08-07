@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>如何使用Canvas</title>
+
+  <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+  <!-- css-28-sassinsublime主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+  <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+  <!-- syntax highlighting 代码高亮主题 -->
+  <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+  <!-- 打印和PDF输出样式 -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+      './css/reveal/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+  <style>
+    .code {
+      white-space: pre-line;
+      text-align: left;
+      font-size: 80% !important;
+      margin-left: 15rem !important;
+    }
+    .code2 {
+      white-space: pre-line;
+      text-align: left;
+      font-size: 80% !important;
+
+    }
+  </style>
+</head>
+
+<body>
+  <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+  <map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+  </map>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h2 style="font-size: 1.5em">
+          <span>如何使用Canvas</span>
+        </h2>
+        <p>分享人：陈杰超</p>
+      </section>
+      <section>
+        <p>目录</p>
+        <p>1.背景介绍</p>
+        <p>2.知识剖析</p>
+        <p>3.常见问题</p>
+        <p>4.解决方案</p>
+        <p>5.编码实战</p>
+        <p>6.参考文献</p>
+        <p>7.更多讨论</p>
+      </section>
+
+      <section>
+        <h3>1.背景介绍</h3>
+      </section>
+      <section>
+        <h4>什么是Canvas?</h4>
+        <p style="text-align: left;">
+          Canvas API（画布）是在HTML5中新增的标签用于在网页实时生成图像，并且可以操作图像内容，基本上它是一个可以用JavaScript操作的位图（bitmap）。
+        </p>
+        <p>Canvas 对象表示一个 HTML 画布元素--&ltcanvas&gt。它没有自己的行为，但是定义了一个 API 支持脚本化客户端绘图操作。</p>
+      </section>
+
+
+      <section>
+        <h3>2.知识剖析</h3>
+      </section>
+
+      <section>
+        <dl>
+          <dt>绘制基本图形</dt>
+          <dd style="font-size: 0.7em; margin:0.8rem 0 0.8rem 2rem;">
+            canvas只支持一种原生的矩形绘制，所有其他图形都至少需要生成一种路径。
+            <br>
+            <br>绘制一个填充的矩形，填充的默认颜色为黑色
+            <br>fillRect(x, y, width, height)
+            <br>
+            <br>绘制一个矩形的边框
+            <br>strockRect(x, y, width, height)
+            <br>
+            <br>清除指定矩形区域，然后这块区域会变得完全透明
+            <br>clearRect(x, y, widh, height)
+          </dd>
+        </dl>
+      </section>
+      <section>
+          <h4>定义和用法</h4>
+          <p style="text-align: left;font-size:80%;">
+            首先，在HTML元素中定义一个canvas标签
+          </p>
+          <p style="text-align: left;font-size: 80%;">
+            &ltcanvas id="tutorial" width="150" height="150"&gt&lt/canvas&gt
+          </p>
+          <p>&nbsp</p>
+          <h4>
+            获取canvas对象及渲染上下文
+          </h4>
+          <p style="text-align: left;font-size: 80%;">
+            var canvas = document.getElementById('tutorial');
+          </p>
+          <p style="text-align: left;font-size: 80%;">
+            var ctx = canvas.getContext('2d');
+          </p>
+        </section>
+      <section>
+        <h3>3.常见问题</h3>
+      </section>
+      <section style="width: 100%;">
+        <h4>如何绘制更多图形</h4>
+        <div>
+          <p style="font-size: 80%">图形的基本元素是路径。
+              <br>路径是通过不同颜色和宽度的线段或曲线相连形成的不同形状的点的集合。
+ 
+          </p>
+        </div>
+      </section>
+      <section>
+        <h3>4.解决方案</h3>
+
+      </section>
+      <section>
+        步骤如下
+          <br>1.创建路径起始点
+          <br>2.调用绘制方法去绘制出路径
+          <br>3.把路径封闭
+          <br>4.一旦路径生成，通过描边或填充路径区域来渲染图形。
+        
+        </section>
+      <section>
+        <h3>5.编码实战</h3>
+      </section>
+      <section>
+          <h5>详见demo</h5>
+        </section>
+      <section>
+        <h3>7.参考文献</h3>
+      </section>
+      <section>
+        <p style="text-align: left; padding-left: 180px">
+          参考一
+          <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API">MDN Canvas教程</a>
+        </p>
+
+      </section>
+
+      <section>
+        <h3>8.更多讨论</h3>
+      </section>
+      <section>
+          <h5>一个在地上弹跳的小球动画如何实现？</h5>
+        </section>
+
+      <section>
+        <h4>鸣谢</h4>
+        <p>感谢大家观看</p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="./lib/reveal/js/head.min.js"></script>
+  <script src="./lib/reveal/reveal.js"></script>
+
+  <script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+      history: true,
+      dependencies: [{
+          src: './plugin/markdown/marked.js'
+        },
+        {
+          src: './plugin/markdown/markdown.js'
+        },
+        {
+          src: './plugin/notes/notes.js',
+          async: true
+        },
+        {
+          src: './plugin/highlight/highlight.js',
+          async: true,
+          callback: function () {
+            hljs.initHighlightingOnLoad();
+          }
+        }
+      ]
+    });
+  </script>
+</body>
+
+</html>
