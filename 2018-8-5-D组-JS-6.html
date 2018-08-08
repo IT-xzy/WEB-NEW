@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)https://it-xzy.github.io/WEB-NEW/20180711-B-js5.html#/ -->
+<html data-minimalscrollbar="yes" class=" js no-mobile desktop no-ie chrome chrome67 web-new-section gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch no-retina fontface domloaded w-1849 gt-240 gt-320 gt-480 gt-640 gt-768 gt-800 gt-1024 gt-1280 gt-1440 gt-1680 lt-1920 no-portrait landscape" id="20180711-b-js5-page" data-blockbyte-bs-uid="52447"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>异步编程有哪几种方法来实现?</title>
+
+ 
+    <link rel="stylesheet" href="./葡萄藤PPT_files/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./葡萄藤PPT_files/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./葡萄藤PPT_files/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script><link rel="stylesheet" type="text/css" href="./异步编程有哪几种方法来实现__files/paper.css"><script type="text/javascript" src="./异步编程有哪几种方法来实现__files/marked.js.下载"></script><script type="text/javascript" src="./异步编程有哪几种方法来实现__files/markdown.js.下载"></script><script type="text/javascript" src="./异步编程有哪几种方法来实现__files/notes.js.下载"></script><script type="text/javascript" src="./异步编程有哪几种方法来实现__files/highlight.js.下载"></script>
+<style class="blockbyte-bs-style" data-name="content">body>div#blockbyte-bs-indicator>div{opacity:0;pointer-events:none}body>iframe#blockbyte-bs-sidebar.blockbyte-bs-visible,body>iframe#blockbyte-bs-overlay.blockbyte-bs-visible{opacity:1;pointer-events:auto}body.blockbyte-bs-noscroll{overflow:hidden !important}body>div#blockbyte-bs-indicator>div{position:absolute;transform:translate3d(-40px, 0, 0);top:0;left:0;width:40px !important;height:100%;background:rgba(0,0,0,0.5);border-radius:0 10px 10px 0;transition:opacity 0.3s, transform 0.3s;z-index:2}body>div#blockbyte-bs-indicator>div>span{-webkit-mask:no-repeat center/32px;-webkit-mask-image:url(chrome-extension://jdbnofccmhefkmjbkkdkfiicjkgofkdh/img/icon-bookmark.svg);background-color:#ffffff;position:absolute;display:block;top:0;left:0;width:100%;height:100%}body>div#blockbyte-bs-indicator[data-pos='right']{left:auto;right:0}body>div#blockbyte-bs-indicator[data-pos='right']>div{transform:translate3d(40px, 0, 0);left:auto;right:0;border-radius:10px 0 0 10px}body>div#blockbyte-bs-indicator.blockbyte-bs-fullHeight>div{border-radius:0}body>div#blockbyte-bs-indicator.blockbyte-bs-hover>div{transform:translate3d(0, 0, 0);opacity:1}body>div#blockbyte-bs-indicator[data-pos='left'].blockbyte-bs-has-lsb{height:100% !important;top:0 !important}body>div#blockbyte-bs-indicator[data-pos='left'].blockbyte-bs-has-lsb>div{background:transparent}body>div#blockbyte-bs-indicator[data-pos='left'].blockbyte-bs-has-lsb>div>span{-webkit-mask-position-y:20px}body>iframe#blockbyte-bs-sidebar{width:350px;max-width:none;height:0;z-index:2147483646;background-color:rgba(0,0,0,0.6) !important;border:none;display:block !important;transform:translate3d(-350px, 0, 0);transition:width 0s 0.3s, height 0s 0.3s, opacity 0.3s, transform 0.3s}body>iframe#blockbyte-bs-sidebar[data-pos='right']{left:auto;right:0;transform:translate3d(350px, 0, 0)}body>iframe#blockbyte-bs-sidebar.blockbyte-bs-visible{width:calc(100% + 350px);height:100%;transform:translate3d(0, 0, 0);transition:opacity 0.3s, transform 0.3s}body>iframe#blockbyte-bs-sidebar.blockbyte-bs-hideMask{background:none !important}body>iframe#blockbyte-bs-sidebar.blockbyte-bs-hideMask:not(.blockbyte-bs-hover){width:calc(350px + 50px)}body>iframe#blockbyte-bs-overlay{width:100%;max-width:none;height:100%;z-index:2147483647;border:none;background:rgba(0,0,0,0.5) !important;transition:opacity 0.3s}
+</style></head>
+
+<body style="">
+    <img src="./异步编程有哪几种方法来实现__files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+    </map>
+    <div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+        <div class="slides" style="width: 960px; height: 700px; zoom: 1.24071;">
+            <section class="present" style="top: 234.5px; display: block;">
+                <h2 style="font-size: 1.5em;width: 110%;">【JS-task4】
+                    <span>异步编程有哪几种方法来实现?</span>
+                </h2>
+                <p>分享人：金俊</p>
+            </section>
+            <section class="future" style="top: 0px; display: block;" hidden="" aria-hidden="true">
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+
+            <section class="future" style="top: 266.5px; display: block;" hidden="" aria-hidden="true">
+                <h3 style="text-align: left;">1.背景介绍</h3>
+            </section>
+            <section class="future" style="top: 106px; display: none;" hidden="" aria-hidden="true">
+                <p style="text-align: left;">
+                    JavaScript作为浏览器脚本语言，JavaScript的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。 所谓单线程，是指在JS引擎中负责解释和执行JavaScript代码的线程只有一个。 这样一次只能完成一件任务。如果有多个任务，就必须排队，前面一个任务完成，再执行后面一个任务。
+                    好处是实现起来比较简单，执行环境相对单纯；坏处是只要有一个任务耗时很长，后面的任务都必须排队等着，会拖延整个程序的执行。
+                </p>
+            </section>
+            <section class="future" style="top: 62.5px; display: none;" hidden="" aria-hidden="true">
+                <p style="text-align: left;">
+                    为了解决这个问题，Javascript语言将任务的执行模式分成两种：同步（Synchronous）和异步（Asynchronous）。 </p>
+                <p style="text-align: left;">
+                    “同步模式"指后一个任务等待前一个任务结束，然后再执行，程序的执行顺序与任务的排列顺序是一致的、同步的。 </p>
+                <p style="text-align: left;">
+                    "异步模式"则完全不同，每一个任务有一个或多个回调函数（callback），前一个任务结束后，不是执行后一个任务， 而是执行回调函数，后一个任务则是不等前一个任务结束就执行， 所以程序的执行顺序与任务的排列顺序是不一致的、异步的。
+                </p>
+            </section>
+
+            <section class="future" style="top: 266.5px; display: none;" hidden="" aria-hidden="true">
+                <h3 style="text-align: left;">2.知识剖析</h3>
+            </section>
+            <section class="future" style="top: 64px; display: none;" hidden="" aria-hidden="true">
+                <h4 style="text-align: left;">异步编程方法</h4>
+                <p style="text-align: left;">
+                    异步编程的主要方式是使用回调函数，但是回调函数嵌套形成Callback Hell问题。 Callback Hell 最大的问题是不好写、不好看，以及衍生出来的不好管理，这样的代码不易阅读、管理、重构困难、没有灵活性。
+                </p>
+                <p style="text-align: left;">
+                    无论是 Promise 还是 generator，亦或者是 async/await，他们所做的任务都是要千方百计地把Callback Hell拉成平整的线性结构，加入语法糖。
+                </p>
+                <p style="text-align: left;">
+                    1 回调函数 2 事件监听 3 Promise 4 Generation 5 async/await
+                </p>
+            </section>
+            <section class="future" style="top: 36.5px; display: none;" hidden="" aria-hidden="true">
+                <h4 style="text-align: left;">1 回调函数</h4>
+                <p style="text-align: left;">
+                    异步编程最基本的方法。
+                </p>
+                <p style="text-align: left;">
+                    假定有两个函数f1和f2，f2等待f1的执行结果。如果f1是一个很耗时的任务，可以考虑改写f1，把f2写成f1的回调函数。
+                </p>
+                <pre>                    <code class="hljs haxe">
+                        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span><span class="hljs-params">(callback)</span></span>{
+                            　　　　setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{                      
+                            　　　　　　<span class="hljs-comment">// f1的任务代码                       </span>
+                            　　　　　　<span class="hljs-keyword">callback</span>();                            
+                            　　　　}, <span class="hljs-number">1000</span>);                        
+                            　　}
+                        f1(f2);
+                    </code>
+                </pre>
+            </section>
+            <section class="future" style="top: 115.5px; display: none;" hidden="" aria-hidden="true">
+                <h4 style="text-align: left;">2 事件监听</h4>
+                <p style="text-align: left;">
+                    另一种思路是采用事件驱动模式。任务的执行不取决于代码的顺序，而取决于某个事件是否发生。
+                </p>
+                <pre>                    <code class="hljs scilab">                        
+                        clickEvent.addEventListener(<span class="hljs-string">"click"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(e)</span> {</span>
+                        console.<span class="hljs-built_in">log</span>(<span class="hljs-string">"someone is pressing my buttons…"</span>);
+                        });
+                    </code>
+                </pre>
+            </section>
+
+            <section class="future" style="top: 266.5px; display: none;" hidden="" aria-hidden="true">
+                <h3 style="text-align: left;">3.常见问题</h3>
+            </section>
+            <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                <p>回调地狱怎么解决</p>
+            </section>
+
+
+            <section class="future" style="top: 266.5px; display: none;" hidden="" aria-hidden="true">
+                <h3 style="text-align: left;">4.解决方案</h3>
+            </section>
+            <section class="future" style="top: 154.5px; display: none;" hidden="" aria-hidden="true">
+                <p style="text-align: left;">
+                    1 事件监听
+                </p>
+                <p style="text-align: left;">
+                    2 Promise
+                </p>
+                <p style="text-align: left;">
+                    Promises对象是CommonJS工作组提出的一种规范，目的是为异步编程提供统一接口。Promise是后面新技术的基础，堪称一切异步方案的粘合剂。
+                </p>
+            </section>
+
+
+
+            <section class="future" style="top: 243.5px; display: none;" hidden="" aria-hidden="true">
+                <h3 style="text-align: left;">5.编码实战</h3>
+                <a href="https://it-xzy.github.io/WEB-NEW/demo/20180711-B-js5/demo.html">demo</a>
+            </section>
+
+
+            <section class="future" style="top: 266.5px; display: none;" hidden="" aria-hidden="true">
+                <h3 style="text-align: left;">6.扩展思考</h3>
+            </section>
+
+
+            <section class="future" style="top: 266.5px; display: none;" hidden="" aria-hidden="true">
+                <h3 style="text-align: left;">7.参考文献</h3>
+            </section>
+            <section class="future" style="top: 177.5px; display: none;" hidden="" aria-hidden="true">
+                <p style="text-align: left;">
+                    参考一 
+                    <a href="https://blog.csdn.net/hj7jay/article/details/52537522">5分种让你了解javascript异步编程的前世今生，从onclick到await/async</a>
+                </p>
+                <p style="text-align: left;">
+                    参考二 
+                    <a href="https://www.cnblogs.com/nullcc/p/5841182.html">深入解析Javascript异步编程</a>
+                </p>
+                <p style="text-align: left;">
+                    参考三 
+                    <a href="https://zhuanlan.zhihu.com/p/24444262">最后谈一次 JavaScript 异步编程</a>
+                </p>
+            </section>
+
+
+            <section class="future" style="top: 266.5px; display: none;" hidden="" aria-hidden="true">
+                <h3 style="text-align: left;">8.更多讨论</h3>
+            </section>
+
+
+            <section class="future" style="top: 212.5px; display: none;" hidden="" aria-hidden="true">
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>BY : 金俊 </p>
+            </section>
+
+        </div>
+    <div class="backgrounds"><div class="slide-background present" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" style="display: none;" data-loaded="true"></div><div class="slide-background future" style="display: none;" data-loaded="true"></div><div class="slide-background future" style="display: none;" data-loaded="true"></div><div class="slide-background future" style="display: none;" data-loaded="true"></div><div class="slide-background future" style="display: none;" data-loaded="true"></div><div class="slide-background future" style="display: none;" data-loaded="true"></div><div class="slide-background future" style="display: none;" data-loaded="true"></div><div class="slide-background future" style="display: none;" data-loaded="true"></div><div class="slide-background future" style="display: none;" data-loaded="true"></div><div class="slide-background future" style="display: none;" data-loaded="true"></div><div class="slide-background future" style="display: none;" data-loaded="true"></div><div class="slide-background future" style="display: none;" data-loaded="true"></div><div class="slide-background future" style="display: none;" data-loaded="true"></div><div class="slide-background future" style="display: none;" data-loaded="true"></div><div class="slide-background future" style="display: none;" data-loaded="true"></div><div class="slide-background future" style="display: none;" data-loaded="true"></div></div><div class="progress" style="display: block;"><span style="width: 0px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+                【JS-task4】
+                    异步编程有哪几种方法来实现?
+                
+                分享人：金俊
+            </div></div>
+
+    <script src="./异步编程有哪几种方法来实现__files/head.min.js.下载"></script>
+    <script src="./异步编程有哪几种方法来实现__files/reveal.js.下载"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: './plugin/markdown/marked.js'
+                },
+                {
+                    src: './plugin/markdown/markdown.js'
+                },
+                {
+                    src: './plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: './plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+
+
+<audio controls="controls" style="display: none;"></audio><iframe id="blockbyte-bs-sidebar" data-pos="left" src="./异步编程有哪几种方法来实现__files/saved_resource.html"></iframe><div id="blockbyte-bs-indicator" class="blockbyte-bs-fullHeight" style="width: 1px; height: 100%; top: 0%;"></div><link rel="stylesheet" type="text/css" href="chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/css/content.css"></body><style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style><loom-container id="lo-engage-ext-container"><loom-shadow data-reactroot="" classname="resolved"></loom-shadow></loom-container></html>

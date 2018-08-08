@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+    <!-- 打印和PDF输出样式 -->
+    <style>
+
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+</head>
+<body>
+    <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <!-- 首页 -->
+        <section>
+            <h2>【JS-task04】js回调函数以及同步与异步</h2>
+            <h3>小课堂【武汉小课堂】</h3>
+            <p>分享人：严泽浩</p>
+        </section>
+        <!-- 目录 -->
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <!-- 背景介绍 -->
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <!-- 背景介绍详情 -->
+        <section>
+            <h3 style="text-align: center;">javascript的单线程特性</h3>
+            由于javascript语言是一门“单线程”的语言，所以，javascript就像一条流水线，仅仅是一条流水线而已，要么加工，要么包装，不能同时进行多个任务和流程。
+        </section>
+        
+        <section>
+            <h3 style="text-align: center;">任务队列</h3>
+            单线程就意味着，所有任务需要排队，前一个任务结束，才会执行后一个任务。如果前一个任务耗时很长，后一个任务就不得不一直等着。于是就有一个概念——任务队列。如果排队是因为计算量大，CPU忙不过来，倒也算了，但是很多时候CPU是闲着的，因为IO设备（输入输出设备）很慢（比如Ajax操作从网络读取数据），不得不等着结果出来，再往下执行。于是JavaScript语言的设计者意识到，这时主线程完全可以不管IO设备，挂起处于等待中的任务，先运行排在后面的任务。等到IO设备返回了结果，再回过头，把挂起的任务继续执行下去。
+        </section>
+
+        <section>
+            <h3 style="text-align: center;">事件循环</h3>
+            单线程就意味着，所有任务需要排队，前一个任务结束，才会执行后一个任务。如果前一个任务耗时很长，后一个任务就不得不一直等着。于是就有一个概念——任务队列。如果排队是因为计算量大，CPU忙不过来，倒也算了，但是很多时候CPU是闲着的，因为IO设备（输入输出设备）很慢（比如Ajax操作从网络读取数据），不得不等着结果出来，再往下执行。于是JavaScript语言的设计者意识到，这时主线程完全可以不管IO设备，挂起处于等待中的任务，先运行排在后面的任务。等到IO设备返回了结果，再回过头，把挂起的任务继续执行下去。
+            
+        </section>
+        <section>
+            <img src="http://www.yanzehao.top/webstudy/tempimg/10.png" alt="" height="600px">
+        </section>
+        <!-- 知识剖析 -->
+
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+
+
+        <section>
+            <h3 style="text-align: center;">名词解析</h3>
+            <p style="text-align: left;">
+                那么这里说的同步和异步到底是什么呢？js官方的文档在使用这两个词的时候并不准确，包括其他文档和很多其他词汇，都只是听起来高深，但实际应用好像跟这些词没半毛钱关系。例如“路由”这个词，不知道的人从字面意义上谁又能说出“路由”是什么意思呢？倒是路由器在生活中经常遇到不会感到陌生,将route使用谷歌翻译之后,其实就是路径和线路的意思,这样路由的概念也就跃然于脑海之中了,也就是说遇到陌生的概念和词汇,大可不必惊慌失措,重要的是理解其背后的本质
+            </p>
+        </section>
+        
+        <section>
+            <h3>同步和异步的概念</h3>
+            <p style="text-align: left;">
+                “同步”—— 一下就让人想到“一起”这个词；“异步”呢，从字面来讲，好像是在不同的（异）的ways上do something，那首先想到的词可能是“一边...一边...”,比如‘小明一边吃雪糕一边写作业’，这完全没毛病，雪糕吃完了，作业也写完了，这就是异步？这种解释十分表面,停留在这个层面显然是不够的 
+                无论如何，做事情的时候都是只有一条流水线（单线程），同步和异步的差别就在于这条流水线上各个流程的执行顺序不同。 
+                可以简单地理解为：可以改变程序正常执行顺序的操作就可以看成是异步操作。例如setTimeout和setInterval函数,Ajax通信等
+            </p>
+        </section>
+        <section>
+            <h3>同步和异步的区别</h3>
+            <p style="text-align: left;">
+                同步任务指的是，在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务,ok,这不难理解；异步任务指的是，不进入主线程、而进入"任务队列"（task queue）的任务，只有等主线程任务执行完毕，"任务队列"开始通知主线程，请求执行任务，该任务才会进入主线程执行
+            </p>
+        </section>
+        <section>
+            <h3>异步运行机制</h3>
+            <p style="text-align: left;">
+                只要主线程空了，就会去读取"任务队列"，这就是JavaScript的运行机制。这个过程会不断重复。
+            </p>
+            <ol>
+                <li>所有同步任务都在主线程上执行，形成一个执行栈（execution context stack）。</li>
+                <li>主线程之外，还存在一个"任务队列"（task queue）。只要异步任务有了运行结果，就在"任务队列"之中放置一个事件。</li>
+                <li>一旦"执行栈"中的所有同步任务执行完毕，系统就会读取"任务队列"，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。</li>
+                <li>主线程不断重复上面的第三步。</li>
+            </ol>
+        </section>
+        <section>
+            <h3>回调函数</h3>
+            <p style="text-align: left;">
+                所谓"回调函数"（callback），就是那些会被主线程挂起来的代码。回调函数不是由该函数的实现方直接调用，而是在特定的事件或条件发生时由另外的一方调用的，用于对该事件或条件进行响应,异步任务必须指定回调函数，当主线程开始执行异步任务，就是执行对应的回调函数。例如ajax的success，complete，error也都指定了各自的回调函数，这些函数就会加入“任务队列”中，等待执行。
+            </p>
+        </section>
+        
+
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            <p>回调函数,同步,异步,单线程,任务队列,事件循环,这么多吓人的概念,彼此的关联又是如此的紧密,得想个办法把这些串起来,并进行总结梳理.</p>
+        </section>
+
+        <!-- 解决方案 -->
+
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            <section>
+                <h3>无法回避的核心:JavaScript 代码执行机制</h3>
+                <ol>
+                    <li>JavaScript是单线程，意味着任务要一个接着一个完成，但是，如果前一个任务执行时间很长，那么后面的任务就得一直阻塞着，这样用户体验十分差。</li>
+                    <li>JavaScript的设计者考虑到了这一点，所以他将JavaScript的任务分为两种，在主线程上执行的任务"同步任务"，被主线程挂载起来的任务"异步任务",后者一般是放在一个叫任务队列的数据结构中</li>
+                    <li>一旦单线程内的所有同步任务执行完毕了，系统就会读取“任务队列,这相当于一个while循环,所以也称为事件循环</li>
+                    <li>读取任务队列中的异步任务所采用的方法就是使用回调函数</li>
+                </ol>
+            </section>
+        </section>
+
+        <!-- 编码实战 -->
+
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+
+        <!-- 拓展思考 -->
+
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+            <h3>同步和异步在社会生活中的映射</h3>
+            <p>在公路上，汽车一辆接一辆，有条不紊的运行。这时，有一辆车坏掉了。假如它停在原地进行修理，那么后面的车就会被堵住没法行驶，交通就乱套了。幸好旁边有应急车道，可以把故障车辆推到应急车道修理，而正常的车流不会受到任何影响。等车修好了，再从应急车道回到正常车道即可。唯一的影响就是，应急车道用多了，原来的车辆之间的顺序会有点乱。</p>
+            <p>同步可以保证顺序一致，但是容易导致阻塞；异步可以解决阻塞问题，但是会改变顺序性。改变顺序性其实也没有什么大不了的，只不过让程序变得稍微难理解了一些。</p>
+        </section>
+        <section>
+            <h3>回调函数(callback)</h3>
+            <p>约会结束后你送你女朋友回家，离别时，你肯定会说：“到家了给我发条信息(call me back)，我很担心你。” 对不，然后你女朋友回家以后还真给你发了条信息。小伙子，你有戏了。其实这就是一个回调的过程。你留了个参数函数（要求女朋友给你发条信息）给你女朋友，然后你女朋友回家，回家的动作是主函数。她必须先回到家以后，主函数执行完了，再执行传进去的函数，然后你就收到一条信息了。</p>
+            <p>回调，回调，就是回头调用的意思。主函数的事先干完，回头再调用传进来的那个函数。</p>
+        </section>
+        </section>
+
+        <!-- 参考文献 -->
+
+        <section>
+            <h3>7.参考文献</h3>
+        </section>
+        <section style="text-align: left;">
+            <p>参考一：<a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html ">JavaScript 运行机制详解：再谈Event Loop</a></p>
+            <p>参考二：<a href="https://blog.csdn.net/qq_22855325/article/details/72958345">js中的同步和异步的个人理解</a></p>
+        </section>
+
+        <!-- 更多讨论 -->
+
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+
+        <!-- 鸣谢 -->
+        
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p><small>BY : 严泽浩</small></p>
+        </section>
+    </div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: '../plugin/markdown/marked.js' },
+            { src: '../plugin/markdown/markdown.js' },
+            { src: '../plugin/notes/notes.js', async: true },
+            { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status He
