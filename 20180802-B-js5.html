@@ -1,0 +1,386 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>修真院</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- css-28-sassinsublime主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2 style="font-size: 1.5em;width: 110%;">
+                    【JS-task5】
+                    <span>如何使用正则表达式？</span>
+                </h2>
+                <p>分享人：陈占乐</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+
+            <section>
+                <h3 style="text-align: left;">1.背景介绍</h3>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    编程中经常用到字符串的操作，对于字符串的匹配、查找符合某些规则的字符串。示例如下：
+                </p>
+                <p style="text-align: left;">
+                    1 快速分析大量文本，以找到特定的字符模式
+                </p>
+                <p style="text-align: left;">
+                    2 验证文本以确保它匹配预定义模式
+                </p>
+                <p style="text-align: left;">
+                    3 提取、编辑、替换或删除文本子字符串。
+                </p>
+                <p style="text-align: left;">
+                    正则表达式-regular expression并不是一种编程语言，而是一种规则-查找符合某些复杂规则的字符串，即正则表达式是记录文本规则的字符串。
+                </p>
+            </section>
+
+
+            <section>
+                <h3 style="text-align: left;">2.知识剖析</h3>
+            </section>
+            <section>
+                <h4 style="text-align: left;">正则表达式规则</h4>
+                <p style="text-align: left;">
+                    1 简单模式/特定模式
+                </p>
+                <p style="text-align: left;">
+                    正则表达式支持的字符编码范围非常大，也支持中文查找。
+                </p>
+                <p style="text-align: left;">
+                    简单模式直接使用字符编码中特定的编码或者特定的多个编码。
+                </p>
+                <p style="text-align: left;">
+                    单个字符：数字、字母大小写、符号
+                </p>
+                <table>
+                    <thead>
+                        <th>字符</th>
+                        <th>特定</th>
+                        <th>元字符</th>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>数字</td>
+                            <td>0-9</td>
+                            <td>\d</td>
+                        </tr>
+                        <tr>
+                            <td>字母</td>
+                            <td>a-zA-Z</td>
+                            <td>\w</td>
+                        </tr>
+                        <tr>
+                            <td>符号</td>
+                            <td>. *</td>
+                            <td>\s</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="text-align: left;">
+                    符号在正则表达式中含有特殊含义，匹配符号本身需要转义\
+                </p>
+            </section>
+            <section>
+                <h4 style="text-align: left;">2 通用模式</h4>
+                <p style="text-align: left;">
+                    我所说的通用模式指符合一定规则，适用范围更广的正则表达式。
+                </p>
+                <p style="text-align: left;">
+                    主要有3个细分规则：
+                    <br>1 字符single char
+                    <br>2 数量quantifier
+                    <br> 3 位置position
+                </p>
+            </section>
+            <section>
+                <h4 style="text-align: left;">1 字符</h4>
+                <p style="text-align: left;">
+                    字符范围[]
+                </p>
+                <table>
+                    <thead>
+                        <th>元字符</th>
+                        <th>范围</th>
+                        <th>取反</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>\d</td>
+                            <td>[0-9]</td>
+                            <td>\D[^0-9]</td>
+                        </tr>
+                        <tr>
+                            <td>\w(word)</td>
+                            <td>[A-Za-z_0-9]</td>
+                            <td>\W</td>
+                        </tr>
+                        <tr>
+                            <td>\s</td>
+                            <td>white space (空格、制表符、换行)</td>
+                            <td>\S</td>
+                        </tr>
+                        <tr>
+                            <td>.</td>
+                            <td>除换行符以外的任意字符</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h4 style="text-align: left;">2 数量</h4>
+                <p style="text-align: left;">
+                    数量用{}表示
+                </p>
+                <table>
+                    <thead>
+                        <th>数量</th>
+                        <th>等效符号</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{n}</td>
+                            <td>n次</td>
+                        </tr>
+                        <tr>
+                            <td>{m,n}</td>
+                            <td>m-n之间</td>
+                        </tr>
+                        <tr>
+                            <td>{0,1}</td>
+                            <td>?</td>
+                        </tr>
+                        <tr>
+                            <td>{0,}</td>
+                            <td>*</td>
+                        </tr>
+                        <tr>
+                            <td>{1,}</td>
+                            <td>+</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h4 style="text-align: left;">3 位置</h4>
+                <p style="text-align: left;">
+                    起始和边界
+                </p>
+                <table>
+                    <tr>
+                        <td>^</td>
+                        <td>开头</td>
+                    </tr>
+                    <tr>
+                        <td>$</td>
+                        <td>结尾</td>
+                    </tr>
+                    <tr>
+                        <td>\b</td>
+                        <td>单词边界</td>
+                    </tr>
+                    <tr>
+                        <td>|</td>
+                        <td>或</td>
+                    </tr>
+                </table>
+            </section>
+            <section>
+                <h4 style="text-align: left;">4 分组</h4>
+                <p style="text-align: left;">
+                    正则表达式还有提取子串的强大功能，用()表示的就是要提取的分组（Group）
+                </p>
+                <p style="text-align: left;">
+                    如何选择已经匹配的分组？
+                </p>
+                <p style="text-align: left;">
+                    两种方法，第一种使用$符号，比如$1 代表555,$2代表1234；第二种，使用\,比如\1代表555。
+                </p>
+                <h4 style="text-align: left;">5 flag</h4>
+                <p style="text-align: left;">
+                    g：全部；i:忽略大小写；m：多行匹配
+                </p>
+            </section>
+            <section>
+                <h4 style="text-align: left;">正则表达式方法</h4>
+                <p style="text-align: left;">
+                    RegExp 的 exec 和 test 方法
+                </p>
+                <p style="text-align: left;">
+                    String 的 match、replace、search 和 split 方法
+                </p>
+                <table>
+                    <thead>
+                        <th>分类</th>
+                        <th>布尔</th>
+                        <th>匹配</th>
+                        <th>分组</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>RegExp</td>
+                            <td>test()</td>
+                            <td>exec()</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>String</td>
+                            <td>search()</td>
+                            <td>match()</td>
+                            <td>replace() split()</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h3 style="text-align: left;">3.常见问题</h3>
+            </section>
+            <section>
+                <p>什么情况下使用正则表达式</p>
+            </section>
+
+
+            <section>
+                <h3 style="text-align: left;">4.解决方案</h3>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    查找、验证、转义
+                </p>
+            </section>
+
+            <section>
+                <h3 style="text-align: left;">5.编码实战</h3>
+                <a href="demo\20180802-B-js4\demo.html">demo</a>
+            </section>
+
+
+            <section>
+                <h3 style="text-align: left;">6.扩展思考</h3>
+            </section>
+
+
+            <section>
+                <h3 style="text-align: left;">7.参考文献</h3>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    参考一&emsp;
+                    <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions">MDN正则表达式</a>
+                </p>
+                <p style="text-align: left;">
+                    参考二&emsp;
+                    <a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001434499503920bb7b42ff6627420da2ceae4babf6c4f2000">廖雪峰正则表达式</a>
+                </p>
+                <p style="text-align: left;">
+                    参考三&emsp;
+                    <a href="https://juejin.im/post/5b5db5b8e51d4519155720d2">掘金文章</a>
+                </p>
+            </section>
+
+
+            <section>
+                <h3 style="text-align: left;">8.更多讨论</h3>
+            </section>
+
+
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>BY : 陈占乐 </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: './plugin/markdown/marked.js'
+                },
+                {
+                    src: './plugin/markdown/markdown.js'
+                },
+                {
+                    src: './plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: './plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
