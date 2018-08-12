@@ -1,0 +1,257 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+
+        p.font {
+            text-align: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>SASS的使用</h2>
+                <p style="text-align: center;">分享人：周能</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <h3>一、背景介绍</h3>
+            </section>
+            <section>
+                <h3>CSS预处理器</h3>
+                <p>要了解sass先看一下CSS 预处理器</p>
+                <P class="font">CSS 预处理器 定义了一种新的语言，其基本思想是，用一种专门的编程语言，为 CSS 增加了一些编程的特性，将 CSS 作为目标生成文件，然后开发者就只要使用这种语言进行编码工作。</P>
+                <P class="font">俗的说，“CSS 预处理器用一种专门的编程语言，进行 Web 页面样式设计，然后再编译成正常的 CSS 文件，以供项目使用。CSS 预处理器为 CSS 增加一些编程的特性，无需考虑浏览器的兼容性问题”，可以让你的
+                    CSS 更加简洁、适应性更强、可读性更佳，更易于代码的维护等诸多好处。</P>
+            </section>
+            <section>
+                <h3>二、知识剖析</h3>
+            </section>
+
+            <section>
+                <h3>什么是SASS</h3>
+
+                <p class="font">Sass 是一门高于 CSS 的元语言，它能用来清晰地、结构化地描述文件样式，有着比普通 CSS 更加强大的功能。</p>
+                <p class="font">Sass 能够提供更简洁、更优雅的语法，同时提供多种功能来创建可维护和管理的样式表。</p>
+                <p class="font">Sass 是最早的 CSS 预处理语言，有比 LESS 更为强大的功能</p>
+                <p class="font">Sass 是采用 Ruby 语言编写的一款 CSS 预处理语言，它诞生于2007年，是最大的成熟的 CSS 预处理语言。</p>
+
+            </section>
+            <section>
+                <h3>sass的安装</h3>
+                <p>sass基于Ruby语言开发而成，因此安装sass前需要安装Ruby。</p>
+            </section>
+            <section>
+                <h3>SASS的使用</h3>
+                <p>SASS文件就是普通的文本文件，里面可以直接使用CSS语法。文件后缀名是.scss</p>
+                <br>
+                <br>
+                <p>SASS提供四个编译风格的选项</p>
+            </section>
+            <section>
+                <p class="font">NESTED是 SASS 默认的输出格式，能够清晰反映 CSS 与 HTML 的结构关系。选择器与属性等单独占用一行，缩进量与 SASS 文件中一致，每行的缩进量反映了其在嵌套规则内的层数。</p>
+
+                <img src="img/2018-7-27-A组-css11/1.png" alt="">
+            </section>
+            <section>
+                <p class="font">COMPACT 输出方式比起上面两种占用的空间更少，每条 CSS 规则只占一行，包含其下的所有属性。嵌套过的选择器在输出时没有空行，不嵌套的选择器会输出空白行作为分隔符。</p>
+
+                <img src="img/2018-7-27-A组-css11/3.png" alt="">
+            </section>
+            <section>
+                <p class="font">COMPRESSED 输出方式删除所有无意义的空格、空白行、以及注释，力求将文件体积压缩到最小，同时也会做出其他调整，比如会自动替换占用空间最小的颜色表达方式。</p>
+
+                <img src="img/2018-7-27-A组-css11/4.png" alt="">
+            </section>
+            <section>
+                <p class="font">EXPANDED 输出更像是手写的样式，选择器、属性等各占用一行，属性根据选择器缩进，而选择器不做任何缩进。</p>
+
+                <img src="img/2018-7-27-A组-css11/2.png" alt="">
+            </section>
+            <section>
+                <h3>SASS的变量</h3>
+                <p class="font">SASS的变量使用$开头，可以把反复使用的css属性值 定义成变量，然后通过变量名来引用它们，而无需重复书写这一属性值</p>
+            </section>
+            <section>
+                <h3>SASS的嵌套</h3>
+                <p class="font">在sass中属性和选择器嵌套是非常伟大的特性，因为它们不仅大大减少了你的编写量，而且通过视觉上的缩进使你编写的样式结构更加清晰，更易于阅读和开发。</p>
+            </section>
+            <section>
+                <h3>SASS的注释</h3>
+                <p>SASS共有两种注释风格。</p>
+                <p>标准的CSS注释 /* 注释 */ ，该会保留到编译后的文件。</p>
+                <p>单行注释 // 注释 ，只保留在SASS源文件中，编译后被省略。</p>
+            </section>
+            <section>
+                <h3>SASS混合器</h3>
+                <p>混合器使用@mixin标识符定义。</p>
+                <p class="font">这个标识符给一大段样式赋予一个名字，这样你就可以轻易地通过引用这个名字重用这段样式</p>
+                <p class="font">然后可以通过@include来使用这个混合器，放在你希望的任何地方。调用的混合器会把所有样式提取出来放在被调用的地方</p>
+                <p class="font">混合器并不一定总得生成相同的样式。可以通过在混合器时给混合器传参，来定制混合器生成的精确样式。</p>
+            </section>
+            <section>
+                <h3>SASS的继承</h3>
+                <p>SASS允许一个选择器，继承另一个选择器。</p>
+                <p>sass的继承用@extend</p>
+            </section>
+            <section>
+                <h3>SASS的占位符</h3>
+                <p>占位符 用%开头</p>
+                <p class="font">占位符也是一个非常强大的功能，和继承也有着密切的关系。比如说，我们有多个类都有相同的代码共有，需要继承同一个基类。但是基类本身并不存在或者基类自身并不需要这些样式，像继承的写法有产生了代码的冗余，最终会编译出多余的代码。</p>
+                <p class="font">用占位符声明的代码，在不被@extend调用的情况下，是不会产生任何代码的</p>
+            </section>
+
+
+            <section>
+                <h3>三、常见问题</h3>
+            </section>
+            <section>
+                <p>混合器和继承，占位符之间的区别</p>
+            </section>
+            <section>
+                <h3>四、解决方案</h3>
+            </section>
+            <section>
+                <img src="img/2018-7-27-A组-css11/qubie.png" alt="">
+            </section>
+
+            <section>
+                <h3>五、编码实战</h3>
+            </section>
+
+            <section>
+                <h3>六、拓展思考</h3>
+            </section>
+            <section>
+                <h3>何时使用混合器</h3>
+                <p class="font">利用混合器，可以很容易地在样式表的不同地方共享样式。如果你发现自己在不停地重复一段样式，那就应该把这段样式构造成优良的混合器，尤其是这段样式本身就是一个逻辑单元，比如说是一组放在一起有意义的属性。
+                </p>
+                <p calss="font">判断一组属性是否应该组合成一个混合器，一条经验法则就是你能否为这个混合器想出一个好的名字。如果你能找到一个很好的短名字来描述这些属性修饰的样式，那么往往能够构造一个合适的混合器。如果你找不到，这时候构造一个混合器可能并不合适。</p>
+            </section>
+            <section>
+                <h3>何时使用继承</h3>
+                <p class="font">继承是基于类选择器的（有时是基于其他类型的选择器），所以继承应该是建立在语义化的关系上。
+                </p>
+                <p calss="font">如果a的样式和b的样式相同，那么就可以使用继承，让a继承b的属性，或者让b继承a的属性</p>
+            </section>
+            <section> 
+                <h3>何时使用占位符</h3>
+                <p class="font">占位符和继承基本一样，唯一不同的就是相同的代码并没有在基类中存在，而是额外的声明，如果不被调用就不会产生任何样式，如果在不同的选择器调用占位符，那么编译出来的css代码将会把相同的代码合并在一起
+                </p>
+            </section>
+
+
+            <section>
+                <h3>七、参考文献</h3>
+            </section>
+            <section>
+                <a href="https://www.sass.hk/guide/">sass中文手册</a>
+                <br>
+                <a href="https://baike.baidu.com/item/SASs/8316915?fr=aladdin">SASS用法指南</a>
+                <br>
+            </section>
+            <section>
+                <h3>八、更多讨论</h3>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>BY : 周能</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>

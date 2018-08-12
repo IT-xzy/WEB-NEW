@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .left {
+            text-align: left;
+        }
+        ul {
+            text-align: left;
+        }
+        p {
+            text-align: left;
+        }
+    </style>
+
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : 'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides"
+         style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h2>【CSS-task15】</h2>
+            <h3>经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？
+            </h3>
+            <p>分享人:钟华俊</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+        <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <section>
+            <h4>浏览器兼容性的起源</h4>
+            <p class="left">浏览器兼容性问题又被称为网页兼容性或网站兼容性问题，指网页在各种浏览器上的显示效果可能不一致
+                而产生浏览器和网页间的兼容问题。简单的来说就是各大浏览器厂商有着一套属于自己的标准，浏览器各自推出非标准的
+                语句以专有的特色功能分割市场。然而不同浏览器其内核亦不尽相同，所以各个浏览器对网页的解析就有一定出入，这也
+                是导致浏览器兼容问题出现的主要原因，这就是我们常说的浏览器兼容性问题。
+            </p>
+
+        </section>
+        <section>
+            <h4>浏览器大战</h4>
+            <p class="left">浏览器大战，指不同的网络浏览器之间的市场份额竞争。常用来指以下两组竞争：第一组是
+                20世纪时微软公司的Internet Explorer取代了网景公司的Netscape Navigator主导地位。第二组为2003年后Internet
+                Explorer份额遭其他浏览器蚕食，包括Mozilla Firefox，Google Chrome，
+                Safari和Opera。</p>
+        </section>
+
+
+
+
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            <h4>什么是CSS hack</h4>
+            <p class="left">Hack，顾名思义是修改的意思，由于不同厂商的流览器或某浏览器的不同版本（如IE6-IE11,Firefox/
+                Safari/Opera/Chrome等），对CSS的支持、解析不一样，导致在不同浏览器的环境中呈现出不一致的页面展现效果。这
+                时，我们为了获得统一的页面效果，就需要针对不同的浏览器或不同版本写特定的CSS样式，我们把这个针对不同的浏览
+                器/不同版本写相应的CSS code的过程，叫做CSS hack!</p>
+        </section>
+        <section>
+            <h4>hack的原理</h4>
+            <p class="left">由于不同的浏览器和浏览器各版本对CSS的支持及解析结果不一样，以及CSS优先级对浏览器展现效果的影
+                响，我们可以据此针对不同的浏览器情景来应用不同的CSS。</p>
+        </section>
+
+
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            <p>遇到浏览器常见的兼容性问题有哪些解决方法？</p>
+            <p>常用hack的技巧有哪些？</p>
+        </section>
+
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            <h4>1.遇到浏览器常见的兼容性问题有哪些解决方法？</h4>
+            <p>问题：Firefox浏览器点击链接出现的虚线框；</p>
+            <p>方法：我们可以给a标签设	置outline属性：
+                a{outline:none;}
+                a:focus{outline:none;}</p>
+            <p>问题：谷歌浏览器字体的最小为12px，当字体设置小于12px时也只能显示为12px；</p>
+            <p>方法：使用transform属性来改变字体大小；</p>
+        </section>
+        <section>
+            <h4>2.常用hack的技巧有哪些？</h4>
+            <ul>CSS Hack大致有3种表现形式，CSS属性前缀法、选择器前缀法以及IE条件注释法（即HTML头部引用if IE）Hack，实际
+                项目中CSS Hack大部分是针对IE浏览器不同版本之间的表现差异而引入的。
+                <li>属性前缀法(即类内部Hack)：例如 IE6能识别下划线"_"和星号" * "，IE7能识别星号" * "，但不能识别下划线
+                    "_"，IE6~IE10都认识"\9"，但firefox前述三个都不能认识。</li>
+                <li>选择器前缀法(即选择器Hack)：例如 IE6能识别*html .class{}，IE7能识别*+html .class{}或者*:first-child
+                    +html .class{}。</li>
+                <li>IE条件注释法(即HTML条件注释Hack)：即针对所有IE的条件注释</li>
+
+            </ul>
+        </section>
+
+
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+            <h4>CSS样式重置</h4>
+            <p>前面提到了网站兼容性问题，指网页在各种浏览器上的显示效果可能不一致： 不同浏览器的默认样式之间会有差别，例
+                如ul默认带有缩进的样式，在IE下，它的缩进是通过margin实现的，而Firefox下，它的缩进是由padding实现的。这种
+                情况让人不由从浏览器的兼容性引申到样式重置；所以这面对这个问题的时候，有些人给出的解决的方法就是一开始就
+                将浏览器的默认样式全部去掉，更准确说就是通过重新定义标签样式。覆盖浏览器的CSS默认属性。把浏览器提供的默
+                认样式覆盖掉，这就是样式重置。</p>
+            <p>样式重置的作用：CSS样式重置让各个浏览器的CSS样式有一个统一的基准，而实现这一基准最主要的方式就是将这些样式统统清零</p>
+        </section>
+
+        <section>
+            <h5>样式重置的的不足</h5>
+            <p>1.不当地破坏了所有浏览器的基本样式，例如使用*{margin:0;padding:0},去掉ol,ul的列表样式，使得一些语义元素缺
+                乏恰当的样式表现。</p>
+            <p>2.粗暴的reset使得一些交互控件外观在浏览器下失调，例如去掉了outline，使得交互控件缺乏视觉反馈。</p>
+            <p>3.增加浏览器样式计算成本，有一定的性能负担，因为平白无故的增加了CSS文件的大小，增加了很多的渲染。</p>
+        </section>
+
+        <section>
+            <h3>7.参考文献</h3>
+            <p>参考资料：https://blog.csdn.net/freshlover/article/details/12132801</p>
+            <p>—— 史上最全的CSS hack方式一览</p>
+            <p>参考资料：https://blog.csdn.net/xustart7720/article/details/73604651/</p>
+            <p>——WEB前端开发人员须知的常见浏览器兼容问题及解决技巧</p>
+            <p>参考资料：https://blog.csdn.net/kang_hui/article/details/12156673</p>
+            <p>——浏览器兼容问题</p>
+        </section>
+
+        <section>
+            <h3>8.更多讨论</h3>
+            <p>hack的利与弊？</p>
+            <p>随着发展hack是否还有必要？</p>
+        </section>
+
+        <section>
+            <p>鸣谢</p>
+            <p>感谢大家观看</p>
+            <p><small>BY : 钟华俊</small></p>
+        </section>
+
+    </div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status He

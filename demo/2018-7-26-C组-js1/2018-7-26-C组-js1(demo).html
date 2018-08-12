@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>定时器demo</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: #fa0;
+            border-radius: 5%;
+        }
+        .btn{
+            width: 95px;
+            height: 40px;
+            margin-top: 20px;
+            border-radius: 10px;
+            border: 2px solid orange;
+            color: #666;
+            background-color: #fff;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<button onclick="flashStart()" class="btn">开始闪</button>
+<button onclick="flashStop()" class="btn">停止闪</button>
+
+<script>
+	function order(){
+        console.log(1);
+        num = 2;
+        var timer = setTimeout("console.log(num)",0);
+        console.log(3);
+	};
+
+    function test(){
+        console.log("咕咕咕")
+        ggg = setTimeout(test,1000);
+    };
+
+</script>
+<script>
+    var box = document.getElementById("box");
+    var timer;
+    var swi = "off";
+    var date = new Date();
+
+    //获取颜色
+    function getColor(){
+        color = "rgb(" + parseInt(Math.random()*256) + "," + parseInt(Math.random()*256) + "," + parseInt(Math.random()*256) + ")";
+        return color;
+    }
+    var flashing = function(){
+        box.style.backgroundColor = getColor();
+    };    
+
+    var flashStart = function () {
+        方法一:
+        clearTimeout(timer);
+        console.log('清除掉了' + timer);
+        timer = setInterval(flashing,1000);
+
+        // 方法二:
+        // if (swi === "off"){
+        // timer = setInterval("flashing()",1000);
+        // console.log('timer=' + timer);
+        // }
+        // swi = "on";
+        
+        console.log('timer返回值=' + timer); 
+    };
+
+    var flashStop = function () {
+        // 清除定时器
+        console.log('清除的timer=' + timer);
+        clearTimeout(timer);
+        box.style.backgroundColor = "";
+        swi = "off";
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>【js-07】</h2>
+            <h4>angular的核心思想是什么？怎么体现在代码里？</h4>
+            <p>分享人：孟广旭</p>
+        </section>
+
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+
+        <section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <h4>angular是什么？</h4>
+                <p>
+                    AngularJS[1]诞生于2009年，由Misko Hevery等人创建，后为Google所收购。是一款优秀的前端JS框架，
+                    已经被用于Google的多款产品当中。AngularJS有着诸多特性，最为核心的是：MVC、模块化、双向数据绑定、语义化标签、依赖注入等等。
+                    AngularJS是为了克服HTML在构建应用上的不足而设计的。HTML是一门很好的伪静态文本展示设计的声明式语言，
+                    但要构建WEB应用的话它就显得乏力了。AngularJS通过MVC模式（MVC）功能增强基于浏览器的应用，使开发和测试变得更加容易。
+                </p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <h4>AngularJS的四大特性</h4>
+                <p> 1.使用MVC设计模式</p>
+                <p> 2.双向数据绑定</p>
+                <p> 3.依赖注入</p>
+                <p> 4.采用模块化设计</p>
+            </section>
+            <section>
+                <h4>1.使用MVC设计模式</h4>
+                <p>MVC指的是 Model View Controller 模型-视图-控制器设计模式</p>
+                <p>在前端中，我们可以简单的理解为：</p>
+                <p>M-Model，数据模型，当我们需要使用到数据的时候，数据暂存在这里。通常这样表达：$scope.ppt。</p>
+                <p>V-View，视图层，一般是我们的html文件层，用于展示数据内容,如:{{ppt}}</p>
+                <p>C-Controller，控制器，控制器帮助将M层数据给V,或者当View层数据有所改变时，通知M层，M层数据也做相应的改变。可以说C是为了实现V和M之间的数据交互而存在的。</p>
+            </section>
+            <section>
+                <img src="img/2018-6-28-E组-js7/mvc.png" alt="">
+            </section>
+            <section>
+                <h4>2.双向数据绑定</h4>
+                <p>一但建立双向绑定，使用者输入，会由Angular自动传到一个变量中，
+                    再自动读到所有绑到它的内容，更新它，效果上就是立即的资料同步，
+                    在程式码中修改变量，也会直接反应到呈现的外观上。</p>
+            </section>
+            <section>
+                <h4>3.依赖注入</h4>
+                <p>依赖注入(Dependency Injection,简称DI)是一种设计模式,
+                    指某个对象依赖的其他对象无需手工创建，只需要“吼一嗓子”，
+                    则此对象在创建时，其依赖的对象由框架来自动创建并注入进来,
+                    其实就是最少知识法则;模块中所有的service和provider两类对象，
+                    都可以根据形参名称实现DI.</p>
+            </section>
+            <section>
+                <h4>4.模块化设计</h4>
+                <p>高内聚低耦合法则</p>
+                <p>　
+                    1)官方提供的模块           ng、ngRoute、ngAnimate、ngTouch
+                </p>
+                <p>
+                     2)用户自定义的模块        angular.module('模块名',[ ])
+                </p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+            <section>
+                <p>怎么体现在代码？</p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>4.解决方案</h3>
+            </section>
+            <section>
+                <img src="img/2018-6-28-E组-js7/augularJS.png" alt="">
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>5.代码实战</h3>
+            </section>
+            <section>
+                <h6> Module</h6>
+                <p>AngularJS中一切都是从Module模块开始的，模块是组织代码的容器，当然模块中还可以包含子模块</p>
+                <h6> Routes</h6>
+                <p>路由负责在应用中基于state进行页面的跳转</p>
+                <h6> Views</h6>
+                <p>Views是通过AngularJS编译后呈现的DOM</p>
+                <h6>$scope</h6>
+                <p> $scope实际上就是一个JavaScript对象，controller和view都可以访问它，所以我们可以利用它在两者间传递信息。在这个 $scope 对象里，我们既存储数据，又存储将要运行在view上的函数。$scope是连接controller和view之间的桥梁，</p>
+            </section>
+            <section>
+                <h6> Controller</h6>
+                <p>  定义一些属性和方法用于绑定到view的元素上，一般来说，controller是比较轻量的，它里面只放一些负责view呈现的属性和方法</p>
+                <h6>Directive</h6>   
+                <p>指令使得AngularJS能够创建自定义的标签并实现相应的功能，可以将指令看成一种特殊的html标签</p>       
+                <h6>Service</h6>
+                <p>Service负责提供一些通用的功能函数，比如有些数据在多个controller中都会用到，就可以定义在一个service中</p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>6.拓展思考</h3>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>7.参考文献</h3>
+            </section>
+        </section>
+
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>BY : 吴昊杰|陈星宇|孟广旭</small>
+            </p>
+        </section>
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: '../plugin/markdown/marked.js' },
+            { src: '../plugin/markdown/markdown.js' },
+            { src: '../plugin/notes/notes.js', async: true },
+            { src: '../plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+
+</html>
