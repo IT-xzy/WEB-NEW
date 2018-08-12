@@ -1,0 +1,280 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>葡萄藤PPT</title>
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h3>【JS-task8】ES6有哪些新特性</h3>
+            <p>分享人：高昕</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。
+                    它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。</p>
+            </section>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>2.知识剖析</h3>
+                <p>下面是介绍es6中常用的字符串、数组、对象的扩展及应用</p>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4> includes方法</h4>
+                <p>includes()：返回布尔值，表示是否找到了参数字符串。</p>
+                <pre><code class="hljs mel">
+[1, 2, 3].includes(2)     // true
+[1, 2, 3].includes(4)     // false
+[1, 2, NaN].includes(NaN) // true
+            </code></pre>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <P>该方法的第二个参数表示搜索的起始位置，默认为0。如果第二个参数为负数，
+                    则表示倒数的位置，如果这时它大于数组长度（比如第二个参数为-4，但数组长度为3），
+                    则会重置为从0开始。</P>
+                <pre><code class="hljs mel">
+[1, 2, 3].includes(3, 3);  // false
+[1, 2, 3].includes(3, -1); // true
+            </code></pre>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>字符串repeat()</h4>
+                repeat方法返回一个新字符串，表示将原字符串重复n次。
+                <pre><code class="hljs mel">
+'x'.repeat(3) // "xxx"
+'hello'.repeat(2) // "hellohello"
+'na'.repeat(0) // ""
+            </code></pre>
+                如果repeat的参数是负数或者Infinity，会报错。
+                <pre><code class="hljs mel">
+'na'.repeat(Infinity)
+// RangeError
+'na'.repeat(-1)
+// RangeError
+            </code></pre>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>数组 entries()，keys() 和 values() </h4>
+                <pre><code class="hljs mel">
+for (let index of ['a', 'b'].keys()) {
+  console.log(index);
+}
+// 0
+// 1
+
+for (let elem of ['a', 'b'].values()) {
+  console.log(elem);
+}
+// 'a'
+// 'b'
+
+for (let [index, elem] of ['a', 'b'].entries()) {
+  console.log(index, elem);
+}
+// 0 "a"
+// 1 "b"
+            </code></pre>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <P>对象的Object.keys()，Object.values()，Object.entries()</P>
+                <pre><code class="hljs mel">
+var obj = { foo: 'bar', baz: 42 };
+Object.keys(obj) //["foo", "baz"]
+Object.values(obj) //[bar,42]
+Object.entries(obj)//[["foo", "baz"],[bar,42]]
+            </code></pre>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>类数组转为数组</h4>
+                Array.from()
+                <pre><code class="hljs mel">
+let haorooms = {
+    '0': 'a',
+    '1': 'b',
+    '2': 'c',
+    length: 3
+};
+ let arr2 = Array.from(haorooms); // ['a', 'b', 'c']
+            </code></pre>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>数组实例的 find() 和 findIndex()</h4>
+                数组实例的find方法，用于找出第一个符合条件的数组成员。它的参数是一个回调函数，
+                所有数组成员依次执行该回调函数，
+                直到找出第一个返回值为true的成员，然后返回该成员。如果没有符合条件的成员，则返回undefined。
+                <pre><code class="hljs mel">
+[1, 4, -5, 10].find((n) => n < 0)
+// -5
+上面代码找出数组中第一个小于 0 的成员
+
+[1, 5, 10, 15].find(function(value, index, arr) {
+  return value > 9;
+}) // 10
+上面代码中，find方法的回调函数可以接受三个参数，依次为当前的值、当前的位置和原数组。
+            </code></pre>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                数组实例的findIndex方法的用法与find方法非常类似，
+                返回第一个符合条件的数组成员的位置，如果所有成员都不符合条件，则返回-1。
+                <pre><code class="hljs mel">
+[1, 5, 10, 15].findIndex(function(value, index, arr) {
+  return value > 9;
+}) // 2
+            </code></pre>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                    这两个方法都可以接受第二个参数，用来绑定回调函数的this对象。
+                    <pre><code class="hljs mel">
+function f(v){
+  return v > this.age;
+}
+let person = {name: 'John', age: 20};
+[10, 12, 26, 15].find(f, person);    // 26
+
+            </code></pre>
+                    上面的代码中，find函数接收了第二个参数person对象，回调函数中的this对象指向person对象。
+                </section>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>super 关键字</h4>
+                ES6 又新增了另一个类似的关键字super，指向当前对象的原型对象。
+                <pre><code class="hljs mel">
+const proto = {
+  foo: 'hello'
+};
+
+const obj = {
+  foo: 'world',
+  find() {
+    return super.foo;
+  }
+};
+
+Object.setPrototypeOf(obj, proto);
+obj.find() // "hello"
+            </code></pre>
+            </section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>3 常见问题</h3>
+            </section>
+
+        </section>
+
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>4 解决方案</h3></section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>5.编码实战</h3></section>
+        </section>
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <h3 style="text-align: center">6.扩展思考</h3>
+            </section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h3>7.参考文献</h3>
+            <a href="http://es6.ruanyifeng.com">ECMAScript 6 入门</a>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>8 更多讨论</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>制作人：高昕 </small>
+            </p>
+        </section>
+
+    </div>
+    <div class="backgrounds"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background stack present" data-loaded="true" style="display: block;"><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up enabled" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+</div></div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+
+</script>
+
+</body>
+</html>

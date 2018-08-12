@@ -1,0 +1,28 @@
+<div class="box">
+
+    <input type="text" name="" id="" ng-model="vm.text"> {{vm.text}}
+    <br>
+    <br>
+    <button ng-click="vm.val=vm.val+1">点击+1</button>
+    {{vm.val}}
+    <br>
+    <br>
+
+    <button ng-click="vm.getMessage()">延时信息</button>
+    : {{vm.message}}
+    <br>
+    <br>
+    <button ng-click="vm.getMessage2()">延时信息2</button>
+    : {{vm.message2}}
+    <br><br>
+
+    <div ng-show="false">
+
+        <span id="span1" ng-bind="content"></span>
+
+    </div>
+
+    <span id="span2" ng-bind="content"></span>
+
+    <button ng-click="">TEST</button>
+</div>

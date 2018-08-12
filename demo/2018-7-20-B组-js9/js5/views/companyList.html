@@ -1,0 +1,34 @@
+<div class="panel  panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-4 col-float">
+                <div class="form-group ">
+                    <strong class="col-lg-4 col-pad ">公司名称</strong>
+                    <input type="text" class="form-style col-lg-8">
+                </div>
+            </div>
+            <div class="col-lg-4  col-float">
+                <div class="form-group">
+                    <strong class="col-lg-4 col-pad"> 公司行业</strong>
+                    <select class="form-style col-lg-8" ng-model="post" ng-options="item.id as item.name for item in option">
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-4 col-float">
+                <div class="form-group ">
+                    <b class="col-lg-4 col-pad">产品名称</b>
+                    <input type="text" class="form-style col-lg-8">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-float" ng-repeat="item in row">
+                <div class="form-group ">
+                    <strong class="col-lg-4 col-pad ">{{item.name}}</strong>
+                    <select class="form-style col-lg-8">
+                        <option id="{{x.id}}" ng-repeat="x in item.child">{{x.name}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
