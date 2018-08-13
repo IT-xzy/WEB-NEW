@@ -1,0 +1,436 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>什么是SVG以及如何使用？</title>
+
+  <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+  <!-- css-28-sassinsublime主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+  <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+  <!-- syntax highlighting 代码高亮主题 -->
+  <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+  <!-- 打印和PDF输出样式 -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+      './css/reveal/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+  <script src="http://39.108.71.175/resource/anime.min.js"></script>
+  <style>
+    .code {
+      white-space: pre;
+      text-align: left;
+      font-size: 50%;
+      margin-left: 5rem !important;
+    }
+
+    .code2 {
+      white-space: pre-line;
+      text-align: left;
+      font-size: 80% !important;
+    }
+
+    li {
+      margin: 10px 0 !important;
+    }
+
+    p {
+      font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+  <map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+  </map>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h2 style="font-size: 1.5em">
+          <span>什么是SVG以及如何使用？</span>
+        </h2>
+        <p>分享人：胡云鹤</p>
+      </section>
+      <section>
+        <p>目录</p>
+        <p>1.背景介绍</p>
+        <p>2.知识剖析</p>
+        <p>3.常见问题</p>
+        <p>4.解决方案</p>
+        <p>5.扩展思考</p>
+        <p>6.编码实战</p>
+        <p>7.参考文献</p>
+        <p>8.更多讨论</p>
+      </section>
+
+      <section>
+        <h3>1.背景介绍</h3>
+      </section>
+      <section>
+        <h4>什么是SVG?</h4>
+        <p style="text-align: left;">
+          Scalable Vector Graphics (SVG) is a Web graphics language. SVG defines markup and APIs for creating static or dynamic images,
+          capable of interactivity and animation, including various graphical effects.
+        </p>
+        <p style="font-size: 80%;text-align: justify">
+          可缩放矢量图形，即SVG，是W3C XML的分支语言之一，用于标记可缩放的矢量图形。目前SVG在Firefox、Opera、Webkit浏览器、IE等浏览器中已经部分实现。
+        </p>
+      </section>
+      <section>
+        <h3>2.知识剖析</h3>
+      </section>
+
+      <section>
+        <h4>如何引入SVG文件</h4>
+        <ul style="font-size: 90%">
+          <li>
+            如果HTML是HTML5并且浏览器支持HTML5，同样可以直接嵌入SVG。然而为了符合HTML5标准，可能需要做一些语法调整。
+          </li>
+          <li>
+            可以通过 object 元素引用SVG文件：
+            <div style="font-size:80%;color:white">
+              &ltobject data="image.svg" type="image/svg+xml/&gt
+            </div>
+          </li>
+          <li>
+            类似的也可以使用 iframe 元素引用SVG文件：
+            <div style="font-size:80%;color:white">
+              &ltiframe src="image.svg"&gt&lt/iframe&gt
+            </div>
+          </li>
+          <li>
+            理论上同样可以使用 img 元素，但是在低于4.0版本的Firefox 中不起作用。
+          </li>
+        </ul>
+        <div style="display: flex;justify-content: space-between">
+          <div>
+            <div>通过Object引入</div>
+            <object data="http://39.108.71.175/resource/svg.svg" type="image/svg+xml"></object>
+          </div>
+          <div>
+            <div>通过iframe引入</div>
+            <iframe src="http://39.108.71.175/resource/svg.svg" width="230" height="230"></iframe>
+          </div>
+          <div>
+            <div>通过img引入</div>
+            <img src="http://39.108.71.175/resource/svg.svg"></img>
+          </div>
+        </div>
+
+      </section>
+      <section>
+        <h3>缩放SVG图形</h3>
+        <div id="svg1">
+          <svg xmlns="http://www.w3.org/2000/svg" id="svg8" viewBox="0 0 60.8542 58.2083" width="230" height="220" version="1.1">
+            <defs id="defs2">
+              <linearGradient id="linearGradient32266">
+                <stop id="stop32262" style="stop-color: rgb(13, 13, 13); stop-opacity: 0.513726;" offset="0" />
+                <stop id="stop32264" style="stop-color: rgb(197, 33, 33); stop-opacity: 0;" offset="1" />
+              </linearGradient>
+              <linearGradient id="linearGradient32272" gradientUnits="userSpaceOnUse" x1="0.0655317" y1="78.5298" x2="141.873" y2="82.1205"
+                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#linearGradient32266" />
+              <linearGradient id="linearGradient19" gradientUnits="userSpaceOnUse" x1="0.0655317" y1="78.5298" x2="141.873" y2="82.1205"
+                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#linearGradient32266" />
+              <linearGradient id="linearGradient21" gradientUnits="userSpaceOnUse" x1="0.0655317" y1="78.5298" x2="141.873" y2="82.1205"
+                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#linearGradient32266" />
+              <linearGradient id="linearGradient23" gradientUnits="userSpaceOnUse" x1="0.0655317" y1="78.5298" x2="141.873" y2="82.1205"
+                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#linearGradient32266" />
+              <linearGradient id="linearGradient25" gradientUnits="userSpaceOnUse" x1="0.0655317" y1="78.5298" x2="141.873" y2="82.1205"
+                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#linearGradient32266" />
+              <linearGradient id="linearGradient27" gradientUnits="userSpaceOnUse" x1="0.0655317" y1="78.5298" x2="141.873" y2="82.1205"
+                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#linearGradient32266" />
+            </defs>
+            <metadata id="metadata5">
+              <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+                <cc:Work xmlns:cc="http://creativecommons.org/ns#" rdf:about="">
+                  <dc:format xmlns:dc="http://purl.org/dc/elements/1.1/">image/svg+xml</dc:format>
+                  <dc:type xmlns:dc="http://purl.org/dc/elements/1.1/" rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+                  <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/" />
+                </cc:Work>
+              </rdf:RDF>
+            </metadata>
+            <g id="layer1" transform="translate(0 -238.792)" />
+            <g id="layer2" transform="translate(0 -238.792)" />
+            <g id="g32260" style="fill: url(#linearGradient32272); fill-opacity: 1;" transform="rotate(-90 30.1549 80.0674)">
+              <path id="path32243" style="fill: url(#linearGradient19); fill-opacity: 1; stroke: #c15065; stroke-dasharray: none; stroke-miterlimit: 4; stroke-opacity: 1; stroke-width: 0.264583;"
+                d="m 109.424 80.4196 c 0 0.300743 -20.7386 28.8449 -21.0246 28.9379 c -0.286023 0.0929 -33.8417 -10.81 -34.0185 -11.0533 c -0.176772 -0.243306 -0.176772 -35.5259 0 -35.7692 c 0.176772 -0.243306 33.7325 -11.1462 34.0185 -11.0533 c 0.286023 0.09293 21.0246 28.6371 21.0246 28.9379 Z"
+              />
+              <path id="path32245" style="fill: url(#linearGradient21); fill-opacity: 1; stroke: #c15065; stroke-dasharray: none; stroke-miterlimit: 4; stroke-opacity: 1; stroke-width: 0.264583;"
+                d="m 103.746 80.4197 c 0 0.244617 -16.8682 23.4617 -17.1009 23.5373 c -0.232644 0.0756 -27.526 -8.79256 -27.6698 -8.99046 c -0.143782 -0.197898 -0.143776 -28.8958 6e-006 -29.0937 c 0.143782 -0.197899 27.4371 -9.06604 27.6698 -8.99045 c 0.232644 0.07559 17.1009 23.2927 17.1009 23.5373 Z"
+              />
+              <path id="path32247" style="fill: url(#linearGradient23); fill-opacity: 1; stroke: #c15065; stroke-dasharray: none; stroke-miterlimit: 4; stroke-opacity: 1; stroke-width: 0.264583;"
+                d="m 98.9353 80.4196 c 1e-006 0.19707 -13.5896 18.9015 -13.777 18.9624 c -0.187425 0.0609 -22.1758 -7.08355 -22.2916 -7.24299 c -0.115835 -0.159433 -0.11584 -23.2794 -5e-006 -23.4388 c 0.115836 -0.159433 22.1042 -7.30389 22.2916 -7.24299 c 0.187425 0.0609 13.777 18.7653 13.777 18.9624 Z"
+              />
+              <path id="path32251" style="fill: url(#linearGradient25); fill-opacity: 1; stroke: #c15065; stroke-dasharray: none; stroke-miterlimit: 4; stroke-opacity: 1; stroke-width: 0.264583;"
+                d="m 93.9271 80.4196 c 0 0.147569 -10.1761 14.1537 -10.3164 14.1993 c -0.140347 0.0456 -16.6056 -5.30427 -16.6923 -5.42366 c -0.08674 -0.119386 -0.08674 -17.432 -5e-006 -17.5513 c 0.08674 -0.119386 16.552 -5.46927 16.6923 -5.42367 c 0.140346 0.0456 10.3164 14.0518 10.3164 14.1993 Z"
+              />
+              <path id="path32253" style="fill: url(#linearGradient27); fill-opacity: 1; stroke: #c15065; stroke-dasharray: none; stroke-miterlimit: 4; stroke-opacity: 1; stroke-width: 0.264583;"
+                d="m 89.2509 80.4196 c 0 0.101349 -6.98884 9.72067 -7.08523 9.75199 c -0.09639 0.03132 -11.4046 -3.64293 -11.4641 -3.72492 c -0.05957 -0.08199 -0.05958 -11.9721 -5e-006 -12.0541 c 0.05957 -0.08199 11.3678 -3.75625 11.4641 -3.72493 c 0.09639 0.03132 7.08524 9.65063 7.08524 9.75198 Z"
+              />
+            </g>
+          </svg>
+          <div style="display: flex;align-items: center;position: absolute;left: 50px;top: 40%">
+            scale:
+            <input type="text" id="svgScale">
+          </div>
+        </div>
+        <p>
+          利用viewBox属性来定义画布上可显示的区域
+        </p>
+        <p style="font-size: 80%;text-align: justify">
+          这里定义的画布尺寸是200*200px。但是，viewBox属性定义了画布上可以显示的区域：从(0,0)点开始，100宽*100高的区域。这个100*100的区域，会放到200*200的画布上显示。于是就形成了放大两倍的效果。
+        </p>
+        <p style="font-size: 80%;text-align: justify">
+          &ltsvg width="200" height="200" viewBox="0 0 100 100"&gt
+        </p>
+        <script>
+          let svg1 = document.getElementById('svg1').firstElementChild;
+          let value = document.getElementById('svgScale');
+          // console.log(value);
+          let originWidth = svg1.getAttribute('width');
+          let originHeight = svg1.getAttribute('height');
+          value.addEventListener('change', function () {
+
+            let scaleValue = value.value
+            svg1.setAttribute('width', scaleValue * originWidth);
+            svg1.setAttribute('height', scaleValue * originHeight)
+          })
+        </script>
+      </section>
+      <section>
+        <h4>基本形状</h4>
+        <ol>
+          <li>矩形</li>
+          <li>圆形</li>
+          <li>椭圆</li>
+          <li>线条</li>
+          <li>折线</li>
+          <li>多边形</li>
+          <li>路径</li>
+        </ol>
+      </section>
+      <section>
+        <h3>3.常见问题</h3>
+      </section>
+      <section style="width: 100%;">
+        <h3>
+          快速创建SVG图形
+        </h3>
+      </section>
+      <section>
+        <h3>4.解决方案</h3>
+        <p>Illustrator</p>
+        <p>Lunacy</p>
+        <p>Inkscape</p>
+      </section>
+      <section>
+        <h3>5.扩展思考</h3>
+        <h4>SVG与Canvas对比</h4>
+      </section>
+      <section>
+        <p>SVG与Canvas</p>
+        <table>
+          <thead>
+            <tr>
+              <td></td>
+              <td>SVG</td>
+              <td>Canvas</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>是否依赖分辨率</td>
+              <td>
+                <ion-icon name="close"></ion-icon>
+              </td>
+              <td>
+                <ion-icon name="checkmark"></ion-icon>
+              </td>
+            </tr>
+            <tr>
+              <td>是否支持事件处理</td>
+              <td>
+                <ion-icon name="checkmark"></ion-icon>
+              </td>
+              <td>
+                <ion-icon name="close"></ion-icon>
+              </td>
+            </tr>
+            <tr>
+              <td>是否能够通过CSS修改样式</td>
+              <td>
+                <ion-icon name="checkmark"></ion-icon>
+              </td>
+              <td>
+                <ion-icon name="close"></ion-icon>
+              </td>
+            </tr>
+            <tr>
+                <td>是否支持无失真缩放</td>
+                <td>
+                  <ion-icon name="checkmark"></ion-icon>
+                </td>
+                <td>
+                  <ion-icon name="close"></ion-icon>
+                </td>
+              </tr>
+          </tbody>
+        </table>
+      </section>
+      <section>
+          <p>适用场景</p>
+          <table>
+            <thead>
+              <tr>
+                <td>SVG</td>
+                <td>Canvas</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>静态图像</td>
+                <td>复杂场景、实时复杂数学动画</td>
+              </tr>
+              <tr>
+                <td>高保真文档</td>
+                <td>基于图像位置的快速计算处理</td>
+              </tr>
+            </tbody>
+          </table>
+          <div>
+            <img src="https://upload-images.jianshu.io/upload_images/455911-684766fc5d8cb5e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="">
+          </div>
+      </section>
+      <section>
+        <h3>6.编码实战</h3>
+        <h4>基于AnimeJS实现字符路径描绘动画</h4>
+        <div id="lineDrawing" style="background-color: white">
+          <svg xmlns="http://www.w3.org/2000/svg" width="500" height="250" viewBox="0 0 290.82 86.14">
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: none;
+                  stroke: rgb(52, 158, 245);
+                  stroke-miterlimit: 10;
+                }
+              </style>
+            </defs>
+            <g>
+              <path class="cls-1" d="M20.63,38.58H78V16C78,5.4,76.93,3.36,65.24,2.4V.5H98.15V2.4c-12,1-13.06,3-13.06,13.6V70.13c0,10.75,1.09,12.79,12.65,13.6v1.91H64.15V83.73C76.93,82.92,78,80.88,78,70.13V42.8H20.63V70.13c0,10.75,1.22,12.79,13.19,13.6v1.91H1V83.73c11.43-.81,12.52-2.85,12.52-13.6V16C13.56,5.4,12.47,3.36.5,2.4V.5H33.14V2.4c-11.29,1-12.51,3-12.51,13.6Z"
+              />
+              <path class="cls-1" d="M126.71,83.73c13.33-.54,14.41-2.85,14.41-13.19V51c0-1.5-.27-3-3.67-8.71-4.62-6.93-9.79-16.32-17.41-28.69C114.6,5.26,113,2.81,105.36,2.4V.5h29.37V2.4c-7.21,1-9.65,2.32-9.65,4.63A7.93,7.93,0,0,0,126.57,11c5.85,9.79,13.6,23,20,32.64,4.08-6.66,19.59-32.23,19.59-36.45,0-2.85-3.13-3.8-11-4.76V.5h30.2V2.4c-9.39,1.09-11,4.9-17.14,13.47-4.9,6.39-10.47,15.64-17.14,27.2-2.58,4.08-2.72,5.58-2.85,6.93V70.54c0,10.34,1.08,12.65,15.23,13.19v1.91H126.71Z"
+              />
+              <path class="cls-1" d="M212.8,38.58h57.39V16c0-10.6-1.09-12.64-12.79-13.6V.5h32.92V2.4c-12,1-13.06,3-13.06,13.6V70.13c0,10.75,1.09,12.79,12.65,13.6v1.91H256.32V83.73c12.78-.81,13.87-2.85,13.87-13.6V42.8H212.8V70.13c0,10.75,1.22,12.79,13.19,13.6v1.91H193.21V83.73c11.43-.81,12.51-2.85,12.51-13.6V16c0-10.6-1.08-12.64-13.05-13.6V.5h32.64V2.4C214,3.36,212.8,5.4,212.8,16Z"
+              />
+            </g>
+          </svg>
+
+          <script>
+            var lineDrawing = anime({
+              targets: 'path',
+              strokeDashoffset: [anime.setDashoffset, 0],
+              easing: 'easeInOutQuad',
+              duration: 3000,
+              delay: function (el, i) {
+                return i * 500
+              },
+              // direction: 'alternate',
+              // loop: true
+            });
+            var svg = document.getElementById('lineDrawing');
+            svg.onclick = function () {
+              lineDrawing.restart();
+            }
+          </script>
+      </section>
+
+      <section>
+        <h3>7.参考文献</h3>
+      </section>
+      <section>
+        <p style="text-align: left; padding-left: 180px">
+          参考一
+          <a href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial">MDN——SVG教程</a>
+        </p>
+        <p style="text-align: left; padding-left: 180px">
+          参考二
+          <a href="https://www.w3.org/TR/SVG11/">W3C——Scalable Vector Graphics (SVG) 1.1 (Second Edition)</a>
+        </p>
+        <p style="text-align: left; padding-left: 180px">
+          参考三
+          <a href="http://animejs.com/">AnimeJS</a>
+        </p>
+      </section>
+
+      <section>
+        <h3>8.更多讨论</h3>
+      </section>
+
+      <section>
+        <h4>鸣谢</h4>
+        <p>感谢大家观看</p>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://unpkg.com/ionicons@4.3.0/dist/ionicons.js"></script>
+  <script src="./lib/reveal/js/head.min.js"></script>
+  <script src="./lib/reveal/reveal.js"></script>
+
+  <script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+      history: true,
+      dependencies: [{
+          src: './plugin/markdown/marked.js'
+        },
+        {
+          src: './plugin/markdown/markdown.js'
+        },
+        {
+          src: './plugin/notes/notes.js',
+          async: true
+        },
+        {
+          src: './plugin/highlight/highlight.js',
+          async: true,
+          callback: function () {
+            hljs.initHighlightingOnLoad();
+          }
+        }
+      ]
+    });
+  </script>
+</body>
+
+</html>

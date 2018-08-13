@@ -75,25 +75,7 @@
         <p>Canvas 对象表示一个 HTML 画布元素--&ltcanvas&gt。它没有自己的行为，但是定义了一个 API 支持脚本化客户端绘图操作。</p>
       </section>
 
-      <section>
-        <h4>定义和用法</h4>
-        <p style="text-align: left;font-size:80%;">
-          首先，在HTML元素中定义一个canvas标签
-        </p>
-        <p style="text-align: left;font-size: 80%;">
-          &ltcanvas id="tutorial" width="150" height="150"&gt&lt/canvas&gt
-        </p>
-        <p>&nbsp</p>
-        <h4>
-          获取canvas对象及渲染上下文
-        </h4>
-        <p style="text-align: left;font-size: 80%;">
-          var canvas = document.getElementById('tutorial');
-        </p>
-        <p style="text-align: left;font-size: 80%;">
-          var ctx = canvas.getContext('2d');
-        </p>
-      </section>
+
       <section>
         <h3>2.知识剖析</h3>
       </section>
@@ -115,7 +97,25 @@
           </dd>
         </dl>
       </section>
-
+      <section>
+          <h4>定义和用法</h4>
+          <p style="text-align: left;font-size:80%;">
+            首先，在HTML元素中定义一个canvas标签
+          </p>
+          <p style="text-align: left;font-size: 80%;">
+            &ltcanvas id="tutorial" width="150" height="150"&gt&lt/canvas&gt
+          </p>
+          <p>&nbsp</p>
+          <h4>
+            获取canvas对象及渲染上下文
+          </h4>
+          <p style="text-align: left;font-size: 80%;">
+            var canvas = document.getElementById('tutorial');
+          </p>
+          <p style="text-align: left;font-size: 80%;">
+            var ctx = canvas.getContext('2d');
+          </p>
+        </section>
       <section>
         <h3>3.常见问题</h3>
       </section>
@@ -147,7 +147,7 @@
           <h5>详见demo</h5>
         </section>
       <section>
-        <h3>6.参考文献</h3>
+        <h3>7.参考文献</h3>
       </section>
       <section>
         <p style="text-align: left; padding-left: 180px">
