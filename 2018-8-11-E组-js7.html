@@ -1,0 +1,244 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+
+<body>
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>跨域解决方案之nginx</h2>
+
+            <p>js-07</p>
+
+            <p>分享人：陈星宇</p>
+        </section>
+        <section>
+            <p>目录</p>
+
+            <p>1.背景介绍</p>
+
+            <p>2.知识剖析</p>
+
+            <p>3.常见问题</p>
+
+            <p>4.解决方案</p>
+
+            <p>5.编码实战</p>
+
+            <p>6.扩展思考</p>
+
+            <p>7.参考文献</p>
+
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <h3>
+                    什么是跨域？
+                </h3>
+            </section>
+            <section>
+                <p style="text-align: left;line-height: 250%">
+                    跨域是指a页面想获取b页面资源，如果a、b页面的协议、域名、端口、子域名不同，或是a页面为ip地址，
+                    b页面为域名地址，所进行的访问行动都是跨域
+                </p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+
+            <section>
+                <h3>产生的原因？</h3>
+            </section>
+            <section>
+                <p style="text-align: left">
+                    浏览器为了安全问题一般都限制了跨域访问，也就是不允许跨域请求资源
+                </p>
+
+                <p style="text-align: left">
+                    同ip（或domain）,同端口，同协议视为同一个域，一个域内的脚本仅仅具有本域内的权限，可以理解为本域脚本只能读写
+                    本域内的资源，而无法访问其它域的资源。这种安全限制称为同源策略
+                </p>
+
+                <p style="text-align: left">
+                    现代浏览器在安全性和可用性之间选择了一个平衡点。
+                    在遵循同源策略的基础上，选择性地为同源策略“开放了后门”。例如img script style等标签，都允许垮域引用资源,然而，
+                    你也只能是引用这些资源而已，并不能读取这些资源的内容
+                </p>
+
+            </section>
+            <section>
+                <p style="text-align: left;line-height: 280%"><strong>同源策略限制以下几种行为：</strong></p>
+
+                <p style="text-align: left;line-height: 200%">1.Cookie、LocalStorage 和 IndexDB 无法读取</p>
+
+                <p style="text-align: left;line-height: 200%">2.DOM 和 Js对象无法获得
+
+                <p style="text-align: left;line-height: 200%">3.AJAX 请求不能发送
+
+            </section>
+            <section>
+                <h3><strong>常见跨域场景</strong></h3>
+                <pre><code style="font-size: 28px;line-height: 120%">
+                    http://www.domain.com/a.js
+                    http://www.domain.com/b.js 同一域名，不同文件或路径 允许
+                    http://www.domain.com/lab/c.js
+
+                    http://www.domain.com:8000/a.js
+                    http://www.domain.com/b.js 同一域名，不同端口 不允许
+
+                    http://www.domain.com/a.js
+                    https://www.domain.com/b.js 同一域名，不同协议 不允许
+
+                    http://www.domain.com/a.js
+                    http://192.168.4.12/b.js 域名和域名对应相同ip 不允许
+
+                    http://www.domain.com/a.js
+                    http://x.domain.com/b.js 主域相同，子域不同 不允许
+                    http://domain.com/c.js
+
+                    http://www.domain1.com/a.js
+                    http://www.domain2.com/b.js 不同域名 不允许
+                </code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+            <section style="text-align: left;">
+                <h3><strong>跨域解决方案</strong></h3>
+
+                <p>1、 通过jsonp跨域<br>2、 document.domain + iframe跨域<br>3、 location.hash + iframe<br>4、 window.name +
+                    iframe跨域<br>5、 postMessage跨域<br>6、 跨域资源共享（CORS）<br>7、 nginx代理跨域<br>8、 nodejs中间件代理跨域<br>9、
+                    WebSocket协议跨域</p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>4.解决方案</h3>
+            </section>
+            <section>
+                <p>nginx反向代理解决跨域</p>
+            </section>
+            <section>
+                <p style="text-align: left;line-height: 200%"><strong>正向代理</strong>：代理位于网站和客户端中间，
+                    客户端无法访问某网站，就将请求发送给代理服务器，代理从网站取回来再发送给客户端，网站并不知道为谁提供服务
+                </p>
+
+                <p style="text-align: left;line-height: 200%"><strong>反向代理</strong>：客户端访问某网站的一个页面，
+                    但是网站并没有，就偷偷从另外一台服务器上取回来,然后作为自己的内容吐给用户，用户不知道真正提供服务的是谁
+                </p>
+            </section>
+            <section>
+                <p style="text-align: left;line-height: 200%">对于浏览器来说，访问的就是同源服务器上的一个url。而nginx通过
+                    检测url前缀，把http请求转发到后面真实的物理服务器。并通过rewrite命令把前缀再去掉。这样真实的服务器就可以正确
+                    处理请求，并且并不知道这个请求是来自代理服务器的。
+                </p>
+                <p style="text-align: left;line-height: 200%">
+                    简单说，nginx服务器欺骗了浏览器，让它认为这是同源调用，从而解决了浏览器的跨域问题。又通过重写url，欺骗了真实
+                    的服务器，让它以为这个http请求是直接来自与用户浏览器的。
+                </p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>7.参考文献</h3>
+            </section>
+            <section>
+                <p style="text-align: left">参考一：<a
+                        href=" http://aurthurxlc.github.io/Aurthur-2016/cross-origin-resource-sharing.html">
+                    跨域问题解决方案（Nginx）
+                </a></p>
+
+                <p style="text-align: left">参考二：<a href="http://log.csdn.net/shendl/article/details/48443299"
+                                                   target="_blank">
+                    最简单实现跨域的方法----使用nginx反向代理
+                </a></p>
+
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>8.更多讨论</h3>
+            </section> <section>
+            <h3>如何通过jsonp跨域</h3>
+        </section>
+        </section>
+        <section>
+            <!--<h4>鸣谢</h4>-->
+            <p>感谢大家观看</p>
+
+            <p>
+                <small>BY : 童海琴|陈星宇</small>
+            </p>
+        </section>
+
+    </div>
+</div>
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: './plugin/markdown/marked.js' },
+            { src: './plugin/markdown/markdown.js' },
+            { src: './plugin/notes/notes.js', async: true },
+            { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>
