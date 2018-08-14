@@ -1,359 +1,189 @@
-<!DOCTYPE html>
-<!-- saved from url=(0072)https://ptteng.github.io/PPT/PPT/js-02-This%20in%20javascriptCD.html#/26 -->
-<html class=" js no-mobile desktop no-ie chrome chrome67 ppt-section ppt-section w-1024 gt-240 gt-320 gt-480 gt-640 gt-768 gt-800 lt-1280 lt-1440 lt-1680 lt-1920 no-portrait landscape gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch no-retina fontface domloaded" id="js-02-this%20in%20javascriptcd-page"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <title>葡萄藤PPT</title>
-    <link rel="stylesheet" href="./葡萄藤PPT_files/reveal.css">
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
     <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
-    <link rel="stylesheet" href="./葡萄藤PPT_files/ptt.css">
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
     <!-- syntax highlighting 代码高亮主题 -->
-    <link rel="stylesheet" href="./葡萄藤PPT_files/zenburn.css">
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
     <!-- 打印和PDF输出样式 -->
     <script>
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
-    document.getElementsByTagName('head')[0].appendChild(link);
-    </script><link rel="stylesheet" type="text/css" href="./葡萄藤PPT_files/paper.css"><script type="text/javascript" src="./葡萄藤PPT_files/marked.js"></script><script type="text/javascript" src="./葡萄藤PPT_files/markdown.js"></script><script type="text/javascript" src="./葡萄藤PPT_files/notes.js"></script><script type="text/javascript" src="./葡萄藤PPT_files/highlight.js"></script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
 </head>
 
 <body>
-    <img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
-    <map name="pttmap">
-        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
-    </map>
-    <div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
-        <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.833143);">
-            <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-                <h2>JS中this的指向</h2>
-                <h3>小课堂【</h3>
-                <p>分享人：江吉仪</p>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h3> 简述原型链是什么，有什么用处？若想访问一个对象的原型，应该使用什么方法？ </h3>
+            <p>上海分院：江吉仪</p>
+        </section>
+        <section>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <section>
+            <section>
+                <h3>普通对象与函数对象</h3>
+                <p> JavaScript 中，万物皆对象！但对象也是有区别的。分为普通对象和函数对象，Object ，Function 是JS自带的函数对象</p>
             </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-                <p>1.背景介绍</p>
-                <p>2.知识剖析</p>
-                <p>3.常见问题</p>
-                <p>4.解决方案</p>
-                <p>5.编码实战</p>
-                <p>6.扩展思考</p>
-                <p>7.参考文献</p>
-                <p>8.更多讨论</p>
+            <section>
+                <p>在上面的例子中 o1 o2 o3 为普通对象，f1 f2 f3 为函数对象。怎么区分，其实很简单，凡是通过 new Function() 创建的对象都是函数对象，其他的都是普通对象。f1,f2归根结底都是通过
+                    new Function()的方式进行创建的。Function Object 也都是通过 New Function()创建的。</p>
             </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-                <h3>1.背景介绍</h3>
-            </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-                <p>在Java语言中，this关键字的含义是明确且具体的，表示当前对象。而在javascript中，this是动态绑定的，它可以是全局对象、当前对象或者任意对象，这完全取决于函数的调用方式。这就导致了this具备了多重含义，可以使得javascript更灵活的使用。但是，带来了灵活性的同时也会给我们初学者带来不少困惑。</p>
-            </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-                <h3>2.知识剖析</h3>
-            </section>
-           <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-                <p>全局环境中的this</p>
-                <pre>                <code class="hljs livescript">
-                  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);
-                </code>
-                </pre>
-                <p>总结：在全局作用域中它的 this 执行当前的全局对象（浏览器端是 Window，node 中是 global）</p>
-            </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-                <p>严格模式 ‘use strict’下的this</p>
-                <pre>                <code class="hljs javascript"><span class="hljs-meta">
-                  'use strict'</span>;
-                  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>{
-                  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);
-                  };
-
-                  test();
-
-                  <span class="hljs-comment">// undefined</span>
-                </code>
-                </pre>
-                <p>原因：this 并不会指向全局，而是 undefined，这样的做法是为了消除 js 中一些不严谨的行为</p>
-            </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-                <p>在javascritp中，不一定只有对象方法的上下文中才有this， 全局函数调用和其他的几种不同的上下文中也有this指代。 它可以是全局对象、当前对象或者任意对象，这完全取决于函数的调用方式。JavaScript 中函数的调用有以下几种方式：作为对象方法调用，作为函数调用，作为构造函数调用，和使用 apply 或 call 调用。</p>
-            </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-                <p>1.作为对象方法调用:this 被自然绑定到该对象</p>
-                <pre>                <code class="hljs actionscript">
-                <span class="hljs-keyword">var</span> point = {
-                x : <span class="hljs-number">0</span>,
-                y : <span class="hljs-number">0</span>,
-                moveTo : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(x, y)</span> </span>{
-                    <span class="hljs-keyword">this</span>.x = <span class="hljs-keyword">this</span>.x + x;
-                    <span class="hljs-keyword">this</span>.y = <span class="hljs-keyword">this</span>.y + y;
-                    }
-                };
-
-                point.moveTo(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>)<span class="hljs-comment">//this 绑定到当前对象，即 point 对象</span>
-                </code>
-            </pre>
-            </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-                <p>2.作为函数调用:this被绑定到全局对象</p>
-                <pre>                <code class="hljs actionscript">
-                  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makeNoSense</span><span class="hljs-params">(x)</span> </span>{
-                  <span class="hljs-keyword">this</span>.x = x;
-                  }
-                  makeNoSense(<span class="hljs-number">5</span>);
-                  x;<span class="hljs-comment">// x 已经成为一个值为 5 的全局变量</span>
-                </code>
-                </pre>
-            </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-                <p>3.作为构造函数调用:this 绑定到新创建的对象上</p>
-                <pre>                <code class="hljs actionscript">
-                <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Point</span><span class="hljs-params">(x, y)</span></span>{
-                   <span class="hljs-keyword">this</span>.x = x;
-                   <span class="hljs-keyword">this</span>.y = y;
-                }
-                </code>
-                </pre>
-                <p>注：构造函数不使用new调用，则和普通函数一样。一般地，构造函数首字母大写</p>
-            </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-                <p>4.使用 apply 或 call 调用：在 JavaScript 中函数也是对象，对象则有方法，apply 和 call 就是函数对象的方法。</p>
-                <pre>                <code class="hljs actionscript">
-                   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Point</span><span class="hljs-params">(x, y)</span></span>{
-                      <span class="hljs-keyword">this</span>.x = x;
-                      <span class="hljs-keyword">this</span>.y = y;
-                      <span class="hljs-keyword">this</span>.moveTo = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(x, y)</span></span>{
-                          <span class="hljs-keyword">this</span>.x = x;
-                          <span class="hljs-keyword">this</span>.y = y;
-                      }
-                   }
-
-                   <span class="hljs-keyword">var</span> p1 = <span class="hljs-keyword">new</span> Point(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
-                   <span class="hljs-keyword">var</span> p2 = {x: <span class="hljs-number">0</span>, y: <span class="hljs-number">0</span>};
-                   p1.moveTo(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
-                   p1.moveTo.apply(p2, [<span class="hljs-number">10</span>, <span class="hljs-number">10</span>]);
-                </code>
-                </pre>
-            </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-                <h3>3、常见问题</h3>
-            </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-                <p>问题一</p>
-                <pre>                <code class="hljs javascript">
-                  <span class="hljs-keyword">var</span> obj = {
-                   name: <span class="hljs-string">'qiutc'</span>,
-                   foo: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-                     <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);
-                   },
-                   foo2: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-                     <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);
-                     setTimeout(<span class="hljs-keyword">this</span>.foo, <span class="hljs-number">1000</span>);
-                   }
-                 }
-
-                 obj.foo2();
-                </code>
-                </pre>
-                <p>现象：两次打印的this不一样</p>
-            </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-                <p>问题二</p>
-                <pre>                <code class="hljs javascript"><span class="hljs-meta">
-                 'use strict'</span>;
-
-                 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{
-                   <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);
-                 }
-
-                 setTimeout(foo, <span class="hljs-number">1</span>);
-
-                 <span class="hljs-comment">// window</span>
-                </code>
-                </pre>
-                <p>现象：加了严格模式，foo 调用也没有指定 this，应该是出来undefined，但是这里仍然出现了全局对象</p>
-            </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-                <h3>4、解决方案</h3>
-            </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-                <p>问题一可以这么这么解决：利用 闭包 的特性来处理</p>
-                <pre>                <code class="hljs sqf">var obj = {
-                      <span class="hljs-built_in">name</span>: <span class="hljs-string">'qiutc'</span>,
-                      foo: function() {
-                        console.<span class="hljs-built_in">log</span>(this);
-                      },
-                      foo2: function() {
-                        console.<span class="hljs-built_in">log</span>(this);
-                        var <span class="hljs-built_in">_this</span> = this;
-                        setTimeout(function() {
-                          console.<span class="hljs-built_in">log</span>(this);  <span class="hljs-comment">// Window</span>
-
-                          console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">_this</span>);  <span class="hljs-comment">// Object {name: "qiutc"}</span>
-                        }, <span class="hljs-number">1000</span>);
-                      }
-                    }
-
-                    obj.foo2();</code>
-                </pre>
-                <p>可以看到直接用 this 仍然是 Window；因为 foo2 中的 this 是指向 obj，我们可以先用一个变量 _this 来储存，然后在回调函数中使用 _this，就可以指向当前的这个对象了</p>
-            </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-            <p>问题二可以这么这么解决：利用 闭包 的特性来处理</p>
-                <pre>                <code class="hljs sqf">var obj = {
-                      <span class="hljs-built_in">name</span>: <span class="hljs-string">'qiutc'</span>,
-                      foo: function() {
-                        console.<span class="hljs-built_in">log</span>(this);
-                      },
-                      foo2: function() {
-                        console.<span class="hljs-built_in">log</span>(this);
-                        var <span class="hljs-built_in">_this</span> = this;
-                        setTimeout(function() {
-                          console.<span class="hljs-built_in">log</span>(this);  <span class="hljs-comment">// Window</span>
-
-                          console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">_this</span>);  <span class="hljs-comment">// Object {name: "qiutc"}</span>
-                        }, <span class="hljs-number">1000</span>);
-                      }
-                    }
-
-                    obj.foo2();</code>
-                </pre>
-                <p>可以看到直接用 this 仍然是 Window；因为 foo2 中的 this 是指向 obj，我们可以先用一个变量 _this 来储存，然后在回调函数中使用 _this，就可以指向当前的这个对象了</p>
-            </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-                <h3>5、编码实战</h3>
-            </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-                <p>
-                    对于内部函数，即声明在另外一个函数体内的函数，这种绑定到全局对象的方式会产生另外一个问题。我们仍然以前面提到
-                    的 point 对象为例，这次我们希望在 moveTo 方法内定义两个函数，分别将 x，y 坐标进行平移。结果可能出乎大家意
-                    料，不仅 point 对象没有移动，反而多出两个全局变量 x，y
+        </section>
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            <section>
+                <h3> 原型对象
+                </h3>
+                <p>在 JavaScript 中，每当定义一个对象（函数）时候，对象中都会包含一些预定义的属性。其中函数对象的一个属性就是原型对象 prototype。注：普通对象没有prototype,但有__proto__属性。
+                    原型对象其实就是普通对象（Function.prototype除外,它是函数对象，但它很特殊，他没有prototype属性（前面说道函数对象都有prototype属性））。看下面的例子：
                 </p>
-                    <pre>                        <code class="hljs actionscript">
-                        <span class="hljs-keyword">var</span> point = {
-                        x : <span class="hljs-number">0</span>,
-                        y : <span class="hljs-number">0</span>,
-                        moveTo : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(x, y)</span> </span>{
-                        <span class="hljs-comment">// 内部函数</span>
-                        <span class="hljs-keyword">var</span> moveX = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(x)</span> </span>{
-                        <span class="hljs-keyword">this</span>.x = x;<span class="hljs-comment">//this 绑定到了哪里？</span>
-                        };
-                        <span class="hljs-comment">// 内部函数</span>
-                        <span class="hljs-keyword">var</span> moveY = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(y)</span> </span>{
-                        <span class="hljs-keyword">this</span>.y = y;<span class="hljs-comment">//this 绑定到了哪里？</span>
-                        };
-
-                        moveX(x);
-                        moveY(y);
-                        }
-                        };
-                        point.moveTo(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
-                        point.x; <span class="hljs-comment">//==&gt;0</span>
-                        point.y; <span class="hljs-comment">//==&gt;0</span>
-                        x; <span class="hljs-comment">//==&gt;1</span>
-                        y; <span class="hljs-comment">//==&gt;1</span>
-                        </code>
-                    </pre>
+                <p>从这句console.log(f1. prototype) //f1 {} 的输出就结果可以看出，f1. prototype就是 f1的一个实例对象。就是在f1创建的时候,创建了一个它的实例对象并赋值给它的prototype，</p>
             </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-                <p>
-                    这属于 JavaScript 的设计缺陷，正确的设计方式是内部函数的 this 应该绑定到其外层函数对应的对象上，为了规避这一设
-                    计缺陷，聪明的 JavaScript 程序员想出了变量替代的方法，约定俗成，该变量一般被命名为 that。
+            <section>
+                <p>基本过程如下： var temp = new f1(); f1. prototype = temp; 所以，Function. prototype为什么是函数对象就迎刃而解了，上文提高凡是new Function
+                    ()产生的对象都是函数对象，所以temp是函数对象。 var temp = new Function (); Function. prototype = temp;
                 </p>
-                    <pre>                       <code class="hljs actionscript">
-                        <span class="hljs-keyword">var</span> point = {
-                        x : <span class="hljs-number">0</span>,
-                        y : <span class="hljs-number">0</span>,
-                        moveTo : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(x, y)</span> </span>{
-                             <span class="hljs-keyword">var</span> that = <span class="hljs-keyword">this</span>;
-                            <span class="hljs-comment">// 内部函数</span>
-                            <span class="hljs-keyword">var</span> moveX = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(x)</span> </span>{
-                            that.x = x;
-                            };
-                            <span class="hljs-comment">// 内部函数</span>
-                            <span class="hljs-keyword">var</span> moveY = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(y)</span> </span>{
-                            that.y = y;
-                            }
-                            moveX(x);
-                            moveY(y);
-                            }
-                        };
-                        point.moveTo(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
-                        point.x; <span class="hljs-comment">//==&gt;1</span>
-                        point.y; <span class="hljs-comment">//==&gt;1</span>
-                       </code>
-                    </pre>
             </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-                <h3>6.扩展思考</h3>
+            <section>
+                <h3>那原型对象是用来做什么的呢？主要作用是用于继承。举例：</h3>
+                <p>从这个例子可以看出，通过给person.prototype设置了一个函数对象的属性，那有person实例（例中：zjh）出来的普通对象就继承了这个属性。具体是怎么实现的继承，就要讲到下面的原型链了。</p>
             </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
-                <p class="fragment visible" data-fragment-index="0">问题：如何理解this？</p>
-                <p class="fragment visible" data-fragment-index="1">当一个函数被调用时，拥有它的object会作为this传入。在全局下，就是window or global，其他时候就是相应的object。 也可以看到，call和apply就是利用这一点实现更改this 值的</p>
+            <section>
+                <h3>原型链</h3>
+                <p>JS在创建对象（不论是普通对象还是函数对象）的时候，都有一个叫做__proto__的内置属性，用于指向创建它的函数对象的原型对象prototype。以上面的例子为例： console.log(zjh.__proto__
+                    === person.prototype) //true 同样，person.prototype对象也有__proto__属性，它指向创建它的函数对象（Object）的prototype console.log(person.prototype.__proto__
+                    === Object.prototype) //true 继续，Object.prototype对象也有__proto__属性，但它比较特殊，为null console.log(Object.prototype.__proto__)
+                    //null 我们把这个有__proto__串起来的直到Object.prototype.__proto__为null的链叫做原型链
+                </p>
             </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 267px; display: none;">
-                <h3>7.参考文献</h3>
+            <section>
+                <p>看图</p>
+                <img src="./demo/2018-7-31-B组-js5/2fa8f073-ff60-3cb6-bee7-983a8d26816c.jpg" alt="">
+
             </section>
-            <section hidden="" aria-hidden="true" class="past" style="top: 168px; display: block;">
-                <p>参考一：<a href="https://www.ibm.com/developerworks/cn/web/1207_wangqf_jsthis/">深入浅出 JavaScript 中的 this</a></p>
-                <p>参考二：<a href="https://qiutc.me/post/this-this-this-in-javascript.html">JavaScript 中的 this !</a></p>
-                <p>参考三：<a href="http://caibaojian.com/toutiao/6859">JavaScript中的this用法与指向</a></p>
-                <p>参考四：<a href="https://www.zhihu.com/question/19636194">如何理解 JavaScript 中的 this 关键字？</a></p>
-            </section>
-            <section class="past" style="top: 168px; display: block;" hidden="" aria-hidden="true">
-                <h3>8、更多讨论</h3>
-            </section>
-            <section class="present" style="top: 212.5px; display: block;">
-                <h4>鸣谢</h4>
-                <p>感谢大家观看</p>
-                <p><small>BY : 陈冲 | 赵锐泉 | 郑明月| 江吉仪</small></p>
-            </section>
-        </div>
-    <div class="backgrounds"><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div></div><div class="progress" style="display: block;"><span style="width: 1024px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right" aria-label="next slide"></button><button class="navigate-up" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
-                鸣谢
-                感谢大家观看
-                BY : 陈冲 | 赵锐泉 | 郑明月
-            </div></div>
-    <script src="./葡萄藤PPT_files/head.min.js"></script>
-    <script src="./葡萄藤PPT_files/reveal.js"></script>
-    <script>
+
+        </section>
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            <h3>1.Object.__proto__ === Function.prototype // true Object是函数对象，是通过new Function()创建，所以Object.__proto__指向Function.
+                prototype。
+            </h3>
+            <h3>.Function.__proto__ === Function.prototype // true Function 也是对象函数，也是通过new Function()创建，所以Function.__proto__指向Function.
+                prototype。
+            </h3>
+        </section>
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+            <h3>1.原型和原型链是JS实现继承的一种模型。 2.原型链的形成是真正是靠__proto__ 而非prototype
+            </h3>
+        </section>
+        <section>
+            <h3>7.参考文献</h3>
+            <a href="">http://zhangjiahao8961.iteye.com/blog/2070650</a>
+        </section>
+        <section>
+        </section>
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+        <section>
+            <h4>鸣谢</h4>
+            <h3>感谢观看</h3>
+            <p>
+                <small>BY——顾配如|江吉仪</small>
+            </p>
+        </section>
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
     // 以下为常见配置属性的默认值
     // {
-    //  controls: true, // 是否在右下角展示控制条
-    //  progress: true, // 是否显示演示的进度条
-    //  slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
-    //  history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
-    //  keyboard: true, // 是否启用键盘快捷键来导航
-    //  overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
-    //  center: true, // 是否将幻灯片垂直居中
-    //  touch: true, // 是否在触屏设备上启用触摸滑动切换
-    //  loop: false, // 是否循环演示
-    //  rtl: false, // 是否将演示的方向变成RTL，即从右往左
-    //  fragments: true, // 全局开启和关闭碎片。
-    //  autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
-    //  transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
-    //  transitionSpeed: 'default', // 过渡速度，default/fast/slow
-    //  mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
-    // }
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                src: '../plugin/markdown/marked.js'
+            },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+</script>
+</body>
 
-    // 初始化幻灯片
-    Reveal.initialize({
-        history: true,
-        dependencies: [{
-            src: '../plugin/markdown/marked.js'
-        }, {
-            src: '../plugin/markdown/markdown.js'
-        }, {
-            src: '../plugin/notes/notes.js',
-            async: true
-        }, {
-            src: '../plugin/highlight/highlight.js',
-            async: true,
-            callback: function() {
-                hljs.initHighlightingOnLoad();
-            }
-        }]
-    });
-    </script>
-
-
-
-</body></html>
+</html>

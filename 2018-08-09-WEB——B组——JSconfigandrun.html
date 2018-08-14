@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<!-- saved from url=(0091)file:///C:/Users/LALH/Desktop/PPT%20-%20%E5%89%AF%E6%9C%AC/PPT/console%20and%20debug.html#/ -->
+<html class=" js no-mobile desktop no-ie chrome chrome62 c:-section users-section lalh-section desktop-section ppt%20-%20%e5%89%af%e6%9c%ac-section ppt-section w-1366 gt-240 gt-320 gt-480 gt-640 gt-768 gt-800 gt-1024 gt-1280 lt-1440 lt-1680 lt-1920 no-portrait landscape gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch no-retina fontface domloaded" id="console%20and%20debug-page"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+    <!--<link rel="stylesheet" href="./葡萄藤PPT_files/reveal.css">-->
+
+    <link rel="stylesheet" href="css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="css/reveal/theme/ptt.css">
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="lib/reveal/css/zenburn.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <!--<link rel="stylesheet" href="./葡萄藤PPT_files/ptt.css">-->
+    <!-- syntax highlighting 代码高亮主题 -->
+    <!--<link rel="stylesheet" href="./葡萄藤PPT_files/zenburn.css">-->
+    <style>
+        p{
+            text-align: center;
+            /*font-size: 25px;*/
+        }
+        .smallp p{
+            font-size: 25px;
+            /*line-height: 30px;*/
+        }
+        .moresmallp p{
+            font-size: 18px;
+        }
+    </style>
+    <!-- 打印和PDF输出样式 -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script><link rel="stylesheet" type="text/css" href="./葡萄藤PPT_files/paper.css"><script type="text/javascript" src="./葡萄藤PPT_files/marked.js.下载"></script><script type="text/javascript" src="./葡萄藤PPT_files/markdown.js.下载"></script><script type="text/javascript" src="./葡萄藤PPT_files/notes.js.下载"></script><script type="text/javascript" src="./葡萄藤PPT_files/highlight.js.下载"></script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.768857);">
+        <section class="present" style="top: 133px; display: block;">
+            <h3>【JS-8】<span>Angualrjs的config和run分别是干什么的</span></h3>
+            <h3>小课堂</h3>
+            <h4>分享人:姜学倩</h4>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 3px; display: block;">
+            <h4>目录</h4>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <img src="11.png" alt="">
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <img src="22.png" alt="">
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <img src="33.png" alt="">
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <img src="44.png" alt="">
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <img src="55.png" alt="">
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h4>1.config和run在Angularjs的解释?</h4>
+            <p> the configuration blocks (config functions) are executed.
+                This means the configuration blocks of the required modules execute
+                before the configuration blocks of any requiring module.</p>
+            <p>Registration in the config block
+                While it is recommended to register injectables directly with the module API,
+                it is also possible to register services, directives etc.
+                by injecting $provide or the individual service providers into the config function:</p>
+            <!--<p style="text-align: left">"依赖" 都可以理解为 "需要使用的资源",依赖注入是一种软件设计模式,用于处理如何让程序获得其依赖(对象的)引用</p>-->
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3></h3>
+            <p>执行配置块（配置功能）。这意味着所需模块的配置块在任何需求模块的配置块之前执行。
+                在配置块中注册 .虽然建议直接使用模块API注册注入，但也可以通过将$ provide或各个服务提供者注入config函数来注册服务，指令等 .</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <pre>
+                angular.module('myModule', []).
+                  value('a', 123).
+                  factory('a', function() { return 123; }).
+                  directive('directiveName', ...).
+                  filter('filterName', ...);
+                    // is same as
+                angular.module('myModule', []).
+                  config(function($provide, $compileProvider, $filterProvider) {
+                    $provide.value('a', 123);
+                    $provide.factory('a', function() { return 123; });
+                    $compileProvider.directive('directiveName', ...);
+                    $filterProvider.register('filterName', ...);
+                  });
+            </pre>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>2config和run在Angularjs的解释?.</h3>
+            <p>
+                Run blocks are the closest thing in AngularJS to the main method.
+                A run block is the code which needs to run to kickstart the application.
+                It is executed after all of the services have been configured and the injector has been created.
+                Run blocks typically contain code which is hard to unit-test,
+                and for this reason should be declared in isolated modules, so that they can be ignored in the unit-tests.</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3></h3>
+            <p>运行块是AngularJS中与main方法最接近的东西。运行块是需要运行以启动应用程序的代码。
+                在配置完所有服务并创建注入器后执行。运行块通常包含难以进行单元测试的代码，
+                因此应在隔离模块中声明，以便在单元测试中忽略它们。</p>
+            <p>main方法是一个特殊的方法，是程序执行的入口，一个Java程序从main方法开始执行。</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <!--<h4>1.什么是config?什么是run？</h4>-->
+            <p style="text-align: left">AngularJS分两个阶段运行你的应用 – config阶段和run阶段。config阶段是你设置任何的provider的阶段，
+                它也是你设置任何的指令，控制器，过滤器以及其它东西的阶段。在run阶段，AngularJS会编译你的DOM并启动你的应用。
+                首先是配置块 通过config方法实现对模块的配置,AngularJS中的服务多数都对应一个provider,
+                用来执行与对应服务相同的功能或对其配置,比如$log、$http、$location都是内置服务，
+                相对应的“provider”分别是$logProvider、$httpProvider、$locationPorvider。
+                然后是运行块和配置块不同，运行块在注入器创建之后被执行，它是所有AngularJS应用中第一个被执行的方法。
+            </p>
+        </section>
+
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>3.常见问题</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <p>我们如何在我们的应用程序中使用config（）块？</p>
+            <p>我们如何在应用程序中使用run（）块？</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>4.解决方案</h3>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3></h3>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>5.编码实战</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <!--<h3>见demo</h3>-->
+            <pre>
+                angular.module('crazydeveloperModule', [])
+                    .config(['$httpProvider','$locationProvider','$routeProvider','$provider','cookieProvider','constant',
+                        function ($httpProvider,$locationProvider,$routeProvider,$provider,cookieProvider,constant) {
+                        //这是配置块的一个例子。
+                        //你可以根据需要拥有尽可能多的这些。
+                        //你只能注入提供者（不是实例）
+                        //进入配置块。
+                }])
+            </pre>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <!--<h3>见demo</h3>-->
+            <pre>
+                angular.module('myModule', [])
+                . run(['$rootscope','security','pageFactory','$httpBackend',
+                    function ($rootscope,security,pageFactory,$httpBackend) {
+                    //实例注入器
+                    //这是一个运行块的例子。
+                    //你可以根据需要拥有尽可能多的这些。
+                    //你只能注入实例（不是提供者）
+                    //进入运行块
+                }]);
+            </pre>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>6.拓展思考</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3></h3>
+            <h3>1.如何在config使用路由？</h3>
+            <h3>2.provider是个啥？</h3>
+            <p>$provide服务负责告诉Angular如何创造一个新的可注入的东西：即服务。
+                服务会被叫做供应商的东西来定义，你可以使用$provide来创建一个供应商。
+                你需要使用$provide中的provider()方法来定义一个供应商，
+                同时你也可以通过要求$provide被注入到一个应用的config函数中来获得$provide服务。</p>
+            <!--<p style="text-align: left">事件捕获：事件由根元素获取并沿DOM树向下分发  最不具体的逐级传递到最具体的-->
+                <!--举例 html -> body -> div -> span</p>-->
+
+            </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>6.拓展思考</h3>
+            <h3>3.config()与run()的区别</h3>
+            <p>执行顺序不同，注入服务类型不同</p>
+            <p style="text-align: left">配置块 - 此块在提供程序注册和配置阶段执行。只有提供程序和常量才能注入配置块。
+                此块用于注入模块方式的配置设置，以防止在完全配置服务之前意外实例化服务。使用config（）方法创建此块。
+                运行块 - 在配置块之后执行此块。它用于注入实例和常量。使用run（）方法创建此块。此方法类似于C或C ++中的主要方法。
+                运行块是放置需要在应用程序的根级别执行的事件处理程序的好地方。例如，身份验证处理程序。</p>
+
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>7.参考文献</h3>
+            <p>参考资料http://www.cnblogs.com/Essence/p/4266618.html</p>
+            <p>参考资料:https://www.jb51.net/article/42492.htm</p>
+            <!--<p>参考资料：https://www.jianshu.com/p/e75f351e11f8 <b>css3中的BFC,IFC,GFC和FFC</b></p>-->
+            <!--<p>参考资料：https://zhuanlan.zhihu.com/p/25321647 <b>10 分钟理解 BFC 原理</b></p>-->
+            <!-- <p><small>BY : 沁修 | 王义山</small></p> -->
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>8.更多讨论</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <!--<h3>1.我们该学哪些框架？</h3>-->
+            <!--<h3>1.框架的学习有推荐顺序吗？</h3>-->
+            <!--<h3>1.Angular框架该学习哪个？</h3>-->
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>鸣谢</h4>
+            <h4>感谢大家观看</h4>
+        </section>
+
+    </div>
+    <div class="backgrounds"><div class="slide-background present" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 0px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px 1px 1px 1px);">
+
+    分享人：姜学倩
+</div></div>
+
+<script src="./葡萄藤PPT_files/head.min.js.下载"></script>
+<script src="./葡萄藤PPT_files/reveal.js.下载"></script>
+
+<script>
+  // 以下为常见配置属性的默认值
+  // {
+  // 	controls: true, // 是否在右下角展示控制条
+  // 	progress: true, // 是否显示演示的进度条
+  // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+  // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+  // 	keyboard: true, // 是否启用键盘快捷键来导航
+  // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+  // 	center: true, // 是否将幻灯片垂直居中
+  // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+  // 	loop: false, // 是否循环演示
+  // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+  // 	fragments: true, // 全局开启和关闭碎片。
+  // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+  // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+  // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+  // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+  // }
+  // 初始化幻灯片
+  Reveal.initialize({
+    history: true,
+    dependencies: [
+      { src: '../plugin/markdown/marked.js' },
+      { src: '../plugin/markdown/markdown.js' },
+      { src: '../plugin/notes/notes.js', async: true },
+      { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+    ]
+  });
+</script>
+
+
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status He</body></html>
+
