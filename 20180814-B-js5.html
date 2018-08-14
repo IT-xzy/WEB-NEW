@@ -1,0 +1,309 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>修真院</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- css-28-sassinsublime主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2 style="font-size: 1.5em;width: 110%;">
+                    【JS-task5】
+                    <span>前端跨域问题有哪些常用的解决方式？</span>
+                </h2>
+                <p>分享人：陈占乐</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+
+            <section>
+                <h3 style="text-align: left;">1.背景介绍</h3>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    理解跨域首先必须要了解同源策略。同源策略是浏览器上为安全性考虑实施的非常重要的安全策略。
+                </p>
+                <p style="text-align: left;">
+                    跨域是指一个域下的文档或脚本试图去请求另一个域下的资源，这里跨域是广义的。
+                </p>
+                <p style="text-align: left;">
+                    广义的跨域：
+                </p>
+                <p style="text-align: left;">
+                    1.) 资源跳转： A链接、重定向、表单提交
+                </p>
+                <p style="text-align: left;">
+                    2.) 资源嵌入： link script img frame等dom标签，还有样式中background:url()、@font-face()等文件外链
+                </p>
+                <p style="text-align: left;">
+                    3.) 脚本请求： js发起的ajax请求、dom和js对象的跨域操作等
+                </p>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    同源策略/SOP（Same origin policy）是一种约定，由Netscape公司1995年引入浏览器，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，浏览器很容易受到XSS、CSFR等攻击。所谓同源是指"协议+域名+端口"三者相同，即便两个不同的域名指向同一个ip地址，也非同源。
+                </p>
+                <p style="text-align: left;">
+                    同源策略限制以下几种行为：
+                </p>
+                <p style="text-align: left;">
+                    1.) Cookie、LocalStorage 和 IndexDB 无法读取
+                </p>
+                <p style="text-align: left;">
+                    2.) DOM 和 JS对象无法获得
+                </p>
+                <p style="text-align: left;">
+                    3.) AJAX 请求不能发送
+                </p>
+            </section>
+
+            <section>
+                <h3 style="text-align: left;">2.知识剖析</h3>
+            </section>
+            <section>
+                <h4 style="text-align: left;">浏览器支持的跨域方法</h4>
+                <p style="text-align: left;">
+                    网页为了获取资源本身有些属性可以跨域请求资源
+                </p>
+                <p style="text-align: left;">
+                    link script @font-face
+                </p>
+                <p style="text-align: left;">
+                    img video iframe
+                </p>
+                <p style="text-align: left;">
+                    网页支持的发送请求的方法
+                </p>
+                <p style="text-align: left;">
+                    Ajax 表单提交
+                </p>
+            </section>
+            <section>
+                <h4 style="text-align: left;">1 JSONP</h4>
+                <p style="text-align: left;">
+                    JSONP 是 JSON with padding（填充式 JSON 或参数式 JSON）的简写，是应用 JSON 的一种新方法。
+                </p>
+                <p style="text-align: left;">
+                    JSONP 由两部分组成：回调函数和数据。回调函数是当响应到来时应该在页面中调用的函数。回调函数的名字一般是在请求中指定的。而数据就是传入回调函数中的 JSON数据。
+                </p>
+            </section>
+            <section>
+                <pre>
+                    <code>
+                    function handleResponse(response){ 
+                        alert("You’re at IP address " + response.ip + ", which is in " + 
+                              response.city + ", " + response.region_name); 
+                    } 
+                     
+                    var script = document.createElement("script"); 
+                    script.src = "http://freegeoip.net/json/?callback=handleResponse"; 
+                    document.body.insertBefore(script, document.body.firstChild); 
+                </code>
+            </pre>
+            </section>
+            <section>
+                <h4 style="text-align: left;">2 CORS - Cross-Origin Resource Sharing</h4>
+                <p style="text-align: left;">
+                    通过 XHR 实现 Ajax 通信的一个主要限制，来源于跨域安全策略。默认情况下，XHR 对象只能访 问与包含它的页面位于同一个域中的资源。这种安全策略可以预防某些恶意行为。但是，实现合理的跨 域请求对开发某些浏览器应用程序也是至关重要的。
+                </p>
+                <p style="text-align: left;">
+                    CORS 背后的基本思想，就是使用自定义的 HTTP 头部 让浏览器与服务器进行沟通，从而决定请求或响应是应该成功，还是应该失败。
+                </p>
+            </section>
+            <section>
+                <h4 style="text-align: left;">3 服务器反向代理</h4>
+                <p style="text-align: left;">
+                    这种方法基本思路是发送正常的http请求，利用服务端之间的资源请求不会有跨域限制的特点，后台服务器转发请求到目标服务器请求资源。把跨域的问题交给服务器实现。
+                </p>
+                <p style="text-align: left;">
+                    Nginx反向代理: 前端发起的请求被Nginx拦截，再由Nginx代由转发请求到资源服务器请求资源。
+                </p>
+                <pre><code>
+                        location / {
+                            　　proxy_pass http://127.0.0.1:5000;
+                            }
+                </code></pre>
+            </section>
+
+
+            <section>
+                <h3 style="text-align: left;">3.常见问题</h3>
+            </section>
+            <section>
+                <p>Nginx反向代理如何实现</p>
+            </section>
+
+
+            <section>
+                <h3 style="text-align: left;">4.解决方案</h3>
+            </section>
+            <section>
+                <pre><code>
+                        location ^~/cross_origin/ {
+                            #重写访问路径
+                            rewrite ^~/cross_origin/(.*)$ /$1 break;
+                            　　proxy_pass http://127.0.0.1:5000;
+                            }
+                </code></pre>
+                <pre><code>
+                    $.ajax({
+                        url:'/cross_origin/get_json?type=20170126',
+                        type:'GET',
+                        dataType:'json',
+                        success:function (data) {
+                            $('#show').val(data.text)
+                        }
+                    })
+                </code></pre>
+            </section>
+
+            <section>
+                <h3 style="text-align: left;">5.编码实战</h3>
+            </section>
+
+
+            <section>
+                <h3 style="text-align: left;">6.扩展思考</h3>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    其他实现跨域的方法还有很多
+                </p>
+                <p style="text-align: left;">
+                    与iframe相关的 location.hash、window.name、postMessage
+                </p>
+                <p style="text-align: left;">
+                    WebSocket通信协议以及其它Ajax的改进方法
+                </p>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    如何选择
+                </p>
+                <p style="text-align: left;">
+                    比如单向的数据请求，我们应该优先选择JSONP或者window.name，
+                </p>
+                <p style="text-align: left;">
+                    双向通信优先采取location.hash
+                </p>
+                <p style="text-align: left;">
+                    在未与数据提供方达成通信协议的情况下我们也可以用server proxy的方式来抓取数据
+                </p>
+            </section>
+
+            <section>
+                <h3 style="text-align: left;">7.参考文献</h3>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    参考一&emsp;
+                    <a href="https://blog.csdn.net/kongjiea/article/details/44201021">深入理解前端跨域方法和原理</a>
+                </p>
+                <p style="text-align: left;">
+                    参考二&emsp;
+                    <a href="">JS 高程</a>
+                </p>
+
+            </section>
+
+
+            <section>
+                <h3 style="text-align: left;">8.更多讨论</h3>
+            </section>
+
+
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>BY : 陈占乐 </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: './plugin/markdown/marked.js'
+                },
+                {
+                    src: './plugin/markdown/markdown.js'
+                },
+                {
+                    src: './plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: './plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
