@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>排序算法DEMO</title>
+</head>
+<body>
+	<h1>排序算法DEMO</h1>
+<script>
+	//声明一个乱序数组
+	const arr = [3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+
+
+	//冒泡排序
+	function bubbleSort(arr) {
+	    var len = arr.length;		//数组长度
+	    for (var i = 0; i < len; i++) {
+	        for (var j = 0; j < len - 1 - i; j++) {		//没循环一次，最后一个数都会被确定下来
+	            if (arr[j] > arr[j+1]) {        //相邻元素两两对比
+	                var temp = arr[j+1];        //元素交换
+	                arr[j+1] = arr[j];
+	                arr[j] = temp;
+	            }
+	        }
+	    }
+	    console.log(arr);
+	}
+
+	//选择排序
+	function selectionSort(arr) {
+	    var len = arr.length;		//声明数组长度、最小的数、临时变量
+	    var minIndex, temp;
+	    for (var i = 0; i < len - 1; i++) {
+	        minIndex = i;		//从第一个数开始比较
+	        for (var j = i + 1; j < len; j++) {
+	            if (arr[j] < arr[minIndex]) {     //寻找最小的数
+	                minIndex = j;                 //将最小数的索引保存
+	            }
+	        }
+	        temp = arr[i];
+	        arr[i] = arr[minIndex];
+	        arr[minIndex] = temp;
+	    }
+	    console.log(arr);
+	}
+
+	//插入排序
+	function insertionSort(arr) {
+	    var len = arr.length;		//声明长度、前一个数、当前的数
+	    var preIndex, current;
+	    for (var i = 1; i < len; i++) {
+	        preIndex = i - 1;
+	        current = arr[i];
+	        while(preIndex >= 0 && arr[preIndex] > current) {		//判断前面的数是否大于当前的数
+	            arr[preIndex+1] = arr[preIndex];		//把前一个数往后移一位
+	            preIndex--;		//开始判断前一个数的前一位（循环）
+	        }			//当碰到比当前值小的值后退出循环
+	        arr[preIndex+1] = current;		//将当前需要比较的值放到那个值后面
+	    }
+	    console.log(arr);
+	}
+
+	//希尔排序
+	function shellSort(arr) {
+	    var len = arr.length,		//声明数组长度、临时变量、增量
+	        temp,
+	        gap = 1;
+	    while(gap < len/3) {  //动态定义间隔序列
+	        gap =gap*3+1;
+	    }
+	    for (gap; gap > 0; gap = Math.floor(gap/3)) {		//每次循环增量除3（向下取整）
+	        for (var i = gap; i < len; i++) {
+	            temp = arr[i];		//将与第一个数间隔增量gap的数保存到临时变量
+	            for (var j = i-gap; j >= 0 && arr[j] > temp; j-=gap) {		//判断前一个数是否大于arr[i]
+	                arr[j+gap] = arr[j];		//若大于，交换两个值
+	            }
+	            arr[j+gap] = temp;
+	        }
+	    }
+	    console.log(arr);
+	}
+
+	//归并排序
+	function merge(left, right) {
+	    var result = [],		//输出数组
+	        left_index = 0,		//left的索引号
+	        right_index = 0;		//right的索引号
+	    // 将两个数组合并
+	    // 合并的时候按从小到大的顺序
+	    while (left_index < left.length && right_index < right.length) {
+	        if (left[left_index] < right[right_index]) {		//比较左右两个数组的数，依次放入result数组中
+	            result.push(left[left_index++]);			
+	        } else {
+	            result.push(right[right_index++]);
+	        }
+	    }
+	    // 和其他数组拼接
+	    return result.concat(left.slice(left_index)).concat(right.slice(right_index));
+	}
+	function mergeSort(arr) {
+	    // 只有一个数的时候退出递归
+	    if (arr.length < 2) {
+	        return arr;
+	    }
+	    var middle = Math.floor(arr.length / 2),		//取出中间基准值
+	        left = arr.slice(0, middle),		//以基准值分为两个数组
+	        right = arr.slice(middle);
+	    // 递归
+	    // 不断拆分只到一个数组只有一个数
+	    return merge(mergeSort(left), mergeSort(right));
+	}
+
+
+	//快速排序
+	function quickSort(arr) {　　
+		if (arr.length <= 1) {		//当被分的数组长度不超过1时，退出递归
+			return arr;
+		}
+		var pivotIndex = Math.floor(arr.length / 2);　　　　//中间基准值的index
+		var pivot = arr.splice(pivotIndex, 1)[0];　　　　//基准值
+		var left = [];　　　　//声明两个空数组
+		var right = [];　　
+		for (var i = 0; i < arr.length; i++) {　　　　		//小的放left，大的放right
+			if (arr[i] < pivot) {　　
+				left.push(arr[i]);　
+		    } else {
+				right.push(arr[i]);　
+		    }　　
+		}　　
+		// 递归
+		// 把数组合并在一起
+		return quickSort(left).concat([pivot], quickSort(right));
+	};
+
+</script>
+
+</body>
+</html>
