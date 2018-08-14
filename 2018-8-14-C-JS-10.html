@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>PPT</title>
+
+    <link rel="stylesheet" href="bootstrap/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="bootstrap/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="bootstrap/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>如何开发和部署前端代码?</h2>
+                <h3>小课堂</h3>
+                <p>分享人:火建强</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+
+            </section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <p>状态码：304与200</p>
+            </section>
+            <section>
+                <ul><li>304:重定向，告诉用户请求的文件被转移到了别处。</li>
+                <li>200:代表请求已成功被服务器接收、理解、并接受。</li></ul>
+                <a href="https://baike.baidu.com/item/304%E7%8A%B6%E6%80%81%E7%A0%81/7867141">304</a>
+                <p>区别在于304发送了一次http请求，但是200没有。</p>
+            </section>
+            <section>
+                <p>用户是如何访问页面的</p>
+            </section>
+            <section>
+                <p>如何避免304请求</p>
+            </section>
+            <section>
+                <p>强制浏览器使用本地缓存（cache-control/expires），不要和服务器通信。那问题来了：当我们需要更新文件的时候怎么办？很好，相信有人想到了办法：通过更新页面中引用的资源路径，让浏览器主动放弃缓存，加载新资源。比如像官网项目中就是采用的这种方法，比如对于index.html文件，我们会在这个文件名后面加上版本号：index.html?ver=53.下次上线，把链接地址改成新的版本，资源就会更新了</p>
+            </section>
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+            <section>
+                <p>还能进一步优化吗？</p>
+            </section>
+            <section>
+                <h3>4.解决方案</h3>
+            </section>
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+            <section>
+                <p>参考修真院发布线上环境流程</p>
+            </section>
+            <section>
+                <h3>6.扩展思考</h3>
+            </section>
+            <section>
+               <p>如何根据文件生成HASH字符串</p>
+               <p>给静态资源文件添加hash(md5)后缀 防止缓存</p>
+            </section>
+            <section>
+               <h3>参考文献</h3>
+            </section>
+            <section>
+               <p>参考：<a href="https://github.com/fouber/blog/issues/6">大公司里怎样开发和部署前端代码</a></p>
+            </section>
+               <section>
+               <p>8.更多讨论</p>
+            </section>
+            <section>
+               <ul>
+                   <h3>用什么重启服务武器？</h3>
+                   <li>Xshell 5</li>
+               </ul>
+            </section>
+            <section>
+               <p>项目文件如何放置？</p>
+               <ul>
+                   <li>看后端文档</li>
+               </ul>
+            </section>
+            <section>
+               <h3>Xshell 5有哪些命令行指令？</h3>
+               <ul>
+                   <li><a href="https://blog.csdn.net/rookiediary/article/details/76723218"></a></li>
+                   <li>cd</li>
+                   <li>rm -rf  删库操作</li>
+                   <li>rz -y 上传文件到服务器</li>
+                   <li>jar -xvf xxx释放war包</li>
+                   <li>sh catalina.sh start 重启服务器</li>
+                   <li>tail -f catalina.out  查看服务器日志</li>
+                   <li>cp 复制文件  cp a b 复制文件a命名为b;cp a /b 复制文件a到b目录下;cp * /b复制当前目录下所有文件到b目录下</li>
+                   <li>mv 移动或重命名文件 mv a b 将a重命名为b;mv a /b 将a文件移动到b目录下</li>
+                   <li>mkdir a 创建a目录</li>
+                   <li>view查看文件</li>
+               </ul>
+            </section>
+            <section>
+                <p>Xshell 5 查看服务器文件</p>
+                <ul>
+                    <li>Xshell 5插件</li>
+                </ul>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    <small>武汉-web-12-火建强</small>
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="bootstrap/head.min.js"></script>
+    <script src="bootstrap/reveal.js"></script>
+
+    <script>
+
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            mouseWheel: true,
+            overview: true,
+            keyboard: true, 
+            transition: 'zoom',
+            controls: true, 
+            slideNumber: true,
+            dependencies: [
+                { src: './plugin/markdown/marked.js' },
+                { src: './plugin/markdown/markdown.js' },
+                { src: './plugin/notes/notes.js', async: true },
+                { src: './plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+            ]
+        });
+    </script>
+</body>
+
+</html>
