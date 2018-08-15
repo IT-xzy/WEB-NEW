@@ -1,212 +1,216 @@
-<!DOCTYPE html>
-<!-- saved from url=(0063)https://ptteng.github.io/PPT/PPT/js-05-About-Prototype.html#/10 -->
-<html class=" js no-mobile desktop no-ie chrome chrome67 ppt-section ppt-section gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch no-retina fontface domloaded w-622 gt-240 gt-320 gt-480 lt-640 lt-768 lt-800 lt-1024 lt-1280 lt-1440 lt-1680 lt-1920 portrait no-landscape" id="js-05-about-prototype-page"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>原型链和访问对象原型的方法</title>
+    <title>修真院</title>
 
-    <link rel="stylesheet" href="./原型链和访问对象原型的方法_files/reveal.css">
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
 
-    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
-    <link rel="stylesheet" href="./原型链和访问对象原型的方法_files/ptt.css">
+    <!-- css-28-sassinsublime主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
 
     <!-- syntax highlighting 代码高亮主题 -->
-    <link rel="stylesheet" href="./原型链和访问对象原型的方法_files/zenburn.css">
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
 
     <!-- 打印和PDF输出样式 -->
     <script>
         var link = document.createElement('link');
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            './css/reveal/print/paper.css';
         document.getElementsByTagName('head')[0].appendChild(link);
-    </script><link rel="stylesheet" type="text/css" href="./原型链和访问对象原型的方法_files/paper.css">
-    <style>
-        pre {
-            margin: 0 auto !important;
-        }
-
-        p {
-            text-align: left !important;
-            white-space: pre-line !important;
-        }
-
-        .text-center {
-            text-align: center !important;
-        }
-    </style><script type="text/javascript" src="./原型链和访问对象原型的方法_files/marked.js"></script><script type="text/javascript" src="./原型链和访问对象原型的方法_files/markdown.js"></script><script type="text/javascript" src="./原型链和访问对象原型的方法_files/notes.js"></script><script type="text/javascript" src="./原型链和访问对象原型的方法_files/highlight.js"></script>
-
+    </script>
 </head>
+
 <body>
-<img src="./原型链和访问对象原型的方法_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
 <map name="pttmap">
-    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
 </map>
-<div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
-    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.583125);">
-        <section class="past" style="top: 135px; display: none;" hidden="" aria-hidden="true">
-            <h3>【JS-task5】简述原型链是什么，有什么用处？若想访问一个对象的原型，应该使用什么方法？</h3>
-            <p class="text-center">小课堂</p>
-            <p class="text-center">分享人：江吉仪</p>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2 style="font-size: 1.5em;width: 110%;">【JS-task4】
+                <span>简述JS中this的指向</span>
+            </h2>
+            <p>分享人：江吉仪</p>
         </section>
-        <section class="past" style="top: 3px; display: none;" hidden="" aria-hidden="true">
-            <p class="text-center">目录</p>
-            <p class="text-center">1.背景介绍</p>
-            <p class="text-center">2.知识剖析</p>
-            <p class="text-center">3.常见问题</p>
-            <p class="text-center">4.解决方案</p>
-            <p class="text-center">5.编码实战</p>
-            <p class="text-center">6.扩展思考</p>
-            <p class="text-center">7.参考文献</p>
-            <p class="text-center">8.更多讨论</p>
-        </section>
-        <section style="top: 0px; display: none;" class="stack past" data-previous-indexv="1" hidden="" aria-hidden="true">
-            <section style="top: 267px; display: none;" class="past" hidden="" aria-hidden="true">
-                <h3>1.背景介绍</h3>
-            </section>
-            <section class="" style="top: 198px; display: none;" aria-hidden="true">
-                <p>
-                    原型链是一种机制，指的是JavaScript每个对象包括原型对象都有一个内置的[[proto]]属性指向创建它的函数对象的原型对象，即prototype属性。
-                </p>
-            </section>
-        </section>
-        <section style="top: 0px; display: none;" class="stack past" data-previous-indexv="7" hidden="" aria-hidden="true">
-            <section style="top: 267px; display: none;" class="past" hidden="" aria-hidden="true">
-                <h3>2.知识剖析</h3>
-            </section>
-            <section class="past" style="top: 0.5px; display: none;" hidden="" aria-hidden="true">
-                <p>
-                    我们知道 JS 有对象，比如
-                </p>
-                <pre><code class="hljs php"><span class="hljs-keyword">var</span> obj = { name: <span class="hljs-string">'obj'</span> } </code></pre>
-                <p>
-                    我们可以对 obj 进行一些操作，包括
-
-                    「读」属性
-                    「新增」属性
-                    「更新」属性
-                    「删除」属性
-
-                    下面我们主要来看一下「读」和「新增」属性。
-                </p>
-            </section>
-            <section class="past" style="top: 155px; display: none;" hidden="" aria-hidden="true">
-                <h3>为什么有 valueOf / toString 属性呢？</h3>
-                <p>在我们没有对 obj 进行任何其他操作之前，发现 obj 已经有几个属性（方法）了</p>
-                <p>那么问题来了：valueOf / toString / constructor 是怎么来？我们并没有给 obj.valueOf 赋值呀。</p>
-            </section>
-            <section class="past" style="top: 234px; display: none;" hidden="" aria-hidden="true">
-                <h3>要搞清楚 valueOf / toString / constructor 是怎么来的，就要用到 console.dir 了。</h3>
-            </section>
-            <section class="past" style="top: 0px; display: none;" hidden="" aria-hidden="true">
-                <p>
-                    我们发现 console.dir(obj) 打出来的结果是：
-
-                    1. obj 本身有一个属性 name（这是我们给它加的）
-
-                    2. obj 还有一个属性叫做 __proto__（它是一个对象）
-
-                    3. obj.__proto__ 有很多属性，包括 valueOf、toString、constructor 等
-
-                    4. obj.__proto__ 其实也有一个叫做 __proto__ 的属性（console.log 没有显示），值为 null
-
-                    现在回到我们的问题：obj 为什么会拥有 valueOf / toString / constructor 这几个属性？
-                </p>
-            </section>
-            <section class="past" style="top: 201px; display: none;" hidden="" aria-hidden="true">
-                <p>答案：</p>
-                <p>这跟 __proto__ 有关。</p>
-                <p>当我们「读取」 obj.toString 时，JS 引擎会做下面的事情：</p>
-            </section>
-            <section class="past" style="top: 0px; display: none;" hidden="" aria-hidden="true">
-                <p>
-                    1. 看看 obj 对象本身有没有 toString 属性。没有就走到下一步。
-                    2. 看看 obj.__proto__ 对象有没有 toString 属性，发现 obj.__proto__ 有 toString 属性，于是找到了
-                    所以 obj.toString 实际上就是第 2 步中找到的 obj.__proto__.toString。
-                    可以想象，
-                    3. 如果 obj.__proto__ 没有，那么浏览器会继续查看 obj.__proto__.__proto__
-                    4. 如果 obj.__proto__.__proto__ 也没有，那么浏览器会继续查看 obj.__proto__.__proto__.proto__
-                    5. 直到找到 toString 或者 __proto__ 为 null。
-                </p>
-            </section>
-            <section class="" style="top: 175px; display: none;" aria-hidden="true">
-                <p>
-                    上面的过程，就是「读」属性的「搜索过程」。
-                    而这个「搜索过程」，是连着由 __proto__ 组成的链子一直走的。
-                    这个链子，就叫做「原型链」。
-                </p>
-            </section>
-        </section>
-        <section style="top: 0px; display: none;" class="stack past" data-previous-indexv="1" hidden="" aria-hidden="true">
-            <section style="top: 267px; display: none;" class="past" hidden="" aria-hidden="true">
-                <h3>3.常见问题</h3>
-            </section>
-            <section class="" style="top: 267px; display: none;" aria-hidden="true">
-                <p>访问对象原型的方法有哪些？</p>
-            </section>
-        </section>
-        <section style="top: 0px; display: none;" class="stack past" data-previous-indexv="1" hidden="" aria-hidden="true">
-            <section style="top: 267px; display: none;" class="past" hidden="" aria-hidden="true">
-                <h3>4.解决方法</h3>
-            </section>
-            <section class="" style="top: 106px; display: none;" aria-hidden="true">
-                <p>获取实例对象obj的原型对象，有三种方法
-                    1. obj.__proto__
-                    2. obj.constructor.prototype
-                    3. Object.getPrototypeOf(obj)
-                    上面三种方法之中，前两种都不是很可靠。最新的ES6标准规定，__proto__属性只有浏览器才需要部署，其他环境可以不部署。而obj.constructor.prototype在手动改变原型对象时，可能会失效。</p>
-            </section>
-        </section>
-        <section style="top: 0px; display: none;" class="stack past" data-previous-indexv="0" hidden="" aria-hidden="true">
-            <section style="top: 267px; display: none;" class="" aria-hidden="true">
-                <h3>5.编码实战</h3>
-            </section>
-        </section>
-        <section style="top: 0px; display: none;" class="stack past" data-previous-indexv="2" hidden="" aria-hidden="true">
-            <section style="top: 267px; display: none;" class="past" hidden="" aria-hidden="true">
-                <h3>6.扩展思考</h3>
-            </section>
-            <section class="past" style="top: 244px; display: none;" hidden="" aria-hidden="true">
-                <p>
-                    原型链是如何产生的呢？
-                </p>
-            </section>
-            <section class="" style="top: 221px; display: none;" aria-hidden="true">
-                <p>
-                    引自知乎【写代码的苏打饼】专栏的<a href="https://zhuanlan.zhihu.com/p/22989691">JavaScript 世界万物诞生记</a>
-                </p>
-            </section>
-        </section>
-        <section class="past" style="top: 168px; display: block;" hidden="" aria-hidden="true">
-            <h3>7.参考文献</h3>
-            <p>参考一：<a href="http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html">阮一峰：Javascript继承机制的设计思想</a></p>
-            <p>参考二：<a href="http://zhangjiahao8961.iteye.com/blog/2070650">zhangjiahao8961：JavaScript原型及原型链详解 </a></p>
-            <p>参考三：<a href="https://zhuanlan.zhihu.com/p/22989691">JavaScript 世界万物诞生记</a></p>
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
         </section>
 
-        <section class="past" style="top: 234px; display: block;" hidden="" aria-hidden="true">
-            <h3>8.更多讨论</h3>
-        </section>
 
-        <section class="present" style="top: 189.5px; display: block;">
-            <h4>鸣谢</h4>
-            <p class="text-center">感谢大家观看</p>
-            <p class="text-center">
-                <small>BY : 孙剑立-王蒙---江吉仪</small>
+        <section>
+            <h3 style="text-align: left;">1.背景介绍</h3>
+        </section>
+        <section>
+            <p style="text-align: left;">
+                this 关键字是 JavaScript 中最复杂的机制之一。它是一个很特别的关键字，被自动定义在所有函数的作用域中。
+            </p>
+            <p style="text-align: left;">
+                this 提供了一种更优雅的方式来隐式“传递”一个对象引用，因此可以将 API 设计得更加简洁并且易于复用。
             </p>
         </section>
+
+
+        <section>
+            <h3 style="text-align: left;">2.知识剖析</h3>
+        </section>
+        <section>
+            <h4 style="text-align: left;">this 认知误区</h4>
+            <p style="text-align: left;">
+                1 指向函数
+            </p>
+            <p style="text-align: left;">
+                2 指向函数作用域
+            </p>
+            <p style="text-align: left;">
+                this 的绑定和函数声明的位置没有任何关系，只取决于函数的调用方式。this 是函数调用时产生一个属性，会在函数执行的过程中用到。
+            </p>
+        </section>
+        <section>
+            <h4 style="text-align: left;">this 绑定机制</h4>
+            <p style="text-align: left;">
+                每个函数的 this 是在调用时被绑定的，完全取决于函数的调用位置
+            </p>
+            <p style="text-align: left;">
+                1 默认绑定 2 隐式绑定 3 显示绑定 4 new绑定
+            </p>
+            <pre>
+                    <code>
+                        function.call(thisArg, arg1, arg2, ...)
+                        function.apply(thisArg, [argsArray])
+                    </code>
+                </pre>
+        </section>
+        <section>
+            <h4 style="text-align: left;">this 绑定方式优先级</h4>
+            <p style="text-align: left;">
+                1.  函数是否在 new 中调用（new 绑定）？如果是的话 this 绑定的是新创建的对象。
+            </p>
+            <p style="text-align: left;">
+                2.  函数是否通过 call、apply（显式绑定）或者硬绑定调用？如果是的话，this 绑定的是指定的对象。
+            </p>
+            <p style="text-align: left;">
+                3.  函数是否在某个上下文对象中调用（隐式绑定）？如果是的话，this 绑定的是那个上下文对象。
+            </p>
+            <p style="text-align: left;">
+                4.  如果都不是的话，使用默认绑定。如果在严格模式下，就绑定到 undefined，否则绑定到全局对象。
+            </p>
+        </section>
+        <section>
+            <table>
+                <thead>
+                <th>绑定机制</th>
+                <th>方法</th>
+                <th>严格模式</th>
+                <th>优先级</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>默认绑定</td>
+                    <td>全局调用</td>
+                    <td>TypeError:undefined</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>隐式绑定</td>
+                    <td>间接调用</td>
+                    <td></td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>显示绑定</td>
+                    <td>使用call、apply方法</td>
+                    <td></td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>new 绑定</td>
+                    <td>new 调用函数</td>
+                    <td></td>
+                    <td>1</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h3 style="text-align: left;">3.常见问题</h3>
+        </section>
+        <section>
+            <p>去除 this 绑定机制</p>
+        </section>
+
+
+        <section>
+            <h3 style="text-align: left;">4.解决方案</h3>
+        </section>
+        <section>
+            <p style="text-align: left;">
+                使用作用域代替
+            </p>
+            <pre>
+                    <code>
+                        var self = this;
+                        var that = this;
+                    </code>
+                </pre>
+        </section>
+
+
+
+        <section>
+            <h3 style="text-align: left;">5.编码实战</h3>
+            <a href="demo\20180722-B-js4\demo.html">demo</a>
+        </section>
+
+
+        <section>
+            <h3 style="text-align: left;">6.扩展思考</h3>
+        </section>
+
+
+        <section>
+            <h3 style="text-align: left;">7.参考文献</h3>
+        </section>
+        <section>
+            <p style="text-align: left;">
+                参考一&emsp;
+                <a >你不知道的JavaScript上卷</a>
+            </p>
+
+        </section>
+
+
+        <section>
+            <h3 style="text-align: left;">8.更多讨论</h3>
+        </section>
+
+
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>BY : 陈占乐|江吉仪 </p>
+        </section>
+
     </div>
-<div class="backgrounds"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background stack past" data-loaded="true" style="display: none;"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background present" style="display: none;" data-loaded="true"></div></div><div class="slide-background stack past" data-loaded="true" style="display: none;"><div class="slide-background past" style="display: none;" data-loaded="true"></div><div class="slide-background past" style="display: none;" data-loaded="true"></div><div class="slide-background past" style="display: none;" data-loaded="true"></div><div class="slide-background past" style="display: none;" data-loaded="true"></div><div class="slide-background past" style="display: none;" data-loaded="true"></div><div class="slide-background past" style="display: none;" data-loaded="true"></div><div class="slide-background past" style="display: none;" data-loaded="true"></div><div class="slide-background present" style="display: none;" data-loaded="true"></div></div><div class="slide-background stack past" data-loaded="true" style="display: none;"><div class="slide-background past" style="display: none;" data-loaded="true"></div><div class="slide-background present" style="display: none;" data-loaded="true"></div></div><div class="slide-background stack past" data-loaded="true" style="display: none;"><div class="slide-background past" style="display: none;" data-loaded="true"></div><div class="slide-background present" style="display: none;" data-loaded="true"></div></div><div class="slide-background stack past" data-loaded="true" style="display: none;"><div class="slide-background present" style="display: none;" data-loaded="true"></div></div><div class="slide-background stack past" data-loaded="true" style="display: none;"><div class="slide-background past" style="display: none;" data-loaded="true"></div><div class="slide-background past" style="display: none;" data-loaded="true"></div><div class="slide-background present" style="display: none;" data-loaded="true"></div></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div></div><div class="progress" style="display: block;"><span style="width: 622px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right" aria-label="next slide"></button><button class="navigate-up" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
-            鸣谢
-            感谢大家观看
-            
+</div>
 
-            
-        </div></div>
-
-<script src="./原型链和访问对象原型的方法_files/head.min.js"></script>
-<script src="./原型链和访问对象原型的方法_files/reveal.js"></script>
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
 
 <script>
     // 以下为常见配置属性的默认值
@@ -227,23 +231,30 @@
     // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
     // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
     // }
+
     // 初始化幻灯片
     Reveal.initialize({
         history: true,
-        dependencies: [
-            {src: '../plugin/markdown/marked.js'},
-            {src: '../plugin/markdown/markdown.js'},
-            {src: '../plugin/notes/notes.js', async: true},
+        dependencies: [{
+            src: './plugin/markdown/marked.js'
+        },
             {
-                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
-                hljs.initHighlightingOnLoad();
-            }
+                src: './plugin/markdown/markdown.js'
+            },
+            {
+                src: './plugin/notes/notes.js',
+                async: true
+            },
+            {
+                src: './plugin/highlight/highlight.js',
+                async: true,
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
             }
         ]
     });
 </script>
+</body>
 
-
-Contact GitHub API Training Shop Blog About
-© 2016 GitHub, Inc. Terms Privacy Security Status He
-<st-div id="__selection-translator__"> <st-div class="__st-box__" style="display: none; position: fixed; z-index: 99999; left: 0px; top: 0px; transform: translateX(547px) translateY(621px);"> <st-header> <st-span class="st-icon-pin" title="固定"></st-span> <st-span class="st-icon-down-open" title="展开"></st-span> <st-span class="st-icon-cog" title="设置"></st-span> </st-header> <st-div class="__query-form__" style="display: none;"> <st-div> <textarea placeholder="输入要翻译的句子或单词"></textarea> </st-div> <st-div> <select> <option value="">自动判断</option> <option value="zh">中文</option><option value="zh-CN">中文(简体)</option><option value="zh-HK">中文(香港)</option><option value="zh-TW">中文(繁体)</option><option value="en">英语</option><option value="ja">日语</option><option value="ko">朝鲜语</option><option value="de">德语</option><option value="fr">法语</option><option value="ru">俄语</option><option value="th">泰语</option><option value="af">南非语</option><option value="ar">阿拉伯语</option><option value="az">阿塞拜疆语</option><option value="be">比利时语</option><option value="bg">保加利亚语</option><option value="ca">加泰隆语</option><option value="cs">捷克语</option><option value="cy">威尔士语</option><option value="da">丹麦语</option><option value="dv">第维埃语</option><option value="el">希腊语</option><option value="eo">世界语</option><option value="es">西班牙语</option><option value="et">爱沙尼亚语</option><option value="eu">巴士克语</option><option value="fa">法斯语</option><option value="fi">芬兰语</option><option value="fo">法罗语</option><option value="gl">加里西亚语</option><option value="gu">古吉拉特语</option><option value="he">希伯来语</option><option value="hi">印地语</option><option value="hr">克罗地亚语</option><option value="hu">匈牙利语</option><option value="hy">亚美尼亚语</option><option value="id">印度尼西亚语</option><option value="is">冰岛语</option><option value="it">意大利语</option><option value="ka">格鲁吉亚语</option><option value="kk">哈萨克语</option><option value="kn">卡纳拉语</option><option value="kok">孔卡尼语</option><option value="ky">吉尔吉斯语</option><option value="lt">立陶宛语</option><option value="lv">拉脱维亚语</option><option value="mi">毛利语</option><option value="mk">马其顿语</option><option value="mn">蒙古语</option><option value="mr">马拉地语</option><option value="ms">马来语</option><option value="mt">马耳他语</option><option value="nb">挪威语(伯克梅尔)</option><option value="nl">荷兰语</option><option value="ns">北梭托语</option><option value="pa">旁遮普语</option><option value="pl">波兰语</option><option value="pt">葡萄牙语</option><option value="qu">克丘亚语</option><option value="ro">罗马尼亚语</option><option value="sa">梵文</option><option value="se">北萨摩斯语</option><option value="sk">斯洛伐克语</option><option value="sl">斯洛文尼亚语</option><option value="sq">阿尔巴尼亚语</option><option value="sv">瑞典语</option><option value="sw">斯瓦希里语</option><option value="syr">叙利亚语</option><option value="ta">泰米尔语</option><option value="te">泰卢固语</option><option value="tl">塔加路语</option><option value="tn">茨瓦纳语</option><option value="tr">土耳其语</option><option value="ts">宗加语</option><option value="tt">鞑靼语</option><option value="uk">乌克兰语</option><option value="ur">乌都语</option><option value="uz">乌兹别克语</option><option value="vi">越南语</option><option value="xh">班图语</option><option value="zu">祖鲁语</option> </select> <st-div class="__exchange__"> <st-span class="st-icon-exchange"></st-span> </st-div> <select> <option value="">自动选择</option> <option value="zh">中文</option><option value="zh-CN">中文(简体)</option><option value="zh-HK">中文(香港)</option><option value="zh-TW">中文(繁体)</option><option value="en">英语</option><option value="ja">日语</option><option value="ko">朝鲜语</option><option value="de">德语</option><option value="fr">法语</option><option value="ru">俄语</option><option value="th">泰语</option><option value="af">南非语</option><option value="ar">阿拉伯语</option><option value="az">阿塞拜疆语</option><option value="be">比利时语</option><option value="bg">保加利亚语</option><option value="ca">加泰隆语</option><option value="cs">捷克语</option><option value="cy">威尔士语</option><option value="da">丹麦语</option><option value="dv">第维埃语</option><option value="el">希腊语</option><option value="eo">世界语</option><option value="es">西班牙语</option><option value="et">爱沙尼亚语</option><option value="eu">巴士克语</option><option value="fa">法斯语</option><option value="fi">芬兰语</option><option value="fo">法罗语</option><option value="gl">加里西亚语</option><option value="gu">古吉拉特语</option><option value="he">希伯来语</option><option value="hi">印地语</option><option value="hr">克罗地亚语</option><option value="hu">匈牙利语</option><option value="hy">亚美尼亚语</option><option value="id">印度尼西亚语</option><option value="is">冰岛语</option><option value="it">意大利语</option><option value="ka">格鲁吉亚语</option><option value="kk">哈萨克语</option><option value="kn">卡纳拉语</option><option value="kok">孔卡尼语</option><option value="ky">吉尔吉斯语</option><option value="lt">立陶宛语</option><option value="lv">拉脱维亚语</option><option value="mi">毛利语</option><option value="mk">马其顿语</option><option value="mn">蒙古语</option><option value="mr">马拉地语</option><option value="ms">马来语</option><option value="mt">马耳他语</option><option value="nb">挪威语(伯克梅尔)</option><option value="nl">荷兰语</option><option value="ns">北梭托语</option><option value="pa">旁遮普语</option><option value="pl">波兰语</option><option value="pt">葡萄牙语</option><option value="qu">克丘亚语</option><option value="ro">罗马尼亚语</option><option value="sa">梵文</option><option value="se">北萨摩斯语</option><option value="sk">斯洛伐克语</option><option value="sl">斯洛文尼亚语</option><option value="sq">阿尔巴尼亚语</option><option value="sv">瑞典语</option><option value="sw">斯瓦希里语</option><option value="syr">叙利亚语</option><option value="ta">泰米尔语</option><option value="te">泰卢固语</option><option value="tl">塔加路语</option><option value="tn">茨瓦纳语</option><option value="tr">土耳其语</option><option value="ts">宗加语</option><option value="tt">鞑靼语</option><option value="uk">乌克兰语</option><option value="ur">乌都语</option><option value="uz">乌兹别克语</option><option value="vi">越南语</option><option value="xh">班图语</option><option value="zu">祖鲁语</option> </select> </st-div> <st-div> <select> <option value="YouDao">有道翻译</option> <option value="BaiDu">百度翻译</option> <option value="Google">谷歌翻译</option> <option value="GoogleCN">谷歌翻译（国内）</option> </select> <st-div class="__action-list__"> <st-div class="__button__ __btn-translate__">翻译 <st-span class="st-icon-down-dir"></st-span> </st-div> <st-div class="__expand__"> <st-div class="__button__">朗读</st-div> <st-div class="__button__">复制</st-div> </st-div> </st-div> </st-div> </st-div> <st-div class="__translate-result__" style="display: none;">正在查询，请稍候……</st-div> <st-div class="__translate-result__" style=""> <st-div style="display: none;"> <st-span></st-span> <st-span class="__retry__">重试</st-span> </st-div> <st-div> <st-div class="__phonetic__"> <st-span style="display: none;"></st-span> <st-span class="__copy-and-read__"> <st-span>朗读</st-span> <st-span style="display: none;">复制</st-span> </st-span> </st-div> <st-div style="display: none;"> <st-ul>  </st-ul> <st-div class="__copy-and-read__"> <st-span class="__copy-and-read__">复制</st-span> </st-div> </st-div> <st-div style=""> <st-div>CONSOLE.DIR</st-div> <st-div class="__copy-and-read__"> <st-span class="__copy-and-read__">朗读</st-span> <st-span class="__copy-and-read__">复制</st-span> </st-div> </st-div> </st-div> </st-div> <st-footer> <st-span style="">via <a target="_blank" href="https://translate.google.cn/#ca/zh-CN/CONSOLE.DIR">谷歌翻译（国内）</a></st-span> </st-footer> </st-div> <st-div class="__st-btn__" style="display: none; position: fixed; z-index: 99999; left: 0px; top: 0px; transform: translateX(547px) translateY(621px);">译</st-div> </st-div></body></html>
+</html>

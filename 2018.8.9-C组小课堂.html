@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<style>
+    .p-style>p {
+        font-size: 20px;
+        text-align: left;
+        padding-bottom: 20px;
+    }
+</style>
+
+<body>
+    <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h4>小课堂——上海分院</h4>
+                <h4>JavaScript数据类型</h4>
+                <h4>分享人：何岳</h4>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <p style="font-size: 30px;letter-spacing: 3px;">前言</p>
+                <p style="font-size: 30px;text-align: left;">JavaScript有五种基本数据类型：</p>
+                <p style="font-size: 30px;text-align: left;">字符串（String）、数字(Number)、布尔(Boolean)、空（Null）、未定义（Undefined）</p>
+                <p style="font-size: 30px;text-align: left;">引用数据类型：</p>
+                <p style="font-size: 30px;text-align: left;">对象（Object）</p>
+            </section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <section>
+                    <h3>typeof操作符</h3>
+                    <p style="font-size: 30px;text-align: left;">typeof操作符：用于检测给定变量的数据类型，对一个值试用typeof操作符可能返回下列某个字符串： “undefined”——表示值未定义； “boolean”——表示值是布尔值 ； “string”——表示值是字符；
+                        “number”——表示值是数值； “object”——表示值是对象或null；“function”——表示值是函数；</p>
+                </section>
+                <section>
+                    <h3>String类型</h3>
+                    <p style="font-size: 30px;text-align: left;">String类型：数值、布尔值、对象、字符串值都有toString()方法，但null和undefined值没有。在不知道要转换的值是不是null或undefined的情况下，可以使用转型函数String(),这个函数能将任何类型的值转换为字符串，String()函数遵循下列转换规则：</p>
+                </section>
+                <section>
+                    <h3>Number类型</h3>
+                    <p style="font-size: 30px;text-align: left;">1.浮点数值:由于保存浮点数值需要的空间是保存整数值的2倍因此javascript会不失时机 的将浮点数值转换为整数数值。对于极大或极小的数值可以用e表示法，e表示法表示的数值等于e前面的数值乘以10的指数次幂，大小写e均可。</p>
+                    <p style="font-size: 30px;text-align: left;">2.数值范围：javascript能够表示的最小数值保存在Number.MIN_VALUE中，最大值保存在Number.MAX_VALUE中。如果某次计算的结果超出了javascript的数值范围则这个数值将被自动转换成特殊的Infinity值（负数则转换为-Infinity(负无穷),整数则转换为Infinity(正无穷)）。正或负的Infinity值无法参与下一次的计算。使用isFinite()函数可以判断数值是否在最小值与最大值之间。</p>
+                    <p style="font-size: 30px;text-align: left;">3.NaN：即非数值（Not a Number）。任何涉及NaN的操作都会返回NaN，NaN与任何值都不相等。javascript定义了isNaN()，该函数接受一个参数，该参数可以是任何类型，函数在接收到一个参数后会尝试将这个参数转换为数值然后再判断是否不是数值，注意判断结果，不是数值返回true，是数值返回false。</p>
+                </section>
+                <section>
+                    <h3>Boolean类型</h3>
+                    <p style="font-size: 30px;text-align: left;">Boolean类型：Boolean类型有两个字面值：true和false。需要注意的是true和false是区分大小写的，也就是说True和False（以及其他的混合大小写形式）都不是Boolean值，只是标识符。在javascript中所有类型的值都有与这两个Boolean值等价的值，要讲一个值转换为布尔值可以调用转型函数Boolean()。</p>
+                </section>
+                <section>
+                    <h3>Null类型</h3>
+                    <p style="font-size: 30px;text-align: left;">Null类型：Null类型只有一个值的数据类型即null。null值表示一个空指针对象，因此typeof操作符检测null值时返回“object”。如果定义的变量将来用于保存对象那么最好将该变量初始化为null而非其他值，这样只要检查null值就可以知道相应的变量是否已经保存了一个对象的引用。</p>
+                </section>
+                <section>
+                    <h3>Undefined类型</h3>
+                    <p style="font-size: 30px;text-align: left;">Undefined类型：Undefined类型只有一个值即undefined。对未初始化和未声明的变量执行typeof操作符都会返回undefined，这就说明当我们对一个变量执行typeof操作符时我们不能立即确定这个变量是未初始化还是未声明。</p>
+                </section>
+                <section>
+                    <h3>Object类型</h3>
+                    <p style="font-size: 30px;text-align: left;">对象就是一组数组和功能的集合，可以通过执行new操作符后跟要创建的对象类型的名称来创建。 对象由花括号分隔。在括号内部，对象的属性以名称和值对的形式 (name : value) 来定义。属性由逗号分隔</p>
+                </section>
+            </section>
+
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+
+            <section>
+                <h3>4.解决方案</h3>
+            </section>
+
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+
+            <section>
+                <h3>6.扩展思考</h3>
+            </section>
+
+            <section>
+                <h3>7.参考文献</h3>
+                <p>http://www.cnblogs.com/mybwhy/p/7245234.html?utm_source=itdadao&utm_medium=referral</p>
+            </section>
+            <section>
+                <h3>8.更多讨论</h3>
+            </section>
+            <section>
+                <p>讨论时间到，欢迎大家提问！
+                </p>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>By
+                    <small style="vertical-align: middle">何岳</small>
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
