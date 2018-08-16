@@ -1,0 +1,258 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>什么是Vue-CLI?</title>
+
+  <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+  <!-- css-28-sassinsublime主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+  <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+  <!-- syntax highlighting 代码高亮主题 -->
+  <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+  <!-- 打印和PDF输出样式 -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+      './css/reveal/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+  <script src="http://39.108.71.175/resource/anime.min.js"></script>
+  <style>
+    .code {
+      white-space: pre;
+      text-align: left;
+      font-size: 50%;
+      margin-left: 5rem !important;
+    }
+
+    .code2 {
+      white-space: pre-line;
+      text-align: left;
+      font-size: 80% !important;
+    }
+
+    li {
+      margin: 10px 0 !important;
+    }
+
+    p {
+      font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+  <map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+  </map>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h2 style="font-size: 1.5em">
+          <span>什么是Vue-CLI?</span>
+        </h2>
+        <p>分享人：胡云鹤</p>
+      </section>
+      <section>
+        <p>目录</p>
+        <p>1.背景介绍</p>
+        <p>2.知识剖析</p>
+        <p>3.常见问题</p>
+        <p>4.解决方案</p>
+        <p>5.扩展思考</p>
+        <p>6.编码实战</p>
+        <p>7.参考文献</p>
+        <p>8.更多讨论</p>
+      </section>
+
+      <section>
+        <h3>1.背景介绍</h3>
+      </section>
+      <section>
+        <h4>什么是Vue-CLI?</h4>
+        <p style="text-align: left;">
+          Vue CLI(Vue Command Line Interface) 是一个基于 Vue.js 进行快速开发的完整系统，提供
+        </p>
+        <ul>
+          <li>通过 @vue/cli 搭建交互式的项目脚手架。</li>
+          <li>基于 webpack 构建，并带有合理的默认配置；</li>
+          <li>可以通过项目内的配置文件进行配置；</li>
+          <li>可以通过插件进行扩展</li>
+          <li>一个丰富的官方插件集合，集成了前端生态中最好的工具</li>
+        </ul>
+      </section>
+      <section>
+        <h3>2.知识剖析</h3>
+      </section>
+
+      <section>
+        <h4>如何安装Vue-CLI</h4>
+        <p>Vue CLI 需要 Node.js 8.9 或更高版本 (推荐 8.11.0+)。</p>
+        <p>npm install -g @vue/cli</p>
+
+      </section>
+      <section>
+        <h3>创建一个项目</h3>
+        <p>vue create &ltproject-name&gt</p>
+        <h3>通过图形化界面创建项目</h3>
+        <p>vue ui</p>
+      </section>
+      <section>
+        <img src="http://39.108.71.175/resource/vuecli.png" alt="" height="300px">
+        <img src="http://39.108.71.175/resource/vuecli2.png" alt="" height="300px">
+      </section>
+      <section>
+        <h3>3.常见问题</h3>
+      </section>
+      <section style="width: 100%;">
+        <h3>创建VueCLI 2.X模板</h3>
+        <p>Vue CLI 3 和旧版使用了相同的 vue 命令，所以 Vue CLI 2 (vue-cli) 被覆盖了。如果你仍然需要使用旧版本的 vue init 功能，你可以全局安装一个桥接工具：</p>
+        <p>
+          npm install -g @vue/cli-init
+        </p>
+        <p>vue init webpack &ltproject-name&gt</p>
+      </section>
+      <section>
+        <h3>vueCLI3.0 跨域问题解决方案</h3>
+        <p>这里需要我们手动配置一个文件，在项目的根目录下创建一个vue.config.js的文件，里面写入配置</p>
+        <div class="code" style="font-size: 80%">
+          module.exports = {
+            devServer: {
+              proxy: {
+                '/api': {
+                  target: '&lturl&gt',
+                  changeOrigin: true
+                },
+                '/foo': {
+                  target: '&ltother_url&gt'}}}}
+        </div>
+      </section>
+      <section>
+        <h3>4.解决方案</h3>
+      </section>
+      <section>
+        <h3>5.扩展思考</h3>
+        <h3>VueCLI 2.x与VueCLI3.0</h3>
+      </section>
+      <section>
+        <h3>项目结构变化</h3>
+        <p class="code">
+          │  package.json
+          ├─public
+          │      favicon.ico
+          │      index.html
+          └─src
+              │  App.vue
+              │  main.js
+              ├─assets
+              │      logo.png
+              └─components
+                      HelloWorld.vue
+        </p>
+      </section>
+      <section>
+        <h4>build哪里去了？config哪里去了？配置都消失了？</h4>
+        <p>vue-cli3.0默认项目目录与2.0的相比，更精简:</p>
+        <ol style="font-size: 80%">
+          <li>移除的配置文件根目录下的，build和config等目录</li>
+          <li>移除了static文件夹，新增了public文件夹，并且index.html移动到public中</li>
+          <li>在src文件夹中新增了views文件夹，用于分类 试图组件 和 公共组件</li>
+          <li>大部分配置 都集成到 vue.config.js这里,在项目根目录下</li>
+        </ol>
+      </section>
+      <section>
+        <h4>npm run dev 改了？</h4>
+        <p>在根目录的package.json里有如下命令</p>
+        <p>
+          "serve": "vue-cli-service serve",<br>
+          "build": "vue-cli-service build",<br>
+          "lint": "vue-cli-service lint"
+        </p>
+      </section>
+      <section>
+        <h3>6.编码实战</h3>
+        <h4>使用VueCLI UI 创建一个Vue项目</h4>
+        <div id="lineDrawing" style="background-color: white">
+      </section>
+
+      <section>
+        <h3>7.参考文献</h3>
+      </section>
+      <section>
+        <p style="text-align: left; padding-left: 180px">
+          参考一
+          <a href="https://cli.vuejs.org/guide/">VueCLI官方文档</a>
+        </p>
+
+      </section>
+
+      <section>
+        <h3>8.更多讨论</h3>
+      </section>
+
+      <section>
+        <h4>鸣谢</h4>
+        <p>感谢大家观看</p>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://unpkg.com/ionicons@4.3.0/dist/ionicons.js"></script>
+  <script src="./lib/reveal/js/head.min.js"></script>
+  <script src="./lib/reveal/reveal.js"></script>
+
+  <script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+      history: true,
+      dependencies: [{
+          src: './plugin/markdown/marked.js'
+        },
+        {
+          src: './plugin/markdown/markdown.js'
+        },
+        {
+          src: './plugin/notes/notes.js',
+          async: true
+        },
+        {
+          src: './plugin/highlight/highlight.js',
+          async: true,
+          callback: function () {
+            hljs.initHighlightingOnLoad();
+          }
+        }
+      ]
+    });
+  </script>
+</body>
+
+</html>
