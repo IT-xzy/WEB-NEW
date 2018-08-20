@@ -1,0 +1,351 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+    <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <!-- 首页 -->
+        <section>
+            <h2>【JS-task04】简述JS中的面向对象编程 </h2>
+            <h3>小课堂【武汉小课堂】</h3>
+            <p>分享人：严泽浩</p>
+        </section>
+        <!-- 目录 -->
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <!-- 背景介绍 -->
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <!-- 背景介绍详情 -->
+        <section>
+            <p style="text-align: left;">
+                面向对象（Object-Oriented，OO）的语言有一个标志，那就是它们都有类的概念，而通过类可 
+                以创建任意多个具有相同属性和方法的对象。但是ECMAScript 中没有类的概念，因 
+                此它的对象也与基于类的语言中的对象有所不同。 
+                ECMA-262 把对象定义为：“无序属性的集合，其属性可以包含基本值、对象或者函数。”严格来讲， 
+                这就相当于说对象是一组没有特定顺序的值。对象的每个属性或方法都有一个名字，而每个名字都映射 
+                到一个值。正因为这样（以及其他将要讨论的原因），我们可以把 ECMAScript 的对象想象成散列表：无 
+                非就是一组名值对，其中值可以是数据或函数
+            </p>
+        </section>
+        <section>
+            <h3>面向对象编程的特征</h3>
+            <img src="http://www.yanzehao.top/webstudy/temp/20170605213635589.png" alt="">
+            <p>本期小课堂主要讨论如何创建对象(封装);</p>
+        </section>
+
+        <!-- 知识剖析 -->
+
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            <section>
+                <h3>1 : Object实例</h3>
+                <p style="text-align: left;">创建自定义对象的最简单方式就是创建一个 Object 的实例，然后再为它添加属性和方法，如下所示。</p>
+                <pre>
+                    //创建一个 Object 的实例
+                    var person = new Object();
+                    person.name = "严泽浩";
+                    person.age = 23;
+                    person.job = "菜鸡web";
+                    person.sayName = function(){
+                      return this.name;
+                    }; 
+                    console.log(person.sayName());//严泽浩
+                </pre>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    上面的例子创建了一个名为 person 的对象，并为它添加了三个属性（name、age 和 job）和一个 
+                    方法（sayName()）。其中，sayName()方法用于显示 this.name（将被解析为 person.name）的值。 
+                    前面的例子用对象字面量语法可以写成这样：
+                </p>
+                <pre>
+                    //对象字面量语法
+                    var person = {
+                      name: "火箭强",
+                      age: 22,
+                      job: "流浪歌手",
+                      sayName1: function(){
+                        return this.job;
+                      }
+                    };
+                    console.log(person.sayName1());//流浪歌手
+                </pre>
+                <p style="text-align: left;">
+                    虽然 Object 构造函数或对象字面量都可以用来创建单个对象，但这些方式有个明显的缺点：使用同 
+                    一个接口创建很多对象，会产生大量的重复代码。
+                </p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>2 : 工厂模式</h3>
+                <p style="text-align: left">工厂模式是软件工程领域一种广为人知的设计模式，这种模式抽象了创建具体对象的过程。考虑到在 ECMAScript 中无法创建类，开发人员就发明了一种函数，用函数来封装一些以特定接口创建对象的细节。</p>
+            </section>
+            <section>
+                <pre>
+                    //工厂模式
+                    function createPerson(name, age, job){
+                      var o = new Object();
+                      o.name = name;
+                      o.age = age;
+                      o.job = job;
+                      return o;
+                    }
+                    var 火箭强 = createPerson("火箭强", 22, "流浪歌手");
+                    console.log(火箭强);
+                    var 严泽浩 = createPerson("严泽浩", 23, "菜鸡web"); 
+                    console.log(严泽浩);
+                </pre>
+                <p style="text-align: left">
+                    函数 createPerson()能够根据接受的参数来构建一个包含所有必要信息的 Person 对象。可以无 
+                    数次地调用这个函数，而每次它都会返回一个包含三个属性的对象。工厂模式虽然解决了创建 
+                    多个相似对象的问题，但却没有解决对象识别的问题（即怎样知道一个对象的类型）。随着 JavaScript 
+                    的发展，又一个新模式出现了。
+                </p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>3 : 构造函数模式</h3>
+                <p style="text-align: left">ECMAScript 中的构造函数可用来创建特定类型的对象。像Object和Array这样的原生构造函数，在运行时会自动出现在执行环境中。此外，也可以创建自定义的构造函数，从而定义自定义对象类型的属性和方法。</p>
+            </section>
+            <section>
+                <p>与工厂模式的不同:</p>
+                <ol>
+                    <li>没有显式地创建对象；</li>
+                    <li>直接将属性和方法赋给了 this 对象；</li>
+                    <li>没有 return 语句。</li>
+                </ol>   
+                <pre>
+                    //构造函数模式
+                    function Person(name, age, job){
+                      this.name = name;
+                      this.age = age;
+                      this.job = job;
+                    }
+                    var 火箭强 = new Person("火箭强", 22, "流浪歌手");
+                    var 严泽浩 = new Person("严泽浩", 23, "菜鸡web"); 
+                </pre>              
+            </section>
+            <section>
+                <h3>脚下留心</h3>
+                <p style="text-align: left">
+                    此外，还应该注意到函数名 Person 使用的是大写字母 P。按照惯例，构造函数始终都应该以一个 
+                    大写字母开头，而非构造函数则应该以一个小写字母开头。这个做法借鉴自其他 OO 语言，主要是为了 
+                    区别于 ECMAScript 中的其他函数；因为构造函数本身也是函数，只不过可以用来创建对象而已。
+                </p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>4 : 原型模式</h3>
+                <p style="text-align: left">
+                    我们创建的每个函数都有一个 prototype（原型）属性，这个属性是一个指针，指向一个对象， 
+                    而这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法。如果按照字面意思来理解，那 
+                    么 prototype 就是通过调用构造函数而创建的那个对象实例的原型对象。使用原型对象的好处是可以 
+                    让所有对象实例共享它所包含的属性和方法。换句话说，不必在构造函数中定义对象实例的信息，而是 
+                    可以将这些信息直接添加到原型对象中
+                </p>
+            </section>
+            <section>
+                <p style="text-align: left">
+                    在此，我们将 sayName()方法和所有属性直接添加到了 Person 的 prototype 属性中，构造函数 
+                    变成了空函数。即使如此，也仍然可以通过调用构造函数来创建新对象，而且新对象还会具有相同的属 
+                    性和方法。但与构造函数模式不同的是，新对象的这些属性和方法是由所有实例共享的。换句话说， 
+                    person1 和 person2 访问的都是同一组属性和同一个 sayName()函数
+                </p>
+                <pre>
+                    //原型模式
+                    function Person(){};
+                    Person.prototype.name = "火箭强";
+                    Person.prototype.age = 22;
+                    Person.prototype.job = "流浪歌手";
+                    Person.prototype.sayName = function(){
+                      return this.name
+                    };
+                    var person1 = new Person();
+                    console.log('person1.sayName();', person1.sayName()); //"流浪歌手"
+                    var person2 = new Person();
+                    console.log('person2.sayName();', person2.sayName()); //"流浪歌手" 
+                    console.log(person1.sayName == person2.sayName);//true
+                </pre>
+            </section>
+        </section>
+        
+        <!-- 常见问题 -->
+
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            <p>问题一 ：js中的new()到底做了些什么？？</p>
+        </section>
+
+        <!-- 解决方案 -->
+
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            <p style="text-align: left">要创建一个对象的新实例，必须使用 new 操作符。以这种方式调用构造函数实际上会经历以下 4个步骤：</p>
+            <ol>
+                <li>新建一个对象o</li>
+                <li>o. __proto__ = Object.prototype 将新创建的对象的__proto__属性指向构造函数的prototype</li>
+                <li>将this指向新创建的对象</li>
+                <li>返回新对象</li>
+            </ol>
+        </section>
+
+        <!-- 编码实战 -->
+
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+
+        <!-- 拓展思考 -->
+
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+            <section>
+                <h3>问题一:面向对象和面向过程的区别?</h3>
+            </section>
+            <section>
+                <p style="text-align: left">
+                    面向对象和面向过程是两种不同的编程思想，我们经常会听到两者的比较，刚开始编程的时候，大部分应该都是使用的面向过程的编程，但是随着我们的成长，还是面向对象的编程思想比较好一点~ 
+                    其实面向对象和面向过程并不是完全相对的，也并不是完全独立的。面向对象和面向过程的主要区别是面向过程主要是以动词为主，解决问题的方式是按照顺序一步一步调用不同的函数。 
+                    而面向对象主要是以名词为主，将问题抽象出具体的对象，而这个对象有自己的属性和方法，在解决问题的时候是将不同的对象组合在一起使用。 
+                    所以说面向对象的好处就是可扩展性更强一些，解决了代码重用性的问题。
+                </p>
+            </section> 
+            <section>
+                <h4>算法区别</h4>
+                <ol>
+                    <li>面向过程就是分析出解决问题所需要的步骤，然后用函数把这些步骤一步一步实现，使用的时候一个一个依次调用就可以了。</li>
+                    <li>面向对象是把构成问题事务分解成各个对象，建立对象的目的不是为了完成一个步骤，而是为了描叙某个事物在整个解决问题的步骤中的行为。</li>
+                </ol>
+            </section>
+            <section>
+                <h4>经典实例</h4>
+                <p>如何把大象装进冰箱?</p>
+                <ul>
+                    <li>面对过程方法: </li>
+                        <ol>
+                            <li>开门（冰箱）；</li>
+                            <li>装进（冰箱，大象）；</li>
+                            <li>关门（冰箱）。</li>
+                        </ol>
+                    <li>面对对象方法: </li>
+                        <ol>
+                            <li>冰箱.开门（）</li>
+                            <li>冰箱.装进（大象）</li>
+                            <li>冰箱.关门（）</li>
+                        </ol>
+                </ul>
+            </section>
+        </section>
+
+        <!-- 参考文献 -->
+
+        <section>
+            <h3>7.参考文献</h3>
+        </section>
+        <section style="text-align: left;">
+            <p>参考书籍：<a href="">参考书籍：JavaScript高级程序设计(第三版)</a></p>
+            <p>参考链接：<a href="http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html/%20*avascript%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%B0%81%E8%A3%85*" target="_blank">Javascript 面向对象编程（一）：封装</a></p>
+        </section>
+
+        <!-- 更多讨论 -->
+
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+
+        <!-- 鸣谢 -->
+        
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p><small>BY : 严泽浩</small></p>
+        </section>
+    </div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: '../plugin/markdown/marked.js' },
+            { src: '../plugin/markdown/markdown.js' },
+            { src: '../plugin/notes/notes.js', async: true },
+            { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status He
