@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)https://ptteng.github.io/PPT/PPT/JS-11-Mini-Program.html#/13 -->
+<html xmlns="http://www.w3.org/1999/html"
+      class=" js no-mobile desktop no-ie chrome chrome65 ppt-section ppt-section gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch no-retina fontface domloaded w-1366 gt-240 gt-320 gt-480 gt-640 gt-768 gt-800 gt-1024 gt-1280 lt-1440 lt-1680 lt-1920 no-portrait landscape"
+      id="js-11-mini-program-page">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>原型链</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <link rel="stylesheet" type="text/css" href="./原型链是什么/paper.css">
+    <script type="text/javascript" src="./原型链是什么/marked.js.下载"></script>
+    <script type="text/javascript" src="./原型链是什么/markdown.js.下载"></script>
+    <script type="text/javascript" src="./原型链是什么/notes.js.下载"></script>
+    <script type="text/javascript" src="./原型链是什么/highlight.js.下载"></script>
+</head>
+<body>
+<img src="./原型链是什么/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+    <div class="slides"
+         style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section style="top: 178.5px; display: none;" class="past" hidden="" aria-hidden="true">
+            <h3>web小课堂</h3>
+            <h4>【js-05】原型链是什么，有什么用处？若想访问一个对象的原型，应该使用什么方法？ </h4>
+            <p style="text-align: right;">分享人：陈皓宇</p>
+        </section>
+        <section style="top: 3px; display: none;" class="past" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section style="top: 0px; display: none;" class="stack past" data-previous-indexv="0" hidden=""
+                 aria-hidden="true">
+            <section style="top: 267px; display: none;" class="" aria-hidden="true">
+                <h3>1.背景介绍</h3>
+            </section>
+            <section class="future" aria-hidden="true" style="top: 38.5px; display: none;" hidden="">
+                <h5>1.1 原型链是什么？</h5>
+                <p style="text-align:left">
+                    原型链是一种机制，指的是JavaScript每个对象包括原型对象都有一个内置的[[proto]]属性指向创建它的函数对象的原型对象，即prototype属性。
+                    有点绕，别急，后面就懂了
+                </p>
+
+            </section>
+            <section style="text-align: left; top: 21.5px; display: none;" class="future" aria-hidden="true" hidden="">
+                <h4 style="text-align:left">1.2 它有着什么样的作用？</h4>
+                <p style="text-align:left">
+                    从远古时代说起，网景公司（Netscape）<br>
+                    prototype将JS中的对象都联系起来，而且节省内存；换句话说，JS中这种模式的设计，它的目的就是为了节省内存
+                </p>
+            </section>
+        </section>
+        <section style="top: 0px; display: none;" class="stack past" data-previous-indexv="0" hidden=""
+                 aria-hidden="true">
+            <section style="top: 267px; display: none;" class="" aria-hidden="true">
+                <h3>2.知识剖析</h3>
+            </section>
+            <section class="future" aria-hidden="true" style="top: 38.5px; display: none;" hidden="">
+                <p>
+                    我们知道 JS 有对象，比如
+                </p>
+                <code class="hljs php">
+                    var obj = { name: 'obj' }
+                </code>
+                <p>
+                    我们可以对 obj 进行一些操作，包括:<br>
+                    「读」属性 <br>
+                    「新增」属性<br>
+                    「更新」属性<br>
+                    「删除」属性<br>
+                    下面我们主要来看一下「读」和「新增」属性。
+                    切到demo
+                </p>
+            </section>
+            <section>
+                <h4>为什么有 VALUEOF / TOSTRING 属性呢？</h4>
+                <p>在我们没有对 obj 进行任何其他操作之前，发现 obj 已经有几个属性（方法）了
+                那么问题来了：valueOf / toString / constructor 是怎么来？我们并没有给 obj.valueOf 赋值呀?</p>
+            </section>
+            <section>
+                <h5>原因：</h5>
+                <p>
+                    让我们来对js进项重新分类一下，万物皆对象。我们就是造物主，js的世界，我们简单的分成两类： <br>
+                    一、函数对象；<br>
+                    二、普通对象，也就是除了函数对象的所有。
+                </p>
+            </section>
+            <section class="present" style="top: 0px; display: block;">
+                <p>
+                    我们发现 console.dir(obj) 打出来的结果是：
+                    1. obj 本身有一个属性 name（这是我们给它加的） <br>
+                    2. obj 还有一个属性叫做 __proto__（它是一个对象） <br>
+                    3. obj.__proto__ 有很多属性，包括 valueOf、toString、constructor 等 <br>
+                    4. obj.__proto__ 其实也有一个叫做 __proto__ 的属性（console.log 没有显示），值为 null <br>
+                    现在回到我们的问题：obj 为什么会拥有 valueOf / toString / constructor 这几个属性？ <br>
+                </p>
+            </section>
+            <section class="present" style="top: 200.5px; display: block;">
+                <p>答案：</p>
+                <p>这跟 __proto__ 有关。</p>
+                <p>当我们「读取」 obj.toString 时，JS 引擎会做下面的事情：</p>
+            </section>
+            <section class="present" style="top: 0px; display: block;">
+                <p>
+                    1. 看看 obj 对象本身有没有 toString 属性。没有就走到下一步。<br>
+                    2. 看看 obj.__proto__ 对象有没有 toString 属性，发现 obj.__proto__ 有 toString 属性，于是找到了 <br>
+                    所以 obj.toString 实际上就是第 2 步中找到的 obj.__proto__.toString。<br>
+                    可以想象，<br>
+                    3. 如果 obj.__proto__ 没有，那么浏览器会继续查看 obj.__proto__.__proto__<br>
+                    4. 如果 obj.__proto__.__proto__ 也没有，那么浏览器会继续查看 obj.__proto__.__proto__.proto__<br>
+                    5. 直到找到 toString 或者 __proto__ 为 null。<br>
+                    这种直男式的搜缩方式，和查找修饰符一样，呈现所谓的链式查找。于是，就有了原型链这个称呼。
+                </p>
+            </section>
+            <section>
+                <h5> 刚刚讲的是普通对象，现在回到函数对象上面。<br></h5>
+                <p>那么什么是函数对象呢？构造函数构造出来的对象？不不不，这样想就错了。<br>
+                    看demo，什么是函数对象。</p>
+            </section>
+            <section class="future" aria-hidden="true" style="top: 38.5px; display: none;" hidden="">
+                <p style="text-align:left"></p><br>
+                <p style="text-align:left">
+                    &emsp;&emsp;每一个函数对象都拥有一个prototype属性，这个属性指向一个对象，也就是原型对象。
+                    当使用这个构造函数创建实例的时候，prototype属性指向的原型对象就成为实例的原型对象。<br>
+                    &emsp;&emsp;原型对象自身也是一个对象，它也有自己的原型对象，这样层层上溯，就形成了一个类似链表的结构，
+                    这就是原型链（prototype chain） 。<br>
+                    &emsp;&emsp;当我们访问一个函数的属性时，JS引擎就会遍历整个函数，如果找到了就会返回改属性值，
+                    如果没有找到就会到函数的原型属性中去找，如果还没有找到就会到原型的原型中去找，直到找到这个属性或者搜索到原型链的末尾。
+                </p>
+            </section>
+
+
+        </section>
+        <section style="top: 267px; display: none;" class="past" hidden="" aria-hidden="true">
+            <section class="future" aria-hidden="true" style="top: 38.5px; display: none;" hidden="">
+                <h3>3.常见问题</h3>
+            </section>
+            <section class="future" aria-hidden="true" style="top: 38.5px; display: none;" hidden="">
+                <p style="text-align:left">
+                    访问对象原型的方法有哪些？
+                </p>
+            </section>
+        </section>
+
+
+        <section style="top: 0px; display: none;" class="stack past" data-previous-indexv="0" hidden=""
+                 aria-hidden="true">
+            <section style="top: 267px; display: none;" class="" aria-hidden="true">
+                <section class="future" aria-hidden="true" style="top: 38.5px; display: none;" hidden="">
+                    <h3>4.解决方案</h3>
+
+                </section>
+                <section class="present" style="top: 104.5px; display: block;">
+                    <p>获取实例对象obj的原型对象，有三种方法： <br>
+                        <br>
+                        1. obj.__proto__ <br>
+                        2. obj.constructor.prototype <br>
+                        3. Object.getPrototypeOf(obj) <br>
+                        <br>
+                        上面三种方法之中，前两种都不是很可靠。最新的ES6标准规定，__proto__属性只有浏览器才需要部署，其他环境可以不部署。而obj.constructor.prototype在手动改变原型对象时，可能会失效。</p>
+                </section>
+                <!--<section class="future" aria-hidden="true" style="top: 38.5px; display: none;" hidden="">-->
+                    <!--<p style="text-align:left">&emsp;&emsp;Array.prototype是Array构造函数实例的原型，构造函数实例化后仍为数组，所以输出true。</p>-->
+                <!--</section>-->
+            </section>
+
+
+        </section>
+        <section style="top: 0px; display: none;" class="stack past" data-previous-indexv="0" hidden=""
+                 aria-hidden="true">
+            <section style="top: 267px; display: none;" class="past" hidden="" aria-hidden="true">
+                <h3>5.编码实战</h3>
+            </section>
+            <section style="top: 267px; display: none;" class="past" hidden="" aria-hidden="true">
+                <p>
+                </p>
+            </section>
+        </section>
+        <section style="text-align: left; top: 178px; display: block;" class="past" hidden="" aria-hidden="true">
+            <h3 style="text-align: center">6.扩展思考</h3>
+        </section>
+        <section class="present" style="top: 243.5px; display: block;">
+            <p>
+                原型链是如何产生的呢？
+            </p>
+        </section>
+        <section class="present" style="top: 220.5px; display: block;">
+            <p>
+                引自知乎【写代码的苏打饼】专栏的<a href="https://zhuanlan.zhihu.com/p/22989691">JavaScript 世界万物诞生记</a>
+            </p>
+        </section>
+        <section style="top: 267px; display: block;" class="past" hidden="" aria-hidden="true">
+            <h3>7.参考文献</h3>
+        </section>
+        <section style="top: 267px; display: block;" class="present">
+            <p style="text-align:left">参考一：<a
+                    href="http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html">Javascript继承机制的设计思想</a>
+            </p>
+            <p style="text-align:left">参考二：<a href="">《JavaScript面向对象编程指南》</a></p>
+            <p style="text-align:left">参考三：<a href="https://zhuanlan.zhihu.com/p/22989691">JavaScript 世界万物诞生记</a></p>
+            <p style="text-align:left">参考三：<a href="http://dmitrysoshnikov.com/ecmascript/javascript-the-core/">JavaScript.The Core（推荐）</a></p>
+
+        </section>
+        <section style="text-align: left; top: 66px; display: block;" hidden="" aria-hidden="true" class="future">
+            <h3 style="text-align: center">8.更多讨论</h3>
+            <h4>prototype 与 _proto_是什么关系？</h4>
+            <p>prototype和__proto__都指向原型对象，<br>
+                任意一个函数（包括构造函数）都有一个prototype属性，<br>
+                指向该函数的原型对象，同样任意一个构造函数实例化的对象 ，<br>
+                都有一个__proto__属性（__proto__并非标准属性，ECMA-262第5版将该属性或指针称为[[Prototype]]，<br>
+                可通过Object.getPrototypeOf()标准方法访问该属性），指向构造函数的原型对象。<br>
+            </p>
+        </section>
+        <section>
+
+        </section>
+        <section style="top: 245.5px; display: block;" hidden="" aria-hidden="true" class="future">
+            <h4>感谢观看</h4>
+            <p>
+                <small>By :陈皓宇</small>
+            </p>
+        </section>
+    </div>
+    <div class="backgrounds">
+        <div class="slide-background past" data-loaded="true" style="display: none;"></div>
+        <div class="slide-background past" data-loaded="true" style="display: none;"></div>
+        <div class="slide-background stack past" data-loaded="true" style="display: none;">
+            <div class="slide-background present" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;" data-loaded="true"></div>
+        </div>
+        <div class="slide-background stack past" style="display: none;" data-loaded="true">
+            <div class="slide-background present" style="display: none;" data-loaded="true"></div>
+            <div class="slide-background future" style="display: none;" data-loaded="true"></div>
+            <div class="slide-background future" style="display: none;" data-loaded="true"></div>
+        </div>
+        <div class="slide-background past" style="display: none;" data-loaded="true"></div>
+        <div class="slide-background past" style="display: none;" data-loaded="true"></div>
+        <div class="slide-background past" style="display: none;" data-loaded="true"></div>
+        <div class="slide-background past" style="display: none;" data-loaded="true"></div>
+        <div class="slide-background past" style="display: none;" data-loaded="true"></div>
+        <div class="slide-background stack past" style="display: none;" data-loaded="true">
+            <div class="slide-background present" style="display: none;" data-loaded="true"></div>
+            <div class="slide-background future" style="display: none;" data-loaded="true"></div>
+            <div class="slide-background future" style="display: none;" data-loaded="true"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+        </div>
+        <div class="slide-background past" style="display: none;" data-loaded="true"></div>
+        <div class="slide-background past" style="display: block;" data-loaded="true"></div>
+        <div class="slide-background past" style="display: block;" data-loaded="true"></div>
+        <div class="slide-background present" style="display: block;" data-loaded="true"></div>
+        <div class="slide-background future" style="display: block;" data-loaded="true"></div>
+        <div class="slide-background future" style="display: block;" data-loaded="true"></div>
+    </div>
+    <div class="progress" style="display: block;"><span style="width: 1241.82px;"></span></div>
+    <aside class="controls" style="display: block;">
+        <button class="navigate-left enabled" aria-label="previous slide"></button>
+        <button class="navigate-right enabled" aria-label="next slide"></button>
+        <button class="navigate-up" aria-label="above slide"></button>
+        <button class="navigate-down" aria-label="below slide"></button>
+    </aside>
+    <div class="slide-number" style="display: none;"></div>
+    <div class="speaker-notes" data-prevent-swipe=""></div>
+    <div class="pause-overlay"></div>
+    <div id="aria-status-div" aria-live="polite" aria-atomic="true"
+         style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+        参考一：简明教程
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+<script>
+
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: './plugin/markdown/marked.js'},
+            {src: './plugin/markdown/markdown.js'},
+            {src: './plugin/notes/notes.js', async: true},
+            {
+                src: './plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+
+
+</body>
+</html>
