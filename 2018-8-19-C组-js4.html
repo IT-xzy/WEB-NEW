@@ -1,0 +1,244 @@
+﻿<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>葡萄藤PPT</title>
+
+		<link rel="stylesheet" href="css/reveal/reveal.css">
+
+		<!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+		<link rel="stylesheet" href="css/reveal/theme/ptt.css">
+
+		<!-- syntax highlighting 代码高亮主题 -->
+		<link rel="stylesheet" href="lib/reveal/css/zenburn.css">
+
+		<!-- 打印和PDF输出样式 -->
+		<script>
+			var link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match(/print-pdf/gi) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+			document.getElementsByTagName('head')[0].appendChild(link);
+		</script>
+		<style>
+			.reveal pre code {
+				background-color: #120;
+			}
+		</style>
+	</head>
+
+	<body>
+		<img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+		<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h3>如何理解JS作用域与作用域链？</h3>
+					<h4>小课堂【深圳-WEB-C组】</h4>
+					<h4>分享人：李榕涛</h4>
+				</section>
+				<section>
+					<p>目录</p>
+					<p>1.背景介绍</p>
+					<p>2.知识剖析</p>
+					<p>3.常见问题</p>
+					<p>4.解决方案</p>
+					<p>5.编码实战</p>
+					<p>6.扩展思考</p>
+					<p>7.参考文献</p>
+					<p>8.更多讨论</p>
+				</section>
+				<section>
+					<section>
+						<h3>1.背景介绍</h3>
+					</section>
+					<section>
+						<p>
+							JavaScript 中存在两种作用域：全局作用域和函数作用域，不存在块级作用域。全局作用域在浏览器中是window对象。<br/>
+
+							执行环境（execution context）是JavaScript 中最为重要的一个概念，定义了变量和函数访问其它数据的权力。<br/>
+
+							全局作用域： 
+							最外层函数定义的变量拥有全局作用域，即对任何内部函数来说，都是可以访问的。<br/>
+
+							局部作用域： 
+							和全局作用域相反，局部作用域一般只在固定的代码片段内可访问到，而对于函数外部是无法访问的。<br/>
+
+						</p>
+					</section>
+					<section>
+						<p>
+							像在C/C++中，花括号内中的每一段代码都具有各自的作用域，而且变量在声明它们的代码段之外是不可见的，但是javascript不同，并没有所谓的块级作用域，javascript的作用域是相对函数而言的。<br/>
+
+							js为每一个执行环境关联了一个变量对象。环境中定义的所有变量和函数都保存在这个对象中。 <br/>
+
+							全局执行环境是最外围的执行环境，全局执行环境被认为是window对象，因此所有的全局变量和函数都作为window对象的属性和方法创建的。 <br/>
+							js的执行顺序是根据函数的调用来决定的，当一个函数被调用时，该函数环境的变量对象就被压入一个环境栈中。而在函数执行之后，栈将该函数的变量对象弹出，把控制权交给之前的执行环境变量对象。 <br/>
+						</p>
+					</section>
+					<section>
+						<p>
+							JS中作用域有：全局作用域、函数作用域。没有块作用域的概念。ECMAScript 6(简称ES6)中新增了块级作用域。
+							块作用域由 { } 包括，if语句和for语句里面的{ }也属于块作用域。
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>2.知识剖析</h3>
+					</section>
+					<section>
+						<h3>变量的可访问性</h3>
+						<p>
+							1 非严格模式下不声明直接使用变量，变量会成为全局变量<br/>
+
+							2 和作用域对应的全局变量和局部变量（函数内变量）<br/>
+						</p>
+					</section>
+					<section>
+						<p>
+							作用域链<br/>
+
+							执行环境会创建变量对象的作用域链。<br/>
+
+							作用域链的用途是保证对执行环境有权访问的所有变量和函数的有序访问。<br/>
+
+							作用域链的前端始终是当前执行代码所在环境的变量对象。全局执行环境的变量对象始终是作用域链中最后一个对象。<br/>
+
+							这有两方面的影响：1 变量只能沿着自身所在的作用域链查找，直到找到为止，否则返回错误；2 隔离其它变量。<br/>
+
+							简化来说：就是一个调用变量形成的查找过程；把它再和执行环境结合起来包装形成作用域链。<br/>
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>3.常见问题</h3>
+					</section>
+					<section>
+						<p>
+							延长作用域链
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>4.解决方案</h3>
+					</section>
+					<section>
+						<p>
+							try - catch 语句的 catch 块
+
+							with 语句
+
+							在作用域链前端临时增加一个变量对象，该对象会在代码执行之后移除
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>5.编码实战</h3>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>6.扩展思考</h3>
+					</section>
+					<section>
+						<h3>this</h3>
+						<p>
+							this 关键字是 JavaScript 中最复杂的机制之一。它是一个很特别的关键字，被自动定义在 所有函数的作用域中。<br/>
+
+							this 对象是在运行时基于函数执行环境绑定的。<br/>
+
+							《javascript高级程序设计》一书给出的解释是：<br/>
+
+							this对象是在运行时基于函数的执行环境绑定的：在全局函数中，this等于window，而当函数被作为某个对象调用时，this等于那个对象。不过，匿名函数具有全局性，因此this对象同常指向window<br/>
+						</p>
+					</section>
+					<section>
+						闭包
+
+						函数嵌套形成的整个执行环境就是闭包。
+
+						1 内部函数只可以在外部函数中访问。
+
+						2 内部函数形成了一个闭包：它可以访问外部函数的参数和变量，但是外部函数却不能使用它的参数和变量。
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>7.参考文献</h3>
+					</section>
+					<section>
+						<a href="">MDN文档</a><br/>
+						<a href="">js 高程</a>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>8.更多讨论</h3>
+					</section>
+				</section>
+				<section>
+					<h4>鸣谢</h4>
+					<p>感谢大家观看</p>
+					<p>
+						By
+						<small style="vertical-align: middle">李榕涛</small>
+					</p>
+				</section>
+			</div>
+		</div>
+		<script src="lib/reveal/js/head.min.js"></script>
+		<script src="lib/reveal/reveal.js"></script>
+		<script>
+			// 以下为常见配置属性的默认值
+			// {
+			// 	controls: true, // 是否在右下角展示控制条
+			// 	progress: true, // 是否显示演示的进度条
+			// 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+			// 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+			// 	keyboard: true, // 是否启用键盘快捷键来导航
+			// 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+			// 	center: true, // 是否将幻灯片垂直居中
+			// 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+			// 	loop: false, // 是否循环演示
+			// 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+			// 	fragments: true, // 全局开启和关闭碎片。
+			// 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+			// 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+			// 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+			// 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+			// }
+			// 初始化幻灯片
+			Reveal.initialize({
+				history: true,
+				dependencies: [{
+						src: '../plugin/markdown/0marked.js'
+					},
+					{
+						src: '../plugin/markdown/markdown.js'
+					},
+					{
+						src: '../plugin/notes/notes.js',
+						async: true
+					},
+					{
+						src: '../plugin/highlight/highlight.js',
+						async: true,
+						callback: function() {
+							hljs.initHighlightingOnLoad();
+						}
+					}
+				]
+			});
+		</script>
+	</body>
+
+</html>
