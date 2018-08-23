@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dom</title>
+    <style>
+        body{
+            margin-bottom: 100px;
+        }
+        .on {
+            margin: 10px;
+            width: 500px;
+            height: 100px;
+            font-weight: 600;
+            border: solid 5px #000;
+            color: #fff;
+            background: #36c7f3;
+        }
+        .clone{
+            margin: 10px;
+            width: 500px;
+            height: 100px;
+            font-weight: 600;
+            border: solid 5px #000;
+            color: #fff;
+            background: #36c7f3;
+        }
+
+        .btn {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>DOM事件</h1>
+<div class="on" onclick="console.log('用户点击...')">onclick事件---当用户点击时执行</div>
+<div class="on" onmouseover="console.log('用户鼠标指针移入...')" onmouseout="console.log('用户鼠标指针移出...')">onmouseover事件---当用户鼠标指针移入时执行
+    <br>onmouseout事件---当用户鼠标指针移出时执行
+</div>
+<div class="on" onmousedown="console.log('用户鼠标摁下...')" onmouseup="console.log('用户鼠标松开...')">onmousedown事件---当用户鼠标摁下时执行
+    <br>onmouseup事件---当用户鼠标松开时执行
+</div>
+<div class="on" onmousedown="whichButton(event)">
+    当点击这个框内的任意位置时，会打印出是使用了那个键点击的
+</div>
+<hr>
+<h1>复制节点</h1>
+
+<div>
+    <div class="clone" onmousedown="console.log('用户鼠标摁下...')" onmouseup="console.log('用户鼠标松开...')">onmousedown事件---当用户鼠标摁下时执行
+        <br>onmouseup事件---当用户鼠标松开时执行</div>
+</div>
+<div>
+    <button onclick="cloneDiv()">cloneNode()</button>
+    <button onclick="cloneTrueDiv()">cloneNode(true)</button>
+</div>
+<div class="divClones"></div>
+<hr>
+<h1>常见的DOM操作</h1>
+
+
+<p class="cc">通过查找className更改</p>
+<span>通过查找tagName更改</span>
+<br>
+<button type="button" onclick="clickaa()" class="btn">点击</button>
+
+<p >点击按钮来删除列表中的首个项目。</p>
+<ul id="myList"><li>red</li><li>blue</li><li>black</li></ul>
+<button onclick="myFunction()">删除节点</button>
+<p >单击按钮创建节点</p>
+<button onclick="Function()">创建节点</button>
+
+
+
+<!-- js -->
+<script>
+    function Function(){
+        var btn=document.createElement("p");
+        var t=document.createTextNode("hello");
+        btn.appendChild(t);
+        document.body.appendChild(btn);
+    }
+
+    function clickaa() {
+        document.getElementsByClassName('cc')[0].innerHTML = '通过getElementsByClassName()修改内容';
+        document.getElementsByTagName('span')[0].innerHTML = '通过getElementsByTagName()修改内容';
+    }
+
+    function whichButton(event) {
+        var btnNum = event.button;
+        if (btnNum == 2) {
+            console.log("您点击了鼠标右键！")
+        }
+        else if (btnNum == 0) {
+            console.log("您点击了鼠标左键！")
+        }
+        else if (btnNum == 1) {
+            console.log("您点击了鼠标中键！");
+        }
+        else {
+            console.log("您点击了" + btnNum + "号键，我不能确定它的名称。");
+        }
+    }
+
+    //获取克隆的对象‘我才是真的绿色’
+    var getCloneDiv=document.querySelector("body>div>div:nth-child(1)");
+
+    function cloneDiv(){
+        var clo=getCloneDiv.cloneNode();//用cloneNode（）克隆
+
+        document.querySelector(".divClones").appendChild(clo);//把cloneNode（）克隆的节点添加在class为divClones节点中
+    }
+    function cloneTrueDiv(){
+        var clo=getCloneDiv.cloneNode(true);//用cloneNode（true）克隆
+
+        document.querySelector(".divClones").appendChild(clo);//把cloneNode（true）克隆的节点添加在class为divClones节点中
+    }
+
+    function myFunction()
+    {
+        var list=document.getElementById("myList");
+        list.removeChild(list.childNodes[0]);
+    }
+
+</script>
+</body>
+
+</html>
