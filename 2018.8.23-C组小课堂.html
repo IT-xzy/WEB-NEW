@@ -1,0 +1,308 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<style>
+    .p-style>p {
+        font-size: 20px;
+        text-align: left;
+        padding-bottom: 20px;
+    }
+</style>
+
+<body>
+    <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h4>小课堂——上海分院</h4>
+                <h4>常见Dom操作有哪些？</h4>
+                <h4>分享人：何岳</h4>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <p style="font-size: 30px;letter-spacing: 3px;">前言</p>
+                <p style="font-size: 30px;text-align: left;">JavaScript的组成</p>
+                <p style="font-size: 30px;text-align: left;">JavaScript基础分为三个部分：</p>
+                <p style="font-size: 30px;text-align: left;">ECMAScript：JavaScript的语法标准。包括变量、表达式、运算符、函数、if语句、for语句等。</p>
+                <p style="font-size: 30px;text-align: left;">DOM：文档对象模型，操作网页上的元素的API。比如让盒子移动、变色、轮播图等。</p>
+                <p style="font-size: 30px;text-align: left;">BOM：浏览器对象模型，操作浏览器部分功能的API。比如让浏览器自动滚动。</p>
+            </section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <section>
+                    <h3>事件</h3>
+                    <p style="font-size: 30px;text-align: left;">JS是以事件驱动为核心的一门语言。</p>
+                    <p style="font-size: 30px;text-align: left;">事件的三要素：事件源、事件、事件驱动程序。</p>
+                    <p style="font-size: 30px;text-align: left;">事件源：引发后续事件的html标签。</p>
+                    <p style="font-size: 30px;text-align: left;">事件：js已经定义好了（常见的事件名见下图）。</p>
+                    <p style="font-size: 30px;text-align: left;">事件驱动程序：对样式和html的操作。也就是DOM。</p>
+                </section>
+                <section>
+                    <p style="font-size: 30px;text-align: left;">事件：js已经定义好了（常见的事件名见下图）。</p>
+                    <p>
+                        <img src="./img/2018.8.23-c/sj.png">
+                    </p>
+                    <p style="font-size: 30px;text-align: left;">事件驱动程序：对样式和html的操作。也就是DOM。</p>
+                </section>
+                <section>
+                    <p style="font-size: 30px;text-align: left;">代码书写步骤如下</p>
+                    <p style="font-size: 30px;text-align: left;">（1）获取事件源：document.getElementById(“box”);</p>
+                    <p style="font-size: 30px;text-align: left;">（2）绑定事件： 事件源box.事件onclick = function(){ 事件驱动程序 };</p>
+                    <p style="font-size: 30px;text-align: left;">（3）书写事件驱动程序：关于DOM的操作</p>
+                    <p style="font-size: 30px;text-align: left;">举例：见demo</p>
+                    <p style="font-size: 30px;text-align: left;">下面对事件的三要素分别介绍</p>
+                </section>
+                <section>
+                    <h3>获取事件源的方式（DOM节点的获取）</h3>
+                    <p style="font-size: 30px;text-align: left;">获取事件源的常见方式如下：</p>
+                    <p style="font-size: 30px;text-align: left;">var div1 = document.getElementById("box1");      //方式一：通过 id 获取单个标签</p>
+                    <p style="font-size: 30px;text-align: left;">var arr1 = document.getElementsByTagName("div1");     //方式二：通过 标签名 获得 标签数组，所以有s</p>
+                    <p style="font-size: 30px;text-align: left;">var arr2 = document.getElementsByClassName("hehe");  //方式三：通过 类名 获得 标签数组，所以有s</p>
+                </section>
+                <section>
+                    <h3>绑定事件的方式</h3>
+                    <p style="font-size: 30px;text-align: left;">方式一：直接绑定匿名函数</p>
+                    <p style="font-size: 30px;text-align: left;">方式二：先单独定义函数，再绑定</p>
+                    <p style="font-size: 30px;text-align: left;">方式三：行内绑定</p>
+                </section>
+                <section>
+                    <h3>事件驱动程序</h3>
+                    <p style="font-size: 30px;text-align: left;">我们在上面是拿alert举例，不仅如此，我们还可以操作标签的属性和样式。</p>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>DOM的介绍</h3>
+                    <p style="font-size: 30px;text-align: left;">什么是DOM</p>
+                    <p style="font-size: 30px;text-align: left;">DOM（document object model）：文档对象模型。DOM 为文档提供了结构化表示，并定义了如何通过脚本来访问文档结构。目的其实就是为了能让js操作html元素而制定的一个规范。DOM就是由节点组成的。</p>
+                    <p style="font-size: 30px;text-align: left;">解析过程</p>
+                    <p style="font-size: 30px;text-align: left;">HTML加载完毕，渲染引擎会在内存中把HTML文档，生成一个DOM树，getElementById是获取内中DOM上的元素节点。然后操作的时候修改的是该元素的属性。</p>
+                </section>
+                <section>
+                    <p style="font-size: 30px;text-align: left;">DOM树（一切都是节点）</p>
+                    <p>
+                        <img src="./img/2018.8.23-c/dom.png" alt="">
+                    </p>
+                    <p style="font-size: 30px;text-align: left;">上图可知，在HTML当中，一切都是节点：</p>
+                    <p style="font-size: 30px;text-align: left;">元素节点：HMTL标签。</p>
+                    <p style="font-size: 30px;text-align: left;">文本节点：标签中的文字（比如标签之间的空格、换行）</p>
+                    <p style="font-size: 30px;text-align: left;">属性节点：：标签的属性。</p>
+                    <p style="font-size: 30px;text-align: left;">整个html文档就是一个文档节点。所有的节点都是Object。</p>
+                </section>
+                <section>
+                    <p style="font-size: 30px;text-align: left;">DOM可以做什么</p>
+                    <p style="font-size: 30px;text-align: left;">1.找对象（元素节点）</p>
+                    <p style="font-size: 30px;text-align: left;">2.设置元素的属性值</p>
+                    <p style="font-size: 30px;text-align: left;">3.设置元素的样式</p>
+                    <p style="font-size: 30px;text-align: left;">4.动态创建和删除元素 </p>
+                    <p style="font-size: 30px;text-align: left;">5.事件的触发响应：事件源、事件、事件的驱动程序</p>
+                </section>
+                <section>
+                    <h3>DOM节点的获取</h3>
+                    <p style="font-size: 30px;text-align: left;">DOM节点的获取方式其实就是获取事件源的方式</p>
+                    <p style="font-size: 30px;text-align: left;">操作元素节点，必须首先找到该节点。有三种方式可以获取DOM节点：</p>
+                    <p style="font-size: 30px;text-align: left;">var div1 = document.getElementById("box1");      //方式一：通过 id 获取单个标签</p>
+                    <p style="font-size: 30px;text-align: left;">var arr1 = document.getElementsByTagName("div1");     //方式二：通过 标签名 获得 标签数组，所以有s</p>
+                    <p style="font-size: 30px;text-align: left;">var arr2 = document.getElementsByClassName("hehe");  //方式三：通过 类名 获得 标签数组，所以有s</p>
+                </section>
+                <section>
+                    <h3>DOM访问关系的获取</h3>
+                    <p style="font-size: 30px;text-align: left;">DOM的节点并不是孤立的，因此可以通过DOM节点之间的相对关系对它们进行访问。如下：</p>
+                    <p>
+                        <img src="./img/2018.8.23-c/jiedianguanxi.png" alt="">
+                    </p>
+                    <p style="font-size: 30px;text-align: left;">节点的访问关系，是以属性的方式存在的。</p>
+                </section>
+                <section>
+                    <p style="font-size: 30px;text-align: left;">JS中的父子兄访问关系：</p>
+                    <p>
+                        <img src="./img/2018.8.23-c/fu.png" alt="">
+                    </p>
+                    <p style="font-size: 30px;text-align: left;">重点知道parentNode和children这两个属性的用法。</p>
+                </section>
+                <section>
+                    <h3>DOM节点操作</h3>
+                    <p style="font-size: 30px;text-align: left;">首先了解一点就是：节点的操作都是函数（方法）。</p>
+                    <p style="font-size: 30px;text-align: left;">1.创建节点</p>
+                    <p style="font-size: 30px;text-align: left;">格式如下：</p>
+                    <p style="font-size: 30px;text-align: left;">新的标签(元素节点) = document.createElement("标签名");</p>
+                    <p style="font-size: 30px;text-align: left;">见demo</p>
+                </section>
+                <section>
+                    <p style="font-size: 30px;text-align: left;">2.插入节点</p>
+                    <p style="font-size: 30px;text-align: left;">插入节点有两种方式，它们的含义是不同的。</p>
+                    <p style="font-size: 30px;text-align: left;">方式1：父节点.appendChild(新的子节点);</p>
+                    <p style="font-size: 30px;text-align: left;">解释：父节点的最后插入一个新的子节点。</p>
+                    <p style="font-size: 30px;text-align: left;">方式2：父节点.insertBefore(新的子节点,作为参考的子节点)</p>
+                    <p style="font-size: 30px;text-align: left;">解释：在参考节点前插入一个新的节点。如果参考节点为null，那么他将在父节点最后插入一个子节点。</p>
+                </section>
+                <section>
+                    <p style="font-size: 30px;text-align: left;">3.删除节点</p>
+                    <p style="font-size: 30px;text-align: left;">格式如下：</p>
+                    <p style="font-size: 30px;text-align: left;">父节点.removeChild(子节点);</p>
+                    <p style="font-size: 30px;text-align: left;">解释：用父节点删除子节点。必须要指定是删除哪个子节点。</p>
+                    <p style="font-size: 30px;text-align: left;">如果我想删除自己这个节点，可以这么做：</p>
+                    <p style="font-size: 30px;text-align: left;">node1.parentNode.removeChild(node1);</p>
+                </section>
+                <section>
+                    <h3>设置节点的属性</h3>
+                    <p style="font-size: 30px;text-align: left;">1.获取节点的属性值</p>
+                    <p style="font-size: 30px;text-align: left;">方式1：</p>
+                    <p style="font-size: 30px;text-align: left;">元素节点.属性;</p>
+                    <p style="font-size: 30px;text-align: left;">元素节点[属性];</p>
+                    <p style="font-size: 30px;text-align: left;">方式2：（推荐）</p>
+                    <p style="font-size: 30px;text-align: left;">元素节点.getAttribute("属性名称");</p>
+                    <p style="font-size: 30px;text-align: left;">见demo</p>
+                    <p style="font-size: 30px;text-align: left;">方式1和方式2的区别在于：前者是直接操作标签，后者是把标签作为DOM节点。推荐方式2。</p>
+                </section>
+                <section>
+                    <p style="font-size: 30px;text-align: left;">2.设置节点的属性值</p>
+                    <p style="font-size: 30px;text-align: left;">方式1举例：（设置节点的属性值）</p>
+                    <p style="font-size: 30px;text-align: left;">myNode.src = "img1/2.jpg"   //修改src的属性值</p>
+                    <p style="font-size: 30px;text-align: left;">myNode.className = "image2-box";  //修改class的name</p>
+                    <p style="font-size: 30px;text-align: left;">方式2：（推荐）</p>
+                    <p style="font-size: 30px;text-align: left;">元素节点.setAttribute(属性名, 新的属性值);</p>
+                    <p style="font-size: 30px;text-align: left;">见demo</p>
+                </section>
+                <section>
+                    <p style="font-size: 30px;text-align: left;">3.删除节点的属性</p>
+                    <p style="font-size: 30px;text-align: left;">格式：</p>
+                    <p style="font-size: 30px;text-align: left;">元素节点.removeAttribute(属性名);</p>
+                </section>
+            </section>
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+
+            <section>
+                <h3>4.解决方案</h3>
+            </section>
+
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+
+            <section>
+                <h3>6.扩展思考</h3>
+            </section>
+
+            <section>
+                <h3>7.参考文献</h3>
+                <p>https://www.cnblogs.com/smyhvae/p/8366012.html</p>
+            </section>
+            <section>
+                <h3>8.更多讨论</h3>
+            </section>
+            <section>
+                <p>讨论时间到，欢迎大家提问！
+                </p>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>By
+                    <small style="vertical-align: middle">何岳</small>
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
