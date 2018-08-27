@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .left {
+            text-align: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+    <img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+    </map>
+    <div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+        <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+            <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+                <h2>【JS-task8】</h2>
+                <h3>angularjs常用指令ng-if、ng-class、ng-option、ng-value、ng-click是如何使用的？
+                </h3>
+                <p>分享人：张智</p>
+            </section>
+            <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <p class="left">AngularJS 通过被称为"指令(directive)"的新属性来扩展 HTML。 AngularJS 有许多内置的指令来为应用添加功能 通俗点说就是 AngularJS 将指令与DOM绑定在一起，再扩展指令的行为，最后实现修改HTML的功能
+                    类似css的类名一样，是属于这个DOM元素的。
+                    <br> AngularJS 的内置指令均有ng-前缀
+                </p>
+            </section>
+            <!-- <section>
+            <h4>函数表达式</h4>
+            <p class="left">函数表达式将函数定义为表达式语句（通常是变量赋值）的一部分。通过函数表达式定
+                义的函数可以是命名的，也可以是匿名的。函数表达式不能以“function”开头。函数名在作用域外
+                是不可获取的。</p>
+        </section> -->
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <h4>指令ng-if</h4>
+                <p class="left">ng-if 指令用于在表达式为 false 时移除 HTML 元素，在表达式为 true 时添加 HTML 元素
+                    <br> ng-if 的格式 这里区别于ng-show和ng-hide，ng-if会直接在DOM树中添加或者删除节点，而前面两个只会显示隐藏
+
+                </p>
+            </section>
+            <section>
+                <h4>指令ng-class</h4>
+                <p class="left">
+                    ng-class指令用于给HTML元素动态绑定一个或多个CSS类。 ng-class指令的值可以是字符串，对象，或一个数组。 如果是字符串，多个类名使用空格分隔。 如果是对象，需要使用key-value对，key为你想要添加的类名，value是一个布尔值。只有在value为true时类才会被添加。
+                    如果是数组，可以由字符串或对象组合组成，数组的元素可以是字符串或对象。
+                </p>
+            </section>
+            <section>
+                <h4>指令ng-option</h4>
+                <p class="left">ng-options指令用于使用 options填充select元素的选项。 ng-options属性可以在表达式中使用数组或对象来自动生成一个select中的option列表。 ng-options与ng-repeat很相似，很多时候可以用ng-repeat来代替ng-options。
+                    但是ng-options提供了一些好处，例如减少内存提高速度，以及提供选择框的选项来让用户选择。
+                </p>
+            </section>
+            <section>
+                <h4>指令ng-value</h4>
+                <p class="left">ng-value 指令用于设置 input 或 select 元素的 value 属性
+                     这里有几个结论： 1.ng-value会赋值给value，并且优先于ng-model 2.ng-value不是双向绑定，不会因为value的值改变
+                    可以把ng-value就当成一个可以用给input等元素的value赋值的属性
+
+                </p>
+            </section>
+            <section>
+                <h4>指令ng-click</h4>
+                <p class="left">ng-click指令告诉了AngularJS HTML元素被点击后需要执行的操作。 如果是使用ng-click来实现函数的执行的话，还可以进行传参。 一个ng-click可以触发多个操作，
+                </p>
+            </section>
+            <section>
+                <!-- <p> 函数声明</p> -->
+                <!-- <img src="img/2018-07-25-C组-js2/function.png" style="min-width: 30%"/> -->
+                <!-- <p>函数表达式</p> -->
+                <!-- <img src="img/2018-07-25-C组-js2/var.png" style="min-width: 30%"/> -->
+                <section>
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    <p>ng-class-odd和ng-class-even如何使用</p>
+                </section>
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+                <!-- <section>
+                    <img src="img/2018-07-25-C组-js2/test.png" style="min-width: 40%" />
+                    </br>
+                    <img src="img/2018-07-25-C组-js2/alert1.png" style="min-width: 30%" />
+                    <img src="img/2018-07-25-C组-js2/alert2.png" style="min-width: 30%" />
+                </section> -->
+                <section class="left">
+                    <p>ng-class-odd指令用于为HTML元素动态的绑定一个或多个CSS类，但只作用于奇数行。 ng-class-even指令用于为HTML元素动态的绑定一个或多个CSS类，但只作用于偶数行。 需要与ng-repeat指令搭配使用。建议用在表格的样式渲染中，但是所有HTML元素都是支持的。
+                    </p>
+                </section>
+                <section>
+                    <h3>5.编码实战</h3>
+                </section>
+                <section>
+                    <h3>6.扩展思考</h3>
+                </section>
+                <section>
+                    <h4>函数ng-if的作用域问题：</h4>
+                    <p>ng-if指令会创建一个子级作用域，因此，如果在ng-if指令中添加了元素，并向元素属性增加ng-model指令， 那么ng-model指令对应的作用域属性子级作用域，而并非控制器注入的scope作用域对象，这点在进行双向数据绑定时， 需要引起2意。因此，解决ng-if中ng-model值无效的问题，主要方法就是在绑定值时添加parent标识，或者用ng-show指令代替ng-if指令，这两种方法都可以达到同样的页面效果。 写法如下：ng-model=”$parent.industry” 
+                    </p> </section>
+                <section>
+                    <h3>7.参考文献</h3>
+                </section>
+                <section class="left">
+                    <p>参考一： 菜鸟教程
+                    </p>
+                    <p>参考二： angular内置指令
+                    </p>
+                    <!-- <p>参考二：
+                        <a href="http://www.nowamagic.net/librarys/veda/detail/1630" target="_blank">JavaScript探秘：函数声明与函数表达式</a>
+                    </p>
+                    <p>参考三：
+                        <a href="https://github.com/Wscats/Good-text-Share/issues/73" target="_blank">关于Javascript的函数声明和函数表达式</a>
+                    </p> -->
+                </section>
+                <section>
+                    <h3>8.更多讨论</h3>
+                </section>
+                <section>
+                    <p>感谢大家观看</p>
+                    <p>
+                        <small>BY : 张智</small>
+                    </p>
+                </section>
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
+Contact GitHub API Training Shop Blog About © 2016 GitHub, Inc. Terms Privacy Security Status He

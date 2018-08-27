@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包</title>
+</head>
+<body>
+<pre>
+    <code>
+        var name1 = "The Window";
+        var object1 = {
+            name1 : "My Object",
+            getNameFunc : function(){
+                return function(){
+                    return this.name1;
+                };
+            }
+        };
+        var getName1 =  function () {
+            console.log(object1.getNameFunc()()) ;
+        };
+    </code>
+</pre>
+<button onclick="getName1()">例1</button>
+<pre>
+    <code>
+        var name2 = "The Window";
+        var object2 = {
+            name2 : "My Object",
+            getNameFunc : function(){
+                var that = this;
+                return function(){
+                    return that.name2;
+                };
+            }
+        };
+        var getName2 = function () {
+            console.log(object2.getNameFunc()());
+        }
+    </code>
+</pre>
+<button onclick="getName2()">例2</button>
+</body>
+<script>
+    var name1 = "The Window";
+    var object1 = {
+        name1 : "My Object",
+        getNameFunc : function(){
+            console.log("此时的this指向"+this.name1);
+            return function(){
+                return this.name1;
+            };
+        }
+    };
+    var getName1 =  function () {
+        console.log(object1.getNameFunc()()) ;
+    };
+
+    var name2 = "The Window";
+    var object2 = {
+        name2 : "My Object",
+        getNameFunc : function(){
+            var that = this;
+            return function(){
+                return that.name2;
+            };
+        }
+    };
+    var getName2 = function () {
+        console.log(object2.getNameFunc()());
+    }
+</script>
+</html>
