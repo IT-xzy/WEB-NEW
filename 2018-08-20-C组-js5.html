@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .left {
+            text-align: left;
+        }
+        .red {
+            color: #323232;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : 'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides"
+         style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h2>【JS-task5】</h2>
+            <h3>什么是AJAX？
+            </h3>
+            <p>分享人：叶泽彪</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <section>
+            <p class="left">浏览器与服务器之间，采用 HTTP 协议通信。用户在浏览器地址栏键入一个网址，或者通过网页表单向服务器提
+                交内容，这时浏览器就会向服务器发出 HTTP 请求。</p>
+            <p class="left">1999年，微软公司发布 IE 浏览器5.0版，第一次引入新功能：允许 JavaScript 脚本向服务器发起 HTTP 请求。</p>
+            <p class="left">这个功能当时并没有引起注意，直到2004年 Gmail 发布和2005年 Google Map 发布，才引起广泛重视。</p>
+        </section>
+        <section>
+            <p class="left">2005年2月，AJAX 这个词第一次正式提出，它是 Asynchronous JavaScript and XML 的缩写，指的是通过
+                JavaScript 的异步通信，从服务器获取 XML 文档从中提取数据，再更新当前网页的对应部分，而不用刷新整个网页。</p>
+            <p class="left">后来，AJAX 这个词就成为 JavaScript 脚本发起 HTTP 通信的代名词，也就是说，只要用脚本发起通信，就可
+                以叫做 AJAX 通信。W3C 也在2006年发布了它的国际标准。</p>
+        </section>
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            <h4>AJAX步骤</h4>
+            <p>1.创建 XMLHttpRequest 实例</p>
+            <p>2.发出 HTTP 请求</p>
+            <p>3.接收服务器传回的数据</p>
+            <p>4.更新网页数据</p>
+        </section>
+        <section>
+            <h4>1.创建 XMLHttpRequest 实例</h4>
+            <p class="left">使用XMLHttpRequest (XHR)对象可以与服务器交互，从URL获取数据。虽然XHR字面意思是由XML\Http组成，但
+                是它不是只能获取XML，它可以获取任何类型的数据，也支持Http以外的协议。</p>
+            <p class="left">XHR本身是构造函数，可以使用new命令生成实例，它没有任何参数。</p>
+            <p class="left red" >var request = new XMLHttpRequest();</p>
+        </section>
+        <section>
+            <h4>2.发出HTTP请求</h4>
+            <p class="left">创建好XHR对象后便可以使用open();发出Http请求，规定请求类型、URL以及是否异步处理请求。</p>
+            <p class="left red">request.open("POST","bbb/a/login",true);</p>
+            <p class="left">method：请求的类型；GET 或 POST</p>
+            <p class="left">url：文件在服务器上的位置</p>
+            <p class="left">async：true（异步）或 false（同步）,不填写则默认为true </p>
+        </section>
+        <section>
+            <p class="left">通常我们需要像 HTML 表单那样 POST 数据，就需要用setRequestHeader()设置HTTP头部。</p>
+            <p class="left red">request.setRequestHeader('content-type', 'application/x-www-form-urlencoded');</p>
+            <p class="left">HTTP头部可以设置请求主体的类型（content-type），POST方法发送数据给服务器通常使用application/x-www-form-urlencoded类型来发送</p>
+        </section>
+        <section>
+            <p class="left">使用send();方法（仅用于POST）将请求数据发送到服务器。</p>
+            <p class="left red">request.send("name=" + user.value + "&pwd=" + pwd.value);</p>
+        </section>
+        <section>
+            <h4>3.接收服务器传回的数据</h4>
+            <p class="left">如需获得来自服务器的响应，请使用 XMLHttpRequest 对象的 responseText 或 responseXML 属性。</p>
+            <p class="left">responseText:获得字符串形式的响应数据。</p>
+            <p class="left">responseXML:获得 XML 形式的响应数据。</p>
+            <p class="left red">var response = JSON.parse(request.responseText);</p>
+            <p class="left">一般服务器的数据用JSON存取，获取响应数据的时候我们需要将其解析读取</p>
+        </section>
+        <section>
+            <h4>4.更新网页数据</h4>
+            <p class="left">获取响应数据后，我们需要将网页更新，这时我们需要使用 onreadystatechange 来根据XHR的状态 readyState 的变化，执行一些基于响应的事件。</p>
+            <p class="left">XHR三个重要的属性：</p>
+            <p class="left">
+                （1）onreadystatechange	存储函数（或函数名），每当 readyState 属性改变时，就会调用该函数。
+            </p>
+            <p class="left">
+                （2）readyState
+                存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。
+                0: 请求未初始化;
+                1: 服务器连接已建立;
+                2: 请求已接收;
+                3: 请求处理中;
+                4: 请求已完成，且响应已就绪</p>
+            <p class="left">
+                （3）status,
+                200: "OK";
+                404: 未找到页面
+            </p>
+        </section>
+        <section>
+            <img style="width: 100%" src="./img/2018-08-20-C组-js5/change.png">
+        </section>
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            <p>使用AJAX的时候我们经常需要解决跨域的问题，怎么利用nginx 反向代理解决跨域问题？</p>
+        </section>
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            <p class="left">未配置好nginx反向代理的时候，我们向服务器发送请求的时候，浏览器就会报出这样的错误信息。</p>
+            <p class="left red">XMLHttpRequest cannot load ……</p>
+            <p class="left"></p>要实现跨域，主要注意修改添加nginx以下几项就可以了</p>
+            <img style="width: 100%" src="./img/2018-08-20-C组-js5/nginx.png">
+        </section>
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+            <h4>GET和POST的区别</h4>
+            <h4 class="left">在客户机和服务器之间进行请求-响应时，两种最常被用到的方法是：GET 和 POST</h4>
+            <p class="left">GET - 从指定的资源请求数据。</p>
+            <p class="left">POST - 向指定的资源提交要被处理的数据。</p>
+        </section>
+        <section>
+            <img style="width: 100%" src="./img/2018-08-20-C组-js5/getpost.png">
+        </section>
+        <section>
+            <h3>7.参考文献</h3>
+        </section>
+        <section class="left">
+            <p>参考一：<a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001434499861493e7c35be5e0864769a2c06afb4754acc6000" target="_blank">廖雪峰的官方网站</a></p>
+            <p>参考二：<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/setRequestHeader" target="_blank">MDN web docs</a></p>
+            <p>参考三：<a href="http://www.runoob.com/ajax/ajax-xmlhttprequest-send.html" target="_blank">菜鸟教程</a></p>
+            <p>参考四：<a href="http://javascript.ruanyifeng.com/bom/ajax.html" target="_blank">阮一峰《JavaScript 标准参考教程（alpha）》</a></p>
+        </section>
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+        <section>
+            <p>感谢大家观看</p>
+            <p><small>BY : 叶泽彪</small></p>
+        </section>
+    </div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status He
