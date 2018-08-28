@@ -1,0 +1,284 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>葡萄藤PPT</title>
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h3>【JS-task12】vue 组件</h3>
+            <p>分享人：高昕</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>Vue是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，
+                    Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。
+                    另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。</p>
+            </section>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h4>一.什么是组件？</h4>
+                <p>组件 (Component) 是 Vue.js 最强大的功能之一。组件可以扩展 HTML 元素，封装可重用的代码。在较高层面
+                    上，组件是自定义元素，Vue.js 的编译器为它添加特殊功能。在有些情况下，组件也可以表现为
+                    用 is 特性进行了扩展的原生 HTML 元素。</p>
+        </section>
+
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>3 常见问题</h3>
+                <p>注册组件:全局注册</p>
+                <pre><code class="hljs mel">
+Vue.component('my-component-name', {
+  // ... 选项 ...
+})
+            </code></pre>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <p>注册组件:局部注册</p>
+                <p>全局注册往往是不够理想的。比如，如果你使用一个像 webpack 这样的构建
+                    系统，全局注册所有的组件意味着即便你已经不再使用一个组件了，它仍然会被包含在你最终的
+                    构建结果中。这造成了用户下载的 JavaScript 的无谓的增加。
+                    在这些情况下，你可以通过一个普通的 JavaScript 对象来定义组件：</p>
+                <pre><code class="hljs mel">
+var ComponentA = { /* ... */ }
+var ComponentB = { /* ... */ }
+var ComponentC = { /* ... */ }
+            </code></pre>
+            </section>
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>  基础组件的自动化全局注册</p>
+                <p>可能你的许多组件只是包裹了一个输入框或按钮之类的元素，是相对通用的。我们有时候会把它
+                    们称为基础组件，它们会在各个组件中被频繁的用到。所以会导致很多组件里都会有一个包含基础组件的长列表：</p>
+                <pre><code class="hljs mel">
+import BaseButton from './BaseButton.vue'
+import BaseIcon from './BaseIcon.vue'
+import BaseInput from './BaseInput.vue'
+export default {
+  components: {
+    BaseButton,
+    BaseIcon,
+    BaseInput
+  }
+}
+            </code></pre>
+                <p>这里介绍一个可以让你在应用入口文件 (比如 src/main.js) 中全局导入基础组件的代码</p>
+            </section>
+
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>通过 Prop 向子组件传递数据</h4>
+                <p>Prop 验证</p>
+                <p>我们可以为组件的 prop 指定验证要求，例如你知道的这些类型。如果有一个需求没有被满足，则 Vue 会在浏览器控制台中警告你。这在开发一个会被别人用到的组件时尤其有帮助。
+
+                    为了定制 prop 的验证方式，你可以为 props 中的值提供一个带有验证需求的对象，而不是一个字符串数组。例如：</p>
+                <pre><code class="hljs mel">
+                     props: {
+    // 基础的类型检查 (`null` 匹配任何类型)
+    propA: Number,
+    // 多个可能的类型
+    propB: [String, Number],
+    // 必填的字符串
+    propC: {
+      type: String,
+      required: true
+    },
+    // 带有默认值的数字
+    propD: {
+      type: Number,
+      default: 100
+    },
+}
+            </code></pre>
+            </section>
+
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <p>单向数据流</p>
+                <p>所有的 prop 都使得其父子 prop 之间形成了一个单向下行绑定：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子
+                    组件意外改变父级组件的状态，从而导致你的应用的数据流向难以理解。</p>
+                <p>如果 prop 用来传递一个初始值；这个子组件接下来希望将其作为一个本地的 prop 数据来使用。在这
+                    种情况下，最好定义一个本地的 data 属性并将这个 prop 用作其初始值：</p>
+                <pre><code class="hljs mel">
+props: ['initialCounter'],
+data: function () {
+  return {
+    counter: this.initialCounter
+  }
+            </code></pre>
+            </section>
+
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <p>注意在 JavaScript 中对象和数组是通过引用传入的，所以对于一个数组或
+                    对象类型的 prop 来说，在子组件中改变这个对象或数组本身将会影响到父组件的状态。</p>
+            </section>
+
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <p>自定义事件</p>
+                <p>通过prop属性，父组件可以向子组件传递数据，而子组件的自定义事件就是用来将内部的数据报告给父组件的。</p>
+                <pre><code class="hljs mel">
+父组件使用时  @updateParmas="updateVideo"
+子组件内  this.$emit('updateParmas', 这是我暴露出去的数据)
+            </code></pre>
+                <p>子组件通知父组件执行updateParmas函数</p>
+            </section>
+
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <p>.sync 修饰符</p>
+                <p>在有些情况下，我们可能需要对一个 prop 进行“双向绑定”。不幸的是，真正的双向绑定会带来维护上的问题，因为子
+                    组件可以修改父组件，且在父组件和子组件都没有明显的改动来源。</p>
+                <p>所以官方推荐以 update:my-prop-name 的模式触发事件取而代之。举个例
+                    子，在一个包含 title prop 的假设的组件中，我们可以用以下方法表达对其赋新值的意图：</p>
+                <pre><code class="hljs mel">
+            &lt;text-document v-bind:title.sync="title"&gt;&lt;/text-document&gt;
+            this.$emit('update:title', newTitle)
+            </code></pre>
+            </section>
+
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <p>slot插槽</p>
+                <p>slot相当于子组件设置了一个地方，如果在调用它的时候，往它的开闭标签
+                    之间放了东西，那么它就把这些东西放到slot中。</p>
+                <pre><code class="hljs mel">
+ &lt;my-component&gt;
+    &lt;p&gt;这是一些初始内容&lt;/p&gt;
+  &lt;/my-component&gt;
+            </code></pre>
+            </section>
+        </section>
+
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;">
+                <h3>4 解决方案</h3>
+            </section>
+
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+             <h3>5.编码实战</h3>
+            </section>
+
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <p>子组件通知父子更新的两种方法</p>
+                <p></p>
+                <pre><code class="hljs mel">
+                    this.$emit('updateParmas','暴露一个值')// 不加.sync修饰符直接给父组件传事件，在父组件中修改props
+
+                     this.$emit('update:test', newValue )// 可以加上.sync修饰符在子组件内修改props
+            </code></pre>
+            </section>
+        </section>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <h3 style="text-align: center">6.扩展思考</h3>
+            </section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h3>7.参考文献</h3>
+            <a href="https://cn.vuejs.org/v2/guide/">vue 官方文档 </a>
+            <br>
+            <a href="https://segmentfault.com/a/1190000012826671#articleHeader8">vue组件Component详解</a>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>8 更多讨论</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>制作人：高昕 </small>
+            </p>
+        </section>
+
+    </div>
+    <div class="backgrounds"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background stack present" data-loaded="true" style="display: block;"><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up enabled" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+</div></div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+
+</script>
+
+</body>
+</html>
