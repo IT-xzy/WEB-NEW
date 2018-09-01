@@ -1,20 +1,24 @@
 <!doctype html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>PPT</title>
-
-    <link rel="stylesheet" href="bootstrap/reveal.css">
+    <title>葡萄藤PPT</title>
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
 
     <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
-    <link rel="stylesheet" href="bootstrap/ptt.css">
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
 
     <!-- syntax highlighting 代码高亮主题 -->
-    <link rel="stylesheet" href="bootstrap/zenburn.css">
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
 
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
     <!-- 打印和PDF输出样式 -->
     <script>
         var link = document.createElement('link');
@@ -22,20 +26,116 @@
         link.type = 'text/css';
         link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
         document.getElementsByTagName('head')[0].appendChild(link);
-    </script>
-</head>
 
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+    <style type="text/css">
+        h3 {
+            font-family: 'Microsoft Yahei';
+        }
+
+        p {
+            font-size: 30px !important;
+            letter-spacing: 2px;
+            line-height: 50px !important;
+            text-align: center;
+        }
+        h5 {
+            text-align: left;
+        }
+
+        B {
+            color: rgb(195, 255, 219);
+            font-size: 40px !important;
+            font-weight: 500 !important;
+        }
+
+        a {
+            color: #fff !important;
+        }
+    </style>
+</head>
 <body>
-    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>【JS-task10】</h2>
+
+            <h3>前端如歌部署代码？</h3>
+
+            <h4>分享人：火建强</h3>
+        </section>
+        <section>
+            <p style="text-align: center;">目录</p>
+            <p style="text-align: center;">1.背景介绍</p>
+            <p style="text-align: center;">2.知识剖析</p>
+            <p style="text-align: center;">3.常见问题</p>
+            <p style="text-align: center;">4.解决方案</p>
+            <p style="text-align: center;">5.编码实战</p>
+            <p style="text-align: center;">6.扩展思考</p>
+            <p style="text-align: center;">7.参考文献</p>
+            <p style="text-align: center;">8.更多讨论</p>
+        </section>
+        <!--1.背景介绍-->
+        <section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <p> 在平时的编码中，我们总会想着有什么方法能够简化我们的工作流程，让我们只专心于业务逻辑和数据的处理，而angularjs
+                    就为我们程序员实现了这一点。$scope $rootScope $watch 和 $state就是里面的几个方法，今天着重跟大家讨论一下这
+                    几个方法</p>
+            </section>
+        </section>
+        <!--2.知识剖析-->
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            <section>
+                <strong>$scope</strong>
+                <p>$scope在angularjs中，你可以把它理解成作用域，每个不同的controller，都具有它不同的作用域，所以controller不同，他们的scope是不同的。
+                    当你在 AngularJS 创建控制器时，你可以将 $scope 对象当作一个参数传递:{{carname}}<br>
+                    <pre>var app =angular.module('myApp', []);
+                    app.controller('myCtrl',function($scope) {
+                    $scope.carname ="Volvo";
+                    });</pre>
+                    当在控制器中添加 $scope 对象时，视图 (HTML) 可以获取了这些属性。
+                    视图中，你不需要添加 $scope 前缀, 只需要添加属性名即可，如： {{carname}}。
+                    如果我们想象js那样，做一个全局变量该怎么办呢？这就要说
+                    到rootScope了。</p>
+            </section>
+            <section>
+                <strong>$rootScope</strong>
+                  <p>
+                      $rootScope就相当于一个全局作用域，所以我们保存在其中的东西是全局性的，在任一controller之中都能够使用
+
+                      scope是html和单个controller之间的桥梁，数据绑定就靠他了。rootscope是各个controller中scope的桥梁。
+
+                      用rootscope定义的值，可以在各个controller中使用。</p>
+            </section>
+            <section>
+                <strong>$watch</strong>
+                    <p>
+                        相信使用过angularjs的同学都知道，ng中有个比较重要的特点，叫做双向绑定，那么这个双向绑定是如何实现的呢？
+    <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
     <map name="pttmap">
         <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
     </map>
     <div class="reveal">
         <div class="slides">
             <section>
-                <h2>如何开发和部署前端代码?</h2>
-                <h3>小课堂</h3>
-                <p>分享人:火建强</p>
+                <h4>前端如何部署代码？</h4>
+                <h4>分享人：火建强</h4>
             </section>
             <section>
                 <p>目录</p>
@@ -47,110 +147,106 @@
                 <p>6.扩展思考</p>
                 <p>7.参考文献</p>
                 <p>8.更多讨论</p>
-
             </section>
+
             <section>
                 <h3>1.背景介绍</h3>
             </section>
-            <section>
-                <p>状态码：304与200</p>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <!-- <h4 style="font-family: 'Times New Roman'; text-transform:none;">什么是Ajax？</h4> -->
+                <p style="text-align: left;">
+                    日历在网页中的应用有很多，比如说后台的搜索功能，备忘录功能等等。要实现日历功能，有很多插件可以实现， 利用angular实现相关的日历功能的插件也就只有几个，比如说ui-jquery,angular-datepicker,ui-bootstrap等等，
+                    这些都可以实现部分功能的日历插件；但是说到好用的话，我个人觉得还是angular-datepicker要好用一些， 因为这个插件的demo简单易懂，很多种情况都考虑到了，比如说时区、设定日历的最大最小值，日期格式，
+                    起始时间和终止时间，都有相对应的demo，这样就更加直观，清晰易懂。
+                </p>
             </section>
             <section>
-                <ul><li>304:重定向，告诉用户请求的文件被转移到了别处。</li>
-                <li>200:代表请求已成功被服务器接收、理解、并接受。</li></ul>
-                <a href="https://baike.baidu.com/item/304%E7%8A%B6%E6%80%81%E7%A0%81/7867141">304</a>
-                <p>区别在于304发送了一次http请求，但是200没有。</p>
+                <h3>2.知识剖析</h3>
             </section>
-            <section>
-                <p>用户是如何访问页面的</p>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <div style="text-align: left;">
+                    <p>在这个日历插件中，有以下相关属性。</p>
+                    <p>1.时区：一般都是用date-picker timezone属性来表示；timezone有以下值'Europe/London'，'Asia/Hong_Kong'，'America/Vancouver'</p>
+                    <p>2.日期格式date-time format属性,格式可以自行设定，插件属性值有 "MMMM YYYY", "DD MMM YYYY", "ddd MMM DD YYYY", "D MMM YYYY HH:mm",
+                        "lll",
+                    </p>
+                    <p>3.date-time min-date,max-date属性：用于表示最大日期和最小日期；</p>
+                    <p>4.view:日期/时间的默认选择级别；属性值有year、month、date、hours、minutes</p>
+                </div>
             </section>
-            <section>
-                <p>如何避免304请求</p>
-            </section>
-            <section>
-                <p>强制浏览器使用本地缓存（cache-control/expires），不要和服务器通信。那问题来了：当我们需要更新文件的时候怎么办？很好，相信有人想到了办法：通过更新页面中引用的资源路径，让浏览器主动放弃缓存，加载新资源。比如像官网项目中就是采用的这种方法，比如对于index.html文件，我们会在这个文件名后面加上版本号：index.html?ver=53.下次上线，把链接地址改成新的版本，资源就会更新了</p>
-            </section>
+
+
             <section>
                 <h3>3.常见问题</h3>
+                <h3 style="letter-spacing: 2px">如何实现设置开始日期和结束日期</h3>
+                <br>
             </section>
-            <section>
-                <p>还能进一步优化吗？</p>
-            </section>
+
             <section>
                 <h3>4.解决方案</h3>
+            </section>
+            <section class="" style="top: 275px; display: none;" aria-hidden="true">
+                <div style="text-align: left;">
+                    首先新建2个div标签，然后分别在两个标签内的ng-model绑定dates.minDate和dates.maxDate、 分别在max-date和min-date属性设置maxDate和minDate(目的是为了保证日历在开始日期在结束日期前面),对两个标签都添加
+                    date-change属性，然后在通过date-change属性中的方法来对ng-model为dates.minDate和dates.maxDate进行更新
+                </div>
             </section>
             <section>
                 <h3>5.编码实战</h3>
             </section>
-            <section>
-                <p>参考修真院发布线上环境流程</p>
-            </section>
+
+
             <section>
                 <h3>6.扩展思考</h3>
             </section>
             <section>
-               <p>如何根据文件生成HASH字符串</p>
-               <p>给静态资源文件添加hash(md5)后缀 防止缓存</p>
+                <div style="text-align: left;width: 110%">
+                    如何修改日历的样式，比如说把英文（默认）修改为中文日历？
+                </div>
+                <div style="text-align: left;">
+                    <p>这时候就需要使用webstorm的全局查找功能了（不要使用cdn加载js文件，否则会出现找不到的情况，也就无法修改样式）， 通过全局查找找到相关单词之后，然后修改成中文就行了
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h3>7.参考文献</h3>
+            </section>
+            <section style="text-align: left;margin-left: 10%">
+                来源：
+                <a href="https://github.com/g00fy-/angular-datepicker">github g00fy- / angular- datepicker</a>
             </section>
             <section>
-               <h3>参考文献</h3>
+                <h3>8.更多讨论</h3>
             </section>
             <section>
-               <p>参考：<a href="https://github.com/fouber/blog/issues/6">大公司里怎样开发和部署前端代码</a></p>
-            </section>
-               <section>
-               <p>8.更多讨论</p>
-            </section>
-            <section>
-               <ul>
-                   <h3>用什么重启服务武器？</h3>
-                   <li>Xshell 5</li>
-               </ul>
-            </section>
-            <section>
-               <p>项目文件如何放置？</p>
-               <ul>
-                   <li>看后端文档</li>
-               </ul>
-            </section>
-            <section>
-               <h3>Xshell 5有哪些命令行指令？</h3>
-               <ul>
-                   <li><a href="https://blog.csdn.net/rookiediary/article/details/76723218"></a></li>
-                   <li>cd</li>
-                   <li>rm -rf  删库操作</li>
-                   <li>rz -y 上传文件到服务器</li>
-                   <li>jar -xvf xxx释放war包</li>
-                   <li>sh catalina.sh start 重启服务器</li>
-                   <li>tail -f catalina.out  查看服务器日志</li>
-                   <li>cp 复制文件  cp a b 复制文件a命名为b;cp a /b 复制文件a到b目录下;cp * /b复制当前目录下所有文件到b目录下</li>
-                   <li>mv 移动或重命名文件 mv a b 将a重命名为b;mv a /b 将a文件移动到b目录下</li>
-                   <li>mkdir a 创建a目录</li>
-                   <li>view查看文件</li>
-               </ul>
-            </section>
-            <section>
-                <p>Xshell 5 查看服务器文件</p>
-                <ul>
-                    <li>Xshell 5插件</li>
-                </ul>
+                <p>讨论时间到，欢迎大家提问！
+                    <br> 你们还用过哪些angular日历插件？
+                </p>
             </section>
             <section>
                 <h4>鸣谢</h4>
                 <p>感谢大家观看</p>
                 <p>
-                    <small>武汉-web-12-火建强</small>
+                    By
+                    <small style="vertical-align: middle">火建强</small>
                 </p>
             </section>
 
-        </div>
-    </div>
+                        当我们在创建出scope下的一个新属性的时候，ng就会主动为我们新属性加上$watch这个方法，这个方法会监听我们
+                        的数据变化，当数据变化之后，就立即把view和scope上数据同步。
 
-    <script src="bootstrap/head.min.js"></script>
-    <script src="bootstrap/reveal.js"></script>
+                        $watch(watchExpression, listener, objectEquality);
+
+                        watchExpression,需要监控的表达式
+
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
 
     <script>
-
         // 以下为常见配置属性的默认值
         // {
         // 	controls: true, // 是否在右下角展示控制条
@@ -172,21 +268,118 @@
 
         // 初始化幻灯片
         Reveal.initialize({
-            history: true,
-            mouseWheel: true,
-            overview: true,
-            keyboard: true, 
-            transition: 'zoom',
-            controls: true, 
-            slideNumber: true,
-            dependencies: [
-                { src: './plugin/markdown/marked.js' },
-                { src: './plugin/markdown/markdown.js' },
-                { src: './plugin/notes/notes.js', async: true },
-                { src: './plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
             ]
         });
     </script>
 </body>
 
+
+                        function(newValue,oldValue, scope)
+
+                        objectEquality,是否深度监听，如果设置为true,它告诉Angular检查所监控的对象中每一个属性的变化. 如果你希望监控数组的个别元素或者对象的属性而不是一个普通的值, 那么你应该使用它</p>
+            </section>
+            <section>
+                <strong>$state</strong>
+                 <p>在ajax技术发展普及之后，因为其不会留下历史记录方便浏览器访问和对于seo不友好的特点，一个新技术应运而生：路由，$state就是路由中的一项服务。</p>
+            </section>
+        </section>
+        <!--3.常见问题-->
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            <p>Angular这个框架要怎么去学习</p>
+        </section>
+        <!--4.解决方案-->
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+        <p>如果你写惯了jQuery手工操作DOM的代码， 刚开始的时候会对angular的代码风格非常不适应。
+            angular对于js基础不够好的新手确实比较困难，尽量多想一想directive，provider，filter是什么，想通了就知道angular是什么，该怎么写了，在这之前建议花几天时间把js基础先看一遍
+            简单说就是要先去理解他的原理，工作机制，想一想为什么会有这个东西，怎么工作</p>
+        </section>
+        <!--5.编码实战-->
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+        <!--6.拓展思考-->
+        <section>
+            <h3>6.拓展思考</h3>
+            <p>$http是什么？怎么用？
+                $http 是 AngularJS 中的一个核心服务，用于读取远程服务器的数据。</p>
+        </section>
+        <section>
+            <h3>7.参考文献</h3>
+            参考1：<a href="https://www.jianshu.com/p/3398f1d19320">angularJS中的$watch方法监听作用域</a>
+            <br>
+            参考2：<a href="http://www.runoob.com/angularjs/angularjs-scopes.html">AngularJS Scope(作用域)</a>
+            <br>
+        </section>
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+        <section>
+            <p style="text-align: center">感谢大家观看
+            <p style="text-align: center">
+                <small>BY : 火建强</small>
+        </section>
+        <script src="./lib/reveal/js/head.min.js"></script>
+        <script src="./lib/reveal/reveal.js"></script>
+    </div>
+</div>
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: './plugin/markdown/marked.js'},
+            {src: './plugin/markdown/markdown.js'},
+            {src: './plugin/notes/notes.js', async: true},
+            {src: './plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
 </html>
