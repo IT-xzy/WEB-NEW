@@ -1,0 +1,451 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style type="text/css">
+        h3 {
+            font-family: 'Microsoft Yahei';
+        }
+        p {
+            font-size: 30px !important;
+            letter-spacing: 2px;
+            line-height: 50px !important;
+            text-align: left;
+        }
+        B {
+            color: rgb(195, 255, 219);
+            font-size: 40px !important;
+            font-weight: 500 !important;
+        }
+        a {
+            color: #fff !important;
+        }
+    </style>
+</head>
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>如何使用ui-router？ </h2>
+
+
+
+            <h3>小课堂</h3>
+
+            分享人：万登胜
+        </section>
+        <section>
+            <p style="text-align: center;">1、创建页面 </p>
+            <p style="text-align: center;">2、导入js文件</p>
+            <p style="text-align: center;">3、嵌套路由</p>
+            <p style="text-align: center;">4、通过views实现多视图,嵌套页面跳转</p>
+            <p style="text-align: center;">5、UI-ROUTER相较与NG-ROUTER的优点</p>
+
+            <!--<p style="text-align: center;">4.浮动</p>-->
+            <!--<p style="text-align: center;">5.编码实战</p>-->
+            <!--<p style="text-align: center;">6.扩展思考</p>-->
+            <!--<p style="text-align: center;">7.参考文献</p>-->
+            <!--<p style="text-align: center;">8.更多讨论</p>-->
+        </section>
+        <!--1.背景介绍-->
+        <section>
+            <section>
+                <h3>1、创建页面</h3>
+            </section>
+            <section>
+                <p>
+                    要实现上文那个demo效果，我们需要创建如下页面：
+                    app.js
+                    这是路由的配置页面
+                    index.html
+                    通常叫做index.html是单页面的首页，里面导入了各种css样式、库，插件，框架之类的。
+                    PageTab.html
+                    进入index.html首先展示的视图页面，下面几个是PageTab下面的嵌套页面
+                    Page-1.html
+                    Page-2.html
+                    Page-3.html
+
+                </p>
+                <p>
+
+
+
+                </p>
+                <p>
+
+                </p>
+                
+            </section>
+            <section>
+                <p>
+
+
+                </p>
+            </section>
+        </section>
+        <!--2.知识剖析-->
+        <section>
+            <h3>2、导入js文件</h3>
+            <section>
+                <p>
+                    script src="https://cdn.bootcss.com/angular.js/1.4.6/angular.js"<br>
+                    <br>
+                    script src="https://cdn.bootcss.com/angular-ui-router/1.0.0-rc.1/angular-ui-router.min.js"
+
+
+
+                </p>
+                <p>
+
+
+                </p>
+                <p>
+
+                </p>
+
+            </section>
+
+        </section>
+        <!--2.1 JS有哪些数据类型？-->
+        <section>
+            <section><B>3、嵌套路由</B></section>
+            <section>
+                <p>
+                    <pre>
+                    <code>
+         var myApp = angular.module("myApp", ["ui.router"]);
+//这里叫做App模块，这将告诉HTML页面这是一个AngularJS作用的页面，并把ui-router注入AngularJS主模块，它的内容由AngularJS引擎来解释。
+myApp.config(function ($stateProvider, $urlRouterProvider) {
+    //这一行声明了把 $stateProvider 和 $urlRouteProvider 路由引擎作为函数参数传入，这样我们就可以为这个应用程序配置路由了.
+    $urlRouterProvider.when("", "/PageTab");
+    //如果没有路由引擎能匹配当前的导航状态，默认将路径路由至 PageTab.html, 那它就像switch case语句中的default选项.就是一个默认的视图选项
+    $stateProvider
+        //这一行定义了会在main.html页面第一个显示出来的状态（就是进入页面先加载的html），作为页面被加载好以后第一个被使用的路由.
+        .state("PageTab", {//导航用的名字
+            url: "/PageTab",//#+标识符，这里就是url地址栏上面的标识符，通过标识符，进入不同的html页面
+            templateUrl: "PageTab.html"//这里是html的路径，这是跟标识符相对应的html页面
+        })
+        .state("PageTab.Page1", {//引号里面代表Page1是PageTab的子页面，用.隔开
+            url:"/Page1",
+            templateUrl: "Page-1.html"
+        })
+        .state("PageTab.Page2", {//需要跳转页面的时候，就是用这双引号里面的地址
+            url:"/Page2",
+            templateUrl: "Page-2.html"
+        })
+        .state("PageTab.Page3", {
+            url:"/Page3",
+            templateUrl: "Page3.html"
+        });
+});
+                    </code>
+                    </pre>
+                </p>
+                <p>
+
+                </p>
+
+
+
+
+                <p>
+
+                    </p>
+            </section>
+            <section>
+                <div style="text-indent:2em">
+                    <p style="text-align: left">
+
+</p>
+                    <p style="text-align: left">
+
+                    <p style="text-align: left">
+
+                    </p>
+<p>
+
+
+</p>
+                </div>
+            </section>
+            <section>
+                <div style="text-indent:2em">
+                    <p style="text-align: left">
+
+                    <p style="text-align: left">
+                       </p>
+                    <!--<pre>-->
+                        <!--<code>-->
+                     <!--</code>-->
+                    <!--</pre>-->
+                </div>
+            </section>
+            <section><B></B></section>
+            <section>
+                <div style="text-indent:2em">
+
+                </div>
+            </section>
+            <section>
+                <!--<p style="text-align: center;">用户信息</p>-->
+                <!--<p>scope: scope.userInfo <br/> 对应接口 wx.getUserInfo</p>-->
+            </section>
+            <section>
+                <!--<p style="text-align: center;">地理位置</p>-->
+                <!--<p>scope:scope.userLocation <br/> 对应接口wx.getLocation, wx.chooseLocation  </p>-->
+            </section>
+            <section>
+                <!--<p>通讯地址</p>-->
+                <!--<p>scope: scope.address <br/> 对应接口wx.chooseAddress</p>-->
+            </section>
+            <section>
+            <!--<p>发票抬头</p>-->
+            <!--<p>scope:scope.invoiceTitle <br/> 对应接口wx.chooseInvoiceTitle</p>-->
+        </section>
+            <section>
+                <!--<p>微信运动步数</p>-->
+                <!--<p>scope:scope.werun <br/> 对应接口wx.getWeRunData</p>-->
+            </section>
+            <section>
+                <!--<p>录音功能</p>-->
+               <!--<p>scope:scope.record<br/> 对应接口  wx.startRecord</p>-->
+               <!--<p>保存到相册</p>-->
+               <!--<p>scope.writePhotosAlbum<br>wx.saveImageToPhotosAlbum, wx.saveVideoToPhotosAlbum</p>-->
+               <!--<p>  摄像头</p>-->
+               <!--<p>scope.camera</p>-->
+            </section>
+
+        </section>
+        <!--3.常见问题-->
+        <section>
+            <h3>4、通过views实现多视图</h3>
+            <p>
+                在ui-view=""的双引号里面，ui-view展示的页面是根据app.js设置的url对应的html来展示的<br>
+                嵌套页面跳转<br>
+                导航里面的名字必须是“父页面的名字.子页面的名字”
+                <pre>
+                <code>
+                    <div>
+     <h1>下面这几个按钮是在主页面下面再嵌套一层的页面</h1>
+                        <!--ui-sref跳转-->
+     <span style="width:100px" ui-sref=".Page1"><a href="">Page-1</a></span>
+     <span style="width:100px" ui-sref=".Page2"><a href="">Page-2</a></span>
+     <span style="width:100px" ui-sref=".Page3"><a href="">Page-3</a></span>
+ </div>
+ <div>
+     <!--PageTap嵌套的视图html展示的地方-->
+     <div ui-view=""/>
+ </div>
+                </code>
+                </pre>
+
+
+
+
+
+
+
+            </p>
+
+
+            <p>
+                
+
+
+
+            </p>
+            <!--<pre>-->
+                   <!--<code>-->
+                <!--position: absolute;-->
+                <!--left: 50%;-->
+                <!--top: 50%;-->
+                <!--width:200px;-->
+                <!--height:100px;-->
+                <!--margin-left:-100px;-->
+                <!--margin-top:-50px;-->
+            <!--</code>-->
+            <!--</pre>-->
+            <section>
+                <p>
+
+                </p>
+            </section>
+
+        </section>
+        <!--<section>-->
+            <!--<B>不固定高宽div垂直居中的方法</B>-->
+            <!--<p>-->
+                <!--不固定高宽div垂直居中的方法-->
+
+                <!--方法一：-->
+
+                <!--用一个“ghost”伪元素（看不见的伪元素）和 inline-block / vertical-align 可以搞定居中，非常巧妙。但是这个方法要求待居中的元素是 inline-block，不是一个真正通用的方案。-->
+
+                <!--代码如下-->
+            <!--</p>-->
+            <!--<pre>-->
+
+
+            <!--</pre>-->
+        <!--</section>-->
+        <!--4.解决方案-->
+        <!--<section>-->
+            <!--<p>-->
+                   <!--<pre>-->
+                   <!--<code>-->
+                <!--/* This parent can be any width and height */-->
+<!--.block {-->
+<!--text-align: center;-->
+<!--}-->
+
+<!--/* The ghost, nudged to maintain perfect centering */-->
+<!--.block:before {-->
+<!--content: '';-->
+   <!--display: inline-block;-->
+   <!--height: 100%;-->
+   <!--vertical-align: middle;-->
+   <!--margin-right: -0.25em; /* Adjusts for spacing */-->
+<!--}-->
+
+<!--/* The element to be centered, can-->
+  <!--also be of any width and height */-->
+<!--.centered {-->
+<!--display: inline-block;-->
+   <!--vertical-align: middle;-->
+   <!--width: 50%;-->
+<!--}-->
+            <!--</code>-->
+            <!--</pre>-->
+            <!--</p>-->
+        <!--</section>-->
+        <!--<section>-->
+            <!--<p>-->
+
+                <!--3、h5技术，window.localStorage存储数据<br>-->
+
+                <!--优点：储存空间大，有5M存储空间。<br>-->
+
+                <!--缺点：不是所有浏览器都支持。<br>-->
+            <!--</p>-->
+        <!--</section>-->
+
+        <!--<section>-->
+               <!--<pre>-->
+                   <!--<code>-->
+              <!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">-->
+<!--<head>-->
+   <!--<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">-->
+   <!--<title>haorooms不固定高度div写法</title>-->
+
+   <!--<style>-->
+<!--.center {-->
+    <!--position: fixed;-->
+    <!--top: 50%;-->
+    <!--left: 50%;-->
+    <!--background-color: #000;-->
+    <!--width:50%;-->
+    <!--height: 50%;-->
+    <!-- -webkit-transform: translateX(-50%) translateY(-50%);-->
+<!--}-->
+
+
+<!--</style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div> "center"></div>-->
+<!--</body>-->
+<!--</html>-->
+            <!--</code>-->
+            <!--</pre>-->
+
+        <!--</section>-->
+        <!--6.拓展思考-->
+        <!--<section>-->
+            <!--<h3>6.拓展思考</h3>-->
+        <!--</section>-->
+        <!--<section>-->
+            <!--<p>可以在什么地方安置获取授权的按钮？</p>-->
+            <!--<p>比如在直播小程序中，可以设置当用户发表评论时，获取用户的头像信息和名称，然后调用发表。</p>-->
+        <!--</section>-->
+        <!--<section>-->
+            <!--<h3>7.参考文献</h3>-->
+            <!--<p>微信公共平台——授权：https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html</p>-->
+            <!--<P>用户拒绝授权CSDN：https://blog.csdn.net/qq_28189091/article/details/75417073</P>-->
+        <!--</section>-->
+        <section>
+            <h3>5、UI-Route相较与ng-router的优点</h3>
+            <p><br>
+
+                视图不能嵌套,这意味着$scope会发生不必要的重新载入。<br>
+
+                同一URL下不支持多个视图。这一需求也是常见的：我们希望导航栏用一个视图（和相应的控制器）、内容部分用另一个视图（和相应的控制器）。</p>
+        </section>
+        <section>
+            <p style="text-align: center">感谢大家观看
+            <p style="text-align: center">
+                <small>BY : 万登胜</small>
+        </section>
+        <script src="./lib/reveal/js/head.min.js"></script>
+        <script src="./lib/reveal/reveal.js"></script>
+    </div>
+</div>
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: './plugin/markdown/marked.js'},
+            {src: './plugin/markdown/markdown.js'},
+            {src: './plugin/notes/notes.js', async: true},
+            {src: './plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>

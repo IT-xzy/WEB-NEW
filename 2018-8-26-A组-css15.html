@@ -1,0 +1,350 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides"
+         style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h2>【CSS-TASK15】</h2>
+            <h3>知道css有个content属性吗？有什么作用？有什么应用？</h3>
+            <p>分享人：郭晨阳</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: justify">
+                学习前端知识我们常常提到盒模型，盒模型的几个要素，margin、border、padding 、content这四个属性，前三个经常用到讲到，但第四个content属性怎么用？今天我们就来讲讲这个 。
+
+            <p style="text-align: justify">
+                content的意思顾名思义，是“内容”，它的作用就是在css中直接生成网页显示的 内容， 这个属性要结合：before和：after这俩个伪类属性来使用。下面详细介绍它的用法 。
+            </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="letter-spacing: 5px">before和after是什么呢？</p>
+            <p style="letter-spacing: 5px">:before和:after的作用就是在指定的元素内容（而不是元素本身）之前或者之后插入一个包含content属性指定内容的行内元素.
+                 需要注意的是如果没有content属性，伪类元素将没有任何作用。但是可以指定content为空，插入的内容默认是一个行内元素，并且在HTML源代码中无法看到，这就是为什么称之为伪类元素的理由，所以也就无法通过DOM对其进行操作。
+                 伪类元素也会像其他子元素一样正常继承父元素的一些CSS属性，比如字体等。</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>3.常见问题</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p>content各属性值的具体使用方法</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>4.解决方案</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <p style="text-align: center">CSS中主要的伪元素有四个：before/after/first-letter/first-line，在before/after伪元素选择器中，有一个content属性，能够实现页面中的内容插入。</p>
+                <a href="https://segmentfault.com/a/1190000002750033">content属性详解</a>
+            </section>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>5.编码实战</h3>
+        </section>
+        <!-- <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: justify">1.插入纯文字。content属性与 ::before 及 ::after 伪元素配合使用生成文本内容。
+            </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: justify">2.嵌入文字符号。使用content属性的open-quote属性值和close-quote属性值在字符串两边添加诸如括号、单引号、双引号之类的嵌套文字符号。open-quote用于添加开始的文字符号，close-quote用于添加结束的文字符号。
+            </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: justify">3.插入图片。content属性也可以直接在元素前/后插入图片， content:url()。
+            </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: justify">4.插入元素的属性值。content属性可以直接利用attr获取元素的属性，将其插入到对应位置。
+                attr（attribute），是属性的意思，attr(href)，也就是获取href里面的值填充到content里面啊，这是css3的用法。
+                语法为::after{content:attr(href);}
+            </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: justify">5.计数器用法。content属性可以插入编号，可以修饰，可以指定编号种类，还可以在编号中进行嵌套。
+            </p>
+        </section> -->
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>6.扩展思考</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <p style="text-align: center">
+                    为什么content属性很少用到？
+                </p>
+                <p style="text-align: center">
+                    前端书写代码时提倡内容样式的分离，而content在css中插入内容正好又混淆了这一原则；并且该属性兼容性也不太好。
+                </p>
+            </section>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>7.参考文献</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p>参考一：CSS3的content属性详解</p>
+            <p>参考二：菜鸟教程content属性</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>8.更多讨论</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>BY :郭晨阳</small>
+            </p>
+        </section>
+
+    </div>
+    <div class="backgrounds">
+        <div class="slide-background past" data-loaded="true" style="display: none;"></div>
+        <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background stack present" data-loaded="true" style="display: block;">
+            <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+        </div>
+        <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+        <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background stack future" style="display: none;">
+            <div class="slide-background present" style="display: none;"></div>
+        </div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background stack future" style="display: none;">
+            <div class="slide-background present" style="display: none;"></div>
+        </div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background stack future" style="display: none;">
+            <div class="slide-background present" style="display: none;"></div>
+        </div>
+        <div class="slide-background stack future" style="display: none;">
+            <div class="slide-background present" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+        </div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+    </div>
+    <div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div>
+    <aside class="controls" style="display: block;">
+        <button class="navigate-left enabled" aria-label="previous slide"></button>
+        <button class="navigate-right enabled" aria-label="next slide"></button>
+        <button class="navigate-up enabled" aria-label="above slide"></button>
+        <button class="navigate-down" aria-label="below slide"></button>
+    </aside>
+    <div class="slide-number" style="display: none;"></div>
+    <div class="speaker-notes" data-prevent-swipe=""></div>
+    <div class="pause-overlay"></div>
+    <div id="aria-status-div" aria-live="polite" aria-atomic="true"
+         style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+
+        语法：
+        return[()[expression][]];
+        可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。
+
+        用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression 被省略，
+        或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+    </div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+    //    原始类型对象直接赋值不会相互影响
+    //    var a = 1;
+    //
+    //    var b = a;
+    //    b = 10;
+    //    console.log(a); // 1
+    ////
+    //    var a = 'hello';
+    //    var b = a;
+    //    b = 'world';
+    //    console.log(a); // hello
+    //
+    //    var a = true;
+    //    var b = a;
+    //    b = false;
+    //    console.log(a);
+    //数组浅复制
+    //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+    //    ];
+    //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+    //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+    //    console.log(a)//那么现在打印a 是什么结果呢
+    //
+    //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+    //    var arrtoo = arr.slice(1);
+    //    arrtoo[2] = "set Map";
+    //    console.log(arr);//One,Two,Three
+    //    console.log(arrtoo);//One,set Map,Three
+    //
+    //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+    //    var arrtooo = arr1.concat(111111);
+    //    arrtooo[1] = "set Map To";
+    //    console.log(arr1);//One,Two,Three
+    //    console.log(arrtooo);//One,set Map To,Three
+    //
+    //    var b=[1,2,3,4,5];   //concat的链接
+    //    var c=[6,7,8,9];
+    //    var d =[4,4,22]
+    //    console.log(b.concat(c,d))
+    var a = {name: 'yy', age: 26};  //对象的浅拷贝哦
+    var b = new Object();
+    b.name = a.name;
+    b.age = a.age;
+    b.name = 'xx';
+    console.log(a);//Object { name="yy", age=26}
+    console.log(b);//Object { name="xx", age=26}
+    var d = {            //对象的浅拷贝哦 第一种
+        name: 'd',
+        oc: {
+            age: 32
+        },
+        oad: {
+            adds: {
+                bb: 12
+            }
+        }
+    };
+    var deepCopy = function (source) {
+        var result = {};
+        for (var key in source) {
+            result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+        }
+        return result
+    };
+    var c = deepCopy(d);
+    c.name = 'c';
+    c.oc = {
+        age: 49
+    };
+    console.log(c);
+    console.log(d);
+    //    var person = {    //第二种深拷贝
+    //        name: 'aa',
+    //        friends: ['da', 'dsa', 'gf']
+    //    };
+    //
+    //    var aPerson = Object.create(person, {
+    ////        name: {
+    ////            value: "gee"
+    ////        }
+    //    });
+    //
+    //    console.log(person.name);
+    //    console.log(aPerson.friends)
+    var Chinese = {
+        nation: '中国'
+    }
+    var Doctor = {
+        career: '医生'
+    }
+    function extendCopy(p) {
+        var c = {};
+        for (var i in p) {
+            c[i] = p[i];
+        }
+        c.uber = p;
+        return c;
+    }
+    var Doctor = extendCopy(Chinese);
+    Doctor.career = '医生';
+    console.log(Doctor); // 中国
+    Chinese.birthPlaces = ['北京', '上海', '香港'];
+    var Doctor = extendCopy(Chinese);
+    Doctor.birthPlaces.push('厦门');
+</script>
+
+</body>
+</html>
