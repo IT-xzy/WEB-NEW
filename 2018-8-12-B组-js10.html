@@ -1,0 +1,222 @@
+<!doctype html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>葡萄藤PPT</title>
+
+  <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+  <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+  <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+  <!-- syntax highlighting 代码高亮主题 -->
+  <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+  <!-- 打印和PDF输出样式 -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+      './css/reveal/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+</head>
+
+<body>
+  <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+  <map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+  </map>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h3> 如何进行网站性能优化？ </h3>
+        <p>上海分院：顾配如</p>
+      </section>
+      <section>
+        <p>1.背景介绍</p>
+        <p>2.知识剖析</p>
+        <p>3.常见问题</p>
+        <p>4.解决方案</p>
+        <p>5.编码实战</p>
+        <p>6.扩展思考</p>
+        <p>7.参考文献</p>
+        <p>8.更多讨论</p>
+      </section>
+      <section>
+        <h3>1.背景介绍</h3>
+      </section>
+      <section>
+        <section>
+          <h3>为什么要对网站进行性能优化</h3>
+          <p>网站的访问量及用户的持久性其实在一定程度上取决于其性能，如果一个网站响应耗时久，动画卡顿，占用大量的cpu等，往往就会导致用户流失。尤其是app及微信端应用，可以这么说，如果页面打开都要超过4秒，这体验绝对差。作为一个开发者，是不允许出现这种情况的，那么该如何提高页面的性能呢？</p>
+          <p>大致的网站优化性能步骤不外乎减少HTTP请求次数，减少DNS访问，减少对DOM的操作，缩减请求的文件大小/cookie大小等等，</p>
+        </section>
+      </section>
+      <section>
+        <h3>2.知识剖析</h3>
+      </section>
+      <section>
+        <section>
+          <h3>网站性能优化方法
+          </h3>
+        </section>
+        <section>
+          <h3>1、尽量减少HTTP请求次数</h3>
+          <p>终端用户响应的时间中，有80%用于下载各项内容，这部分时间包括下载页面中的图像、样式表、脚本、Flash等。通过减少页面中的元素可以减少HTTP请求的次数，这是提高网页速度的关键步骤。 减少页面组件的方法其实就是简化页面设计。那么有没有一种方法既能保持页面内容的丰富性又能达到加快响应时间的目的呢？这里有几条减少HTTP请求次数同时又可能保持页面内容丰富的技术。
+          </p>
+        </section>
+        <section>
+          <p>1、合并文件：合并文件是通过把所有的脚本放到一个文件中来减少HTTP请求的方法，例如可以简单地把所有的CSS文件都放入一个样式表中。当脚本 或者样式表在不同页面中使用时需要做不同的修改，这可能会相对比较麻烦，但即便如此也要把这个方法作为改善页面性能的重要一步；
+            2、CSS Sprites：CSS Sprites是减少图像请求的有效方法。把所有的背景图像都放到一个图片文件中，然后通过CSS的background-image和background-position属性来显示图片的不同部分;</p>
+        </section>
+        <section>
+          <p>
+            3、图片地图：图片地图是把多张图片整合到一张图片中。虽然文件的总体大小不会改变，但是可以减少HTTP请求次数。图片地图只有在图片的所有组成 部分在页面中是紧挨在 一起的时候才能使用，如导航栏。确定图片的坐标和可能会比较繁琐且容易出错，同时使用图片地图导航也不具有可读性，因此不推荐这种方法；
+            4、内联图像：内联图像是使用data:URL scheme的方法把图像数据加载页面中，这可能会增加页面的大小。把内联图像放到样式表（可缓存）中可以减少HTTP请求同时又避免增加页面文件的大小，但是内联图像现在还没有得到主流浏览器的支持。
+            减少页面的HTTP请求次数是你优化网站性能首先要做的一步，这是改进首次访问用户等待时间的最重要的方法。如同Tenni Theurer的博文《Browser Cahe Usage – Exposed》中所说，HTTP请求在无缓存情况下占去了40%到60%的响应时间。改善HTTP请求，让那些初次访问你网站的人获得更加快速的体验
+            吧！
+          </p>
+        </section>
+        <section>
+          <h3>2、减少DNS查找次数
+          </h3>
+        </section>
+        <section>
+          <p>当客户端中的DNS缓存都为空时（浏览器和操作系统都为空），DNS查找的次数和页面中主机名的数量相同，这其中包括页面中URL、图片、脚本文 件、样式表、Flash对象等包含的主机名。减少主机名的数量可以减少DNS查找次数。减少主机名的数量还可以减少页面中并行下载的数量。减少DNS查找
+            次数可以节省响应时间，但是减少并行下载却会增加响应时间
+          </p>
+        </section>
+        <section>
+          <h3>3、避免跳转</h3>
+          <p>跳转是使用301和302代码实现的。跳转会降低用户体验。在用户和HTML文档中间增加一个跳转，会拖延页面中所有元素的显示，因为在HTML文件被加载前任何文件（图像、 Flash等）都不会被下载。</p>
+        </section>
+        <section>
+          <h3>4、可缓存的AJAX</h3>
+          <p>Ajax经常被提及的一个好处就是由于其从后台服务器传输信息的异步性而为用户带来的反馈的即时性。但是，使用Ajax并不能保证用户不会在等待异步的JavaScript和XML响应上花费时间。 在很多应用中，用户是否需要等待响应取决于Ajax如何来使用。例如，在一个基于Web的Email客户端中，用户必须等待Ajax返回符合他们条件的邮件查询结果。记住一点，“异步”并不异味着“即时”，这很重要。
+            为了提高性能，优化Ajax响应是很重要的。提高Ajxa性能的措施中最重要的方法就是使响应具有可缓存性，
+          </p>
+        </section>
+        <section>
+          <p>1、Gizp压缩文件； 2、减少DNS查找次数； 3、精简JavaScript； 4、避免跳转； 5、配置ETags。
+          </p>
+        </section>
+        <section>
+          <h3>5、推迟加载内容</h3>
+          <p>你可以仔细看一下你的网页，问问自己“哪些内容是页面呈现时所必需首先加载的？哪些内容和结构可以稍后再加载？ 把整个过程按照onload事件分隔成两部分，JavaScript是一个理想的选择。例如，如果你有用于实现拖放和动画的JavaScript，
+            那么它 就以等待稍后加载，因为页面上的拖放元素是在初始化呈现之后才发生的。其它的例如隐藏部分的内容（用户操作之后才显现的内容）和处于折叠部分的图像也可以 推迟加载
+
+          </p>
+        </section>
+        <section>
+          <h3>6、预加载</h3>
+          <p>预加载和后加载看起来似乎恰恰相反，但实际上预加载是为了实现另外一种目标。预加载是在浏览器空闲时请求将来可能会用到的页面内容（如图像、样式表和脚本）。使用这种方法，当用户要访问下一个页面时，页面中的内容大部分已经加载到缓存中了，因此可以大大改善访问速度。
+          </p>
+        </section>
+        <section>
+          <h3>7、减少DOM元素数量</h3>
+          <p>一个复杂的页面意味着需要下载更多数据，同时也意味着JavaScript遍历DOM的效率越慢。比如当你增加一个事件句柄时在500和5000个DOM元素中循环效果肯定是不一样的。 大量的DOM元素的存在意味着页面中有可以不用移除内容只需要替换元素标签就可以精简的部分。你在页面布局中使用表格了吗？你有没有仅仅为了布局而引入更多的
+
+            <div>元素呢？也许会存在一个适合或者在语意是更贴切的标签可以供你使用。
+          </p>
+        </section>
+        <section>
+          <h3>8、不要出现404错误</h3>
+          <p>　HTTP请求时间消耗是很大的，因此使用HTTP请求来获得一个没有用处的响应（例如404没有找到页面）是完全没有必要的，它只会降低用户体验而不会有一点好处。有些站点把404错误响应页面改为“你是不是要找***”，这虽然改进了用户体验但是同样也会浪费服务器资源（如数据库等）。最糟糕的情况是指向外部
+            JavaScript的链接出现问题并返回404代码。首先，这种加载会破坏并行加载；其次浏览器会把试图在返回的404响应内容中找到可能有用的部分当 作JavaScript代码来执行。</p>
+        </section>
+        <section>
+          <h3>19、使用外部JavaScript和CSS</h3>
+        </section>
+      </section>
+      <section>
+        <h3>3.常见问题</h3>
+      </section>
+      <section>
+        <h3></h3>
+      </section>
+      <section>
+        <h3>4.解决方案</h3>
+      </section>
+      <section>
+      </section>
+      <section>
+        <h3>5.编码实战</h3>
+      </section>
+      <section>
+        <h3>6.扩展思考</h3>
+        <p>网站性能优化好处</p>
+        <p>网站前端的用户体验决定了用户是否想要去使用网站的功能，而网站的功能决定了用户是否会一票否决前端体验。</p>
+        <p>不仅仅如此，如果前端优化得好，他不仅可以为企业节约成本，他还能给用户带来更多的用户，因为增强的用户体验。说了这么多，那么我们应该如何对我们前端的页面进行性能优化呢？ 一般说来，web前端指网站业务逻辑之前的部分，包括浏览器加载、网站视图模型、图片服务、CDN服务等，主要优化手段有浏览器访问、使用反向代理才、CDN等。
+        </p>
+      </section>
+      <section>
+        <h3>7.参考文献</h3>
+      </section>
+      <section>
+        <p>https://blog.csdn.net/mahoking/article/details/51472697</p>
+      </section>
+      <section>
+        <h3>8.更多讨论</h3>
+      </section>
+      <section>
+        <h4>鸣谢</h4>
+        <h3>感谢观看</h3>
+        <p>
+          <small>BY——顾配如</small>
+        </p>
+      </section>
+      </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+      // 以下为常见配置属性的默认值
+      // {
+      // 	controls: true, // 是否在右下角展示控制条
+      // 	progress: true, // 是否显示演示的进度条
+      // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+      // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+      // 	keyboard: true, // 是否启用键盘快捷键来导航
+      overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+          history: true,
+          dependencies: [{
+              src: '../plugin/markdown/marked.js'
+            },
+            {
+              src: '../plugin/markdown/markdown.js'
+            },
+            {
+              src: '../plugin/notes/notes.js',
+              async: true
+            },
+            {
+              src: '../plugin/highlight/highlight.js',
+              async: true,
+              callback: function () {
+                hljs.initHighlightingOnLoad();
+              }
+            }
+          ]
+        });
+    </script>
+</body>
+
+</html>
