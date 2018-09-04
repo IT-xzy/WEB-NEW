@@ -1,0 +1,387 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+   
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h3>【JS-task4】如何验证程序是否完成，测试以及修正Bug？</h3>
+            <p>分享人：田迪生</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+			<p>在日常中，我们码代码都是按照需求来的，为了验证我们的工作成果是否符合项目的需求，那么验证程序是否完成、测试以及修复bug就成了我们工作中非常重要的流程。</p>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+			<p>1.什么样的程序是完成的程序</p>
+			<p>2.测试的分类</p>
+			<p>3.一些测试的概念 </p>
+        </section>
+
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>1.什么样的程序是完成的程序</h3>
+            <ul>
+                <li>从需求的角度看：满足用户的全部需求</li>
+                <li>从程序的角度看：代码不存在明显bug，结构明晰，逻辑通顺，有一定的优化</li>
+                <li>从UI图的角度看：较为完美的还原了UI图的设计</li>
+                <li>从后期版本维护迭代的角度看：注释完备，稳定性好，不加班的代码就是好代码</li>
+            </ul>
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>2.测试的分类</h3>
+            <P>测试：测试是使用人工操作或者软件自动运行的方式来检验它是否满足规定的需求或弄清预期结果与实际结果之间的差别的过程。
+                软件测试的方法</P>
+            <ul>
+                <li>按照测试范围，可以分为模块测试和整体联调</li>
+                <li>按照测试条件，可以分为正常操作情况测试和异常情况测试</li>
+                <li>按照测试的输入范围，可以分为全覆盖测试和抽样测试</li>
+            </ul>
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <ul>
+                <li>按照测试方式
+                    <ol>
+                        <li>模块测试：针对设计中的一个一个模块来进行测试的，目的是保证每个模块作为一个单元能正确运行，所以模块测试通常又被称为单元测试。在这个测试步骤中所发现的往往是编码和详细设计的错误。 </li>
+                        <li>整体联调：测试模块间接口的正确性、各模块间的数据流和控制流是否按照设计实现其功能、以及集成后整体功能的正确性。  </li>
+                        <li>正常操作情况测试：根据正确的操作流程对单独的模块或整体进行测试，确定被测对象可以良好运行  </li>
+                        <li>异常情况测试：异常情况，可能会包括数据库异常，系统异常，用户异常操作等情况   </li>
+                    </ol>
+                </li>
+            </ul>
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>3.一些测试的概念 </h3>
+            <ul>
+                <li>成熟性：软件产品要避免由软件中错误而导致失效的能力 </li>
+                <li>容错性：在软件失效或者违反规定的接口的情况下，软件产品维持规定的性能级别的能力 </li>
+                <li>易恢复性：在发生故障的情况下，软件重建规定的性能级别并恢复受直接影响的数据的能力 </li>
+                <li>可靠性依从性：软件产品依附于同可靠性相关的标准、约定或规定的能力  </li>
+                <li>全覆盖测试：对于被测对象全面，整体，多维度的测试，受限于时间和人力成本，除非被测对象级别很高，不然不会采用这种测试方式   </li>
+                <li>抽样测试：针对功能及模块随机抽取被测对象   </li>
+            </ul>
+        </section>
+
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>3.常见问题</h3>
+        </section>
+     
+	    <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p>如何debug?</p>
+        </section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>4.解决方案</h3>
+        </section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>老大在知乎上的回答：</h3>
+            <ol>
+                <li>确认Bug是否在本地可以重现。 </li>
+                <li>确认Bug在哪一段代码中。 </li>
+                <li>去除掉所有无关代码，只去调试和Bug相关的代码。 </li>
+                <li>和之前正常运行的版本对比，尝试恢复到之前可以正常运行的代码</li>
+                <li>重新写一个小Demo，确认是否可以正常运行，可以的话，移动代码到原有的代码中。</li>
+                <li>如果本地无法重现，打日志，观察线上行为。</li>
+                <li>重启服务，重启IDE，重启笔记本，重启服务器。</li>
+                <li>跟产品经理说这个Bug解决不了，花费的代价很大，不值得。</li>
+            </ol>
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>张明云在知乎上的回答:</h3>
+            <P>解决问题的流程：了解问题→定位问题→分析问题→解决问题→验证问题 </P>
+            <ul>
+                <li>借助搜索引擎：遇到有明显的异常信息，且自己并不熟悉为什么异常时，最高效的解决方法是借助搜索引擎，这里的搜索引擎一定是谷歌，不是百度；借助搜索引擎能解决工作中的大部分bug，你要相信，全世界这么多开发人员，你遇到过的大多数问题其他人也遇到过； </li>
+                <li>打印调试法：这是最笨但最有效的办法，人会说谎、断点调试可能会说谎，但日志一定不会说谎； </li>
+            </ul>
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <ul>
+                <li>二分排除法：当你遇到随机问题、帮助他人解bug或者遇到自己不熟悉的代码时，通过屏蔽一部分代码，运行观察问题仍然存在，如果存在则进一步分析屏蔽一部分代码，直到定位到有问题的具体位置为止，这种方法能解决工作中的很大一部分疑难杂症； </li>
+                <li>小黄鸭调试法：当你向某个对象陈述你的思路时，往往会有意想不到的结果，哪怕对方并不是一个生物； </li>
+            </ul>
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <ul>
+                <li>断点调试法：受限于效率不高以及在多线程环境下断点调试并不灵，有必要时才考虑用这种方法；通常可以使用打印调试法来代替； </li>
+                <li>线上求助：包括论坛提问、RTX和微信群提问等；不到万不得已不要用这种办法，在有限的圈子里面，你遇到的一个具体技术问题很有可能其他人并没有遇到过，多数时候问了也是白问，但有时候也可能是一种有效的方法。 </li>
+            </ul>
+        </section>
+
+
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>5.编码实战</h3>
+        </section>
+
+
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>6.扩展思考</h3>
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>什么是小黄鸭调试法?</h3>
+            <p>小黄鸭调试法，又称橡皮鸭调试法、黄鸭除虫法（Rubber Duck Debugging）是可在软件工程中使用的一种调试代码的方法。方法就是在程序的调试、除错或测试过程中，操作人耐心地向小黄鸭解释每一行程序的作用，以此来激发灵感与发现矛盾。</p>
+        </section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		  <p>此概念是参照于一个故事。故事中程序大师随身携带一只小黄鸭，在调试代码的时候会在桌上放上这只小黄鸭，然后详细地向鸭子解释每行代码。许多程序员都有向别人提问及解释编程问题的经历，而目标甚至可能是完全不懂编程的人。而就在解释的过程中，程序员可能就发觉了问题的解决方案。一边阐述代码的意图，一边观察它实际上的意图并做调试，两者间的任何不协调都会变得更明显，使人更容易发现错误所在。如果没有玩具小鸭，操作人也可以向其他任何东西倾诉，比如桌上的盆栽、键盘/鼠标等。</p>
+        </section>
+
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>7.参考文献</h3>
+        </section>
+		
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <ul>
+                <li>软件开发流程 </li>
+                <li>测试分析中对异常情况考虑 </li>
+                <li>老程序员解bug有那些通用套路</li>
+            </ul>
+        </section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h3>8 更多讨论</h3>
+        </section>
+
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <p> 如何避免写出bug？</p>
+			<p>改动代码时要考虑到对其他模块的影响；思考问题要全面，考虑到可能发生的各种情况；从其他地方找到的代码要弄清楚原理，了解这个知识点，再用到自己的项目中。</p>
+        </section>
+		
+		<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+		    <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>BY : 田迪生</small>
+            </p>
+        </section>
+
+    </div>
+<div class="backgrounds"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background stack present" data-loaded="true" style="display: block;"><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up enabled" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+               
+                语法：
+                return[()[expression][]];
+                可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。
+            
+                用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression 被省略，
+                    或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+            </div></div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+    //    原始类型对象直接赋值不会相互影响
+    //    var a = 1;
+    //
+    //    var b = a;
+    //    b = 10;
+    //    console.log(a); // 1
+    ////
+    //    var a = 'hello';
+    //    var b = a;
+    //    b = 'world';
+    //    console.log(a); // hello
+    //
+    //    var a = true;
+    //    var b = a;
+    //    b = false;
+    //    console.log(a);
+
+    //数组浅复制
+    //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+    //    ];
+    //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+    //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+    //    console.log(a)//那么现在打印a 是什么结果呢
+    //
+    //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+    //    var arrtoo = arr.slice(1);
+    //    arrtoo[2] = "set Map";
+    //    console.log(arr);//One,Two,Three
+    //    console.log(arrtoo);//One,set Map,Three
+
+    //
+    //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+    //    var arrtooo = arr1.concat(111111);
+    //    arrtooo[1] = "set Map To";
+    //    console.log(arr1);//One,Two,Three
+    //    console.log(arrtooo);//One,set Map To,Three
+
+    //
+    //    var b=[1,2,3,4,5];   //concat的链接
+    //    var c=[6,7,8,9];
+    //    var d =[4,4,22]
+    //    console.log(b.concat(c,d))
+
+    var a = {name: 'yy', age: 26};  //对象的浅拷贝哦
+    var b = new Object();
+    b.name = a.name;
+    b.age = a.age;
+    b.name = 'xx';
+    console.log(a);//Object { name="yy", age=26}
+    console.log(b);//Object { name="xx", age=26}
+
+    var d = {            //对象的浅拷贝哦 第一种
+        name: 'd',
+        oc: {
+            age: 32
+        },
+        oad: {
+            adds: {
+                bb: 12
+            }
+        }
+    };
+    var deepCopy = function (source) {
+        var result = {};
+        for (var key in source) {
+            result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+        }
+        return result
+    };
+
+    var c = deepCopy(d);
+    c.name = 'c';
+    c.oc = {
+        age: 49
+    };
+    console.log(c);
+    console.log(d);
+
+
+    //    var person = {    //第二种深拷贝
+    //        name: 'aa',
+    //        friends: ['da', 'dsa', 'gf']
+    //    };
+    //
+    //    var aPerson = Object.create(person, {
+    ////        name: {
+    ////            value: "gee"
+    ////        }
+    //    });
+    //
+    //    console.log(person.name);
+    //    console.log(aPerson.friends)
+
+    var Chinese = {
+        nation: '中国'
+
+    }
+    var Doctor = {
+        career: '医生'
+    }
+
+    function extendCopy(p) {
+        var c = {};
+        for (var i in p) {
+            c[i] = p[i];
+        }
+        c.uber = p;
+        return c;
+    }
+
+    var Doctor = extendCopy(Chinese);
+    Doctor.career = '医生';
+    console.log(Doctor); // 中国
+    Chinese.birthPlaces = ['北京', '上海', '香港'];
+    var Doctor = extendCopy(Chinese);
+    Doctor.birthPlaces.push('厦门');
+
+</script>
+
+</body>
+</html>
