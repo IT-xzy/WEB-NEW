@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>继承：DEMO</title>
+</head>
+<body>
+
+	
+	<script>
+		console.log('原型链：');
+		//原型链继承
+		function Parent(){
+			this.property = 'hello';
+		}
+		Parent.prototype.getParentValue = function(){
+			return this.property;
+		}
+		function Child(){
+			this.childProperty = 'bye';
+		}
+		Child.prototype = new Parent();
+		Child.prototype.getChildValue = function(){
+			return this.childProperty;
+		}
+		var person = new Child();
+		console.log(person.getParentValue());		//hello
+	</script>
+
+	<script>
+		console.log('借用构造函数：');
+		//借用构造函数
+		function Parent(){
+			this.friends = ['xiaoming', 'xiaohong', 'xiaoqiang'];
+		}
+		function Child(){
+			Parent.call(this);
+		}
+		var kid1 = new Child();
+		kid1.friends.push('xiaolong');
+		console.log(kid1.friends);		//['xiaoming', 'xiaohong', 'xiaoqiang', 'xiaolong'];
+		var kid2 = new Child();
+		console.log(kid2.friends);		//['xiaoming', 'xiaohong', 'xiaoqiang']
+
+		// arent.call(this)在新创建的Child实例环境下调用Parent构造函数。这样，就在新的Child对象上，此处的kid1和kid2对象上执行Parent()函数中定义的对象初始化代码。这样，每个Child实例就都会具有自己的friends属性的副本了。
+	</script>
+	<script>
+		console.log('构造函数传参：');
+		//构造函数传参
+		function Parent(name){
+			this.name = name;
+		}
+		function Child(){
+			Parent.call(this, 'Danny');
+			this.age = 12;
+		}
+		var kid = new Child();
+		console.log(kid.name + kid.age);	//Danny12
+	</script>
+
+	<script>
+		console.log('组合继承：');
+		//组合继承
+		function Person(name) {
+			this.name = name;
+			this.friends = ['Lucy', 'Jack', 'Willian'];
+		}
+		Person.prototype.sayName = function(){
+			console.log(this.name);
+		}
+		function Child(name, age){
+			//继承属性
+			Person.call(this, name);
+			this.age = age;
+		}
+		//继承方法
+		Child.prototype = new Person();
+		// Child.prototype.constructor = Child;
+		Child.prototype.sayAge = function(){
+			console.log(this.age);
+		}
+		var kid1 = new Child('Mark', 14);
+		kid1.friends.push('Hellen');
+		console.log(kid1.friends);		//['Lucy', 'Jack', 'Willian', 'Hellen']
+		kid1.sayAge();		//14
+
+		var kid2 = new Child('Sam', 20);
+		kid2.friends.push('Allen');
+		console.log(kid2.friends);		//['Lucy', 'Jack', 'Willian', 'Allen']
+		kid2.sayName();		//Sam
+
+		 // Person构造函数定义了两个属性：name和friends。Person的原型定义了一个方法sayName()。Child构造函数在调用Parent构造函数时，传入了name参数，紧接着又定义了自己的属性age。然后将Person的实例赋值给Child的原型，然后又在该原型上定义了方法sayAge().这样，两个不同的Child实例既分别拥有自己的属性,包括引用类型的属性，又可以使用相同的方法了。
+	</script>
+
+	<script>
+		console.log('原型式继承：');
+		//原型式继承
+		function object(o) {
+		   function F() {}
+		   F.prototype = o;
+		   return new F();
+		}
+		var person = {
+ 			name : "Nick",
+			friends : ["Sky","Carl","Van"]
+		};
+
+		var anotherPerson = object(person);
+		anotherPerson.name = "Greg";
+		anotherPerson.friends.push("Bob");
+	 
+		var yetAnotherPerson = object(person);
+		yetAnotherPerson.name = "Linda";
+		yetAnotherPerson.friends.push("Barbie");
+	 
+		console.log(person.friends); // "Sky,Carl,Van,Bob,Barbie"
+	</script>
+	
+	<script>
+		console.log('寄生式继承：');
+		//寄生式继承
+		function createAnother(original) {
+		    var clone = object(original);  //通过调用函数创建一个新对象
+		    clone.sayHi = function() {    //以某种方式来增强这个对象
+		        console.log("hi");
+		    };
+		    return clone;  // 返回这个对象
+		}
+		var person = {
+		    name : "Nick",
+		    friends : ["Sky","Carl","Van"]
+		};
+		var anotherPerson = createAnother(person); //继承person的属性和方法，同时有自己的属性和方法
+		anotherPerson.sayHi();  //hi
+		console.log(anotherPerson.name);
+		console.log(anotherPerson.friends);
+	</script>
+
+	<script>
+		//寄生组合式继承
+		function inheritPrototype(child, parent){
+		    var prototype = object(parent.prototype);  // 创建对象
+		    prototype.constructor = child;         // 增强对象
+		    child.prototype = prototype;           // 指定对象
+		}
+	</script>
+
+</body>
+</html>
