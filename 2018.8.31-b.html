@@ -41,7 +41,7 @@
     <div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
         <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
             <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
-                <h3>【js-task2】常用的DOM操作</h3>
+                <h3>【js-task2】return的用法是什么？</h3>
                 <p>分享人：朱士峰</p>
             </section>
             <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
@@ -59,127 +59,127 @@
                 <h3>1.背景介绍</h3>
             </section>
             <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
-                <h3>DOM（文档对象模型）</h3>
-                <p>DOM是针对于HTML和XML文档的一个API（应用程序编程接口）。是W3C组织推荐的处理可扩展标志语言的标准编程接口。在网页上，组织页面（或文档）的对象被组织在一个树形结构中，用来表示文档中对象的标准模型就称为DOM。</p>
-                <p>当网页被加载时，浏览器会创建页面的文档对象模型（Document Object Model）。</p>
-                <p>在DOM中，可以将任何HTML或者XML的文档描绘成一个由多层节点构成的结构</p>
+                <h3>JavaScript return语句</h3>
+                <p>表示从被调函数返回到主调函数继续执行，返回时可附带一个返回值，由return后面的参数指定</p>
+                <p>return通常是必要的，因为函数调用的时候计算结果通常是由返回值带出来的</p>
+                <p>如果函数执行不需要返回计算结果，也经常需要返回一个状态码来表示函数执行的顺利与否（-1和0就是常用的状态码),主调函数可以通过返回值判断被调函数的执行情况</p>
             </section>
             <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
                 <h3>2.知识剖析</h3>
             </section>
             <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
                 <p>
-                    节点这个词是一个网络用语，代表了网络中的一个连接点。一个网络就是由一些节点构成的集合。
+                    return返回值的作用就是把固定不变的，常用的代码封装起来写在类里，每次要用的时候调用就行了。
                 </p>
-                <p>DOM 的最小组成单位叫做节点（node）。文档的树形结构（DOM 树），就是由各种不同类型的节点组成。每个节点可以看作是文档树的一片叶子。</p>
-            </section>
-            
-            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
-                <p>
-                    节点的类型有七种。
-                    <br> Document：整个文档树的顶层节点
-                    <br> DocumentType：doctype标签
-                    <br> Element：网页的各种HTML标签
-                    <br> Attribute：网页元素的属性
-                    <br> Text：标签之间或标签包含的文本
-                    <br> Comment：注释
-                    <br> DocumentFragment：文档的片段
-                </p>
-            </section>
-            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
-                <h4>常见的DOM操作</h4>
-                <p>查找DOM节点</p>
-                <p>1.id查找 document.getElementById()
-                    <br> 2.class查找 document.getElementsByClassName()
-                    <br> 3.标签查找 document.getElementsByClassName()</p>
+
             </section>
             <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
                 <p>
-                    HTML DOM - 改变 HTML
-                </p>
-                <p>
-                    修改 HTML 内容的最简单的方法是使用 innerHTML 属性
-                </p>
-                <p>
-                    document.getElementById(id).innerHTML=新的 HTML
-                </p>
-                <p>
-                    改变 HTML 样式
-                </p>
-                <p>
-                    document.getElementById("p2").style.color="blue"
+                    return语句会终止函数的执行并返回函数的值
                 </p>
             </section>
             <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
-                <h4>DOM事件</h4>
-                <p>允许 JavaScript 对 HTML 事件作出反应
-                    <br> onclick 事件——当用户点击时
-                    <br> onload 事件——用户进入
-                    <br> onunload 事件——用户离开
-                    <br> onmouseover事件——鼠标移入
-                    <br> onmouseout事件——鼠标移出
-                    <br> onmousedown事件——鼠标按下
-                    <br> onmouseup 事件——鼠标抬起</p>
+                <p>
+                    函数值和实际输出值的区别
+                </p>
             </section>
             <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
-                <h4>HTML DOM EventListener</h4>
-                <p>addEventListener() 方法用于向指定元素添加事件句柄。
-                    <br> addEventListener() 方法添加的事件句柄不会覆盖已存在的事件句柄。
-                    <br> 可以向一个元素添加多个事件句柄。
-                    <br> 可以向同个元素添加多个同类型的事件句柄，如：两个 "click" 事件。
-                    <br> 可以向任何 DOM 对象添加事件监听，不仅仅是 HTML 元素。如： window 对象。
-                    <br> addEventListener() 方法可以更简单的控制事件（冒泡与捕获）。</p>
-                <p>element.addEventListener(event, function, useCapture);</p>
+
+                <p>也可以说默认函数是没有返回值的，通常函数经过一系列处理后需要给外部返回一个值或者对象，如果没有return将弹出underfind</p>
+
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+
+                <p>
+                    return在终止函数运行时的应用：为事件处理函数返回return：flash；作用在于阻止默认事件行为和取消默认动作。
+                </p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+
+                <p>若在for循环中使用return，还会执行下一次循环吗？
+                </p>
             </section>
 
-                <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
-                <p>第一个参数是事件的类型 (如 "click" 或 "mousedown")
-                    <br> 第二个参数是事件触发后调用的函数。
-                    <br> 第三个参数是个布尔值用于描述事件是冒泡还是捕获，true则表示在捕获阶段调用，为false表示在冒泡阶段调用。
-                </p>
-            </section>
-            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
-                <h4>DOM二级事件</h4>
-                <p>
-                    2级DOM的事件传播分三个阶段进行。
-                    <br> 1.capturin阶段，事件从Document对象沿着文档树向下传播给节点。如果目标的任何一个祖先专门注册了事件监听函数，那么在事件传播的过程中就会运行这些函数。
-                    <br> 2.下一个阶段发生在目标节点自身，直接注册在目标上的适合的事件监听函数将运行。
-                    <br> 3.是bubbling阶段，这个阶段事件将从目标元素向上传播回Document对象（与capturing相反的阶段）。虽然所有事件都受capturing阶段的支配，但并不是所有类型的事件都bubbling。（0级DOM事件模型处理没有capturing阶段）
-                    <br> 即1：事件捕获， 2：处于目标阶段， 3：事件冒泡阶段
-                </p>
-            </section>
-            
+
+
             <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
                 <h3>3.常见问题</h3>
             </section>
             <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
-                <p>如何阻止事件冒泡</p>
+                    <p>若在for循环中使用return，还会执行下一次循环吗？</p>
             </section>
-            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <!-- <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
                 <h3>4.解决方案</h3>
                 <p>使用event.stopPropagation( );
                 </p>
                 <p>
-                 另一种方式是通过event.target， target指向了触发事件的那个具体对象.
-                        可以使用
-                         if(event.target==this){
-                          //语句
-                          }
+                    另一种方式是通过event.target， target指向了触发事件的那个具体对象. 可以使用 if(event.target==this){ //语句 }
                 </p>
-            </section>
+            </section> -->
             <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
                 <h3>5.编码实战</h3>
             </section>
             <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
                 <h3>6.扩展思考</h3>
             </section>
+
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                除了return，还有什么可以让for循环中断呢
+            </section>
+
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>
+                    break
+                </p>
+                <p>
+                    break语句会使运行的程序立即退出包含在最内层的循环或者退出一个switch语句。
+                    由于它是用来退出循环或者switch语句，
+                    所以只有当它出现在这些语句时，这种形式的break语句才是合法的，
+                    如果一个循环终止条件特别复杂，那么使用break语句来实现某些条件比用一个for循环表达式来表达所以条件用要容易得多
+
+                </p>
+            </section>
+
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <p>
+                        continue
+                    </p>
+                    <p>
+                        continue语句和break语句相似。所不同的是，它不是退出一个循环，而是开始循环的一次新迭代。
+                        continue语句只能用于while语句、do'while语句、for语句或者for'in语句的循环体内，在其他地方使用都会引起错误
+    
+                    </p>
+                </section>
+
+
+                <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                        <p>
+                            迭代
+                        </p>
+                        <p>
+                            迭代是重复反馈过程的活动，其目的是为了逼近所需目标或者结果。每一次对过程的重复称为一次迭代，而每一次迭代得到的结果都会作为下一次迭代的初始值。
+                        </p>
+                        
+                    </section>
+
+
+
+
+
+
+
+
+
             <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
                 <h3>7.参考文献</h3>
             </section>
 
             <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
                 <p>1.JavaScript高级程序设计</p>
-                <p>2.head first JavaScript</p>
+                <p>2.dom编程艺术</p>
 
             </section>
 
@@ -391,6 +391,7 @@
         var Doctor = {
             career: '医生'
         }
+
         function extendCopy(p) {
             var c = {};
             for (var i in p) {
