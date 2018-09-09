@@ -61,29 +61,26 @@
             <p style="text-align: justify">
                 <!--我们在设计网页的时候，盒子居中是经会常用到的。居中可以分为水平居中和垂直居中。-->
                 <!--水平居中是比较容易，通过设置元素的margin: 0 auto就可以实现，但是垂直居中相对来说是比较复杂一些的。-->
-                1、什么是面向对象。<br>
-                就是用对象的思想去写代码，<br>
-                过程式写法<br>
-                面向对象写法，<br>
-                我们一直在使用对象的写法，Array,Date<br>
-                2、面向对象的特点<br>
-                抽象：抓住核心问题(抽取一样的东西放在一起)<br>
-                封装：只能通过对象来访问(只能通过对象的形式去访问)<br>
-                继承：从已经有的对象上继承新的对象(从已有的对象上继承新的对象)<br>
-                多态：多对象的不同形态(从一个接口出来好多对象，大家公用一个方法)<br>
+                1、面向对象的一些属性和方法？<br>
+                hasOwnPropety():看是不是对象自身下面的属性<br>
+                constructor:查看对象的构造函数<br>
+                每个原型都会自动添加constructor属性<br>
+                for in的时候有些属性是找不到的<br>
+                instanceof运算符对象在原型链上是否有关系<br>
+                tostring:object上的方法
             </p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>2.知识剖析</h3>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <p style="letter-spacing: 5px">我将从过程式到工厂模式在到面向对象，讲解面向对象是怎么由来的</p>
+            <p style="letter-spacing: 5px">面向对象上hasOwnPropety()、constructor、constructor、tostring这些属性和方法怎么使用</p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>3.常见问题</h3>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <p>面向对象引用问题？</p>
+            <p>面向对象引用类型的判断？</p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>4.解决方案</h3>
@@ -91,10 +88,8 @@
         <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
             <section style="top: 330px; display: none;">
                 <p style="text-align: center">
-                    去改写对象下公用的方法或者属性，让公用的方法或者属性<br>
-                    在内存中指存在一份（提高性能）<br>
-                   原型： 类似于css。<br>
-                   普通方法：类似与style<br>
+                    面向对象constructor查看是不是对象自身下的属性<br>
+                    instanceof对象与构造函数是否在一条原型链上<br>
                 </p>
                 <!--<p>二 margin：auto实现CSS垂直居中</p>-->
                 <!--<p>三 display:flex实现CSS垂直居中</p>-->
