@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <title>如何使用Canvas</title>
+  <title>什么是Vue-CLI?</title>
 
   <link rel="stylesheet" href="./css/reveal/reveal.css">
 
@@ -24,18 +24,27 @@
       './css/reveal/print/paper.css';
     document.getElementsByTagName('head')[0].appendChild(link);
   </script>
+  <script src="http://39.108.71.175/resource/anime.min.js"></script>
   <style>
     .code {
-      white-space: pre-line;
+      white-space: pre;
       text-align: left;
-      font-size: 80% !important;
-      margin-left: 15rem !important;
+      font-size: 50%;
+      margin-left: 5rem !important;
     }
+
     .code2 {
       white-space: pre-line;
       text-align: left;
       font-size: 80% !important;
+    }
 
+    li {
+      margin: 10px 0 !important;
+    }
+
+    p {
+      font-family: Verdana, Geneva, Tahoma, sans-serif !important;
     }
   </style>
 </head>
@@ -49,9 +58,9 @@
     <div class="slides">
       <section>
         <h2 style="font-size: 1.5em">
-          <span>如何使用Canvas</span>
+          <span>什么是Vue-CLI?</span>
         </h2>
-        <p>分享人：陈杰超</p>
+        <p>分享人：胡云鹤</p>
       </section>
       <section>
         <p>目录</p>
@@ -59,100 +68,129 @@
         <p>2.知识剖析</p>
         <p>3.常见问题</p>
         <p>4.解决方案</p>
-        <p>5.编码实战</p>
-        <p>6.参考文献</p>
-        <p>7.更多讨论</p>
+        <p>5.扩展思考</p>
+        <p>6.编码实战</p>
+        <p>7.参考文献</p>
+        <p>8.更多讨论</p>
       </section>
 
       <section>
         <h3>1.背景介绍</h3>
       </section>
       <section>
-        <h4>什么是Canvas?</h4>
+        <h4>什么是Vue-CLI?</h4>
         <p style="text-align: left;">
-          Canvas API（画布）是在HTML5中新增的标签用于在网页实时生成图像，并且可以操作图像内容，基本上它是一个可以用JavaScript操作的位图（bitmap）。
+          Vue CLI(Vue Command Line Interface) 是一个基于 Vue.js 进行快速开发的完整系统，提供
         </p>
-        <p>Canvas 对象表示一个 HTML 画布元素--&ltcanvas&gt。它没有自己的行为，但是定义了一个 API 支持脚本化客户端绘图操作。</p>
+        <ul>
+          <li>通过 @vue/cli 搭建交互式的项目脚手架。</li>
+          <li>基于 webpack 构建，并带有合理的默认配置；</li>
+          <li>可以通过项目内的配置文件进行配置；</li>
+          <li>可以通过插件进行扩展</li>
+          <li>一个丰富的官方插件集合，集成了前端生态中最好的工具</li>
+        </ul>
       </section>
-
-
       <section>
         <h3>2.知识剖析</h3>
       </section>
 
       <section>
-        <dl>
-          <dt>绘制基本图形</dt>
-          <dd style="font-size: 0.7em; margin:0.8rem 0 0.8rem 2rem;">
-            canvas只支持一种原生的矩形绘制，所有其他图形都至少需要生成一种路径。
-            <br>
-            <br>绘制一个填充的矩形，填充的默认颜色为黑色
-            <br>fillRect(x, y, width, height)
-            <br>
-            <br>绘制一个矩形的边框
-            <br>strockRect(x, y, width, height)
-            <br>
-            <br>清除指定矩形区域，然后这块区域会变得完全透明
-            <br>clearRect(x, y, widh, height)
-          </dd>
-        </dl>
+        <h4>如何安装Vue-CLI</h4>
+        <p>Vue CLI 需要 Node.js 8.9 或更高版本 (推荐 8.11.0+)。</p>
+        <p>npm install -g @vue/cli</p>
+
       </section>
       <section>
-          <h4>定义和用法</h4>
-          <p style="text-align: left;font-size:80%;">
-            首先，在HTML元素中定义一个canvas标签
-          </p>
-          <p style="text-align: left;font-size: 80%;">
-            &ltcanvas id="tutorial" width="150" height="150"&gt&lt/canvas&gt
-          </p>
-          <p>&nbsp</p>
-          <h4>
-            获取canvas对象及渲染上下文
-          </h4>
-          <p style="text-align: left;font-size: 80%;">
-            var canvas = document.getElementById('tutorial');
-          </p>
-          <p style="text-align: left;font-size: 80%;">
-            var ctx = canvas.getContext('2d');
-          </p>
-        </section>
+        <h3>创建一个项目</h3>
+        <p>vue create &ltproject-name&gt</p>
+        <h3>通过图形化界面创建项目</h3>
+        <p>vue ui</p>
+      </section>
+      <section>
+        <img src="http://39.108.71.175/resource/vuecli.png" alt="" height="300px">
+        <img src="http://39.108.71.175/resource/vuecli2.png" alt="" height="300px">
+      </section>
       <section>
         <h3>3.常见问题</h3>
       </section>
       <section style="width: 100%;">
-        <h4>如何绘制更多图形</h4>
-        <div>
-          <p style="font-size: 80%">图形的基本元素是路径。
-              <br>路径是通过不同颜色和宽度的线段或曲线相连形成的不同形状的点的集合。
- 
-          </p>
+        <h3>创建VueCLI 2.X模板</h3>
+        <p>Vue CLI 3 和旧版使用了相同的 vue 命令，所以 Vue CLI 2 (vue-cli) 被覆盖了。如果你仍然需要使用旧版本的 vue init 功能，你可以全局安装一个桥接工具：</p>
+        <p>
+          npm install -g @vue/cli-init
+        </p>
+        <p>vue init webpack &ltproject-name&gt</p>
+      </section>
+      <section>
+        <h3>vueCLI3.0 跨域问题解决方案</h3>
+        <p>这里需要我们手动配置一个文件，在项目的根目录下创建一个vue.config.js的文件，里面写入配置</p>
+        <div class="code" style="font-size: 80%">
+          module.exports = {
+            devServer: {
+              proxy: {
+                '/api': {
+                  target: '&lturl&gt',
+                  changeOrigin: true
+                },
+                '/foo': {
+                  target: '&ltother_url&gt'}}}}
         </div>
       </section>
       <section>
         <h3>4.解决方案</h3>
+      </section>
+      <section>
+        <h3>5.扩展思考</h3>
+        <h3>VueCLI 2.x与VueCLI3.0</h3>
+      </section>
+      <section>
+        <h3>项目结构变化</h3>
+        <p class="code">
+          │  package.json
+          ├─public
+          │      favicon.ico
+          │      index.html
+          └─src
+              │  App.vue
+              │  main.js
+              ├─assets
+              │      logo.png
+              └─components
+                      HelloWorld.vue
+        </p>
+      </section>
+      <section>
+        <h4>build哪里去了？config哪里去了？配置都消失了？</h4>
+        <p>vue-cli3.0默认项目目录与2.0的相比，更精简:</p>
+        <ol style="font-size: 80%">
+          <li>移除的配置文件根目录下的，build和config等目录</li>
+          <li>移除了static文件夹，新增了public文件夹，并且index.html移动到public中</li>
+          <li>在src文件夹中新增了views文件夹，用于分类 试图组件 和 公共组件</li>
+          <li>大部分配置 都集成到 vue.config.js这里,在项目根目录下</li>
+        </ol>
+      </section>
+      <section>
+        <h4>npm run dev 改了？</h4>
+        <p>在根目录的package.json里有如下命令</p>
+        <p>
+          "serve": "vue-cli-service serve",<br>
+          "build": "vue-cli-service build",<br>
+          "lint": "vue-cli-service lint"
+        </p>
+      </section>
+      <section>
+        <h3>6.编码实战</h3>
+        <h4>使用VueCLI UI 创建一个Vue项目</h4>
+        <div id="lineDrawing" style="background-color: white">
+      </section>
 
-      </section>
-      <section>
-        步骤如下
-          <br>1.创建路径起始点
-          <br>2.调用绘制方法去绘制出路径
-          <br>3.把路径封闭
-          <br>4.一旦路径生成，通过描边或填充路径区域来渲染图形。
-        
-        </section>
-      <section>
-        <h3>5.编码实战</h3>
-      </section>
-      <section>
-          <h5>详见demo</h5>
-        </section>
       <section>
         <h3>7.参考文献</h3>
       </section>
       <section>
         <p style="text-align: left; padding-left: 180px">
           参考一
-          <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API">MDN Canvas教程</a>
+          <a href="https://cli.vuejs.org/guide/">VueCLI官方文档</a>
         </p>
 
       </section>
@@ -160,9 +198,6 @@
       <section>
         <h3>8.更多讨论</h3>
       </section>
-      <section>
-          <h5>一个在地上弹跳的小球动画如何实现？</h5>
-        </section>
 
       <section>
         <h4>鸣谢</h4>
@@ -171,7 +206,7 @@
 
     </div>
   </div>
-
+  <script src="https://unpkg.com/ionicons@4.3.0/dist/ionicons.js"></script>
   <script src="./lib/reveal/js/head.min.js"></script>
   <script src="./lib/reveal/reveal.js"></script>
 

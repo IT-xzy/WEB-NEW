@@ -1,0 +1,278 @@
+﻿<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+    </map>
+    <div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+        <div class="slides" style="width: 960px; height: 700px; zoom: 1.15586;">
+            <section class="present" style="top: 178px; display: block;">
+                <h2>Vue的生命周期</h2>
+                <p>分享人: 刘泽华</p>
+            </section>
+
+
+            <section hidden="" aria-hidden="true" class="future" style="top: 66.5px; display: block;">
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.参考文献</p>
+            </section>
+
+            <!-- 1 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 0px; display: block;">
+                <section style="top: 267px; display: block;">
+                    <h3>1.背景介绍</h3>
+                </section>
+
+                <section>
+                    <h4>什么是Vue的生命周期？</h4>
+                    <p>从实例的创建，到设置观察者，监听者，然后查找模板，编译模板，挂载渲染好的DOM。更新数据周期，销毁周期，和抛出错误的周期钩子函数</p>
+                </section>
+                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                    <h4>生命周期拥有8个生命周期钩子函数</h4>
+                    <h4>2个组件激活的生命周期钩子函数</h4>
+                    <h4>组件错误的生命周期钩子函数</h4>
+                </section>
+                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+
+                </section>
+            </section>
+
+
+            <!-- 2 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <h3>2.知识剖析</h3>
+                </section>
+                <section>
+                    beforeCreate
+
+                    <p>在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用。</p>
+                    <p>一个普通的 JavaScript 对象传给 Vue 实例的 data 选项，Vue 将遍历此对象所有的属性，并使用 Object.defineProperty 把这些属性全部转为 getter/setter。</p>
+                    <p>init event初始化事件  为当前实例做基础配置
+                        data属性被成功绑定
+                        设置数据观测 data observer  属性和方法的运算   watch/event事件回调配置</p>
+                </section>
+                <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+
+                   created()
+
+                   <p>在实例创建完成后被立即调用。在这一步，实例已完成以下的配置：数据观测 (data observer)，属性和方法的运算，watch/event 事件回调。然而，挂载阶段还没开始，$el 属性目前不可见。</p>
+                   
+                   <p>1查找el中的template元素挂载</p>
+                   <p>2查找是否有$.mount()</p>
+                   <p>3查找template模板</p>
+                   <p>4查找render属性值</p>
+                   <p>5编译成正常dom</p>
+                </section>
+                <section>
+                    <p>beforeMount()</p>
+                    
+                    <p>挂载之前执行</p>
+                    <p>执行挂载替换</p>
+                </section>
+                <section>
+                    mounted()
+                    <p>DOM渲染完毕</p>
+                </section>
+                <section>
+                    beforeUpdate() {
+                        
+                    },
+                </section>
+                <section>
+                    updated() {
+                        
+                    },
+                </section>
+                <section>
+                    beforeDestroy() {
+                        
+                    },
+                </section>
+
+                <section>
+                    destroyed() {
+                        
+                    },
+                </section>
+                <section>
+                    <p>activated()</p>
+                    <p>deactivated()</p>
+                    
+                </section>
+                <section>
+                    errorCaptured()
+                </section>
+            </section>
+
+            <!-- 3 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    第一次加载页面会调用哪几个钩子函数？
+                </section>
+
+                <section>
+                    DOM渲染在哪个阶段完成？
+                </section>
+                <section>
+                    每个周期具体适合哪些场景？
+                </section>
+            </section>
+
+            <!-- 4 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <h3>4.解决方案</h3>
+                </section>
+            </section>
+
+
+            <!-- 5 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <h3>5.编码实战</h3>
+                </section>
+            </section>
+
+            <!-- 6 -->
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <h3>6.参考文献</h3>
+                    <p>官方文档</p>
+                </section>
+            </section>
+            </section>
+
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>BY: 刘泽华</p>
+            </section>
+        </div>
+        <div class="backgrounds">
+            <div class="slide-background past" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background stack present" data-loaded="true" style="display: block;">
+                <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+                <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+            </div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+        </div>
+        <div class="progress" style="display: block;">
+            <span style="width: 260.19px;"></span>
+        </div>
+        <aside class="controls" style="display: block;">
+            <button class="navigate-left enabled" aria-label="previous slide"></button>
+            <button class="navigate-right enabled" aria-label="next slide"></button>
+            <button class="navigate-up enabled" aria-label="above slide"></button>
+            <button class="navigate-down" aria-label="below slide"></button>
+        </aside>
+        <div class="slide-number" style="display: none;"></div>
+        <div class="speaker-notes" data-prevent-swipe=""></div>
+        <div class="pause-overlay"></div>
+        <div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+
+            语法： return[()[expression][]]; 可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。 用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression
+            被省略， 或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 初始化幻灯片
+
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: './plugin/markdown/marked.js'
+                },
+                {
+                    src: './plugin/markdown/markdown.js'
+                },
+                {
+                    src: './plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: './plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+
+</body>
+
+</html>
