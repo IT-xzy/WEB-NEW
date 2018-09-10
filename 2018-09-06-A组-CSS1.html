@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+<img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo" width="20%">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>【css-01】</h2>
+            <h4>如何理解盒模型及其content、padding、border、margin？</h4>
+            <p>分享人：许丹莉</p>
+        </section>
+
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+
+        <section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <h3>盒模型是什么？</h3>
+                <p>对一个网页来说，基本上页面上所有的元素对象，其实际的呈现形式都是一个盒子形状的抽象</p>
+                <p>所谓的盒子其实就一个长方形（或者正方形）的抽象。从外到内，他由4层东西组成，分别是margin（间距）
+                    ，border（边框），padding（填充），content（内容）。他们的结构特征是一层包裹着一层。</p>
+            </section>
+            <section>
+                <img src="2015-10-03-css-27.jpg">
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <h3>content</h3>
+                <p>盒模型的内容显示在content里，width 和 height 设置内容框（content box）的宽度和高度。
+                    内容框是框内容显示的区域——包括框内的文本内容，以及表示嵌套子元素的其它框</p>
+                <p>还有其他属性可以更巧妙地处理内容的大小——设置大小约束而不是绝对的大小。
+                    这些属性包括min-width、max-width、min-height 和 max-height。</p>
+            </section>
+            <section>
+                <h3>padding</h3>
+                <p>
+                    padding 表示一个 CSS 框的内边距 ——这一层位于内容框的外边缘与边界的内边缘之间。用于控制content 与 border之间的距离。
+                    该层的大小可以通过简写属性padding 一次设置所有四个边，或用 padding-top、padding-right、padding-bottom 和 padding-left 属性一次设置一个边。
+                </p>
+                <p>
+                    {padding: 10px 20px 10px 20px;}
+
+                    上、右、下、左
+                    <br>
+                    {padding: 10px 20px;}
+
+                    上、下、左、右
+                    <br>
+                    {padding: 10px 20px 30px;}
+
+                    等价于 10px 20px 30px 20px
+                </p>
+            </section>
+            <section>
+                <h3>border</h3>
+                <p>CSS 框的边界（border）是一个分隔层，位于内边距的外边缘以及外边距的内边缘之间</p>
+                <p>边界的默认大小为0——从而让它不可见——不过我们可以设置边界的厚度、风格和颜色让它出现。 border 简写属性可以让我们一次设置所有四个边，例如 border: 1px solid black;
+                    但这个简写可以被各种普通书写的更详细的属性所覆盖：</p>
+            </section>
+            <section>
+                <p>border-top, border-right, border-bottom, border-left: 分别设置某一边的边界样式。</p>
+                <p>border的属性主要有三个color(颜色) width(粗细) style(样式)，color的设置和文字的设置一样是设置颜色，width即为border的粗细，
+                    style属性可以设置为none、hidden、dotted、dashed、solid等</p>
+                <p>你也可以单独设置某一个边的三个不同属性，如 border-top-width, border-top-style, border-top-color，等</p>
+            </section>
+            <section>
+                <h3>margin</h3>
+                <p>外边距（margin）代表 CSS 框周围的外部区域，称为外边距，它在布局中推开其它 CSS 框。指元素与元素之间的距离，从直观上来看就是指用于控制块与块之间的距离。
+                    其表现与 padding 很相似；简写属性为 margin，单个属性分别为
+                    margin-top、margin-right、margin-bottom 和 margin-left</p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+            <section>
+                <h3>外边距重叠</h3>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>4.解决方案</h3>
+            </section>
+            <section>
+                <h3>什么时候会重叠？</h3>
+                <p>两个或多个毗邻的普通流中的块元素垂直方向上的 margin 会折叠</p>
+                <p>
+                    说明其数量必须是大于一个，又说明，折叠是元素与元素间相互的行为，不存在 A 和 B 折叠，B 没有和 A 折叠的现象。
+                </p>
+                <p>是指具体的方位，只有垂直方向的 margin 才会折叠，也就是说，水平方向的 margin 不会发生折叠的现象。</p>
+                <p>俩者中取较大的值作为两个块级之间的距离</p>
+            </section>
+            <section>
+                <p>如何不折叠</p>
+                <p>浮动元素、inline-block 元素、绝对定位元素的 margin 不会和垂直方向上其他元素的 margin 折叠（注意这里指的是上下相邻的元素）</p>
+                <p>创建了块级格式化上下文的元素，不和它的子元素发生 margin 折叠（注意这里指的是创建了BFC的元素和它的子元素不会发生折叠）</p>
+                <p>我们都知道触发BFC的因素是float（除了none）、overflow（除了visible）、display（table-cell/table-caption/inline-block）、position（除了static/relative）</p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>5.代码实战</h3>
+            </section>
+            <section>
+                <h3>demo</h3>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>6.拓展思考</h3>
+            </section>
+            <section>
+                <h3>标准盒模型和ie盒模型的区别</h3>
+            </section>
+
+        </section>
+
+        <section>
+            <section>
+                <h3>7.参考文献</h3>
+                <a href="https://blog.csdn.net/sinat_34719507/article/details/53585712">内容(content)、填充(padding)、边框(border)、边界(margin)：CSS中盒子模型有何区别</a><br><br>
+                <a href="https://blog.csdn.net/xu838209490/article/details/74468916">盒子模型的理解</a>
+            </section>
+        </section>
+
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>BY : 许丹莉</small>
+            </p>
+        </section>
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: './plugin/markdown/marked.js'},
+            {src: './plugin/markdown/markdown.js'},
+            {src: './plugin/notes/notes.js', async: true},
+            {
+                src: './plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+
+</html>

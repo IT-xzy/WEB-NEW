@@ -1,0 +1,373 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides"
+         style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h2>【CSS-TASK15】</h2>
+            <h3>请描述 BFC(Block Formatting Context) 及其如何工作</h3>
+            <p>分享人：郭晨阳</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+
+            <p style="text-align: justify">
+                我们常常说文档流的时候其实分为定位流、浮动流和普通流三种。其中普通流就是指BFC中的FC。FC是formatting context的首字母缩写，直译过来是格式化上下文，它是页面中的一块渲染区域，有一套渲染规则，决定了其子元素如何布局，以及和其他元素之间的关系和作用。常见的FC有BFC、IFC，还有GFC和FFC。BFC是block formatting context，也就是块级格式化上下文，是用于布局块级盒子的一块渲染区域。
+            </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="letter-spacing: 5px">一：BFC 是什么 </p>
+            <p style="letter-spacing: 5px">[BFC]是可视化CSS渲染网页的一部分，它是一个区域，块级布局，相互浮动在这个区域发生。
+                一个BFC块区域包含所有里面的元素，除子元素创建了新的BFC。（因为各个BFC是一个独立的区域，BFC之间相互不影响）
+                所以：由于html(根元素)是独立的BFC，在里面的浮动，块级布局等才会相互影响，若新创建BFC,则相邻BFC之间的浮动元素，或是其他元素将不会影响。如,相邻两个块级元素的外边距折叠的情况将不会发生。</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="letter-spacing: 5px"> 二：触发条件  </p>
+            <p style="letter-spacing: 5px;text-align: left">【1】根元素，即HTML元素  </p>
+            <p style="letter-spacing: 5px;text-align: left">【2】float的值不为none  </p>
+            <p style="letter-spacing: 5px;text-align: left">【3】overflow的值不为visible  </p>
+            <p style="letter-spacing: 5px;text-align: left">【4】display的值为inline-block、table-cell、table-caption  </p>
+            <p style="letter-spacing: 5px;text-align: left">【5】position的值为absolute或fixed </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="letter-spacing: 5px">三：BFC的作用 </p>
+            <p style="letter-spacing: 5px">包含浮动元素(清除浮动)BFC会根据子元素的情况自适高度，这个特性是对父元素使用overflow:hidden/auto/scroll、 float:left/right 样式可以闭合浮动的
+
+                不被浮动元素覆盖 浮动元素会无视兄弟元素的存在， 覆盖在兄弟元素的上面， 为该兄弟元素创建BFC 后可以阻止这种情况的出现</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="letter-spacing: 5px">四：BFC规则 </p>
+            <p style="letter-spacing: 5px;text-align: left">内部的Box会在垂直方向，一个接一个地放置。 就是我们平常div一行一行块级放置的样式。</p>
+            <p style="letter-spacing: 5px;text-align: left">Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠。</p>
+            <p style="letter-spacing: 5px;text-align: left">每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。就是元素左margin和包含块左border接触，即使存在浮动也是如此。左浮动就是靠左，右浮动就是靠右。</p>
+            <p style="letter-spacing: 5px;text-align: left">BFC的区域不会与float box重叠。应用于两列布局。</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="letter-spacing: 5px;text-align: left">BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。上下margin不影响，浮动不覆盖。</p>
+            <p style="letter-spacing: 5px;text-align: left">计算BFC的高度时，浮动元素也参与计算。如父元素高度塌陷，清除浮动。父元素高度由内部撑开，计算bfc高度，内部浮动的子元素也参加。</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>3.常见问题</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="letter-spacing: 5px;text-align: left">1.外边距折叠（Collapsing Margins） </p>
+            <p style="letter-spacing: 5px;text-align: left">2.让一个没有设置高度的容器包含浮动元素 </p>
+            <p style="letter-spacing: 5px;text-align: left">3.阻止文字环绕</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>4.解决方案</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>5.编码实战</h3>
+        </section>
+        <!-- <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: justify">1.插入纯文字。content属性与 ::before 及 ::after 伪元素配合使用生成文本内容。
+            </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: justify">2.嵌入文字符号。使用content属性的open-quote属性值和close-quote属性值在字符串两边添加诸如括号、单引号、双引号之类的嵌套文字符号。open-quote用于添加开始的文字符号，close-quote用于添加结束的文字符号。
+            </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: justify">3.插入图片。content属性也可以直接在元素前/后插入图片， content:url()。
+            </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: justify">4.插入元素的属性值。content属性可以直接利用attr获取元素的属性，将其插入到对应位置。
+                attr（attribute），是属性的意思，attr(href)，也就是获取href里面的值填充到content里面啊，这是css3的用法。
+                语法为::after{content:attr(href);}
+            </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: justify">5.计数器用法。content属性可以插入编号，可以修饰，可以指定编号种类，还可以在编号中进行嵌套。
+            </p>
+        </section> -->
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>6.扩展思考</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <p style="text-align: center">
+                    为什么用overflow触发而不用其他的？
+                </p>
+                <p style="text-align: center">
+                    因为其他如float,positon等等会影响布局,达不到我们想要的效果
+                </p>
+            </section>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>7.参考文献</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="letter-spacing: 5px;text-align: left">参考一：深入了解BFC </p>
+            <p style="letter-spacing: 5px;text-align: left">参考二：BFC是什么</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>8.更多讨论</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="letter-spacing: 5px;text-align: left">overflow的auto还是visible可以触发bfc？</p>
+            <p style="letter-spacing: 5px;text-align: left">利用浮动再触发bfc用来干嘛？ </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>BY :郭晨阳</small>
+            </p>
+        </section>
+
+    </div>
+    <div class="backgrounds">
+        <div class="slide-background past" data-loaded="true" style="display: none;"></div>
+        <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background stack present" data-loaded="true" style="display: block;">
+            <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+        </div>
+        <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+        <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background stack future" style="display: none;">
+            <div class="slide-background present" style="display: none;"></div>
+        </div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background stack future" style="display: none;">
+            <div class="slide-background present" style="display: none;"></div>
+        </div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background stack future" style="display: none;">
+            <div class="slide-background present" style="display: none;"></div>
+        </div>
+        <div class="slide-background stack future" style="display: none;">
+            <div class="slide-background present" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+        </div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+    </div>
+    <div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div>
+    <aside class="controls" style="display: block;">
+        <button class="navigate-left enabled" aria-label="previous slide"></button>
+        <button class="navigate-right enabled" aria-label="next slide"></button>
+        <button class="navigate-up enabled" aria-label="above slide"></button>
+        <button class="navigate-down" aria-label="below slide"></button>
+    </aside>
+    <div class="slide-number" style="display: none;"></div>
+    <div class="speaker-notes" data-prevent-swipe=""></div>
+    <div class="pause-overlay"></div>
+    <div id="aria-status-div" aria-live="polite" aria-atomic="true"
+         style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+
+        语法：
+        return[()[expression][]];
+        可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。
+
+        用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression 被省略，
+        或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+    </div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+    //    原始类型对象直接赋值不会相互影响
+    //    var a = 1;
+    //
+    //    var b = a;
+    //    b = 10;
+    //    console.log(a); // 1
+    ////
+    //    var a = 'hello';
+    //    var b = a;
+    //    b = 'world';
+    //    console.log(a); // hello
+    //
+    //    var a = true;
+    //    var b = a;
+    //    b = false;
+    //    console.log(a);
+    //数组浅复制
+    //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+    //    ];
+    //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+    //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+    //    console.log(a)//那么现在打印a 是什么结果呢
+    //
+    //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+    //    var arrtoo = arr.slice(1);
+    //    arrtoo[2] = "set Map";
+    //    console.log(arr);//One,Two,Three
+    //    console.log(arrtoo);//One,set Map,Three
+    //
+    //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+    //    var arrtooo = arr1.concat(111111);
+    //    arrtooo[1] = "set Map To";
+    //    console.log(arr1);//One,Two,Three
+    //    console.log(arrtooo);//One,set Map To,Three
+    //
+    //    var b=[1,2,3,4,5];   //concat的链接
+    //    var c=[6,7,8,9];
+    //    var d =[4,4,22]
+    //    console.log(b.concat(c,d))
+    var a = {name: 'yy', age: 26};  //对象的浅拷贝哦
+    var b = new Object();
+    b.name = a.name;
+    b.age = a.age;
+    b.name = 'xx';
+    console.log(a);//Object { name="yy", age=26}
+    console.log(b);//Object { name="xx", age=26}
+    var d = {            //对象的浅拷贝哦 第一种
+        name: 'd',
+        oc: {
+            age: 32
+        },
+        oad: {
+            adds: {
+                bb: 12
+            }
+        }
+    };
+    var deepCopy = function (source) {
+        var result = {};
+        for (var key in source) {
+            result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+        }
+        return result
+    };
+    var c = deepCopy(d);
+    c.name = 'c';
+    c.oc = {
+        age: 49
+    };
+    console.log(c);
+    console.log(d);
+    //    var person = {    //第二种深拷贝
+    //        name: 'aa',
+    //        friends: ['da', 'dsa', 'gf']
+    //    };
+    //
+    //    var aPerson = Object.create(person, {
+    ////        name: {
+    ////            value: "gee"
+    ////        }
+    //    });
+    //
+    //    console.log(person.name);
+    //    console.log(aPerson.friends)
+    var Chinese = {
+        nation: '中国'
+    }
+    var Doctor = {
+        career: '医生'
+    }
+    function extendCopy(p) {
+        var c = {};
+        for (var i in p) {
+            c[i] = p[i];
+        }
+        c.uber = p;
+        return c;
+    }
+    var Doctor = extendCopy(Chinese);
+    Doctor.career = '医生';
+    console.log(Doctor); // 中国
+    Chinese.birthPlaces = ['北京', '上海', '香港'];
+    var Doctor = extendCopy(Chinese);
+    Doctor.birthPlaces.push('厦门');
+</script>
+
+</body>
+</html>
