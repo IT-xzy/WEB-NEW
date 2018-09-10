@@ -1,0 +1,266 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .left {
+            text-align: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+    </map>
+    <div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+        <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+            <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+                <h2>【JS-task8】</h2>
+                <h3>angular之中，$state $watch $scope $rootScope 分别是什么？
+                </h3>
+                <p>分享人：张智</p>
+            </section>
+            <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <p class="left">
+                    AngularJS不仅是一个理念先进（逼格高）的前端开发框架，更是一种端对端（End to
+                    End）的解决方案。AngularJS遵从架构设计中的MVC模式，提倡展现、数据和逻辑处理组件的松耦合（类似Flex和WPF）。AngularJS通过指令技术对传统HTML实现了自然扩展，通过编译技术实现了数据模型与展现视图的双向自动同步，从而消除了前端开发中繁琐复杂的DOM操作。
+                    最后再通过模块化设计解决了JS代码管理维护和按需加载的问题，解放了广大前端程序员（以及后端程序员）同胞完成前端开发任务的生产力。而且这种解耦本身，也对前端的自动化测试技术提供了良好的支持。
+                    而$scope $rootScope $watch 和 $state就是里面的几个方法
+                </p>
+            </section>
+            <!-- <section>
+            <h4>函数表达式</h4>
+            <p class="left">函数表达式将函数定义为表达式语句（通常是变量赋值）的一部分。通过函数表达式定
+                义的函数可以是命名的，也可以是匿名的。函数表达式不能以“function”开头。函数名在作用域外
+                是不可获取的。</p>
+        </section> -->
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <h4>$scope</h4>
+                <p class="left">
+                    $scope在angularjs中，你可以把它理解成作用域，每个不同的controller，都具有它不同的作用域，所以controller不同，他们的scope是不同的。当你在 AngularJS
+                    创建控制器时，你可以将 $scope 对象当作一个参数传递当在控制器中添加 $scope 对象时，视图 (HTML) 可以获取了这些属性。视图中，你不需要添加 $scope 前缀,
+                    只需要添加属性名即可
+                </p>
+            </section>
+            <section>
+                <h4>$rootScope</h4>
+                <p class="left">
+                    $rootScope就相当于一个全局作用域，所以我们保存在其中的东西是全局性的，在任一controller之中都能够使用
+
+                    scope是html和单个controller之间的桥梁，数据绑定就靠他了。rootscope是各个controller中scope的桥梁。
+
+                    用rootscope定义的值，可以在各个controller中使用。
+                </p>
+            </section>
+            <section>
+                <h4>$watch</h4>
+                <p class="left">相信使用过angularjs的同学都知道，ng中有个比较重要的特点，叫做双向绑定，那么这个双向绑定是如何实现的呢？
+                    当我们在创建出scope下的一个新属性的时候，ng就会主动为我们新属性加上$watch这个方法，这个方法会监听我们
+                    的数据变化，当数据变化之后，就立即把view和scope上数据同步。
+                    $watch(watchExpression, listener, objectEquality);
+                    watchExpression,需要监控的表达式
+                    listener,处理函数，函数参数如下
+                    function(newValue,oldValue, scope)
+                    objectEquality,是否深度监听，如果设置为true,它告诉Angular检查所监控的对象中每一个属性的变化.
+                    如果你希望监控数组的个别元素或者对象的属性而不是一个普通的值,那么你应该使用它
+                    检测的对象：
+                    <br>
+                </p>
+            </section>
+            <section>
+                    <p class="left">
+                        1. 某个数据,监测这个数据的值是否发生变化
+                        2. 一条angular表达式,监测表达式的结果是否发生变化
+                        3. 函数(),监测函数的返回值是否发生变化
+                        注意,以上三种,无论是哪种,都应该是字符串格式,并且都是在$scope作用域下执行的.
+                        4.函数,非字符串格式,而是直接传入一个函数,可以直接写一个匿名函数,也可以传入一个函数,注意,它不是在$scope作用域下的,所以,如果传入的是当前作用域下的函数,还是需要写
+                        在digest执行时，如果watch观察的的value与上一次执行时不一样时，就会被触发。
+                        AngularJS内部的watch实现了页面随model的及时更新。 
+                        $watch方法在用的时候主要是手动的监听一个对象，但对象发生变化时触发某个事件。
+                    </p>
+                </section>
+            <section>
+                <h4>$state</h4>
+                <p class="left">路由，$state就是路由中的一项服务。
+                    $state.go()——$state.go()方法可以产生与a链接一样的效果，可以将此方法绑定给一个button按钮， 然后在按钮的点击事件中执行 $state.go()，就可以跳转到相应的页面。
+
+                    $stateparams——$stateParams是一个对象，包含 url 中每个参数的键/值。$stateParams可以为控制器或者服务提供 url 的各个部分。
+                    注意：$stateParams必须与一个控制器相关，并且$stateParams中的“键/值”也必须事先在那个控制器的url属性中有定义。
+
+                </p>
+            </section>
+
+            <section>
+                <!-- <p> 函数声明</p> -->
+                <!-- <img src="img/2018-07-25-C组-js2/function.png" style="min-width: 30%"/> -->
+                <!-- <p>函数表达式</p> -->
+                <!-- <img src="img/2018-07-25-C组-js2/var.png" style="min-width: 30%"/> -->
+                <section>
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    <p> watch的深度监听是什么意思呢？有什么优缺点呢？</p>
+                </section>
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+                <!-- <section>
+                    <img src="img/2018-07-25-C组-js2/test.png" style="min-width: 40%" />
+                    </br>
+                    <img src="img/2018-07-25-C组-js2/alert1.png" style="min-width: 30%" />
+                    <img src="img/2018-07-25-C组-js2/alert2.png" style="min-width: 30%" />
+                </section> -->
+                <section class="left">
+                    <p>
+                        $watch在对待原始类型和引用类型会有不同的处理方式，这就要首先说一说$watch函数的第三个参数。
+                      $watch函数有接收两个参数，第一个参数是需要监视的对象，
+                        第二个参数是在监视对象发生变化时需要调用的函数， 实际上$watch还有第三个参数，它在默认情况下是false。
+                        在默认情况下，即不显式指明第三个参数或者将其指明为false时， 我们进行的监视叫做“引用监视”。
+                        引用监视的原词的“reference watch”，它的意思是只要监视的对象引用没有发生变化， 就不算它发生了变化。
+
+                    </p>
+                </section>
+                <section class="left">
+                    <p>
+
+                        如果我们将$watch的第三个变量设置为true，那么此时我们进行的监视叫做“全等监视”，原词是“equality watch”。
+                        此时，只要$watch的对象有一点风吹草动，它马上就跳出来 既然全等监视这么好，那么我们为什么不直接用全等监视呢？
+                        当然，任何事情都有好的坏的两个方面，全等监视固然是好， 但是它在运行时需要先遍历整个监视对象，
+                        然后在每次$digest之前使用angular.copy()将整个对象深拷贝一遍然后在运行之后用angular.equal()将前后的对象进行对比。
+                    </p>
+                </section>
+                <section>
+                    <h3>5.编码实战</h3>
+                </section>
+                <section>
+                    <h3>6.扩展思考</h3>
+                </section>
+                <section>
+                    <h4>什么时候需要我们去调用$watch?</h4>
+                    <p>
+                        angular会为我们自动执行$watch，当指令中有独立作用域，或者在异步函数中，改变的数据不在angular的执行上下文，就需要手动调用$apply
+                        来触发$digest去执行$watch
+                    </p>
+                </section>
+                <section>
+                    <h3>7.参考文献</h3>
+                </section>
+                <section class="left">
+                    <p>参考一： AngularJS Scope(作用域)
+                    </p>
+                    <p>参考二： angularJS介绍
+                    </p>
+                    <!-- <p>参考二：
+                        <a href="http://www.nowamagic.net/librarys/veda/detail/1630" target="_blank">JavaScript探秘：函数声明与函数表达式</a>
+                    </p>
+                    <p>参考三：
+                        <a href="https://github.com/Wscats/Good-text-Share/issues/73" target="_blank">关于Javascript的函数声明和函数表达式</a>
+                    </p> -->
+                </section>
+                <section>
+                    <h3>8.更多讨论</h3>
+                </section>
+                <section>
+                    <p>感谢大家观看</p>
+                    <p>
+                        <small>BY : 张智</small>
+                    </p>
+                </section>
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
+Contact GitHub API Training Shop Blog About © 2016 GitHub, Inc. Terms Privacy Security Status He
