@@ -1,0 +1,316 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .left {
+            text-align: left;
+        }
+        ul {
+            text-align: left;
+        }
+        p {
+            text-align: left;
+        }
+    </style>
+
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : 'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides"
+         style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h2>【JS-task6】</h2>
+            <h3>请描述一下cookies，sessionStorage和localStorage的区别？
+            </h3>
+            <p>分享人:钟华俊</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+        <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <section>
+            <p class="left">SessionStorage, LocalStorage, Cookie这三者都可以被用来在浏览器端存储数据，而且都是字符串类型
+                的键值对。 区别在于前两者属于WebStorage，创建它们的目的便于客户端存储数据。 而Cookie早在网景公司的浏览器
+                中就开始支持，最初目的是为了保持HTTP的状态。
+            </p>
+        </section>
+        <section>
+            <h4>Cookie</h4>
+            <p class="left">Cookie（也叫Web cookie或者浏览器Cookie）是服务器发送到用户浏览器并保存在浏览器上的一块数据，
+                它会在浏览器下一次发起请求时被携带并发送到服务器上。比较经典的，可以它用来确定两次请求是否来自于同一个浏
+                览器，从而能够确认和保持用户的登录状态。Cookie的使用使得基于无状态的HTTP协议上记录稳定的状态信息成为了可能。
+            </p>
+            <h4>localStorage</h4>
+            <p class="left">localStorage 是 HTML5 标准中新加入的技术，它并不是什么划时代的新东西。 早在 IE 6 时代，就有一
+                个叫 userData 的东西用于本地存储，而当时考虑到浏览器兼容性， 更通用的方案是使用 Flash。而如今，localStorage
+                被大多数浏览器所支持，更多用他来存储数据。
+            </p>
+        </section>
+        <section>
+            <h4>sessionStorage</h4>
+            <p class="left">sessionStorage 与 localStorage 的接口类似， 但保存数据的生命周期与 localStorage 不同。 做过后
+                端开发的同学应该知道 Session 这个词的意思， 直译过来是“会话”。 而 sessionStorage 是一个前端的概念， 它只
+                是可以将一部分数据在当前会话中保存下来， 刷新页面数据依旧存在。 但当页面关闭后，sessionStorage 中的数据就会被清空
+            </p>
+        </section>
+
+
+
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            <h4>cookie的特性</h4>
+            <p class="left">在同一个页面中设置 Cookie，实际上是按从后往前的顺序进行的。如果要先删除一个 Cookie，再写入一
+                个 Cookie，则必须先写入语句，再写删除语句，否则会出现错误Cookie是面向路径的。缺省路径 (path) 属性时
+                ，Web 服务器页会自动传递当前路径给浏览器，指定路径强制服务器使用设置的路径。在一个目录页面里设置的 Cookie
+                在另一个目录的页面里是看不到的Cookie 必须在 HTML 文件的内容输出之前设置；不同的浏览器
+                对 Cookie 的处理不一致，使用时一定要考虑；客户端用户如果设置禁止 Cookie，则 Cookie 不能建立。并且在客户端，
+                一个浏览器能创建的 Cookie 数量最多为 300 个，并且每个不能超过 4KB，每个 Web 站点能设置的 Cookie 总数不能超过 20 个
+            </p>
+
+        </section>
+        <section>
+            <h4>cookie的设置以及发送过程分为以下四步：</h4>
+            <ul>
+                <li>客户端发送一个http请求到服务器端</li>
+                <li>服务器端发送一个http响应到客户端，其中包含Set-Cookie头部</li>
+                <li>客户端发送一个http请求到服务器端，其中包含Cookie头部 </li>
+                <li>服务器端发送一个http响应到客户端</li>
+            </ul>
+        </section>
+        <section>
+            <h4>Storage类的相关成员</h4>
+            <table style="font-size: 30px">
+                <thead>
+                <th>成员名</th>
+                <th>方法参数</th>
+                <th>描述</th>
+                </thead>
+                <tbody>
+                <td>length</td>
+                <td>属性</td>
+                <td>获取存储数据的条数</td>
+                </tbody>
+                <tbody>
+                <td>key(n)</td>
+                <td>n:索引值</td>
+                <td>根据索引值，返回键名</td>
+                </tbody>
+                <tbody>
+                <td>getItem(key)</td>
+                <td>key:键名</td>
+                <td>根据键名，获取数据值</td>
+                </tbody>
+                <tbody>
+                <td>setItem(key,value)	</td>
+                <td>key:键名 value:键值</td>
+                <td>根据键名和键值设置数据项，如果键名已经存在，则覆盖值</td>
+                </tbody>
+                <tbody>
+                <td>removeItem(key)</td>
+                <td>key:键名</td>
+                <td>根据键名删除一个数据项</td>
+                </tbody>
+                <tbody>
+                <td>clear()</td>
+                <td>无</td>
+                <td>清空当前的Storage对象</td>
+                </tbody>
+            </table>
+
+        </section>
+        <section>
+            <h4>三者之间的区别对比：</h4>
+            <table style="font-size: 20px">
+                <thead>
+                <th style="width: 120px;">特性</th>
+                <th>Cookie</th>
+                <th>localStorage</th>
+                <th>sessionStorage</th>
+                </thead>
+                <tbody>
+                <td>特性</td>
+                <td>一般由服务器生成，可设置失效时间。如果在浏览器端生成Cookie，默认是关闭浏览器后失效</td>
+                <td>除非被清除，否则永久保存</td>
+                <td>仅在当前会话下有效，关闭页面或浏览器后被清除</td>
+                </tbody>
+                <tbody>
+                <td>存放数据大小</td>
+                <td>4K左右</td>
+                <td colspan="2">一般为5MB</td>
+                </tbody>
+                <tbody>
+                <td>与服务器端通信</td>
+                <td>每次都会携带在HTTP头中，如果使用cookie保存过多数据会带来性能问题</td>
+                <td colspan="2">仅在客户端（即浏览器）中保存，不参与和服务器的通信</td>
+                </tbody>
+                <tbody>
+                <td>易用性</td>
+                <td>需要程序员自己封装，源生的Cookie接口不友好</td>
+                <td colspan="2">源生接口可以接受，亦可再次封装来对Object和Array有更好的支持</td>
+                </tbody>
+            </table>
+
+        </section>
+
+
+
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            <p>COOKIE是如何工作的？</p>
+        </section>
+
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            <h4>COOKIE是如何工作的？</h4>
+            <p>Cookie可用于客户端数据的存储，在没有其它存储办法时，使用这种方式是可行的，但随着现在浏览器开始支持各种各样
+                的存储方式而逐渐被废弃。 由于服务器指定Cookie以后浏览器的每次请求都会携带Cookie数据，这会带来额外的性能负
+                担（尤其是在移动环境下）。 新的浏览器API已经允许开发者直接在本地存储数据，如可以使用Web storage API （本地
+                存储和会话存储）和IndexedDB（索引数据库）。
+            </p>
+
+        </section>
+        <section>
+            <h4>
+                COOKIE主要用在以下三个方面:
+            </h4>
+            <p>会话状态管理（如用户登录状态、购物车）</p>
+            <p>个性化设置（如用户自定义设置）</p>
+            <p>浏览器行为跟踪（如跟踪分析用户行为）</p>
+
+        </section>
+
+
+
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+            <h4>三者的用途差异？</h4>
+            <p>例如：曾经使用 Cookie 来保存用户在电商网站的购物车信息，如今有了 localStorage，Cookie就退休了。还有像一些
+                网页游戏会产生一些本地数据，也使用LocalStorage。但如果需要拆分页面，会跳转多个子页面的时候，就需要用到sessionStorage。</p>
+
+        </section>
+
+        <section>
+            <h5>COOKIE的缺陷</h5>
+            <p> 每个 HTTP 请求中都包含 Cookies，从而导致传输相同的数据减缓我们的 Web 应用程序。</p>
+            <p >每个 HTTP 请求中都包含 Cookies，从而导致发送未加密的数据到互联网上，可能会导致数据泄露，虽然进行过加密，但是攻击者拿到cookie后仍然可以登录，因为难以识别是否为同一个用户在登陆。</p>
+            <p>Cookies 只能存储有限的 4KB 数据，对于复杂的存储需求来说是不够用的。</p>
+        </section>
+
+        <section>
+            <h3>7.参考文献</h3>
+            <p>参考资料：https://www.cnblogs.com/zr123/p/8086525.html</p>
+            <p>—— Cookie、session和localStorage、以及sessionStorage之间的区别</p>
+            <p>参考资料：https://www.cnblogs.com/minigrasshopper/p/8064367.html</p>
+            <p>—— JS 详解 Cookie、 LocalStorage 与 SessionStorage</p>
+        </section>
+
+        <section>
+            <h3>8.更多讨论</h3>
+            <p>如何优化cookie？</p>
+            <p>关于安全性的考虑？</p>
+        </section>
+
+        <section>
+            <p>鸣谢</p>
+            <p>感谢大家观看</p>
+            <p><small>BY : 钟华俊</small></p>
+        </section>
+
+    </div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status He
+
+
+
