@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+
+        p.font {
+            text-align: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>POSITION定位有哪几种？各有什么特点？</h2>
+                <p style="text-align: center;">分享人：王衡</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <h3>一、背景介绍</h3>
+            </section>
+            <section>
+                <h3></h3>
+                <P class="font">position 是CSS用来为HTML文档的一些元素提供定位的属性,定位的基本思想很简单，它允许你定义元素框相对于其正常位置应该出现的位置，或者相对于父元素、另一个元素甚至浏览器窗口本身的位置。 常规取值： 1.static(静态） 2.Relative(相对） 3.Absolute(绝对) 4.fixed(固定)</P>
+
+            </section>
+            <section>
+                <h3>二、知识剖析</h3>
+            </section>
+            <section>
+                <h3>文档流</h3>
+                <p> 将窗体自上而下分成一行行, 并在每行中按从左至右的顺序排放元素,即为文档流。  只有三种情况会使得元素脱离文档流，分别是：浮动、绝对定位和固定定位。 </p>
+            </section>
+
+
+            <section>
+                <h3>static(静态）</h3>
+                <p>HTML元素的默认值，不受top、bottom、left、right属性影响，元素出现在正常的文档流中</p>
+            </section>
+            <section>
+                <h3>Relative(相对）</h3>
+                <p>相对定位, 特点：不脱离文档流的布局，受top、bottom、left、right属性影响,只改变自身的位置，在文档流原先的位置遗留空白区域。定位的起始位置为此元素原先在文档流的位置。</p>
+            </section>
+            <section>
+                <h3>Absolute(绝对)</h3>
+                <p>绝对定位 特点:脱离文档流的布局，遗留下来的空间由后面的元素填充。定位的起始位置为最近的父元素(position不为static)，否则为html文档本身。</p>
+            </section>
+            <section>
+                <h3>fixed(固定)</h3>
+                <p>固定定位, 特点：类似于absolute，但不随着滚动条的移动而改变位置。元素的位置相对于浏览器窗口是固定位置。</p>
+            </section>
+            <section>
+                <h3>sticky(定位)</h3>
+                <p>sticky 英文字面意思是粘，粘贴，所以可以把它称之为粘性定位.position: sticky; 基于用户的滚动位置来定位。
+                    粘性定位的元素是依赖于用户的滚动，在 position:relative 与 position:fixed 定位之间切换。
+                    它的行为就像 position:relative; 而当页面滚动超出目标区域时，它的表现就像 position:fixed;，它会固定在目标位置。
+                    元素定位表现为在跨越特定阈值前为相对定位，之后为固定定位。
+                    这个特定阈值指的是 top, right, bottom 或 left 之一，换言之，指定 top, right, bottom 或 left 四个阈值其中之一，才可使粘性定位生效。否则其行为与相对定位相同。</p>
+            </section>
+            <section>
+                <h3>三、常见问题</h3>
+            </section>
+            <section>
+                <p>相对定位与绝对定位的搭配使用效果？</p>
+            </section>
+            <section>
+                <h3>四、解决方案</h3>
+            </section>
+            <section>
+                <p>父容器使用相对定位，子元素使用绝对定位后，这样子元素的位置不再相对于浏览器左上角，而是相对于父窗口左上角，若无非static祖先，以初始包含块定位，在浏览器里，根元素的包含块（HTML）为初始包含块，只是一般情况下看上去像是body区域。</p>
+            </section>
+            <section>
+                <h3>五、编码实战</h3>
+            </section>
+            <section>
+                <h3>六、拓展思考</h3>
+               <p>absolute与fixed有哪些区别？</p>
+               <p>fixed与absolute最大的区别在于：absolute的”根元素“是可以被设置的，而fixed则其”根元素“固定为浏览器窗口。即当你滚动网页，其元素与浏览器窗口之间的距离是恒定不变的。</p>
+            </section>
+            <section>
+                <h3>七、参考文献</h3>
+            </section>
+            <section>
+                <a href="http://www.cnblogs.com/polk6/archive/2013/07/26/3214847.html#Menu1-JieShao">CSS Position 定位属性</a>
+                <br>
+                <a href="http://www.cnblogs.com/coffeedeveloper/p/3145790.html#float">对CSS中的Position、Float属性的一些深入探讨</a>
+                <br>
+            </section>
+            <section>
+                <h3>八、更多讨论</h3>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>BY : 王衡</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
