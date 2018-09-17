@@ -39,9 +39,9 @@
     <div class="slides"
          style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
         <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
-            <h2>【js-TASK8】</h2>
-            <h3></h3>
-            <p>分享人：张学良</p>
+            <h2>【CSS-TASK15】</h2>
+            <h3>请描述 BFC(Block Formatting Context) 及其如何工作</h3>
+            <p>分享人：郭晨阳</p>
         </section>
         <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
             <p>目录</p>
@@ -58,50 +58,59 @@
             <h3>1.背景介绍</h3>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+
             <p style="text-align: justify">
-                <!--我们在设计网页的时候，盒子居中是经会常用到的。居中可以分为水平居中和垂直居中。-->
-                <!--水平居中是比较容易，通过设置元素的margin: 0 auto就可以实现，但是垂直居中相对来说是比较复杂一些的。-->
-                1、面向对象的一些属性和方法？<br>
-                hasOwnPropety():看是不是对象自身下面的属性<br>
-                constructor:查看对象的构造函数<br>
-                每个原型都会自动添加constructor属性<br>
-                for in的时候有些属性是找不到的<br>
-                instanceof运算符对象在原型链上是否有关系<br>
-                tostring:object上的方法
+                我们常常说文档流的时候其实分为定位流、浮动流和普通流三种。其中普通流就是指BFC中的FC。FC是formatting context的首字母缩写，直译过来是格式化上下文，它是页面中的一块渲染区域，有一套渲染规则，决定了其子元素如何布局，以及和其他元素之间的关系和作用。常见的FC有BFC、IFC，还有GFC和FFC。BFC是block formatting context，也就是块级格式化上下文，是用于布局块级盒子的一块渲染区域。
             </p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>2.知识剖析</h3>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <p style="letter-spacing: 5px">面向对象上hasOwnPropety()、constructor、constructor、tostring这些属性和方法怎么使用</p>
+            <p style="letter-spacing: 5px">一：BFC 是什么 </p>
+            <p style="letter-spacing: 5px">[BFC]是可视化CSS渲染网页的一部分，它是一个区域，块级布局，相互浮动在这个区域发生。
+                一个BFC块区域包含所有里面的元素，除子元素创建了新的BFC。（因为各个BFC是一个独立的区域，BFC之间相互不影响）
+                所以：由于html(根元素)是独立的BFC，在里面的浮动，块级布局等才会相互影响，若新创建BFC,则相邻BFC之间的浮动元素，或是其他元素将不会影响。如,相邻两个块级元素的外边距折叠的情况将不会发生。</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="letter-spacing: 5px"> 二：触发条件  </p>
+            <p style="letter-spacing: 5px;text-align: left">【1】根元素，即HTML元素  </p>
+            <p style="letter-spacing: 5px;text-align: left">【2】float的值不为none  </p>
+            <p style="letter-spacing: 5px;text-align: left">【3】overflow的值不为visible  </p>
+            <p style="letter-spacing: 5px;text-align: left">【4】display的值为inline-block、table-cell、table-caption  </p>
+            <p style="letter-spacing: 5px;text-align: left">【5】position的值为absolute或fixed </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="letter-spacing: 5px">三：BFC的作用 </p>
+            <p style="letter-spacing: 5px">包含浮动元素(清除浮动)BFC会根据子元素的情况自适高度，这个特性是对父元素使用overflow:hidden/auto/scroll、 float:left/right 样式可以闭合浮动的
+
+                不被浮动元素覆盖 浮动元素会无视兄弟元素的存在， 覆盖在兄弟元素的上面， 为该兄弟元素创建BFC 后可以阻止这种情况的出现</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="letter-spacing: 5px">四：BFC规则 </p>
+            <p style="letter-spacing: 5px;text-align: left">内部的Box会在垂直方向，一个接一个地放置。 就是我们平常div一行一行块级放置的样式。</p>
+            <p style="letter-spacing: 5px;text-align: left">Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠。</p>
+            <p style="letter-spacing: 5px;text-align: left">每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。就是元素左margin和包含块左border接触，即使存在浮动也是如此。左浮动就是靠左，右浮动就是靠右。</p>
+            <p style="letter-spacing: 5px;text-align: left">BFC的区域不会与float box重叠。应用于两列布局。</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="letter-spacing: 5px;text-align: left">BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。上下margin不影响，浮动不覆盖。</p>
+            <p style="letter-spacing: 5px;text-align: left">计算BFC的高度时，浮动元素也参与计算。如父元素高度塌陷，清除浮动。父元素高度由内部撑开，计算bfc高度，内部浮动的子元素也参加。</p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>3.常见问题</h3>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <p>面向对象引用类型的判断？</p>
+            <p style="letter-spacing: 5px;text-align: left">1.外边距折叠（Collapsing Margins） </p>
+            <p style="letter-spacing: 5px;text-align: left">2.让一个没有设置高度的容器包含浮动元素 </p>
+            <p style="letter-spacing: 5px;text-align: left">3.阻止文字环绕</p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>4.解决方案</h3>
         </section>
-        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
-            <section style="top: 330px; display: none;">
-                <p style="text-align: center">
-                    面向对象constructor查看是不是对象自身下的属性<br>
-                    instanceof对象与构造函数是否在一条原型链上<br>
-                </p>
-                <!--<p>二 margin：auto实现CSS垂直居中</p>-->
-                <!--<p>三 display:flex实现CSS垂直居中</p>-->
-                <!--<p>四 padding实现CSS垂直居中</p>-->
-                <!--<p>五 伪元素:before实现CSS垂直居中</p>-->
-                <!--<p>六 通过隐藏节点实现CSS垂直居中 </p>-->
-                <!--<p>七 line-height实现CSS垂直居中 </p>-->
-            </section>
-        </section>
-        <!-- <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>5.编码实战</h3>
-        </section> -->
+        </section>
         <!-- <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <p style="text-align: justify">1.插入纯文字。content属性与 ::before 及 ::after 伪元素配合使用生成文本内容。
             </p>
@@ -124,40 +133,38 @@
             <p style="text-align: justify">5.计数器用法。content属性可以插入编号，可以修饰，可以指定编号种类，还可以在编号中进行嵌套。
             </p>
         </section> -->
-        <!-- <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>6.扩展思考</h3>
-        </section> -->
-        <!-- <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
-            <section style="top: 330px; display: none;">
-                <p style="text-align: center">
-                    content:"."是怎么实现清除浮动的？
-                </p>
-            </section>
         </section>
         <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
             <section style="top: 330px; display: none;">
                 <p style="text-align: center">
-                    如果有一个DIV作为外部容器，内部的DIV如果设置了float样式，则外部的容器DIV因为内部没有clear，导致不能被撑开。
-                    这个对这个盒子使用：：after这个伪元素，在盒子的结尾添加content属性，添加了一个句号"."，
-                    并设置display为block；高度设为0；clear设为both；visibility设为隐藏。这样就达到了撑开容器的目的。
+                    为什么用overflow触发而不用其他的？
                 </p>
-            </section> -->
+                <p style="text-align: center">
+                    因为其他如float,positon等等会影响布局,达不到我们想要的效果
+                </p>
+            </section>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>7.参考文献</h3>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <p>参考一：<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank">
-                面向对象过程</a></p>
+            <p style="letter-spacing: 5px;text-align: left">参考一：深入了解BFC </p>
+            <p style="letter-spacing: 5px;text-align: left">参考二：BFC是什么</p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>8.更多讨论</h3>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="letter-spacing: 5px;text-align: left">overflow的auto还是visible可以触发bfc？</p>
+            <p style="letter-spacing: 5px;text-align: left">利用浮动再触发bfc用来干嘛？ </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h4>鸣谢</h4>
             <p>感谢大家观看</p>
             <p>
-                <small>BY :张学良</small>
+                <small>BY :郭晨阳</small>
             </p>
         </section>
 

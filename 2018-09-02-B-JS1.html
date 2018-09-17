@@ -1,0 +1,273 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .left {
+            text-align: left;
+        }
+        ul {
+            text-align: left;
+        }
+        p {
+            text-align: left;
+        }
+    </style>
+
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : 'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides"
+         style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h2>【JS-task1】</h2>
+            <h3>JS有哪些数据类型和常用方法？
+            </h3>
+            <p>分享人:钟华俊</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+        <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <section>
+            <h4></h4>
+            <p class="left">JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释
+                器被称为JavaScript引擎，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在HTML（标准通用标记语言下的一
+                个应用）网页上使用，用来给HTML网页增加动态功能。
+            </p>
+            <h4>数据类型是什么</h4>
+            <p class="left">"数据类型"在数据结构中的定义"一个值的集合以及定义在这个值集上的一组操作"。在编程语言中,能够表
+                示并操作的值的类型称做数据类型。
+            </p>
+
+        </section>
+        <section>
+
+            <ul>JavaScript 的数据类型,共有六种。分别是:
+                <li>数值(NUMBER):整数和小数(比如1和1.1)</li>
+                <li>字符串(STRING):字符组成的文本(比如"HELLO WORLD")</li>
+                <li>布尔值(BOOLEAN):TRUE(真)和FALSE(假)两个特定值</li>
+                <li>对象(OBJECT):各种值组成的集合</li>
+                <li>UNDEFINED:表示"未定义"或不存在,即由于目前没有定义,所以此处暂时没有任何值</li>
+                <li>NULL:表示无值,即此处的值就是"无"的状态</li>
+                （ES6新增第七种 Symbol 一种数据类型，它的实例是唯一且不可改变的。类型的值）
+                </ul>
+        </section>
+
+
+
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            <h4>数值</h4>
+            <p class="left">JavaScript 内部，所有数字都是以64位浮点数形式储存，即使整数也是如此。
+                该类型的表示方法有两种形式，第一种是整数，第二种为浮点数。整数：可以通过十进制，八进制，十六进制的字面值
+                来表示。浮点数：就是该数值中必须包含一个小数点，且小数点后必须有一位数字。还有一种特殊的数值，即NaN
+                （非数值 Not a Number）。
+            </p>
+
+        </section>
+        <section>
+            <h4>字符串</h4>
+            <p>用于表示由零或多个16位的Unicode字符组成的字符序列，即字符串。至于用单引号，还是双引号，在js中还是没有差别
+                的,记得成对出现。字符串默认只能写在一行内，分成多行将会报错。</p>
+        </section>
+        <section>
+            <h4>布尔值</h4>
+            <p class="left"> 布尔值代表“真”和“假”两个状态。“真”用关键字true表示，“假”用关键字false表示。布尔值只
+                有这两个值。我们这需要注意下，Boolean类型的字面值true和false是区分大小写的。也就是说，True和False(以及其它的
+                混合大小形式)都不是Boolean值，只是标识符。</p>
+
+        </section>
+        <section>
+            <h4>对象</h4>
+            <p class="left">Object数据类型，称为对象，是一组数据和功能（函数）的集合。可以用new操作符后跟要创建的对象类型
+                的名称来创建。也可以用字面量表示法创建。在其中添加不同名（包含空字符串在内的任意字符串）的属性。对象是带有
+                属性和方法的特殊数据类型，是一组“键值对”（key-value）的集合，是一种无序的复合数据集合。
+            </p>
+
+
+        </section>
+        <section>
+            <h4>UNDEFINED</h4>
+            <p class="left">undefined表示“未定义”，如果使用的对象属性不存在或者是未声明变量,undefined 值将被返回。
+
+                一个未初始化的变量的值就为undefined。</p>
+
+        </section>
+        <section>
+            <h4>null</h4>
+            <p class="left">null表示空值，即该处的值现在为空。调用函数时，某个参数未设置任何值，这时就可以传入null，表示
+                该参数为空。null值表示了一个空对象指针,但是null不等于undefined。
+
+                null用来表示空值,即没有对象被呈现,我们可以通过将变量的值设置为 null 来清空变量:</p>
+
+        </section>
+
+
+        <section>
+            <h3>常见问题</h3>
+        </section>
+        <section>
+            <p>null与undefined的区别？如何判断</p>
+            <p>怎么样判断值的数据类型？</p>
+        </section>
+
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            <h4>1.null与undefined的区别？</h4>
+            <p>null与undefined都可以表示“没有”，含义非常相似。
+                它们区别是这样的：null是一个表示“空”的对象，转为数值的时候为0；undefined是一个表示"此处无定义"的原始值，
+                转为数值时为NaN。详见demo中返回undefined的典型例子</p>
+
+        </section>
+        <section>
+            <h4>2.怎么样判断值的数据类型？</h4>
+            <p>使用typeof运算符来进行检测 </p>
+            <p>如果判断的是基本类型，则typeof会尝试得到最基本的类型，比如number,string等等，如果是函数名，那么则返回
+                function，这里Object，Number，String，等等都可以看成函数名，如果判断的是一个基本的对象，则返回object
+                注：我们发现typeof null，结果返回了object，这是一个很早之前的BUG，一直沿用至今。 试用范围：如果通过typeof
+                来判断类型，适用于判定基本类型，或者判断是否为函数。</p>
+        </section>
+
+
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+            <h4>JavaScript 类型转换有哪些，该怎样转换？</h4>
+            <p>JavaScript 变量可以转换为新变量或其他数据类型：</p>
+            <p> 可以通过使用 JavaScript 函数</p>
+            <p>也可以通过 JavaScript 自身自动转换</p>
+        </section>
+
+        <section>
+            <h5>使用 JavaScript 函数</h5>
+            <p> Number() 函数把对象的值转换为数字。</p>
+            <p >String() 函数把对象的值转换为字符串</p>
+            <p>一元运算符 + 可用于将变量转换为数字</p>
+        </section>
+        <section>
+            <h5>自动转换类型</h5>
+            <p> 当 我们尝试操作一个 "错误" 的数据类型时，JS会自动帮我们转换为 "正确" 的数据类型。
+                即使输出来结果不是我们所期望的：</p>
+            <p>   3 + null    // 返回 3          null 转换为了数字 0</p>
+            <p>  "3" + null  // 返回"3null"     null 转换为 "null"</p>
+            <p>  "3" + 1     // 返回 "31"     数字 1 转换为了字符串 "1"</p>
+            <p>  "3" - 1     // 返回 2         这里字符串"3" 转换为了数字 3</p>
+        </section>
+
+        <section>
+            <h3>7.参考文献</h3>
+            <p>参考资料：https://www.jianshu.com/p/248737f3d6f3</p>
+            <p>—— javascript数据类型</p>
+            <p>参考资料：http://javascript.ruanyifeng.com/#introduction</p>
+            <p>—— 阮一峰：Javascript标准参考</p>
+            <p>参考资料：https://blog.csdn.net/suyu_yuan/article/details/56282357</p>
+            <p>—— js如何判断变量的数据类型？</p>
+        </section>
+
+        <section>
+            <h3>8.更多讨论</h3>
+            <p>ES6新增的第七种基本类型有什么作用呢？</p>
+            <p>typeof的局限性？</p>
+        </section>
+
+        <section>
+            <p>鸣谢</p>
+            <p>感谢大家观看</p>
+            <p><small>BY : 钟华俊</small></p>
+        </section>
+
+    </div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status He
+
+
+
