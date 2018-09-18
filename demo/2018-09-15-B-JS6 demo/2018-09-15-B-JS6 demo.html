@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dom</title>
+    <style>
+        body{
+            margin-bottom: 100px;
+        }
+        h3{text-align: center;}
+        pre{font-size: 1.2em}
+    </style>
+</head>
+
+<body>
+
+
+
+
+<p><button onclick="clickCounter()" type="button">点我!</button></p>
+<div id="result"></div>
+<p>点击按钮查看数字变化。</p>
+<p>关闭浏览器并重新打开，看看数值是否重置了。</p>
+
+<script>
+    function clickCounter() {
+        if(typeof(Storage) !== "undefined") {
+            if (localStorage.clickcount) {
+                localStorage.clickcount = Number(localStorage.clickcount)+1;
+            } else {
+                localStorage.clickcount = 1;
+            }
+            document.getElementById("result").innerHTML = "你在按钮上已经点击了 " + localStorage.clickcount + " 次。";
+        } else {
+            document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+        }
+    }
+</script>
+</body>
+
+</html>

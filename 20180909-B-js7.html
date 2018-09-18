@@ -1,0 +1,448 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>修真院</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- css-28-sassinsublime主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2 style="font-size: 1.5em;width: 110%;">
+                    【JS-task7】<br>
+                    <span>angular js中的依赖注入是什么？有什么作用？</span>
+                </h2>
+                <p>分享人：陈占乐</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+
+            <section>
+                <h3 style="text-align: left;">1.背景介绍</h3>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    依赖注入式AngularJS的重要特性之一，依赖注入简化了Angular解析模块/组件之间依赖的过程。 </p>
+                </p>
+                <h4 style="text-align: left;">什么是依赖注入 </h4>
+                <p style="text-align: left;">
+                    wiki 上的解释是：依赖注入（Dependency Injection，简称DI）是一种软件设计模式，在这种模式下，
+                    一个或更多的依赖（或服务）被注入（或者通过引用传递）到一个独立的对象（或客户端）中，然后成为了该客户端状态的一部分。
+                    该模式分离了客户端依赖本身行为的创建，这使得程序设计变得松耦合，并遵循了依赖反转和单一职责原则。与服务定位器模式形 成直接对比的是，它允许客户端了解客户端如何使用该系统找到依赖 .
+                </p>
+            </section>
+
+            <section>
+                <h3 style="text-align: left;">2.知识剖析</h3>
+            </section>
+            <section>
+                <h4 style="text-align: left;">ANGULAR依赖注入机制</h4>
+                <p style="text-align: left;">
+                    AngularJS 提供了5个核心组件用来作为依赖注入：
+                </p>
+                <p style="text-align: left;">
+                    value <br>
+                    factory<br>
+                    service<br>
+                    provider<br>
+                    constant
+                </p>
+            </section>
+            <section>
+                <h4 style="text-align: left;">$PROVIDE (供应商)</h4>
+                <p style="text-align: left;">
+                    供应商==>泛指provider <br>
+                    服务==>泛指service <br>
+                    provider==>provider()方法创建的代码块<br>
+                    service==>service()方法创建的代码块
+                </p>
+                <p style="text-align: left;">
+                    $provide服务负责告诉Angular如何创造一个新的可注入的代码块：即服务。服务会被叫做供应商的代码块来定义，我们可以使用$provide来创建一个供应商。
+                </p>
+                <p style="text-align: left;">
+                    我们需要使用$provide中的provider()方法来定义一个供应商，同时也可以通过要求$provide被注入到一个应用的config函数中来获得$provide服务。
+                </p>
+            </section>
+            <section>
+                <h4 style="text-align: left;">$PROVIDE</h4>
+                <p style="text-align: left;">
+                    $provide负责告诉Angular如何创建新的可注入的事物，即服务。服务是被providers定义的，即当你用$provide创建的。通过$provide服务来定义provider，你可以通过在应用的配置函数中注入$provide来持有该服务。
+                </p>
+            </section>
+            <section>
+                <pre><code>
+                    angular.module（‘app’，[]）.config(function($provide) {
+                        $provide.provider('greeting', function() {
+                            this.$get = function() {
+                                return function(name) {
+                                alert("Hello, " + name);
+                                };
+                            };
+                        });
+                    });    
+                </code></pre>
+                <p style="text-align: left;">
+                    在上面的例子中我们为一个服务定义了一个叫做greeting的新provider。 我们可以把一个叫做greeting的变量注入到任何可注入的函数中
+                    （例如控制器）然后Angular就会调用这个provider的$get函数来返回这个服务的一个实例。
+                </p>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    在上面的例子中，被注入的是一个函数，
+                    它接受一个参数并且根据这个参数alert一条信息。我们可以像下面这样使用它：
+                </p>
+                <pre><code>
+                    app.controller('MyCtrl', function($scope, greeting) {
+                        $scope.onClick = function() {
+                            greeting('Ford Prefect');
+                        };
+                    });
+                </code></pre>
+            </section>
+            <section>
+                <h4 style="text-align: left;">定义供应商的方法</h4>
+                <h4 style="text-align: left;">1、Constant</h4>
+                <p style="text-align: left;">
+                    Constant定义常量，Constant定义的值不应该被改变，它可以被注入到任何地方，但是不能被装饰器(decorator)装饰
+                </p>
+                <pre><code>
+                    var app = angular.module('app', []);
+                    app.config(function ($provide) {
+                        $provide.constant('myConstant', 'The Matrix');
+                    }); 
+                </code></pre>
+                <h4 style="text-align: left;">语法糖：</h4>
+
+                <pre><code>
+                    app.constant('myConstant', 'The Matrix');
+                </code></pre>
+            </section>
+            <section>
+                <h4 style="text-align: left;">2、VALUE</h4>
+                <p style="text-align: left;">
+                    Value可以是string,number甚至function,它和constant的不同之处在于，它可以被修改，不能被注入到config中，但是它可以被decorator装饰
+                </p>
+                <pre><code>
+                    var app = angular.module('app', []);
+                    app.config(function ($provide) {
+                        $provide.value('myValue', 'The Matrix')
+                    });
+                    </code></pre>
+                <h4 style="text-align: left;">语法糖：</h4>
+
+                <pre><code>
+                    app.value('myValue', 'The Matrix');
+                </code></pre>
+            </section>
+            <section>
+                <h4 style="text-align: left;">3、SERVICE</h4>
+                <p style="text-align: left;">
+                    Service是一个可注入的构造器，在AngularJS中它是单例的，用它在Controller中通信或者共享数据都很合适.
+                    在service里面可以不用返回东西，因为AngularJS会调用new关键字来创建对象。
+                </p>
+                <pre><code>
+                    var app = angular.module('app' ,[]);
+                    app.config(function ($provide) {
+                        $provide.service('myService', function () {
+                            this.title = 'The Matrix';
+                        });
+                    });
+                </code></pre>
+                <h4 style="text-align: left;">语法糖：</h4>
+
+                <pre><code>
+                    app.service('myService', function () {
+                        this.title = 'The Matrix';
+                    });
+                </code></pre>
+            </section>
+            <section>
+                <h4 style="text-align: left;">4、FACTORY</h4>
+                <p style="text-align: left;">
+                    Factory是一个可注入的function，它和service的区别就是：factory是普通function，而service是一个构造器(constructor)，
+                    Angular在调用service时会用new关键字，而调用factory时只是调用普通的function，所以factory可以返回任何东西，而service可以不返回.
+                    factory可以返回任何东西，它实际上是一个只有$get方法的provider
+                </p>
+                <pre><code>
+                    var app = angular.module('app', []);
+                    app.config(function ($provide) {
+                        $provide.factory('myFactory', function () {
+                            return {
+                                title: 'The Matrix'
+                            }
+                        });
+                    });
+                </code></pre>
+            </section>
+            <section>
+                <h4 style="text-align: left;">语法糖：</h4>
+
+                <pre><code>
+                    app.factory('movie', function () {
+                        return {
+                            title: 'The Matrix'
+                        }
+                    });
+                </code></pre>
+            </section>
+            <section>
+                <h4 style="text-align: left;">5、PROVIDER</h4>
+                <p style="text-align: left;">
+                    provider是value、Service、Factory的提供者，除了constant其它都是provider的简写形式。
+                    provider必须有一个$get方法，当然也可以说provider是一个可配置的factory
+                </p>
+                <pre><code>
+                app.provider('greeting', function() {
+                    var text = 'Hello, ';
+                    this.setText = function(value) {
+                        text = value;
+                    };
+                    this.$get = function() {
+                        return function(name) {
+                            alert(text + name);
+                        };
+                };
+                });
+                app.config(function(greetingProvider) {
+                greetingProvider.setText("Howdy there, ");
+                });
+                app.run(function(greeting) {
+                greeting('Ford Prefect');
+                });
+                </code></pre>
+
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    注意这里config方法注入的是greetingProvider，上面定义了一个供应商叫greeting，但是注入到config中不能直接写greeting，
+                    因为前文讲了注入的那个东西就是服务，是供应商提供出来的，而config中又只能注入供应商（两个例外是$provide和$injector），
+                    所以用驼峰命名法写成greetingProvider，Angular就会帮你注入它的供应商。
+                </p>
+                <p style="text-align: left;">
+                    factory和value等服务与provider都是提供服务，为什么还有人要使用provider。答案是provider允许我们进行一些配置。
+                    在前面我们已经提到过当你通过provider（或者其他简写方法）创建一个服务时，你实际上创建了一个新的provider，
+                    它将定义我们的服务如何被创建。这些provider可以被注入到config函数中，我们可以和它们进行一些交互。如上文例子：
+                </p>
+
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    AngularJS分两个阶段运行我们的用 – config阶段和run阶段。config阶段是我们设置任何的provider的阶段。
+                    它也是我们设置任何的指令，控制器，过滤器以及其它东西的阶段。在run阶段，AngularJS会编译你的DOM并启动我们的应用。
+                </p>
+                <img src="./img/20180909-B-js7/di.png">
+            </section>
+            <section>
+                <h3 style="text-align: left;">总结</h3>
+                <p style="text-align: left;">
+                    所有的供应商都只被实例化一次，也就说他们都是单例的；
+                    除了constant，所有的供应商都可以被装饰器(decorator)装饰
+                </p>
+                <p style="text-align: left;">
+                    value就是一个简单的可注入的值<br>
+                    service是一个可注入的构造器<br>
+                    factory是一个可注入的方法<br>
+                    decorator可以修改或封装其他的供应商，当然除了constant<br>
+                    provider是一个可配置的factory
+                </p>
+            </section>
+
+
+
+            <section>
+                <h3 style="text-align: left;">3.常见问题</h3>
+            </section>
+            <section>
+                <p style="text-align: left;">AngularJS依赖注入的方法</p>
+            </section>
+
+
+            <section>
+                <h3 style="text-align: left;">4.解决方案</h3>
+            </section>
+            <section>
+                <h4 style="text-align: left;">1. 通过函数的参数进行推断式注入声明</h4>
+                <p style="text-align: left;">
+                    如果没有明确的声明， AngularJS会假定参数名称就是依赖的名称。因此，它会在内部调用函数对象的toString()方法，分析并提取出函数的参数列表，然后通过
+                    $injector将这些参数注入进对象实例。
+                </p>
+            </section>
+            <section>
+                <h4 style="text-align: left;">2、显式注入声明</h4>
+                <p style="text-align: left;">
+                    AngularJS提供了显式的方法来明确定义一个函数在被调用时需要用到的依赖关系。
+                </p>
+                <p style="text-align: left;">
+                    通过这种方法声明依赖，即使在源代码被压缩、参数名称发生改变的情况下依然能够正常工作。
+                </p>
+                <p style="text-align: left;">
+                    需要注意的地方: <br>
+                    对于这种声明方式来讲，参数的顺序是十分重要的，因为$inject数组元素的顺序必须和注入的参数的顺序一一对应。
+                </p>
+            </section>
+            <section>
+                <h4 style="text-align: left;">3、行内注入声明</h4>
+                <p style="text-align: left;">
+                    AngularJS提供的行内注入方法实际上是一种语法糖，它与前面的提到的通过$inject属性进行声明的原理是一样的，但是允许我们在函数定义的时候从行内将参数传入，这种方法方便，简单，而且避免了在定义的过程中使用临时变量。
+                </p>
+
+                <p style="text-align: left;">
+                    需要注意的地方: <br>
+                    行内声明的方式允许我们直接传入一个参数数组，而不是一个函数。数组的元素是字符串，它们代表的是可以被注入到对象中的依赖名字，最后一个参数就是依赖注入的目标函数对象本身。
+                </p>
+            </section>
+
+
+            <section>
+                <h3 style="text-align: left;">5.编码实战</h3>
+            </section>
+
+
+            <section>
+                <h3 style="text-align: left;">6.扩展思考</h3>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    AngularJS中的依赖注入有何优点？
+                </p>
+                <p style="text-align: left;">
+                    一、模板功能强大丰富，并且是声明式的，自带了丰富的Angular指令；
+                </p>
+                <p style="text-align: left;">
+                    二、是一个比较完善的前端MVC框架，包含模板，数据双向绑定，路由，模块化，服务，过滤器，依赖注入等所有功能；
+                </p>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    三、依赖注入简化了组件之间处理依赖的过程（即解决依赖）。没有依赖注入，就不得不以某种方式自己查找$scope，很可能得使用全局变量。这虽然能够工作，但是不如AngularJS的依赖注入技术这么简单。
+                </p>
+                <p style="text-align: left;">
+                    四、在开发中使用依赖注入的主要好处是AngularJS负责管理组件并在需要的时候提供给相应函数。依赖注入还能够为测试带来好处，因为它允许你使用假的或者模拟的对象来代替真实的组件，从而让开发者专注于程序的特定部分。
+                </p>
+            </section>
+
+
+            <section>
+                <h3 style="text-align: left;">7.参考文献</h3>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    参考一&emsp;
+                    <a href="https://segmentfault.com/a/1190000002786133">
+                        玩转 AngualrJS 的依赖注入
+                    </a>
+                </p>
+                <p style="text-align: left;">
+                    参考二&emsp;
+                    <a href="http://www.html-js.com/article/Injection-with-Angular-development-web-application-AngularJS-explain-only-dependence">
+                        详解AngularJS中的依赖注入
+                    </a>
+                </p>
+                <p style="text-align: left;">
+                    参考三&emsp;
+                    <a href="http://www.html-js.com/article/1980">
+                        理解AngularJS中的依赖注入
+                    </a>
+                </p>
+            </section>
+
+
+            <section>
+                <h3 style="text-align: left;">8.更多讨论</h3>
+            </section>
+
+
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>BY : 陈占乐 </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: './plugin/markdown/marked.js'
+                },
+                {
+                    src: './plugin/markdown/markdown.js'
+                },
+                {
+                    src: './plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: './plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
