@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<style>
+    .p-style>p {
+        font-size: 20px;
+        text-align: left;
+        padding-bottom: 20px;
+    }
+</style>
+
+<body>
+    <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h4>小课堂——上海分院</h4>
+                <h4>什么是AJAX</h4>
+                <h4>分享人：何岳</h4>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <p style="font-size: 30px;letter-spacing: 3px;">前言</p>
+                <p style="font-size: 30px;text-align: left;">AJAX是什么</p>
+                <p style="font-size: 30px;text-align: left;">async JavaScript and xml，异步的js和xml</p>
+            </section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <section>
+                    <h3>async和XML</h3>
+                    <p style="font-size: 26px;text-align: left;">xml：可扩展的标记语言，作用是用来存储数据的（通过自己扩展的标记名称清晰的展示出数据结构）</p>
+                    <p style="font-size: 26px;text-align: left;">异步的js:这里的异步不是说ajax只能基于异步进行请求（虽然建议都是使用异步编程），这里的异步特指的是“局部刷新”</p>
+                </section>
+                <section>
+                    <h3>全局刷新和局部刷新</h3>
+                    <p style="font-size: 26px;text-align: left;">全局刷新：在非完全前后端分离项目中，前端开发只需要完成页面的制作，并且把一些基础的人机交互效果使用js完成即可，页面中需要动态呈现内容的部分，都是交给后台做数据绑定和基于服务器进行渲染的（服务器端渲染）</p>
+                    <p style="font-size: 26px;text-align: left;">局部刷新：前后端完全分离的项目，页面中需要动态绑定的数据是交给客户端完成渲染的</p>
+                </section>
+                <section>
+                    <h3>基于原生js实现AJAX</h3>
+                    <p style="font-size: 26px;text-align: left;">1.创建一个AJAX对象</p>
+                    <p style="font-size: 26px;text-align: left;">2.打开请求地址</p>
+                    <p style="font-size: 26px;text-align: left;">3.监听ajax，获取响应信息（获取响应头信息，获取响应主体信息）</p>
+                    <p style="font-size: 26px;text-align: left;">4.发送ajax请求（括号中的内容就是请求主体的内容）</p>
+                </section>
+                <section>
+                    <h3>AJAX请求方式</h3>
+                    <p style="font-size: 26px;text-align: left;">get</p>
+                    <p style="font-size: 26px;text-align: left;">post</p>
+                    <p style="font-size: 26px;text-align: left;"></p>
+                    <p style="font-size: 26px;text-align: left;"></p>
+                </section>
+                <section>
+                    <h3>URL:请求数据地址（API地址）</h3>
+                    <p style="font-size: 30px;text-align: left;">真实项目中，后端会编写一个API文档，在API文档中汇总了获取哪些数据需要哪些地址</p>
+                </section>
+                <section>
+                    <h3>同异步</h3>
+                    <p style="font-size: 30px;text-align: left;">设置当前ajax请求是异步的还是同步的，不写默认是异步（true），如果设置为false，则代表当前请求是同步的</p>
+                </section>
+            </section>
+
+            <section>
+                <h3>3.常见问题</h3>
+                <p style="font-size: 30px;text-align: left;">1.局部刷新的优点和缺点</p>
+                <p style="font-size: 30px;text-align: left;">2.get和post的区别</p>
+                <p style="font-size: 30px;text-align: left;">3.AJAX中常用的属性和方法有哪些</p>
+            </section>
+
+            <section>
+                <h3>4.解决方案</h3>
+                <p style="font-size: 30px;text-align: left;"></p>
+                <p style="font-size: 30px;text-align: left;"></p>
+            </section>
+
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+
+            <section>
+                <h3>6.扩展思考</h3>
+                <p style="font-size: 30px;text-align: left;">全局刷新和局部刷新的区别以及优缺点</p>
+            </section>
+
+            <section>
+                <h3>7.参考文献</h3>
+                <p>https://www.cnblogs.com/smyhvae/p/8485028.html</p>
+            </section>
+            <section>
+                <h3>8.更多讨论</h3>
+            </section>
+            <section>
+                <p>讨论时间到，欢迎大家提问！
+                </p>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>By
+                    <small style="vertical-align: middle">何岳</small>
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
