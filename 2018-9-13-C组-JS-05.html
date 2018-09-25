@@ -1,0 +1,239 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+    <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <!-- 首页 -->
+        <section>
+            <h2>【JS-task05】为什么有时我们需要配置hosts来本地测试？和什么有关？若不配置hosts会影响什么？</h2>
+            <h3>小课堂【武汉小课堂】</h3>
+            <p>分享人：严泽浩</p>
+        </section>
+        <!-- 目录 -->
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <!-- 背景介绍 -->
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <!-- 背景介绍详情 -->
+        <section>
+            <p style="text-align: left;">
+                Hosts是一个没有扩展名的系统文件，可以用记事本等工具打开，
+                其作用就是将一些常用的网址域名与其对应的IP地址建立一个关联“数据库”，
+                当用户在浏览器中输入一个需要登录的网址时，系统会首先自动从Hosts文件中寻找对应的IP地址，
+                一旦找到，系统会立即打开对应网页，如果没有找到，则系统会再将网址提交DNS域名解析服务器进行IP地址的解析。
+            </p>
+        </section>
+
+        <!-- 知识剖析 -->
+
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            <section>
+                <h3>一、hosts与DNS服务器</h3>
+                <p style="text-align: left;">
+                    引入DNS（Domain Name System，域名系统）之前，网络中的主机是将容易记忆的域名映射到IP地址并将它保存在一个共享的静态文件hosts中，
+                    再由hosts文件来实现网络中域名的管理。最初Internet非常小，仅使用这个集中管理的文件就可以通过FTP为连入Internet的站点和主机提供域名的发布和下载。
+                    每个Internet站点将定期地更新其主机文件的副本，并且发布主机文件的更新版本来反映网络的变化。
+                    但是，当Internet上的计算机迅速增加时，通过一个中心授权机构为所有Internet主机管理一个主机文件的工作将无法进行。
+                    文件会随着时间的推移而增大，这样按当前和更新的形式维持文件以及将文件分配至所有站点将变得非常困难，甚至无法完成，于是便产生了DNS服务器。
+                </p>
+            </section>
+            <section>
+                <h3>二、工作原理</h3>
+                <p style="text-align: left;">
+                    浏览器访问网站，要首先通过DNS服务器把要访问的网站域名解析成其指定的IP地址，之后，浏览器才能对此网站进行定位并且访问其数据。
+                    操作系统规定，在进行DNS请求以前，先检查系自己的Hosts文件中是否有这个域名和IP的映射关系。
+                    如果有，则直接访问这个IP地址指定的网络位置，如果没有，再向已知的DNS服务器提出域名解析请求。也就是说Hosts的IP解析优先级比DNS要高。
+                </p>
+            </section>
+        </section>
+        
+        <!-- 常见问题 -->
+
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            <p>Hosts文件的工作方式以及它在具体使用中起哪些作用</p>
+        </section>
+
+        <!-- 解决方案 -->
+
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            <ol>
+                <li>1、加快域名解析</li>
+            </ol>
+            <p style="text-align: left">
+                对于要经常访问的网站，我们可以通过在Hosts中配置域名和IP的映射关系，提高域名解析速度。
+                由于有了映射关系，当我们输入域名计算机就能很快解析出IP，而不用请求网络上的DNS服务器。
+            </p>
+        </section>
+        <section>
+            <ol>
+                <li>2、方便局域网用户</li>
+            </ol>
+            <p style="text-align: left">
+                在很多单位的局域网中，会有服务器提供给用户使用。但由于局域网中一般很少架设DNS服务器，
+                访问这些服务器时，要输入难记的IP地址。这对不少人来说相当麻烦。
+                可以分别给这些服务器取个容易记住的名字，然后在Hosts中建立IP映射，
+                这样以后访问的时候，只要输入这个服务器的名字就行了。
+            </p>
+        </section>
+        <section>
+            <ol>
+                <li>3、屏蔽网站（域名重定向）</li>
+            </ol>
+            <p style="text-align: left">
+                有很多网站不经过用户同意就将各种各样的插件安装到你的计算机中，其中有些说不定就是木马或病毒。
+                对于这些网站我们可以利用Hosts把该网站的域名映射到错误的IP或本地计算机的IP，这样就不用访问了。
+                在WINDOWS系统中，约定 127.0.0.1 为本地计算机的IP地址, 0.0.0.0是错误的IP地址。
+            </p>
+        </section>
+        <section>
+            <ol>
+                <li> 4、顺利连接系统</li>
+            </ol>
+            <p style="text-align: left">
+                对于Lotus的服务器和一些数据库服务器，在访问时如果直接输入IP地址那是不能访问的，
+                只能输入服务器名才能访问。那么我们配置好Hosts文件，这样输入服务器名就能顺利连接了。
+            </p>
+        </section>
+        <section>
+            <ol>
+                <li> 5.虚拟域名</li>
+            </ol>
+            <p style="text-align: left">
+                很多时候，网站建设者需要把”软环境“搭建好，再进行上传调试。但类似于邮件服务，则需要使用域名来辅助调试，
+                这时就可以将本地 IP 地址与一个”虚拟域名“做地址指向，就可以达到要求的效果，且无需花费。
+            </p>
+        </section>
+
+        <!-- 编码实战 -->
+
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+
+        <!-- 拓展思考 -->
+
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+            <section>
+                <h3>一个比较便捷的打开hosts文件的方法</h3>
+            </section>
+            <section>
+                <p style="text-align: left">
+                    新建一个txt文件，在你其中输入：
+                    notepad "%SystemRoot%\system32\drivers\etc\hosts"
+                    ipconfig /flushdns
+                    exit 保存，将扩展名改成成.bat，之后双击这个bat文件就可以自动打开hosts文件进行修改了。
+                </p>
+            </section> 
+        </section>
+
+        <!-- 参考文献 -->
+
+        <section>
+            <h3>7.参考文献</h3>
+        </section>
+        <section style="text-align: left;">
+            <p>参考链接：<a href="https://baike.baidu.com/item/hosts/10474546?fr=aladdin">hosts</a></p>
+        </section>
+
+        <!-- 更多讨论 -->
+
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+
+        <!-- 鸣谢 -->
+        
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p><small>BY : 严泽浩</small></p>
+        </section>
+    </div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: '../plugin/markdown/marked.js' },
+            { src: '../plugin/markdown/markdown.js' },
+            { src: '../plugin/notes/notes.js', async: true },
+            { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status He

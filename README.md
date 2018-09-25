@@ -17,3 +17,9 @@ https://it-xzy.github.io/WEB-NEW/0-index-WEB.html
 
 ## 备注
 PPT基于reveal，希望查看更多详情可以访问[reveal官网](https://github.com/hakimel/reveal.js)
+
+## 备注
+如需要单独check out 子文件夹，需要先复制url路径，再将其中的tree/master改成trunk，例如：原url为，https://github.com/IT-xzy/Task/tree/master/Java/wangyongzhi/Task5，
+ check out url为：https://github.com/IT-xzy/Task/trunk/Java/wangyongzhi/Task5
+ 大家在官网提交任务的时候，填后者check out url
+
