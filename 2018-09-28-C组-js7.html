@@ -1,0 +1,216 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>葡萄藤PPT</title>
+
+  <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+  <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+  <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+  <!-- syntax highlighting 代码高亮主题 -->
+  <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+  <style>
+    .left {
+      text-align: left;
+    }
+    .red {
+      color: #323232;
+    }
+  </style>
+
+
+  <!-- 打印和PDF输出样式 -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : 'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+</head>
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+  <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+  <div class="slides"
+       style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+    <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+      <h2>【JS-task7】</h2>
+      <h3>Angluar控制器是什么？
+      </h3>
+      <p>分享人：叶泽彪</p>
+    </section>
+    <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+      <p>目录</p>
+      <p>1.背景介绍</p>
+      <p>2.知识剖析</p>
+      <p>3.常见问题</p>
+      <p>4.解决方案</p>
+      <p>5.编码实战</p>
+      <p>6.扩展思考</p>
+      <p>7.参考文献</p>
+      <p>8.更多讨论</p>
+    </section>
+    <section>
+      <h3>1.背景介绍</h3>
+    </section>
+    <section>
+      <p class="left">
+        了解控制器之前，我们先来了解一下什么是MVVM模式。MVVM模式是Model-View-ViewMode（模型-视图-视图模型）模式的简称。
+      </p>
+      <p class="left">
+        在angular中MVVM模式主要分为四部分：
+      </p>
+      <p class="left">
+        View：它专注于界面的显示和渲染，在angular中则是包含一堆声明式Directive的视图模板。
+      </p>
+      <p class="left">
+        ViewModel：它是View和Model的粘合体，负责View和Model的交互和协作，它负责给View提供显示的数据，以及提供了View中Command事件操作Model的途径；
+        在angular中$scope对象充当了这个ViewModel的角色；
+      </p>
+    </section>
+    <section>
+      <p class="left">
+        Model：它是与应用程序的业务逻辑相关的数据的封装载体，它是业务领域的对象，Model并不关心会被如何显示或操作，所以模型也不会包含任何界面显示相关的逻辑。
+        在web页面中，大部分Model都是来自Ajax的服务端返回数据或者是全局的配置对象；而angular中的service则是封装和处理这些与Model相关的业务逻辑的场所，
+        这类的业务服务是可以被多个Controller或者其他service复用的领域服务。
+      </p>
+      <p class="left">
+        Controller：这并不是MVVM模式的核心元素，但它负责ViewModel对象的初始化，它将组合一个或者多个service来获取业务领域Model放在ViewModel对象上，
+        使得应用界面在启动加载的时候达到一种可用的状态。
+      </p>
+    </section>
+    <section>
+      <h3>2.知识剖析</h3>
+    </section>
+    <section>
+      <p class="left">
+        什么是controller？AngularJS 控制器是常规的 JavaScript 对象。AngularJS 控制器 控制 AngularJS 应用程序的数据。在angularJS中，
+        controller是一个javascript函数/类，用于操作作用域中，各个对象的初始状态以及相应的行为。
+      </p>
+      <p class="left">
+        也就是说，在HTML中，绑定ng-controller的那个DOM节点内的所有子标签，将会是当前controller的作用域。在大型项目中,
+        如果HTML DOM 中有多个作用域，这时你就需要知道你使用的 scope 对应的作用域是哪一个。
+      </p>
+      <p class="left">
+        angularJS中view层解析是通过controller的作用域来将$scope对象解析成相应的内容，因此我们可以在同一个界面上划分不同的模块，
+        通过不同的控制器控制不同的模块来进行开发，这样通过划分模块的开发方式，对今后维护代码带来了便利。
+      </p>
+    </section>
+    <section>
+      <h3>3.常见问题</h3>
+    </section>
+    <section>
+      <p>
+        controller之间的数据该如何传输？
+      </p>
+    </section>
+    <section>
+      <h3>4.解决方案</h3>
+    </section>
+    <section>
+      <p class="left">
+        使用service实现controller之间的数据传输。
+        controller是相对独立的，两个controller之间，内存是不共享的，同级DOM下，两个controller是无法互相访问其中的属性或者方法的。
+      </p>
+      <p class="left">
+        那么，在实际项目中，我们会有很多的页面和控制器，不同页面下的controller之间有时候是需要传输数据的，之前我们学习了localStorage，
+        用于页面之间的传参，而官方建议页面之间通过service互相访问。
+      </p>
+    </section>
+    <section>
+      <h3>5.编码实战</h3>
+    </section>
+    <section>
+      <h3>6.扩展思考</h3>
+    </section>
+    <section>
+      <h4>在多个controller中进行信息的沟通还有哪些？</h4>
+      <p class="left">
+        1.$rootscope
+      </p>
+      <p class="left">
+        $scope是html和单个controller之间的桥梁，数据绑定就靠他了。而$rootscope可以被认为是全局$scope, 在各个controller里面都可以显示，也都可以修改。
+      </p>
+      <p class="left">
+        2.作用域继承
+      </p>
+      <p class="left">
+        作用域嵌套带来的父子作用域的继承关系也可以算是一种父子作用域之间的通信方式。
+      </p>
+      <p class="left">
+        3.作用域继承+$watch
+      </p>
+      <p class="left">
+        为了解决作用域继承不能解决的从子孙到祖先的数据传递问题，可以用$scope.$watch函数来监视数据变化。
+      </p>
+    </section>
+    <section>
+      <h3>7.参考文献</h3>
+    </section>
+    <section class="left">
+      <p>参考一：<a href="https://blog.csdn.net/ft6302244/article/details/42387839" target="_blank">神奇的angularJS——controller控制器的作用</a></p>
+      <p>参考二：<a href="https://blog.csdn.net/ft6302244/article/details/42640073" target="_blank">神奇的angularJS --连接controller的桥梁 service</a></p>
+      <p>参考三：<a href="http://www.cnblogs.com/whitewolf/p/4581254.html" target="_blank">angular中的MVVM模式</a></p>
+      <p>参考四：<a href="https://blog.csdn.net/lai_xu/article/details/49612915" target="_blank">不同controller作用域之间通信的方式</a></p>
+    </section>
+    <section>
+      <h3>8.更多讨论</h3>
+    </section>
+    <section>
+      <p>感谢大家观看</p>
+      <p><small>BY : 叶泽彪</small></p>
+    </section>
+  </div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+  // 以下为常见配置属性的默认值
+  // {
+  // 	controls: true, // 是否在右下角展示控制条
+  // 	progress: true, // 是否显示演示的进度条
+  // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+  // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+  // 	keyboard: true, // 是否启用键盘快捷键来导航
+  // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+  // 	center: true, // 是否将幻灯片垂直居中
+  // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+  // 	loop: false, // 是否循环演示
+  // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+  // 	fragments: true, // 全局开启和关闭碎片。
+  // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+  // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+  // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+  // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+  // }
+  // 初始化幻灯片
+  Reveal.initialize({
+//        history: true,
+    transition: 'default',
+    transitionSpeed: 'slow',
+    dependencies: [
+      {src: '../plugin/markdown/marked.js'},
+      {src: '../plugin/markdown/markdown.js'},
+      {src: '../plugin/notes/notes.js', async: true},
+      {
+        src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+          hljs.initHighlightingOnLoad();
+        }
+      }
+    ]
+  });
+</script>
+</body>
+</html>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status He
