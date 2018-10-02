@@ -1,0 +1,257 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题,可以在/css/reveal/theme/中选择其他主题,目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        .text-l {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>px、em、rem、%、vw、vh、vm等单位有什么区别？</h2>
+                <p>分享人：许恒倩</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <section>
+                    <h3>1.背景介绍</h3>
+                </section>
+                <section style="text-align: left;">
+                    <br style="text-align: left">
+                    传统的项目开发中，我们只会用到px、%、em这几个单位，它可以适用于大部分的项目开发，<br>
+                    并且拥有比较良好的兼容性。但是从css3开始，浏览器对逻辑单位的支持又提升到了另外一个境界，<br>
+                    增加了rem、vh、vw、vm等一些新的长度单位，我们可以利用这些新的单位开发出比较良好的响应式页面，<br>
+                    随之覆盖多种不同分辨率的终端，包括移动设备等。接下来就讲下这些长度单位有什么区别。
+                </section>
+
+
+            </section>
+            <section>
+
+
+                <section>
+                    <h3>2.知识剖析</h3>
+                </section>
+                <section style="text-align: left;">
+                    <h3><strong>1. px</strong></h3>
+                    <p><br>
+                        px单位名称为像素，像素是固定大小的单元,用于屏幕媒体(即在电脑屏幕上读取)。一个像素等于电脑屏幕上的一个点<br>
+                        (是你屏幕分辨率的最小分割)。是 CSS 中最常用的长度单位，可以用来指定字体大小，元素的宽度、高度、边框、内边距，外边距的大小等等<br>
+                        px是绝对长度单位，它不会根据屏幕的大小进行调整。
+                    </p>
+
+                </section>
+
+
+                <section style="text-align: left;">
+                    <h3><strong>2.%</strong></h3>
+                    <p>
+                        百分比是一个相对长度单位，相对于包含块（containing block）的高宽或字体大小。<br>
+                        关于包含块（containing block）的概念，不能简单地理解成是父元素。<br>
+                        如果是静态定位和相对定位，包含块一般就是其父元素。<br>
+                        如果是绝对定位的元素，包含块应该是离它最近的 position为非static属性的祖先元素。<br>
+                        如果是固定定位的元素，它的包含块是视口（viewport）。
+                    </p>
+                </section>
+
+
+                <section class="text-l">
+                    <h3>3. em</h3>
+                    <p>
+                        em是相对字体长度单位。如果用于font-size属性本身，则是相对于父元素的font-size。<br>
+                        em单位有如下特点：<br>
+                        1. em的值并不是固定的;<br>
+                        2. em会继承父级元素的字体大小。<br>
+                        em是继承父元素的字体大小，可是当父元素字体大小改变时，又得重新计算了。
+                    </p>
+                </section>
+
+                <section class="text-l">
+                    <h3>4. rem</h3>
+                    <p>
+                        rem是CSS3新增的一个相对字体长度单位，只相对根元素即html元素字体大小<br>
+                        所以我们只要在html标签上设置字体大小为标准，文档中的字体大小都会以此为参照<br>
+                        我们知道任意浏览器的默认字体大小都是16px。<br>
+                        为了简化font-size的换算，需要在css中的根元素html中声明font-size=62.5%，这就使rem值变为 16px*62.5%=10px,<br>
+                        这样 10px=1rem, 也就是说只需要将你的原来的px数值除以10，然后换上rem作为单位就行了
+                    </p>
+                </section>
+                <section class="text-l">
+                    <h3>5. vw 和vh</h3>
+                    <p>
+                        CSS3新增的长度单位,分别是viewpoint Width和viewpoint Height的缩写。<br>
+                        1vh 等于1/100的视口高度。举个列子：浏览器高度900px, 1 vh = 900px/100 = 9 px。<br>
+                        同理，如果视口宽度为750， 1vw = 750px/100 = 7.5 px。
+                    </p>
+                </section>
+                <section class="text-l">
+                    <h3>6. vm</h3>
+                    <p>
+                        vmin 是当前 vm 和 vh 中较小的一个值，也就是说，是可视区域较小的一边的1/100的长度；<br>
+                        例如：可视区大小为 1000x800, 则 wmin = 800/100 = 8px;<br>
+                        如果可视区大小为 600x800, 则 wmin = 600/100 = 6px;
+                    </p>
+                    <p>
+                        类似的, vmax 是当前 vm 和 vh 中较大的一个值，也就是说，是可视区域较大的一边的1/100的长度；<br>
+                        例如：可视区大小为 1000x800, 则 wmin = 1000/100 =10px;<br>
+                        如果可视区大小为 600x800, 则 wmin = 800/100 = 8px;
+                    </p>
+                </section>
+
+            </section>
+
+            <section>
+                <section>
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    <h4>在使用rem为单位时，为何将html的font-size:625% </h4>
+                </section>
+
+            </section>
+
+
+            <section>
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+
+                <section>
+
+                    <p class="text-l">
+                       大部分现代浏览器默认时16px,chrome强制最小字体为12号，即使设置成 10px 最终都会显示成12px，<br>
+                       当把html的font-size设置成10px,子节点rem的计算还是以12px为基准，<br>
+                        所以提到的将html的font-size设为10方便计算不是那么可取)。导致chrome的em/rem计算不准确。<br>
+                        为了解决这个坑，设置html字体为625%，即100px，body 修正为16px，这样 0.1rem 就是 10px，<br>
+                        而body的字体仍然是默认大小，不影响未设置大小的元素的默认字体的大小。
+                        <br>
+                    </p>
+                </section>
+
+            </section>
+            <section>
+                <section>
+                    <h3>5.编码实战</h3>
+                </section>
+
+            </section>
+            <section>
+                <section>
+                    <h3>6.扩展思考</h3>
+
+                </section>
+
+                <section class="text-l">
+                    <h4>css还有哪些长度单位？</h4>
+                    <p>
+                        英寸in(inches)
+                        1in = 96px
+
+                    </p>
+                    <p>
+                            厘米cm(centimeters)
+                            1cm = 37.8px
+                    </p>
+                    <p>
+                            点pt(points)
+                            　1pt = 1.33px
+                    </p>
+                    <p>
+                            派卡pc(picas)
+                            1pc = 16px
+                    </p>
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>7.参考文献</h3>
+                </section>
+                <section>
+                    <p style="text-align: left">参考：<br>
+                        <br>
+                        你可能不了解的七个 CSS 单位 <br>
+                        CSS/CSS3长度、时间、频率、角度单位大全--张鑫旭
+                    </p>
+
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>8.更多讨论</h3>
+                </section>
+            </section>
+            <section>
+                <!--<h4>鸣谢</h4>-->
+                <p>感谢大家观看</p>
+                <p>
+                    <small>BY : 许恒倩</small>
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [
+                { src: './plugin/markdown/marked.js' },
+                { src: './plugin/markdown/markdown.js' },
+                { src: './plugin/notes/notes.js', async: true },
+                {
+                    src: './plugin/highlight/highlight.js', async: true, callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
