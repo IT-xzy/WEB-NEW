@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>葡萄藤PPT</title>
+
+	<link rel="stylesheet" href="./css/reveal/reveal.css">
+
+	<!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+	<link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+	<!-- syntax highlighting 代码高亮主题 -->
+	<link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+	<!-- 打印和PDF输出样式 -->
+	<script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+	<area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+</map>
+<div class="reveal">
+	<div class="slides">
+		<section>
+			<h3>【JS-8】如何理解angular自定义指令directive的compile、link属性？ </h3>
+			<h4>小课堂【深圳-WEB-C组】</h4>
+			<p>分享人：韩鹏</p>
+		</section>
+
+		<section>
+			<p>目录</p>
+			<p>1.背景介绍</p>
+			<p>2.知识剖析</p>
+			<p>3.常见问题</p>
+			<p>4.解决方案</p>
+			<p>5.编码实战</p>
+			<p>6.扩展思考</p>
+			<p>7.参考文献</p>
+			<p>8.更多讨论</p>
+		</section>
+
+		<section>
+			<section>
+				<h3>1.背景介绍</h3>
+			</section>
+			<section>
+                    <br>Directive（指令）是AngularJS非常强大而有有用的功能之一。它就相当于为我们写了公共的自定义DOM元素或CLASS属性或ATTR属性，并且它不只是单单如此，你还可以在它的基础上来操作scope、绑定事件、更改样式等。通过这个Directive，我们可以封装很多公共指令，比如分页指令、自动补全指令等等。然后在HTML页面里只需要简单的写一行代码就可以实现很多强大的功能。一般情况下，需要用Directive有下面的情景：
+                    <br>1. 使你的Html更具语义化，不需要深入研究代码和逻辑即可知道页面的大致逻辑。
+                    <br>2. 抽象一个自定义组件，在其他地方进行重用。
+                </section>
+		</section>
+
+		<section>
+			<section>
+				<h3>2.知识剖析</h3>
+			</section>
+			<section>
+                <p>directive的执行原理:</p>
+                <p>在AngularJS应用启动前，指令都以html文本的形式保存在文本编辑器中。当该应用启动后，会经过两个阶段，即编译阶段和链接阶段。之后，作用域（scope）会同html进行绑定，应用会对html中dom的操作进行实时响应。第一阶段是compile，第二阶段是link。</p>
+            </section>
+            <section>
+            	<p>编译阶段： AngularJS会遍历整个html文档并根据JS中的指令定义来处理页面上声明的指令。换句话说， 在遍历dom时，所有的指令将被收集，但对dom树还没有进行数据绑定，此时对dom操作对性能影响很小。在编译阶段，同种 directive 在不同的 dom 节点出现一次，编译也会随之执行一次。然而，在这个阶段 scope 是无法访问到的。一个指令一旦编译完成，马上就可以通过编译函数对其进行访问。这个编译函数会返回一个模板函数，包含有完整的解析树。最后，模板函数被传递给编译后的dom树中每个指令定义的链接函数（link）。</p>
+            </section>
+            <section>
+            	<p>链接阶段： Angular 会把所有 directive 的事件监听器注册到dom中并建立对 scope（作用域）的监听，并且把一个 scope 加到 directive 中。由于链接阶段是在编译阶段之后进行的，所以这时的scope是可以访问的。</p>
+            </section>
+            </section>
+		</section>
+		<section>
+			<section>
+				<h3>3.常见问题</h3>	
+			</section>
+			<section>
+				<h4>compile 和 link 的用法及区别</h4>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h3>4.解决方案</h3>
+			</section>
+			<section>
+				<h4>compile用法：</h4>
+				<br>
+				<p>compile函数负责对模板dom进行转换，它返回一个对象或者函数。compile本身相较于link函数不会那么频繁地使用。通常情况下，如果设置了compile函数，那就意味着可以在指令和实时数据被放到dom中之前对dom进行操作，在这个函数中进行例如添加或删除节点等dom操作都是安全的。</p>
+				<pre style='background-color: #555;'>
+
+	app.directive('myDirective', function() {
+	     return {
+			compile: function(element, attrs, transclude){
+	            var curEle = angular.element('id');
+	            return function(scope, element, attrs) {
+	                 //链接函数
+	            };
+	        }
+	     }
+	});
+				</pre>
+			</section>
+			<section>
+				<p>参数解释：</p>
+				<p>element: 正在执行该指令的当前dom元素的jquery对象； </p>
+				<p>attrs: 正在执行该指令的当前dom元素的属性；</p>
+				<p>transclude: 模版替换之前的内容</p>
+			</section>
+			<section>
+				<h4>link函数用法：</h4>
+				<br>
+				<p>link函数负责将作用域和dom进行链接，并对元素的注册事件进行监听。而在这个操作执行之前，可以手动操作dom。如果有了编译函数，它会返回一个链接函数，不需要另外定义。一般来说，都可按照以下代码来定义link函数（该函数的参数列表是固定的）。</p>
+				<pre style="background-color: #555;">
+
+	app.directive('myDirective', function() {
+	     return {
+	        link: function(scope, element, attrs, controller) {
+	         //controller是require中指定的控制器，名字不能写错，不然对应不起来...
+	        }
+	     }
+	});
+				</pre>
+			</section>
+			<section>
+				<p>参数解释：</p>
+				<p>scope：指令用来在其内部注册监听器的作用域。</p>
+				<p>element：element参数代表实例元素，指使用此指令的元素。在postLink函数中我们应该只操作此元素的子元素，因为子元素已经被链接过了。</p>
+				<p>attrs：attrs参数代表实例属性，是一个由定义在元素上的属性组成的标准化列表，可以在所有指令的链接函数间共享。会以JavaScript对象的形式进行传递。</p>
+				<p>controller：controller参数指向require选项定义的控制器。如果没有设置require选项，那么controller参数的值为undefined。</p>
+			</section>
+			<section>
+				<h4>controller用法:</h4>
+				<p>controller这里的属性值可以是一个字符串（控制器名称）或者函数（控制器内容）。如果属性值为字符串时，会以字符串为控制器的名字，查找在应用中已经注册过的控制器的构造函数。</p>
+				<pre style="background-color: #555;">
+
+	app.directive('myDirective', function() {
+	     return {
+	        controller: function($scope, $element, $attrs, $transclude) {
+	             //controller逻辑内容
+	        }
+	        or
+	        controller: 'MyController'
+	     }
+	});
+
+				</pre>
+			</section>
+			<section>
+				<p>一般在控制器内部操作dom与AngularJS的风格不符，所以需要通过链接函数来实现这个功能。</p>
+				<p>自定义指令的控制器和link函数是可以进行互换的。控制器主要用来提供可在指令间复用的行为，但是链接函数只能在当前内部指令中定义行为，且无法在指令间复用。</p>
+				<div style="font-size: 26px;">
+					<p>作用：</p>
+					compile：负责对模板dom进行转换；
+					<br>link： 负责将作用域和dom进行链接，并对元素的注册事件进行监听，只能在当前内部指令中定义行为，且无法在指令间复用；
+					<br>controller：用来提供可在指令间复用的行为。
+					<br>compile与link区别在于它们要做的事情不同，而link与controller在于这两个函数上的定位。
+				</div>
+			</section>
+			<section>
+				<h3>compile和link的区别：</h3>
+				<br>◆ compile函数的作用是对指令的模板进行转换；
+				<br>◆ link的作用是在模板和视图之间建立关联，包括在元素上注册监听；
+				<br>◆ scope在链接阶段才会被绑定到元素上，因此compile阶段操作scope会报错；
+				<br>◆ 对于同一个指令的多个实例，compile只执行一次；而link对于每个实例都会执行一次；
+				<br>◆ 一般情况下我们只要编写link函数就够了；
+				<br>◆ 如果编写的自定义compile函数，自定义的link函数无效，因为compile函数应该返回一个link函数供后续处理；
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h3>5.代码实战</h3>
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h3>6.拓展思考</h3>
+			</section>
+			<section>
+				<h4>compile 和 link的执行顺序是怎样的？</h4>
+			</section>
+			<section style="font-size: 28px;">
+				<br>可以看出：
+				<br>所有的指令都是先compile，然后preLink，然后postLink;
+				<br>节点指令的preLink是在所有子节点指令preLink，postLink之前，所以一般这里可以通过scope给子节点传递一定的信息;
+				<br>节点指令的postLink是在所有子节点指令preLink，postLink完毕之后，也就意味着，当父节点指令执行postLink时，子节点postLink已经都完成了，此时子dom树已经稳定，所以我们大部分dom操作，访问子节点都在这个阶段;
+				<br>指令在link的过程，其实是一个深度优先遍历的过程，postLink的执行其实是一个回溯的过程;
+				<br>节点上的可能有若干指令，在搜集的时候就会按一定顺序排列（通过byPriority排序），执行的时候，preLinks是正序执行，而postLinks则是倒序执行。
+			</section>
+		</section>
+ 
+		<section>
+			<section>
+				<h3>7.参考文献</h3>
+			</section>
+			<section>
+				<p>参考一：<a href="https://blog.csdn.net/victoryzn/article/details/77480997">Angular自定义指令之compile, link, controller属性详解及实例演示</a></p>
+				<p>参考二：<a href="https://blog.csdn.net/baidu_24024601/article/details/52710331">angular.js指令中的controller,compile,link函数有什么不同?</a></p>
+				<p>参考三：<a href="https://segmentfault.com/a/1190000008313985">angular 指令详解（一）compile与link</a></p>
+				<p>参考四: <a href="https://blog.csdn.net/qq_28506819/article/details/72598457">angular指令中的preLink函数和postLink函数</a></p>
+
+			</section>
+		</section>
+		<section>
+			<section>
+				<h3>8.更多讨论</h3>
+			</section>
+		</section>
+		<section>
+			<h4>鸣谢</h4>
+			<p>感谢大家观看</p>
+			<p>
+				BY : 韩鹏
+			</p>
+		</section>
+	</div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: './plugin/markdown/marked.js' },
+            { src: './plugin/markdown/markdown.js' },
+            { src: './plugin/notes/notes.js', async: true },
+            { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>

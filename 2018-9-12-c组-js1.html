@@ -1,0 +1,406 @@
+﻿<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>葡萄藤PPT</title>
+
+	<link rel="stylesheet" href="./css/reveal/reveal.css">
+
+	<!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+	<link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+	<!-- syntax highlighting 代码高亮主题 -->
+	<link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+	<!-- 打印和PDF输出样式 -->
+	<style>
+		.txt-word-2 {
+			margin-left: -122.625px;
+			text-align: center;
+			font-family: sans-serif !important;
+		}
+
+		.txt-word-3 {
+			text-align: left;
+			word-break: break-all;
+			font-size: 16px;
+			font-family: sans-serif !important;
+			text-transform: none !important;
+		}
+
+		.txt {
+			text-transform: none !important;
+		}
+
+		.txt-a {
+			color: #fff !important;
+		}
+	</style>
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+			'../css/reveal/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+	<map name="pttmap">
+		<area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+	</map>
+	<div class="reveal">
+		<div class="slides">
+			<section class="txt">
+				<h1></h1>
+				<h2>小课堂【js-01】</h2>
+				<h4>课题：JS有哪些数据类型？</h4>
+				<p>分享人：吴胜</p>
+			</section>
+
+			<section>
+				<p>目录</p>
+				<p>1.背景介绍</p>
+				<p>2.知识剖析</p>
+				<p>3.常见问题</p>
+				<p>4.解决方案</p>
+				<p>5.编码实战</p>
+				<p>6.扩展思考</p>
+				<p>7.参考文献</p>
+				<p>8.更多讨论</p>
+			</section>
+
+			<section>
+				<section>
+					<h3>
+						1.背景介绍
+					</h3>
+				</section>
+				<section>
+					<h3 class="txt-word-2">
+						js中有两种数据类型<br><br>
+					</h3>
+					<h5 class="txt-word-3">
+						&emsp;&emsp;简单数据类型（也称基本数据类型）：它分别是Undefined;Null;Boolean;Number和String。<br><br>
+						&emsp;&emsp;引用数据类型（也称复杂数据类型），其中包括Object；Array；Function等等。<br><br>
+					</h5>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h3>2.知识剖析</h3>
+				</section>
+				<section>
+					<img src="./img/2018-9-12.C组-js1/1.png">
+				</section>
+				<section>
+					<h3>辨别数据</h3>
+					<h5 class="txt-word-3">一般情况下我们可以用typeof()来辨别数据的类型</h5>
+					<p class="txt-word-3"> typeof （ 123 ）　　 //Number<br>
+						typeof （ 'abc' ）　　//String<br>
+						typeof （ true ） //Boolean<br>
+						typeof （ undefined ） //Undefined<br>
+						typeof （ null ） //Object<br>
+						typeof （ { } ） //Object<br>
+						typeof （ [ ] ） //Object<br>
+						typeof （ function (){} ） //Function
+					</p>
+				</section>
+				<section>
+					<h4 class="txt-word-3">经过试验后发现，typeof虽然能够辨别出数据的类型，但是因为null、{}、[]都是算是一个空的对象，所以它返回的都是Object，typeof 返回值有6中类型：
+						“number,” “string,” “boolean,” “object,” “function,” 和 “undefined.”。</h4>
+				</section>
+				<section>
+					<h3>基本数据和引用数据的特点和区别</h3>
+					<h4 class="txt-word-3">基本数据类型</h4>
+					<p class="txt-word-3"> 基本数据类型的值是不可变的<br>
+						任何方法都无法改变一个基本类型的值<br>
+						比如有一个字符串：<br>
+						var s = "hello";<br>
+						s.toUpperCase()//HELLO;<br>
+						alert(s)//hello<br>
+					</p>
+					<h4 class="txt-word-3">虽然s.toUpperCase()将hello改变为了HELLO，但是s的值没有变化，可得知：这里调用toUpperCase()方法后返回的只是一个新的字符串，跟原先定义的变量s并没有关系。</h4>
+				</section>
+				<section>
+					<h4>基本数据类型不可以添加属性和方法</h4>
+					<p class="txt-word-3">
+						var p = "change";<br>
+						p.age = 29;<br>
+						p.method = function(){alert(name)};<br>
+						alert(p.age)//undefined<br>
+						alert(p.method)//undefined<br>
+					</p>
+					<h4 class="txt-word-3">通过上面的代码，我们发现不能给基本类型添加属性和方法 ,也再次说明基本类型是不可变的</h4>
+				</section>
+				<section>
+					<h4>基本数据类型的赋值是简单赋值</h4>
+					<p class="txt-word-3">
+						如果从一个变量向另一个变量赋值基本类型的值，会在变量对象上创建一个新值， 然后把该值复制到为新变量分配的位置上<br>
+						var a = 10;<br>
+						var b = a;<br>
+						a++;<br>
+						alert(a)//11<br>
+						alert(b)//10
+					</p>
+					<h4 class="txt-word-3">上面的代码中，a中保存的值是10.当使用a的值来初始化b时， b中也保存了值10.但b中的10和a中的10是没有任何关联的。
+						b值中的10只是a值中的一个副本. 所以这a,b两个变量可以参与任何操作而不会相互影响。</h4>
+				</section>
+				<section>
+					<h4>基本数据类型的比较是值的比较</h4>
+					<p class="txt-word-3">
+						var person1 = 'abc';<br>
+						var person2 = 'abc';<br>
+						alert(person1 == person2); // true;<br>
+						var person1 = 'abc';<br>
+						var person2 = 'abcd';<br>
+						alert(person1 == person2); // false;<br>
+						var person1 = 1;<br>
+						var person2 = true;<br>
+						alert(person1 == person2); // true;
+					</p>
+					<h4 class="txt-word-3">从person1 和person2的3个对比，我可以发现，它们的数据对比是它们值的比较，而不是数据类型的比较.</h4>
+				</section>
+				<section>
+					<h4 class="txt-word-3">引用数据类型</h4>
+					<h5 class="txt-word-3">引用数据类型的特点和基本数据类型相反。
+					</h5>
+					<h5 class="txt-word-3">引用类型的值是可以改变的</h5>
+					<p class="txt-word-3">
+						引用数据类型<br>
+						引用类型的值是可以改变的<br>
+						var a = [1,2,3];<br>
+						a[0] = 0;//更改数组的一个元素<br>
+						a[3] = 4;//给数组增加一个元素<br>
+						alert（a);//0.2.3.4;
+					</p>
+					<h4 class="txt-word-3">上面代码中可以看到，a的数组第一个1更改为了0，而且还添加一个a原来没有的第四个值4.我们可得知引用类型的值是可以改变的。</h4>
+				</section>
+				<section>
+					<h4 class="txt-word-3">引用类型可以添加属性和方法</h4>
+					<p class="txt-word-3">
+						var person = {};<br>
+						person.name = "change";<br>
+						person.say = function(){alert("hello");}<br>
+						alert(person.name)//change<br>
+						alert(person.say)//function(){alert("hello");}<br>
+					</p>
+					<h4 class="txt-word-3">上面代码中可以得知，引用类型的数据可以给其添加属性和方法。</h4>
+				</section>
+				<section>
+					<h4 class="txt-word-3">引用类型的赋值是对象引用</h4>
+					<p class="txt-word-3">
+						var a = {};<br>
+						var b= a;<br>
+						a.name = "change";<br>
+						alert(a.name)//change;<br>
+						alert(b.name)//change；<br>
+						b.age = 29;<br>
+						alert(a.age)//29<br>
+						alert(b.age)//29
+					</p>
+				</section>
+				<section>
+					<h4 class="txt-word-3">当从一个变量向另一个变量赋值引用类型的值时， 同样也会将储存在变量中对象的值复制一份放到为新变量分配的空间中.
+						因为引用类型保存在变量中的值是对象在堆内存中的地址（这个地址就是指向对象在堆内存里的指针)，所以两个变量都保存了同一个对象的地址，
+						而这两个地址指向了同一个对象，因此，对于这2个变量，我们改变任何一个变量，都会互相影响。</h4>
+				</section>
+				<section>
+					<h4 class="txt-word-3">引用类型的比较是引用的比较</h4>
+					<p class="txt-word-3">
+						var person1 = {};<br>
+						var person2 = {};<br>
+						alert.log(person1 == person2)//false<br>
+					</p>
+					<h4 class="txt-word-3">
+						引用类型的比较是引用的比较，换句话说，就是比较两个对象保存在栈区的指向堆内存的地址是否相同，此时，
+						虽然p1和p2看起来 都是一个字符串，但是他们保存在栈区中的指向堆内存的地址却是不同的，所以两个对象不相等。
+					</h4>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>3.常见问题</h3>
+				</section>
+				<section>
+					<h3 class="txt">jAVAScirpt数据能否转换？</h3>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>4.解决方案</h3>
+					<h4 class="txt-word-3">js中的不同类型数据在运算过程中会自动进行转换。</h4>
+					<h4 class="txt-word-3">
+						var str1 = "a";<br>
+						var num1 = "1";<br>
+						var bool1 = "true";<br>
+						var bool2 = "false";<br>
+						alert.log(str1 + num1);<br>
+						alert.log(str1 + bool1);<br>
+						alert.log(num1 + bool1);<br>
+						alert.log(bool1 + bool2);<br>
+					</h4>
+				</section>
+				<section>
+					<h4 class="txt-word-3">
+						运算时数据转换的运算规则为：<br>
+						Number+String=String<br>
+						数值和字符串相加等于字符串。<br>
+						Number+Boolean=Number<br>
+						数值和布尔值相加等于数值。<br>
+						String+Boolean=String<br>
+						字符串和布尔值相加等于字符串。<br>
+						Boolean+Boolean=Number<br>
+						布尔值和布尔值相加等于数值。
+					</h4>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>5.代码实战</h3>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h3>6.拓展思考</h3>
+				</section>
+				<section>
+					<h4 class="txt-word-3">
+						栈，堆是什么？
+					</h4>
+				</section>
+				<section>
+
+					<h4 class="txt-word-3">
+						在ECMAScript中，变量可以存放两种类型的值，即原始值和引用值。<br>
+						原始值指的就是代表原始数据类型（基本数据类型）的值，<br>
+						引用值指的就是复合数据类型(引用数据类型)的值。<br>
+						原始值与引用值对应存在两种结构的内存即栈和堆
+					</h4>
+				</section>
+				<section>
+					<img src="./img/2018-9-12.C组-js1/3.png">
+					<h4 class="txt-word-3">
+						栈是一种后进先出的数据结构。原始值是存储在栈中的简单数据，它们的值直接存储在变量访问的位置
+					</h4>
+				</section>
+				<section>
+					<img src="./img/2018-9-12.C组-js1/4.png">
+					<h4 class="txt-word-3">
+						堆是基于散列算法的数据结构。<br>
+						在javascript中，引用值是用来引用存储在堆中的对象，引用出来的对象是存放在堆中的。<br>
+						也就是说，存储在变量处的值(即指向对象的变量，存储在栈中）是一个指针，指向存储在堆中的实际对象<br>
+					</h4>
+				</section>
+				<section>
+					<h4 class="txt-word-3">
+						我看来下面这串代码<br>
+						var obj = new Object();<br>
+						obj存储在栈中，它指向于new Object()这个对象，<br>
+						而new Object()是存放在堆中的。
+					</h4>
+				</section>
+			</section>
+			<section>
+				<h3>7.参考文献</h3>
+				<h4><a class="txt-a" href="https://blog.csdn.net/liuguochao1024/article/details/79147418">js的数据类型</a></h4>
+				<h4><a class="txt-a" href="https://www.cnblogs.com/chaoyuehedy/p/7894971.html">引用类型与原始类型的区别</a></h4>
+				<h4><a class="txt-a" href="https://blog.csdn.net/weixin_42392456/article/details/81213864">js常见问题总结（1）——数据类型相关</a></h4>
+				<h4><a class="txt-a" href="https://www.jb51.net/article/135920.htm">JavaScript基础心法 数据类型</a></h4>
+			</section>
+			<section>
+				<h3>8.更多讨论</h3>
+			</section>
+			<section>
+				<h4 class="txt-word-3">
+					那为什么引用值要放在堆中，而原始值要放在栈中.
+				</h4>
+			</section>
+			<section>
+				<h4 class="txt-word-3">
+					js中有一句话：能量是守衡的，无非是时间换空间，空间换时间的问题。<br>
+					<br>
+					&emsp;&emsp;堆比栈大，栈比堆的运算速度快。<br>
+					&emsp;&emsp;引用数据类型是一个复杂的结构，并且可以自由扩展，如：数组
+					可以无限扩充，对象可以自由添加属性。将他们放在堆
+					<!-- 
+				    -->中是为了不影响栈的效率。而是通过引用的方式查找到
+					<!-- 
+				    -->堆中的实际对象再进行操作。<br>
+					&emsp;&emsp;相对于引用数据类型而言，简单数据类型就比较稳定，
+					<!-- 
+					-->并且它只占据很小的内存。不将简单数据类型放在堆是
+					<!-- 
+					-->因为通过引用到堆中查找实际对象是要花费时间的，而
+					<!-- 
+					 -->这个综合成本远大于直接从栈中取得实际值的成本。所
+					<!-- 
+					 -->以简单数据类型的值直接存放在栈中。
+				</h4>
+			</section>
+			<section>
+				<h4>鸣谢</h4>
+				<p>感谢大家观看</p>
+				<p>
+					<small>BY : 吴胜</small>
+				</p>
+			</section>
+		</div>
+	</div>
+
+	<script src="./lib/reveal/js/head.min.js"></script>
+	<script src="./lib/reveal/reveal.js"></script>
+
+	<script>
+		// 以下为常见配置属性的默认值
+		// {
+		// 	controls: true, // 是否在右下角展示控制条
+		// 	progress: true, // 是否显示演示的进度条
+		// 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+		// 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+		// 	keyboard: true, // 是否启用键盘快捷键来导航
+		// 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+		// 	center: true, // 是否将幻灯片垂直居中
+		// 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+		// 	loop: false, // 是否循环演示
+		// 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+		// 	fragments: true, // 全局开启和关闭碎片。
+		// 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+		// 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+		// 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+		// 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+		// }
+
+		// 初始化幻灯片
+		Reveal.initialize({
+			history: true,
+			dependencies: [{
+					src: './plugin/markdown/marked.js'
+				},
+				{
+					src: './plugin/markdown/markdown.js'
+				},
+				{
+					src: './plugin/notes/notes.js',
+					async: true
+				},
+				{
+					src: './plugin/highlight/highlight.js',
+					async: true,
+					callback: function () {
+						hljs.initHighlightingOnLoad();
+					}
+				}
+			]
+		});
+	</script>
+</body>
+
+</html>
