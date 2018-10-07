@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+
+        p.font {
+            text-align: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>如何使用BOOTSTRAP栅格系统？</h2>
+                <p style="text-align: center;">分享人：王衡</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <h3>一、背景介绍</h3>
+            </section>
+            <section>
+                <h3></h3>
+                <P class="font">Bootstrap，来自 Twitter，是如今最流行的前端框架之一，Bootstrap功能强大，简单易学，很符合实际应用场景。 它是一个CSS/HTML框架。由动态CSS语言Less写成。Bootstrap一经推出后大受欢迎，一直是GitHub上的热门开源项目。bootstrap为我们提供了一套完整的流体栅格系统，而且随着屏幕或者视扣尺寸的增加，系统会自动分成最多12列，通过类名使用非常便捷。</P>
+
+            </section>
+            <section>
+                <h3>二、知识剖析</h3>
+            </section>
+            <section>
+                <h3>工作原理</h3>
+                <p> 网格系统的实现原理非常简单，仅仅是通过定义容器大小，平分12份(也有平分成24份或32份，但12份是最常见的)，再调整内外边距，最后结合媒体查询，就制作出了强大的响应式网格系统。Bootstrap框架中的网格系统就是将容器平分成12份。
+
+                    在使用的时候大家可以根据实际情况重新编译LESS（或Sass）源码来修改12这个数值（也就是换成24或32，当然你也可以分成更多，但不建议这样使用）。 </p>
+            </section>
+            <section>
+                <h3>使用规则</h3>
+                <p>1. 行(.row)必须包含在容器（.container）中，以便为其赋予合适的对齐方式和内距(padding)。</p>
+                <p>2.在行(.row)中可以添加列(.column)，最多分配12。                </p>
+                <p>3.具体内容应当放置在列容器（column）之内，而且只有列（column）才可以作为行容器(.row)的直接子元素</p>
+                <p>4.类似 .row 和 .col-sm-4 这种预定义的类，可以用来快速创建栅格布局。</p>
+                <p>5.通过为“列（column）”设置 padding 属性，从而创建列与列之间的间隔</p>
+            </section>
+            <section>
+                <h3>栅格系统选项</h3>
+                <a href="http://www.runoob.com/bootstrap4/bootstrap4-grid-basic.html">Bootstrap4 栅格系统</a>
+                <br>
+                <a href="http://www.runoob.com/bootstrap/bootstrap-grid-system.html">Bootstrap3 栅格系统</a>
+            </section>
+            <section>
+                <h3>三、常见问题</h3>
+            </section>
+            <section>
+                <p>就是没有引入、没有引入正确、没有下载bootstrap.min.css！！！</p>
+                <p>如何设置5列占满宽度？</p>
+                <p>Bootstrap栅格布局的响应式如何实现？</p>
+            </section>
+            <section>
+                <h3>四、解决方案</h3>
+            </section>
+            <section>
+                <p>使用 Bootstrap CDN嵌入4行代码就能完成导入！1行css 3行js</p>
+                <p>每列设置宽度20%,也就是100%除以列数。</p>
+                <p>利用列重置，列偏移。
+                     在<div class="col-xs-* col-sm-* col-md-* col-lg-*"></div> 通过给col附加不同的class前缀，以此对应不同的屏幕下，内容的宽度。</p>
+            </section>
+            <section>
+                <h3>五、编码实战</h3>
+            </section>
+            <section>
+                <h3>六、拓展思考</h3>
+               <p>Bootstrap 有哪些缺点？</p>
+               <p>1、Bootstrap 自带的样式权值很高，在开发中需要大量的代码用于覆盖原有样式。</p>
+               <p>2、不兼容IE8以下浏览器,有兼容需求的就不能使用bootstrap了。</p>
+            </section>
+            <section>
+                <h3>七、参考文献</h3>
+                <a href="http://www.runoob.com/">菜鸟教程</a>
+                <br>
+                <a href="https://code.z01.com/v4/docs/">Boostrap中文手册</a>
+                <br>
+                <a href="/blog.csdn.net/zhanghuiqi205/article/details/64124226">Bootstrap4与3的区别</a>
+            </section>
+            <section>
+                <h3>八、更多讨论</h3>
+                <p></p>
+                <p></p>
+                <p></p>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>BY : 王衡</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
