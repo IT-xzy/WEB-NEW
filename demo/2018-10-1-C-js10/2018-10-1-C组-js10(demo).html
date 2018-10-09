@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Demo</title>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/3.3.0/css/bootstrap.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/3.3.0/js/bootstrap.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.js"></script>
+</head>
+<body ng-app="myApp">
+	<h3>JS表单验证</h3>
+    <p>是否填写以及长度限制</p>
+    <form name="a" onsubmit="return test()">
+        <input type="text" name="b" placeholder="请输入4~8个字符">
+        <br>
+        <input type="submit" name="Submit" value="check">
+    </form>
+    <br>
+
+	<h3>AngularJS ng-show</h3>
+	<form name="form" ng-controller="ctrl" novalidate>
+		<input type="text"
+				ng-model="myInput"
+				name="username"
+				placeholder="Username"
+				ng-maxlength=12
+				ng-minlength=6
+				ng-focus="focus1=true"
+				ng-blur="focus1=false"
+				required>
+			<div ng-show="form.username.$pristine && ng-focus">
+				<div>I'm clean.</div>
+			</div>
+			<div ng-show="form.username.$dirty && focus1">
+				<div>I'm dirty.</div>
+			</div>
+			<div ng-show="form.username.$dirty && form.username.$invalid">
+				<div>非法输入</div>
+			</div>
+			<div ng-show="form.username.$valid && ng-blur">
+				<div>合法输入</div>
+			</div>
+	</form>
+	<br><br>
+
+	<h3>AngularJS ng-messages</h3>
+	<form name="myForm"  ng-controller="ctrl2" class="form-horizontal" novalidate>
+		<label>是否填写、字符长短、邮箱格式</label><br>
+		<input type="email" placeholder="ng-Messages测试" name="name" ng-model="username.name" ng-minlength="3" ng-maxlength="20" required>
+		<div style="color:red">
+		    <div ng-messages="myForm.name.$error">
+			    <div ng-message="required">必填项</div>
+			    <div ng-message="minlength">字符太短小于3</div>
+			    <div ng-message="maxlength">字符太长大于20</div>
+			    <div ng-message="email">正确的邮箱格式</div>
+			</div>
+		</div>
+    </form>
+
+
+</body>
+	
+	<!-- angularJS-ng-message写法 -->
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.0/angular.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.0/angular-messages.js"></script>
+	<script>
+		var app = angular.module('myApp', ["ngMessages"]);
+		app.controller('ctrl', function($scope) {	
+		})
+		app.controller('ctrl2', function($scope) {
+		});
+	</script>
+
+
+	<script>
+    	// js原生写法
+        function test(){
+            if(document.a.b.value==null || document.a.b.value==""){
+                alert("请输入用户名");
+                return false;
+            }else if(document.a.b.value.length > 8) {
+            	alert("不能超过8个字符！");
+            	return false; //阻止表单提交
+       		}else if(document.a.b.value.length < 4) {
+       			alert("不能少于4个字符！");
+       			return false;
+       		}else{
+       			alert("Success!");
+       		}
+        }
+    </script>
+
+</html>
