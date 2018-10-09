@@ -1,0 +1,352 @@
+﻿<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>葡萄藤PPT</title>
+
+	<link rel="stylesheet" href="./css/reveal/reveal.css">
+
+	<!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+	<link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+	<!-- syntax highlighting 代码高亮主题 -->
+	<link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+	<!-- 打印和PDF输出样式 -->
+	<style>
+		.txt-word-2 {
+			margin-left: -122.625px;
+			text-align: center;
+			font-family: sans-serif !important;
+		}
+
+		.txt-word-3 {
+			text-align: left;
+			word-break: break-all;
+			font-size: 16px;
+			font-family: sans-serif !important;
+			text-transform: none !important;
+		}
+
+		.txt {
+			text-transform: none !important;
+		}
+
+		.txt-a {
+			color: #fff !important;
+		}
+	</style>
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+			'../css/reveal/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+	<map name="pttmap">
+		<area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+	</map>
+	<div class="reveal">
+		<div class="slides">
+			<section class="txt">
+				<h1></h1>
+				<h2>小课堂【js-04】</h2>
+				<h4>课题：如何理解JS作用域与作用域链?</h4>
+				<p>分享人：吴胜</p>
+			</section>
+
+			<section>
+				<p>目录</p>
+				<p>1.背景介绍</p>
+				<p>2.知识剖析</p>
+				<p>3.常见问题</p>
+				<p>4.解决方案</p>
+				<p>5.编码实战</p>
+				<p>6.扩展思考</p>
+				<p>7.参考文献</p>
+				<p>8.更多讨论</p>
+			</section>
+
+			<section>
+				<section>
+					<h3>
+						1.背景介绍
+					</h3>
+				</section>
+				<section>
+					<h5 class="txt-word-3">
+						&emsp;&emsp;任何程序设计语言都有作用域的概念，简单的说，作用域就是变量与函数的可访问范围，即作用域控制着变量与函数的可见性和生命周期。在JavaScript中，变量的作用域有全局作用域和局部作用域两种。
+						</h3>
+				</section>
+				<section>
+					<h5 class="txt-word-3">
+						&emsp;&emsp;作用域是JavaScript最重要的概念之一，想要学好JavaScript就需要理解JavaScript作用域和作用域链的工作原理；作用域链的概念对理解闭包至关重要。
+						<br><br>
+					</h5>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h3>2.知识剖析</h3>
+				</section>
+				<section>
+					首先，我们得了解一下局部变量和全局变量
+				</section>
+				<section>
+					<h3>全局变量：定义在函数外部的变量可以被叫做全局变量</h3>
+					<br>
+					<br>
+					<h5 class="txt-word-3">全局变量对应的作用域是整个代码，即在代码的任何部分都是可以调用该变量的</h5>
+				</section>
+				<section>
+					<p class="txt-word-3">
+						//在函数外定义了一个变量a,这个a就是这个js里的全局变量<br>
+						var a = 10;<br>
+						function c() {<br>
+						　　b = 20;<br>
+						alert(a); //弹出10;<br>
+						}<br>
+						c();<br>
+						alert(b)；//弹出20.<br>
+					</p>
+				</section>
+				<section>
+					<h4 class="txt-word-3">&emsp;&emsp;js中规定，全局变量都可以看作是window的属性，而且全局变量能够被所有的代码块读取。<br>
+						&emsp;&emsp;上面代码里我们虽然在函数c里对a没有定义，但是由于a是全局变量，所以其他任何的代码块都能够读取a的值。<br>
+						&emsp;&emsp;另外，对于一个变量b来说，如果没有用var来声明的话，那么会自动认为是全局变量，因此，我们虽然是在函数里定义的b，但是在外面也能读取到b的值。</h4>
+				</section>
+				<section>
+					<h3>局部变量：定义在函数内部的变量</h3>
+					<h4 class="txt-word-3">1，局部变量对应的作用域是函数内部，只能在函数内部使用，如果在函数外部使用就会出错</h4>
+					<h4 class="txt-word-3"> 2，局部变量的优先级大于全局变量，即如果全局变量和局部变量名字一样，那么在函数内部局部变量会覆盖掉全局变量。</h4>
+					<h4 class="txt-word-3">ps:如果变量在函数内部没有使用var来声明，那么该变量也会被认为是全局变量。</h4>
+				</section>
+				<section>
+					<h4>举个栗子</h4>
+					<p class="txt-word-3">
+						var a = 10;<br>
+						function c() {<br>
+						a = 20;<br>
+						console.log(a);//因为局部变量的优先级，a被覆盖成了20.<br>
+						var b = 20;<br>
+						}<br>
+						c();<br>
+						console.log(b)；//因为b是函数c的局部变量，如果这个方法要调用b，则会报错。<br>
+					</p>
+				</section>
+				<section>
+					<h3>作用域链
+					</h3>
+					<h4 class="txt-word-3">众所周知，我们码代码要有一个写代码的开发环境IDE，同样，我们的代码在执行过程中也需要一个执行环境，每一个执行环境都有与之关联的变量对象。我们的执行环境中所有的函数和变量都保存在这个变量对象中，不过我们没法访问这个对象。</h4>
+				</section>
+				<section>
+					<h4 class="txt-word-3">在web浏览器中，全局执行环境是最外围的一个执行环境，该环境也被认为是window对象，因此全局执行环境的变量对象就是window对象。函数也有自己的执行环境，就是该函数的内部。每当执行一个函数，就会进入该函数的执行环境。</h4>
+				</section>
+				<section>
+					<h4 class="txt-word-3">作用域链是与执行环境相关的。在JavaScript中，“一切皆对象”，函数的对象有一个内部属性[[scope]]，该内部属性指向了该函数的作用域链，而作用域链中存储了每个执行环境相关的变量对象。</h4>
+				</section>
+				<section>
+					<h4 class="txt-word-3">每当创建（或声明）一个函数的时候，那么会创建这个函数的作用域链，而此时这个作用域链中只包含了一个变量对象(window)。</h4>
+					<p class="txt-word-3">
+						function sum(num1, num2){<br>
+						var sum = num1 + num2;<br>
+						return sum;<br>
+						}<br>
+					</p>
+					<img src="./img/2018-9-27.C组-js4/1.png">
+					<h4 class="txt-word-3">以上是在创建(或声明)一个函数时会创建一个作用域链。</h4>
+				</section>
+				<section>
+					<h4 class="txt-word-3">当函数被调用时，也就是进入到一个新的执行环境的时候，此时这个执行环境也就会有一个新的变量对象被创建，这个对象就会被存储在该函数的[[scope]]属性所指向的作用域链中，而之前的对象就被压在了新的变量对象的下边，这个可以类比栈，新的变量对象就放在了栈的最顶端，给最顶端的序号为0，向下以此类推，有点像倒金字塔模型。</h4>
+				</section>
+				<section>
+					<p class="txt-word-3">
+						function sum(num1, num2){<br>
+						var sum = num1 + num2;<br>
+						return sum;<br>
+						}<br>
+						var sum = sum(3, 4);<br>
+					</p>
+				</section>
+				<section>
+					<img src="./img/2018-9-27.C组-js4/2.png">
+					<h4 class="txt-word-3">如上图所示，当sum函数一执行，他的新的活动对象会被创建，该活动对象会处于作用域链的最顶端，序号为0（金字塔顶端/倒金字塔的底端）。</h4>
+				</section>
+				<section>
+					<h4 class="txt-word-3">当以后我们需要查找变量的时候，就总是会沿着这个作用域链的顶端（序号0/栈顶）开始查找，一直到作用域链（栈底）的末端，直到找到为止。也就是说顶端的活动对象可以访问到其后面的参数。</h4>
+				</section>
+				<section>
+					<p class="txt-word-3">
+						var a = 8;<br>
+						function sum(num1, num2){<br>
+						var sum = num1 + num2;<br>
+						console.log(a);//8<br>
+						return sum;<br>
+						}<br>
+						var sum = sum(3, 4);<br>
+					</p>
+				</section>
+				<section>
+					<img src="./img/2018-9-27.C组-js4/3.png">
+				</section>
+				<section>
+					<h4 class="txt-word-3">如上例子，当执行sum函数时，要打印a个变量，此时会从作用域链的顶端(TOP)，也就是sum函数的活动对象开始查找，找不到就向作用域链的末端(BOTTOM)查找，直到找到为止。换通俗一点的话来讲就是：
+						由于js存在全局变量和局部变量，在调用一个变量时，会对他的作用域链进行查找，如果函数内部定义了这个变量，那么取该变量的值，如果没有，那么向上一层查找，如果找到了，就获取这个值，如果还没找到，继续往上层查找，直到找到为止，如果找到最后也没找到，那么该变量的值为undefined。</h4>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>3.常见问题</h3>
+				</section>
+				<section>
+					<h3 class="txt">我们先来看一串代码
+					</h3>
+				</section>
+				<section>
+					<p class="txt-word-3">
+						//函数作用域<br>
+						var num = 2;<br>
+
+						function fun() {<br>
+						console.log(num);<br>
+						var num = 3;<br>
+						console.log(num);<br>
+						}<br>
+						fun();<br>
+					</p>
+					<h5 class="txt-word-3">在这个demo中，sum的2个打印值分别是什么呢？
+					</h5>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>4.解决方案</h3>
+					<h4 class="txt-word-3">我们首先就抛出了一个函数作用域的概念，即变量在声明它的函数以及该函数所嵌套的任意函数内都是有定义的，所以说上面的代码我们可以这样理解
+					</h4>
+				</section>
+				<section>
+					<h4 class="txt-word-3">
+						1.fun（）将调用这个函数的第一个console.log（num），会对num的值进行原型链查找。<br>
+						2.看函数fun内部是否进行了定义，发现在函数内部对num进行了定义，那么第一个console.log（num）将不再往上层查找。<br>
+						3.由于第一个console.log(num)时，对num还没有赋值，所以，第一个console.log（num）为undefined，第二个console.log（name）为“3”。<br>
+					</h4>
+				</section>
+				<section>
+					<p class="txt-word-3">
+						var num=2;<br>
+						function fun(){<br>
+						var num;<br>
+						console.log(num);<br>
+						num=3;<br>
+						console.log(num);<br>
+						}<br>
+						fun();<br>
+					</p>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>5.代码实战</h3>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h3>6.拓展思考</h3>
+				</section>
+				<section>
+					<h3>
+						js没有块级作用域。
+					</h3>
+				</section>
+				<section>
+					<p class="txt-word-3">
+						let a=1;<br>
+						if(a>0){<br>
+						b=100;<br>
+						console.log(b)//打印100；<br>
+						}<br>
+						console.log(b)//打印100；<br>
+					</p>
+					<h4 class="txt-word-3">
+						看代码，js中像if，for，switch之类的语句，他们包含的代码块里面的变量，在代码块外面也能被读取，所以说，js没有块级作用域。
+					</h4>
+				</section>
+			</section>
+			<section>
+				<h3>7.参考文献</h3>
+				<h4><a class="txt-a" href="https://blog.csdn.net/yaojxing/article/details/71763931">关于js中的作用域和作用域链以及常见的问题和结果方法</a></h4>
+				<h4><a class="txt-a" href="https://www.jb51.net/article/99266.htm">浅析JavaScript中作用域和作用域链</a></h4>
+				<h4><a class="txt-a" href="https://blog.csdn.net/zpw91/article/details/53821321">你不得不知道的js之作用域链与闭包</a></h4>
+			</section>
+			<section>
+				<h3>8.更多讨论</h3>
+			</section>
+			<section>
+				<h4>鸣谢</h4>
+				<p>感谢大家观看</p>
+				<p>
+					<small>BY : 吴胜</small>
+				</p>
+			</section>
+		</div>
+	</div>
+
+	<script src="./lib/reveal/js/head.min.js"></script>
+	<script src="./lib/reveal/reveal.js"></script>
+
+	<script>
+		// 以下为常见配置属性的默认值
+		// {
+		// 	controls: true, // 是否在右下角展示控制条
+		// 	progress: true, // 是否显示演示的进度条
+		// 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+		// 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+		// 	keyboard: true, // 是否启用键盘快捷键来导航
+		// 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+		// 	center: true, // 是否将幻灯片垂直居中
+		// 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+		// 	loop: false, // 是否循环演示
+		// 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+		// 	fragments: true, // 全局开启和关闭碎片。
+		// 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+		// 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+		// 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+		// 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+		// }
+
+		// 初始化幻灯片
+		Reveal.initialize({
+			history: true,
+			dependencies: [{
+					src: './plugin/markdown/marked.js'
+				},
+				{
+					src: './plugin/markdown/markdown.js'
+				},
+				{
+					src: './plugin/notes/notes.js',
+					async: true
+				},
+				{
+					src: './plugin/highlight/highlight.js',
+					async: true,
+					callback: function () {
+						hljs.initHighlightingOnLoad();
+					}
+				}
+			]
+		});
+	</script>
+</body>
+
+</html>
