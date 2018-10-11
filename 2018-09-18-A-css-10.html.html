@@ -1,10 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>葡萄藤PPT</title>
+    <title>flex布局</title>
 
     <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
 
@@ -39,9 +39,9 @@
     <div class="slides"
          style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
         <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
-            <h2>【js-TASK8】</h2>
-            <h3></h3>
-            <p>分享人：张学良</p>
+            <h2>【flex布局】</h2>
+            <h3>简单的了解一下flex的容器属性</h3>
+            <p>分享人：霍亚豪</p>
         </section>
         <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
             <p>目录</p>
@@ -49,7 +49,7 @@
             <p>2.知识剖析</p>
             <p>3.常见问题</p>
             <p>4.解决方案</p>
-            <p>5.编码实战</p>
+            <p>5.布局示例</p>
             <p>6.扩展思考</p>
             <p>7.参考文献</p>
             <p>8.更多讨论</p>
@@ -59,28 +59,86 @@
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <p style="text-align: justify">
-                <!--我们在设计网页的时候，盒子居中是经会常用到的。居中可以分为水平居中和垂直居中。-->
-                <!--水平居中是比较容易，通过设置元素的margin: 0 auto就可以实现，但是垂直居中相对来说是比较复杂一些的。-->
-                1、面向对象的一些属性和方法？<br>
-                hasOwnPropety():看是不是对象自身下面的属性<br>
-                constructor:查看对象的构造函数<br>
-                每个原型都会自动添加constructor属性<br>
-                for in的时候有些属性是找不到的<br>
-                instanceof运算符对象在原型链上是否有关系<br>
-                tostring:object上的方法
+                css3引入了一种新的布局模型-flex布局。flex是flexible box的缩写，一般称之为弹性盒模型。
+                和css3其它属性不一样，flexbox并不是一个属性，而是一个模块，包括多个css3的属性。
+                flex布局提供一种更加有效的方式来进行容器内的项目布局，以适应各种类型设备和各种尺寸的屏幕。
             </p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>2.知识剖析</h3>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <p style="letter-spacing: 5px">面向对象上hasOwnPropety()、constructor、constructor、tostring这些属性和方法怎么使用</p>
+            <p style="letter-spacing: 5px">要让一个元素变成伸缩容器，需要使用display属性。采用flex布局的元素，称之为伸缩容器（flex container），容器内的子元素称之为伸缩项目（flex item）</p>
+            <p style="letter-spacing: 5px">注意，浏览器会将任何直接在伸缩容器里的连续文字块包起来成为匿名伸缩项目。</p>
+            <p style="letter-spacing: 5px">伸缩容器默认存在两条轴：水平的主轴（main axis）和垂直的侧轴（cross axis）或者说是交叉轴</p>
+            <p style="letter-spacing: 5px">注意，主轴方向不一定是水平的，它主要取决于flex-direction属性</p>
+            <p style="letter-spacing: 5px">主轴起点叫main start，主轴终点叫main end；侧轴起点叫cross start，侧轴终点叫cross end</p>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>flex的6个属性</h3>
+            <p style="letter-spacing: 5px">伸缩流方向:flex-direction</p>
+            <p style="letter-spacing: 5px">伸缩流换行：flex-wrap</p>
+            <p style="letter-spacing: 5px">伸缩流（包括方向和换行）：flex-flow</p>
+            <p style="letter-spacing: 5px">主轴对齐：justify-content</p>
+            <p style="letter-spacing: 5px">侧轴对齐：align-items</p>
+            <p style="letter-spacing: 5px">堆栈伸缩行：align-content</p>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>flex-direction属性</h4>
+            <p style="letter-spacing: 5px">flex-direction属性决定主轴的方向（即项目的排列方向）。</p>
+            <p style="letter-spacing: 5px">一般情况下flex-direction有四个值</p>
+            <p style="letter-spacing: 5px">row（默认值）：主轴为水平方向，起点在左端。</p>
+            <p style="letter-spacing: 5px">row-reverse：主轴为水平方向，起点在右端。</p>
+            <p style="letter-spacing: 5px">column：主轴为垂直方向，起点在上沿。</p>
+            <p style="letter-spacing: 5px">column-reverse：主轴为垂直方向，起点在下沿。</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>flex-wrap属性</h4>
+            <p style="letter-spacing: 5px">默认情况下，项目都排在一条线（又称"轴线"）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。</p>
+            <p style="letter-spacing: 5px">flex-wrap属性一般有三个值</p>
+            <p style="letter-spacing: 5px">nowrap（默认）：不换行</p>
+            <p style="letter-spacing: 5px">wrap：换行，第一行在上方</p>
+            <p style="letter-spacing: 5px">wrap-reverse：换行，第一行在下方</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>flex-flow属性</h4>
+            <p style="letter-spacing: 5px">flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4> justify-content属性</h4>
+            <p style="letter-spacing: 5px">justify-content属性定义了项目在主轴上的对齐方式。</p>
+            <p style="letter-spacing: 5px">flex-start（默认值）：左对齐</p>
+            <p style="letter-spacing: 5px">flex-end：右对齐</p>
+            <p style="letter-spacing: 5px">center： 居中</p>
+            <p style="letter-spacing: 5px">space-between：两端对齐，项目之间的间隔都相等。</p>
+            <p style="letter-spacing: 5px">space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>align-items属性</h4>
+            <p style="letter-spacing: 5px">align-items属性定义项目在交叉轴上如何对齐。</p>
+            <p style="letter-spacing: 5px">flex-start：交叉轴的起点对齐。</p>
+            <p style="letter-spacing: 5px">flex-end：交叉轴的终点对齐。</p>
+            <p style="letter-spacing: 5px">enter：交叉轴的中点对齐。</p>
+            <p style="letter-spacing: 5px">baseline: 项目的第一行文字的基线对齐。</p>
+            <p style="letter-spacing: 5px">stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>align-content属性</h4>
+            <p style="letter-spacing: 5px">flex-start：与交叉轴的起点对齐。</p>
+            <p style="letter-spacing: 5px">flex-end：与交叉轴的终点对齐。</p>
+            <p style="letter-spacing: 5px">center：与交叉轴的中点对齐。</p>
+            <p style="letter-spacing: 5px">space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。</p>
+            <p style="letter-spacing: 5px">space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</p>
+            <p style="letter-spacing: 5px">stretch（默认值）：轴线占满整个交叉轴。</p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>3.常见问题</h3>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <p>面向对象引用类型的判断？</p>
+            <p>flex的兼容性如何？</p>
+            <p>flex的布局在熟练以后非常好用，但是pc端兼容性相对较差，IE要10，甚至11以上才能要很好的兼容。</p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>4.解决方案</h3>
@@ -88,15 +146,8 @@
         <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
             <section style="top: 330px; display: none;">
                 <p style="text-align: center">
-                    面向对象constructor查看是不是对象自身下的属性<br>
-                    instanceof对象与构造函数是否在一条原型链上<br>
-                </p>
-                <!--<p>二 margin：auto实现CSS垂直居中</p>-->
-                <!--<p>三 display:flex实现CSS垂直居中</p>-->
-                <!--<p>四 padding实现CSS垂直居中</p>-->
-                <!--<p>五 伪元素:before实现CSS垂直居中</p>-->
-                <!--<p>六 通过隐藏节点实现CSS垂直居中 </p>-->
-                <!--<p>七 line-height实现CSS垂直居中 </p>-->
+                    现在flex已经得到绝大部分的浏览器的支持，可以通过查看内核了解是否支持</p>
+
             </section>
         </section>
         <!-- <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
@@ -148,7 +199,7 @@
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <p>参考一：<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank">
-                面向对象过程</a></p>
+                flex布局</a></p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>8.更多讨论</h3>
@@ -157,7 +208,7 @@
             <h4>鸣谢</h4>
             <p>感谢大家观看</p>
             <p>
-                <small>BY :张学良</small>
+                <small>霍亚豪</small>
             </p>
         </section>
 
@@ -186,11 +237,7 @@
         <div class="slide-background stack future" style="display: none;">
             <div class="slide-background present" style="display: none;"></div>
         </div>
-        <div class="slide-background stack future" style="display: none;">
-            <div class="slide-background present" style="display: none;"></div>
-            <div class="slide-background future" style="display: none;"></div>
-            <div class="slide-background future" style="display: none;"></div>
-        </div>
+吗，         <div class="slide-background stack future" style="display: none;"> </div>
         <div class="slide-background future" style="display: none;"></div>
         <div class="slide-background future" style="display: none;"></div>
         <div class="slide-background future" style="display: none;"></div>
@@ -201,8 +248,7 @@
         <button class="navigate-left enabled" aria-label="previous slide"></button>
         <button class="navigate-right enabled" aria-label="next slide"></button>
         <button class="navigate-up enabled" aria-label="above slide"></button>
-        <button class="navigate-down" aria-label="below slide"></button>
-    </aside>
+     </aside>
     <div class="slide-number" style="display: none;"></div>
     <div class="speaker-notes" data-prevent-swipe=""></div>
     <div class="pause-overlay"></div>
@@ -222,6 +268,7 @@
 <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
 
 <script>
+
     // 以下为常见配置属性的默认值
     // {
     // 	controls: true, // 是否在右下角展示控制条
@@ -240,6 +287,7 @@
     // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
     // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
     // }
+
     // 初始化幻灯片
     Reveal.initialize({
 //        history: true,
@@ -251,8 +299,8 @@
             {src: '../plugin/notes/notes.js', async: true},
             {
                 src: '../plugin/highlight/highlight.js', async: true, callback: function () {
-                hljs.initHighlightingOnLoad();
-            }
+                    hljs.initHighlightingOnLoad();
+                }
             }
         ]
     });
@@ -272,6 +320,7 @@
     //    var b = a;
     //    b = false;
     //    console.log(a);
+
     //数组浅复制
     //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
     //    ];
@@ -284,17 +333,20 @@
     //    arrtoo[2] = "set Map";
     //    console.log(arr);//One,Two,Three
     //    console.log(arrtoo);//One,set Map,Three
+
     //
     //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
     //    var arrtooo = arr1.concat(111111);
     //    arrtooo[1] = "set Map To";
     //    console.log(arr1);//One,Two,Three
     //    console.log(arrtooo);//One,set Map To,Three
+
     //
     //    var b=[1,2,3,4,5];   //concat的链接
     //    var c=[6,7,8,9];
     //    var d =[4,4,22]
     //    console.log(b.concat(c,d))
+
     var a = {name: 'yy', age: 26};  //对象的浅拷贝哦
     var b = new Object();
     b.name = a.name;
@@ -302,6 +354,7 @@
     b.name = 'xx';
     console.log(a);//Object { name="yy", age=26}
     console.log(b);//Object { name="xx", age=26}
+
     var d = {            //对象的浅拷贝哦 第一种
         name: 'd',
         oc: {
@@ -320,6 +373,7 @@
         }
         return result
     };
+
     var c = deepCopy(d);
     c.name = 'c';
     c.oc = {
@@ -327,6 +381,8 @@
     };
     console.log(c);
     console.log(d);
+
+
     //    var person = {    //第二种深拷贝
     //        name: 'aa',
     //        friends: ['da', 'dsa', 'gf']
@@ -340,12 +396,15 @@
     //
     //    console.log(person.name);
     //    console.log(aPerson.friends)
+
     var Chinese = {
         nation: '中国'
+
     }
     var Doctor = {
         career: '医生'
     }
+
     function extendCopy(p) {
         var c = {};
         for (var i in p) {
@@ -354,13 +413,16 @@
         c.uber = p;
         return c;
     }
+
     var Doctor = extendCopy(Chinese);
     Doctor.career = '医生';
     console.log(Doctor); // 中国
     Chinese.birthPlaces = ['北京', '上海', '香港'];
     var Doctor = extendCopy(Chinese);
     Doctor.birthPlaces.push('厦门');
+
 </script>
+
 
 </body>
 </html>
