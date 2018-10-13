@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+   	<head>
+      	<meta charset="utf-8">
+      	<title>DI Demo</title>
+   	</head>
+   
+   	<body ng-app = "mainApp">
+      	<h2>AngularJS 简单应用</h2>
+      	<div ng-controller = "CalcController">
+         	<p>输入一个数字: <input type = "number" ng-model = "number" /></p>
+         	<button ng-click = "square()">X<sup>2</sup></button>
+         	<p>结果: {{result}}</p>
+      	</div>
+
+
+      	<div>
+		    <div ng-controller="MyController">
+		        <p ng-clock>{{clock.time | date: "yyyy-MM-dd hh:mm:ss"}}</p>
+		    </div>
+		</div>
+
+		<script src="https://cdn.bootcss.com/angular.js/1.4.6/angular.min.js"></script>
+       	<script>
+         var mainApp = angular.module("mainApp", []);
+         
+         // mainApp.config(function($provide) {
+         //    $provide.provider('MathService', function() {
+         //       this.$get = function() {
+         //          var factory = {};
+                  
+         //          factory.multiply = function(a, b) {
+         //             return a * b;
+         //          }
+         //          return factory;
+         //       };
+         //    });
+         // });
+            
+         mainApp.value("defaultInput", 5);
+         
+         mainApp.factory('MathService', function() {
+            var factory = {};
+            
+            factory.multiply = function(a, b) {
+               return a * b;
+            }
+            return factory;
+         });
+         
+         mainApp.service('CalcService', function(MathService){
+            this.square = function(a) {
+               return MathService.multiply(a,a);
+            }
+         });
+         
+         mainApp.controller('CalcController', function($scope, CalcService, defaultInput) {
+            $scope.number = defaultInput;
+            $scope.result = CalcService.square($scope.number);
+
+            $scope.square = function() {
+               $scope.result = CalcService.square($scope.number);
+            }
+         });
+            
+        //------------------------------------------------------------------------------------------
+
+        mainApp.controller('MyController',MyController);
+         //隐式注入
+        function MyController($scope, $timeout) {
+		    var updateTime = function () {
+		        $scope.clock = {
+		            time: new Date()
+		        };
+		        $timeout(function () {
+		            $scope.clock.time = new Date();
+		            updateTime();
+		        }, 1000);
+		    }
+		    updateTime();
+		};
+
+		//显式注入
+		function MyController(s, t) {
+		    var updateTime = function () {
+		        s.clock = {
+		            time: new Date()
+		        };
+		        t(function () {
+		            s.clock.time = new Date();
+		            updateTime();
+		        }, 1000);
+		    }
+		    updateTime();
+		};
+		MyController["$inject"] = ["$scope", "$timeout"];
+
+		//行内注入
+		mainApp.controller('MyController',["$scope", "$timeout", function (s, t) {
+		    var updateTime = function () {
+		        s.clock = {
+		            time: new Date()
+		        };
+		        t(function () {
+		            s.clock.time = new Date();
+		            updateTime();
+		        }, 1000);
+		    }
+		    updateTime();
+		}]);
+		
+      </script>
+      
+   </body>
+</html>
