@@ -1,0 +1,241 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题,可以在/css/reveal/theme/中选择其他主题,目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        .text-l {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>HTML5的离线储存怎么使用？</h2>
+                <p>分享人：许恒倩</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <section>
+                    <h3>1.背景介绍</h3>
+                </section>
+                <section style="text-align: left;">
+                    <br style="text-align: left">
+                    HTML5提供了很多新的功能以及相应的接口，离线存储就是其中的一个，离线存储可以将站点的一些文件存储在本地，<br>
+                    在没有网络的时候还是可以访问到以缓存的对应的站点页面，其中这些文件可以包括html，js，css，img等等文件，<br>
+                    但其实即使在有网络的时候，浏览器也会优先使用已离线存储的文件，返回一个200（from cache）头。这跟HTTP的缓存使用策略是不同的。<br>
+                    它是浏览器自己的一种机制，随着移动互联网时代的到来，网络可靠性降低，如果我们已经将需要的文件缓存下下来，一旦网络无法访问，也能继续访问。<br>
+                    而且做好相应资源的缓存可以带来更好的用户体验，当用户使用自己的流量上网时，本地缓存不仅可以提高用户访问速度，而且大大节约用户的使用流量。<br>
+                </section>
+
+
+            </section>
+            <section>
+
+
+                <section>
+                    <h3>2.知识剖析</h3>
+                </section>
+                <section style="text-align: left;">
+                    <h3><strong>1. 原理</strong></h3>
+                    <p><br>
+                        HTML5的离线存储是基于一个新建的.manifest文件的缓存机制(不是存储技术)，通过这个文件上的解析清单离线存储资源，<br>
+                        这些资源就会像cookie一样被存储了下来。之后当网络在处于离线状态下时，浏览器会通过被离线存储的数据进行页面展示。
+                    </p>
+
+                </section>
+
+
+                <section style="text-align: left;">
+                    <h3><strong>2.什么是Manifest：</strong></h3>
+                    <p>
+                        Manifest是一个简单的 文本文件，它的扩展名是任意的，定义需要缓存的文件、资源，当第一次打开时，浏览器会自动缓存相应的资源。<br>
+
+                    Manifest 的特点：<br>
+                    离线浏览：即当网络断开时，可以继续访问你的页面。<br>
+                    访问速度快：将文件缓存到本地，不需每次都从网络上请求。<br>
+                    稳定性：做了Manifest缓存，遇到突发网络故障或者服务器故障，继续访问本地缓存。
+                        
+                    </p>
+                </section>
+
+
+            </section>
+
+            <section>
+                <section>
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    <h4>如何使用离线存储？</h4>
+                </section>
+
+            </section>
+
+
+            <section>
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+
+                <section>
+
+                    <p class="text-l">
+                      （1）页面头部像下面一样加入一个manifest的属性。
+                      <img src="img/1.png" alt="">
+                        <br>
+                    </p>
+                </section>
+                <section>
+                    <p class="text-l">
+                        （2）在cache.manifest文件的编写离线存储的资源。
+                        <img src="img/2.png" alt="">
+                          <br>
+                          以#号开头的是注释，一般会在第二行写个版本号，用来在缓存的文件更新时，  <br>
+                          更新manifest以实现浏览器重新下载新的文件，可以是版本号，时间戳或md5码等。
+                      </p>
+                </section>
+                <section>
+                    <p class="text-l">
+                        离线存储的manifest一般由三个部分组成：<br>
+                        ①　CACHE：必选，表示需要离线存储的资源列表，由于包含manifest文件的页面将被自动离线存储，所以不需要把页面自身也列出来。 <br>
+                        ②　NETWORK：可选，可以使用通配符，表示在它下面列出来的资源只有在在线的情况下才能访问，他们不会被离线存储，所以在离线情况下无法使用这些资源。 <br>
+                        不过，如果在CACHE和NETWORK中有一个相同的资源，那么这个资源还是会被离线存储，也就是说CACHE的优先级更高。 <br>
+                        ③　FALLBACK：可选，表示如果访问第一个资源失败，那么就使用第二个资源来替换他， <br>
+                    </p>
+                </section>
+                <section>
+                    <p  class="text-l">
+                        浏览器如何对离线存储的资源进行管理和加载：<br>
+                        ①　在线的情况下，浏览器发现html头部有manifest属性，它会请求manifest文件，如果是第一次访问app，那么浏览器就会根据manifest文件的内容下载相应的资源并且进行离线存储。 <br>
+                        如果已经访问过app并且资源已经离线存储了，那么浏览器就会使用离线的资源加载页面，然后浏览器会对比新的manifest文件与旧的manifest文件，如果文件没有发生改变，就不做任何操作，如果文件改变了，那么就会重新下载文件中的资源并进行离线存储。<br>
+                        ②　离线的情况下，浏览器就直接使用离线存储的资源。
+                    </p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>5.编码实战</h3>
+                </section>
+
+            </section>
+            <section>
+                <section>
+                    <h3>6.扩展思考</h3>
+
+                </section>
+
+                <section class="text-l">
+                    <h4>如何更新缓存？</h4>
+                    <p>
+                        ①　更新manifest文件<br>
+
+                        1)给manifest添加或删除文件。<br>
+                        2)若manifest没有添加或删除文件，只是修改了文件，可以通过更改版本号等更新manifest文件。
+                    </p>
+                    <p>
+                           
+                    </p>
+                    <p>
+                        ②　通过javascript操作<br>
+
+                        html5中引入了js操作离线缓存的方法：window.applicationCache.update()，可以手动更新缓存。
+                    </p>
+                    <p>
+                        ③　清除浏览器缓存<br>
+
+                        如果用户清除了浏览器缓存（手动或用其他一些工具），都会重新下载文件。
+                    </p>
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>7.参考文献</h3>
+                </section>
+                <section>
+                    <p style="text-align: left">参考：<br>
+                        <br>
+                       <a href="https://segmentfault.com/a/1190000000732617">有趣的HTML5：离线存储</a> <br>
+                       <a href="https://blog.csdn.net/zhouziyu2011/article/details/58588546">浅谈HTML5离线存储</a>
+                       
+                    </p>
+
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>8.更多讨论</h3>
+                </section>
+            </section>
+            <section>
+                <!--<h4>鸣谢</h4>-->
+                <p>感谢大家观看</p>
+                <p>
+                    <small>BY : 许恒倩</small>
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [
+                { src: './plugin/markdown/marked.js' },
+                { src: './plugin/markdown/markdown.js' },
+                { src: './plugin/notes/notes.js', async: true },
+                {
+                    src: './plugin/highlight/highlight.js', async: true, callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
