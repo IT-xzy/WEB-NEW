@@ -1,0 +1,320 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>JS有哪些数据类型和常用方法？</title>
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+            <section style="top: 145.5px; display: block;" class="present">
+                <h2>【js-01】JS有哪些数据类型和常用方法？</h2> 分享人：乾洪瑆
+            </section>
+            <section style="top: 264px; display: block;" class="future" hidden="" aria-hidden="true">
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p> 7.参考文献</p>
+                <p> 8.更多讨论</p>
+            </section>
+            <!--1.背景介绍-->
+            <section style="top: 267px; display: block;" class="future" hidden="" aria-hidden="true">
+                <h3>1.背景介绍</h3>
+            </section>
+            <section style="top: 0px; display: none;" class="stack future" data-previous-indexv="0" hidden=""
+                aria-hidden="true">
+                <section style="top: 195px; display: none;" class="" aria-hidden="true">
+                    <div style="text-indent:2em">
+                        今天要讲的是JavaScript的基本数据类型和常用方法，现在来简单认识一下跟本节课相关的一些背景和内容。要想了解一个事物，就必须先了解其历史。<br>
+
+                    </div>
+                </section>
+                <section style="top: 195px; display: none;" class="" aria-hidden="true">
+                    <div align="left">
+
+                        <p align="center">JavaScript来源于借鉴</p><br>
+                        借鉴C语言的基本语法；<br>
+                        <span style="color:red;">借鉴Java语言的数据类型和内存管理；</span><br>
+                        借鉴Scheme语言，将函数提升到"第一等公民"（first class）的地位；<br>
+                        借鉴Self语言，使用基于原型（prototype）的继承机制。<br><br>
+
+                        JavaScript借鉴了Java的数据类型，所以JavaScript的数据类型和Java还是有很多相似之处的，但是没有那么复杂，有兴趣的可以去了解一下。<br>
+                        ps:也正是因为JavaScript借鉴了这么多伟大的语言，所以也说JavaScript是站在巨人的肩膀上。当然我感觉这也是这门语言能在10天内被创造出来的重要原因之一吧。
+                    </div>
+                </section>
+                <section style="top: 195px; display: none;" class="" aria-hidden="true">
+                    <div align="left">
+
+                        讲数据类型我们要经常用到其他的几个知识点，这边快速过一下。<br>
+                        变量及变量赋值：var x = 2 (用字母x来保存数据，那么x就是变量。变量使用前都要进行声明，不然不能使用。这个式子就是一个变量的赋值操作。) <br>
+                        输出：console.log() 该方法用于在控制台输出信息。这个比较实用，比如数值和字符串的颜色不一样，可以很好的分辨。----此处有demo <br>
+                        查看数据类型：typeof 用这个操作符虽然有一些不足之处，但是查看简单的数据类型足够了。--此处有demo
+                    </div>
+                </section>
+            </section>
+            <!--2.知识剖析-->
+            <section style="top: 267px; display: none;" class="future" hidden="" aria-hidden="true">
+                <h3>2.知识剖析</h3>
+            </section>
+            <!--2.1 JS有哪些数据类型？-->
+            <section style="top: 0px; display: none;" class="stack future" data-previous-indexv="0" hidden=""
+                aria-hidden="true">
+                <section style="top: 284px; display: none;" class="" aria-hidden="true"><b>2.1 JS有哪些数据类型？</b></section>
+                <section class="future" style="top: 195px; display: none;" hidden="" aria-hidden="true">
+                    <div style="text-indent:2em">
+                        JavaScript 语言的每一个值，都属于某一种数据类型。JavaScript
+                        的数据类型分别是Undefined、Null、Boolean、Number、String、Object、Array（ES6新增第七种 Symbol
+                        一种数据类型，它的实例是唯一且不可改变的。类型的值---这个我暂时也没学到） --展示脑图 <br>
+                        js是对大小写敏感的，所以还是要注意一下写法，不正确的大小写是无效的哟。--此处有demo
+                    </div>
+                </section>
+                <section class="future" style="top: 80px; display: none;" hidden="" aria-hidden="true">
+                    <div style="text-align:left">
+                        <p style="text-align:center">Undefined</p> <br>
+                        --Undefined这是一种比较特殊的类型，表示变量未赋值，这种类型只有一种值就是undefined <br>
+                        --undefined是Undefined类型的字面量<br>
+                        ----前者undefined和10, "abc"一样是一个常量<br>
+                        ----后者Undefined和Number,Boolean一样是一个数据类型<br>
+                        --需要注意的是typeof对没有初始化和没有声明的变量都会返回undefined<br>
+                    </div>
+                </section>
+                <section class="future" style="top: 80px; display: none;" hidden="" aria-hidden="true">
+                    <div style="text-align:left">
+                        <p style="text-align:center">Null</p> <br>
+                        --Null 类型是第二个只有一个值的数据类型，这个特殊的值是 null <br>
+                        ----从语义上看null表示的是一个空的对象。所以使用typeof检查null会返回一个Object<br>
+                        --undefined值实际上是由null值衍生出来的，所以如果比较undefined和null是否相等，会返回true<br>
+                        （值比较 == //值与类型都比较 ===）
+                    </div>
+                </section>
+                <section class="future" style="top: 80px; display: none;" hidden="" aria-hidden="true">
+                    <div style="text-align:left">
+                        <span style="text-align: center; display: block">Number</span> <br>
+                        --是最基本的数据类型，不区分整型数值和浮点型数值，JS中所有的数值都是Number类型(整数和小数) <br>
+                        --Number类型注意点<br>
+                        ----JS中整数的运算可以保证精确的结果，浮点数的运算可能得到一个不精确的结果<br>
+                        ----NaN 非法数字（Not A Number），JS中当对数值进行计算时没有结果返回，则返回NaN <br>
+                        <span style="text-align: center; display: block">String</span> <br>
+                        --字符串由单引号或双引号括起<br>
+                        --单独一个字母也被称为字符串（例如：‘a’）<br>
+                        --使用字符串注意事项（字符串成对出现，单对单，双对双。相同引号不能嵌套，不同引号可以嵌套）<br>
+                    </div>
+                </section>
+                <section class="future" style="top: 80px; display: none;" hidden="" aria-hidden="true">
+                    <div style="text-align:left">
+                        <p style="text-align:center">Boolean</p> <br>
+                        --布尔型也被称为逻辑值类型或者真假值类型<br>
+                        --布尔型只能够取真（true）和假（false）两种数值, 也代表1和0，实际运算中true=1,false=0<br>
+                        --注意：<br>
+                        ----任何非零数值都是true, 包括正负无穷大, 只有0和NaN是false<br>
+                        ----任何非空字符串都是true, 只有空字符串是false<br>
+                        ----任何对象都是true, 只有null和undefined是false<br>
+                    </div>
+                </section>
+                <section class="future" style="top: 80px; display: none;" hidden="" aria-hidden="true">
+                    <div style="text-align:left">
+                        <p style="text-align:center">Array</p> <br>
+                        --数组的作用是：使用单独的变量名来存储一系列的值。 <br>
+                        --数组的一系列操作：定义数组，访问数组，修改数组中的值等<br>
+                        <p style="text-align:center">Object</p> <br>
+                        --JavaScript 中的所有事物都是对象：字符串、数值、数组...<br>
+                        --对象只是带有属性和方法的特殊数据类型。<br><br>
+                        这两种今天简单认识一下就好，主要介绍前面几种数据类型，以及数据类型转换<br>
+                    </div>
+                </section>
+                <section class="future" style="top: 284px; display: none;" hidden="" aria-hidden="true"><b>2.2
+                        JS常见数据类型转换</b></section>
+                <section class="future" style="top: 264px; display: none;" hidden="" aria-hidden="true">
+                    <div style="text-align: left">
+                        <p style="text-align:center">常见的类型转换</p> <br>
+                        --其他类型转换为字符串类型 <br>
+                        --其他类型转换未数字类型<br>
+                        --其他类型转换未布尔类型<br>
+                    </div>
+                </section>
+                <section class="future" style="top: 264px; display: none;" hidden="" aria-hidden="true">
+                    <div style="text-align: left">
+                        <p style="text-align:center">其他类型转换为字符串类型</p> <br>
+                        --调用被转换数据类型的toString()方法 <br>
+                        ----该方法不会影响到原变量，它会将转换的结果返回<br>
+                        ----null和undefined这两个值没有toString()方法，如果调用他们的方法，会报错<br>
+                        ----数值类型的toString()，可以携带一个参数，输出对应进制的值(暂时知道有这么回事就行，学习后面进制转换再看一下也行，因为我也还没学到这个) <br>
+                        --将被转换的数据传入String()函数中 <br>
+                        ----有些值没有toString()，这个时候可以使用String()。比如：undefined和null <br>
+                        --将被转换的数据和+""连接到一起<br>
+                    </div>
+                </section>
+                <section class="future" style="top: 264px; display: none;" hidden="" aria-hidden="true">
+                    <div style="text-align: left">
+                        <p style="text-align:center">其他类型转换为数字类型</p> <br>
+                        --将被转换的数据传入Number()函数中 <br>
+                        --字符串转数字 <br>
+                        ----如果是纯数字的字符串，则直接将其转换为数字<br>
+                        ----如果字符串中有非数字的内容，则转换为NaN<br>
+                        ----如果字符串是一个空串或者是一个全是空格的字符串，则转换为0<br>
+                        --布尔转数字 <br>
+                        ----true 转成 1，false 转成 0<br>
+                        ----null转为0，undefined转为NaN<br>
+                        --将被转换的数据传入parseInt()函数中/parseFloat()函数中
+                    </div>
+                </section>
+                <section class="future" style="top: 264px; display: none;" hidden="" aria-hidden="true">
+                    <div style="text-align: left">
+                        --将被转换的数据传入parseInt()函数中/parseFloat()函数中<br>
+                        ----Number()函数中无论混合字符串是否存在有效整数都会返回NaN,利用parseInt()/parseFloat()可以提取字符串中的有效整数<br>
+                        ----前者只能提取整数,后者可以提取小数<br>
+                        parseInt() 注意点：<br>
+                        --从第一位有效数字开始, 直到遇到无效数字<br>
+                        --如果第一位不是有效数字, 什么都提取不到, 会返回NaN<br>
+                        parseFloat() 注意点：<br>
+                        --会解析第一个. 遇到第二个.或者非数字结束<br>
+                        --如果第一位不是有效数字, 什么都提取不到, 会返回NaN<br>
+                        对非String使用parseInt()或parseFloat(), 会先将其转换为String然后再操作
+                    </div>
+                </section>
+                <section class="future" style="top: 264px; display: none;" hidden="" aria-hidden="true">
+                    <div style="text-align: left">
+                        <p style="text-align:center">其他类型转换为布尔类型</p> <br>
+                        --在JavaScripe中除了undefined、null、0、-0、NaN、''会被转换成false，其他的值都会转换成true。<br>
+                        --使用Boolean()<br>
+                        --!!：第一个'!'将值转换成布尔值并取其值的非值，第二个'!'将其布尔值还原，类似于“负负得正”的道理<br>
+
+                    </div>
+                </section>
+            </section>
+            <!--3.常见问题-->
+            <section style="top: 267px; display: none;" class="future" hidden="" aria-hidden="true">
+                <h3>3.常见问题</h3>
+            </section>
+            <section style="top: 284px; display: none;" class="future" hidden="" aria-hidden="true">
+                <b>怎么样判断各种数据类型？常用数据类型间怎样转换？</b>
+                
+            </section>
+            <!--4.解决方案-->
+            <section style="top: 267px; display: none;" class="future" hidden="" aria-hidden="true">
+                <h3>4.解决方案</h3>
+                <p style="text-align:center">见 2.知识剖析模块</p>
+            </section>
+        
+            <!--5.编码实战-->
+            <section style="top: 267px; display: none;" class="future" hidden="" aria-hidden="true">
+                <h3>5.编码实战</h3>
+                <p style="text-align:center">见 2.知识剖析模块</p>
+            </section>
+         
+            <!--6.拓展思考-->
+            <section style="top: 267px; display: none;" class="future" hidden="" aria-hidden="true">
+                <h3>6.拓展思考</h3>
+            </section>
+            <section style="top: 261px; display: none;" class="future" hidden="" aria-hidden="true">
+                <b>JavaScript 数据类型转换有没有其他的方法？</b> 更多请参考：
+                <a href="http://www.runoob.com/js/js-type-conversion.html" target="_blank">http://www.runoob.com/js/js-type-conversion.html</a>
+            </section>
+            <section style="top: 267px; display: none;" class="future" hidden="" aria-hidden="true">
+                <h3>7.参考文献</h3>
+            </section>
+            <section style="top: 195px; display: none;" class="future" hidden="" aria-hidden="true">
+                <p style="text-align: center">w3c：<a href="http://www.w3school.com.cn/js/js_datatypes.asp" target="_blank">JavaScript
+                        数据类型</a>
+                </p>
+                <p style="text-align: center">脚本之家：<a href="http://www.jb51.net/article/91477.htm" target="_blank">js
+                        判断各种数据类型的方法</a>
+                </p>
+                <p style="text-align: center">阮一峰：<a href="http://javascript.ruanyifeng.com/#introduction" target="_blank">Javascript标准参考</a>
+                </p>
+            </section>
+            <section style="top: 267px; display: none;" class="future" hidden="" aria-hidden="true">
+                <h3>8.更多讨论</h3>
+            </section>
+            <section style="top: 284px; display: none;" class="future" hidden="" aria-hidden="true">
+                <b>如何快速/准确的判断数据类型，避免在项目中出错？</b>
+            </section>
+            <section style="top: 208.5px; display: none;" class="future" hidden="" aria-hidden="true">
+                <h4>鸣谢</h4>
+                <p style="text-align: center">感谢大家观看
+                </p>
+                <p style="text-align: center"><small>BY : 乾洪瑆</small>
+                </p>
+            </section>
+        </div>
+    </div>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        //  controls: true, // 是否在右下角展示控制条
+        //  progress: true, // 是否显示演示的进度条
+        //  slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        //  history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        //  keyboard: true, // 是否启用键盘快捷键来导航
+        //  overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        //  center: true, // 是否将幻灯片垂直居中
+        //  touch: true, // 是否在触屏设备上启用触摸滑动切换
+        //  loop: false, // 是否循环演示
+        //  rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        //  fragments: true, // 全局开启和关闭碎片。
+        //  autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        //  transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        //  transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        //  mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
+Contact GitHub API Training Shop Blog About © 2016 GitHub, Inc. Terms Privacy Security Status He
+
+

@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+
+        }
+
+        p.font {
+            clear: both;
+            text-align: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>return的用法是什么？若用在for循环中，还会执行下一次循环吗？</h2>
+                <p style="text-align: center;">分享人：周能</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <h3>一、背景介绍</h3>
+            </section>
+            <section>
+                <h3>什么是return</h3>
+                <P class="font">return是javascript里函数返回值的关键字，一个函数内处理的结果可以使用return返回，这样在调用函数的地方就可以用变量接收返回结果。return关键字内任何类型的变量数据或表达式都可以进行返回，甚至什么都不返回也可以</P>
+
+            </section>
+            <section>
+
+                <h3>二、知识剖析</h3>
+            </section>
+            <section>
+                <h3>return语句的用法</h3>
+            </section>
+            <section>
+                <p>1、返回函数值,语句结束函数执行</p>
+            </section>
+
+            <section>
+                <p>2、利用return阻止执行某些默认的行为。</p>
+                <p class="font">JAVASCRIPT在事件中调用函数时用return返回值实际上是对window.event.returnvalue进行设置。而该值决定了当前操作是否继续。当返回的是true时，将继续操作。当返回是false时，将中断操作。而直接执行时（不用return）。将不会对window.event.returnvalue进行设置所以会默认地继续执行操作</p>
+            </section>
+            <section>
+                <p>3、利用return阻止事件冒泡</p>
+            </section>
+            <section>
+                <h3>三、常见问题</h3>
+            </section>
+            <section>
+                <p> 若return用在for循环中，还会执行下一次循环吗？</p>
+            </section>
+            <section>
+                <h3>四、解决方案</h3>
+            </section>
+            <section>
+                <p>通过简单的demo我们可以看到，在for循环会返回return所返回的值，并不会执行下一次循环,而是起到跳出循环的作用</p>
+            </section>
+            <section>
+                <h3>五、编码实战</h3>
+            </section>
+
+            <section>
+                <h3>六、拓展思考</h3>
+            </section>
+            <section>
+                <h3>除了return之外，还有哪些语句可以跳出循环？</h3>
+                <p>1、break</p>
+                <p>2、continue</p>
+            </section>
+
+
+            <section>
+                <h3>七、参考文献</h3>
+            </section>
+            <section>
+                <a href="https://baijiahao.baidu.com/s?id=1570541465205209&wfr=spider&for=pc">什么是retrun </a>
+                <br>
+                <a href="https://www.jb51.net/article/30388.htm">javascript中break，continue和return语句用法小结</a>
+                <br>
+            </section>
+            <section>
+                <h3>八、更多讨论</h3>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>BY : 周能</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
