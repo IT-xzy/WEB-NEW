@@ -1,0 +1,441 @@
+﻿﻿﻿
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+    </map>
+    <div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+        <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+            <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+                <h3>【JS-task5】HTTP状态码有哪些？分别代表是什么意思？</h3>
+                <p>分享人：火建强</p>
+            </section>
+            <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>1.背景介绍</h3>
+            </section>
+            <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+
+                <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <p>当浏览者访问一个网页时，浏览者的浏览器会向网页所在服务器发出请求。
+
+                        当浏览器接收并显示网页前，此网页所在的服务器会返回一个包含HTTP状态码的信息头（server header）用以响应浏览器的请求。
+
+                        HTTP状态码由三个十进制数字组成，三位数字代码分别代表着不同的请求状态，第一个十进制数字定义了状态码的类型，后两个数字没有分类的作用。</p>
+                </section>
+                <!--<section class="present" style="top: 148.5px; display: block;">-->
+                <!--<pre><code class="hljs mel">-->
+                <!--语法：-->
+                <!--<span class="hljs-keyword">return</span>[()[<span class="hljs-keyword">expression</span>][]];-->
+                <!--可选项 <span class="hljs-keyword">expression</span> 参数是要从函数返回的值。如果省略，则该函数不返回值。-->
+                <!--</code></pre>-->
+                <!--<p>用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression 被省略，-->
+                <!--或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。</p>-->
+                <!--</section>-->
+
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>2.知识剖析</h3>
+            </section>
+            <!--<section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">-->
+            <!--<p>return作为返回关键字，它有以下两种返回方式</p>-->
+            <!--</section>-->
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>HTTP状态码分类</h4>
+                <p>HTTP状态码共分为5种类型：</p>
+                <p style="font-size:26px;">1开头：（被接受，需要继续处理。）这一类型的状态码，代表请求已被接受，需要继续处理。这类响应是临时响应，只包含状态行和某些可选的响应头信息，并以空行结束。</p>
+                <p style="font-size:26px;">2开头 （请求成功）这一类型的状态码，代表请求已成功被服务器接收、理解、并接受</p>
+                <p style="font-size:26px;">3开头 （请求被重定向）这类状态码代表需要客户端采取进一步的操作才能完成请求。通常，这些状态码用来重定向，后续的请求地址（重定向目标）在本次响应的
+                    location 域中指明。</p>
+            </section>
+            <section style="text-align: left; top: 84px; display: none;" hidden="" aria-hidden="true" class="future">
+                <p style="font-size:26px;">4开头：（请求错误）这类的状态码代表了客户端看起来可能发生了错误，妨碍了服务器的处理。除非响应的是一个 HEAD
+                    请求，否则服务器就应该返回一个解释当前错误状况的实体，以及这是临时的还是永久性的状况。这些状态码适用于任何请求方法。浏览器应当向用户显示任何包含在此类错误响应中的实体内容。</p>
+                <p style="font-size:26px;">5开头：（服务器错误）这类状态码代表了服务器在处理请求的过程中有错误或者异常状态发生，也有可能是服务器意识到以当前的软硬件资源无法完成对请求的处理。除非这是一个HEAD
+                    请求，否则服务器应当包含一个解释当前错误状态以及这个状况是临时的还是永久的解释信息实体。浏览器应当向用户展示任何在当前响应中被包含的实体。</p>
+            </section>
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+                <p>如何记忆这些状态码</p>
+                <p style="font-size:24px">Http 状态码是做Web开发的必备的基础知识，面试中也会经常出现这方面的考题。但是要记住全部的状态码不是一件容易的事，部分状态码记忆：</p>
+                <p style="font-size:24px;">200 欢迎回来，主人 （正常；请求已完成。）</p>
+                <p style="font-size:24px;">301 人家搬家了 （已移动 — 请求的数据具有新的位置且更改是永久的。）</p>
+                <p style="font-size:24px;">307 不是这里，换个地方啦 （重新请求的URL，客户端自动重新请求新的地址）</p>
+                <p style="font-size:24px;">400 不要把奇怪的东西给人家嘛 （错误请求 — 请求中有语法问题，或不能满足请求。）</p>
+                <p style="font-size:24px;">403 这里不可以啦！（禁止 — 即使有授权也不需要访问。）</p>
+                <p style="font-size:24px;">404 这里什么都没有 --- 人家是平的啦。 （找不到 — 服务器找不到给定的资源；文档不存在。）</p>
+                <p style="font-size:24px;">405 打开方式不对 （资源被禁止）</p>
+            </section>
+
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+                <p style="font-size:24px">414 这... 太长了啦 （请求 - URI 太长）</p>
+                <p style="font-size:24px">500 服务姬坏掉了啦 （内部错误 — 因为意外情况，服务器不能完成请求。）</p>
+                <p style="font-size:24px">503 不要...人家还没准备好啦 （无法获得服务 — 由于临时过载或维护，服务器无法处理请求。）</p>
+                <p style="font-size:24px">101 服务姬傲娇中 （服务器将遵从客户的请求转换到另外一种协议）</p>
+                <p style="font-size:24px">100 人家... 还要... （初始的请求已经接受，客户应当继续发送请求的其余部分。</p>
+            </section>
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+                <section style="text-align: center; top: 330px; display: none;">
+                    <h3>3 常见问题</h3>
+                </section>
+
+            </section>
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+                <section style="text-align: center; top: 330px; display: none;">
+                    <p>有哪些常见的状态码？</p>
+                </section>
+
+            </section>
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+                <section style="text-align: center; top: 330px; display: none;">
+                    <h3>4 解决方案</h3>
+                </section>
+
+            </section>
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+                <section style="text-align: center; top: 330px; display: none;">
+                    <p>一般只需要了解以下常见的状态码就够了：</p>
+                    <p style="font-size:24px">200 OK：服务器成功处理了请求（这个是我们见到最多的）</p>
+                    <p style="font-size:24px">301 Moved Permanently：资源移动。所请求资源自动到新的URL，浏览器自动跳转到新的URL</p>
+                    <p style="font-size:24px">304 Not Modified：服务端的资源与客户端上一次请求的一致，不需要重新传输，客户端使用本地缓存的即可</p>
+                    <p style="font-size:24px">400 Bad Request：用于告诉客户端它发送了一个错误的请求</p>
+                    <p style="font-size:24px">404 Not Found：(页面丢失)未找到资源</p>
+                    <p style="font-size:24px">500 Internal Server Error：服务器内部出现了错误</p>
+                    <p style="font-size:24px">501 Internal Server Error：服务器遇到一个错误，使其无法对请求提供服务</p>
+                </section>
+            </section>
+
+
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+                <section style="text-align: center; top: 330px; display: none;">
+                    <h3>5.编码实战</h3>
+                </section>
+            </section>
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <h3 style="text-align: center">6.扩展思考</h3>
+                    <p>301和302都是重定向，他们之间有什么区别呢？</p>
+                </section>
+            </section>
+
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+                <section style="text-align: center; top: 330px; display: none;">
+                    <p>301为永久移动。请求的资源已被永久的移动到新URL，返回信息会包括新的URL，浏览器会自动定向到新URL。今后任何新的请求都应使用新的URL代替。</p>
+                    <p>302为临时移动。与301类似。但资源只是临时被移动。客户端应该继续使用原有URL。</p>
+                </section>
+            </section>
+
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+                <section style="text-align: center; top: 330px; display: none;">
+                    <h3>HTTP状态码451是什么？</h3>
+                    <p>根据定义，HTTP 451错误代码状态出现，代表该网页可能对于国家安全产生危险，或是该网页可能违反著作权、隐私权、亵渎神明或其他法律或法院命令。</p>
+                    <p>简单的讲 就是由于某些政治原因，所以，该页面不予访问</p>
+                </section>
+            </section>
+
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+                <section style="text-align: center; top: 330px; display: none;">
+                    <h3>418有什么典故？</h3>
+                    <p>418，内容是I'm a teapot，算是一个彩蛋。</p>
+                    <p>源于IETF在1998年愚人节时发布的一个超文本咖啡壶控制协议，当客户端给一个茶壶发送泡咖啡的请求时，茶壶就返回一个418错误状态码，表示“我是一个茶壶”。</p>
+                </section>
+            </section>
+
+
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h3>7.参考文献</h3>
+                <p>参考一：
+                    <a href="http://www.runoob.com/http/http-status-codes.html" target="_blank">菜鸟教程</a>
+                </p>
+                <p>参考二：
+                    <a href="http://www.nowamagic.net/librarys/veda/detail/2084" target="_blank">让HTTP萌娘帮你记住状态码吧</a>
+                </p>
+                <p>参考三：
+                    <a href=" https://zhuanlan.zhihu.com/p/31502793" target="_blank">415</a>
+                </p>
+                <p>参考四：
+                    <a href="https://tools.ietf.org/html/rfc2324" target="_blank">超文本咖啡壶控制协议</a>
+                </p>
+
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h3>8 更多讨论</h3>
+            </section>
+
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    <small>制作人：叶紫阳 | 熊凡 | 张峻 | 火建强</small>
+                </p>
+            </section>
+
+        </div>
+        <div class="backgrounds">
+            <div class="slide-background past" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background stack present" data-loaded="true" style="display: block;">
+                <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+                <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+            </div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+        </div>
+        <div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div>
+        <aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button
+                class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up enabled"
+                aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside>
+        <div class="slide-number" style="display: none;"></div>
+        <div class="speaker-notes" data-prevent-swipe=""></div>
+        <div class="pause-overlay"></div>
+        <div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+
+            语法：
+            return[()[expression][]];
+            可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。
+
+            用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression 被省略，
+            或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+        //    原始类型对象直接赋值不会相互影响
+        //    var a = 1;
+        //
+        //    var b = a;
+        //    b = 10;
+        //    console.log(a); // 1
+        ////
+        //    var a = 'hello';
+        //    var b = a;
+        //    b = 'world';
+        //    console.log(a); // hello
+        //
+        //    var a = true;
+        //    var b = a;
+        //    b = false;
+        //    console.log(a);
+
+        //数组浅复制
+        //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+        //    ];
+        //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+        //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+        //    console.log(a)//那么现在打印a 是什么结果呢
+        //
+        //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+        //    var arrtoo = arr.slice(1);
+        //    arrtoo[2] = "set Map";
+        //    console.log(arr);//One,Two,Three
+        //    console.log(arrtoo);//One,set Map,Three
+
+        //
+        //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+        //    var arrtooo = arr1.concat(111111);
+        //    arrtooo[1] = "set Map To";
+        //    console.log(arr1);//One,Two,Three
+        //    console.log(arrtooo);//One,set Map To,Three
+
+        //
+        //    var b=[1,2,3,4,5];   //concat的链接
+        //    var c=[6,7,8,9];
+        //    var d =[4,4,22]
+        //    console.log(b.concat(c,d))
+
+        var a = {
+            name: 'yy',
+            age: 26
+        }; //对象的浅拷贝哦
+        var b = new Object();
+        b.name = a.name;
+        b.age = a.age;
+        b.name = 'xx';
+        console.log(a); //Object { name="yy", age=26}
+        console.log(b); //Object { name="xx", age=26}
+
+        var d = { //对象的浅拷贝哦 第一种
+            name: 'd',
+            oc: {
+                age: 32
+            },
+            oad: {
+                adds: {
+                    bb: 12
+                }
+            }
+        };
+        var deepCopy = function (source) {
+            var result = {};
+            for (var key in source) {
+                result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+            }
+            return result
+        };
+
+        var c = deepCopy(d);
+        c.name = 'c';
+        c.oc = {
+            age: 49
+        };
+        console.log(c);
+        console.log(d);
+
+
+        //    var person = {    //第二种深拷贝
+        //        name: 'aa',
+        //        friends: ['da', 'dsa', 'gf']
+        //    };
+        //
+        //    var aPerson = Object.create(person, {
+        ////        name: {
+        ////            value: "gee"
+        ////        }
+        //    });
+        //
+        //    console.log(person.name);
+        //    console.log(aPerson.friends)
+
+        var Chinese = {
+            nation: '中国'
+
+        }
+        var Doctor = {
+            career: '医生'
+        }
+
+        function extendCopy(p) {
+            var c = {};
+            for (var i in p) {
+                c[i] = p[i];
+            }
+            c.uber = p;
+            return c;
+        }
+
+        var Doctor = extendCopy(Chinese);
+        Doctor.career = '医生';
+        console.log(Doctor); // 中国
+        Chinese.birthPlaces = ['北京', '上海', '香港'];
+        var Doctor = extendCopy(Chinese);
+        Doctor.birthPlaces.push('厦门');
+    </script>
+
+</body>
+
+</html>
