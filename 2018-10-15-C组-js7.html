@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>葡萄藤PPT</title>
+
+	<link rel="stylesheet" href="./css/reveal/reveal.css">
+
+	<!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+	<link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+	<!-- syntax highlighting 代码高亮主题 -->
+	<link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+	<!-- 打印和PDF输出样式 -->
+	<script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+	<area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+</map>
+<div class="reveal">
+	<div class="slides">
+		<section>
+			<h3>【JS-7】angular中constant和$filter的用法</h3>
+			<h4>小课堂【深圳-WEB-C组】</h4>
+			<p>分享人：韩鹏</p>
+		</section>
+
+		<section>
+			<p>目录</p>
+			<p>1.背景介绍</p>
+			<p>2.知识剖析</p>
+			<p>3.常见问题</p>
+			<p>4.解决方案</p>
+			<p>5.编码实战</p>
+			<p>6.扩展思考</p>
+			<p>7.参考文献</p>
+			<p>8.更多讨论</p>
+		</section>
+
+		<section>
+			<section>
+				<h3>1.背景介绍</h3>
+			</section>
+			<section style="font-size: 30px;">
+                <h4>constant:</h4>    
+                <p>constant是用来设置常量的，constant(name,value)可以将一个已经存在的变量值注册为服务，通过依赖注入将其注入到应用的其他部分中，其中，name为注册的常量的名字，value为注册的常量的值或对象。</p>
+                <h4>$filter:</h4>
+                <p>$filter是AngularJs 服务，$filter是过滤器，用来格式化数据用的。</p>
+        	</section>
+		</section>
+
+		<section>
+			<section>
+				<h3>2.知识剖析</h3>
+			</section>
+			<section style="font-size: 34px;">
+				<h3>AngularJs设置全局变量的方法：</h3>
+				<p>angularjs自身有两种，设置全局变量的方法，在加上js的设置全局变量的方法，总共有三种。要实现的功能是，在ng-app中定义的全局变量，在不同的ng-controller里都可以使用。</p>
+                <p>1.通过var 直接定义global variable，这跟纯js是一样的。</p>
+				<p>2.用angularjs value来设置全局变量 。</p>
+                <p>3.用angularjs constant来设置全局变量 。</p>
+			</section>
+			<section>
+				<h3>value 和 constant 的区别：</h3>
+				<p>1.value不可以在config里注入，但是constant可以。</p>
+				<p>2.value可以修改，但是constant不可以修改，一般直接用constant配置一些需要经常使用的数据。</p>
+				<a href="./demo/2018-10-15-C-js7/2018-10-15-C-js7-demo.html" target="_blank">Demo</a>
+			</section>
+			<section>
+                <h3>过滤器：$filter</h3>
+                <p>ng内置了9种过滤器，分别是：currency(货币)、date(日期)、filter(子串匹配)、json(格式化json对象)、limitTo(限制个数)、lowercase(小写)、uppercase(大写)、number(数字)、orderBy(排序)。</p>
+            </section>
+			<section>
+				<h3>filter的用法：</h3>
+                <p>filter是用来格式化数据用的
+				<br>基本原型
+				<br>{{expression | filter}}
+				<br>多个filter连用版
+				<br>{{expression | filter1 | filter2}}
+				<br>传入参数版
+				<br>{{expression | filter:1:2}}</p>
+				<a href="./demo/2018-10-15-C-js7/2018-10-15-C-js7-demo.html#filter" target="_blank">Demo</a>
+            </section>
+		</section>
+		<section>
+			<section>
+				<h3>3.常见问题</h3>	
+			</section>
+			<section>
+				<h4>filter的实际应用：</h4>
+				<p style="text-indent: 4rem">自定义filter</p>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h3>4.解决方案</h3>
+			</section>
+			<section>
+				<p>自定义一个过滤器也相当容易，仅仅需要在module中注册一个新的filter工厂函数。工厂函数会返回一个新的过滤器函数，过滤器的输入作为过滤器函数的第一个参数，其他过滤器的参数作为过滤器函数的附加参数传入。</p>
+				<p>	过滤器函数是一个纯函数，这意味着给出相同的输入参数总能得到相同的输出结果，而不受外界状态的影响（例如，angularjs的services）。根据这一点，angularjs才能做到仅仅当输入变化时才去执行一次过滤器。</p>
+			</section>
+			<section>
+			<h4>filter方法:</h4>
+			<pre> 
+
+自定义过滤器：{{带过滤数据 |过滤器名：参数1：参数2：参数3.....}}
+
+		app.filter('过滤器名', function () {
+			return function (待过滤数据, 参数....) {
+					......
+			return  已过滤数据;
+		}
+			</pre>
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h3>5.代码实战</h3>
+			</section>
+		</section>
+			
+		<section>
+			<section>
+				<h3>6.拓展思考</h3>
+			</section>
+			<section>
+				<h4>有没有其他自定义过滤方法？</h4>
+			</section>
+			<section>
+				<h4>在controller方法内定义一个方法：</h4>
+				<pre>
+
+	控制器：（控制器名，控制器函数{
+			......
+			自定义过滤函数{
+				return function (待过滤数据, 参数....) {
+						......
+				return  已过滤数据;
+			}
+		}）
+				</pre>
+				</section>
+		</section>
+ 
+		<section>
+			<section>
+				<h3>7.参考文献</h3>
+			</section>
+			<section>
+				<p>参考一：<a href="https://www.cnblogs.com/lyy-2016/p/5691499.html">angularJS constant和value</a></p>
+				<p>参考二：<a href="https://blog.csdn.net/xuanwuziyou/article/details/52807531">angularJS 自定义过滤器</a></p>
+				<p>参考三：<a href="http://www.runoob.com/angularjs/angularjs-filters.html">AngularJS 过滤器——Runoob</a></p>
+				<p>参考四：<a href="https://www.cnblogs.com/zhujierong/p/6136716.html">AngularJS 的那些内置九种过滤器</a></p>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h3>8.更多讨论</h3>
+			</section>
+		</section>
+		<section>
+			<h4>鸣谢</h4>
+			<p>感谢大家观看</p>
+			<p>
+				BY : 韩鹏
+			</p>
+		</section>
+	</div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: './plugin/markdown/marked.js' },
+            { src: './plugin/markdown/markdown.js' },
+            { src: './plugin/notes/notes.js', async: true },
+            { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>

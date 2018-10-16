@@ -1,0 +1,13 @@
+CACHE MANIFEST
+#v0.11
+#需要缓存的文件
+CACHE:
+demo.html
+http.JPG
+k.PNG
+#不需要缓存的文件
+NETWORK:
+demo.css
+#无法访问的页面
+FALLBACK:
+404.html
