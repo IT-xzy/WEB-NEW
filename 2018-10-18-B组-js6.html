@@ -276,22 +276,22 @@
 		参数：
 		name：状态的名称。
 		stateConfig：状态配置对象。配置具有以下各项属性（全部属性，看一下好了）：
-		template： <span class="hljs-keyword">string</span>/<span class="hljs-function"><span class="hljs-keyword">function</span>，<span class="hljs-title">html</span>模板字符串，或者一个返回<span class="hljs-title">html</span>模板字符串的函数。</span>
-		templateUrl：<span class="hljs-keyword">string</span>/<span class="hljs-function"><span class="hljs-keyword">function</span>，模板路径的字符串，或者返回模板路径字符串的函数。</span>
-		templateProvider：<span class="hljs-function"><span class="hljs-keyword">function</span>，返回<span class="hljs-title">html</span>模板字符串或模板路径的服务。</span>
-		controller：<span class="hljs-keyword">string</span>/<span class="hljs-function"><span class="hljs-keyword">function</span>，新注册一个控制器函数或者一个已注册的控制器的名称字符串。</span>
-		controllerProvider：<span class="hljs-function"><span class="hljs-keyword">function</span>，返回控制器或者控制器名称的服务</span>
-		controllerAs：<span class="hljs-keyword">string</span>，控制器别名。
-		parent：<span class="hljs-keyword">string</span>/object，手动指定该状态的父级。
-		<span class="hljs-built_in">resolve</span>：object，将会被注入controller去执行的函数，<span class="hljs-keyword">string</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>&gt;形式。</span>
-		url：<span class="hljs-keyword">string</span>，当前状态的对应url。
-		views：object，视图展示的配置。<span class="hljs-keyword">string</span>,object&gt;形式。
-		abstract：boolean，一个永远不会被激活的抽象的状态，但可以给其子级提供特性的继承。默认是<span class="hljs-literal">true</span>。
-		onEnter：<span class="hljs-function"><span class="hljs-keyword">function</span>，当进入一个状态后的回调函数。</span>
-		onExit：<span class="hljs-function"><span class="hljs-keyword">function</span>，当退出一个状态后的回调函数。</span>
-		reloadOnSearch：boolean，如果为<span class="hljs-literal">false</span>，那么当一个search/query参数改变时不会触发相同的状态，用于当你修改$location.search()的时候不想重新加载页面。默认为<span class="hljs-literal">true</span>。
+		template： string/function，html模板字符串，或者一个返回html模板字符串的函数。
+		templateUrl：string/function，模板路径的字符串，或者返回模板路径字符串的函数。
+		templateProvider：function，返回html模板字符串或模板路径的服务。
+		controller：string/function，新注册一个控制器函数或者一个已注册的控制器的名称字符串。
+		controllerProvider：function，返回控制器或者控制器名称的服务
+		controllerAs：string，控制器别名。
+		parent：string/object，手动指定该状态的父级。
+		resolve：object，将会被注入controller去执行的函数，string,function&gt;形式。
+		url：string，当前状态的对应url。
+		views：object，视图展示的配置。string,object&gt;形式。
+		abstract：boolean，一个永远不会被激活的抽象的状态，但可以给其子级提供特性的继承。默认是true。
+		onEnter：function，当进入一个状态后的回调函数。
+		onExit：function，当退出一个状态后的回调函数。
+		reloadOnSearch：boolean，如果为false，那么当一个search/query参数改变时不会触发相同的状态，用于当你修改$location.search()的时候不想重新加载页面。默认为true。
 		data：object，任意对象数据，用于自定义配置。继承父级状态的data属性。换句话说，通过原型继承可以达到添加一个data数据从而整个树结构都能获取到。
-		<span class="hljs-built_in">params</span>：url里的参数值，通过它可以实现页面间的参数传递。
+		params：url里的参数值，通过它可以实现页面间的参数传递。
 		
 		    </code>
 		</pre>
