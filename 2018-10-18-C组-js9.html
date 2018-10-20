@@ -1,0 +1,329 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .left {
+            text-align: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+    </map>
+    <div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+        <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+            <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+                <h2>【JS-task5】</h2>
+                <h3>简述原型链是什么，有什么用处？若想访问一个对象的原型，应该使用什么方法？
+                </h3>
+                <p>分享人：张智</p>
+            </section>
+            <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <p class="left">
+ 
+                    ECMAScript中 原型链的基本思想是利用原型让一个引用类型继承另一个引用类型的属性和方法。
+                    基本的实现是利用构造函数，原型和实例的关系。即是每个构造函数都有一个原型对象，
+                    原型对象都包含一个指向构造函数的指针，而实例都包含一个指向原型对象的内部指针[[prototype]].由于构造函数，
+                    原型和实例存在这样的关系，如果我们让一个原型对象等于另一个构造函数的实例，那么此时这个原型对象将包含一个指向另一个原型对象的指针，
+                    这样的话，另一个原型原型中也包含着指向另一个构造函数的指针。如果另一个原型又是另一个类型的实例，那么上面的关系还是会成立。
+                    这样层层递进，就够成了实例与原型的链条，这就是所谓的原型链的基本概念。
+
+                 
+                </p>
+            </section>
+
+            <!-- <section>
+            <h4>函数表达式</h4>
+            <p class="left">函数表达式将函数定义为表达式语句（通常是变量赋值）的一部分。通过函数表达式定
+                义的函数可以是命名的，也可以是匿名的。函数表达式不能以“function”开头。函数名在作用域外
+                是不可获取的。</p>
+        </section> -->
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <p class="left">
+                    <h3>构造函数</h3>
+
+                    构造函数可以用来创建特定类型的对象，像Object Array这样的原生构造函数，在运行的时候会自动出现在执行环境中。
+                    另外，我们也可以创建自己的构造函数， 从而定义自定义的对象类型的属性和方法。
+                    <code>
+                    function Fish(name, color, food) {
+                        this.name = name;
+                        this.color = color;  
+                        this.food = food;                       
+                        this.eat = function () {                       
+                        alert(this.food);                       
+                        };                       
+                        }                      
+                        var littleFish = new Fish('小鱼','五颜六色','小鱼吃虾米');              
+                        var bigFish = new Fish('大鱼','白色','大鱼吃小鱼'); 
+                        littleFish.eat();
+                    </code>
+                </p>
+            </section>
+            <section>
+               
+                <p class="left">
+                    <h3>原型模式</h3>
+                    我们创建的每一个函数都有一个prototype属性，这个属性是一个指针，指向一个对象，
+                    而这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法。
+                    prototype就是 通过调用构造函数而创建的那个对象实例的原型对象。使用原型对象的好处是让所有对象实例共享他的属性和方法。
+                    <code>
+                            function Fish() {
+                            }              
+                            Fish.prototype.name = "大白鲨";                            
+                            Fish.prototype.color = '白色';                            
+                            Fish.prototype.food = '大白鲨吃其它鱼';                            
+                            Fish.prototype.eat = function () {                          
+                            alert(this.food);                           
+                            };                           
+                            var shark1 = new Fish();                           
+                            var shark2 = new Fish();                          
+                            console.log(shark1.name);                         
+                            console.log(shark2.name);
+
+                    </code>
+
+                </p>
+            </section>
+            <section>
+                <h4>理解原型对象</h4>
+                <p class="left">
+                        不论什么时候，只要创建了一个新的函数，就会根据一组特定的规则为该函数创建一个prototype属性，这个属性指向函数的原型对象。  
+                        在默认情况下，所有原型对象队会自动获得一个constructor属性，这个属性指向prototype属性所在函数的指针。
+                        <code>
+                                function Fish() {
+                                }                                
+                                Fish.prototype.name = "大白鲨";                               
+                                Fish.prototype.color = '白色';                                
+                                Fish.prototype.food = '大白鲨吃其它鱼';                                
+                                Fish.prototype.eat = function () {                                
+                                alert(this.food);                               
+                                };                             
+                                var shark1 = new Fish();                            
+                                var shark2 = new Fish();                              
+                                console.log(Fish);                              
+                                console.log(Fish.prototype);                               
+                                console.log(Fish.prototype.constructor);
+                            
+
+                        </code>
+                </p>
+            </section>
+
+            <section>
+          
+                <p class="left">         
+                        创建自定义的构造函数后，其原型对象默认取得constructor属性，而其他方法则会继承自Object。
+                        当我们调用构造函数创建一个新的实例后，这个实例的内部将会包含一个指针，这个是内部属性。
+                        指向构造函数的原型对象。这个指针是[[prototype]]。这个属性还没有标准的方式访问。
+                        但是还是可以返回：Object.getPrototypeOf()方法可以返回[[prototype]
+                </p>
+            </section>
+            <section>
+                <h4>原型链
+                </h4>
+                <p class="left">
+                        前面讲过原型链的基本实现就是将一个构造函数的实例赋值给另一个构造函数的原型。
+                        这样，这个函数的实例就会继承那构造函数的属性和方法。1.原型和原型链是JS实现继承的一种模型
+        
+                </p>
+            </section>
+            <section>
+                <h4></h4>
+                <p class="left">            <code>
+                        //构造一个Father函数，添加属性color
+                        function Father() {
+                        this.color = "皮肤是黄色";
+                        this.name = '成龙'                           
+                        }                          
+                        Father.prototype.getColor = function () {//给 Father函数 添加原型方法                           
+                              return this.color;                           
+                        };                          
+                        function Child() {        //构造一个Child函数，添加属性eye                         
+                        this.eye = '眼睛是黑色'                        
+                        }                           
+                        Child.prototype = new Father(); //将Father的实例 赋值给 Child的原型                           
+                          Child.prototype.getEye = function () {    //给 Child添加原型方法                           
+                              return this.eye;                           
+                        };                           
+                        var newChild = new Child();  //实例化一个 Child                          
+                        console.log(newChild.constructor);                           
+                        console.log(Child.prototype.constructor);                            
+                        console.log(newChild.getColor());                           
+                        console.log(newChild.getEye());                           
+                        console.log(newChild.name);
+
+                </code>
+
+                </p>
+            </section>
+ 
+            <section>
+                <!-- <p> 函数声明</p> -->
+                <!-- <img src="img/2018-07-25-C组-js2/function.png" style="min-width: 30%"/> -->
+                <!-- <p>函数表达式</p> -->
+                <!-- <img src="img/2018-07-25-C组-js2/var.png" style="min-width: 30%"/> -->
+                <section>
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    <p>    访问对象原型的方法有哪些？
+                    </p>
+                </section>
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+                <!-- <section>
+                    <img src="img/2018-07-25-C组-js2/test.png" style="min-width: 40%" />
+                    </br>
+                    <img src="img/2018-07-25-C组-js2/alert1.png" style="min-width: 30%" />
+                    <img src="img/2018-07-25-C组-js2/alert2.png" style="min-width: 30%" />
+                </section> -->
+                <section class="left">
+                    <p>
+                           
+                            获取实例对象obj的原型对象，有三种方法
+
+1. obj.__proto__
+
+2. obj.constructor.prototype
+
+3. Object.getPrototypeOf(obj)
+
+上面三种方法之中，前两种都不是很可靠。最新的ES6标准规定，__proto__属性只有浏览器才需要部署，其他环境可以不部署。而obj.constructor.prototype在手动改变原型对象时，可能会失效。
+
+
+                    </p>
+                </section>
+                <section>
+                    <h3>5.编码实战</h3>
+                </section>
+                <section>
+                    <h3>6.扩展思考</h3>
+                </section>
+                <section>
+                    <a href="http://www.cnblogs.com/qieguo/p/5451626.html" target="_blank" rel="noopener noreferrer">原型链</a>
+                </section>
+                <section>
+                    <h3>7.参考文献</h3>
+                </section>
+                <section class="left">
+                    <p>参考一： 简单粗暴地理解js原型链--js面向对象编程
+                    </p>
+                    <p>参考二： 简述原型（链）概念及作用
+                    </p>
+                    <!-- <p>参考二：
+                        <a href="http://www.nowamagic.net/librarys/veda/detail/1630" target="_blank">JavaScript探秘：函数声明与函数表达式</a>
+                    </p>
+                    <p>参考三：
+                        <a href="https://github.com/Wscats/Good-text-Share/issues/73" target="_blank">关于Javascript的函数声明和函数表达式</a>
+                    </p> -->
+                </section>
+                <section>
+                    <h3>8.更多讨论</h3>
+                </section>
+                <section>
+                    <p>感谢大家观看</p>
+                    <p>
+                        <small>BY : 张智</small>
+                    </p>
+                </section>
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
+Contact GitHub API Training Shop Blog About © 2016 GitHub, Inc. Terms Privacy Security Status He
