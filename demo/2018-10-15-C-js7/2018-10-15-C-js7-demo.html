@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Constant & Filter</title>
+</head>
+<body ng-app='myApp' style="margin-left: 20px">	
+	<div ng-controller='constantCtrl'>
+		<button ng-click='key1()'>Demo1</button>
+		<span>{{firstKey}}</span><br>
+		<button ng-click='key2()'>Demo2</button>
+		<span><br>名字：{{secondKey.name}}<br>年龄：{{secondKey.age}}<br>性别：{{secondKey.sex}}</span>
+	</div>
+	<div ng-controller='valueCtrl'>
+		<button ng-click='key3()'>Demo3</button>
+		<span>{{thirdKey}}</span>
+	</div>
+
+	<div ng-controller='filterCtrl' style="margin: 600px 0;" id="filter">
+		<span>关键字：</span><input type="text" ng-model="keyWord">
+		<span>排序：</span>
+		<select name="sort" id="sort" ng-model="sortMethod">
+			<option value="">---</option>
+			<option value="name">姓名</option>
+			<option value="birthDate">年龄</option>
+			<option value="sex">性别</option>
+			<option value="height">身高</option>
+			<option value="money">家产</option>
+		</select>
+		<table>
+			<thead>
+				<th>序号</th>
+				<th>姓名</th>
+				<th>出生日期</th>
+				<th>性别</th>
+				<th>身高(m)</th>
+				<th>血型</th>
+				<th>家产</th>	
+				<th>婚否</th>
+			</thead>
+			<tbody align="center">
+				<tr ng-repeat="x in people | filter : keyWord | orderBy: sortMethod | filter : merryFilter">
+					 
+					<td>{{$index + 1}}</td>
+					<td>{{x.name | uppercase}}</td>
+					<td>{{x.birthDate | date: 'yyyy-MM-dd'}}</td>
+					<td>{{x.sex}}</td>
+					<td>{{x.height | limitTo: 4}}</td>
+					<td>{{x.blood}}</td>
+					<td>{{x.money | currency}}</td>
+					<td>{{x.merry | merry}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+<script src="https://cdn.staticfile.org/angular.js/1.7.0/angular.js"></script>
+<script src="./demo.js"></script>
+</html>

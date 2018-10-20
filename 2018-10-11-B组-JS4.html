@@ -18,9 +18,11 @@
     <style>
         .float {
             float: left;
+
         }
 
         p.font {
+            clear: both;
             text-align: left;
         }
     </style>
@@ -45,8 +47,8 @@
     <div class="reveal">
         <div class="slides">
             <section>
-                <h2>SASS的使用</h2>
-                <p style="text-align: center;">分享人：王衡</p>
+                <h2>return的用法是什么？若用在for循环中，还会执行下一次循环吗？</h2>
+                <p style="text-align: center;">分享人：周能</p>
             </section>
             <section>
                 <p>目录</p>
@@ -63,88 +65,70 @@
                 <h3>一、背景介绍</h3>
             </section>
             <section>
-                <h3>什么是SASS</h3>
-                <P class="font">Sass 是一门高于 CSS 的元语言，它能用来清晰地、结构化地描述文件样式，有着比普通 CSS 更加强大的功能。 Sass
-                    能够提供更简洁、更优雅的语法，同时提供多种功能来创建可维护和管理的样式表。 Sass 是最早的 CSS 预处理语言，有比 LESS 更为强大的功能，不过其一开始的缩进式语法
-                    并不能被大众接受，不过由于其强大的功能和 Ruby on Rails 的 大力推动，还是有很多开发者选择了 Sass。 Sass 是采用 Ruby 语言编写的一款 CSS
-                    预处理语言，它诞生于2007年，是最大的成熟的 CSS 预处理语言。 最初它是为了配合 HAML（一种缩进式 HTML 预编译器）而设计的，因此有着和 HTML 一样的缩进式风格。</P>
-            </section>
+                <h3>什么是return</h3>
+                <P class="font">return是javascript里函数返回值的关键字，一个函数内处理的结果可以使用return返回，这样在调用函数的地方就可以用变量接收返回结果。return关键字内任何类型的变量数据或表达式都可以进行返回，甚至什么都不返回也可以</P>
 
+            </section>
             <section>
+
                 <h3>二、知识剖析</h3>
             </section>
+            <section>
+                <h3>return语句的用法</h3>
+            </section>
+            <section>
+                <p>1、返回函数值,语句结束函数执行</p>
+            </section>
 
             <section>
-                <h3>SASS的安装 </h3>
-                <p>sass基于Ruby语言开发而成，因此安装sass前需要安装Ruby。</p>
-                <p>mac下自带Ruby无需在安装Ruby! 先从官网下载Ruby并安装。然后再安装sass即可。 安装好sass，之后我们就可以直接写sass，写好之后把Sass编译成sass。
-                    编译方法很多，比如命令行编译，软件koala编译， 我们常用的编辑器也可以webstorm，sublime也可以实时编译。
-                    那么，sass到底该怎么写呢？
-                </p>
-                <p>可以参考:sass中文网站地址_https://www.sass.hk/install/</p>
+                <p>2、利用return阻止执行某些默认的行为。</p>
+                <p class="font">JAVASCRIPT在事件中调用函数时用return返回值实际上是对window.event.returnvalue进行设置。而该值决定了当前操作是否继续。当返回的是true时，将继续操作。当返回是false时，将中断操作。而直接执行时（不用return）。将不会对window.event.returnvalue进行设置所以会默认地继续执行操作</p>
             </section>
             <section>
-                <h3>SASS的使用</h3>
-                <p>SASS文件就是普通的文本文件，里面可以直接使用CSS语法。文件后缀名是.scss</p>
-            </section>
-            <section>
-                <h3>SASS的变量</h3>
-                <p>SASS的变量使用$开头，可以把反复使用的css属性值 定义成变量，然后通过变量名来引用它们，而无需重复书写这一属性值。</p>
-            </section>
-            <section>
-                <h3>SASS的嵌套</h3>
-                <p>在sass中属性和选择器嵌套是非常伟大的特性，因为它们不仅大大减少了你的编写量，而且通过视觉上的缩进使你编写的样式结构更加清晰，更易于阅读和开发。</p>
-            </section>
-            <section>
-                <h3>SASS的继承</h3>
-                <p>SASS允许一个选择器，继承另一个选择器。sass的继承用@extend</p>
-            </section>
-            <section>
-                <h3>SASS的占位符</h3>
-                <p>占位符 用%开头</p>
-                <p>占位符也是一个非常强大的功能，和继承也有着密切的关系。比如说，我们有多个类都有相同的代码共有，需要继承同一个基类。但是基类本身并不存在或者基类自身并不需要这些样式，像继承的写法有产生了代码的冗余，最终会编译出多余的代码。</p>
-                <p>用占位符声明的代码，在不被@extend调用的情况下，是不会产生任何代码的</p>
-            </section>
-            <section>
-                <h3>SASS的注释</h3>
-                <p>SASS共有两种注释风格。</p>
-                <p>标准的CSS注释 /* 注释 */ ，该会保留到编译后的文件。</p>
-                <p>单行注释 // 注释 ，只保留在SASS源文件中，编译后被省略。</p>
-            </section>
-            <section>
-                <h3>SASS混合器</h3>
-                <p>混合器使用@mixin标识符定义。</p>
-                <p>这个标识符给一大段样式赋予一个名字，这样你就可以轻易地通过引用这个名字重用这段样式,然后可以通过@include来使用这个混合器，放在你希望的任何地方。调用的混合器会把所有样式提取出来放在被调用的地方</p>
-                <p>混合器并不一定总得生成相同的样式。可以通过在混合器时给混合器传参，来定制混合器生成的精确样式。</p>
+                <p>3、利用return阻止事件冒泡</p>
             </section>
             <section>
                 <h3>三、常见问题</h3>
             </section>
             <section>
-                <p>混合器和继承，占位符之间的区别?</p>
+                <p> 若return用在for循环中，还会执行下一次循环吗？</p>
             </section>
             <section>
                 <h3>四、解决方案</h3>
             </section>
             <section>
+                <p>通过简单的demo我们可以看到，在for循环会返回return所返回的值，并不会执行下一次循环,而是起到跳出循环的作用</p>
+            </section>
+            <section>
                 <h3>五、编码实战</h3>
             </section>
+
             <section>
                 <h3>六、拓展思考</h3>
-                <h4>sass和less的不同？</h4>
             </section>
             <section>
+                <h3>除了return之外，还有哪些语句可以跳出循环？</h3>
+                <p>1、break</p>
+                <p>2、continue</p>
+            </section>
+
+
+            <section>
                 <h3>七、参考文献</h3>
-                <a href="https://www.sass.hk/docs/">sass 中文网</a>
+            </section>
+            <section>
+                <a href="https://baijiahao.baidu.com/s?id=1570541465205209&wfr=spider&for=pc">什么是retrun </a>
+                <br>
+                <a href="https://www.jb51.net/article/30388.htm">javascript中break，continue和return语句用法小结</a>
+                <br>
             </section>
             <section>
                 <h3>八、更多讨论</h3>
-                <p>混合器和继承，占位符之间既然有区别那我们如何在适当的时候用适当的方法？ 比如什么时候用继承，什么时候用占位符？</p>
             </section>
             <section>
                 <h4>鸣谢</h4>
                 <p>感谢大家观看</p>
-                <p>BY : 王衡</p>
+                <p>BY : 周能</p>
             </section>
 
         </div>

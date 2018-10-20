@@ -19,7 +19,6 @@
         .float {
             float: left;
         }
-
         p.font {
             text-align: left;
         }
@@ -45,8 +44,8 @@
     <div class="reveal">
         <div class="slides">
             <section>
-                <h2>SASS的使用</h2>
-                <p style="text-align: center;">分享人：王衡</p>
+                <h2>js的数据类型</h2>
+                <p style="text-align: center;">分享人：朱士峰</p>
             </section>
             <section>
                 <p>目录</p>
@@ -63,88 +62,123 @@
                 <h3>一、背景介绍</h3>
             </section>
             <section>
-                <h3>什么是SASS</h3>
-                <P class="font">Sass 是一门高于 CSS 的元语言，它能用来清晰地、结构化地描述文件样式，有着比普通 CSS 更加强大的功能。 Sass
-                    能够提供更简洁、更优雅的语法，同时提供多种功能来创建可维护和管理的样式表。 Sass 是最早的 CSS 预处理语言，有比 LESS 更为强大的功能，不过其一开始的缩进式语法
-                    并不能被大众接受，不过由于其强大的功能和 Ruby on Rails 的 大力推动，还是有很多开发者选择了 Sass。 Sass 是采用 Ruby 语言编写的一款 CSS
-                    预处理语言，它诞生于2007年，是最大的成熟的 CSS 预处理语言。 最初它是为了配合 HAML（一种缩进式 HTML 预编译器）而设计的，因此有着和 HTML 一样的缩进式风格。</P>
-            </section>
+                <h3>数据类型</h3>
 
+                <P class="font">js中有六种数据类型，包括五种基本数据类型（Number,String,Boolean,Null,Undefined）,和一种混合数据类型（Object）</P>
+
+            </section>
             <section>
                 <h3>二、知识剖析</h3>
             </section>
 
             <section>
-                <h3>SASS的安装 </h3>
-                <p>sass基于Ruby语言开发而成，因此安装sass前需要安装Ruby。</p>
-                <p>mac下自带Ruby无需在安装Ruby! 先从官网下载Ruby并安装。然后再安装sass即可。 安装好sass，之后我们就可以直接写sass，写好之后把Sass编译成sass。
-                    编译方法很多，比如命令行编译，软件koala编译， 我们常用的编辑器也可以webstorm，sublime也可以实时编译。
-                    那么，sass到底该怎么写呢？
+                <h3>Undefined</h3>
+
+            
+                <p class="font">Undefined只有一个值，即undefined值。使用var声明了变量，但未给变量初始化值，那么这个变量的值就是undefined</p>
+                
+
+            </section>
+            <section>
+                <h3>Null</h3>
+                <p>null类型被看做空对象指针,只有一个值，即null值， 如果定义的变量准备在之后保存一个对象，那需要将该变量保存为null值。</p>
+            </section>
+            <section>
+                <h3>String</h3>
+                <p>String用于表示零或多个16位Unicode字符组成的字符系列，字符串可以由双引号“”或单引号‘’表示，不过以双引号开头的字符串也必须以双引号结尾，单引号也是如此</p>
+                <p>js中的字符串是不可改变的，也就是说字符串一旦创建，他的值就不能改变，要改变首先要销毁原来的字符串，然后在用另一个包含新值得字符串填充该变量</p>
+
+            </section>
+            <section>
+                <h3>Boolean</h3>
+                <p class="font">Boolean类型是js中使用最多的一种类型，该类型只有两个字面值true和false</p>
+            </section>
+            <section>
+                <h3>Number</h3>
+                <p class="font">number类型，字面量格式可以是十进制整数、八进制（八进制第一位必须是0）、十六进制（前两位必须是0x），
+                    浮点数值（就是包含一个小数点的数值，如果小数点后面没有跟任何数字，那么这个数值将作为整数值来保存）</p>
+                    <p class="font">如果数值太大可以使用e表示法，用e表示数值等于e前面的数值乘以10的指数次幂</p>
+                    <p>var num=3.125e7 //等于31250000</p>
+                    <p>含义就是3.125乘以10的7次方</p>
+                    <p>NaN，非数字类型。涉及到的 任何关于NaN的操作，都会返回NaN </p>
+            </section>
+            <section>
+                <h3>Object</h3>
+                <p>
+                        js中对象是一组属性与方法的集合。这里就要说到引用类型了，引用类型是一种数据结构，用于将数据和功能组织在一起。引用类型有时候也被称为对象定义，因为它们描述的是一类对象所具有的属性和方法。
                 </p>
-                <p>可以参考:sass中文网站地址_https://www.sass.hk/install/</p>
+                <p>object类型细分的话有:Object 类型、Array 类型、Date 类型、RegExp 类型、Function 类型 等。</p>
             </section>
             <section>
-                <h3>SASS的使用</h3>
-                <p>SASS文件就是普通的文本文件，里面可以直接使用CSS语法。文件后缀名是.scss</p>
-            </section>
-            <section>
-                <h3>SASS的变量</h3>
-                <p>SASS的变量使用$开头，可以把反复使用的css属性值 定义成变量，然后通过变量名来引用它们，而无需重复书写这一属性值。</p>
-            </section>
-            <section>
-                <h3>SASS的嵌套</h3>
-                <p>在sass中属性和选择器嵌套是非常伟大的特性，因为它们不仅大大减少了你的编写量，而且通过视觉上的缩进使你编写的样式结构更加清晰，更易于阅读和开发。</p>
-            </section>
-            <section>
-                <h3>SASS的继承</h3>
-                <p>SASS允许一个选择器，继承另一个选择器。sass的继承用@extend</p>
-            </section>
-            <section>
-                <h3>SASS的占位符</h3>
-                <p>占位符 用%开头</p>
-                <p>占位符也是一个非常强大的功能，和继承也有着密切的关系。比如说，我们有多个类都有相同的代码共有，需要继承同一个基类。但是基类本身并不存在或者基类自身并不需要这些样式，像继承的写法有产生了代码的冗余，最终会编译出多余的代码。</p>
-                <p>用占位符声明的代码，在不被@extend调用的情况下，是不会产生任何代码的</p>
-            </section>
-            <section>
-                <h3>SASS的注释</h3>
-                <p>SASS共有两种注释风格。</p>
-                <p>标准的CSS注释 /* 注释 */ ，该会保留到编译后的文件。</p>
-                <p>单行注释 // 注释 ，只保留在SASS源文件中，编译后被省略。</p>
-            </section>
-            <section>
-                <h3>SASS混合器</h3>
-                <p>混合器使用@mixin标识符定义。</p>
-                <p>这个标识符给一大段样式赋予一个名字，这样你就可以轻易地通过引用这个名字重用这段样式,然后可以通过@include来使用这个混合器，放在你希望的任何地方。调用的混合器会把所有样式提取出来放在被调用的地方</p>
-                <p>混合器并不一定总得生成相同的样式。可以通过在混合器时给混合器传参，来定制混合器生成的精确样式。</p>
-            </section>
+                    <h3>三大引用类型</h3>
+                    <p>
+                            1.Object类型
+                    </p>
+                    <p>创建Object实例的方式有两种。</p>
+                    <p>第一种是使用new操作符后跟Object构造函数</p>
+                    <p>第二种方式是使用对象字面量表示法</p>
+                </section>
+                <section>
+                        <h3>三大引用类型</h3>
+                        <p>
+                                2.Array类型
+                        </p>
+                        <p>数组的每一项可以用来保存任何类型的数据，也就是说，可以用数组的第一个位置来保存字符串，第二个位置保存数值，第三个位置保存对象....另外，数组的大小是可以动态调整的。</p>
+
+                    </section>
+                    <section>
+                            <h3>三大引用类型</h3>
+                            <p>
+                                    3.Function类型
+                            </p>
+                            <p>每个函数都是Function类型的实例，而且都与其他引用类型一样具有属性和方法。函数通常是使用函数声明语法定义的</p>
+
+                        </section>
+
             <section>
                 <h3>三、常见问题</h3>
             </section>
             <section>
-                <p>混合器和继承，占位符之间的区别?</p>
+                <p>undefined和null的区别</p>
             </section>
             <section>
                 <h3>四、解决方案</h3>
             </section>
             <section>
+                <p class="font">js诞生的时候只设置了null作为“无”的值。最初的设计是null是表示一个“无”的对象，转为数值时为0； | undefined表示“无”的原始值，转为数值时为NaN；undefined就是为了正式的区分空对象指针与未经初始化的变量，变量设置为null就是空对象指针，没有设置就是未经初始化！</p>
+            </section>
+
+            <section>
                 <h3>五、编码实战</h3>
             </section>
+
             <section>
                 <h3>六、拓展思考</h3>
-                <h4>sass和less的不同？</h4>
             </section>
             <section>
+                    <h3>typeof 操作符</h3>
+                    <p>由于js中的变量是松散类型的，所以它提供了一种检测当前变量的数据类型的方法，也就是typeof</p>
+
+                </section>
+    
+
+
+            <section>
                 <h3>七、参考文献</h3>
-                <a href="https://www.sass.hk/docs/">sass 中文网</a>
+            </section>
+            <section>
+                <a href="https://www.cnblogs.com/xuniannian/p/7452086.html">JS中的六大数据类型</a>
+                <br>
+
+                <br>
             </section>
             <section>
                 <h3>八、更多讨论</h3>
-                <p>混合器和继承，占位符之间既然有区别那我们如何在适当的时候用适当的方法？ 比如什么时候用继承，什么时候用占位符？</p>
             </section>
             <section>
                 <h4>鸣谢</h4>
                 <p>感谢大家观看</p>
-                <p>BY : 王衡</p>
+                <p>BY : 朱士峰</p>
             </section>
 
         </div>

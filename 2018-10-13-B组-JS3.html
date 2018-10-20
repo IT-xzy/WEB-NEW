@@ -1,0 +1,545 @@
+<html class="js no-mobile desktop no-ie chrome chrome69 task-section xkt-section gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch retina fontface domloaded gr__maikihyh_github_io w-613 gt-240 gt-320 gt-480 lt-640 lt-768 lt-800 lt-1024 lt-1280 lt-1440 lt-1680 lt-1920 portrait no-landscape"
+    id="2018-09-18-a-css-10-page">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>js哪几种传参方式</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <link rel="stylesheet" type="text/css" href="../css/reveal/print/paper.css">
+    <script type="text/javascript" src="../plugin/markdown/marked.js"></script>
+    <script type="text/javascript" src="../plugin/markdown/markdown.js"></script>
+    <script type="text/javascript" src="../plugin/notes/notes.js"></script>
+    <script type="text/javascript" src="../plugin/highlight/highlight.js"></script>
+</head>
+
+<body data-gr-c-s-loaded="true">
+    <img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+    </map>
+    <div class="reveal center default" role="application" data-transition-speed="slow" data-background-transition="fade">
+        <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.574688);">
+            <section class="present" style="top: 178px; display: block;">
+                <h2>【js有几种传参方式】</h2>
+                <h3>介绍js的传参方式</h3>
+                <p>分享人：宋恒</p>
+            </section>
+            <section class="future" style="top: 1.5px; display: block;" hidden="" aria-hidden="true">
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+                <h3>1.背景介绍</h3>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <p style="text-align: justify">
+                    js中的传值方式，对于简单类型（比如字符串和数值）就是值传递和引用传递。但是HTML页面之间如何传递数据？
+                    如果是动态页面，根本就不需要考虑这个问题，可以如果是一个纯HTML+JavaScript的应用，
+                    无法使用数据库等操作，没有保存数据，光依靠前端的手段该如何实现页面之间的传递数据和参数呢？
+                </p>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h3>2.知识剖析</h3>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <p style="letter-spacing: 5px"> 第一种常见的是通过url传值</p>
+                <p style="letter-spacing: 5px">
+                    主要原理是：通过GET方法然后获取URL从中解析出传递的数据
+                </p>
+                
+                <pre><code class="hljs less">//获取到的url值是以"?"开头的url
+                    var deocdeURL = decodeURI(location.search);//解码url
+                    //封装的解析url的方法
+                    function doClickfamg(){
+                        var pureURL = deocdeURL.split("?")[1];//获取"?"以后的参数
+                        var valuesArray = pureURL.split("&");
+                        var url_Object = new Object();
+                        for(var i = 0;i< valuesArray.length;i++){
+                            var key_value = valuesArray[i].split("=");
+                            //动态给对象添加key和value
+                            //是以传递过来的key和value作为解析后的新的对象的key和value
+                            url_Object[key_value[0]] = key_value[1];
+                        }
+                        return url_Object;//返回对象
+                    }
+                     </code></pre>
+            </section>
+            <section class="present" style="top: 0px; display: block;">
+                    <p style="letter-spacing: 5px">获取url传的值</p>
+                
+                    <pre><code class="hljs less">
+                    //调用解析方法
+                        var mydecodeURI = doClickfamg();
+                        //比如我要知道传递的key2的value是什么
+                        alert(mydecodeURI.key2);
+                    </code></pre>
+                </section>
+            <!-- <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <p style="letter-spacing: 5px">获取url传的值</p>
+                
+                    <pre><code class="hljs less">
+                    //调用解析方法
+                        var mydecodeURI = doClickfamg();
+                        //比如我要知道传递的key2的value是什么
+                        alert(mydecodeURI.key2);
+                    </code></pre>
+                
+                <p style="letter-spacing: 5px"></p>
+            </section> -->
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <p style="letter-spacing: 5px">代码实战：实现的效果是在index.html输入username和password之后点击Post提交按钮之后将index.html中的两个参数传递到Read.html页面中，
+                    Read.html中的js代码获取参数并做处理弹出两个弹窗显示两个参数</p>
+                <!-- <a href=".demo/2018-10-13-B组-JS3/index.html"></a> -->
+            </section>
+
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h3>优缺点</h3>
+                <p style="text-align: left">优点：<br />
+
+                        1.URL地址法简洁易用可同时传递多个字符型参数；<br />
+                        
+                        2.URL地址法可以很方便的在页面之间切换并传递参数，无需额外的处理，基于正常情况比较不会性能损失；<br />
+                        
+                        不足：<br />
+                        
+                        3.URL传递参数长度受限，最大为2K；<br />
+                        
+                        4.URL只能传递字符型参数，传递中文时由于发送页面和接收页面的字符编码方式不一样而导致参数解析处理错误，参数包含中文时可能出现乱码或者参数接收错误；<br />
+                        
+                        5.URL地址在客户端可见，所以涉及隐私的参数需进行加密后才能进行传递，不加密传输会导致信息泄露，产生安全隐患。<br />
+                       </p>
+                <!-- <p style="letter-spacing: 5px">
+                    <pre>
+                    let n = 10000;
+                    let count = (new Array(10)).fill(0);
+                     
+                    for (let i = 0; i < n; i ++) {
+                        let arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+                        arr.sort(() => Math.random() - 0.5);
+                        count[arr.indexOf('a')]++;
+                    }
+                     
+                    console.log(count);
+            </pre>
+                </p> -->
+                <p style="letter-spacing: 5px"></p>
+               
+            </section>
+            <section class="future" aria-hidden="true" style="top: 330px; display: none;" hidden="">
+                    <h3>2.3、Cookie</h3>
+                    <p style="text-align: left">Cookie是什么</p>
+                    <p style="text-align: left">
+                            Cookie 是一些数据, 存储于你电脑上的文本文件中。
+                            当 web 服务器向浏览器发送 web 页面时，在连接关闭后，服务端不会记录用户的信息。                   
+                            Cookie 的作用就是用于解决 "如何记录客户端的用户信息":                           
+                            当用户访问 web 页面时，他的名字可以记录在 cookie 中。
+                            在用户下一次访问该页面时，可以在 cookie 中读取用户访问记录。
+                            Cookie 以名/值对形式存储
+                    </p>
+                     
+                </section>
+
+                <section class="future" aria-hidden="true" style="top: 330px; display: none;" hidden="">                       
+                        <p style="text-align: left">Cookie原理和特点</p>
+                        <p style="text-align: left">第一次访问网站的时候，浏览器发出请求，服务器响应请求后，会将cookie放入到响应请求中，在浏览器第二次发请求的时候，会把cookie带过去，服务端会辨别用户身份，当然服务器也可以修改cookie内容</p>
+                        <p style="text-align: left">
+                                cookie 是有大小限制的，每个 cookie 所存放的数据不能超过4kb，如果 cookie 字符串的长度超过4kb，则该属性将返回空字符串。
+                        </p>
+                         <p style="text-align: left">由于 cookie 最终都是以文件形式存放在客户端计算机中，所以查看和修改 cookie 都是很方便的，这就是为什么常说 cookie 不能存放重要信息的原因。</p>
+                         <p style="text-align: left">一个 cookie 的生命周期就是在浏览器关闭的时候结束。想要 cookie 能在浏览器关掉之后使用，就要为 cookie 设置有效期</p>
+                    </section>
+
+                <section class="future" aria-hidden="true" style="top: 330px; display: none;" hidden="">
+                        <p style="text-align: left">在js中操作cookie</p>       
+                        <pre><code class="hljs less"> 
+                                document.cookie = "userName = mike";
+                            </code>       
+                        </pre> 
+                        <p style="text-align: left">还可以在cookie中添加过期时间，默认在浏览器关闭时删除cookie</p> 
+                        <pre>
+                                <code class="hljs less">document.cookie = "userName = mike expires = Mon,14 Oct 2018 12:00:00 GMT";</code>               
+                        </pre> 
+                        <p style="text-align: left">读取cookie</p> 
+                        <pre><code class="hljs less">
+                                let data = document.cookie;
+                            </code>       
+                        </pre> 
+                    </section>
+
+            
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                    <h3>2.2、H5 web storage</h3>
+                    <p style="text-align: left">存储有效期</p>  
+                    <p style="text-align: left">localStorage
+                            永久性。除非WEB应用刻意删除存储的数据，或者用户通过设置浏览器配置来删除，否则数据会一直保留在用户电脑上，永不过期。
+                            实际上，localStorage的数据是写入磁盘中，每次读取数据时，实际上是从硬盘驱动器上读取这些字节。  </p>                           
+                    <p style="text-align: left">  sessionStorage
+                                    窗口或标签页被永久关闭，则通过sessionStorage存储的数据也被删除。</p>      
+                    <!-- <p style="text-align: left">在js中操作cookie</p>   -->
+
+
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                    <!-- <h3>2.2、H5 web storage</h3> -->
+                    <p style="text-align: left">常用操作</p>  
+                    <pre>
+                            <code class="hljs less">localStorage.setItem("x",1);//以"x"的名字存储一个数值
+                            localStorage.x = 1;//直接向 Web 存储对象添加键/值对
+
+                            localStorage.getItem("x");//获取数值
+                            localStorage.x;//直接从 Web 存储对象中检索键/值对
+
+                            localStorage.removeItem("x");//删除“x”项。
+                            //removeItem是唯一通用的能删除单个名值对的方式。（因为IE8不支持delete操作符）
+                            localStorage.clear();//全部删除。唯一能删除存储对象中所有名值对的方式
+
+                            //将一个数组存储为字符串
+                            var myArray = new Array('First Name', 'Last Name', 'Email Address');
+                            localStorage.formData = JSON.stringify(myArray);
+
+                            //检索数组的字符串版本并将它转换成一个可用的 JavaScript 数组
+                            var myArray = JSON.parse(localStorage.formData);</code>  
+                             
+                    </pre>  
+
+
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                    <!-- <h3>2.2、H5 web storage</h3> -->
+                    <p style="text-align: left">sessionStorage关闭浏览器后清除在，这里演示一下localStoraged的特点</p>  
+                    
+            </section>
+
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                    <!-- <h3>2.2、H5 Form</h3> -->
+                    <p style="text-align: left">sessionStorage关闭浏览器后清除在，这里演示一下localStoraged的特点</p>  
+                    
+            </section>
+
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                    <h3>3.常见问题</h3>
+                    <p style="text-align: left">这几种页面传参方式选用哪种比较好</p>  
+                </section>
+
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h4>解决方案</h4>
+                <p style="letter-spacing: 5px">根据页面功能来选择比较好，比如像登录页，就可以使用ajax或者angular 通过URL来传递参数进行页面验证。
+                    localStorage\sessionStorage则可以在像任务2-4上这种页面上使用，
+                    而cookie的用途就是解决"如何记录客户端的用户信息"，在需要存储诸如用户名，搜索历史等数据时便可以使用
+                       </p>
+            </section>
+            
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;"><h3>5.扩展思考</h3></section>
+                      
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+                    <p style="text-align: center">
+                            es6中的函数传参是什么</p>
+
+                </section>
+            </section>
+
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                    <section style="top: 330px; display: none;">
+                        <p style="text-align: center">
+                                对于其他语言来讲，传参分为传值类型和传引用（指针）类型。如果是传值，函数内部对于参数的改变不会影响到外部变量或对象；
+                                如果是传引用（指针），在函数内部做的修改则会对外部的变量和对象造成影响。
+                                从技术层面来讲，javascript参数的传递方式全部都是传值类型，当我们将一个值传递到函数内部时，
+                                一个临时的局部变量会被创建，形成对这个参数的一个拷贝，任何对该值的改变都不会影响原有的外部变量。</p>
+    
+                    </section>
+                    
+               </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                    
+            <h3>6.编码实战</h3>
+        </section>
+            
+            <!-- <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>6.扩展思考</h3>
+        </section> -->
+            <!-- <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <p style="text-align: center">
+                    content:"."是怎么实现清除浮动的？
+                </p>
+            </section>
+        </section>
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <p style="text-align: center">
+                    如果有一个DIV作为外部容器，内部的DIV如果设置了float样式，则外部的容器DIV因为内部没有clear，导致不能被撑开。
+                    这个对这个盒子使用：：after这个伪元素，在盒子的结尾添加content属性，添加了一个句号"."，
+                    并设置display为block；高度设为0；clear设为both；visibility设为隐藏。这样就达到了撑开容器的目的。
+                </p>
+            </section> -->
+
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h3>7.参考文献</h3>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <p><a href="https://blog.csdn.net/hsany330/article/details/50219357" target="_blank">
+                        参考一</a>
+                        
+                    </p>
+                    <p><a href="https://segmentfault.com/a/1190000015422349" target="_blank">参考2</a></p>
+                    <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API" target="_blank">参考3</a></p>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h3>8.更多讨论</h3>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    <small>宋恒</small>
+                </p>
+            </section>
+
+        </div>
+        <div class="backgrounds">
+            <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+        </div>
+        <div class="progress" style="display: block;"><span style="width: 0px;"></span></div>
+        <aside class="controls" style="display: block;">
+            <button class="navigate-left" aria-label="previous slide"></button>
+            <button class="navigate-right enabled" aria-label="next slide"></button>
+            <button class="navigate-up" aria-label="above slide"></button>
+        </aside>
+        <div class="slide-number" style="display: none;"></div>
+        <div class="speaker-notes" data-prevent-swipe=""></div>
+        <div class="pause-overlay"></div>
+        <div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+            【js传参方式】
+            介绍js的几种常用方式
+            分享人：宋恒
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+        //    原始类型对象直接赋值不会相互影响
+        //    var a = 1;
+        //
+        //    var b = a;
+        //    b = 10;
+        //    console.log(a); // 1
+        ////
+        //    var a = 'hello';
+        //    var b = a;
+        //    b = 'world';
+        //    console.log(a); // hello
+        //
+        //    var a = true;
+        //    var b = a;
+        //    b = false;
+        //    console.log(a);
+
+        //数组浅复制
+        //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+        //    ];
+        //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+        //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+        //    console.log(a)//那么现在打印a 是什么结果呢
+        //
+        //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+        //    var arrtoo = arr.slice(1);
+        //    arrtoo[2] = "set Map";
+        //    console.log(arr);//One,Two,Three
+        //    console.log(arrtoo);//One,set Map,Three
+
+        //
+        //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+        //    var arrtooo = arr1.concat(111111);
+        //    arrtooo[1] = "set Map To";
+        //    console.log(arr1);//One,Two,Three
+        //    console.log(arrtooo);//One,set Map To,Three
+
+        //
+        //    var b=[1,2,3,4,5];   //concat的链接
+        //    var c=[6,7,8,9];
+        //    var d =[4,4,22]
+        //    console.log(b.concat(c,d))
+
+        var a = {
+            name: 'yy',
+            age: 26
+        }; //对象的浅拷贝哦
+        var b = new Object();
+        b.name = a.name;
+        b.age = a.age;
+        b.name = 'xx';
+        console.log(a); //Object { name="yy", age=26}
+        console.log(b); //Object { name="xx", age=26}
+
+        var d = { //对象的浅拷贝哦 第一种
+            name: 'd',
+            oc: {
+                age: 32
+            },
+            oad: {
+                adds: {
+                    bb: 12
+                }
+            }
+        };
+        var deepCopy = function (source) {
+            var result = {};
+            for (var key in source) {
+                result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+            }
+            return result
+        };
+
+        var c = deepCopy(d);
+        c.name = 'c';
+        c.oc = {
+            age: 49
+        };
+        console.log(c);
+        console.log(d);
+
+
+        //    var person = {    //第二种深拷贝
+        //        name: 'aa',
+        //        friends: ['da', 'dsa', 'gf']
+        //    };
+        //
+        //    var aPerson = Object.create(person, {
+        ////        name: {
+        ////            value: "gee"
+        ////        }
+        //    });
+        //
+        //    console.log(person.name);
+        //    console.log(aPerson.friends)
+
+        var Chinese = {
+            nation: '中国'
+
+        }
+        var Doctor = {
+            career: '医生'
+        }
+
+        function extendCopy(p) {
+            var c = {};
+            for (var i in p) {
+                c[i] = p[i];
+            }
+            c.uber = p;
+            return c;
+        }
+
+        var Doctor = extendCopy(Chinese);
+        Doctor.career = '医生';
+        console.log(Doctor); // 中国
+        Chinese.birthPlaces = ['北京', '上海', '香港'];
+        var Doctor = extendCopy(Chinese);
+        Doctor.birthPlaces.push('厦门');
+    </script>
+
+
+
+</body>
+
+</html>
