@@ -73,7 +73,7 @@
 			<section class="past" style="top: 0px; display: none;" hidden="" aria-hidden="true">
 				<p style="text-align:left">首先，无论是使用哪种路由，作为框架额外的附加功能，它们都将以模块依赖的形式被引入，简而言之就是：在引入路由源文件之后，你的代码应该这样写(以ui.router为例)：</p>
 				<pre>    <code class="hljs elixir">
-		angular.<span class="hljs-keyword">module</span>(<span class="hljs-string">"myApp"</span>, [<span class="hljs-string">"ui.router"</span>]); <span class="hljs-regexp">//</span> myApp为自定义模块，依赖第三方路由模块ui.router
+		angular.module("myApp", ["ui.router"]); // myApp为自定义模块，依赖第三方路由模块ui.router
 		
 		    </code>
 		</pre>
@@ -137,14 +137,14 @@
 				<pre>    <code class="hljs xquery">
 		html
 		
-		&lt;div ng-view=<span class="hljs-string">""</span>&gt;区块<span class="hljs-number">1</span>&lt;/div&gt;
-		&lt;div ng-view=<span class="hljs-string">""</span>&gt;区块<span class="hljs-number">2</span>&lt;/div&gt;
+		&lt;div ng-view=""&gt;区块1&lt;/div&gt;
+		&lt;div ng-view=""&gt;区块2&lt;/div&gt;
 		
 		js
 		
 		$routeProvider
-		    .<span class="hljs-keyword">when</span>(<span class="hljs-string">'/'</span>, {
-		        template: <span class="hljs-string">'hello world'</span>
+		    .when('/', {
+		        template:'hello world'
 		    });
 		    </code>
 		</pre>
@@ -162,20 +162,20 @@
 				<pre>    <code class="hljs xquery">
 		html
 		
-		  &lt;div ui-view=<span class="hljs-string">""</span>&gt;&lt;/div&gt;
-		  &lt;div ui-view=<span class="hljs-string">"status"</span>&gt;&lt;/div&gt;
+		  &lt;div ui-view=""&gt;&lt;/div&gt;
+		  &lt;div ui-view="status"&gt;&lt;/div&gt;
 		
 		js
 		
 		$stateProvider
-		    .state(<span class="hljs-string">'home'</span>, {
-		        url: <span class="hljs-string">'/'</span>,
+		    .state('home', {
+		        url: '/',
 		        views: {
-		            <span class="hljs-string">''</span>: {
-		                template: <span class="hljs-string">'hello world'</span>
+		            '': {
+		                template: 'hello world'
 		            },
-		            <span class="hljs-string">'status'</span>: {
-		                template: <span class="hljs-string">'home page'</span>
+		            'status': {
+		                template: 'home page'
 		            }
 		        }
 		    });
@@ -207,16 +207,16 @@
 			<section class="past" style="top: 68px; display: none;" hidden="" aria-hidden="true">
 				<p style="text-align:left">其实，嵌套视图，在html中的最终表现就像这样：</p>
 				<pre>        <code class="hljs xquery">
-		        &lt;div ng-view=<span class="hljs-string">""</span>&gt;
+		        &lt;div ng-view=""&gt;
 		        I am parent
-		        &lt;div ng-view=<span class="hljs-string">""</span>&gt;I am child&lt;/div&gt;
+		        &lt;div ng-view=""&gt;I am child&lt;/div&gt;
 		        &lt;/div&gt;
 		
 		        转成javascript，我们会在程序里这样写：
 		
 		        $routeProvider
-		        .<span class="hljs-keyword">when</span>(<span class="hljs-string">'/'</span>, {
-		        template: <span class="hljs-string">'I am parent &lt;div ng-view=""&gt;I am child&lt;/div&gt;'</span>
+		        .<span class="hljs-keyword">when('/', {
+		        template: 'I am parent &lt;div ng-view=""&gt;I am child&lt;/div&gt;'
 		        });
 		        </code>
 		        </pre>
