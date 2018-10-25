@@ -61,26 +61,23 @@
             <p style="text-align: justify">
                 <!--我们在设计网页的时候，盒子居中是经会常用到的。居中可以分为水平居中和垂直居中。-->
                 <!--水平居中是比较容易，通过设置元素的margin: 0 auto就可以实现，但是垂直居中相对来说是比较复杂一些的。-->
-                1、面向对象的一些属性和方法？<br>
-                hasOwnPropety():看是不是对象自身下面的属性<br>
-                constructor:查看对象的构造函数<br>
-                每个原型都会自动添加constructor属性<br>
-                for in的时候有些属性是找不到的<br>
-                instanceof运算符对象在原型链上是否有关系<br>
-                tostring:object上的方法
+                1、angualr控制器是什么？<br>
+                控制器是angularjs的核心之一，它的作用主要是对视图中的数据和事件处理函数进行挂载，同时进行一定的业务功能的底层封装和处理。<br>
             </p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>2.知识剖析</h3>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <p style="letter-spacing: 5px">面向对象上hasOwnPropety()、constructor、constructor、tostring这些属性和方法怎么使用</p>
+            <p style="letter-spacing: 5px">
+                根据上面的例子，我们知道，angularJS中view层解析是通过controller的作用域来将$scope对象解析成相应的内容，因此我们可以在同一个界面上划分不同的模块，通过不同的控制器控制不同的模块来进行开发，这样通过划分模块的开发方式，对今后维护代码带来了便利。我们会发现，不同的controller他们scope对象是不一样的,即使都是用了name这个变量，可以看出controller之间是封闭的，可是有时候我们面对两个模块之间进行数据交互，必然在两个controller之间进行通信，这就涉及到angular中的service操作
+            </p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>3.常见问题</h3>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <p>面向对象引用类型的判断？</p>
+            <p>controller之间的数据该如何传输？</p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>4.解决方案</h3>
@@ -88,8 +85,12 @@
         <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
             <section style="top: 330px; display: none;">
                 <p style="text-align: center">
-                    面向对象constructor查看是不是对象自身下的属性<br>
-                    instanceof对象与构造函数是否在一条原型链上<br>
+                    使用service,实现controller之间的数据传输
+
+                    在之前的例子我们提到，controller是相对独立的，两个controller之间，内存是不共享的，同级DOM下，两个controller是无法互相访问其中的属性或者方法的。
+
+                    官方建议页面之间通过service互相访问。
+
                 </p>
                 <!--<p>二 margin：auto实现CSS垂直居中</p>-->
                 <!--<p>三 display:flex实现CSS垂直居中</p>-->
