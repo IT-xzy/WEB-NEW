@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html class=" no-mobile desktop no-ie chrome chrome67 web-new-section gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch no-retina fontface js no-mobile desktop no-ie chrome chrome67 web-new-section gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch no-retina fontface domloaded w-526 gt-240 gt-320 gt-480 lt-640 lt-768 lt-800 lt-1024 lt-1280 lt-1440 lt-1680 lt-1920 portrait no-landscape"
+    id="2018-page">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <link rel="stylesheet" type="text/css" href="../css/reveal/print/paper.css">
+    <link rel="stylesheet" type="text/css" href="../css/reveal/print/paper.css">
+    <script type="text/javascript" src="https://ptteng.github.io/PPT/plugin/markdown/marked.js"></script>
+    <script type="text/javascript" src="https://ptteng.github.io/PPT/plugin/markdown/markdown.js"></script>
+    <script type="text/javascript" src="https://ptteng.github.io/PPT/plugin/notes/notes.js"></script>
+    <script type="text/javascript" src="https://ptteng.github.io/PPT/plugin/highlight/highlight.js"></script>
+    <script type="text/javascript" src="https://ptteng.github.io/PPT/plugin/markdown/marked.js"></script>
+    <script type="text/javascript" src="https://ptteng.github.io/PPT/plugin/markdown/markdown.js"></script>
+    <script type="text/javascript" src="https://ptteng.github.io/PPT/plugin/notes/notes.js"></script>
+    <script type="text/javascript" src="https://ptteng.github.io/PPT/plugin/highlight/highlight.js"></script>
+</head>
+
+<body>
+    <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank">
+    </map>
+    <div class="reveal center slide" role="application" data-transition-speed="default" data-background-transition="fade">
+        <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.493125);">
+
+            <section class="present" style="top: 237px; display: block;">
+                <h4></h4>
+                <h4>如何使用ui-router？</h4>
+                <h4>分享人：曾健</h4>
+
+            </section>
+
+            <section class="future" style="top: 36px; display: block;" hidden="" aria-hidden="true">
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>1.背景介绍</p>
+            </section>
+
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <p>Angular.js有内置的路由模块：叫做ngRoute。但是事实却是许多开发者却不使用其内置的路由模块，而是使用一个基于ngRoute开发的第三方路由模块 （UI-Router模块）来代替。</p>
+
+
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>1.知识剖析</p>
+            </section>
+
+
+            <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                <pre><code style="font-size: 20px;line-height: 35px">
+                    var myApp = angular.module("myApp", [ui.router]);
+                    myApp.config(function ($stateProvider, $urlRouterProvider) {
+                    $urlRouterProvider.when("", "/PageTab");
+             </code></pre>
+                 <p style="text-align: left">第一行，声明AngularJS模块, 并把ui-router传入AngularJS主模块，所有的结合起来我们就得到了Angular模块。
+                 </p>
+                 <p style="text-align: left">
+                 第二行声明了把 $stateProvider 和 $urlRouteProvider 路由引擎作为函数参数传入，这样我们就可以为这个应用程序配置路由了.
+                 </p>
+                 <p style="text-align: left">
+                  第三行，如果没有路由引擎能匹配当前的导航状态，那它就会默认将路径路由至 PageTab.html, 这个页面就是状态名称被声明的地方。
+                 </p>
+            </section>
+            <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                <pre><code style="font-size: 20px;line-height: 35px">
+                    .state("PageTab", {
+                        url: "/PageTab",
+                        templateUrl: "PageTab.html"
+                       })
+                     .state("Page", {
+                        url: "/Page",
+                        template: 'hello world'
+                       })
+            </code></pre>
+                <p style="text-align: left">template, 字符串方式的模板内容，或者是一个返回 HTML 的函数
+                </p>
+                <p style="text-align: left">templateUrl, 模板的路径，或者返回模板路径的函数
+                </p>
+                <p style="text-align: left">url选项将会为该应用的状态指定一个URL基于用户浏览该应用所在的状态。
+                </p>
+            </section>
+            <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                <p style="text-align: left">$state /
+                    $stateProvider：管理状态定义、当前状态和状态转换。包含触发状态转换的事件和回调函数，异步解决目标状态的任何依赖项，更新$location到当前状态。由于状态包含关联的
+                    url，通过$urlRouterProvider生成一个路由规则来执行转换的状态。</p>
+                <p style="text-align: left">$urlRouter /
+                    $urlRouterProvider：管理了一套路由规则列表来处理当$location发生变化时如何跳转。最低级的方式是，规则可以是任意函数，来检查$location，并在处理完成时候返回true。支持正则表达式规则和通过$urlMatcherFactory编译的UrlMatcher对象的
+                    url 占位符规则。</p>
+                <p style="text-align: left">ui-view指示器：渲染状态中定义的视图，是状态中定义的视图的一个占位符。</p>
+            </section>
+
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <p>Views 视图</p>
+                <p style="text-align: left">
+                    开发者可以在同一个模板中改变和切换不同的视图。如果设置了视图选项，则该状态的‘template’，‘templateUrl’及‘templateProvider’将被忽略。如果想在路由里包含父级模板，就需要创建一个包含模板的抽象模板。例如:
+                </p>
+                <pre><code style="font-size: 20px;line-height: 35px">
+                        <!--html-->
+                       <div ui-view=""></div>
+                       <div ui-view="status"></div>
+                        <!--js  -->
+                      state('PageTab.uitest', {
+                           url: '/',
+                           views: {
+                                 '': {
+                                       template: 'hello world'
+                                 },
+                                 'status': {
+                                          template: 'home page'
+                                 }
+                                }
+                           });
+            </code></pre>
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <p style="text-align: left">when()</p>
+                <p style="text-align: left">
+                    该函数需要两个参数：1.当前的路径，2.需要重定向到的路径（或者是需要在路径被访问是运行的函数）。设置重定向前需要为$urlRouterProvider设置when函数来接受一个字符串。例如，当希望重定向一个空的路由到/inbox：</p>
+                <pre><code>
+                $urlRouterProvider.when("","/pagedata");
+            </code></pre>
+            </section>
+            <section>
+                <p style="text-align: left">otherwise()</p>
+                <p style="text-align: left">和ngRoute的otherwise()函数相似，在用户提交的路径没有被定义的时候它将重定向到指定的页面。这是个创建’默认‘路径的好方法。
+                    otherwise()只接受一个参数，要么函数要么字符串，字符串必须为合法的url路由地址，函数则会在没有任何路径被匹配的时候被运行。</p>
+                <pre><code style="font-size: 20px;line-height: 35px">
+                .config(function($urlRouterProvider) {
+                  $urlRouterProvider.otherwise('/');
+                  // or
+                  $urlRouterProvider.otherwise(
+                    function($injector, $location) {
+                      $location.path('/');
+                    });
+                });
+            </code></pre>
+
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <h3>常见问题</h3>
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <p style="text-align: center">
+                    为什么大家更喜欢使用ui-router替代angular内置的ngroute</p>
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+                <p style="line-height: 60px;text-align: left">
+                    这是因为UI-Router有两个重要的特性：
+                    <br>* 多视图
+                    <br>* 嵌套视图
+                </p>
+
+            </section>
+            <section class="future" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+               <h3>解决方案</h3>
+
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p style="text-align: left;text-indent:50px;line-height: 40px">
+                    多视图：页面可以显示多个动态变化的不同区块。
+                </p>
+                <p style="text-align: left;text-indent:50px;line-height: 40px">比如：页面一个区块用来显示页面状态，另一个区块用来显示页面主内容，当路由切换时，页面状态跟着变化，对应的页面主内容也跟着变化。
+                </p>
+                <pre>
+                    <code style="font-size: 20px;line-height: 35px">
+                        <!--html-->
+                       <div ng-view=""></div>
+                       <div ng-view=""></div>
+                        <!--js  -->
+                      $routeProvider
+                        .when("/ngtest", {
+                       template: 'hello world'
+                        })
+                    </code>
+                </pre>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p style="text-align: left;text-indent:50px;line-height: 40px">
+                    html中利用ng-view指令定义了两个区块，于是两个div中显示了相同的内容，这很合乎情理，但却不是我们想要的，但是又不能为力，因为，在ngRoute中：
+                    <br/>1、视图没有名字进行唯一标志，所以它们被同等的处理;
+                    <br/>2、路由配置只有一个模板，无法配置多个。
+                </p>
+                <pre>
+                    <code style="font-size: 20px;line-height: 35px">
+                        <!--html-->
+                       <div ui-view=""></div>
+                       <div ui-view="status"></div>
+                        <!--js  -->
+                      state('PageTab.uitest', {
+                           url: '/',
+                           views: {
+                                 '': {
+                                       template: 'hello world'
+                                 },
+                                 'status': {
+                                          template: 'home page'
+                                 }
+                                }
+                           });
+                    </code>
+                </pre>
+                <p style="text-align: left;text-indent:50px;line-height: 40px">
+                    两个区块，分别显示了不同的内容，原因在于，在ui.router中：
+                    <br/>1、可以给视图命名，如：ui-view=”status”。
+                    <br/>2、可以在路由配置中根据视图名字(如：status)，配置不同的模板。
+                </p>
+            </section>
+
+            <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                <p style="text-align: left;text-indent:50px;line-height: 40px">
+                    嵌套视图：页面某个动态变化区块中，嵌套着另一个可以动态变化的区块。
+                </p>
+                <p style="text-align: left;text-indent:50px;line-height: 40px">比如：页面一个主区块显示主内容，主内容中的部分内容要求根据路由变化而变化，这时就需要另一个动态变化的区块嵌套在主区块中。
+                </p>
+                <p style="text-align: left;text-indent:50px;line-height: 40px">
+                    其实，嵌套视图，在html中的最终表现就像这样：
+                </p>
+                <pre>
+                    <code style="font-size: 20px;line-height: 35px">
+                        <div ng-view>
+                           I am parent
+                           <div ng-view>I am child</div>
+                        </div>
+                    </code>
+                </pre>
+                <p style="text-align: left;text-indent:50px;line-height: 40px">
+                    转成javascript，我们会在程序里这样写：
+                </p>
+                <pre>
+                    <code style="font-size: 20px;line-height: 35px">
+                        $routeProvider
+                            .when('/', {
+                               template: 'I am parent <div ng-view>I am child</div>'
+                        });
+                    </code>
+                </pre>
+                <p style="text-align: left;text-indent:50px;line-height: 40px">
+                    倘若，你真的用ngRoute这样写，你会发现浏览器崩溃了，因为在ng-view指令link的过程中，代码会无限递归下去。
+                    造成这种现象的最根本原因：路由没有明确的父子层级关系！
+                </p>
+                <pre>
+                    <code style="font-size: 20px;line-height: 35px">
+                        $stateProvider
+                            .state('parent', {
+                                    abstract: true,
+                                    url: '/',
+                                    template: 'I am parent <div ui-view></div>'
+                                   })
+                            .state('parent.child', {
+                                    url: '',
+                                    template: 'I am child'
+                                   });
+                    </code>
+                </pre>
+                <p style="text-align: left;text-indent:50px;line-height: 40px">
+                    1、通过parent与parent.child来确定路由的父子关系，从而解决无限递归问题。
+                    <br/>2、另外子路由的模板最终也将被插入到父路由模板的div[ui-view]中去，从而达到视图嵌套的效果。
+                </p>
+            </section>
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+            <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                <h3>6.扩展思考</h3>
+            </section>
+            <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                <p>state.go传参</p>
+
+            </section>
+            <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                <p>state.go跳转页面</p>
+                <pre><code style="font-size: 20px;line-height: 35px">
+                      angular.module("myApp").controller("pagectrl",function ($scope,$state) {
+                         $scope.test = function () {
+                            $state.go('PageTab.Page1')
+                            }
+                      })
+                </code></pre>
+                <p>state.go传参</p>
+                <pre><code style="font-size: 20px;line-height: 35px">
+                    //路由配置页面
+                    .state("PageTab.Page1", {
+                       url:"/Page1:id",
+                      templateUrl: "Page1.html"
+                       })
+                    //跳转页面
+                    angular.module("myApp").controller("pagectrl",function ($scope,$state) {
+                         $scope.test = function () {
+                            $state.go('PageTab.Page1',{"id":"test"})
+                            }
+                      })
+                    //跳转目标页
+                    angular.module("myApp").controller("page1ctrl",function ($scope,$stateParams) {
+                        console.log($stateParams.id)
+                           })
+                </code></pre>
+
+            </section>
+
+            <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                <h3>7.参考文献</h3>
+
+            </section>
+            <section class="future" style="top: 264px; display: none;" hidden="" aria-hidden="true">
+                <a href="http://blog.csdn.net/limj625/article/details/51833317">AngularJS ui-router (嵌套路由)</a><br/>
+            <a href="http://www.html-js.com/article/Front-end-source-code-analysis-original-uirouter-source-code-analysis">ui.router源码解析</a>
+
+
+            </section>
+            <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                <h3>8.更多讨论</h3>
+
+            </section>
+
+
+
+            <section class="future" style="top: 212.5px; display: none;" hidden="" aria-hidden="true">
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    By
+                    <small style="vertical-align: middle">郭健锋丨曾健</small>
+                </p>
+            </section>
+
+
+        </div>
+        <div class="backgrounds">
+            <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+        </div>
+        <div class="progress" style="display: block;">
+            <span style="width: 0px;"></span>
+        </div>
+        <aside class="controls" style="display: block;">
+            <button class="navigate-left" aria-label="previous slide"></button>
+            <button class="navigate-right enabled" aria-label="next slide"></button>
+            <button class="navigate-up" aria-label="above slide"></button>
+            <button class="navigate-down" aria-label="below slide"></button>
+        </aside>
+        <div class="slide-number" style="display: none;"></div>
+        <div class="speaker-notes" data-prevent-swipe=""></div>
+        <div class="pause-overlay"></div>
+        <div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        //  controls: true, // 是否在右下角展示控制条
+        //  progress: true, // 是否显示演示的进度条
+        //  slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        //  history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        //  keyboard: true, // 是否启用键盘快捷键来导航
+        //  overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        //  center: true, // 是否将幻灯片垂直居中
+        //  touch: true, // 是否在触屏设备上启用触摸滑动切换
+        //  loop: false, // 是否循环演示
+        //  rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        //  fragments: true, // 全局开启和关闭碎片。
+        //  autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        //  transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        //  transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        //  mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+
+
+
+
+
+</body>
+
+</html>

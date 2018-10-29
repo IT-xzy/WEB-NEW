@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<style>
+    .p-style>p {
+        font-size: 20px;
+        text-align: left;
+        padding-bottom: 20px;
+    }
+</style>
+
+<body>
+    <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h4>小课堂——上海分院</h4>
+                <h4>json是什么？如何处理转义</h4>
+                <h4>分享人：何岳</h4>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <p style="font-size: 30px;letter-spacing: 3px;">前言</p>
+                <p style="font-size: 30px;text-align: left;">JSON是什么</p>
+                <p style="font-size: 30px;text-align: left;">JSON 是一种用于数据交换的文本格式，诞生于 2001 年由Douglas
+                    Crockford提出，目的是取代繁琐笨重的XML格式。这种格式不仅人很容易进行阅读和编写，同时机器也很容易解析和生成，是当前十分流行的数据格式，尤其是在前端领域。</p>
+            </section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <section>
+                    <h3>json是什么</h3>
+                    <p style="font-size: 26px;text-align: left;">JSON，全称是 JavaScript Object Notation，即 JavaScript
+                        对象标记法。这是一种 轻量级 （Light-Weight）、 基于文本的 （Text-Based）、 可读的 （Human-Readable）格式。</p>
+                    <p style="font-size: 26px;text-align: left;">JSON 无论对于人，还是对于机器来说，都是十分便于阅读和书写的，而且相比 XML 文件更小；</p>
+                    <p style="font-size: 26px;text-align: left;">JSON 格式的创始人声称此格式永远不升级，这就表示这种格式具有长时间的稳定性；</p>
+                    <p style="font-size: 26px;text-align: left;">JSON格式有两个显著的优点：书写简单，一目了然；符合JavaScript原生语法，可以由解释引擎直接处理，不用另外添加解析代码。</p>
+                    <p style="font-size: 26px;text-align: left;">JSON已经成为各大网站交换数据的标准格式，并被写入ECMAScript 5，成为标准的一部分。</p>
+                    <p style="font-size: 26px;text-align: left;">简单说，每个JSON对象，就是一个值。要么是简单类型的值，要么是复合类型的值，但是只能是一个值，不能是两个或更多的值。这就是说，每个JSON文档只能包含一个值。</p>
+                </section>
+                <section>
+                    <h3>JSON对值的类型和格式有严格的规定</h3>
+                    <p style="font-size: 26px;text-align: left;">复合类型的值只能是数组或对象，不能是函数、正则表达式对象、日期对象。</p>
+                    <p style="font-size: 26px;text-align: left;">简单类型的值只有四种：字符串、数值（必须以十进制表示）、布尔值和null（不能使用NaN,
+                        Infinity, -Infinity和undefined）。</p>
+                    <p style="font-size: 26px;text-align: left;">字符串必须使用双引号表示，不能使用单引号。</p>
+                    <p style="font-size: 26px;text-align: left;">对象的键名必须放在双引号里面。</p>
+                    <p style="font-size: 26px;text-align: left;">数组或对象最后一个成员的后面，不能加逗号。</p>
+                    <p style="font-size: 26px;text-align: left;">PS: 需要注意的是，空数组和空对象都是合格的JSON值，null本身也是一个合格的JSON值。</p>
+                </section>
+                <section>
+                    <h3>JSON 的语法规则</h3>
+                    <p style="font-size: 26px;text-align: left;">JSON 的语法规则十分简单，可称得上“优雅完美”，总结起来有：</p>
+                    <p style="font-size: 26px;text-align: left;">数组（Array）用方括号(“[]”)表示。</p>
+                    <p style="font-size: 26px;text-align: left;">对象（Object）用大括号（”{}”）表示。</p>
+                    <p style="font-size: 26px;text-align: left;">名称/值对（name/value）组合成数组和对象。</p>
+                    <p style="font-size: 26px;text-align: left;">名称（name）置于双引号中，值（value）有字符串、数值、布尔值、null、对象和数组。</p>
+                    <p style="font-size: 26px;text-align: left;">并列的数据之间用逗号（“,”）分隔</p>
+                </section>
+                <section>
+                    <h3>ES5新增了JSON对象，用来处理JSON格式数据。它有两个方法：</h3>
+                    <p style="font-size: 26px;text-align: left;">JSON.stringify()</p>
+                    <p style="font-size: 26px;text-align: left;">JSON.parse()</p>
+                    <p style="font-size: 26px;text-align: left;"></p>
+                    <p style="font-size: 26px;text-align: left;"></p>
+                </section>
+                <section>
+                    <h3>JSON.stringify()</h3>
+                    <p style="font-size: 30px;text-align: left;">JSON.stringify方法用于将一个值转为字符串。该字符串符合 JSON
+                        格式，并且可以被JSON.parse方法还原。</p>
+                </section>
+                <section>
+                    <h3>JSON.parse()</h3>
+                    <p style="font-size: 30px;text-align: left;">JSON.parse方法用于将JSON字符串转化成对象。</p>
+                </section>
+            </section>
+
+            <section>
+                <h3>3.常见问题</h3>
+                <p style="font-size: 30px;text-align: left;">parse和eval的区别:</p>
+            </section>
+
+            <section>
+                <h3>4.解决方案</h3>
+                <p style="font-size: 30px;text-align: left;">eval: 可以解析任何字符串变成js</p>
+                <p style="font-size: 30px;text-align: left;">只能解析JSON形式的字符串变成js 并且字符串中的属性要严格的加上引号 (安全性要高一些) </p>
+            </section>
+
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+
+            <section>
+                <h3>6.扩展思考</h3>
+                <p style="font-size: 30px;text-align: left;">eval：把字符串转成json 的使用方法</p>
+            </section>
+
+            <section>
+                <h3>7.参考文献</h3>
+                <p>http://javascript.ruanyifeng.com/stdlib/json.html</p>
+            </section>
+            <section>
+                <h3>8.更多讨论</h3>
+            </section>
+            <section>
+                <p>讨论时间到，欢迎大家提问！
+                </p>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>By
+                    <small style="vertical-align: middle">何岳</small>
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>

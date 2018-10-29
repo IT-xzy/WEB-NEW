@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)https://it-xzy.github.io/WEB-NEW/2018-7-24-C-js11-tds.html -->
+<html slick-uniqueid="3" class="js no-mobile desktop no-ie chrome chrome68 web-new-section gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch no-retina fontface domloaded translated-ltr w-1024 gt-240 gt-320 gt-480 gt-640 gt-768 gt-800 lt-1280 lt-1440 lt-1680 lt-1920 no-portrait landscape" id="2018-7-24-c-js11-tds-page"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./葡萄藤_files/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./葡萄藤_files/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./葡萄藤_files/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+   
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script><link rel="stylesheet" type="text/css" href="./葡萄藤_files/paper.css"><script type="text/javascript" src="./葡萄藤_files/marked.js"></script><script type="text/javascript" src="./葡萄藤_files/markdown.js"></script><script type="text/javascript" src="./葡萄藤_files/notes.js"></script><script type="text/javascript" src="./葡萄藤_files/highlight.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="./葡萄藤_files/translateelement.css"></head>
+<body>
+<img src="./葡萄藤_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal center default" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.775286);">
+        <section class="past" style="top: 234px; display: none;" hidden="" aria-hidden="true">
+            <h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">【JS-task11】ES6的新特性？</font></font></h3>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分享人：田迪生</font></font></p>
+        </section>
+        <section class="past" style="top: 3px; display: none;" hidden="" aria-hidden="true">
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录</font></font></p>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1.背景介绍</font></font></p>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2.知识剖析</font></font></p>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3.常见问题</font></font></p>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">4.解决方案</font></font></p>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">5.编码实战</font></font></p>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">6.扩展思考</font></font></p>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">7.参考文献</font></font></p>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">8.更多讨论</font></font></p>
+        </section>
+        <section class="past" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+            <h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1.背景介绍</font></font></h3>
+        </section>
+        <section class="stack past" style="top: 0px; display: none;" data-previous-indexv="1" hidden="" aria-hidden="true">
+            <h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ECMAScript 6</font></font></h3>
+			<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ECMAScript 6.0（以下简称ES6）是JavaScript 语言的下一代标准，已经在2015 年6 月正式发布了。</font><font style="vertical-align: inherit;">它的目标，是使得JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。</font></font></p>
+        </section>
+
+		<section class="past" style="top: 51.5px; display: none;" hidden="" aria-hidden="true">
+		    <h4>ECMAScript 和 JavaScript 的关系?</h4>
+            <p>要讲清楚这个问题，需要回顾历史。1996 年 11 月，JavaScript 的创造者 Netscape 公司，决定将 JavaScript 提交给标准化组织 ECMA，希望这种语言能够成为国际标准。次年，ECMA 发布 262 号标准文件（ECMA-262）的第一版，规定了浏览器脚本语言的标准，并将这种语言称为 ECMAScript，这个版本就是 1.0 版。</p>
+            <p>因此，ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现。日常场合，这两个词是可以互换的。</p>
+		</section>
+        <section class="past" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section class="past" style="top: 179.5px; display: none;" hidden="" aria-hidden="true">
+		    <h4>常用的es6特性</h4>
+			<p>1.let 和 const 命令</p>
+			<p>2.箭头函数</p>
+			<p>3.Module语法</p>
+        </section>
+
+		<section class="past" style="top: 0px; display: none;" hidden="" aria-hidden="true">
+            <h2>1.let 和 const 命令</h2>
+		    <h4>let 命令</h4>
+			<p>ES6 新增了let命令，用来声明变量。它的用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效。</p>
+            <pre><code class="hljs mel"><font></font>
+{<font></font>
+  let a = 10;<font></font>
+  var b = 1;<font></font>
+}<font></font>
+<font></font>
+a // ReferenceError: a is not defined.<font></font>
+b // 1<font></font>
+                 </code></pre>
+			<p>上面代码在代码块之中，分别用let和var声明了两个变量。然后在代码块之外调用这两个变量，结果let声明的变量报错，var声明的变量返回了正确的值。这表明，let声明的变量只在它所在的代码块有效。</p>
+        </section>
+		
+		<section class="past" style="top: 94px; display: none;" hidden="" aria-hidden="true">
+            <h4>const 命令</h4>
+            <p>const声明一个只读的常量。一旦声明，常量的值就不能改变。</p>
+            <pre><code class="hljs mel"><font></font>
+const PI = 3.1415;<font></font>
+PI // 3.1415<font></font>
+<font></font>
+PI = 3;<font></font>
+// TypeError: Assignment to constant variable.<font></font>
+                 </code></pre>
+		    <p>上面代码表明改变常量的值会报错。</p>
+        </section>
+		
+		<section class="past" style="top: 61.5px; display: none;" hidden="" aria-hidden="true">
+            <h4>const 命令</h4>
+		    <p>const实际上保证的，并不是变量的值不得改动，而是变量指向的那个内存地址所保存的数据不得改动。对于简单类型的数据（数值、字符串、布尔值），值就保存在变量指向的那个内存地址，因此等同于常量。但对于复合类型的数据（主要是对象和数组），变量指向的内存地址，保存的只是一个指向实际数据的指针，const只能保证这个指针是固定的（即总是指向另一个固定的地址），至于它指向的数据结构是不是可变的，就完全不能控制了。因此，将一个对象声明为常量必须非常小心。</p>
+        </section>
+
+
+        <section class="past" style="top: 91px; display: none;" hidden="" aria-hidden="true">
+            <pre><code class="hljs mel"><font></font>
+const foo = {};<font></font>
+<font></font>
+// 为 foo 添加一个属性，可以成功<font></font>
+foo.prop = 123;<font></font>
+foo.prop // 123<font></font>
+<font></font>
+// 将 foo 指向另一个对象，就会报错<font></font>
+foo = {}; // TypeError: "foo" is read-only<font></font>
+                 </code></pre>
+            <p>上面代码中，常量foo储存的是一个地址，这个地址指向一个对象。不可变的只是这个地址，即不能把foo指向另一个地址，但对象本身是可变的，所以依然可以为其添加新属性。</p>
+        </section>
+		
+		<section class="past" style="top: 127px; display: none;" hidden="" aria-hidden="true">
+		    <p>2、箭头函数</p>
+			<p>ES6 允许使用“箭头”（=&gt;）定义函数。</p>
+            <pre><code class="hljs mel"><font></font>
+var f = v =&gt; v;<font></font>
+<font></font>
+// 等同于<font></font>
+var f = function (v) {<font></font>
+  return v;<font></font>
+};<font></font>
+                 </code></pre>
+        </section>
+		
+		<section class="past" style="top: 92.5px; display: none;" hidden="" aria-hidden="true">
+		    <h3>2.箭头函数</h3>
+            <p>ES6 允许使用“箭头”（=&gt;）定义函数。</p>
+            <pre><code class="hljs mel"><font></font>
+var f = () =&gt; 5;<font></font>
+// 等同于<font></font>
+var f = function () { return 5 };<font></font>
+<font></font>
+var sum = (num1, num2) =&gt; num1 + num2;<font></font>
+// 等同于<font></font>
+var sum = function(num1, num2) {<font></font>
+  return num1 + num2;<font></font>
+};<font></font>
+                 </code></pre>
+        </section>
+
+        <section class="past" style="top: 10px; display: none;" hidden="" aria-hidden="true">
+            <h3>2.箭头函数</h3>
+            <p>如果箭头函数的代码块部分多于一条语句，就要使用大括号将它们括起来，并且使用return语句返回。</p>
+            <pre><code class="hljs mel"><font></font>
+var sum = (num1, num2) =&gt; { return num1 + num2; }<font></font>
+                 </code></pre>
+            <p>由于大括号被解释为代码块，所以如果箭头函数直接返回一个对象，必须在对象外面加上括号，否则会报错。</p>
+            <pre><code class="hljs mel"><font></font>
+// 报错<font></font>
+let getTempItem = id =&gt; { id: id, name: "Temp" };<font></font>
+<font></font>
+// 不报错<font></font>
+let getTempItem = id =&gt; ({ id: id, name: "Temp" });<font></font>
+                 </code></pre>
+        </section>
+     
+	    <section class="past" style="top: 186.5px; display: none;" hidden="" aria-hidden="true">
+		    <h4>2.箭头函数使用注意点</h4>
+			<ul>函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。?</ul>
+			<ul>不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。</ul>
+        </section>
+
+        <section class="past" style="top: 51.5px; display: block;" hidden="" aria-hidden="true">
+            <h4><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3.Module语法</font></font></h4>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">概述：历史上，JavaScript 一直没有模块（module）体系，无法将一个大程序拆分成互相依赖的小文件，再用简单的方法拼装起来。</font><font style="vertical-align: inherit;">其他语言都有这项功能，比如Ruby 的require、Python 的import，甚至就连CSS 都有@import，但是JavaScript 任何这方面的支持都没有，这对开发大型的、复杂的项目形成了巨大障碍。</font></font></p>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模块功能主要由两个命令构成：export和import。</font><font style="vertical-align: inherit;">export命令用于规定模块的对外接口，import命令用于输入其他模块提供的功能。</font></font></p>
+        </section>
+
+        <section class="past" style="top: 36.5px; display: block;" hidden="" aria-hidden="true">
+            <h4><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">export 命令</font></font></h4>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">一个模块就是一个独立的文件。</font><font style="vertical-align: inherit;">该文件内部的所有变量，外部无法获取。</font><font style="vertical-align: inherit;">如果你希望外部能够读取模块内部的某个变量，就必须使用export关键字输出该变量。</font><font style="vertical-align: inherit;">下面是一个JS 文件，里面使用export命令输出变量。</font></font></p>
+            <pre><code class="hljs mel"><font></font>
+// profile.js<font></font>
+export var firstName = 'Michael';<font></font>
+export var lastName = 'Jackson';<font></font>
+export var year = 1958;<font></font>
+                 </code></pre>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上面代码是profile.js文件，保存了用户信息。</font><font style="vertical-align: inherit;">ES6 将其视为一个模块，里面用export命令对外部输出了三个变量。</font></font></p>
+        </section>
+
+        <section class="present" style="top: 0px; display: block;">
+            <h4><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">import 命令</font></font></h4>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用export命令定义了模块的对外接口以后，其他JS 文件就可以通过import命令加载这个模块。</font><font style="vertical-align: inherit;">JS 文件，里面使用export命令输出变量。</font></font></p>
+            <pre><code class="hljs mel"><font></font>
+// main.js<font></font>
+import {firstName, lastName, year} from './profile.js';<font></font>
+<font></font>
+function setName(element) {<font></font>
+  element.textContent = firstName + ' ' + lastName;<font></font>
+}<font></font>
+                 </code></pre>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上面代码的import命令，用于加载profile.js文件，并从中输入变量。</font><font style="vertical-align: inherit;">import命令接受一对大括号，里面指定要从其他模块导入的变量名。</font><font style="vertical-align: inherit;">大括号里面的变量名，必须与被导入模块（profile.js）对外接口的名称相同。</font></font></p>
+        </section>
+
+        <section class="future" style="top: 0px; display: block;" hidden="" aria-hidden="true">
+            <h4><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">export default</font></font></h4>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">从前面的例子可以看出，使用import命令的时候，用户需要知道所要加载的变量名或函数名，否则无法加载。</font><font style="vertical-align: inherit;">但是，用户肯定希望快速上手，未必愿意阅读文档，去了解模块有哪些属性和方法。</font><font style="vertical-align: inherit;">为了给用户提供方便，让他们不用阅读文档就能加载模块，就要用到export default命令，为模块指定默认输出。</font></font></p>
+            <pre><code class="hljs mel"><font></font>
+// export-default.js<font></font>
+export default function () {<font></font>
+  console.log('foo');<font></font>
+}<font></font>
+                 </code></pre>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上面代码是一个模块文件export-default.js，它的默认输出是一个函数。</font><font style="vertical-align: inherit;">其他模块加载该模块时，import命令可以为该匿名函数指定任意名字。</font></font></p>
+        </section>
+
+        <section class="future" style="top: 148.5px; display: block;" hidden="" aria-hidden="true">
+            <pre><code class="hljs mel"><font></font>
+// import-default.js<font></font>
+import customName from './export-default';<font></font>
+customName(); // 'foo'<font></font>
+                 </code></pre>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上面代码的import命令，可以用任意名称指向export-default.js输出的方法，这时就不需要知道原模块输出的函数名。</font><font style="vertical-align: inherit;">需要注意的是，这时import命令后面，不使用大括号。</font></font></p>
+        </section>
+
+
+		
+		<section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+		    <h3>3.参考文献</h3>
+        </section>
+		
+        <section class="future" style="top: 244px; display: none;" hidden="" aria-hidden="true">
+		    <a href="http://es6.ruanyifeng.com/#docs/module">ECMAScript 6 入门--阮一峰</a>
+		    <p>https://www.cnblogs.com/2050/p/3191744.html</p>
+        </section>
+
+
+		
+		<section class="future" style="top: 212.5px; display: none;" hidden="" aria-hidden="true">
+		    <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>BY : 田迪生</small>
+            </p>
+        </section>
+
+    </div>
+<div class="backgrounds"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background stack past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 780.19px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            import 命令使用export命令定义了模块的对外接口以后，其他JS 文件就可以通过import命令加载这个模块。</font><font style="vertical-align: inherit;">JS 文件，里面使用export命令输出变量。</font><font style="vertical-align: inherit;">// main.js import {firstName, lastName, year} from './profile.js'; function setName(element) { element.textContent = firstName + ' ' + lastName; } 上面代码的import命令，用于加载profile .js文件，并从中输入变量。</font><font style="vertical-align: inherit;">import命令接受一对大括号，里面指定要从其他模块导入的变量名。</font><font style="vertical-align: inherit;">大括号里面的变量名，必须与被导入模块（profile.js）对外接口的名称相同。
+        </font></font></div></div>
+
+<script src="./葡萄藤_files/head.min.js"></script>
+<script src="./葡萄藤_files/reveal.js"></script>
+
+<script>
+
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+    //    原始类型对象直接赋值不会相互影响
+    //    var a = 1;
+    //
+    //    var b = a;
+    //    b = 10;
+    //    console.log(a); // 1
+    ////
+    //    var a = 'hello';
+    //    var b = a;
+    //    b = 'world';
+    //    console.log(a); // hello
+    //
+    //    var a = true;
+    //    var b = a;
+    //    b = false;
+    //    console.log(a);
+
+    //数组浅复制
+    //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+    //    ];
+    //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+    //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+    //    console.log(a)//那么现在打印a 是什么结果呢
+    //
+    //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+    //    var arrtoo = arr.slice(1);
+    //    arrtoo[2] = "set Map";
+    //    console.log(arr);//One,Two,Three
+    //    console.log(arrtoo);//One,set Map,Three
+
+    //
+    //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+    //    var arrtooo = arr1.concat(111111);
+    //    arrtooo[1] = "set Map To";
+    //    console.log(arr1);//One,Two,Three
+    //    console.log(arrtooo);//One,set Map To,Three
+
+    //
+    //    var b=[1,2,3,4,5];   //concat的链接
+    //    var c=[6,7,8,9];
+    //    var d =[4,4,22]
+    //    console.log(b.concat(c,d))
+
+    var a = {name: 'yy', age: 26};  //对象的浅拷贝哦
+    var b = new Object();
+    b.name = a.name;
+    b.age = a.age;
+    b.name = 'xx';
+    console.log(a);//Object { name="yy", age=26}
+    console.log(b);//Object { name="xx", age=26}
+
+    var d = {            //对象的浅拷贝哦 第一种
+        name: 'd',
+        oc: {
+            age: 32
+        },
+        oad: {
+            adds: {
+                bb: 12
+            }
+        }
+    };
+    var deepCopy = function (source) {
+        var result = {};
+        for (var key in source) {
+            result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+        }
+        return result
+    };
+
+    var c = deepCopy(d);
+    c.name = 'c';
+    c.oc = {
+        age: 49
+    };
+    console.log(c);
+    console.log(d);
+
+
+    //    var person = {    //第二种深拷贝
+    //        name: 'aa',
+    //        friends: ['da', 'dsa', 'gf']
+    //    };
+    //
+    //    var aPerson = Object.create(person, {
+    ////        name: {
+    ////            value: "gee"
+    ////        }
+    //    });
+    //
+    //    console.log(person.name);
+    //    console.log(aPerson.friends)
+
+    var Chinese = {
+        nation: '中国'
+
+    }
+    var Doctor = {
+        career: '医生'
+    }
+
+    function extendCopy(p) {
+        var c = {};
+        for (var i in p) {
+            c[i] = p[i];
+        }
+        c.uber = p;
+        return c;
+    }
+
+    var Doctor = extendCopy(Chinese);
+    Doctor.career = '医生';
+    console.log(Doctor); // 中国
+    Chinese.birthPlaces = ['北京', '上海', '香港'];
+    var Doctor = extendCopy(Chinese);
+    Doctor.birthPlaces.push('厦门');
+
+</script>
+
+
+
+<div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="./葡萄藤_files/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div><st-div id="__selection-translator__"> <st-div class="__st-box__" style="display: none; position: fixed; z-index: 99999; left: 0px; top: 0px; transform: translateX(926px) translateY(301px);"> <st-header> <st-span class="st-icon-pin" title="固定"></st-span> <st-span class="st-icon-down-open" title="展开"></st-span> <st-span class="st-icon-cog" title="设置"></st-span> </st-header> <st-div class="__query-form__" style="display: none;"> <st-div> <textarea placeholder="输入要翻译的句子或单词"></textarea> </st-div> <st-div> <select> <option value="">自动判断</option> <option value="zh">中文</option><option value="zh-CN">中文(简体)</option><option value="zh-HK">中文(香港)</option><option value="zh-TW">中文(繁体)</option><option value="en">英语</option><option value="ja">日语</option><option value="ko">朝鲜语</option><option value="de">德语</option><option value="fr">法语</option><option value="ru">俄语</option><option value="th">泰语</option><option value="af">南非语</option><option value="ar">阿拉伯语</option><option value="az">阿塞拜疆语</option><option value="be">比利时语</option><option value="bg">保加利亚语</option><option value="ca">加泰隆语</option><option value="cs">捷克语</option><option value="cy">威尔士语</option><option value="da">丹麦语</option><option value="dv">第维埃语</option><option value="el">希腊语</option><option value="eo">世界语</option><option value="es">西班牙语</option><option value="et">爱沙尼亚语</option><option value="eu">巴士克语</option><option value="fa">法斯语</option><option value="fi">芬兰语</option><option value="fo">法罗语</option><option value="gl">加里西亚语</option><option value="gu">古吉拉特语</option><option value="he">希伯来语</option><option value="hi">印地语</option><option value="hr">克罗地亚语</option><option value="hu">匈牙利语</option><option value="hy">亚美尼亚语</option><option value="id">印度尼西亚语</option><option value="is">冰岛语</option><option value="it">意大利语</option><option value="ka">格鲁吉亚语</option><option value="kk">哈萨克语</option><option value="kn">卡纳拉语</option><option value="kok">孔卡尼语</option><option value="ky">吉尔吉斯语</option><option value="lt">立陶宛语</option><option value="lv">拉脱维亚语</option><option value="mi">毛利语</option><option value="mk">马其顿语</option><option value="mn">蒙古语</option><option value="mr">马拉地语</option><option value="ms">马来语</option><option value="mt">马耳他语</option><option value="nb">挪威语(伯克梅尔)</option><option value="nl">荷兰语</option><option value="ns">北梭托语</option><option value="pa">旁遮普语</option><option value="pl">波兰语</option><option value="pt">葡萄牙语</option><option value="qu">克丘亚语</option><option value="ro">罗马尼亚语</option><option value="sa">梵文</option><option value="se">北萨摩斯语</option><option value="sk">斯洛伐克语</option><option value="sl">斯洛文尼亚语</option><option value="sq">阿尔巴尼亚语</option><option value="sv">瑞典语</option><option value="sw">斯瓦希里语</option><option value="syr">叙利亚语</option><option value="ta">泰米尔语</option><option value="te">泰卢固语</option><option value="tl">塔加路语</option><option value="tn">茨瓦纳语</option><option value="tr">土耳其语</option><option value="ts">宗加语</option><option value="tt">鞑靼语</option><option value="uk">乌克兰语</option><option value="ur">乌都语</option><option value="uz">乌兹别克语</option><option value="vi">越南语</option><option value="xh">班图语</option><option value="zu">祖鲁语</option> </select> <st-div class="__exchange__"> <st-span class="st-icon-exchange"></st-span> </st-div> <select> <option value="">自动选择</option> <option value="zh">中文</option><option value="zh-CN">中文(简体)</option><option value="zh-HK">中文(香港)</option><option value="zh-TW">中文(繁体)</option><option value="en">英语</option><option value="ja">日语</option><option value="ko">朝鲜语</option><option value="de">德语</option><option value="fr">法语</option><option value="ru">俄语</option><option value="th">泰语</option><option value="af">南非语</option><option value="ar">阿拉伯语</option><option value="az">阿塞拜疆语</option><option value="be">比利时语</option><option value="bg">保加利亚语</option><option value="ca">加泰隆语</option><option value="cs">捷克语</option><option value="cy">威尔士语</option><option value="da">丹麦语</option><option value="dv">第维埃语</option><option value="el">希腊语</option><option value="eo">世界语</option><option value="es">西班牙语</option><option value="et">爱沙尼亚语</option><option value="eu">巴士克语</option><option value="fa">法斯语</option><option value="fi">芬兰语</option><option value="fo">法罗语</option><option value="gl">加里西亚语</option><option value="gu">古吉拉特语</option><option value="he">希伯来语</option><option value="hi">印地语</option><option value="hr">克罗地亚语</option><option value="hu">匈牙利语</option><option value="hy">亚美尼亚语</option><option value="id">印度尼西亚语</option><option value="is">冰岛语</option><option value="it">意大利语</option><option value="ka">格鲁吉亚语</option><option value="kk">哈萨克语</option><option value="kn">卡纳拉语</option><option value="kok">孔卡尼语</option><option value="ky">吉尔吉斯语</option><option value="lt">立陶宛语</option><option value="lv">拉脱维亚语</option><option value="mi">毛利语</option><option value="mk">马其顿语</option><option value="mn">蒙古语</option><option value="mr">马拉地语</option><option value="ms">马来语</option><option value="mt">马耳他语</option><option value="nb">挪威语(伯克梅尔)</option><option value="nl">荷兰语</option><option value="ns">北梭托语</option><option value="pa">旁遮普语</option><option value="pl">波兰语</option><option value="pt">葡萄牙语</option><option value="qu">克丘亚语</option><option value="ro">罗马尼亚语</option><option value="sa">梵文</option><option value="se">北萨摩斯语</option><option value="sk">斯洛伐克语</option><option value="sl">斯洛文尼亚语</option><option value="sq">阿尔巴尼亚语</option><option value="sv">瑞典语</option><option value="sw">斯瓦希里语</option><option value="syr">叙利亚语</option><option value="ta">泰米尔语</option><option value="te">泰卢固语</option><option value="tl">塔加路语</option><option value="tn">茨瓦纳语</option><option value="tr">土耳其语</option><option value="ts">宗加语</option><option value="tt">鞑靼语</option><option value="uk">乌克兰语</option><option value="ur">乌都语</option><option value="uz">乌兹别克语</option><option value="vi">越南语</option><option value="xh">班图语</option><option value="zu">祖鲁语</option> </select> </st-div> <st-div> <select> <option value="YouDao">有道翻译</option> <option value="BaiDu">百度翻译</option> <option value="Google">谷歌翻译</option> <option value="GoogleCN">谷歌翻译（国内）</option> </select> <st-div class="__action-list__"> <st-div class="__button__ __btn-translate__">翻译 <st-span class="st-icon-down-dir"></st-span> </st-div> <st-div class="__expand__"> <st-div class="__button__">朗读</st-div> <st-div class="__button__">复制</st-div> </st-div> </st-div> </st-div> </st-div> <st-div class="__translate-result__" style="display: none;">正在查询，请稍候……</st-div> <st-div class="__translate-result__"> <st-div style="display: none;"> <st-span></st-span> <st-span class="__retry__">重试</st-span> </st-div> <st-div> <st-div class="__phonetic__"> <st-span style="display: none;"></st-span> <st-span class="__copy-and-read__"> <st-span>朗读</st-span> <st-span style="display: none;">复制</st-span> </st-span> </st-div> <st-div style="display: none;"> <st-ul>  </st-ul> <st-div class="__copy-and-read__"> <st-span class="__copy-and-read__">复制</st-span> </st-div> </st-div> <st-div style="display: none;">  <st-div class="__copy-and-read__"> <st-span class="__copy-and-read__">朗读</st-span> <st-span class="__copy-and-read__">复制</st-span> </st-div> </st-div> </st-div> </st-div> <st-footer> <st-span style="">via <a target="_blank" href="https://it-xzy.github.io/WEB-NEW/2018-7-24-C-js11-tds.html">有道翻译</a></st-span> </st-footer> </st-div> <st-div class="__st-btn__" style="display: none; position: fixed; z-index: 99999; left: 0px; top: 0px; transform: translateX(926px) translateY(301px);">译</st-div> </st-div><div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

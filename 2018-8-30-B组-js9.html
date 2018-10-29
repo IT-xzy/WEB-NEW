@@ -1,0 +1,330 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>【js-09】</h2>
+            <h4> 如何理解angular的脏检查?</h4>
+            <p>分享人：陈皓宇</p>
+        </section>
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+        </section>
+        <section>
+            <p>Angular 是一个 MVVM 前端框架，提供了双向数据绑定。所谓双向数据绑定（Two-way data binding）就是页面元素变化会触发 View-model 中对应数据改变， 反过来
+                View-model 中数据变化也会引发所绑定的 View 元素数据更新。操作数据就等同于操作 View。</p>
+        </section>
+        <section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <h4>Angular什么时候会自动触发脏检查</h4>
+                <p>
+                    Angular所系统的方法中，都会触发比较事件（脏检查）,eg，controller初始化的时候，所有以ng-**的时间执行后，都会触发脏检查；
+                </p>
+            </section>
+            <section>
+                <h4>脏检查如何触发？</h4>
+                <p>Angular 每一个绑定到View的数据，就会有一个 $watch 对象。</p>
+                <p>所有的watch存储在$scope的$$watchList属性中，一次脏检查就是调用一次 $apply() 或者 $digest()，遍历检查所有watch，将数据中最新的值呈现在界面上。</p>
+                <p>关于$apply（）,en...实际上$apply（）其实就是$digest（）的一个简单封装。</p>
+            </section>
+            <section>
+                <p>我们来看看$apply的源码</p>
+                <pre>
+                                    <code>
+                    $apply: function(expr) {
+                    try {
+                    beginPhase('$apply');
+                    return this.$eval(expr);
+                    } catch (e) {
+                    $exceptionHandler(e);
+                    } finally {
+                    clearPhase();
+                    try {
+                    $rootScope.$digest();//会再次出发$digest()
+                    } catch (e) {
+                    $exceptionHandler(e);
+                    throw e; }
+                    }
+                    }
+                </code>
+
+                </pre>
+                <p>比$digest多了一次$eval()，检测表达式，如果有报错会抛出异常</p>
+            </section>
+            <section>
+                <p>
+                    通常写代码时我们无需主动调用 $apply 或 $digest 是因为 angular 在外部对我们的回调函数做了包装。例如常用的 ng-click，这是一个指令（Directive），内部实现则 类似 于
+                </p>
+                <pre>
+                        <code>
+                            DOM.addEventListener('click', function ($scope) {
+                                $scope.$apply(() => userCode());
+                            });
+                        </code>
+                </pre>
+                <p>可以看到：ng-click 帮我们做了 $apply 这个操作。类似的不只是这些事件回调函数，还有 $http、$timeout 等。</p>
+            </section>
+            <section>
+                <h5>脏检查的范围</h5>
+                <p>前面说到：angular 会对所有绑定到 View 上的表达式做脏检查。其实，在 angular 实现内部，所有绑定表达式都被转换为 $scope.$watch()。 每个 $watch
+                    记录了上一次表达式的值。有 ng-bind="a" 即有 $scope.$watch('a', callback)，而 $scope.$watch 可不会管被 watch
+                    的表达式是否跟触发脏检查的事件有关。</p>
+            </section>
+            <section>
+                <pre>
+                    <code>
+                         <p ng-bind="content1"></p>
+                         <p ng-bind="content2"></p>
+                         <span ng-click="onClick()">Click Me</span>
+                    </code>
+                </pre>
+                <p>用户点击了 span，angular 执行了一个叫 onClick 的方法。这个 onClick 的方法体对于 angular 来说是黑盒， 它到底做了什么不知道。可能改了
+                    $scope.content1 的值，可能改了 $scope.content2 的值，也可能两个值都改了， 也可能都没改。 那么 angular 到底应该怎样得知 onClick()
+                    这段代码后是否应该刷新 View，应该更新哪个 DOM 元素？ angular 必须去挨个检查这些元素对应绑定表达式的值是否有被改变。这就是脏数据检查的由来。</p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+            <section>
+                <h5>触发脏检查的方式有几种？</h5>
+                <p>
+                    1、controller 初始化<br>
+                    2、几乎所有ng-开头的事件(ng-click,ng-change...)<br>
+                    3、http请求<br>
+                    4、$timeout,$interval<br>
+                    5、手动调用$apply(), $digest()</p>
+            </section>
+            <section>
+                <h5>脏检效率如何？</h5>
+                <p>脏检查效率其实是不高，但是也谈不上有多慢。简单的数字或字符串比较能有多慢呢？十几个表达式的脏检查可以直接忽略不计；上百个也可以接受；
+                    成百上千个就有很大问题了。绑定大量表达式时请注意所绑定的表达式效率。相对于现在的流行的vue和react，ng1的效率就有些低了。</p>
+            </section>
+            <section>
+                <p>表达式（以及表达式所调用的函数）中少写太过复杂的逻辑</p>
+                <p>不要连接太长的 filter（往往 filter 里都会遍历并且生成新数组）</p>
+                <p>不要访问 DOM 元素。</p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>4.解决方案(如何提高脏检查的效率)</h3>
+            </section>
+            <section>
+                <h5>1.使用单次绑定减少绑定表达式数量</h5>
+                <p>单次绑定（One-time binding） 是 Angular 1.3 就引入的一种特殊的表达式，它以 :: 开头，当脏检查发现这种表达式的值不为 undefined 时就认为此表达式已经稳定，
+                    并取消对此表达式的监视。这是一种行之有效的减少绑定表达式数量的方法，与 ng-repeat 连用效果更佳（下文会提到），但过度使用也容易引发 bug。</p>
+            </section>
+            <section>
+                <h5>2.善用 NG-IF 减少绑定表达式的数量</h5>
+                <p>如果你认为 ng-if 就是另一种用于隐藏、显示 DOM 元素的方法你就大错特错了。ng-if 不仅可以减少 DOM 树中元素的数量（而非像 ng-hide 那样仅仅只是加个 display:
+                    none），每一个 ng-if 拥有自己的 scope，ng-if 下面的 $watch 表达式都是注册在 ng-if 自己 scope 中。当 ng-if 变为 false，ng-if 下的
+                    scope 被销毁，注册在这个 scope 里的绑定表达式也就随之销毁了。</p>
+            </section>
+            <section>
+                <h5>举个例子:</h5>
+                <pre>
+                    <code>
+                        <ul>
+                            <li ng-class="{ selected: selectedTab === 1 }">Tab 1 title</li>
+                            <li ng-class="{ selected: selectedTab === 1 }">Tab 2 title</li>
+                            <li ng-class="{ selected: selectedTab === 1 }">Tab 3 title</li>
+                            <li ng-class="{ selected: selectedTab === 1 }">Tab 4 title</li>
+                        </ul>
+                        <div ng-show="selectedTab === 1">[[Tab 1 body...]]</div>
+                        <div ng-show="selectedTab === 2">[[Tab 2 body...]]</div>
+                        <div ng-show="selectedTab === 3">[[Tab 3 body...]]</div>
+                        <div ng-show="selectedTab === 4">[[Tab 4 body...]]</div>
+                    </code>
+
+                </pre>
+                <p>对于这种会反复隐藏、显示的元素，通常人们第一反应都是使用 ng-show 或 ng-hide 简单的用 display: none 把元素设置为不可见。</p>
+            </section>
+            <section>
+                <p>然而入上文所说，肉眼不可见不代表不会跑脏检查。如果将 ng-show 替换为 ng-if 或 ng-switch-when</p>
+                <pre>
+                    <code>
+                        <div ng-if="selectedTab === 1">[[Tab 1 body...]]</div>
+                        <div ng-if="selectedTab === 2">[[Tab 2 body...]]</div>
+                        <div ng-if="selectedTab === 3">[[Tab 3 body...]]</div>
+                        <div ng-if="selectedTab === 4">[[Tab 4 body...]]</div>
+                    </code>
+                </pre>
+                <p>这么做有如下优点:</p>
+                <p>1.DOM 树中的元素个数显著减少至四分之一，降低内存占用</p>
+                <p>2.$watch 表达式也减少至四分之一，提升脏检查循环的速度</p>
+            </section>
+            <section>
+                <pre>
+                    <code>
+                        <div ng-if="selectedTab === 1">[[Tab 1 body...]]</div>
+                        <div ng-if="selectedTab === 2">[[Tab 2 body...]]</div>
+                        <div ng-if="selectedTab === 3">[[Tab 3 body...]]</div>
+                        <div ng-if="selectedTab === 4">[[Tab 4 body...]]</div>
+                    </code>
+                </pre>
+                <p>3.若tab下面有controller，那么仅当这个 tab 被选中时该 controller 才会执行，可以减少各页面的互相干扰</p>
+                <p>4.如果 controller 中调用接口获取数据，那么仅当对应 tab 被选中时才会加载，避免网络拥挤</p>
+            </section>
+            <section>
+                <h5>这么做也有缺点</h5>
+                <p>
+                    1.DOM 重建本身费时间 <br>
+                    2.如果 tab 下有 controller，那么每次该 tab 被选中时 controller 都会被执行 <br>
+                    3.如果在 controller 里面调接口获取数据，那么每次该 tab 被选中时都会重新加载
+                </p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>5.代码实战</h3>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>6.拓展思考</h3>
+            </section>
+            <section>
+                <h5>当脏检查遇上ng-repeat</h5>
+                <p>牵一发而动全身 <br>
+                    不恰当的 ng-repeat 会造成 DOM 树反复重新构造，拖慢浏览器响应速度，造成页面闪烁。除了上面这种比较极端的情况，如果一个列表频繁拉取 Server 端数据自刷新的话也一定要手工添加
+                    track by，因为接口给前端的数据是不可能包含 $$hashKey 这种东西的，于是结果就造成列表频繁的重建。<br>
+                    请给 ng-repeat 手工添加 track by！<br>
+                </p>
+            </section>
+            <section>
+                <h5>解决方案</h5>
+                <p>用track by</p>
+            </section>
+            <section>
+                <h5>track by 与 单次绑定 连用</h5>
+                <p>track by 只是让 angular 复用已有 DOM
+                    元素。数组每个子元素内部绑定表达式的脏检查还是免不了的。然而对于实际应用场景，往往是数组整体改变（例如分页），数组每一项通常却不会单独变化。这时就可以通过使用单次绑定大量减少 $watch
+                    表达式的数量。例如</p>
+                <pre>
+                <code>
+                    <li ng-repeat="item in array track by item.id">
+                    <div>a: <span ng-bind="::item.a"></span></div>
+                    <div>b: <span ng-bind="::item.b"></span></div>
+                    <div>c: <span ng-bind="::item.c"></span></div>
+                    <div>d: <span ng-bind="::item.d"></span></div>
+                    <div>e: <span ng-bind="::item.e"></span></div>
+                </li>
+                </code>
+            </pre>
+                <p>除非 track by 字段改变造成的 DOM 树重建，item.a 等一旦显示在页面上后就不会再被监视。</p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>7.参考文献</h3>
+                <a href="https://www.cnblogs.com/dengyongqing/p/7396696.html">angularjs脏检查机制</a>
+                <a href="https://segmentfault.com/a/1190000010433675">Angular 1 深度解析：脏数据检查与 angular 性能优化</a>
+                <a href="https://www.cnblogs.com/zhoulujun/p/8881414.html">再谈angularJS数据绑定机制及背后原理—angularJS常见问题总结</a>
+            </section>
+        </section>
+
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+
+
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>BY : 陈皓宇|陈星宇</small>
+            </p>
+        </section>
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: './plugin/markdown/marked.js'},
+            {src: './plugin/markdown/markdown.js'},
+            {src: './plugin/notes/notes.js', async: true},
+            {
+                src: './plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+
+        function keydown() {//按键后判断
+            if (document.a.b.value == null || document.a.b.value == "") {
+                alert("请输入字符");
+                return false;
+            }
+            if (document.a.b.value.length > 5) {
+                alert("不能超过5个字符！");
+                return false;
+            }
+        }
+        function test() {
+            if (document.e.f.value == null || document.e.f.value == "") {
+                alert("请输入字符");
+                return false;
+            }
+            if (document.e.f.value.length > 5) {
+                alert("不能超过5个字符！");
+                return false;
+            }
+        }
+        function onBlur() {//失去焦点
+            if (document.c.d.value == null || document.c.d.value == "") {
+                alert("请输入字符");
+                return false;
+            }
+            if (document.c.d.value.length > 5) {
+                alert("不能超过5个字符！");
+                return false;
+            }
+        }
+    </script>
+    <style>
+        .reveal pre code {
+            background-color: #120;
+        }
+
+        .txt-word-2 {
+            margin-left: -122.625px;
+            text-align: center;
+            font-family: sans-serif !important;
+        }
+
+        .txt-word-3 {
+            text-align: left;
+            word-break: break-all;
+            font-size: 16px;
+            font-family: sans-serif !important;
+            text-transform: none !important;
+        }
+
+        .txt {
+            text-transform: none !important;
+        }
+
+        .txt-a {
+            color: #fff !important;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section class="txt">
+                <h1></h1>
+                <h2>小课堂【js-10】</h2>
+                <h4>课题：有哪些常见的验证表单方式，他们各自的优缺点是什么？</h4>
+                <p>分享人：吴胜</p>
+            </section>
+
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <section>
+                    <h3>
+                        1.背景介绍
+                    </h3>
+                </section>
+                <section>
+                    <h5 class="txt-word-3">
+                        &emsp;&emsp;表单验证是javascript中的高级选项之一。<br>
+                        &emsp;&emsp;表单数据一般都通过浏览器端的Javascript
+                        验证。浏览器端的验证速度快，若有不符合要求的输入，响应信息快速的返回给用户。由于验证数据不需要提交给服务器，不会加重服务器的负载。
+                    </h5>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>2.知识剖析</h3>
+                </section>
+                <section>
+                    <h3>什么是表单验证？表单验证的作用</h3>
+                </section>
+                <section>
+                    <h5 class="txt-word-3">
+                        &emsp;&emsp;访问任何一个带注册表单的网站，你都会发现，当你提交没有输入任何信息的表单时，注册页面都会给你提交一个反馈，它告诉你提交了错误的数据，这些信息可能看起来像下面这样的：
+                        <li>
+                            “该字段是必填的”（该字段不能留空）
+                        </li>
+                        <li>
+                            “请输入你的电话号码，它的格式是：xxx-xxxx”（它要求你输入的数据格式为三个数字接一个横杠，然后再接着是四个数字）
+                        </li>
+                        <li>
+                            “请输入一个合法的邮箱地址”（如果你输入的数据不具有“somebody@example.com“的邮箱格式）
+                        </li>
+                        <li>
+                            “你的密码长度应该是8至30位的，并且至少应该包含一个大写字母、一个符号以及一个数字”
+                        </li>
+                    </h5>
+                </section>
+                <section>
+                    <h5 class="txt-word-3">
+                        &emsp;&emsp;这就是表单验证 —— 当你向 Web
+                        应用提交数据时，应用会校验你输入的数据是否是正确的。如果验证通过，则这些数据可能会被保存至数据库中（通常都是这样的）或者执行下一步操作，如果校验未通过，则 Web
+                        应用会提示你有错误的数据，并且一般都会明确的告诉你错误发生在哪里。表单验证可以通过许多不同的方式实现。
+                        </h3>
+                </section>
+                <!-- <section>
+                    <h3>常见的验证表单类型</h3>
+                </section>
+                <section>
+                    <h3>1.手工代码</h3>
+                    <h5 class="txt-word-3">
+                        <br>
+                        &emsp;&emsp;利用if/switch/或者正则表达式/+DOM操作来进行表单验证的制作。<br>
+                        <br>
+                        优点：相比于第三方库，可以减少加载的js文件大小，样式灵活,适用于表单少/格式简单/对性能需求高的网站。
+                        <br>
+                        <br>
+                        缺点：代码量大，耗时多。
+                    </h5>
+                </section>
+                <section>
+                    <h3>第三方插件</h3>
+                    <br>
+                    <h5 class="txt-word-3">&emsp;&emsp;利用js第三方插件来进行网站的表单验证<br>
+                        <br>
+                        优点：全站适用，手工代码量少。<br>
+                        <br>
+                        缺点：有可能加重服务器负担，样式相对固定。
+                    </h5>
+                </section>
+                <section>
+                    <h5 class="txt-word-3">&emsp;&emsp;HTML5内置的校验<br>
+                        <br>
+                        优点：不需要javascript,用自带的html就可以进行验证，而且性能好
+                        缺点：不能自定义验证，也不够灵活。
+                    </h5>
+                </section> -->
+            </section>
+            <section>
+                <section>
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    <h3 class="txt">常见的表单验证方式</h3>
+                    <br>
+                    <h5>
+                        1.输入时进行实时验证(.keydown)<br>
+                        <br>
+                        2.离开(失去)焦点时验证(.onblur)<br>
+                        <br>
+                        3.提交表单时验证
+                    </h5>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>5.代码实战</h3>
+                </section>
+                <section>
+                    <p>1.输入时进行实时验证</p>
+                    <form name="a">
+                        <input type="text" name="b" placeholder="不超过5个字符" onkeydown="keydown()">
+                    </form>
+                </section>
+                <section>
+                    <p>2.离开（失去)焦点时验证</p>
+                    <form name="c">
+                        <input type="text" name="d" placeholder="不超过5个字符" onblur="onBlur()">
+                    </form>
+                </section>
+                <section>
+                    <p>是否填写以及长度限制</p>
+                    <form name="e" onsubmit="return test()">
+                        <!--onsubmit表示表单提交时执行一段js代码，当该事件触发的函数中返回false时，表单就不会被提交，不能掉了return，否则表单永远会提交。-->
+                        <input type="text" name="f" placeholder="不超过5个字符">
+                        <br>
+                        <input type="submit" name="Submit" value="提交">
+                        <br>
+                    </form>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>6.拓展思考</h3>
+                </section>
+                <section>
+                    <h3>
+                        这些验证的优缺点各是什么？
+                    </h3>
+                </section>
+                <section>
+                    <h5 class="txt-word-3">
+                        1.输入时进行实时验证(.keydown)<br>
+                        <br>
+                        优点: 只要有输入就会开始进行验证，随着输入的实时给予用户验证反馈，反应速度快。<br>
+                        <br>
+                        ​缺点：影响一些性能，比如正在输入验证码或者检测是否重名等，频繁出现的验证错误影响用户体验。<br>
+                        <br>
+                        适用于检测数据类型，比如注册页面的密码项
+                    </h5>
+                </section>
+                <section>
+                    <h5 class="txt-word-3">
+                        2.失去焦点验证（.onBlur)<br>
+                        <br>
+                        优点: 用户体验好比第一种要好一点<br>
+                        <br>
+                        ​缺点：必须输入框失去焦点(即鼠标点击别处，或tab键）后才能知道结果<br>
+                        <br>
+                        常见于输入验证码，注册等功能
+                    </h5>
+                </section>
+                <section>
+                    <h5 class="txt-word-3">
+                        3.提交时验证<br>
+                        <br>
+                        优点: 性能上更好，可以降低服务器压力<br>
+                        <br>
+                        缺点：如果输入项过多的话，用户体验会很差<br>
+                        <br>
+                        适合登陆账号时检测输入内容是否合法
+                    </h5>
+                </section>
+            </section>
+            <section>
+                <h3>7.参考文献</h3>
+                <h4><a class="txt-a" href="https://blog.csdn.net/luyu3283/article/details/82974678">有哪些常见的验证表单方式,他们各自的优缺点是什么？</a></h4>
+                <h4><a class="txt-a" href="https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Forms/Data_form_validation">表单数据校验
+                    </a></h4>
+            </section>
+            <section>
+                <h3>8.更多讨论</h3>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    <small>BY : 吴胜</small>
+                </p>
+            </section>
+        </div>
+    </div>
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: './plugin/markdown/marked.js'
+                },
+                {
+                    src: './plugin/markdown/markdown.js'
+                },
+                {
+                    src: './plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: './plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
