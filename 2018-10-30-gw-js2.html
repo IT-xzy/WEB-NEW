@@ -1,0 +1,167 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>葡萄藤PPT</title>
+
+	<link rel="stylesheet" href="./css/reveal/reveal.css">
+
+	<!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+	<link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+	<!-- syntax highlighting 代码高亮主题 -->
+	<link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+	<!-- 打印和PDF输出样式 -->
+	<script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+	
+</head>
+
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+	<area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+</map>
+<div class="reveal">
+	<div class="slides">
+		<section>
+			<h2>js-2</h2>
+			<h4>洗牌算法具体指的是什么</h4>
+			<p>分享人：郭巍</p>
+		</section>
+
+		<section>
+			<p>目录</p>
+			<p>1.背景介绍</p>
+			<p>2.知识剖析</p>
+			<p>3.常见问题</p>
+			<p>4.解决方案</p>
+			<p>5.编码实战</p>
+			<p>6.扩展思考</p>
+			<p>7.参考文献</p>
+			<p>8.更多讨论</p>
+		</section>
+
+		<section>
+			<section>
+				<h3>1.背景介绍</h3>
+				<p style="font-size: 26px">费舍尔耶茨洗牌<br/>
+					</p>
+					<p style="font-size: 22px">其实它的思想非常的简单，反复从数组中抽出一个随机元素并将其插入新数组，只要以相同的概率从数组中挑选每个剩余的元素，当完成时，将获得完全无偏的随机数组 </p>
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h3>2.知识剖析</h3>
+				<p>双数组</p>
+				<p>按照洗牌的思路，我们在原数组中随机抽取一个元素插入新的数组，然后移除原数组中的元素</p>
+				<p>function shuffle(a) { <br/>
+						var b = [ ]; <br>
+					  <br>
+						while (a.length) {<br>
+						  var index = ~~(Math.random() * a.length);<br>
+						  b.push(a[index]);<br>
+						  a.splice(index, 1);<br>
+						}br
+					  <br>
+						return b;<br>
+					  } <br>
+					  这个解法的正确性应该是没有问题的。我们假设数组的元素为 0 - 9，对其乱序 N 次，那么每个位置上的结果加起来的平均值理论上应该接近 (0 + 9) / 2 = 4.5，且 N 越大，越接近 4.5。
+					</p>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h3>3.常见问题</h3>
+				<p>性能问题</p>
+				<p>上面的方法中用了 splice，如果把 splice 的复杂度看成是 O(n)，那么整个程序的复杂度是 O(n^2)。</p>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h3>4.解决方案</h3>
+				<p>数组内交换
+					<br>
+					洗牌元素的数量加上剩余元素的数量总是等于数组全部元素。这意味着我们可以在没有任何额外空间的情况下进行整个随机洗牌！我们使用数组的后面来存储随机抽取出的元素，并使用数组的前面来存储剩余的元素。只要我们在抽取式时保持相同的概率，我们可以不关心剩余元素的顺序！
+				</p>
+			</section>
+		</section>
+		 
+		<section>
+			<section>
+				<h3>5.代码实战</h3>
+				<p>从数组中抽出一个随机元素并将其保存在一个变量中，然后把数组最后一个元素赋值给随机抽取到的元素，之后把之前保存了随机元素的变量赋值给最后一个元素，完成两个元素的交换后，把最后一个元素排除在外继续进行交换，直到进行到数组的第一个元素。</p>
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h3>6.拓展思考</h3>
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h3>7.参考文献</h3>
+			</section>
+		</section>
+
+		<section>
+			<h3>8.更多讨论</h3>
+		</section>
+
+		<section>
+			<h4>鸣谢</h4>
+			<p>感谢大家观看</p>
+			<p>
+				<small>BY : 郭巍</small>
+			</p>
+		</section>
+	</div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: './plugin/markdown/marked.js' },
+            { src: './plugin/markdown/markdown.js' },
+            { src: './plugin/notes/notes.js', async: true },
+            { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>
