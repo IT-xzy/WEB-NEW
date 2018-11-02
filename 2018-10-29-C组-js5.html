@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>葡萄藤PPT</title>
+
+	<link rel="stylesheet" href="./css/reveal/reveal.css">
+
+	<!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+	<link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+	<!-- syntax highlighting 代码高亮主题 -->
+	<link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+	<!-- 打印和PDF输出样式 -->
+	<script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+	<area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+</map>
+<div class="reveal">
+	<div class="slides">
+		<section>
+			<h3>【JS-5】network中的请求信息，headers中的每一项分别是什么意义?</h3>
+			<h4>小课堂【深圳-WEB-C组】</h4>
+			<p>分享人：韩鹏</p>
+		</section>
+
+		<section>
+			<p>目录</p>
+			<p>1.背景介绍</p>
+			<p>2.知识剖析</p>
+			<p>3.常见问题</p>
+			<p>4.解决方案</p>
+			<p>5.编码实战</p>
+			<p>6.扩展思考</p>
+			<p>7.参考文献</p>
+			<p>8.更多讨论</p>
+		</section>
+
+		<section>
+			<section>
+				<h3>1.背景介绍</h3>
+			</section>
+			<section>
+                <p>作为一个Web开发人员，日常中与我们开发相关的，就是Chrome的开发者工具。Network标签页对于分析网站请求的网络情况、查看某一请求的请求头和响应头还有响应内容很有用，特别是在查看Ajax类请求的时候，非常有帮助。今天就是要简要说说Chrome的开发者工具中Network中header部分。</p>
+        	</section>
+		</section>
+
+		<section>
+			<section>
+				<h3>2.知识剖析</h3>
+			</section>
+			<section style="font-size: 28px;">
+				<h3>Network面板-请求表</h3>
+				<p>Name：资源名称，点击名称可以查看资源的详情情况，包括Headers、Preview、Response、Cookies、Timing。<br>
+				Status：HTTP状态码。<br>
+				Type：请求的资源MIME类型。<br>
+				Initiator：标记请求是由哪个对象或进程发起的（请求源）。</p>
+				<p style="font-size: 24px;">&emsp;&emsp;Parser： 请求由Chrome的HTML解析器时发起的。<br>
+				&emsp;&emsp;Redirect：请求是由HTTP页面重定向发起的。<br>
+				&emsp;&emsp;Script：请求是由Script脚本发起的。<br>
+				&emsp;&emsp;Other：请求是由其他进程发起的，比如用户点击一个链接跳转到另一个页面或者在地址栏输入URL地址。</p>
+				<p>Size：从服务器下载的文件和请求的资源大小。如果是从缓存中取得的资源则该列会显示(from cache)<br>
+				Time：请求或下载的时间，从发起Request到获取到Response所用的总时间。<br>
+				Timeline：显示所有网络请求的可视化瀑布流(时间状态轴)，点击时间轴，可以查看该请求的详细信息，点击列头则可以根据指定的字段可以排序。</p>
+			</section>
+			<section>
+				<p>通过点击某个资源的Name可以查看该资源的详细信息，根据选择的资源类型显示的信息也不太一样，可能包括如下Tab信息：</p>
+				<p>Headers：该资源的HTTP头信息。<br>
+				Preview：根据你所选择的资源类型（JSON、图片、文本）显示相应的预览。<br>
+				Response：显示HTTP的Response信息。<br>
+				Cookies：显示资源HTTP的Request和Response过程中的Cookies信息。<br>
+				Timing：显示资源在整个请求生命周期过程中各部分花费的时间。</p>
+			</section>
+			<section>
+				<h3>查看资源HTTP头信息</h3>
+                <p>在Headers标签里面可以看到HTTP Request URL、HTTP Method、Status Code、Remote Address等基本信息和详细的Response Headers
+、Request Headers以及Query String Parameters或者Form Data等信息。</p>
+            </section>
+            <section>
+            	<p><big>General部分:</big></p>
+				<p>Request URL:资源的请求url<br>
+				Request Method:HTTP方法<br>
+				Status Code:响应状态码<br>
+				200（状态码） OK（原因短语）<br>
+				301 - 资源（网页等）被永久转移到其它URL<br>
+				404 - 请求的资源（网页等）不存在<br>
+				500 - 内部服务器错误</p>
+            </section>
+            <section>
+            	<p><big>Response Headers:</big></p>
+				<p>Content-Encoding:gzip ——压缩编码类型<br>
+				Content-Type:text/html ——服务端发送的类型及采用的编码方式<br>
+				Date:Tue, 14 Feb 2017 03:38:28 GMT ——客户端请求服务端的时间<br>
+				Last-Modified:Fri, 10 Feb 2017 09:46:23 GMT ——服务端对该资源最后修改的时间，GMT是格林尼治标准时间<br>
+				Server:nginx/1.2.4 ——服务端的Web服务端名<br>
+				Transfer-Encoding:chunked ——分块传递数据到客户端</p>
+            </section>
+            <section>
+            	<p><big>Request Headers:</big></p>
+				<p>Accept:text/html ——客户端能接收的资源类型<br>
+				Accept-Encoding:gzip, deflate ——客户端能接收的压缩数据的类型<br>
+				Accept-Language:en-US,en;q=0.8 ——客户端接收的语言类型<br>
+				Cache-Control:no-cache ——服务端禁止客户端缓存页面数据<br>
+				Connection:keep-alive ——维护客户端和服务端的连接关系<br>
+				Cookie: ——客户端暂存服务端的信息<br>
+				Host:www.jnshu.com ——连接的目标主机和端口号<br>
+				Pragma:no-cache ——服务端禁止客户端缓存页面数据<br>
+				Referer:http://www.jnshu.com/daily/15052 ——来于哪里<br>
+				User-Agent: ——客户端版本号的名字</p>
+            </section>
+		</section>
+		<section>
+			<section>
+				<h3>3.常见问题</h3>	
+			</section>
+			<section>
+				<h4>使用post发送请求时如何设置content-type的值？</h4>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h3>4.解决方案</h3>
+			</section>
+			<section>
+				<p>常用的Content-Type值：</p>
+				<p>1. application/x-www-form-urlencoded 最常见的POST提交格式，使用这个编码格式post的数据会以键值对的方式提交</p>
+				<p>2. multipart/form-data 通常上传图片等文件会使用这种编码格式提交</p>
+				<p>3. application/json 提交JSON格式的数据</p>
+			</section>
+			<section>
+				<p>设置请求头的方法：</p>
+				<p>1、在http服务的在服务端发送请求时，也就是调用http()方法时，在config对象中设置请求头信息。事例如下：</p>
+				<pre>
+
+	$http.post( url , data , {
+		headers : {'My-Header' : 'value';}
+	}).then(function( ){
+		……
+	});
+				</pre>
+				<p>这种方法的好处就是针对不同路径的请求，可以个性化配置请求头部，缺点就是，不同路径请求都需要单独配置。</p>
+			</section>
+			<section>
+				<p>2、第二种设置请求头信息的方式就是在$httpProvider.defaults.headers属性上直接配置。事例如下：</p>
+				<pre>
+					
+	angular.module('app', [])
+	.config(function($httpProvider) {
+		$httpProvider.defaults.headers.common = { 'My-Header' : 'value' }
+	})
+				</pre>
+				<p>$httpProvider.defaults.headers有不同的属性，如common、get、post、put等。因此可以在不同的http请求上面添加不同的头信息，common是指所有的请求方式。</p>
+				<p>这种方式添加请求头信息的优势就是可以给不同请求方式添加相同的请求头信息，缺点就是不能够为某些请求path添加个性化头信息。</p>
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h3>5.代码实战</h3>
+			</section>
+		</section>
+			
+		<section>
+			<section>
+				<h3>6.拓展思考</h3>
+			</section>
+			<section>
+				<h3>HTTP的缺点</h3>
+			</section>
+			<section>
+				<p>通讯使用明文（不加密），内容可能会被监听；<br>
+				不验证通讯方的身份，因此有可能遭遇伪装；<br>
+				无法证明白报文的完整性，所以有可能已被篡改；</p>
+				<p>解决方法：使用HTTPS</p>
+				<p>HTTP + 加密 + 认证 + 完整性保护 = HTTPS</p>
+			</section>
+		</section>
+ 
+		<section>
+			<section>
+				<h3>7.参考文献</h3>
+			</section>
+			<section>
+				<p>参考一：<a href="https://blog.csdn.net/ahuangtaoa/article/details/8666407">HTTP请求头和响应头含义</a></p>
+				<p>参考二：<a href="https://blog.csdn.net/klarclm/article/details/7711021">content-type说明</a></p>
+				<p>参考三：<a href="http://www.cnblogs.com/LibraThinker/p/5981346.html">Network面板</a></p>
+				<p>参考四：<a href="https://www.cnblogs.com/wbxjiayou/p/6108552.html">$http-设置http请求头</a></p>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h3>8.更多讨论</h3>
+			</section>
+		</section>
+		<section>
+			<h4>鸣谢</h4>
+			<p>感谢大家观看</p>
+			<p>
+				BY : 韩鹏
+			</p>
+		</section>
+	</div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: './plugin/markdown/marked.js' },
+            { src: './plugin/markdown/markdown.js' },
+            { src: './plugin/notes/notes.js', async: true },
+            { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>

@@ -39,7 +39,7 @@
     <div class="slides"
          style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
         <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
-            <h2>【js-TASK8】</h2>
+            <h2>【js-TASK9】</h2>
             <h3></h3>
             <p>分享人：张学良</p>
         </section>
@@ -61,26 +61,28 @@
             <p style="text-align: justify">
                 <!--我们在设计网页的时候，盒子居中是经会常用到的。居中可以分为水平居中和垂直居中。-->
                 <!--水平居中是比较容易，通过设置元素的margin: 0 auto就可以实现，但是垂直居中相对来说是比较复杂一些的。-->
-                1、面向对象的一些属性和方法？<br>
-                hasOwnPropety():看是不是对象自身下面的属性<br>
-                constructor:查看对象的构造函数<br>
-                每个原型都会自动添加constructor属性<br>
-                for in的时候有些属性是找不到的<br>
-                instanceof运算符对象在原型链上是否有关系<br>
-                tostring:object上的方法
+                1、Angularjs双向绑定后，发生了什么事情？是什么可以让view层和Controller层进行绑定的？<br>
+                单向数据绑定：指的是我们先把模板写好，然后把模板和数据（数据可能来自后台）整合到一起形成HTML代码，然后把这段HTML代码插入到文档流里面,但是单向绑定有个缺点，就是如果有新的数据来了，那就必须把之前的HTML代码去掉，再重新把新的数据和模板一起整合后插入到文档流中。<br>
+                双向绑定：数据模型和视图之间的双向绑定。意思就是当用户在视图上的修改会自动同步到数据中去，同样的，如果数据中的值发生了变化，也会立刻同步到视图中去。<br>
+                AngularJS模板的工作原理不同。不同之处在于：第一，模板（附加了自定义属性等标记的未经编译的HTML）是由浏览器编译的；<br>
             </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+        第二，编译最后产生的是一个动态的视图。这里动态指的是视图的任何变化都会直接反应到模型，反之亦然。这使得模型总是应用状态的唯一标识，这大大简化了开发人员的编程工作。你可以简单地认为视图只是模型的投影<br>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>2.知识剖析</h3>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <p style="letter-spacing: 5px">面向对象上hasOwnPropety()、constructor、constructor、tostring这些属性和方法怎么使用</p>
+            <p style="letter-spacing: 5px">
+                angularjs双向绑定后，发生了什么事情？
+                什么让view层和Controller层进行绑定的？</p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>3.常见问题</h3>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <p>面向对象引用类型的判断？</p>
+            <p>digest和apply有何区别？干嘛不直接使用digest?</p>
         </section>
         <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
             <h3>4.解决方案</h3>
@@ -88,8 +90,8 @@
         <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
             <section style="top: 330px; display: none;">
                 <p style="text-align: center">
-                    面向对象constructor查看是不是对象自身下的属性<br>
-                    instanceof对象与构造函数是否在一条原型链上<br>
+                    1.apply可以带参数，它可以接受一个函数，然后在应用数据之后，调用这个函数。
+                    2.当调用digest的时候，只触发当前作用域和它的子作用域上的监控，但是当调用apply的时候，会触发作用域树上的所有监控。<br>
                 </p>
                 <!--<p>二 margin：auto实现CSS垂直居中</p>-->
                 <!--<p>三 display:flex实现CSS垂直居中</p>-->
