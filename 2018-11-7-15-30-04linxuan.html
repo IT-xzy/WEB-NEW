@@ -1,0 +1,423 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h4>如何使用bootstrap栅格系统？</h4>
+                <h4>分享人：林璇</h4>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <!-- <h4 style="font-family: 'Times New Roman'; text-transform:none;">什么是Ajax？</h4> -->
+                <section>
+                    <p style="text-align: left;">
+                        什么是bootstrap
+                        <br> Bootstrap，来自 Twitter公司开发的一个HTML和CSS的一个技术框架
+                        <br> 通过了这些的框架，可以创造出很多的WEB的好看的界面
+                        <br> 
+                        <br>
+                        <br>
+                        <br>
+                    </p>
+                </section>
+                <section>
+                    <p style="text-align: left;">
+                        Bootstrap,分为哪些？
+                        <br> Bootstrap分为3和4，他们的区别是在于
+                        <br> bootstrap3和bootstrap4最大的区别就是4用的是flex布局，3用的是float浮动
+                        <br> bootstrap4的栅格类特小(col-)，bootstrap3的栅格类特小(col-xs）
+                        <br>bootstrap4新增加的栅格特大(col-xl-)，
+                        <br>bootstrap4用offset来移动bootstrap3用push和pull向左和向右移动
+                    </p>
+                </section>
+                <section>
+                    <p style="text-align: left;">
+                        什么是栅格系统（网格系统）
+                        <br>网页设计中的网格用于组织内容，让网站易于浏览，并降低用户端的负载。
+                        <br>Bootstrap 包含了一个响应式的、移动设备优先的、不固定的网格系统，
+                        <br>可以随着设备或视口大小的增加而适当地扩展到 12 列。它包含了用于简单的布局选项的预定义类
+                    </p>
+                </section>
+                <section>
+                    <p style="text-align: left;">
+                        Bootstrap4 网格系统规则:
+                        <br>网格每一行需要放在设置了 .container (固定宽度) 
+                        <br> .container-fluid (全屏宽度) 类的容器中，
+                        <br>或这样就可以自动设置一些外边距与内边距。
+                        <br>内容需要放置在列中，并且只有列可以是行的直接子节点。
+                        <br>预定义的类如 .row 和 .col-sm-4 可用于快速制作网格布局。
+                    </p>
+                </section>
+            </section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+
+            <section>
+                <section>
+                    <p style="text-align: left;">
+                        Bootstrap4网格系统有以下 5 个类:
+                        <br> 1&gt;. 
+                        <br> .col- 针对所有设备
+                        <br>超小设备小于576px
+                        <br>None (auto)
+                        <br>列数量和	12
+                        <br>30px （一个列的每边分别 15px）
+                        <br>可嵌套	Yes
+                        <br>列排序	Yes
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        .col-sm-
+                        <br>大于等于576px
+                        <br>容器最大宽度540px
+                        <br>列数量和	12
+                        <br>30px （一个列的每边分别 15px）
+                        <br>可嵌套	Yes
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        .col-md-
+                        <br>大于等于768px
+                        <br>容器最大宽度720px
+                        <br>列数量和	12
+                        <br>30px （一个列的每边分别 15px）
+                        <br>可嵌套	Yes
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        .col-lg-
+                        <br>大于等于992px
+                        <br>容器最大宽度960px
+                        <br>列数量和	12
+                        <br>30px （一个列的每边分别 15px）
+                        <br>可嵌套	Yes
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        .col-xl-
+                        <br>大于等于1200px
+                        <br>容器最大宽度是1140px
+                        <br>列数量和	12
+                        <br>30px （一个列的每边分别 15px）
+                        <br>可嵌套	Yes
+                    </p>
+                </section>
+            </section>
+            <section>
+                <h3>3.常见问题</h3>
+                栅格系统其他的布局方法是什么？
+                <br>
+            </section>
+
+            <section>
+                <h3>4.解决方案</h3>
+                <p>任务八和九的最下面的布局方案，有使用横移的，也有直接使用了分成三列来布局的</p>
+            </section>
+            <section class="" style="top: 275px; display: none;" aria-hidden="true">
+                <h6>
+                    <a href="https://ptteng.github.io/WEB/demo/angular%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3%E6%98%AF%E4%BB%80%E4%B9%88/demo2.html"
+                        target="_blank">demo</a>
+                </h6>
+            </section>
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+
+
+            <section>
+                <h3>6.扩展思考</h3>
+            </section>
+            <section>
+                <section class="past" style="top: 278.5px; display: none;" hidden="" aria-hidden="true">
+                    <h5></h5>
+                </section>
+                <section class="past" style="top: 0px; display: none;" hidden="" aria-hidden="true">
+                    <p style="text-align: left;">
+                        在使用Bootstrap4的时候遇到浮动的问题要怎么办
+                        <br>Bootstrap4自带了清楚浮动的效果
+                        <span ng-bind="goods.goodsID"></span>
+                        <!-- <br> 6.
+                        <span ng-bind="goods.goodsPrice*goods.count"></span> 总价就是单价乘以数量
+                        <br> 7.
+                        <span ng-bind="goods.goodsPrice*goods.count| currency"></span> 单价和总价格式化成美元形式。 -->
+                        <br>
+                        <br>
+                        <br>
+                    </p>
+                </section>
+            </section>
+
+            <section>
+                <h3>7.参考文献</h3>
+            </section>
+            <section style="text-align:left">
+                <h6>
+                    <a>博客</a>
+                </h6>
+                <h6>
+                    <a>b站视频</a>
+                </h6>
+
+            </section>
+            <section>
+                <h3>8.更多讨论</h3>
+
+            </section>
+            <section>
+                <p> 1.container,row,col有什么关系？他们的工作原理是什么？
+                    <br>
+                </p>
+                <p>
+                    2.css 阶段能做组件化吗？
+                </p>
+                <p>
+                    3.CSS阶段不做组件化，那不叫组件化，叫什么呢？
+                </p>
+            </section>
+            <section style="text-align:left">
+                <p>
+                    1.IE7开始兼容，IE6不兼容。
+                </p>
+                <p>
+                    2.不能，组件化是HTML、css、JavaScript三方共同作用
+                </p>
+                <p>
+                    3.目前只能叫做样式库
+                </p>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    By
+                    <small style="vertical-align: middle">林璇</small>
+                </p>
+
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+        //    原始类型对象直接赋值不会相互影响
+        //    var a = 1;
+        //
+        //    var b = a;
+        //    b = 10;
+        //    console.log(a); // 1
+        ////
+        //    var a = 'hello';
+        //    var b = a;
+        //    b = 'world';
+        //    console.log(a); // hello
+        //
+        //    var a = true;
+        //    var b = a;
+        //    b = false;
+        //    console.log(a);
+
+        //数组浅复制
+        //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+        //    ];
+        //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+        //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+        //    console.log(a)//那么现在打印a 是什么结果呢
+        //
+        //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+        //    var arrtoo = arr.slice(1);
+        //    arrtoo[2] = "set Map";
+        //    console.log(arr);//One,Two,Three
+        //    console.log(arrtoo);//One,set Map,Three
+
+        //
+        //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+        //    var arrtooo = arr1.concat(111111);
+        //    arrtooo[1] = "set Map To";
+        //    console.log(arr1);//One,Two,Three
+        //    console.log(arrtooo);//One,set Map To,Three
+
+        //
+        //    var b=[1,2,3,4,5];   //concat的链接
+        //    var c=[6,7,8,9];
+        //    var d =[4,4,22]
+        //    console.log(b.concat(c,d))
+
+        var a = {
+            name: 'yy',
+            age: 26
+        }; //对象的浅拷贝哦
+        var b = new Object();
+        b.name = a.name;
+        b.age = a.age;
+        b.name = 'xx';
+        console.log(a); //Object { name="yy", age=26}
+        console.log(b); //Object { name="xx", age=26}
+
+        var d = { //对象的浅拷贝哦 第一种
+            name: 'd',
+            oc: {
+                age: 32
+            },
+            oad: {
+                adds: {
+                    bb: 12
+                }
+            }
+        };
+        var deepCopy = function (source) {
+            var result = {};
+            for (var key in source) {
+                result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+            }
+            return result
+        };
+
+        var c = deepCopy(d);
+        c.name = 'c';
+        c.oc = {
+            age: 49
+        };
+        console.log(c);
+        console.log(d);
+
+
+
+
+        //    var person = {    //第二种深拷贝
+        //        name: 'aa',
+        //        friends: ['da', 'dsa', 'gf']
+        //    };
+        //
+        //    var aPerson = Object.create(person, {
+        ////        name: {
+        ////            value: "gee"
+        ////        }
+        //    });
+        //
+        //    console.log(person.name);
+        //    console.log(aPerson.friends)
+
+        var Chinese = {
+            nation: '中国'
+
+        }
+        var Doctor = {
+            career: '医生'
+        }
+
+        function extendCopy(p) {
+            var c = {};
+            for (var i in p) {
+                c[i] = p[i];
+            }
+            c.uber = p;
+            return c;
+        }
+        var Doctor = extendCopy(Chinese);
+        Doctor.career = '医生';
+        console.log(Doctor); // 中国
+        Chinese.birthPlaces = ['北京', '上海', '香港'];
+        var Doctor = extendCopy(Chinese);
+        Doctor.birthPlaces.push('厦门');
+    </script>
+</body>
+
+</html>
