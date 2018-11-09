@@ -1,0 +1,320 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .left {
+            text-align: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+    </map>
+    <div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+        <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+            <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+                <h2>【JS-task11】</h2>
+                <h3>ES6新特性有哪些
+                </h3>
+                <p>分享人：张智</p>
+            </section>
+            <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <p class="left">
+
+                    ECMAScript 6(ES6) 目前基本成为业界标准，它的普及速度比 ES5 要快很多，
+                    主要原因是现代浏览器对 ES6 的支持相当迅速，尤其是 Chrome 和 Firefox 浏览器，已经支持 ES6 中绝大多数的特性。
+                    下面逐一为大家详解常用的ES6新特性：
+
+                </p>
+            </section>
+
+            <!-- <section>
+            <h4>函数表达式</h4>
+            <p class="left">函数表达式将函数定义为表达式语句（通常是变量赋值）的一部分。通过函数表达式定
+                义的函数可以是命名的，也可以是匿名的。函数表达式不能以“function”开头。函数名在作用域外
+                是不可获取的。</p>
+        </section> -->
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <p class="left">
+                    <h3>const和let</h3>
+                    ES6推荐使用let声明局部变量，相比之前的var（无论声明在何处，都会被视为声明在函数的最顶部） let和var声明的区别：
+                    var x = '全局变量';{ let x = '局部变量'; console.log(x); // 局部变量}console.log(x); // 全局变量
+                    let表示声明变量，而const表示声明常量，两者都为块级作用域；const 声明的变量都会被认为是常量，意思就是它的值被设置完成后就不能再修改了：
+                    const a = 1a = 0 //报错
+                    如果const的是一个对象，对象所包含的值是可以被修改的。抽象一点儿说，就是对象所指向的地址没有变就行：
+                    const student = { name: 'cc' }student.name = 'yy';// 不报错student = { name: 'yy' };// 报错
+                    有几个点需要注意：
+      
+                </p>
+            </section>
+            <section>
+                <p class="left">
+            
+                    let 关键词声明的变量不具备变量提升（hoisting）特性
+                    let 和 const 声明只在最靠近的一个块中（花括号内）有效
+                    当使用常量 const 声明时，请使用大写变量，如：CAPITAL_CASING
+                    const 在声明时必须被赋值
+                </p>
+            </section>
+            <section>
+
+                <p class="left">
+                    <h3>模板字符串</h3>
+                    在ES6之前，我们往往这么处理模板字符串： 通过“”和“+”来构建模板
+                    $("body").html("This demonstrates the output of HTML content to the page, including student's" +
+                    name + ", " + seatNumber + ", " + sex + " and so on.");
+                    而对ES6来说
+                    基本的字符串格式化。将表达式嵌入字符串中进行拼接。用${}来界定；
+                    ES6反引号(``)直接搞定；
+                    $("body").html(`This demonstrates the output of HTML content to the page, including student's
+                    ${name}, ${seatNumber}, ${sex} and so on.`);
+                </p>
+            </section>
+            <section>
+                <h4>箭头函数</h4>
+                <p class="left">
+                    ES6 中，箭头函数就是函数的一种简写形式，使用括号包裹参数，跟随一个 =>，紧接着是函数体；
+                    箭头函数最直观的三个特点。
+                    不需要 function 关键字来创建函数
+                    省略 return 关键字
+                    继承当前上下文的 this 关键字
+                    // ES5var add = function (a, b) { return a + b;};// 使用箭头函数var add = (a, b) => a + b;//
+                    ES5[1,2,3].map((function(x){ return x + 1;}).bind(this)); // 使用箭头函数[1,2,3].map(x => x + 1);
+                    细节：当你的函数有且仅有一个参数的时候，是可以省略掉括号的。当你函数返回有且仅有一个表达式的时候可以省略{} 和 return；
+                </p>
+            </section>
+
+            <section>
+                <h4>Spread / Rest 操作符</h4>
+                <p class="left">
+                    Spread / Rest 操作符指的是 ...，具体是 Spread 还是 Rest 需要看上下文语境。
+                    当被用于迭代器中时，它是一个 Spread 操作符：
+                    function foo(x,y,z) { console.log(x,y,z);} let arr = [1,2,3];foo(...arr); // 1 2 3
+                    当被用于函数传参时，是一个 Rest 操作符：当被用于函数传参时，是一个 Rest 操作符：
+                    function foo(...args) { console.log(args);}foo( 1, 2, 3, 4, 5); // [1, 2, 3, 4, 5]
+                </p>
+            </section>
+            <section>
+                <h4>对象和数组解构
+                </h4>
+                <p class="left">
+                    // 对象const student = { name: 'Sam', age: 22, sex: '男'}// 数组// const student = ['Sam', 22, '男'];//
+                    ES5；const name = student.name;const age = student.age;const sex = student.sex;console.log(name + '
+                    --- ' + age + ' --- ' + sex);// ES6const { name, age, sex } = student;console.log(name + ' --- ' +
+                    age + ' --- ' + sex);
+                </p>
+            </section>
+            <section>
+                <h4>对象超类</h4>
+                <p class="left">
+                    ES6 允许在对象中使用 super 方法：
+                    var parent = { foo() { console.log("Hello from the Parent"); }} var child = { foo() {
+                    super.foo(); console.log("Hello from the Child"); }} Object.setPrototypeOf(child,
+                    parent);child.foo(); // Hello from the Parent // Hello from the Child
+                </p>
+            </section>
+            <section>
+                <h4>Promise</h4>
+                <p class="left">
+                    setTimeout(function(){
+                    console.log('Yay!')
+                    }, 1000)
+                    我们可以用ES6中的Promise重写：
+                    var wait1000 = new Promise(function(resolve, reject) {
+                    setTimeout(resolve, 1000)
+                    }).then(function() {
+                    console.log('Yay!')
+                    })
+                    或者用ES6的箭头函数：var wait1000 = new Promise((resolve, reject)=> {
+                    setTimeout(resolve, 1000)
+                    }).then(()=> {
+                    console.log('Yay!')
+                    })
+                    到现在为止，我们只是单纯增加了代码的行数，还明显没有带来任何好处，你说的对。但是如果我们有更多复杂的逻辑内嵌在setTimeout()中的回调时好处就来了：
+
+                </p>
+            </section>
+            <section>
+                <h4>Promise</h4>
+                <p class="left">
+                    setTimeout(function(){
+                    console.log('Yay!')
+                    setTimeout(function(){
+                    console.log('Wheeyee!')
+                    }, 1000)
+                    }, 1000)
+                    ES6中的Promise重写：
+                    var wait1000 = ()=> new Promise((resolve, reject)=> {setTimeout(resolve, 1000)})
+                    wait1000()
+                    .then(function() {
+                    console.log('Yay!')
+                    return wait1000()
+                    })
+                    .then(function() {
+                    console.log('Wheeyee!')
+                    });
+                    还是无法相信Promise比普通回调要好？我也不信。我想一旦知道了回调这个方法它就会在你脑中萦绕，额外的复杂的Promise也没有必要存在了。
+                </p>
+            </section>
+            <section>
+                <!-- <p> 函数声明</p> -->
+                <!-- <img src="img/2018-07-25-C组-js2/function.png" style="min-width: 30%"/> -->
+                <!-- <p>函数表达式</p> -->
+                <!-- <img src="img/2018-07-25-C组-js2/var.png" style="min-width: 30%"/> -->
+                <section>
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    <p> 解构赋值还有什么用法？
+                    </p>
+                </section>
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+                <!-- <section>
+                    <img src="img/2018-07-25-C组-js2/test.png" style="min-width: 40%" />
+                    </br>
+                    <img src="img/2018-07-25-C组-js2/alert1.png" style="min-width: 30%" />
+                    <img src="img/2018-07-25-C组-js2/alert2.png" style="min-width: 30%" />
+                </section> -->
+                <section class="left">
+                    <p>
+                        let {log,warn} = console;
+                        log('hello');
+                        console.log('hello')
+                    </p>
+                </section>
+                <section>
+                    <h3>5.编码实战</h3>
+                </section>
+                <section>
+                    <h3>6.扩展思考</h3>
+                </section>
+                <section>
+                </section>
+                <section>
+                    <h3>7.参考文献</h3>
+                    <a href="https://baijiahao.baidu.com/s?id=1603035644086512524&wfr=spider&for=pc" target="_blank" rel="noopener noreferrer">ES6特性</a>
+
+                </section>
+                <section class="left">
+                    <p>参考一： ES6中常用的10个新特性讲解
+                    </p>
+                    <p>参考二： ES6类的概念
+                    </p>
+                    <!-- <p>参考二：
+                        <a href="http://www.nowamagic.net/librarys/veda/detail/1630" target="_blank">JavaScript探秘：函数声明与函数表达式</a>
+                    </p>
+                    <p>参考三：
+                        <a href="https://github.com/Wscats/Good-text-Share/issues/73" target="_blank">关于Javascript的函数声明和函数表达式</a>
+                    </p> -->
+                </section>
+                <section>
+                    <h3>8.更多讨论</h3>
+                </section>
+                <section>
+                    <p>感谢大家观看</p>
+                    <p>
+                        <small>BY : 张智</small>
+                    </p>
+                </section>
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
+Contact GitHub API Training Shop Blog About © 2016 GitHub, Inc. Terms Privacy Security Status He

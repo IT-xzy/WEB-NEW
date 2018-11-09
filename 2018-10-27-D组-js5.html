@@ -1,0 +1,337 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides"
+         style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h2>【js-05】</h2>
+            <h3>如何使用postman</h3>
+            <p>分享人：郭晨阳</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section>
+            <p style="text-align: left">当开发人员需要调试一个网页是否运行正常，并不是简简单单地调试网页的HTML、CSS、脚本等信息是否运行正常，更加重要的是网页能够正确是处理各种HTTP请求，毕竟网页的HTTP请求是网站与用户之间进行交互的非常重要的一种方式，在动态网站中，用户的大部分数据都需要通过HTTP请求来与服务器进行交互。Postman插件就充当着这种交互方式的“桥梁”。</p>
+        </section>
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            <section>
+                <p style="text-align: left">Postman 是一个非常棒的Chrome扩展，提供功能强大的API & HTTP 请求调试。</p>
+                <p style="text-align: left">-它能够发送任何类型的HTTP requests (GET, HEAD, POST, PUT..)，附带任何数量的参数+ headers;</p>
+                <p style="text-align: left">-支持不同的认证机制（basic, digest, OAuth），接收到的响应语法高亮（HTML，JSON或XML）;</p>
+                <p style="text-align: left">-Postman 能够保留了历史的请求，这样我们就可以很容易地重新发送请求，有一个“集合”功能，用于存储所有请求相同的API/域。</p>
+                <a href="https://segmentfault.com/a/1190000004883563" target="_blank">postman安装方法教程</a>
+            </section>
+            <section>
+                <p style="text-align: left">postman界面介绍：</p>
+                <img src="1.png">
+            </section>
+            <section>
+                <p style="text-align: left">1、postman调试的历史记录，保留了每次测试时的请求参数；</p>
+                <p style="text-align: left">2、在Postman中，Collection类似文件夹，可以把同一个项目的请求放在一个Collection里方便管理和分享，Collection里面也可以再建文件夹；</p>
+                <p style="text-align: left">3、设置environment variables（环境变量）和global variables（全局变量），点击右边的眼睛可以快速查看当前的变量；</p>
+                <p style="text-align: left">4、选择HTTP 请求类型的地方，各种常见的不常见的非常全；</p>
+                <p style="text-align: left">5、请求URL，两层大括号表示这是一个环境变量，可以在3的位置选择当前的environment，环境变量就会被替换成该environment里variable的值；</p>
+            </section>
+            <section>
+                <p style="text-align: left">6、点击可以设置URL参数的key和value；</p>
+                <p style="text-align: left">7、点击发送请求；</p>
+                <p style="text-align: left">8、点击保存请求到Collection，如果要另存为的话，可以点击右边的下箭头；</p>
+                <p style="text-align: left">9、设置鉴权参数，可以用OAuth之类的；</p>
+                <p style="text-align: left">10、自定义HTTP Header；</p>
+                <p style="text-align: left">11、设置Request body；</p>
+                <p style="text-align: left">12、显示发起请求之前执行的脚本；</p>
+                <p style="text-align: left">13、在收到response之后执行的测试；</p>
+                <p style="text-align: left">14、返回数据的格式，Pretty可以看到格式化后的JSON，Raw就是未经处理的数据，Preview可以预览HTML页面。</p>
+            </section>
+        </section>
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            <p> 如何使用postman测试接口</p>
+        </section>
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            <p>1、首先要安装Postman</p>
+            <p>2、安装注册</p>
+            <p>3、填写数据</p>
+        </section>
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+            <p>postman中的环境变量</p>
+        </section>
+        <section>
+            <h3>7.参考文献</h3>
+        </section>
+        <section>
+            <p style="text-align: left">参考一：<a href="http://bayescafe.com/tools/use-postman-to-test-api-automatically.html" target="_blank">API自动化测试利器-postman</a></p>
+            <p style="text-align: left">参考二：<a href="https://segmentfault.com/a/1190000004883563" target="_blank">Postman安装及使用入门教程</a></p>
+        </section>
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+        <section>
+            <h4>感谢观看</h4>
+            <p><small>BY : 郭晨阳</small></p>
+        </section>
+
+    </div>
+    <div class="backgrounds">
+        <div class="slide-background past" data-loaded="true" style="display: none;"></div>
+        <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background stack present" data-loaded="true" style="display: block;">
+            <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+        </div>
+        <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+        <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background stack future" style="display: none;">
+            <div class="slide-background present" style="display: none;"></div>
+        </div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background stack future" style="display: none;">
+            <div class="slide-background present" style="display: none;"></div>
+        </div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background stack future" style="display: none;">
+            <div class="slide-background present" style="display: none;"></div>
+        </div>
+        <div class="slide-background stack future" style="display: none;">
+            <div class="slide-background present" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+        </div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+    </div>
+    <div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div>
+    <aside class="controls" style="display: block;">
+        <button class="navigate-left enabled" aria-label="previous slide"></button>
+        <button class="navigate-right enabled" aria-label="next slide"></button>
+        <button class="navigate-up enabled" aria-label="above slide"></button>
+        <button class="navigate-down" aria-label="below slide"></button>
+    </aside>
+    <div class="slide-number" style="display: none;"></div>
+    <div class="speaker-notes" data-prevent-swipe=""></div>
+    <div class="pause-overlay"></div>
+    <div id="aria-status-div" aria-live="polite" aria-atomic="true"
+         style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+
+        语法：
+        return[()[expression][]];
+        可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。
+
+        用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression 被省略，
+        或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+    </div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+    //    原始类型对象直接赋值不会相互影响
+    //    var a = 1;
+    //
+    //    var b = a;
+    //    b = 10;
+    //    console.log(a); // 1
+    ////
+    //    var a = 'hello';
+    //    var b = a;
+    //    b = 'world';
+    //    console.log(a); // hello
+    //
+    //    var a = true;
+    //    var b = a;
+    //    b = false;
+    //    console.log(a);
+    //数组浅复制
+    //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+    //    ];
+    //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+    //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+    //    console.log(a)//那么现在打印a 是什么结果呢
+    //
+    //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+    //    var arrtoo = arr.slice(1);
+    //    arrtoo[2] = "set Map";
+    //    console.log(arr);//One,Two,Three
+    //    console.log(arrtoo);//One,set Map,Three
+    //
+    //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+    //    var arrtooo = arr1.concat(111111);
+    //    arrtooo[1] = "set Map To";
+    //    console.log(arr1);//One,Two,Three
+    //    console.log(arrtooo);//One,set Map To,Three
+    //
+    //    var b=[1,2,3,4,5];   //concat的链接
+    //    var c=[6,7,8,9];
+    //    var d =[4,4,22]
+    //    console.log(b.concat(c,d))
+    var a = {name: 'yy', age: 26};  //对象的浅拷贝哦
+    var b = new Object();
+    b.name = a.name;
+    b.age = a.age;
+    b.name = 'xx';
+    console.log(a);//Object { name="yy", age=26}
+    console.log(b);//Object { name="xx", age=26}
+    var d = {            //对象的浅拷贝哦 第一种
+        name: 'd',
+        oc: {
+            age: 32
+        },
+        oad: {
+            adds: {
+                bb: 12
+            }
+        }
+    };
+    var deepCopy = function (source) {
+        var result = {};
+        for (var key in source) {
+            result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+        }
+        return result
+    };
+    var c = deepCopy(d);
+    c.name = 'c';
+    c.oc = {
+        age: 49
+    };
+    console.log(c);
+    console.log(d);
+    //    var person = {    //第二种深拷贝
+    //        name: 'aa',
+    //        friends: ['da', 'dsa', 'gf']
+    //    };
+    //
+    //    var aPerson = Object.create(person, {
+    ////        name: {
+    ////            value: "gee"
+    ////        }
+    //    });
+    //
+    //    console.log(person.name);
+    //    console.log(aPerson.friends)
+    var Chinese = {
+        nation: '中国'
+    }
+    var Doctor = {
+        career: '医生'
+    }
+    function extendCopy(p) {
+        var c = {};
+        for (var i in p) {
+            c[i] = p[i];
+        }
+        c.uber = p;
+        return c;
+    }
+    var Doctor = extendCopy(Chinese);
+    Doctor.career = '医生';
+    console.log(Doctor); // 中国
+    Chinese.birthPlaces = ['北京', '上海', '香港'];
+    var Doctor = extendCopy(Chinese);
+    Doctor.birthPlaces.push('厦门');
+</script>
+
+</body>
+</html>
