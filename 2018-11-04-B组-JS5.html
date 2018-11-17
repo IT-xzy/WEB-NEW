@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+
+        }
+
+        p.font {
+            clear: both;
+            text-align: left;
+        }
+        .style{
+            margin-top: 20px;
+        }
+        img{
+            width: 500px;
+            height: 400px;
+        }
+        .a{
+            margin-top: 100px !important;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>简述原型链是什么，有什么用处？若想访问一个对象的原型，应该使用什么方法</h2>
+                <p style="text-align: center;">分享人：周能</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <h3>一、背景介绍</h3>
+            </section>
+            <section>
+                <h2>什么是原型</h2>
+                <P class="font">一个函数可以看成一个类，原型是所有类都有的一个属性，原型的作用就是给这个类的每一个对象都添加一个统一的方法</P>
+            </section>
+            <section>
+                <h2>PROTOTYPE</h2>
+                <p class="font">JS都是用new来从构造函数生成一个实例对象</p>
+                <p class="font">构造函数生成的实例无法共享属性和方法，考虑到这点于是将prototype属性引入到了JS中</p>
+                <p class="font">PROTOTYPE这个属性包含一个对象，里面放着所有实例需要共享的方法和属性，而不需要共享的属性和方法可以放在构造函数中</p>
+                <p class="font">由于所有的实例对象共享同一个prototype对象，那么从外界看起来，prototype对象就好像是实例对象的原型，而实例对象则好像"继承"了prototype对象一样。</p>
+            </section>
+            <section>
+                <h3>二、知识剖析</h3>
+            </section>
+            <section>
+                <h2>__PROTO__和PROTOTYPE</h2>
+                <p class="font">每个对象都有一个__proto__属性,而prototype只有函数才有</p>
+                <img class="float" src="https://pic3.zhimg.com/80/v2-e722d5325f7d4215169f1d04296e0f89_hd.jpg" alt="">
+                <p class="a">对象是由构造函数创建的，函数也是对象，函数是由Function创建的，对象的__proto__等于创建者的prototype</p>
+            </section>
+
+            <section>
+                <h2>什么是原型链</h2>
+                <P class="font">每个对象都有一个__proto__，它指向它的prototype原型对象，而prototype原型对象又具有一个自己的原型对象，就这样层层向下上直到一个对象的原型prototype为null
+                    这个查询的路径就是原型链</P>
+            </section>
+
+            <section>
+                <h3>三、常见问题</h3>
+            </section>
+            <section>
+                <p>如何访问一个对象的原型？</p>
+            </section>
+            <section>
+                <h3>四、解决方案</h3>
+            </section>
+            <section>
+                <h4>__PROTO__,PROTOTYPE,OBJECT.GETPROTOTYPEOF()</h4>
+                <p class="font">prototype，只有函数对象才拥有一个属性，用来访问其原型对象</p>
+                <p class="font">__proto__，是任何引用类型都拥有的属性，指向其构造函数的prototype,但是并不是标准写法，是一个特殊的内部属性</p>
+                <p class="font">Object.getPrototypeOf()该属性是ES5引入的一个标准属性，用来获取对象的原型，其作用和__proto__是一样</p>
+            </section>
+            <section>
+                <h3>五、编码实战</h3>
+            </section>
+
+            <section>
+                <h3>六、拓展思考</h3>
+            </section>
+            <section>
+                <h3>使用PROTOTYPE需要注意什么</h3>
+                <p>尽量去修改增添，使用对象字面量创建原型方法要谨慎</p>
+            </section>
+
+
+            <section>
+                <h3>七、参考文献</h3>
+            </section>
+            <section>
+                <a href="https://www.jb51.net/article/105090.htm">js 原型对象和原型链理解</a>
+                <br>
+                <a href="https://zhuanlan.zhihu.com/p/35790971">说说原型（prototype）、原型链和原型继承</a>
+                <br>
+            </section>
+            <section>
+                <h3>八、更多讨论</h3>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>BY : 周能</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
