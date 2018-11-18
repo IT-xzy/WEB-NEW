@@ -1,0 +1,154 @@
+
+body{
+    margin: 0;
+} 
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+    margin-left:  auto;
+    margin-right:  auto;
+    height: 360px;
+    width: 398px;
+    border: 5px solid black;
+}
+.box1{
+    height: 60px;
+    width: 60px;
+    border: 3px solid green;
+    background-color: red;
+    font-size: 25px;
+}
+.box2{
+    height: 60px;
+    width: 60px;
+    border: 3px solid yellow;
+    background-color: forestgreen;
+    font-size: 25px;
+}
+.box3{
+    height: 60px;
+    width: 60px;
+    border: 3px solid green;
+    background-color: blue;
+    font-size: 25px;
+}
+.box4{
+    height: 60px;
+    width: 60px;
+    border: 3px solid wheat;
+    background-color: brown;
+    font-size: 25px;
+} 
+/* .tp{
+    width: 120px;
+    height: 120px;
+} */
+/* html{
+    font-size: 312.5% !important;
+}
+body{
+    margin: 0;
+    font-size: initial;
+    background-color: #FAFAFA;
+}
+p{
+    margin-bottom: 0 !important;
+}
+ul{
+    padding-left: 0 !important;
+}
+.navbar{
+    padding: 0 !important;
+}
+.top-left{
+    padding-right: 0;
+    line-height: .39rem;
+    font-size: .14rem;
+    white-space: nowrap;
+    color: #29B078;
+}
+.top-right{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-left: 0;
+}
+.wx{
+    margin-right: .19rem;
+    height: .26rem;
+    width: .26rem;
+    background: url(../img/css_spritessssss.png) no-repeat -.2rem -.74rem;
+}
+.qq{
+    margin-right: .19rem;
+    height: .26rem;
+    width: .26rem;
+    background: url(../img/css_spritessssss.png) no-repeat -.2rem -1.38rem;
+}
+.wb{
+    height: .26rem;
+    width: .26rem;
+    background: url(../img/css_spritessssss.png) no-repeat -.2rem -2.02rem;
+}
+.header-nav{
+    background-color: #29B078;
+}
+.na{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.butto{
+    display: none;
+}
+@media (max-width:500px){
+    .butto{
+        display: block;
+        margin: 15px 0;
+        font-size: 18px;
+        color: white;
+        border: none;
+        outline: none;
+        border-radius: 15%;
+        background-color: orangered;
+    }
+    nav:hover  ul{
+        display: block !important;
+        position: absolute;
+        top: 59px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        background-color: #29B078;
+        
+    }
+}
+ul{
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+@media (max-width:500px){
+    ul{
+        display: none;
+        
+    }
+    li{
+        margin-left: 0 !important;
+    }
+    li:hover{
+        background-color: green;
+
+    }
+}
+li{
+    list-style: none;
+    padding: 0;
+    font-size: 8px;
+    color: white;
+    margin-left: 20px;
+    line-height: 50px;
+} */
+
