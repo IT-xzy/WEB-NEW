@@ -1,0 +1,310 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>葡萄藤PPT</title>
+
+	<link rel="stylesheet" href="./css/reveal/reveal.css">
+
+	<!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+	<link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+	<!-- syntax highlighting 代码高亮主题 -->
+	<link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+	<!-- 打印和PDF输出样式 -->
+	<script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+	<area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+</map>
+<div class="reveal">
+	<div class="slides">
+		<section>
+			<h3>【JS-10】angular有哪些优缺点?
+</h3>
+			<h4>小课堂【深圳-WEB-C组】</h4>
+			<p>分享人：韩鹏</p>
+		</section>
+
+		<section>
+			<p>目录</p>
+			<p>1.背景介绍</p>
+			<p>2.知识剖析</p>
+			<p>3.常见问题</p>
+			<p>4.解决方案</p>
+			<p>5.编码实战</p>
+			<p>6.扩展思考</p>
+			<p>7.参考文献</p>
+			<p>8.更多讨论</p>
+		</section>
+
+		<section>
+			<section>
+				<h3>1.背景介绍</h3>
+			</section>
+			<section>
+                <p>AngularJS是一款为了克服HTML在构建应用上的不足而设计的优秀的前端JS框架。AngularJS有着诸多特性，最为核心的是：MVVM、模块化、自动化双向数据绑定、语义化标签、依赖注入等等。</p>
+                <p>AngularJS 是一个 JavaScript 框架。它是一个以 JavaScript 编写的库。它可通过 script 标签添加到 HTML 页面。</p>
+                <p>AngularJS 通过 指令 扩展了 HTML，且通过 表达式 绑定数据到 HTML。</p>
+                <p>AngularJS 是以一个 JavaScript 文件形式发布的，可通过 script 标签添加到网页中。</p>
+        	</section>
+        	<section>
+        		<img src="./demo/2018-11-12-C-js10/angularjs.png" width="900">
+        	</section>
+		</section>
+
+		<section>
+			<section>
+				<h3>2.知识剖析</h3>
+			</section>
+            <section>
+            	<h4>设计模式：MVC 与 MVVM</h4>
+				<p>MVC设计模式：<br>
+				M - Model  数据：数据实体,用来保存页面要展示的数据;<br>
+				V - View   视图：负责显示数据的,一般其实就是指的html页面;<br>
+				C - Controller 控制器： 控制整个业务逻辑,负责处理数据,比如数据的获取,以及数据的过滤，进而影响数据在视图上的展示.</p>
+				<p>MVVM设计模式：<br>
+				M - Model 数据：它是与应用程序的业务逻辑相关的数据的封装载体;<br>
+				V - View 视图：它专注于界面的显示和渲染;<br>
+				VM - ViewModel 视图-数据：它是View和Model的粘合体，负责View和Model的交互和协作.</p>
+            </section>
+            <section>
+            	<p>ng的设计思想采用了MVC的基本思想，又不完全是MVC。
+MVC的界面和逻辑关联紧密，数据直接从数据库读取。MVVM的界面与viewmodel是松耦合，界面数据从viewmodel中获取。所以angularjs更倾向于mvvm。</p>
+			</section>
+			<section>
+				<p>MVVM的优点：<br>
+				低耦合：View可以独立于Model变化和修改，同一个ViewModel可以被多个View复用；并且可以做到View和Model的变化互不影响；<br>
+				可重用性：可以把一些视图的逻辑放在ViewModel，让多个View复用；<br>
+				独立开发：开发人员可以专注与业务逻辑和数据的开发；<br>
+				ViewModemvvm设计人员可以专注于UI(View)的设计；<br>
+				可测试性：清晰的View分层，使得针对表现层业务逻辑的测试更容易，更简单。</p>
+            </section>
+            <!-- <section>
+            	<h4>Angular在MVVM中的体现：</h4>
+            	<p>Model：在web页面中，大部分Model都是来自Ajax的服务端返回数据或者是全局的配置对象；而angular中的service则是封装和处理这些与Model相关的业务逻辑的场所，这类的业务服务是可以被多个Controller或者其他service复用的领域服务。</p>
+            	<p>View：在angular中是html里面包含一堆声明式Directive的视图模板。</p>
+				<p>ViewModel：负责给View提供显示的数据，以及提供了View中Command事件操作Model的途径；在angular中$scope对象充当了这个ViewModel的角色；controller负责ViewModel对象的初始化，它将组合一个或者多个service来获取业务领域Model放在ViewModel对象上，使得应用界面在启动加载的时候达到一种可用的状态。</p>
+            </section> -->
+            <section>
+            	<h4>AngularJS 的特点：</h4>
+            	<p>模块化：<br>
+            	一个应用是由若干个模块(module)组成的，每个模块实现一个功能。利于代码的复用。<br>
+				一切都是从模块开始的，我们在使用angularJS时，一定要先想到模块，所有的东西都是建立在模块的基础上，只有定义了模块才能调用其它方法。</p>
+            </section>
+            <section>
+            	<p>双向绑定：<br>
+				数据绑定：数据从一个地方A转移(传递)到另一个地方B, 而且这个操作由框架来完成。<br>
+				单向数据绑定：只支持一个方向的数据流向。<br>
+				&emsp;&emsp;View——>Model:  ng-init 初始化的效果<br>
+				&emsp;&emsp;Model——>View  :{{name}}表达的效果<br>
+				双向数据绑定：同时支持两个方向的数据流向<br>
+				&emsp;&emsp;View<——>Model: ng-model的功能</p>
+            </section>
+            <section>
+            	<p>依赖注入：<br>
+        		依赖注入（Dependency Injection，简称DI）是一种软件设计模式，在这种模式下，一个或更多的依赖（或服务）被注入（或者通过引用传递）到一个独立的对象（或客户端）中，然后成为了该客户端状态的一部分。<br>
+				<!-- 该模式分离了客户端依赖本身行为的创建，这使得程序设计变得松耦合，并遵循了依赖反转和单一职责原则。与服务定位器模式形成直接对比的是，它允许客户端了解客户端如何使用该系统找到依赖。<br> -->
+				AngularJS 提供很好的依赖注入机制。以下5个核心组件用来作为依赖注入：
+		value、factory、service、provider、constant</p>
+				<a href="http://www.runoob.com/angularjs/angularjs-dependency-injection.html" target="_blank">依赖注入示例</a>
+            </section>
+            <section>
+            	<p>指令系统：<br>
+				可以自定义标签名，然后写封装他们标签名；除了可以封装自定义标签，还可以做其他的功能。</p>
+				<p>常用的自带指令有：<br>ng-app、ng-model、ng-bind、ng-init等。</p>
+				<p>自定义指令：<br>通过directive创建自定义指令，可以在HTML页使用个性化标签。</p>
+				<a href="./demo/2018-11-12-C-js10/demo.html" target="_blank">小DEMO</a>
+            </section>
+		</section>
+		<section>
+			<section>
+				<h3>3.常见问题</h3>	
+			</section>
+			<section>
+				<h4>AngularJS 的优缺点是什么？</h4>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h3>4.解决方案</h3>
+			</section>
+			<section>
+				<p>AngularJS的优点：</p>
+				<p>1. 模板功能强大丰富，自带了极其丰富的angular指令。<br>
+				2. 是一个比较完善的前端框架，包含服务，模板，数据双向绑定，模块化，路由，过滤器，依赖注入等所有功能；<br>
+				3. 自定义指令，自定义指令后可以在项目中多次使用。<br>
+				4. ng模块化比较大胆的引入了Java的一些东西（依赖注入），能够很容易的写出可复用的代码，对于敏捷开发的团队来说非常有帮助。<br>
+				5. angularjs是互联网巨人谷歌开发，这也意味着他有一个坚实的基础和社区支持。</p>
+			</section>
+			<section>
+				<p>AngularJS的缺点：</p>
+				<p>1. angular 入门很容易 但深入后概念很多, 学习中较难理解.<br>
+				2. 文档例子非常少, 官方的文档基本只写了api, 一个例子都没有, 很多时候具体怎么用都是google、baidu来的.<br>
+				3. 对IE6/7 兼容不算特别好, 就是可以用jQuery自己手写代码解决一些.<br>
+				4. 指令的应用的最佳实践教程少, angular其实很灵活, 如果不看一些作者的使用原则,很容易写出四不像的代码, 例如js中还是像jQuery的思想有很多dom操作.<br>
+				5. DI 依赖注入 如果代码压缩需要显示声明.</p>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h3>5.代码实战</h3>
+			</section>
+		</section>
+			
+		<section>
+			<section>
+				<h3>6.拓展思考</h3>
+			</section>
+			<section>
+				<h3>与Vue、React的对比</h3>
+			</section>
+			<section>
+				<h3>Vue:</h3>
+				<p>Vue.js只聚焦视图层，是一个构建数据驱动的Web界面的库。<br>
+				Vue.js通过简单的API（应用程序编程接口）提供高效的数据绑定和灵活的组件系统。</p>
+				<div>特性：</div>
+				<ul>
+					<li>1.轻量级的框架</li>
+					<li>2.双向数据绑定</li>
+					<li>3.指令</li>
+					<li>4.插件化</li>
+				</ul>
+			</section>
+			<section>
+				<p>优点：</p>
+				<p>
+				1. 简单：官方文档很清晰，比 Angular 简单易学。<br>
+				2. 快速：异步批处理方式更新 DOM。<br>
+				3. 组合：用解耦的、可复用的组件组合你的应用程序。<br>
+				4. 紧凑：~18kb min+gzip，且无依赖。<br>
+				5. 强大：表达式 & 无需声明依赖的可推导属性 (computed properties)。<br>
+				6. 对模块友好：可以通过 NPM、Bower 或 Duo 安装，不强迫你所有的代码都遵循 Angular 的各种规定，使用场景更加灵活。
+				</p>
+			</section>
+			<section>
+				<p>缺点：</p>
+				<p>1. 新生儿：Vue.js是一个新的项目，没有angular那么成熟。<br>
+				2. 影响度不是很大：google了一下，有关于Vue.js多样性或者说丰富性少于其他一些有名的库。<br>
+				3. 不支持IE8。</p>
+			</section>
+			<!-- <section>
+				<p>与AngularJS的区别:</p>
+				<p>相同点：</p>
+				<ul>
+					<li>都支持指令：内置指令和自定义指令。</li>
+					<li>都支持过滤器：内置过滤器和自定义过滤器。</li>
+					<li>都支持双向数据绑定。</li>
+					<li>都不支持低端浏览器。</li>
+				</ul>
+			</section>
+			<section>
+				<p>不同点：</p>
+				<ul>
+					<li>1.AngularJS的学习成本高，比如增加了Dependency Injection特性，而Vue.js本身提供的API都比较简单、直观。</li>
+					<li>2.在性能上，AngularJS依赖对数据做脏检查，所以Watcher越多越慢。</li>
+				</ul>
+				<p>Vue.js使用基于依赖追踪的观察并且使用异步队列更新。所有的数据都是独立触发的。<br>
+				对于庞大的应用来说，这个优化差异还是比较明显的。</p>
+			</section> -->
+			<section>
+				<h3>React:</h3>
+				<p>React主要用于构建UI。你可以在React里传递多种类型的参数，如声明代码，帮助你渲染出UI、也可以是静态的HTML DOM元素、也可以传递动态变量、甚至是可交互的应用组件。</p>
+				<p>特性：</p>
+				<p>
+				1.声明式设计：React采用声明范式，可以轻松描述应用。
+				2.高效：React通过对DOM的模拟，最大限度地减少与DOM的交互。
+				3.灵活：React可以与已知的库或框架很好地配合。</p>
+			</section>
+			<section>
+				<p>优点：</p>
+				<p>
+				1. 速度快：在UI渲染过程中，React通过在虚拟DOM中的微操作来实现对实际DOM的局部更新。<br>
+				2. 跨浏览器兼容：虚拟DOM帮助我们解决了跨浏览器问题，它为我们提供了标准化的API，甚至在IE8中都是没问题的。<br>
+				3. 模块化：为你程序编写独立的模块化UI组件，这样当某个或某些组件出现问题是，可以方便地进行隔离。<br>
+			</section>
+			<section>
+				4. 单向数据流：Flux是一个用于在JavaScript应用中创建单向数据层的架构，它随着React视图库的开发而被Facebook概念化。<br>
+				5. 同构、纯粹的javascript：因为搜索引擎的爬虫程序依赖的是服务端响应而不是JavaScript的执行，预渲染你的应用有助于搜索引擎优化。<br>
+				6. 兼容性好：比如使用RequireJS来加载和打包，而Browserify和Webpack适用于构建大型应用。它们使得那些艰难的任务不再让人望而生畏。
+				</p>
+			</section>
+			<section>
+				<p>缺点：</p>
+				<p>1.React本身只是一个V而已，并不是一个完整的框架，所以如果是大型项目想要一套完整的框架的话，基本都需要加上ReactRouter和Flux才能写大型应用。</p>
+			</section>
+		</section>
+ 
+		<section>
+			<section>
+				<h3>7.参考文献</h3>
+			</section>
+			<section>
+				<p>参考一：<a href="https://www.cnblogs.com/pp-cat/p/4631186.html">angularJS的核心特性</a></p>
+				<p>参考二：<a href="https://www.jb51.net/article/137728.htm">AngularJS 应用模块化的使用</a></p>
+				<p>参考三：<a href="https://blog.csdn.net/baozhuona/article/details/53352694">AngularJS-模块化</a></p>
+				<p>参考四：<a href="http://www.runoob.com/angularjs/angularjs-dependency-injection.html">AngularJS 依赖注入</a></p>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h3>8.更多讨论</h3>
+			</section>
+		</section>
+		<section>
+			<h4>鸣谢</h4>
+			<p>感谢大家观看</p>
+			<p>
+				BY : 韩鹏
+			</p>
+		</section>
+	</div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: './plugin/markdown/marked.js' },
+            { src: './plugin/markdown/markdown.js' },
+            { src: './plugin/notes/notes.js', async: true },
+            { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>
