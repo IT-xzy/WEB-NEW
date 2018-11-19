@@ -1,0 +1,625 @@
+﻿<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>【js-10】</h2>
+                <h4>如何进行web前端性能优化？</h4>
+                <p>分享人：孟晨</p>
+            </section>
+
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <section>
+                    <h3>1.背景介绍</h3>
+                </section>
+                <section>
+                    在同样的网络环境下，两个同样能满足你的需求的网站，一个“Duang”的一下就加载出来了，一个纠结了半天才出来，你会选择哪个？研究表明：用户最满意的打开网页时间是2-5秒，如果等待超过10秒，99%的用户会关闭这个网页。也许这样讲，各位还不会有太多感触，接下来我列举一组数据：Google网站访问速度每慢400ms就导致用户搜索请
+                    求下降0.59%;Amazon每增加100ms网站延迟将导致收入下降1%;雅虎如果有400ms延迟会导致流量下降5-9%。网站的加载速度严重影响了用户体验，也决定了这个网站的生死存亡。
+                </section>
+                <section>
+                    可能有人会说：网站的性能是后端工程师的事情，与前端并无多大关系。我只能说，too young too
+                    simple。事实上，只有10%~20%的最终用户响应时间是用在从Web服务器获取HTML文档并传送到浏览器的，那剩余的时间去哪儿了？来瞄一下性能黄金法则：<br>
+                    <b>只有10%~20%的最终用户响应时间花在了下载HTML文档上。其余的80%~90%时间花在了下载页面中的所有组件上。</b>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>2.知识剖析</h3>
+                </section>
+                <section>
+                    <h3>web前端性能优化的方法</h3>
+                </section>
+                <section>
+                    <h3>一、减少HTTP请求</h3>
+                </section>
+                <section>
+                    上面说到80%~90%时间花在了下载页面中的所有组件进行的HTTP请求上。因此，改善响应时间最简单的途径就是减少HTTP请求的数量。
+                </section>
+                <section>
+                    <b> 图片地图：</b>
+                    <br>
+                    假设导航栏上有五幅图片，点击每张图片都会进入一个链接，这样五张导航的图片在加载时会产生5个HTTP请求。然而，使用一个图片地图可以提高效率，这样就只需要一个HTTP请求。<br>
+                    使用图片地图的缺点：指定坐标区域时，矩形或圆形比较容易指定，而其它形状手工指定比较难<br>
+                    下面是一个图片地图的例子
+                    <pre>
+                    <code>
+<map name="planetmap" id="planetmap">
+    <area shape="rect" coords="180,139,14" href ="venus.html" alt="Venus" />
+    <area shape="rect" coords="129,161,10" href ="mercur.html" alt="Mercury" />
+    <area shape="rect" coords="0,0,110,260" href ="sun.html" alt="Sun" />
+    <area shape="rect" coords="140,0,110,260" href ="star.html" alt="Sun" />
+</map>
+                    </code>
+                    </pre>
+                </section>
+                <section>
+                    <b> CSS Sprites </b><br>
+                    CSS Sprites直译过来就是CSS精灵，但是这种翻译显然是不够的，其实就是通过将多个图片融合到一副图里面，然后通过CSS的一些技术布局到网页上。特别是图片特别多的网站，如果能用css
+                    sprites降低图片数量，带来的将是速度的提升。<br>
+                    PS：使用CSS
+                    Sprites还有可能降低下载量，可能大家会认为合并后的图片会比分离图片的总和要大，因为还有可能会附加空白区域。实际上，合并后的图片会比分离的图片总和要小，因为它降低了图片自身的开销，譬如颜色表、格式信息等。
+                </section>
+                <section>
+                    <b> 字体图标 </b><br>
+
+                    在可以大量使用字体图标的地方我们可以尽可能使用字体图标，字体图标可以减少很多图片的使用，从而减少http请求，字体图标还可以通过CSS来设置颜色、大小等样式，何乐而不为。
+                </section>
+                <section>
+                    <b> 合并脚本 和样式表 </b> <br>
+                    将多个样式表或者脚本文件合并到一个文件中，可以减少HTTP请求的数量从而缩短效应时间。<br>
+                    然而合并所有文件对许多人尤其是编写模块化代码的人来说是不能忍的，而且合并所有的样式文件或者脚本文件可能会导致在一个页面加载时加载了多于自己所需要的样式或者脚本，对于只访问该网站一个（或几个）页面的人来说反而增加了下载量，所以大家应该自己权衡利弊。
+                </section>
+                <section>
+                    <h3>二、使用CDN</h3>
+                </section>
+                <section>
+                    如果应用程序web服务器离用户更近，那么一个HTTP请求的响应时间将缩短。另一方面，如果组件web服务器离用户更近，则多个HTTP请求的响应时间将缩短。<br>
+
+                    CDN（内容发布网络）是一组分布在多个不同地理位置的Web服务器，用于更加有效地向用户发布内容。在优化性能时，向特定用户发布内容的服务器的选择基于对网络慕课拥堵的测量。例如，CDN可能选择网络阶跃数最小的服务器，或者具有最短响应时间的服务器。<br>
+
+                    CDN还可以进行数据备份、扩展存储能力，进行缓存，同时有助于缓和Web流量峰值压力。<br>
+
+                    CDN的缺点：<br>
+
+                    1、响应时间可能会受到其他网站流量的影响。CDN服务提供商在其所有客户之间共享Web服务器组。<br>
+
+                    2、如果CDN服务质量下降了，那么你的工作质量也将下降<br>
+
+                    3、无法直接控制组件服务器
+                </section>
+                <section>
+                    <h3>三、添加Expires头</h3>
+                </section>
+                <section>
+                    页面的初次访问者会进行很多HTTP请求，但是通过使用一个长久的Expires头，可以使这些组件被缓存，下次访问的时候，就可以减少不必要的HTPP请求，从而提高加载速度。<br>
+
+                    Web服务器通过Expires头告诉客户端可以使用一个组件的当前副本，直到指定的时间为止。例如：<br>
+
+                    Expires: Fri, 18 Mar 2016 07:41:53 GMT<br>
+
+                    Expires缺点： 它要求服务器和客户端时钟严格同步；过期日期需要经常检查<br>
+
+                    HTTP1.1中引入Cache-Control来克服Expires头的限制，使用max-age指定组件被缓存多久。<br>
+
+                    Cache-Control： max-age=12345600<br>
+
+                    若同时制定Cache-Control和Expires，则max-age将覆盖Expires头
+                </section>
+                <section>
+                    <h3>四、压缩组件</h3>
+                </section>
+                <section>
+                    从HTTP1.1开始，Web客户端可以通过HTTP请求中的Accept-Encoding头来表示对压缩的支持<br>
+
+                    Accept-Encoding: gzip,deflate<br>
+
+                    如果Web服务器看到请求中有这个头，就会使用客户端列出来的方法中的一种来进行压缩。Web服务器通过响应中的Content-Encoding来通知 Web客户端。<br>
+
+                    Content-Encoding: gzip
+                </section>
+                <section>
+                    <b> 代理缓存 </b><br>
+
+                    当浏览器通过代理来发送请求时，情况会不一样。假设针对某个URL发送到代理的第一
+                    个请求来自于一个不支持gzip的浏览器。这是代理的第一个请求，缓存为空。代理将请求转发给服务器。
+                    此时响应是未压缩的，代理缓存同时发送给浏览器。现在，假设到达代理的请求是同一个url，
+                    来自于一个支持gzip的浏览器。代理会使用缓存中未压缩的内容进行响应，从而失去了压缩的机会。
+                    相反，如果第一个浏览器支持gzip，第二个不支持，你们代理缓存中的压缩版本将会提供给后续的浏览器，而不管它们是否支持gzip。<br>
+
+                    解决办法：在web服务器的响应中添加vary头Web服务器可以告诉代理根据一个或多个请求头来改变缓存的响应。因为压缩的决定是基于Accept-Encoding请求头的，因此需要在vary响应头中包含Accept-Encoding。<br>
+
+                    vary: Accept-Encoding
+                </section>
+                <section>
+                    <h3>五、将样式表放在头部</h3>
+                </section>
+                <section>
+                    首先说明一下，将样式表放在头部对于实际页面加载的时间并不能造成太大影响，但是这会减少页面首屏出现的时间，使页面内容逐步呈现，改善用户体验，防止“白屏”。<br>
+
+                    我们总是希望页面能够尽快显示内容，为用户提供可视化的回馈，这对网速慢的用户来说是很重要的。<br>
+
+                    将样式表放在文档底部会阻止浏览器中的内容逐步出现。为了避免当样式变化时重绘页面元素，浏览器会阻塞内容逐步呈现，造成“白屏”。这源自浏览器的行为：如果样式表仍在加载，构建呈现树就是一种浪费，因为所有样式表加载解析完毕之前务虚会之任何东西
+                </section>
+                <section>
+                    <h3>六、将脚本放在底部</h3>
+                </section>
+                <section>
+                    更样式表相同，脚本放在底部对于实际页面加载的时间并不能造成太大影响，但是这会减少页面首屏出现的时间，使页面内容逐步呈现。<br>
+
+                    js的下载和执行会阻塞Dom树的构建（严谨地说是中断了Dom树的更新），所以script标签放在首屏范围内的HTML代码段里会截断首屏的内容。<br>
+
+                    下载脚本时并行下载是被禁用的——即使使用了不同的主机名，也不会启用其他的下载。因为脚本可能修改页面内容，因此浏览器会等待；另外，也是为了保证脚本能够按照正确的顺序执行，因为后面的脚本可能与前面的脚本存在依赖关系，不按照顺序执行可能会产生错误。
+                </section>
+                <section>
+                    <h3>七、避免CSS表达式</h3>
+                </section>
+                <section>
+                    CSS表达式是动态设置CSS属性的一种强大并且危险的方式，它受到了IE5以及之后版本、IE8之前版本的支持。
+                </section>
+                <section>
+                    <h3>八、使用外部的JavaScript和CSS</h3>
+                </section>
+                <section>
+                    内联脚本或者样式可以减少HTTP请求，按理来说可以提高页面加载的速度。然而在实际情况中，当脚本或者样式是从外部引入的文件，浏览器就有可能缓存它们，从而在以后加载的时候能够直接使用缓存，而HTML文档的大小减小，从而提高加载速度。<br>
+                    <br>
+                    影响因素：<br>
+
+                    1、每个用户产生的页面浏览量越少，内联脚本和样式的论据越强势。譬如一个用户每个月只访问你的网站一两次，那么这种情况下内联将会更好。而如果该用户能够产生很多页面浏览量，那么缓存的样式和脚本将会极大减少下载的时间，提交页面加载速度。<br>
+
+                    2、如果你的网站不同的页面之间使用的组件大致相同，那么使用外部文件可以提高这些组件的重用率。
+                </section>
+                <section>
+                    <h3>九、减少DNS查找</h3>
+                </section>
+                <section>
+                    当我们在浏览器的地址栏输入网址（譬如： www.linux178.com） ，然后回车，回车这一瞬间到看到页面到底发生了什么呢？<br>
+
+                    域名解析 --> 发起TCP的3次握手 --> 建立TCP连接后发起http请求 --> 服务器响应http请求，浏览器得到html代码 -->
+                    浏览器解析html代码，并请求html代码中的资源（如js、css、图片等） --> 浏览器对页面进行渲染呈现给用户<br>
+                    DNS也是开销，通常浏览器查找一个给定域名的IP地址要花费20~120毫秒，在完成域名解析之前，浏览器不能从服务器加载到任何东西。那么如何减少域名解析时间，加快页面加载速度呢？
+                </section>
+                <section>
+                    当客户端DNS缓存（浏览器和操作系统）缓存为空时，DNS查找的数量与要加载的Web页面中唯一主机名的数量相同，包括页面URL、脚本、样式表、图片、Flash对象等的主机名。减少主机名的
+                    数量就可以减少DNS查找的数量。<br>
+
+                    减少唯一主机名的数量会潜在减少页面中并行下载的数量（HTTP
+                    1.1规范建议从每个主机名并行下载两个组件，但实际上可以多个），这样减少主机名和并行下载的方案会产生矛盾，需要大家自己权衡。建议将组件放到至少两个但不多于4个主机名下，减少DNS查找的同时也允许高度并行下载。
+                </section>
+                <section>
+                    <h3>十、精简JavaScript and Css</h3>
+                </section>
+                <section>
+                    <b> 精简 </b><br>
+
+                    精简就是从代码中移除不必要的字符以减少文件大小，降低加载的时间。代码精简的时候会移除不必要的空白字符（空格，换行、制表符），这样整个文件的大小就变小了。<br>
+                </section>
+                <section>
+                    <b>混淆</b><br>
+                    混淆是应用在源代码上的另外一种方式，它会移除注释和空白符，同时它还会改写代码。在混淆的时候，函数和变量名将会被转换成更短的字符串，这时代码会更加精炼同时难以阅读。通常这样做是为了增加对代码进行反向工程的难度，这也同时提高了性能。<br>
+
+                    缺点：<br>
+
+                    混淆本身比较复杂，可能会引入错误。<br>
+
+                    需要对不能改变的符号做标记，防止JavaScript符号（譬如关键字、保留字）被修改。<br>
+
+                    混淆会使代码难以阅读，这使得在产品环境中调试问题更加困难。
+                </section>
+                <section>
+                    在以上提到了关于用gzip之类的压缩方式来压缩文件，这边说明一下，就算使用gzip等方式来压缩文件，精简代码依然是有必要的。一般来说，压缩产生的节省是高于精简的，在生产环境中，精简和压缩同时使用能够最大限度的获得更多的节省。
+                </section>
+                <section>
+                    <b>CSS的精简</b><br>
+                    CSS的精简带来的节省一般来说是小于JavaScript精简的，因为CSS中注释和空白相对较少。<br>
+                    除了移除空白、注释之外，CSS可以通过优化来获得更多的节省：1.合并相同的类；2.移除不使用的类；3.使用缩写
+                    <pre>
+                        <code>
+.right {                                    .wrong{             
+    color: #fff;                                color: #ffffff;
+    padding-top: 0;                             padding-top: 0px;     
+    margin: 0 10px;                             margin-top: 0;
+    border: 1px solid #111                      margin-bottom: 0;
+}                                               margin-left: 10px;
+                                                margin-right: 10px;
+                                                border-color: #111;
+                                                border-width: 1px;
+                                                border-style: solid;
+                                            }
+                        </code>
+                    </pre>
+                </section>
+                <section>
+                    <h3>十一、避免重定向</h3>
+                </section>
+                <section>
+                    <b> 什么是重定向？</b><br>
+
+                    重定向用于将用户从一个URL重新路由到另一个URL。<br>
+                    <b>常用重定向的类型</b><br>
+                    常用重定向的类型
+
+                    301：永久重定向，主要用于当网站的域名发生变更之后，告诉搜索引擎域名已经变更了，应该把旧域名的的数据和链接数转移到新域名下，从而不会让网站的排名因域名变更而受到影响。<br>
+
+                    302：临时重定向，主要实现post请求后告知浏览器转移到新的URL。<br>
+
+                    304：Not
+                    Modified，主要用于当浏览器在其缓存中保留了组件的一个副本，同时组件已经过期了，这是浏览器就会生成一个条件GET请求，如果服务器的组件并没有修改过，则会返回304状态码，同时不携带主体，告知浏览器可以重用这个副本，减少响应大小。
+                </section>
+                <section>
+                    <h3>十二、删除重复脚本</h3>
+                </section>
+                <section>
+                    在团队开发一个项目时，由于不同开发者之间都可能会向页面中添加页面或组件，因此可能相同的脚本会被添加多次。<br>
+
+                    重复的脚本会造成不必要的HTTP请求（如果没有缓存该脚本的话），并且执行多余的JavaScript浪费时间，还有可能造成错误。<br>
+
+                    如何避免重复脚本呢？<br>
+
+                    1. 形成良好的脚本组织。重复脚本有可能出现在不同的脚本包含同一段脚本的情况，有些是必要的，但有些却不是必要的，所以需要对脚本进行一个良好的组织。<br>
+
+                    2. 实现脚本管理器模块。
+                </section>
+                <section>
+                    <h3>十三、配置ETag</h3>
+                </section>
+                <section>
+                    Entity tags（ETags）（实体标签）是web服务器和浏览器用于判断浏览器缓存中的内容和服务器中的原始内容是否匹配的一种机制（“实体”就是所说的“内
+                    容”，包括图片、脚本、样式表等）。增加ETag为实体的验证提供了一个比使用“last-modified
+                    date（上次编辑时间）”更加灵活的机制。Etag是一个识别内容版本号的唯一字符串。唯一的格式限制就是它必须包含在双引号内。原始服务器通过含有 ETag文件头的响应指定页面内容的ETag。
+                </section>
+                <section>
+                    <b> 为什么要引入ETag? </b><br>
+
+                    ETag主要是为了解决Last-Modified无法解决的一些问题：<br>
+
+                    1. 一些文件也许会周期性的更改，但是他的内容并不改变(仅仅改变的修改时间)，这个时候我们并不希望客户端认为这个文件被修改了，而重新GET;<br>
+
+                    2.
+                    某些文件修改非常频繁，比如在秒以下的时间内进行修改，(比方说1s内修改了N次)，If-Modified-Since能检查到的粒度是s级的，这种修改无法判断(或者说UNIX记录MTIME只能精确到秒);<br>
+
+                    3. 某些服务器不能精确的得到文件的最后修改时间。
+                </section>
+                <section>
+                    <b> ETag带来的问题 </b><br>
+
+                    ETag的问题在于通常使用某些属性来构造它，有些属性对于特定的部署了网站的服务器来说是唯一的。当使用集群服务器的时候，浏览器从一台服务器上获取了原始组件，之后又向另外一台不同的服务器发起条件GET请求，ETag就会出现不匹配的状况。例如：使用inode-size-timestamp来生成ETag，文件系统使用inode存储文件类型、所有者、组和访问模式等信息，在多台服务器上，就算文件大小、权限、时间戳等都相同，inode也是不同的。<br>
+                    <b> 最佳实践 </b><br>
+
+                    1. 如果使用Last-Modified不会出现任何问题，可以直接移除ETag，google的搜索首页则没有使用ETag。<br>
+
+                    2. 确定要使用ETag，在配置ETag的值的时候，移除可能影响到组件集群服务器验证的属性，例如使用size-timestamp来生成时间戳。
+                </section>
+                <section>
+                    <h3>十四、使Ajax可缓存(尽量使用get)</h3>
+                </section>
+                <section>
+                    Ajax的目地是为突破web本质的开始—停止交互方式，向用户显示一个白屏后重绘整个页面不是一种好的用户体验。<br>
+
+                    <b> 异步与即时 </b><br>
+
+                    Ajax的一个明显的有点就是向用户提供了即时反馈，因为它异步的从后端web服务器请求信息。<br>
+
+                    用户是否需要等待的关键因素在于Ajax请求是被动的还是主动的。被动请求是为了将来来使用而预先发起的，主动请求是基于用户当前的操作而发起的
+
+                    <b> 什么样的AJAX请求可以被缓存？ </b><br>
+
+                    POST的请求，是不可以在客户端缓存的，每次请求都需要发送给服务器进行处理，每次都会返回状态码200。（可以在服务器端对数据进行缓存，以便提高处理速度）<br>
+
+                    GET的请求，是可以（而且默认）在客户端进行缓存的，除非指定了不同的地址，否则同一个地址的AJAX请求，不会重复在服务器执行，而是返回304。<br>
+
+                </section>
+                <section>
+                    <h3>十五、图片优化</h3>
+                </section>
+                <section>
+                    在大多数网站中，图片的大小往往能占到一半以上，所以优化图片能带来更好的效果；而且，对图片的优化，还可以实现再不删减网站功能的条件下实现网站性能的提升。
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    <h4>除了上述的方法外还能从哪些方面进行优化？</h4>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+                <section>
+                    <h4>从更高效的JavaScript和Css写法来优化!</h4>
+                </section>
+                <section>
+                    <h3>1.Css选择器优化？</h3>
+                </section>
+                <section>
+                    <b> 浏览器的匹配规则 </b><br>
+
+                    #abc > a怎么匹配？ 有人可能会以为：先找到id为abc的元素，再查找子元素为a的元素！！too young，too simple！<br>
+
+                    其实，浏览器时从右向左匹配选择符的！！！那么上面的写法效率就低了：先查找页面中的所有a标签，在看它的父元素是不是id为abc <br>
+
+                    知道了浏览器的匹配规则我们就能尽可能的避免开销很大的选择器了：
+                </section>
+                <section style="font-size:30px">
+                    <b> 避免通配规则 </b> <br>
+
+                    除了 * 之外，还包括子选择器、后台选择器等。 <br>
+
+                    而它们之间的组合更加逆天，譬如：li * <br>
+
+                    浏览器会查找页面的所有元素，然后一层一层地寻找他的祖先，看是不是li，这对可能极大地损耗性能。<br>
+
+                    <b> 不限定ID选择器 </b> <br>
+
+                    ID就是唯一的，不要写成类似div#nav这样，没必要。 <br>
+
+                    <b> 不限定class选择器 </b> <br>
+
+                    我们可以进一步细化类名，譬如li.nav 写成 nav-item <br>
+
+                    <b> 尽量避免后代选择器 </b> <br>
+
+                    通常后代选择器是开销最高的，如果可以，请使用子选择器代替。 <br>
+
+                    <b> 替换子选择器 </b> <br>
+
+                    如果可以，用类选择器代替子选择器，譬如 <br>
+
+                    nav > li 改成 .nav-item <br>
+
+                    <b> 依靠继承 </b> <br>
+
+                    了解那些属性可以依靠继承得来，从而避免重复设定规则。
+                </section>
+                <section style="font-size: 30px">
+                    <b> 关键选择符 </b> <br>
+                    选择器中最右边的选择符成为关键选择符，它对浏览器执行的工作量起主要影响。<br>
+                    举个栗子：<br>
+                    div div li span.class-special<br>
+                    乍一看，各种后代选择器组合，性能肯定不能忍。其实仔细一想，浏览器从右向左匹配，如果页面中span.class-special的元素只有一个的话，那影响并不大啊。<br>
+                    反过来看，如果是这样<br>
+                    span.class-special li div div ,尽管span.class-special很少，但是浏览器从右边匹配，查找页面中所有div在层层向上查找，那性能自然就低了。<br>
+                    <b> 重绘与回流 </b> <br>
+                    优化css选择器不仅仅提高页面加载时候的效率，在页面回流、重绘的时候也可以得到不错的效果。<br>
+                    页面上任何一个结点触发reflow，都会导致它的子结点及祖先结点重新渲染。
+
+                    每次重绘和回流发生时，浏览器会根据对应的css重新绘制需要渲染的部分，如果你的选择器不优化，就会导致效率降低，所以优化选择器的重要性可见一斑。
+                </section>
+                <section>
+                    <h3>更具效率的JavaScript写法</h3>
+                </section>
+                <section>
+                    <b>使用局部变量</b><br>
+                    我们应该知道在查找变量会从作用域链的顶端开始一层一层的向下找。显然，查找的层数越多，花费的时间越多。所以为了提高查找的速度，我们应该尽量使用
+                    局部变量（到目前为止，局部变量是JavaScript中读写最快的标识符）。<br>
+                    <b> 定时器 </b><br>
+                    如果针对的是不断运行的代码，不应该使用setTimeout，而应该是用setInterval，因为setTimeout每一次都会初始化一个定时器，而setInterval只会在开始的时候初始化一个定时器
+                </section>
+                <section>
+                    <b>字符串连接</b><br>
+                    如果要连接多个字符串，应该少使用+=，如<br>
+                    s+=a;<br>
+                    s+=b;<br>
+                    应该写成s+=a + b；<br>
+                    而如果是收集字符串，比如多次对同一个字符串进行+=操作的话，最好使用一个缓存，使用JavaScript数组来收集，最后使用join方法连接起来,如<br>
+                    <pre>
+                        <code>
+                    var buf = [];
+                    for (var i = 0; i < 100; i++) {
+                        buf.push(i.toString());
+                    }
+                    var all = buf.join("");
+                        </code>
+                    </pre>
+                </section>
+                <section>
+                    <b>数字转换成字符串</b><br>
+                    一般最好用"" + 1来将数字转换成字符串，虽然看起来比较丑一点，但事实上这个效率是最高的，性能上来说：<br>
+                    ("" +) > String() > .toString() > new String() <br>
+                    <b>使用直接量</b><br>
+                    <pre>
+                        <code>
+                    var aTest = new Array(); //替换为
+                    var aTest = [];
+                    var aTest = new Object; //替换为
+                    var aTest = {};
+                    var reg = new RegExp(); //替换为
+                    var reg = /../;
+                    //如果要创建具有一些特性的一般对象，也可以使用字面量，如下：
+                    var oFruit = new O;
+                    oFruit.color = "red";
+                    oFruit.name = "apple";
+                    //前面的代码可用对象字面量来改写成这样：
+                    var oFruit = { color: "red", name: "apple" };
+                        </code>
+                    </pre>
+                </section>
+                <section>
+                    <b>重复使用的调用结果，事先保存到局部变量</b><br>
+                    <pre>
+                        <code>
+                        //避免多次取值的调用开销
+                        var h1 = element1.clientHeight + num1;
+                        var h4 = element1.clientHeight + num2;
+                        //可以替换为：
+                        var eleHeight = element1.clientHeight;
+                        var h1 = eleHeight + num1;
+                        var h4 = eleHeight + num2;
+                        </code>
+                    </pre>
+                </section>
+                <section>
+                    <b>优化循环</b><br>
+                    不要用forEach <br>
+                    简化终止条件<br>
+                    由于每次循环过程都会计算终止条件，所以必须保证它尽可能快，也就是说避免属性查找或者其它的操作，最好是将循环控制量保存到局部变量中，也就是说对数组或列表对象的遍历时，提前将length保存到局部变量中，避免在循环的每一步重复取值。<br>
+                    <pre>
+                            <code>
+                        var list = document.getElementsByTagName('p');
+                        for (var i = 0; i < list.length; i++) {
+                            //……
+                        }
+                
+                        //替换为：
+                        var list = document.getElementsByTagName('p');
+                        for (var i = 0, l = list.length; i < l; i++) {
+                            //……
+                        }
+                            </code>
+                        </pre>
+                </section>
+                <section>
+                    <b>缩短否定检测</b><br>
+                    <pre>
+                        <code>
+                    if (oTest != '#ff0000') {
+                        //do something
+                    }
+                    if (oTest != null) {
+                        //do something
+                    }
+                    if (oTest != false) {
+                        //do something
+                    }
+                    //虽然这些都正确，但用逻辑非操作符来操作也有同样的效果：
+                    if (!oTest) {
+                        //do something
+                    }
+                        </code>
+                    </pre>
+                </section>
+                <section>
+                    <b>条件分支</b><br>
+                    将条件分支，按可能性顺序从高到低排列：可以减少解释器对条件的探测次数 <br>
+                    在同一条件子的多（>2）条件分支时，使用switch优于if：switch分支选择的效率高于if，在IE下尤为明显。4分支的测试，IE下switch的执行时间约为if的一半。 <br>
+                    使用三目运算符替代条件分支
+                </section>
+                <section>
+                    <b>使用常量</b><br>
+                    重复值:任何在多处用到的值都应该抽取为一个常量<br>
+                    用户界面字符串:任何用于显示给用户的字符串，都应该抽取出来以方便国际化<br>
+                    URLs:在Web应用中，资源位置很容易变更，所以推荐用一个公共地方存放所有的URL<br>
+                    任意可能会更改的值:每当你用到字面量值的时候，你都要问一下自己这个值在未来是不是会变化，如果答案是“是”，那么这个值就应该被提取出来作为一个常量。
+                </section>
+
+            </section>
+
+            <section>
+                <section>
+                    <h3>5.代码实战</h3>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>6.拓展思考</h3>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>7.参考文献</h3>
+                    <a href="http://www.cnblogs.com/MarcoHan/ ">MarcoHan博客</a><br>
+                    <a href="http://www.cnblogs.com/liyunhua/p/4529086.html#_label1">博主 静逸 总结的js性能优化的小知识</a><br>
+                    <a href="http://www.ha97.com/2710.html">Yahoo团队经验：网站性能优化的34条黄金法则</a><br>
+                    <a href="https://www.zhihu.com/question/40505685">常见的前端性能优化手段都有哪些？都有多大收益？</a>
+                    <a href="https://tinypng.com/">TinyPNG</a>
+                </section>
+            </section>
+
+            <section>
+                <h3>8.更多讨论</h3>
+            </section>
+
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    <small>BY : 孟晨</small>
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [
+                { src: './plugin/markdown/marked.js' },
+                { src: './plugin/markdown/markdown.js' },
+                { src: './plugin/notes/notes.js', async: true },
+                { src: './plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+            ]
+        });
+    </script>
+</body>
+
+</html>
