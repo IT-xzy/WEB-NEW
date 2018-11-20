@@ -1,0 +1,215 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题,可以在/css/reveal/theme/中选择其他主题,目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        .text-l {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>哪些css属性可以设置百分比，其计算原则是什么？</h2>
+                <p>分享人：柳桐</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <section>
+                    <h3>1.背景介绍</h3>
+                </section>
+                <section style="text-align: left;">
+                    <br style="text-align: left">
+                    CSS 的属性值中经常会出现百分比，并且百分比是实现页面自适应很重要的一种方法。<br>
+                    但是有哪些属性可以用百分比来进行设置呢？设置的原则又是什么呢？
+                </section>
+
+
+            </section>
+            <section>
+
+
+                <section>
+                    <h3>2.知识剖析</h3>
+                </section>
+                <section style="text-align: left;">
+                    <h3><strong>1. 可以使用百分比的样式属性:</strong></h3>
+                    <p><br>
+
+                        定位：top,right,bottom,left; <br>
+                        盒模型：height,width,margin,padding,<br>
+                        背景：background-position,background-size(css3), <br>
+                        文本：text-indent，<br>
+                        字体：font-size;<br>
+
+
+
+                    </p>
+
+                </section>
+
+
+                <section style="text-align: left;">
+                    <h3><strong>2. 各个属性使用详细：</strong></h3>
+                    <p>
+                        top,right,bottom,left:全兼容,<br>
+                        height：基于包含它的块级对象的百分比高度。<br>
+                        width：基于包含它的块级对象的百分比宽度。<br>
+                        margin：百分数是相对于父元素的 width 计算的。<br>
+                        padding：百分数是相对于父元素的 width 计算的。
+                    </p>
+                </section>
+
+
+            </section>
+
+            <section>
+                <section>
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    <h4>1.怎么让字体设置进行自适应？ </h4>
+                </section>
+
+                <section>
+                    <h4>2.宽度设置为百分比是怎么使用的? </h4>
+                </section>
+
+                <section>
+                <h4>3.使用百分比要注意什么？ </h4>
+                </section>
+            </section>
+
+
+            <section>
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+
+                <section class="text-l">
+                    <p>1.利用媒体查询和字体的百分比设置。</p>
+                </section>
+                <section class="text-l">
+                    <p>2.div外层的父标签如果没有定义高度或宽度(用px或者其它单位定义，而非百分比)，div用百分比是无效的。如果坚持要用百分比，请换成table标签。</p>
+                </section>
+                <section class="text-l">
+                    <p>3.认清子元素的父元素</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>5.编码实战</h3>
+                </section>
+                <section class="text-l">
+                    <img src="img/小课堂1.png" alt="">
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>6.扩展思考</h3>
+
+                </section>
+
+                <section class="text-l">
+                    <h4>定位属性的包含块一定是父元素吗？</h4>
+                    <p>
+                        绝对定位的包含块
+
+                    </p>
+                    <img src="img/小课堂3.png" alt="">
+                </section>
+                <section>
+                    <p>定位属性的百分比的参考系是包含块。关于包含块（containing block）的概念，不能简单地理解成是父元素。如果是静态定位和相对定位，包含块一般就是其父元素。但是对于绝对定位的元素，包含块应该是离它最近的 position 为 absolute、relative、或者 fixed 的祖先元素。
+                    </p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>7.参考文献</h3>
+                </section>
+                <section>
+                    <p style="text-align: left">参考：<br>
+                        CSS样式的设置<br>
+                        CSS 属性之中经常出现的百分比 <br>
+                        W3School
+                    </p>
+
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>8.更多讨论</h3>
+                </section>
+            </section>
+            <section>
+                <!--<h4>鸣谢</h4>-->
+                <p>感谢大家观看</p>
+                <p>
+                    <small>BY : 柳桐</small>
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [
+                { src: './plugin/markdown/marked.js' },
+                { src: './plugin/markdown/markdown.js' },
+                { src: './plugin/notes/notes.js', async: true },
+                {
+                    src: './plugin/highlight/highlight.js', async: true, callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
