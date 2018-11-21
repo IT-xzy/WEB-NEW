@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .left {
+            text-align: left;
+        }
+        .red {
+            color: #323232;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : 'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides"
+         style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h2>【JS-task-4】</h2>
+            <h3>有限状态机
+            </h3>
+            <p>分享人：张新</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <section>
+            <p class="left">
+                有限状态机，（英语：Finite-state machine, FSM），又称有限状态自动机，简称状态机， 是表示有限个状态以及在这些状态之间的转移和动作等行为的数学模型。
+                其作用主要是描述对象在它的生命周期内所经历的状态序列，以及如何响应来自外界的各种事件。在计算机科学中， 有限状态机被广泛用于建模应用行为、硬件电路系统设计、软件工程，编译器、网络协议、和计算与语言的研究。
+        </section>
+        <section>
+            有限状态机（Finite-state machine）是一个非常有用的模型，可以模拟世界上大部分事物。它 是一个数学模型。是一个抽象机器，在任何时候都可以处于有限数量的状态之一。响应某些外部输入， FSM可以从一个状态转换到另一个状态; 从一种状态到另一种状态的变化称为过渡。 状态机的行为可以在现代社会中的许多设备中观察到，这些设备根据它们呈现的事件序列执行预定的一系列行为。 例如自动售货机，当存放适当的硬币组合时分配产品，当车辆等待时改变顺序的交通灯等。
+                在我们前端开发中，我们可以套用有限状态机模型，将业务流程状态化，划分状态和相应的触发事件与动作，利用生命周期事件进行控制与执行
+        </section>
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            我们来看一下阮一峰对有限状态机的描述
+            它有三个特征： 
+            状态总数（state）是有限的。
+            任一时刻，只处在一种状态之中。
+            某种条件下，会从一种状态转变（transition）到另一种状态。
+        </section>
+        <section>
+            有限状态机一般都有以下特点：
+            （1）可以用状态来描述事物，并且任一时刻，事物总是处于一种状态；
+            （2）事物拥有的状态总数是有限的；
+            （3）通过触发事物的某些行为，可以导致事物从一种状态过渡到另一种状态；
+            （4）事物状态变化是有规则的，A状态可以变换到B，B可以变换到C，A却不一定能变换到C；
+            （5）同一种行为，可以将事物从多种状态变成同种状态，但是不能从同种状态变成多种状态。
+        </section>
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            <p>
+                有限状态机有如何应用在具体场景？
+            </p>
+        </section>
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            满足3点即可用:所需状态确定，有事件触发转变状态，总状态有限且转变有规律。
+
+
+            页面可用有限状态机的元素较多且有规律时可用：例如：开关按钮，下拉菜单，
+            
+            
+            还有任务中杀人游戏的玩家死活状态、白天黑夜状态等
+        </section>
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+            <h3>7.参考文献</h3>
+        </section>
+        <section class="left">
+           <p>参考一：有限状态机库</p>
+           <p>参考二：js与有限状态机</p> 
+           <p>参考三：阮一峰的有限状态机 </p>   
+        </section>
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+        <section>
+            <p>1.有限状态机有哪些优点？</p>
+            <p>
+                答：有限状态机的写法，逻辑清晰，表达力强，有利于封装事件。一个对象的状态越多、发生的事件越多，就越适合采用有限状态机的写法。
+            </p>
+        </section>
+        <section>
+            <p>2，为什么声明了有限状态机没有效果？</p>
+            <p>答：使用有限状态机的第一步是要引入有限状态机的js库，不然是无法使用的。</p>
+        </section>
+        <section>
+            <p>3，可以用原生的js来模仿有限状态机吗？</p>
+            <p>答：可以，通过多个条件语句来触发事件和限制状态，不过推荐这种做法，这样会导致代码臃肿和难以维护。</p>
+        </section>
+        <section>
+            <p>感谢大家观看</p>
+            <p><small>BY : 张新</small></p>
+        </section>
+    </div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status He

@@ -1,0 +1,177 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>葡萄藤PPT</title>
+
+	<link rel="stylesheet" href="./css/reveal/reveal.css">
+
+	<!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+	<link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+	<!-- syntax highlighting 代码高亮主题 -->
+	<link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+	<!-- 打印和PDF输出样式 -->
+	<script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+	<area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+</map>
+<div class="reveal">
+	<div class="slides">
+		<section>
+			<h2>【CSS-task8】</h2>
+			<h4>css中有哪些方法可以实现垂直居中？</h4>
+			<p>分享人：邹志程</p>
+		</section>
+		<section>
+			<p>目录</p>
+			<p>1.背景介绍</p>
+			<p>2.知识剖析</p>
+			<p>3.常见问题</p>
+			<p>4.解决方案</p>
+			<p>5.编码实战</p>
+			<p>6.扩展思考</p>
+			<p>7.参考文献</p>
+			<p>8.更多讨论</p>
+		</section>
+		<section>
+			<section>
+				<h3>1.背景介绍</h3>
+			</section>
+			<section>
+				在前端开发过程中，对页面进行布局时，除了CSS水平居中的需求外，还会经常遇到CSS垂直居中的需求，CSS垂直居中跟CSS水平居中一样都是前端工程师的基本功。
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h3>2.知识剖析</h3>
+			</section>
+			<section>
+				1、头部和顶部使用相同大小的padding值可以实现居中。<br>
+				2、单行文本可以用line-height实现垂直居中，设置子元素的line-height值等于父元素的height，这种方法适用于子元素为单行文本的情况。<br>
+				3、通过display:flex，align-items: center;或 align-self: center;实现垂直居中。<br>
+				4、使用position、transform实现元素垂直居中。<br>
+            </section>
+            <section>
+                5、使用position结合margin：auto实现垂直居中。<br>
+                6、使用 display :table和 vertical-align 对容器里的文字进行垂直居中,
+                父元素使用display:table,子元素使用display:table-cell属性来模拟表格，子元素设置vertical-align:middle即可垂直居中<br>
+				7、通过verticle-align:middle实现行内垂直居中。
+			</section>
+		</section>
+		<section>
+			<section>
+				<h3>3.常见问题</h3>
+				1、使用line-height设置垂直居中时，为什么设置line-height:100%不管用？<br>
+                2、verticle-align:middle相对父元素不能垂直居中？<br>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h3>4.解决方案</h3>
+			</section>
+				<section style="font-size: 33px">
+                    1、	从官方文档看linr-height设置百分比是基于当前字体尺寸的百分比，所以这里的百分比是不是相对父元素而言的，而是相对于字体尺寸的，
+                    所以想要用line-height垂直居中，值不能设为100%，
+				</section>
+			<section style="font-size: 33px">
+				2、vertical-align只作用于在同一行内的元素，它需要根据同一行找到参照的基线，而一个Box中由很多行很多元素组成，
+                它的垂直并不是相对于整个Box而言的，所以使用vertical-align:middle时不能对齐到父元素最中央的位置。
+                解决方法是定义一个同级的行内元素，让这个元素找到基线，或者配合line-height父元素内设置行高和box的高度一样，box内就只有一行，这时verticle-align:middle就能生效了。
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h3>5.代码实战</h3>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h3>6.拓展思考</h3>
+                在实现垂直居中的情况下，怎样让元素水平方向也居中？
+			</section>
+            <section>
+                常用到的水平居中：<br>
+                1、行内元素水平方向居中text-aligh<br>
+                2、定宽块级元素，给元素设置margin:0 auto实现水平居中。<br>
+                3、弹性布局下父元素添加：justify-content: center;<br>
+                4、position结合transform时：水平方向left:50%，再用translate X轴方向偏移-50%<br>
+                5、使用position结合margin时：水平方向添加left和right的相同定位值
+            </section>
+		</section>
+
+		<section>
+			<section>
+				<h3>7.参考文献</h3>
+				<p>参考一：<a href="http://www.runoob.com/css/css-align.html">菜鸟教程CSS 布局 - 水平 & 垂直对齐</a></p>
+				<p>参考二：<a href="http://www.runoob.com/w3cnote/flex-grammar.html">菜鸟教程flex布局</a></p>
+			</section>
+		</section>
+
+		<section>
+			<h3>8.更多讨论</h3>
+			1、padding可以实现垂直居中，为什么不推荐用margin呢？<br>
+			2、为什么使用transform：translate（-50%，-50%），可以让元素居中。<br>
+			3、使用margin：auto实现水平居中时需要注意什么。
+		</section>
+
+		<section>
+			<h4>鸣谢</h4>
+			<p>感谢大家观看</p>
+			<p>
+				<small>BY :邹志程</small>
+			</p>
+		</section>
+	</div>
+</div>
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: './plugin/markdown/marked.js' },
+            { src: './plugin/markdown/markdown.js' },
+            { src: './plugin/notes/notes.js', async: true },
+            { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>
