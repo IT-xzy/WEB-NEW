@@ -30,18 +30,19 @@
         document.getElementsByTagName('head')[0].appendChild(link);
     </script>
 </head>
+
 <body>
 <img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
 <map name="pttmap">
     <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
-</map>
+
 <div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
     <div class="slides"
          style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
         <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
-            <h2>【js-TASK8】</h2>
-            <h3></h3>
-            <p>分享人：张学良</p>
+            <h2>【css-11】</h2>
+            <h3>如何使用SASS</h3>
+            <p>分享人：卫鑫</p>
         </section>
         <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
             <p>目录</p>
@@ -57,109 +58,63 @@
         <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
             <h3>1.背景介绍</h3>
         </section>
-        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <p style="text-align: justify">
-                <!--我们在设计网页的时候，盒子居中是经会常用到的。居中可以分为水平居中和垂直居中。-->
-                <!--水平居中是比较容易，通过设置元素的margin: 0 auto就可以实现，但是垂直居中相对来说是比较复杂一些的。-->
-                1、angualr控制器是什么？<br>
-                控制器是angularjs的核心之一，它的作用主要是对视图中的数据和事件处理函数进行挂载，同时进行一定的业务功能的底层封装和处理。<br>
-            </p>
+        <section>
+            <p style="text-align: left">Sass 是一款强化 CSS 的辅助工具，它在 CSS 语法的基础上增加了变量、嵌套 、混合 、导入等高级功能，这些拓展令 CSS 更加强大与优雅。使用 Sass 以及 Sass 的样式库有助于更好地组织管理样式文件，以及更高效地开发项目。</p>
         </section>
-        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+        <section>
             <h3>2.知识剖析</h3>
         </section>
-        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <p style="letter-spacing: 5px">
-                根据上面的例子，我们知道，angularJS中view层解析是通过controller的作用域来将$scope对象解析成相应的内容，因此我们可以在同一个界面上划分不同的模块，通过不同的控制器控制不同的模块来进行开发，这样通过划分模块的开发方式，对今后维护代码带来了便利。我们会发现，不同的controller他们scope对象是不一样的,即使都是用了name这个变量，可以看出controller之间是封闭的，可是有时候我们面对两个模块之间进行数据交互，必然在两个controller之间进行通信，这就涉及到angular中的service操作
-            </p>
+        <section>
+            <section>
+                <p style="text-align: left">1.完全兼容 CSS3。</p>
+                <p style="text-align: left">2.在 CSS 基础上增加变量、嵌套 (nesting)、混合 (mixins) 等功能</p>
+                <p style="text-align: left">3.通过函数进行颜色值与属性值的运算</p>
+                <p style="text-align: left">4.提供控制指令等高级功能</p>
+                <p  style="text-align: left">5.自定义输出格式</p>
+            </section>
+            <section>
+                <p style="text-align: left">Sass 有两种语法格式</p>
+            </section>
+
         </section>
-        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+        <section>
             <h3>3.常见问题</h3>
         </section>
-        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <p>controller之间的数据该如何传输？</p>
+        <section>
+            <p> 使用 Sass</p>
         </section>
-        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+        <section>
+            <p style="text-align: left">首先是 SCSS  —— 也是本文示例所使用的格式 —— 这种格式仅在 CSS3 语法的基础上进行拓展，所有 CSS3 语法在 SCSS 中都是通用的，同时加入 Sass 的特色功能。此外，SCSS 也支持大多数 CSS hacks 写法以及浏览器前缀写法，以及早期的 IE 滤镜写法。这种格式以 .scss 作为拓展名。</p>
+    </section>
+        <section>
+            <p style="text-align: left">另一种也是最早的 Sass 语法格式通常简称 "Sass"，是一种简化格式。它使用 “缩进” 代替 “花括号” 表示属性属于某个选择器，
+                用 “换行” 代替 “分号” 分隔属性，很多人认为这样做比 SCSS 更容易阅读，书写也更快速。缩进格式也可以使用 Sass 的全部功能，
+                只是与 SCSS 相比个别地方采取了不同的表达方式，这种格式以 .sass 作为拓展名。</p>
+        </section>
+        <section>
             <h3>4.解决方案</h3>
         </section>
-        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
-            <section style="top: 330px; display: none;">
-                <p style="text-align: center">
-                    使用service,实现controller之间的数据传输
-
-                    在之前的例子我们提到，controller是相对独立的，两个controller之间，内存是不共享的，同级DOM下，两个controller是无法互相访问其中的属性或者方法的。
-
-                    官方建议页面之间通过service互相访问。
-
-                </p>
-                <!--<p>二 margin：auto实现CSS垂直居中</p>-->
-                <!--<p>三 display:flex实现CSS垂直居中</p>-->
-                <!--<p>四 padding实现CSS垂直居中</p>-->
-                <!--<p>五 伪元素:before实现CSS垂直居中</p>-->
-                <!--<p>六 通过隐藏节点实现CSS垂直居中 </p>-->
-                <!--<p>七 line-height实现CSS垂直居中 </p>-->
-            </section>
-        </section>
-        <!-- <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+        <section>
             <h3>5.编码实战</h3>
-        </section> -->
-        <!-- <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <p style="text-align: justify">1.插入纯文字。content属性与 ::before 及 ::after 伪元素配合使用生成文本内容。
-            </p>
         </section>
-        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <p style="text-align: justify">2.嵌入文字符号。使用content属性的open-quote属性值和close-quote属性值在字符串两边添加诸如括号、单引号、双引号之类的嵌套文字符号。open-quote用于添加开始的文字符号，close-quote用于添加结束的文字符号。
-            </p>
-        </section>
-        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <p style="text-align: justify">3.插入图片。content属性也可以直接在元素前/后插入图片， content:url()。
-            </p>
-        </section>
-        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <p style="text-align: justify">4.插入元素的属性值。content属性可以直接利用attr获取元素的属性，将其插入到对应位置。
-                attr（attribute），是属性的意思，attr(href)，也就是获取href里面的值填充到content里面啊，这是css3的用法。
-                语法为::after{content:attr(href);}
-            </p>
-        </section>
-        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <p style="text-align: justify">5.计数器用法。content属性可以插入编号，可以修饰，可以指定编号种类，还可以在编号中进行嵌套。
-            </p>
-        </section> -->
-        <!-- <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+        <section>
             <h3>6.扩展思考</h3>
-        </section> -->
-        <!-- <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
-            <section style="top: 330px; display: none;">
-                <p style="text-align: center">
-                    content:"."是怎么实现清除浮动的？
-                </p>
-            </section>
         </section>
-        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
-            <section style="top: 330px; display: none;">
-                <p style="text-align: center">
-                    如果有一个DIV作为外部容器，内部的DIV如果设置了float样式，则外部的容器DIV因为内部没有clear，导致不能被撑开。
-                    这个对这个盒子使用：：after这个伪元素，在盒子的结尾添加content属性，添加了一个句号"."，
-                    并设置display为block；高度设为0；clear设为both；visibility设为隐藏。这样就达到了撑开容器的目的。
-                </p>
-            </section> -->
+        <section>
+            <p>sass的熟练</p>
         </section>
-        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+        <section>
             <h3>7.参考文献</h3>
         </section>
-        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <p>参考一：<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank">
-                面向对象过程</a></p>
+        <section>
+            <p style="text-align: left">参考一：<a href="https://www.sass.hk/docs/" target="_blank"></a>官网sass中文文档</p>
         </section>
-        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+        <section>
             <h3>8.更多讨论</h3>
         </section>
-        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
-            <h4>鸣谢</h4>
-            <p>感谢大家观看</p>
-            <p>
-                <small>BY :张学良</small>
-            </p>
+        <section>
+            <h4>感谢观看</h4>
+            <p><small>BY : 卫鑫</small></p>
         </section>
 
     </div>
@@ -209,13 +164,6 @@
     <div class="pause-overlay"></div>
     <div id="aria-status-div" aria-live="polite" aria-atomic="true"
          style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
-
-        语法：
-        return[()[expression][]];
-        可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。
-
-        用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression 被省略，
-        或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
     </div>
 </div>
 
