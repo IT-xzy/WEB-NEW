@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>传参demo</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <label for="name">姓名:</label>
+        <input type="text" class="form-control" id="name" placeholder="姓名">
+        <label for="age">年龄:</label>
+        <input type="text" class="form-control" id="age" placeholder="年龄">
+        <br>
+        <button class="btn btn-block btn-info" onclick="getParameter()">获取参数</button>
+        <button type="button" class="btn btn-block btn-primary" onclick="urlgo()">URL传参</button>
+        <button type="button" class="btn btn-block btn-success" onclick="setLocalStorage()">保存localStorage</button>
+        <button type="button" class="btn btn-block btn-outline-success" onclick="getLocalStorage()">读取localStorage</button>
+        <button type="button" class="btn btn-block btn-warning" onclick="setSessionStorage()">保存sessionStorage</button>
+        <button type="button" class="btn btn-block btn-outline-warning" onclick="getSessionStorage()">读取sessionStorage</button>
+        <button type="button" class="btn btn-block btn-danger" onclick="setCo()">保存cookie</button>
+        <button type="button" class="btn btn-block btn-outline-danger" onclick="getCo()">读取cookie</button>
+    </div>
+    <br>
+    <div class="container">
+            <form action="page2.html" method="get">
+                    <div class="form-group">
+                      <label for="user">账号:</label>
+                      <input type="text" class="form-control" name="user" id="user" placeholder="请输入账号">
+                    </div>
+                    <div class="form-group">
+                      <label for="pwd">密码:</label>
+                      <input type="password" class="form-control" name="password" id="pwd" placeholder="请输入密码">
+                    </div>
+                    <input type="submit" class="btn btn-primary">
+                  </form>
+    </div>
+</body>
+<script src="./page1.js"></script>
+
+</html>

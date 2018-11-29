@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .left {
+            text-align: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+    </map>
+    <div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+        <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+            <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+                <h2>【JS-task3】</h2>
+                <h3>JS有哪几种传参方式？
+                </h3>
+                <p>分享人：刘仁瑞</p>
+            </section>
+            <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <p class="left">我们今天讲的传参是指页面之间的数据传递。</p>
+                <p class="left">
+                    传统的前端开发中，页面之间是少有参数交互的，甚至没有，而在如今的前端环境下， 一个稍微正式点的项目都不可能少了页面间传参，页面的跨越、服务器后台进行数据请求等，都需要一个或多个传参的方法。
+                    那么参数在不同的页面间进行传递，一个页面的参数被另一页面使用，如何才能做到不同页面间进行参数传递？</p>
+            </section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                <h4>URL传递</h4>
+                <p class="left">这种传参方式就是通过在url后面增加参数，然后将参数信息传递到其他页面。比如：http://xxx.com/
+                    login.html?user=admin&password=123456</p>
+                <p class="left">User=admin,password=123456是传递的参数 user\password是名称，admin\123456则是值。在html
+                    后面加个？然后添加参数，多个参数则用&相连。后面任务学到的ajax，angularjs都是通过url来传递数据到接口然
+                    后接收响应的。</p>
+            </section>
+            <section>
+                <h4>这种传参方式的特点</h4>
+                <p class="left">优点：</p>
+                <p class="left">1、 URL地址法简洁易用，可同时传递多个字符型参数；</p>
+                <p class="left">2、 URL地址法可以很方便的在页面之间切换并传递参数，无需额外的处理，基于正常情况比较不会性能损失；</p>
+            </section>
+            <section>
+                <p class="left">不足：</p>
+                <p class="left">1、 URL传递参数长度受限，最大为2K；</p>
+                <p class="left">2、 URL只能传递字符型参数，传递中文时，由于发送页面和接收页面的字符编码方式不一样而导致参数解析处理错误，参数包含中文时可能出现乱码或者参数接收错误；</p>
+                <p class="left">3、 信息泄露：URL地址在客户端可见，所以涉及隐私的参数需进行加密后才能进行传递，不加密传输会导致信息泄露，产生安全隐患。</p>
+            </section>
+            <section>
+                <h4>HTML5 web 存储</h4>
+                <p class="left">使用HTML5可以在本地存储用户的浏览数据。
+                    早些时候,本地存储使用的是 cookie。但是Web 存储需要更加的安全与快速. 这些数据不会被保存在服务器上，但是这些数据
+                    只用于用户请求网站数据上.它也可以存储大量的数据，而不影响网站的性能. 数据以 键/值 对存在, web网页的数据只允许
+                    该网页访问使用。</p>
+                <p class="left">客户端存储数据的两个对象为：</p>
+                <p class="left">localStorage - 用于长久保存整个网站的数据，保存的数据没有过期时间，直到手动去除。</p>
+                <p class="left">sessionStorage - 用于临时保存同一窗口(或标签页)的数据，在关闭窗口或标签页之后将会删除这些数据。</p>
+            </section>
+            <section>
+                <p class="left">不管是 localStorage，还是 sessionStorage，可使用的API都相同，常用的有如下几个（以localStorage为例）：</p>
+                <p class="left">保存数据：localStorage.setItem(key,value);</p>
+                <p class="left">读取数据：localStorage.getItem(key);</p>
+                <p class="left">删除单个数据：localStorage.removeItem(key);</p>
+                <p class="left">删除所有数据：localStorage.clear();</p>
+                <p class="left">得到某个索引的key：localStorage.key(index);</p>
+            </section>
+            <section>
+                <h4>COOKIE</h4>
+                <p class="left">Cookie 是一些数据, 存储于你电脑上的文本文件中。 当 web 服务器向浏览器发送 web 页面时，在连接关闭
+                    后，服务端不会记录用户的信息。 Cookie 的作用就是用于解决 "如何记录客户端的用户信息": 当用户访问 web 页面时，
+                    他的名字可以记录在 cookie 中。 在用户下一次访问该页面时，可以在 cookie 中读取用户访问记录。</p>
+                <p class="left">JavaScript 可以使用 document.cookie 属性来创建 、读取、及删除 cookie。 JavaScript 中，创建
+                    cookie 如下所示： </p>
+                <p class="left">document.cookie="username=John Doe"; </p>
+                <p class="left"> 在 JavaScript 中, 可以使用以下代码来读取 cookie： var x = document.cookie;</p>
+            </section>
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+            <section>
+                <p>这几种页面传参方式选用哪种比较好?</p>
+            </section>
+            <section>
+                <h3>4.解决方案</h3>
+            </section>
+            <section>
+                <p class="left">根据页面功能来选择比较好，比如像登录页，就可以使用ajax或者angular 通过URL来传递参数进行页面验证。
+                    localStorage\sessionStorage则可以在像任务2-4上这种页面上使用，而cookie的用途就是解决"如何记录客户端的用户信息"，
+                    在需要存储诸如用户名，搜索历史等数据时便可以使用</p>
+            </section>
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+            <section>
+                <a href="./demo/lrrdemo/page1.html">demo</a>
+            </section>
+            <section>
+                <h3>6.扩展思考</h3>
+            </section>
+            <section>
+                <h4>各种传参方式的优缺点</h4>
+                <p class="left" style="text-decoration: white">URL传参：</p>
+                <p class="left">优点：取值方便，可以跨域。</p>
+                <p class="left">缺点：值长度有限制。</p>
+            </section>
+            <section>
+                <p class="left" style="text-decoration: white">H5 Web storage：</p>
+                <p class="left">优点：使用起来非常简单、方便。</p>
+                <p class="left">缺点：兼容性有点小问题。兼容性： 现代浏览器（firefox safari chrome opera）都支持，IE8以下（不包括IE8）不支持。</p>
+            </section>
+            <section>
+                <p class="left" style="text-decoration: white">Cookie传参：</p>
+                <p class="left">优点：兼容性最好，可以在同源内的任意网页内访问，生命期可以设置。</p>
+                <p class="left">缺点：值长度有限制（存储的容量小），还得注意请求接口时别带到http head。</p>
+            </section>
+            <section>
+                <h3>7.参考文献</h3>
+            </section>
+            <section class="left">
+                <p>参考一：<a href="https://www.kancloud.cn/digest/yvettelau/137669" target="_blank">前端在html页面之间传递参数的方法</a></p>
+                <p>参考二：<a href="http://www.runoob.com/html/html5-webstorage.html" target="_blank">HTML5 Web 存储</a></p>
+                <p>参考三：<a href="http://www.runoob.com/js/js-cookies.html" target="_blank">JavaScript Cookie</a></p>
+            </section>
+            <section>
+                <h3>8.更多讨论</h3>
+            </section>
+            <section>
+                <p>感谢大家观看</p>
+                <p><small>BY : 刘仁瑞</small></p>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status He
