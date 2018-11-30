@@ -1,0 +1,486 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+   
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h3>【JS-task11】如何开发小程序？</h3>
+            <p>分享人：郭晨阳</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">     
+            <p>微信小程序，简称小程序，英文名mini program，是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或搜一下即可打开应用。 全面开放申请后，主体类型为企业、政府、媒体、其他组织或个人的开发者，均可申请注册小程序。小程序、订阅号、服务号、企业号是并行的体系。</p>
+            <p></p>
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>2.知识剖析</h3>
+        </section>
+        
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h4>小程序是什么?有什么功能?</h4>
+            <p>小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。也体现了“用完即走”的理念，用户不用关心是否安装太多应用的问题。应用将无处不在，随时可用，但又无需安装卸载。对于开发者而言，小程序开发门槛相对较低，难度不及APP，能够满足简单的基础应用，hishop小程序开发认为适合生活服务类线下商铺以及非刚需低频应用的转换。小程序能够实现消息通知、线下扫码、公众号关联等七大功能。其中，通过公众号关联，用户可以实现公众号与小程序之间相互跳转。</p>
+        </section>
+        
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h4>小程序开发前的准备</h4>
+            <p style="text-align: left">①在微信公众平台官网首页（mp.weixin.qq.com）点击右上角的“立即注册”按钮；</p>
+            <p style="text-align: left">②填写邮箱和密码:请填写未注册过公众平台、开放平台、企业号、未绑定个人号的邮箱。</p>
+            <p style="text-align: left">③绑定微信进行登录：微信需要绑定银行卡。</p>
+            <p style="text-align: left">④绑定开发者:进入“设置-开发设置”，获取AppID信息,添加项目必须要有AppId;个人主体小程序最多可绑定5个开发者，10个体验者;</p>
+            <p style="text-align: left">⑤下载小程序开发工具开发</p>
+        </section>
+        
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>3.常见问题</h3>
+        </section>
+     
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h4>小程序里面的各项配置</h4>
+        </section>
+        
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>4.解决方案</h3>
+        </section>
+        
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h4>基本目录结构</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>文件</th>
+                        <th>必填</th>
+                        <th>作用</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>app.js</td>
+                        <td>是</td>
+                        <td>小程序逻辑</td>
+                    </tr>
+                    <tr>
+                        <td>app.json</td>
+                        <td>是</td>
+                        <td>小程序公共设置</td>
+                    </tr>
+                    <tr>
+                        <td>app.wxss</td>
+                        <td>否</td>
+                        <td>小程序公共样式表</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p>一个小程序页面由四个文件组成，分别是：</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>文件类型</th>
+                        <th>必填</th>
+                        <th>作用</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>js</td>
+                        <td>是</td>
+                        <td>页面逻辑</td>
+                    </tr>
+                    <tr>
+                        <td>wxml</td>
+                        <td>是</td>
+                        <td>页面结构</td>
+                    </tr>
+                    <tr>
+                        <td>wxss</td>
+                        <td>否</td>
+                        <td>页面样式表</td>
+                    </tr>
+                    <tr>
+                        <td>json</td>
+                        <td>否</td>
+                        <td>页面配置</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h4>主体部分的配置</h4>
+            <p style="text-align: left">app.json配置项解释</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>属性</th>
+                        <th>类型</th>
+                        <th>必填</th>
+                        <th>描述</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>pages</td>
+                        <td>String/Array</td>
+                        <td>是</td>
+                        <td>设置页面路径</td>
+                    </tr>
+                    <tr>
+                        <td>window</td>
+                        <td>Object</td>
+                        <td>否</td>
+                        <td>设置默认页面的窗口表现</td>
+                    </tr>
+                    <tr>
+                        <td>tabBar</td>
+                        <td>Object</td>
+                        <td>否</td>
+                        <td>设置底部 tab 的表现</td>
+                    </tr>
+                    <tr>
+                        <td>networkTimeout</td>
+                        <td>Object</td>
+                        <td>否</td>
+                        <td>设置网络超时时间</td>
+                    </tr>
+                    <tr>
+                        <td>debug</td>
+                        <td>Boolean</td>
+                        <td>否</td>
+                        <td>设置是否开启 debug 模式</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h4>子页面APP.JSON</h4>
+            <p>每一个小程序页面也可以使用.json文件来对本页面的窗口表现进行配置。 页面的配置比app.json全局配置简单得多，只是设置 app.json 中的 window 配置项的内容，页面中配置项会覆盖 app.json 的 window 中相同的配置项。 页面的.json只能设置 window 相关的配置项，以决定本页面的窗口表现，所以无需写 window 这个键</p>
+        </section>
+        
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h4>HTML标签</h4>
+            <p style="text-align: left">视图容器：view,scroll-view,swiper,movable-view</p>
+            <p style="text-align: left">基本内容：icon,text,progress</p>
+            <p style="text-align: left">表单组件：button，checkbox，form，input，label，picker，picker-view，radio，slider，switch，textarea</p>
+            <p style="text-align: left">导航：navigator</p>
+            <p style="text-align: left">媒体组件：audio，image，video</p>
+            <p style="text-align: left">地图：map</p>
+            <p style="text-align: left">画布：canvas</p>
+            <p style="text-align: left">客服绘画：contact-button</p>
+        </section>
+        
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h4>WXSS样式</h4>
+            <p style="text-align: left">基本和我们平常的一样，有两个拓展特性：尺寸单位，样式导入</p>
+            <p style="text-align: left">尺寸单位：rpx（responsive pixel）: 可以根据屏幕宽度进行自适应。规定屏幕宽为750rpx。如在 iPhone6 上，屏幕宽度为375px，共有750个物理像素，则750rpx = 375px = 750物理像素，1rpx = 0.5px = 1物理像素。</p>
+        </section>
+        
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p style="text-align: left">样式导入：使用@import语句可以导入外联样式表，@import后跟需要导入的外联样式表的相对路径，用;表示语句结束。</p>
+            <p style="text-align: left">选择器支持：class,id,element,:before,:after</p>
+            <p style="text-align: left">全局样式与局部样式:定义在 app.wxss 中的样式为全局样式，作用于每一个页面。在 page 的 wxss 文件中定义的样式为局部样式，只作用在对应的页面，并会覆盖 app.wxss 中相同的选择器。</p>
+        </section>
+        
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h4>事件</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>类型</th>
+                        <th>触发条件</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>touchstart</td>
+                        <td>手指触摸动作开始</td>
+                    </tr>
+                    <tr>
+                        <td>touchmove</td>
+                        <td>手指触摸后移动</td>
+                    </tr>
+                    <tr>
+                        <td>touchcancel</td>
+                        <td>手指触摸动作被打断，如来电提醒，弹窗</td>
+                    </tr>
+                    <tr>
+                        <td>touchend</td>
+                        <td>手指触摸动作结束</td>
+                    </tr>
+                    <tr>
+                        <td>tap</td>
+                        <td>手指触摸后马上离开</td>
+                    </tr>
+                    <tr>
+                        <td>longtap</td>
+                        <td>手指触摸后，超过350ms再离开</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>5.编码实战</h3>
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <code class="hljs elixir"></code>
+        </section>
+        
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>6.扩展思考</h3>
+        </section>
+        
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p>小程序能否使用windows对象的方法？</p>
+        </section>
+        
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p>小程序中没有原生js中的window对象，因此现暂时无法使用第三方框架以及使用window对象中的方法</p>
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>7.参考文献</h3>
+        </section>
+        
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <a href="https://developers.weixin.qq.com/miniprogram/dev/">微信教程</a><br/>
+        </section>
+        
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>8 更多讨论</h3>
+        </section>
+        
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p></p>
+        </section>
+        
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <small>by: 郭晨阳</small>
+        </section>
+
+    </div>
+<div class="backgrounds"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background stack present" data-loaded="true" style="display: block;"><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up enabled" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+               
+                语法：
+                return[()[expression][]];
+                可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。
+            
+                用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression 被省略，
+                    或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+            </div></div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+
+    // 以下为常见配置属性的默认值
+    // {
+    //  controls: true, // 是否在右下角展示控制条
+    //  progress: true, // 是否显示演示的进度条
+    //  slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    //  history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    //  keyboard: true, // 是否启用键盘快捷键来导航
+    //  overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    //  center: true, // 是否将幻灯片垂直居中
+    //  touch: true, // 是否在触屏设备上启用触摸滑动切换
+    //  loop: false, // 是否循环演示
+    //  rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    //  fragments: true, // 全局开启和关闭碎片。
+    //  autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    //  transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    //  transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    //  mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+    //    原始类型对象直接赋值不会相互影响
+    //    var a = 1;
+    //
+    //    var b = a;
+    //    b = 10;
+    //    console.log(a); // 1
+    ////
+    //    var a = 'hello';
+    //    var b = a;
+    //    b = 'world';
+    //    console.log(a); // hello
+    //
+    //    var a = true;
+    //    var b = a;
+    //    b = false;
+    //    console.log(a);
+
+    //数组浅复制
+    //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+    //    ];
+    //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+    //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+    //    console.log(a)//那么现在打印a 是什么结果呢
+    //
+    //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+    //    var arrtoo = arr.slice(1);
+    //    arrtoo[2] = "set Map";
+    //    console.log(arr);//One,Two,Three
+    //    console.log(arrtoo);//One,set Map,Three
+
+    //
+    //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+    //    var arrtooo = arr1.concat(111111);
+    //    arrtooo[1] = "set Map To";
+    //    console.log(arr1);//One,Two,Three
+    //    console.log(arrtooo);//One,set Map To,Three
+
+    //
+    //    var b=[1,2,3,4,5];   //concat的链接
+    //    var c=[6,7,8,9];
+    //    var d =[4,4,22]
+    //    console.log(b.concat(c,d))
+
+    var a = {name: 'yy', age: 26};  //对象的浅拷贝哦
+    var b = new Object();
+    b.name = a.name;
+    b.age = a.age;
+    b.name = 'xx';
+    console.log(a);//Object { name="yy", age=26}
+    console.log(b);//Object { name="xx", age=26}
+
+    var d = {            //对象的浅拷贝哦 第一种
+        name: 'd',
+        oc: {
+            age: 32
+        },
+        oad: {
+            adds: {
+                bb: 12
+            }
+        }
+    };
+    var deepCopy = function (source) {
+        var result = {};
+        for (var key in source) {
+            result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+        }
+        return result
+    };
+
+    var c = deepCopy(d);
+    c.name = 'c';
+    c.oc = {
+        age: 49
+    };
+    console.log(c);
+    console.log(d);
+
+
+    //    var person = {    //第二种深拷贝
+    //        name: 'aa',
+    //        friends: ['da', 'dsa', 'gf']
+    //    };
+    //
+    //    var aPerson = Object.create(person, {
+    ////        name: {
+    ////            value: "gee"
+    ////        }
+    //    });
+    //
+    //    console.log(person.name);
+    //    console.log(aPerson.friends)
+
+    var Chinese = {
+        nation: '中国'
+
+    }
+    var Doctor = {
+        career: '医生'
+    }
+
+    function extendCopy(p) {
+        var c = {};
+        for (var i in p) {
+            c[i] = p[i];
+        }
+        c.uber = p;
+        return c;
+    }
+
+    var Doctor = extendCopy(Chinese);
+    Doctor.career = '医生';
+    console.log(Doctor); // 中国
+    Chinese.birthPlaces = ['北京', '上海', '香港'];
+    var Doctor = extendCopy(Chinese);
+    Doctor.birthPlaces.push('厦门');
+
+</script>
+
+</body>
+</html>

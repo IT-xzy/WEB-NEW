@@ -1,0 +1,641 @@
+<html class="js no-mobile desktop no-ie chrome chrome69 task-section xkt-section gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch retina fontface domloaded gr__maikihyh_github_io w-613 gt-240 gt-320 gt-480 lt-640 lt-768 lt-800 lt-1024 lt-1280 lt-1440 lt-1680 lt-1920 portrait no-landscape"
+      id="2018-09-18-a-css-10-page">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>简述JS中this的指向</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <link rel="stylesheet" type="text/css" href="../css/reveal/print/paper.css">
+    <script type="text/javascript" src="../plugin/markdown/marked.js"></script>
+    <script type="text/javascript" src="../plugin/markdown/markdown.js"></script>
+    <script type="text/javascript" src="../plugin/notes/notes.js"></script>
+    <script type="text/javascript" src="../plugin/highlight/highlight.js"></script>
+</head>
+
+<body data-gr-c-s-loaded="true">
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal center default" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides"
+         style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.574688);">
+        <section class="present" style="top: 178px; display: block;">
+            <h2>【简述JS中this的指向】</h2>
+            <!--<h3>如何阻止事件冒泡和默认事件？</h3>-->
+            <p>分享人：宋恒</p>
+        </section>
+        <section class="future" style="top: 1.5px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>JAVASCRIPT中THIS指的是什么？</h4>
+            <p style="text-align: justify">
+                this是JavaScript语言中定义的众多关键字之一，它的特殊在于它自动定义于每一个函数域内，在函数运行时，
+                this会自动生成一个内部对象，这个对象只能在函数内部使用。同时，随着函数使用场合的不同，this的值会发生变化。
+                但是有一个总的原则，那就是this指的是，调用函数的那个对象。
+            </p>
+
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <!--<h4>那什么THIS的指向又是什么呢？</h4>-->
+            <p style="text-align: justify">
+                它是一个很特别的关键字，被自动定义在所有函数的作用域中
+                在JavaScript中，this是动态绑定的，它可以是全局对象、当前对象或者任意对象，这完全取决于函数的调用方式。
+                这就导致了this具备了多重含义，可以使得JavaScript更灵活的使用。
+            </p>
+
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>2.知识剖析</h3>
+        </section>
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--&lt;!&ndash;<h4>先来了解一下事件流</h4>&ndash;&gt;-->
+            <!--<p style="letter-spacing: 5px"> 由于其运行期绑定的特性，JavaScript 中的 this 含义要丰富得多，它可以是全局对象、当前对象或者任意对象，-->
+                <!--这完全取决于函数的调用方式。JavaScript 中函数的调用有以下几种方式：作为对象方法调用，作为函数调用，作为构造函数调用，-->
+                <!--和使用 apply 或 call 调用。下面我们将按照调用方式的不同，分别讨论 this 的含义。</p>-->
+
+        <!--</section>-->
+        <section class="present" style="top: 0px; display: block;">
+            <h4>作为对象方法调用</h4>
+            <p style="letter-spacing: 5px">
+                在 JavaScript 中，函数也是对象，因此函数可以作为一个对象的属性，此时该函数被称为该对象的方法，在使用这种调用方式时，this 被自然绑定到该对象。
+            </p>
+            <pre><code class="hljs less">
+            var point = {
+                x : 0,
+                y : 0,
+                moveTo : function(x, y) {
+                    this.x = this.x + x;
+                    this.y = this.y + y;
+                    }
+                };
+
+                point.moveTo(1, 1)//this 绑定到当前对象，即 point 对象
+            </code></pre>
+        </section>
+        <section class="present" style="top: 0px; display: block;">
+            <h4>作为函数调用</h4>
+            <p style="letter-spacing: 5px">
+                函数也可以直接被调用，此时 this 绑定到全局对象。在浏览器中，window 就是该全局对象。比如下面的例子：
+                函数被调用时，this 被绑定到全局对象，接下来执行赋值语句，相当于隐式的声明了一个全局变量，这显然不是调用者希望的。
+            </p>
+            <pre><code class="hljs less">
+            function makeNoSense(x) {
+                            this.x = x;
+                            }
+
+                            makeNoSense(5);
+                            x;// x 已经成为一个值为 5 的全局变量
+            </code></pre>
+
+        </section>
+        <section class="present" style="top: 0px; display: block;">
+
+            <p style="letter-spacing: 5px">对于内部函数，即声明在另外一个函数体内的函数，这种绑定到全局对象的方式会产生另外一个问题。我们仍然以前面提到的 point 对象为例，
+                这次我们希望在 moveTo 方法内定义两个函数，
+                分别将 x，y 坐标进行平移。结果可能出乎大家意料，不仅 point 对象没有移动，反而多出两个全局变量 x，y。</p>
+        </section>
+        <section class="present" style="top: 0px; display: block;">
+            <!--<h4>作为函数调用</h4>-->
+            <!--<p style="letter-spacing: 5px">-->
+                <!--函数也可以直接被调用，此时 this 绑定到全局对象。在浏览器中，window 就是该全局对象。比如下面的例子：-->
+                <!--函数被调用时，this 被绑定到全局对象，接下来执行赋值语句，相当于隐式的声明了一个全局变量，这显然不是调用者希望的。-->
+            <!--</p>-->
+            <pre><code class="hljs less">
+            var point = {
+                    x : 0,
+                    y : 0,
+                    moveTo : function(x, y) {
+                        // 内部函数
+                        var moveX = function(x) {
+                        this.x = x;//this 绑定到了哪里？
+                       };
+                       // 内部函数
+                       var moveY = function(y) {
+                       this.y = y;//this 绑定到了哪里？
+                       };
+
+                       moveX(x);
+                       moveY(y);
+                       }
+                    };
+                    point.moveTo(1, 1);
+                    point.x; //==>0
+                    point.y; //==>0
+                    x; //==>1
+                    y; //==>1
+            </code></pre>
+            <p style="letter-spacing: 5px">这属于 JavaScript 的设计缺陷，正确的设计方式是内部函数的 this 应该绑定到其外层函数对应的对象上，
+                为了规避这一设计缺陷，聪明的 JavaScript 程序员想出了变量替代的方法，约定俗成，该变量一般被命名为 that。</p>
+        </section>
+
+        <section class="present" style="top: 0px; display: block;">
+            <!--<h4>作为函数调用</h4>-->
+            <!--<p style="letter-spacing: 5px">-->
+            <!--函数也可以直接被调用，此时 this 绑定到全局对象。在浏览器中，window 就是该全局对象。比如下面的例子：-->
+            <!--函数被调用时，this 被绑定到全局对象，接下来执行赋值语句，相当于隐式的声明了一个全局变量，这显然不是调用者希望的。-->
+            <!--</p>-->
+            <pre><code class="hljs less">
+            var point = {
+                    x : 0,
+                    y : 0,
+                    moveTo : function(x, y) {
+                         var that = this;
+                        // 内部函数
+                        var moveX = function(x) {
+                        that.x = x;
+                        };
+                        // 内部函数
+                        var moveY = function(y) {
+                        that.y = y;
+                        }
+                        moveX(x);
+                        moveY(y);
+                        }
+                    };
+                    point.moveTo(1, 1);
+                    point.x; //==>1
+                    point.y; //==>1
+            </code></pre>
+            <!--<p style="letter-spacing: 5px">这属于 JavaScript 的设计缺陷，正确的设计方式是内部函数的 this 应该绑定到其外层函数对应的对象上，-->
+                <!--为了规避这一设计缺陷，聪明的 JavaScript 程序员想出了变量替代的方法，约定俗成，该变量一般被命名为 that。</p>-->
+        </section>
+
+
+        <section class="present" style="top: 0px; display: block;">
+            <h4>作为构造函数调用</h4>
+            <p style="letter-spacing: 5px">JavaScript 支持面向对象式编程，与主流的面向对象式编程语言不同，JavaScript 并没有类（class）的概念，
+                而是使用基于原型（prototype）的继承方式。相应的，JavaScript 中的构造函数也很特殊，如果不使用 new 调用，则和普通函数一样。
+                作为又一项约定俗成的准则，构造函数以大写字母开头，提醒调用者使用正确的方式调用。如果调用正确，this 绑定到新创建的对象上。</p>
+
+
+                <pre><code class="hljs less">
+            function Point(x, y){
+                           this.x = x;
+                           this.y = y;
+                        }
+            </code></pre>
+                <!--<p style="letter-spacing: 5px">这属于 JavaScript 的设计缺陷，正确的设计方式是内部函数的 this 应该绑定到其外层函数对应的对象上，-->
+                <!--为了规避这一设计缺陷，聪明的 JavaScript 程序员想出了变量替代的方法，约定俗成，该变量一般被命名为 that。</p>-->
+            <!--<p style="letter-spacing: 5px">需要先了解一些关键点：1.event事件对象 2.目标源：target 3.当前目标源：currentTarget 4.元素element</p>-->
+        </section>
+
+
+
+        <section class="present" style="top: 0px; display: block;">
+            <h4>使用 apply 或 call 调用</h4>
+            <p style="letter-spacing: 5px">让我们再一次重申，在 JavaScript 中函数也是对象，对象则有方法，apply 和 call 就是函数对象的方法。
+                这两个方法异常强大，他们允许切换函数执行的上下文环境（context），即 this 绑定的对象。很多 JavaScript 中的技巧以及类库都用到了该方法。
+            </p>
+        </section>
+        <section class="present" style="top: 0px; display: block;">
+            <!--<h4>使用 apply 或 call 调用</h4>-->
+            <!--<p style="letter-spacing: 5px">让我们再一次重申，在 JavaScript 中函数也是对象，对象则有方法，apply 和 call 就是函数对象的方法。-->
+                <!--这两个方法异常强大，他们允许切换函数执行的上下文环境（context），即 this 绑定的对象。很多 JavaScript 中的技巧以及类库都用到了该方法。-->
+            <!--</p>-->
+            <pre><code class="hljs less">
+            function Point(x, y){
+                           this.x = x;
+                           this.y = y;
+                           this.moveTo = function(x, y){
+                               this.x = x;
+                               this.y = y;
+                           }
+                        }
+
+                        var p1 = new Point(0, 0);
+                        var p2 = {x: 0, y: 0};
+                        p1.moveTo(1, 1);
+                        p1.moveTo.apply(p2, [10, 10]);
+            </code></pre>
+        </section>
+
+
+        <section class="present" style="top: 0px; display: block;">
+            <!--<h4>2.target和currentTarget</h4>-->
+            <p style="letter-spacing: 5px">在上面的例子中，我们使用构造函数生成了一个对象 p1，该对象同时具有 moveTo 方法；使用对象字面量创建了另一个对象 p2，
+                我们看到使用 apply 可以将 p1 的方法应用到 p2 上，这时候 this 也被绑定到对象 p2 上。另一个方法 call 也具备同样功能，
+                不同的是最后的参数不是作为一个数组统一传入，而是分开传入的。
+            </p>
+        </section>
+        <!--<section class="present" style="top: 0px; display: block;">-->
+            <!--<h4>3.element对象</h4>-->
+            <!--<p style="letter-spacing: 5px">element对象表示html元素，可以拥有的类型为元素节点，文本节点，属性节点等-->
+            <!--</p>-->
+
+        <!--</section>-->
+
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<p style="letter-spacing: 5px">事件冒泡</p>-->
+            <!--<p style="letter-spacing: 5px">在一个对象上触发某类事件（比如点击事件），如果此对象定义了此事件的处理程序，-->
+                <!--那么此事件就会调用这个处理程序，如果没有定义此事件处理程序或者事件返回true，那么这个事件会向这个对象的父级对象传播，-->
+                <!--从里到外，直至它被处理（父级对象所有同类事件都将被激活），或者它到达了对象层次的最顶层，即document对象（有些浏览器是window）。(demo)</p>-->
+            <!--简单的说，就是我鼠标点击一个元素上，这个事件会在这个元素所有祖先元素中触发，一直冒泡到dom最上层-->
+            <!--<p style="letter-spacing: 5px"></p>-->
+        <!--</section>-->
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<h4>事件冒泡有什么用？</h4>-->
+
+            <!--<p style="letter-spacing: 5px">想象一下现在我们有一个10列、100行的HTML表格，你希望在用户点击表格中的某一单元格的时候做点什么。-->
+                <!--比如说我有一次就需要让表格中的每一个单元格在被点击的时候变成可编辑状态。如果把事件处理器加到这1000个单元格会产生一个很大的性能问题，-->
+                <!--并且有可能导致内存泄露甚至是浏览器的崩溃。相反地，使用事件代理的话，-->
+                <!--你只需要把一个事件处理器添加到table元素上就可以了，这个函数可以把点击事件给截下来，并且判断出是哪个单元格被点击了。</p>-->
+        <!--</section>-->
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<h4>要注意的问题：</h4>-->
+            <!--<p style="letter-spacing: 5px">1）focus、blur和scroll事件不会冒泡。文档元素上的load事件会冒泡，但它会在document对象上停止冒泡而不会传播到window对象。-->
+                <!--只有当整个文档都加载完毕时才会触发window对象的load事件。-->
+
+                <!--2）阻止冒泡并不会阻止默认行为，比如submit按钮被点击后会提交表单数据。</p>-->
+
+        <!--</section>-->
+
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<h3>如何阻止冒泡</h3>-->
+        <!--</section>-->
+
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<p style="text-align: left"> 1.stopPropagation()，见demo</p>-->
+
+
+        <!--</section>-->
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<p style="text-align: left"> 2.return false </p>-->
+            <!--<p style="text-align: left">javascript的return false只会阻止默认行为，而是用jQuery的话则既阻止默认行为又防止对象冒泡。见demo  </p>-->
+        <!--</section>-->
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<h3>如何阻止默认事件</h3>-->
+        <!--</section>-->
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<p style="text-align: left"> 可以使用preventDefault()方法，直接使用event对象调用即可 </p>-->
+
+        <!--</section>-->
+        <!--<section class="future" aria-hidden="true" style="top: 330px; display: none;" hidden="">-->
+            <!--<p style="text-align: left">（2）直接赋值形式是在执行阶段创建</p>-->
+            <!--<pre><code class="hljs less">-->
+                            <!--alert(a); // undefined, 这个大家都知道-->
+                            <!--b = 10;-->
+                            <!--alert(b); // 10, 代码执行阶段创建-->
+
+                            <!--var a = 20;-->
+                            <!--alert(a); // 20, 代码执行阶段修改-->
+                        <!--</code></pre>-->
+        <!--</section>-->
+
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>3.常见问题</h3>
+            <p style="text-align: left">this碰到return的时候</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <!--<h3>3.常见问题</h3>-->
+            <h4>解决方案</h4>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+
+            <!--<p style="letter-spacing: 5px">这两种方法是有区别的。return false不仅阻止了事件冒泡，还阻止了事件本身。-->
+                <!--stopPropagation()方法只会阻止事件冒泡，不会阻止事件本身。-->
+
+            <!--</p>-->
+            <p style="text-align: left">
+                先看几个demo
+            </p>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+
+            <!--<p style="letter-spacing: 5px">这两种方法是有区别的。return false不仅阻止了事件冒泡，还阻止了事件本身。-->
+            <!--stopPropagation()方法只会阻止事件冒泡，不会阻止事件本身。-->
+
+            <!--</p>-->
+            <p style="text-align: left">
+                如果返回值是一个对象，那么this指向的就是那个返回的对象，如果返回值不是一个对象那么this还是指向函数的实例。
+            </p>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;"><h3>5.扩展思考</h3>
+
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: left"> 为什么 this 在 JavaScript 中的含义如此丰富 </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <p style="text-align: center">JavaScript 中的函数既可以被当作普通函数执行，也可以作为对象的方法执行，这是导致 this 含义如此丰富的主要原因
+                </p>
+                <!--<p style="text-align: center"> focus、blur和scroll事件不会冒泡。文档元素上的load事件会冒泡，但它会在document对象上停止冒泡而不会传播到window对象-->
+                <!--</p>-->
+            </section>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: left"> 一个函数被执行时，会创建一个执行环境（ExecutionContext），函数的所有的行为均发生在此执行环境中，
+                构建该执行环境时，JavaScript 首先会创建 arguments变量，其中包含调用函数时传入的参数。接下来创建作用域链。然后初始化变量，
+                首先初始化函数的形参表，值为 arguments变量中对应的值，如果 arguments变量中没有对应值，则该形参初始化为 undefined。 </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: left"> 如果该函数中含有内部函数，则初始化这些内部函数。如果没有，继续初始化该函数内定义的局部变量，
+                需要注意的是此时这些变量初始化为 undefined，其赋值操作在执行环境（ExecutionContext）创建成功后，函数执行时才会执行，
+                这点对于我们理解 JavaScript 中的变量作用域非常重要，鉴于篇幅，我们先不在这里讨论这个话题。最后为 this变量赋值，
+                如前所述，会根据函数调用方式的不同，赋给 this全局对象，当前对象等。至此函数的执行环境（ExecutionContext）创建成功，
+                函数开始逐行执行，所需变量均从之前构建好的执行环境（ExecutionContext）中读取。</p>
+        </section>
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<p style="text-align: left"> 我们来看看 this 在 JavaScript 中经常被误用的一种情况：回调函数。js 支持函数式编程，-->
+                <!--函数属于一级对象，可以作为参数被传递。请看下面的例子 myObject.handler 作为回调函数，会在 onclick 事件被触发时调用，-->
+                <!--但此时，该函数已经在另外一个执行环境（ExecutionContext）中执行了，this 自然也不会绑定到 myObject 对象上。</p>-->
+        <!--</section>-->
+        <!--<section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">-->
+            <!--<section style="top: 330px; display: none;">-->
+                <!--<p style="text-align: center">-->
+
+                    <!---->
+                    <!---->
+                        <!--</p>-->
+    <!---->
+                <!--</section>-->
+    <!---->
+            <!--</section>-->
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+
+                <h3>6.编码实战</h3>
+            </section>
+
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h3>7.参考文献</h3>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <p><a href="https://gaohaoyang.github.io/2015/05/20/scope/" target="_blank">
+                    参考一</a>
+
+                </p>
+                <p><a href="https://juejin.im/entry/57f5d492bf22ec006475238f" target="_blank">参考2</a></p>
+                <p><a href="https://github.com/mqyqingfeng/Blog/issues/3" target="_blank">参考3</a></p>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h3>8.更多讨论</h3>
+            </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>1.return=false可以阻止那一层的事件冒泡？2.怎么防止事件是冒泡上来的</h3>
+            <p>1.写在那一层里就阻止其冒泡行为。2.使用事件代理，$.on()，这其实是将事件监听（代理）在父元素上面，内部也是利用了冒泡的机制，并判断目标源，实现事件代理的。</p>
+        </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    <small>宋恒</small>
+                </p>
+            </section>
+
+        </div>
+        <div class="backgrounds">
+            <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+        </div>
+        <div class="progress" style="display: block;"><span style="width: 0px;"></span></div>
+        <aside class="controls" style="display: block;">
+            <button class="navigate-left" aria-label="previous slide"></button>
+            <button class="navigate-right enabled" aria-label="next slide"></button>
+            <button class="navigate-up" aria-label="above slide"></button>
+        </aside>
+        <div class="slide-number" style="display: none;"></div>
+        <div class="speaker-notes" data-prevent-swipe=""></div>
+        <div class="pause-overlay"></div>
+        <div id="aria-status-div" aria-live="polite" aria-atomic="true"
+             style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+            【简述JS中this的指向】
+
+            分享人：宋恒
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                src: '../plugin/markdown/marked.js'
+            },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+        //    原始类型对象直接赋值不会相互影响
+        //    var a = 1;
+        //
+        //    var b = a;
+        //    b = 10;
+        //    console.log(a); // 1
+        ////
+        //    var a = 'hello';
+        //    var b = a;
+        //    b = 'world';
+        //    console.log(a); // hello
+        //
+        //    var a = true;
+        //    var b = a;
+        //    b = false;
+        //    console.log(a);
+
+        //数组浅复制
+        //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+        //    ];
+        //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+        //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+        //    console.log(a)//那么现在打印a 是什么结果呢
+        //
+        //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+        //    var arrtoo = arr.slice(1);
+        //    arrtoo[2] = "set Map";
+        //    console.log(arr);//One,Two,Three
+        //    console.log(arrtoo);//One,set Map,Three
+
+        //
+        //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+        //    var arrtooo = arr1.concat(111111);
+        //    arrtooo[1] = "set Map To";
+        //    console.log(arr1);//One,Two,Three
+        //    console.log(arrtooo);//One,set Map To,Three
+
+        //
+        //    var b=[1,2,3,4,5];   //concat的链接
+        //    var c=[6,7,8,9];
+        //    var d =[4,4,22]
+        //    console.log(b.concat(c,d))
+
+        var a = {
+            name: 'yy',
+            age: 26
+        }; //对象的浅拷贝哦
+        var b = new Object();
+        b.name = a.name;
+        b.age = a.age;
+        b.name = 'xx';
+        console.log(a); //Object { name="yy", age=26}
+        console.log(b); //Object { name="xx", age=26}
+
+        var d = { //对象的浅拷贝哦 第一种
+            name: 'd',
+            oc: {
+                age: 32
+            },
+            oad: {
+                adds: {
+                    bb: 12
+                }
+            }
+        };
+        var deepCopy = function (source) {
+            var result = {};
+            for (var key in source) {
+                result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+            }
+            return result
+        };
+
+        var c = deepCopy(d);
+        c.name = 'c';
+        c.oc = {
+            age: 49
+        };
+        console.log(c);
+        console.log(d);
+
+
+        //    var person = {    //第二种深拷贝
+        //        name: 'aa',
+        //        friends: ['da', 'dsa', 'gf']
+        //    };
+        //
+        //    var aPerson = Object.create(person, {
+        ////        name: {
+        ////            value: "gee"
+        ////        }
+        //    });
+        //
+        //    console.log(person.name);
+        //    console.log(aPerson.friends)
+
+        var Chinese = {
+            nation: '中国'
+
+        }
+        var Doctor = {
+            career: '医生'
+        }
+
+        function extendCopy(p) {
+            var c = {};
+            for (var i in p) {
+                c[i] = p[i];
+            }
+            c.uber = p;
+            return c;
+        }
+
+        var Doctor = extendCopy(Chinese);
+        Doctor.career = '医生';
+        console.log(Doctor); // 中国
+        Chinese.birthPlaces = ['北京', '上海', '香港'];
+        var Doctor = extendCopy(Chinese);
+        Doctor.birthPlaces.push('厦门');
+    </script>
+
+
+    </body>
+
+    </html>
