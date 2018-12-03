@@ -1,0 +1,50 @@
+
+$green: green;
+$red: red;
+$side: left;
+body{
+    margin: 0;
+}
+
+@mixin flex($x:center,$y:center) {
+    display: flex;
+    justify-content: $x;
+    align-items: $y;
+}
+@mixin w-h($w:0,$h:0) {
+    width: $w;
+    height: $h;
+}
+   %itme {
+    @include w-h(200px,200px);
+    background: $green;
+    border-#{$side}: 3px solid red;
+}
+.container{
+    @include flex;
+    @include w-h(500px,500px);
+    margin: auto;
+    border: 3px solid black;
+    .item-a{
+        @extend %itme;
+    }
+    .item-b{
+      @extend %itme;
+    }
+}
+//for 循环
+@for $i from 1 to 12 {
+    .border-#{$i}{
+        border: #{$i}px solid red;
+    } 
+}
+//each 多重赋值
+$list: (a,red)(b,black)(c,green)(d,blue);
+@each $i,$color in $list {
+    .#{$i}{
+        width: 20px;
+        height: 20px;
+        background: $color;
+    }
+}
+
