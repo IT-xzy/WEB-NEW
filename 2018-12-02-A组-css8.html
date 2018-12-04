@@ -1,0 +1,260 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题,可以在/css/reveal/theme/中选择其他主题,目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        .text-l {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>什么是浮动？有哪些清除浮动的方法？</h2>
+                <p>分享人：柳桐</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <section>
+                    <h3>1.背景介绍</h3>
+                </section>
+                <section style="text-align: left;">
+                    <br style="text-align: left">
+                    浮动属性产生之初是为了实现“文字环绕”的效果，让文字环绕图片。后来，浮动属性作为布局方式使用。
+                </section>
+
+
+            </section>
+            <section>
+
+
+                <section>
+                    <h3>2.知识剖析</h3>
+                </section>
+                <section style="text-align: left;">
+                    <h3><strong>1. 浮动是怎么诞生的？</strong></h3>
+                    <p><br>
+
+                        浮动最初设计的目的并没那么多事儿，就只是用来实现文字环绕效果而已。 <br>
+                        但是早期的前端开发者发现：浮动的元素可以设置宽高并且可以内联排列，是介于inline和block之间的一个神奇的存在， 在inline-block出来之前，浮动大行其道。直到inline-block出来后，浮动也有它自己独特的使用场景。
+
+
+
+
+                    </p>
+
+                </section>
+
+
+                <section style="text-align: left;">
+                    <h3><strong>2. 浮动到底是什么？</strong></h3>
+                    <p>
+                        浮动核心就一句话：浮动元素会脱离文档流并向左/向右浮动，直到碰到父元素或者另一个浮动元素。请默念3次！提到文档流，那下面我们讲讲什么是文档流。
+
+                    </p>
+                </section>
+
+                <section style="text-align: left;">
+                    <h3><strong>文档流的概念</strong></h3>
+                    <p>
+                        文档流是文档中可显示对象在排列时所占用的位置。<br>
+                        将窗体自上而下分成一行行显示，并在每行中按从左到右的顺序排放元素的效果，就是文档流直观的表现。<br>
+
+                    </p>
+                </section>
+
+                <section style="text-align: left;">
+                    <h3><strong>浮动，脱离文档流</strong></h3>
+                    <p>
+                        通过使用浮动属性，可以使元素脱离文档流，上浮到文档流之上，随后可以改变其位置的现象。
+                    </p>
+                </section>
+
+                <section style="text-align: left;">
+                    <h3><strong>浮动的属性值</strong></h3>
+                    <p>
+                        浮动的属性值有三个：float：none；float：left；float：right；<br>
+                        浮动不是任意的，其还是在父元素的范围之中，不能脱离于父元素的内容区域。<br>
+
+                    </p>
+                </section>
+
+            </section>
+
+            <section>
+                <section>
+                    <h3>3.常见问题及为什么要清除浮动</h3>
+                </section>
+                <section>
+                    <p>
+                        如果我们不给父元素设置高度，我们知道如果它里面的元素不浮动的话， 那么这个外层的高是会自动被撑开的。<br>
+                        若浮动元素比它的父元素还高，那么它就会溢出父元素外面。<br>
+                        当内层元素所有浮动后，则影响更大：<br>
+                        （1）背景不能显示。<br>
+                        （2）边框不能撑开。<br>
+                        （3）高度塌陷等.
+                    </p>
+                </section>
+            </section>
+
+
+            <section>
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+
+                <section class="text-l">
+                    <p>
+                        方法1：父级div定义 height。<br>
+                        原理：父级div手动定义height，就解决了父级div无法自动获取到高度的问题。<br>
+                        优点：简单、代码少、容易掌握。<br>
+                        缺点：只适合高度固定的布局，要给出精确的高度，如果高度和父级div不一样时，会产生问题。<br>
+                        建议：不推荐使用，只建议父元素高度固定的布局时使用
+                    </p>
+                </section>
+                <section class="text-l">
+                    <p>方法2：使用clear属性：在相同的父元素中，浮动的子元素之后添加一个空标签，设置样式为："clear：both;"标签可以是div，也可以是p，或者br等块元素。
+                    <br>原理：left在左侧不允许浮动元素; right在右侧不允许浮动元素; both在左右两侧均不允许浮动元素。<br>
+                        优点：通俗易懂，容易掌握，适合菜鸟前期使用。<br>
+                        缺点：可以想象通过此方法，会添加多少无意义的空标签，有违结构与表现的分离，一旦代码量大的话，在后期维护中将是噩梦。<br>
+                        建议：不推荐使用，但此方法是以前主要使用的一种清除浮动方法。
+                    </p>
+                </section>
+                <section class="text-l">
+                    <p>方法3：对父元素设置overflow的样式，即overflow: auto/hidden;<br>
+                        原理：必须定义width，在IE6中还需要触发 hasLayout ，例如 zoom：1，同时不能定义height，使用overflow:hidden时，浏览器会自动检查浮动区域的高度。<br>
+                        优点：不存在结构和语义化问题，代码量极少。<br>
+                        缺点：内容增多时候容易造成不会自动换行导致内容被隐藏掉，不能和position配合使用，无法显示需要溢出的元素；<br>
+                        建议：只推荐没有使用position或对overflow:hidden理解比较深的朋友使用。
+                    </p>
+                </section>
+                <section class="text-l">
+                    <p>
+                        方法4：据说是最高大上的方法:after（注意：作用于浮动元素的父亲）<br>
+                        它就是利用:after和:before来在元素内部插入两个元素块，从面达到清除浮动的效果。 其实现原理类似于clear:both方法，只是区别在于:clear在html插入一个div.clear标签， 而outer利用其伪类clear:after在元素内部增加一个类似于div.clear的效果(clearfix用在父元素上面)。<br>
+                        优点：结构和语义化完全正确,代码量居中。浏览器兼容性强，支持好、不容易出现怪问题（ 知乎，Apple，stackoverflow等都是使用的这种方法）<br>
+                        缺点：复用方式不当会造成代码量增加，初学者不理解原理，要两句代码结合使用才能让主流浏览器都支持。<br>
+                        建议：推荐使用，建议定义公共类，以减少CSS代码。
+                    </p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>5.编码实战</h3>
+                </section>
+                <section class="text-l">
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>6.扩展思考</h3>
+
+
+                </section>
+
+                <section class="text-l">
+                    <h4>问题: 大家还知道哪些清除浮动的方法？</h4>
+                    <p>
+
+
+                    </p>
+
+                </section>
+                <section>
+                    <!--<p>定位属性的百分比的参考系是包含块。关于包含块（containing block）的概念，不能简单地理解成是父元素。如果是静态定位和相对定位，包含块一般就是其父元素。但是对于绝对定位的元素，包含块应该是离它最近的 position 为 absolute、relative、或者 fixed 的祖先元素。-->
+                    <!--</p>-->
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>7.参考文献</h3>
+                </section>
+                <section>
+                    <p style="text-align: left"><br>
+                        参考一：清除浮动（clearfix）的几种方式<br>
+                        参考二：学习CSS布局 <br>
+                        参考三：css清除浮动float的三种方法总结<br>
+                        参考四：CSS清除浮动常用方法小结
+                    </p>
+
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>8.更多讨论</h3>
+                    <p>讨论点：float浮动会使元素脱离文档流，那使用position属性的原理进行元素的定位是不是和它是一样使元素脱离文档流呢？假如脱离的话，他们是不是浮动到同一个层面上了？</p>
+                </section>
+            </section>
+            <section>
+                <!--<h4>鸣谢</h4>-->
+                <p>感谢大家观看</p>
+                <p>
+                    <small>BY : 柳桐</small>
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [
+                { src: './plugin/markdown/marked.js' },
+                { src: './plugin/markdown/markdown.js' },
+                { src: './plugin/notes/notes.js', async: true },
+                {
+                    src: './plugin/highlight/highlight.js', async: true, callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
