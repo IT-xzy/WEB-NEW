@@ -1,0 +1,299 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题,可以在/css/reveal/theme/中选择其他主题,目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        .text-l {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2 style="text-align: center;">什么是AJAX？</h2>
+                <p>分享人：许恒倩</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <section>
+                    <h3>1.背景介绍</h3>
+                </section>
+                <section style="text-align: left;">
+                    <br style="text-align: left">
+                    什么是AJAX<br>
+                    简单来说
+                    就是没使用AJAX的网页，你点一个按钮就要刷新一下整个页面，尽管新页面上只有一行字和当前页面不一样，但你还是要无聊地等待页面刷新
+                    用了AJAX之后，你点击，然后页面上的一行字就变化了，页面本身不用刷新
+
+                </section>
+                <section>
+                    AJAX只是一种技术，不同的浏览器有自己实现AJAX的组件。传统的网页想要更新内容或者提交一个表单，需要重新载入整个页面，而运用了ajax技术的网页 通过和后台进行少量的数据交换，网页就可以异步更新
+
+                   如果有错误，服务器会把响应的结果发给页面，给你提示，在这个过程中你还可以继续进行，页面也不会被刷新，也不会有提交和等待
+                
+                    
+                    
+                   
+                    
+                </section>
+            </section>
+            <section>
+
+
+                <section>
+                    <h3>2.知识剖析</h3>
+                </section>
+                <section style="text-align: left;">
+                    <h3><strong></strong></h3>
+                    <p><br>
+                        AJAX<br>
+
+                        就是用 JS 发起一个请求，并得到服务器返回的内容。这跟以前的技术最大的不同点在于「页面没有刷新」，仅此而已
+                    
+                    </p>
+                   
+                </section>
+
+
+                <section style="text-align: left;">
+                    <h3><strong>同步请求和异步请求</strong></h3>
+                    <p>
+                        同步请求即是当前发出请求后，浏览器什么都不能做，必须得等到请求完成返回数据之后，才会执行后续的代码，相当于是排队，前一个人办理完自己的事务，下一个人才能接着办。也就是说，当JS代码加载到当前AJAX的时候会把页面里所有的代码停止加载，页面处于一个假死状态，当这个AJAX执行完毕后才会继续运行其他代码页面解除假死状态(即当ajax返回数据后，才执行后面的function2)<br>
+                    </p>
+                    <p>
+                        异步请求就当发出请求的同时，浏览器可以继续做任何事，Ajax发送请求并不会影响页面的加载与用户的操作，相当于是在两条线上，各走各的，互不影响。异步请求可以完全不影响用户的体验效果，无论请求的时间长或者短，用户都在专心的操作页面的其他内容，并不会有等待的感觉
+                    </p>
+                </section>
+
+
+
+
+            </section>
+
+            <section>
+                <section>
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    <h4>如何用JS发起一个请求 </h4>
+                </section>
+
+            </section>
+
+
+            <section>
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+
+                <section>
+
+                    <p class="text-l">
+                            1.创建一个对象 XMLHttpRequest()<br>
+                            2.监听请求成功后的状态变化<br>
+                            3.设置请求参数<br>
+                            4.发起请求<br>
+                            5.操作DOM，实现动态局部刷新<br>
+                    </p>
+                </section>
+                <section>
+
+                    <p class="text-l">
+                        1.创建一个对象<br>
+                        var xhr = new XMLHttpRequest(); 为了支持ie6以及更早的版本，要 var xhr=new ActiveXObject()<br>
+                        2.设置回调函数onreadystatechange，监听请求成功后的状态变化，在回调函数中，通常我们只需通过readyState === 4判断请求是否完成，如果已完成，再根据status === 200判断是否是一个成功的响应。<br>
+                        3.将请求发送到服务器，我们使用 XMLHttpRequest 对象的 open() 和 send() 方法：<br>
+                        xhr.open(method,url,async);<br>
+                        xhr.send();
+                    </p>
+                </section>
+               
+            </section>
+            <section>
+                <section>
+                    <h3>5.编码实战</h3>
+                </section>
+
+            </section>
+            <section>
+                <section>
+                    <h3>6.扩展思考</h3>
+
+                </section>
+
+                <section class="text-l">
+
+                    什么是一个完整的HTTP请求呢？<br>
+                    1.建立TCP连接<br>
+                    
+                    2.web浏览器向服务器发送请求命令<br>
+                    
+                    3.web浏览器发送头信息<br>
+                    
+                    4.web服务器应答<br>
+                    
+                    5.web服务器发送应答头信息<br>
+                    
+                    6.web服务器向浏览器发送数据<br>
+                    
+                    7.web服务器关闭TCP连接<br>
+                    
+                </section>
+                <section class="text-l" >
+                    
+                    HTTP请求由四个部分组成<br>
+                    发送请求的方式，post,get,delete等<br>
+                    
+                    发送请求的地址，也就是url<br>
+                    
+                    请求头，包括客户端环境信息，身份验证信息<br>
+                    
+                    请求体，也就是请求正文，请求正文中可以包含客户提交的查询字符串信息，保单信息等等<br>
+                    
+                    
+                </section>
+                <section class="text-l">
+                    监听请求成功后的状态变化<br>
+                    
+                    onreadystatechange：用来监听readyState的变化的<br>
+                    
+                    readyState：表示当前请求的后台的状态<br>
+                    
+                    status：表示处理的结果<br>
+                </section>
+                <section class="text-l">
+                    readyState：表示当前请求的后台的状态<br>
+
+                    0：请求未初始化(还没有调用open())<br>
+                    
+                    1：请求已经建立，但是还没有发送(还没有调用send())<br>
+                    
+                    2：请求已经发送，正在处理中<br>
+                    
+                    3：请求正在处理中，通常响应中已经有部分数据可以用了<br>
+                    
+                    4：响应已经完成，可以获取并使用服务器的响应了<br>
+                    
+                </section>
+                <section class="text-l">
+                    status：表示处理的结果(状态码)<br>
+                    
+                    1XX，表示收到请求正在处理中<br>
+                    
+                    status == 200 是表示处理的结果是OK的<br>
+                    
+                    状态码:200到300是指服务端正常返回<br>
+                    
+                    304:如果网页自请求者上次请求后再也没有更改过，应将服务器配置为返回此响应，进而节省带宽和开销<br>
+                    
+                    404:找不到对象（404 not found)<br>
+                    
+                    503:服务器超时<br>
+                    
+                </section>
+                <section class="text-l">
+                    设置请求参数<br>
+                    
+                    xhr对象接受三个参数 <br>
+                    1：表示请求类型<br>
+                    2：表示请求的网址<br>
+                    3：表示是否异步<br>
+                </section>
+                <section class="text-l">
+                    请求类型<br>
+                    get/post/put/delete<br>
+                    get是获取数据，get的send方法的参数可以是null或者空，对发送信息有限制，一般在2000个字符，一般是用来查询（幂等）<br> 
+                    post可以发送数据，但是在使用post方法发送数据，需要使用setRequestHeader()来添加HTTP头，同时，post的send()方法需要写入要发送的数据的值, 一般用于修改服务器上的资源，对信息数量无限制，也更安全
+                </section>
+            </section>
+            </section>
+            <section>
+                <section>
+                    <h3>7.参考文献</h3>
+                </section>
+                <section>
+                    <p style="text-align: left">参考：<br>
+                        <br>
+                    javascript教程——廖雪峰<br>
+                    使用 JavaScript 和 Ajax 发出异步请求——IBM developerworks
+                    </p>
+
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>8.更多讨论</h3>
+                </section>
+            </section>
+            <section>
+                <!-- <h4>鸣谢</h4> -->
+                <p>感谢大家观看</p>
+                <p>
+                    <small>BY : 许恒倩</small>
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [
+                { src: './plugin/markdown/marked.js' },
+                { src: './plugin/markdown/markdown.js' },
+                { src: './plugin/notes/notes.js', async: true },
+                {
+                    src: './plugin/highlight/highlight.js', async: true, callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,253 @@
+﻿<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <link rel="stylesheet" href="./task-js-1.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section class="txt">
+                <h1></h1>
+                <h2>小课堂【js-03】</h2>
+                <h4>课题：JS有哪几种传参方式?</h4>
+                <p>分享人：吴胜</p>
+            </section>
+
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <section>
+                    <h3>
+                        1.背景介绍
+                    </h3>
+                </section>
+                <section>
+                    <h3>什么是传参</h3>
+                    <p class="txt-word-3">&emsp;&emsp;我今天要讲的是js基础传参：值传递、对象传递</p>
+                </section>
+                <section>
+                    <h3>概念</h3>
+                    <p class="txt-word-3">&emsp;&emsp;在计算机科学里，按值传递(call by value)和按引用传递(call by
+                        reference)这个部分统称求值策略(Evaluation
+                        Strategy)。它决定函数调用时实参和形参之间值是如何传递的。
+                    </p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>2.知识剖析</h3>
+                </section>
+                <section>
+                    <h3>按值传递参数（最常用的求值策略）</h3>
+                    <p class="txt-word-3">
+                        函数的形参是被调用时所传实参的副本。<br>
+                        在函数中调用的参数是函数的参数。<br>
+                        如果函数修改参数的值，将不会修改参数的初始值（在函数外定义）。<br>
+                        函数参数的改变不会影响函数外部的变量（局部变量）。
+                    </p>
+                </section>
+                <section>
+                    <h3>通过对象传递参数</h3>
+                    <p class="txt-word-3">
+                        函数的形参接收实参的隐式引用，而不再是副本。<br>
+                        因此我们在函数内部修改对象的属性就会修改其初始的值。<br>
+                        修改对象属性可作用于函数外部（全局变量）。
+                    </p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    <h3>javascript是按值传递，还是按引用传递来传递参数？</h3>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+                <section>
+                    <h3>先看一串代码</h3>
+                    <p class="txt-word-3">
+                        var obj = {x : 1};<br>
+                        function foo(o) {<br>
+                        o = 100;<br>
+                        }<br>
+                        foo(obj);<br>
+                        console.log(obj.x) // 仍然是1, obj并未被修改为100.;
+                    </p>
+                </section>
+                <section>
+                    <p class="txt-word-3">
+                        从上面的代码可以看出，JavaScript中函数参数的传递方式既不是传值，也不是传引用，我们把它成为call-by-sharing(按共享传递）。
+                    </p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>5.代码实战</h3>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>6.拓展思考</h3>
+                </section>
+                <section>
+                    <h3>什么是按共享传递 call by sharing？</h3>
+                    <p class="txt-word-3">
+                        &emsp;&emsp;JS中的基本类型按值传递，对象类型按共享传递的(call by sharing，也叫按对象传递、按对象共享传递)。最早由Barbara Liskov.
+                        在1974年的GLU语言中提出。该求值策略被用于Python、Java、Ruby、JS等多种语言。
+                    </p>
+                </section>
+                <section>
+                    <h4 class="txt-word-3">
+                        &emsp;&emsp;
+                        该策略的重点是：调用函数传参时，函数接受对象实参引用的副本(既不是按值传递的对象副本，也不是按引用传递的隐式引用)。 它和按引用传递的不同在于：
+                        在共享传递中对函数形参的赋值，不会影响实参的值。
+                        </h3>
+                </section>
+                <section>
+                    <h4 class="txt-word-3">如下面例子，不可以通过修改形参o的值，来修改obj的值。</h3>
+                        <p style="font-size:30px;" class="txt-word-3">
+                            var obj = {x : 1};<br>
+                            function foo(o) {<br>
+                            o = 100;<br>
+                            }<br>
+                            foo(obj);<br>
+                            console.log(obj.x); // 仍然是1, obj并未被修改为100.
+                        </p>
+                </section>
+                <section>
+                    <h4 class="txt-word-3">不过，虽然引用是副本，但是引用的对象是相同的。它们共享相同的对象，所以修改形参对象的属性值，也会影响到实参的属性值。
+                        如下面列子，通过修改形参对象o.x的值，来修改obj的值</h3>
+                        <p style="font-size:30px;" class="txt-word-3">
+                            var obj = {x : 1};<br>
+                            function foo(o) {<br>
+                            o.x = 3;<br>
+                            }<br>
+                            foo(obj);<br>
+                            console.log(obj.x); // 3, 被修改了!
+                        </p>
+                </section>
+            </section>
+            <section>
+                <h3>7.参考文献</h3>
+                <h4><a class="txt-a" href="https://www.cnblogs.com/xcsn/p/9158727.html">js基础之传参</a></h4>
+            </section>
+            <section>
+                <section>
+                    <h3>8.更多讨论</h3>
+                </section>
+                <section>
+                    <h3>js还有其他传参方式吗？</h3>
+                    <p class="txt-word-3">&emsp;&emsp;函数之间的传参是没有了，不过js页面之间也有对应的传参方法。</p>
+                </section>
+                <section>
+                    <h3>js页面有几种传参方式？</h3>
+                    <p class="txt-word-3">一、URL;<br>二、H5 web storage;<br>三、Cookie;<br>四、Form 表单.</p>
+                </section>
+                <section>
+                    <h3>它们各有什么优点？</h3>
+                    <p class="txt-word-3">URL传参：取值方便，可以跨域;H5 Web
+                        storage：使用起来非常简单、方便;Cookie传参：兼容性最好，可以在同源内的任意网页内访问，生命期可以设置。</p>
+                </section>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    <small>BY : 吴胜</small>
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: './plugin/markdown/marked.js'
+                },
+                {
+                    src: './plugin/markdown/markdown.js'
+                },
+                {
+                    src: './plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: './plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
