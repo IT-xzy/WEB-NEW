@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>flex布局</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides"
+         style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h2>【flex布局】</h2>
+            <h3>简单的了解一下flex的容器属性</h3>
+            <p>分享人：霍亚豪</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.布局示例</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: justify">
+                css3引入了一种新的布局模型-flex布局。flex是flexible box的缩写，一般称之为弹性盒模型。
+                和css3其它属性不一样，flexbox并不是一个属性，而是一个模块，包括多个css3的属性。
+                flex布局提供一种更加有效的方式来进行容器内的项目布局，以适应各种类型设备和各种尺寸的屏幕。
+            </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="letter-spacing: 5px">要让一个元素变成伸缩容器，需要使用display属性。采用flex布局的元素，称之为伸缩容器（flex container），容器内的子元素称之为伸缩项目（flex item）</p>
+            <p style="letter-spacing: 5px">注意，浏览器会将任何直接在伸缩容器里的连续文字块包起来成为匿名伸缩项目。</p>
+            <p style="letter-spacing: 5px">伸缩容器默认存在两条轴：水平的主轴（main axis）和垂直的侧轴（cross axis）或者说是交叉轴</p>
+            <p style="letter-spacing: 5px">注意，主轴方向不一定是水平的，它主要取决于flex-direction属性</p>
+            <p style="letter-spacing: 5px">主轴起点叫main start，主轴终点叫main end；侧轴起点叫cross start，侧轴终点叫cross end</p>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>flex的6个属性</h3>
+            <p style="letter-spacing: 5px">伸缩流方向:flex-direction</p>
+            <p style="letter-spacing: 5px">伸缩流换行：flex-wrap</p>
+            <p style="letter-spacing: 5px">伸缩流（包括方向和换行）：flex-flow</p>
+            <p style="letter-spacing: 5px">主轴对齐：justify-content</p>
+            <p style="letter-spacing: 5px">侧轴对齐：align-items</p>
+            <p style="letter-spacing: 5px">堆栈伸缩行：align-content</p>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>flex-direction属性</h4>
+            <p style="letter-spacing: 5px">flex-direction属性决定主轴的方向（即项目的排列方向）。</p>
+            <p style="letter-spacing: 5px">一般情况下flex-direction有四个值</p>
+            <p style="letter-spacing: 5px">row（默认值）：主轴为水平方向，起点在左端。</p>
+            <p style="letter-spacing: 5px">row-reverse：主轴为水平方向，起点在右端。</p>
+            <p style="letter-spacing: 5px">column：主轴为垂直方向，起点在上沿。</p>
+            <p style="letter-spacing: 5px">column-reverse：主轴为垂直方向，起点在下沿。</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>flex-wrap属性</h4>
+            <p style="letter-spacing: 5px">默认情况下，项目都排在一条线（又称"轴线"）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。</p>
+            <p style="letter-spacing: 5px">flex-wrap属性一般有三个值</p>
+            <p style="letter-spacing: 5px">nowrap（默认）：不换行</p>
+            <p style="letter-spacing: 5px">wrap：换行，第一行在上方</p>
+            <p style="letter-spacing: 5px">wrap-reverse：换行，第一行在下方</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>flex-flow属性</h4>
+            <p style="letter-spacing: 5px">flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4> justify-content属性</h4>
+            <p style="letter-spacing: 5px">justify-content属性定义了项目在主轴上的对齐方式。</p>
+            <p style="letter-spacing: 5px">flex-start（默认值）：左对齐</p>
+            <p style="letter-spacing: 5px">flex-end：右对齐</p>
+            <p style="letter-spacing: 5px">center： 居中</p>
+            <p style="letter-spacing: 5px">space-between：两端对齐，项目之间的间隔都相等。</p>
+            <p style="letter-spacing: 5px">space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>align-items属性</h4>
+            <p style="letter-spacing: 5px">align-items属性定义项目在交叉轴上如何对齐。</p>
+            <p style="letter-spacing: 5px">flex-start：交叉轴的起点对齐。</p>
+            <p style="letter-spacing: 5px">flex-end：交叉轴的终点对齐。</p>
+            <p style="letter-spacing: 5px">enter：交叉轴的中点对齐。</p>
+            <p style="letter-spacing: 5px">baseline: 项目的第一行文字的基线对齐。</p>
+            <p style="letter-spacing: 5px">stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>align-content属性</h4>
+            <p style="letter-spacing: 5px">flex-start：与交叉轴的起点对齐。</p>
+            <p style="letter-spacing: 5px">flex-end：与交叉轴的终点对齐。</p>
+            <p style="letter-spacing: 5px">center：与交叉轴的中点对齐。</p>
+            <p style="letter-spacing: 5px">space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。</p>
+            <p style="letter-spacing: 5px">space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</p>
+            <p style="letter-spacing: 5px">stretch（默认值）：轴线占满整个交叉轴。</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>3.常见问题</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p>flex的兼容性如何？</p>
+            <p>flex的布局在熟练以后非常好用，但是pc端兼容性相对较差，IE要10，甚至11以上才能要很好的兼容。</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>4.解决方案</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <p style="text-align: center">
+                    现在flex已经得到绝大部分的浏览器的支持，可以通过查看内核了解是否支持</p>
+
+            </section>
+        </section>
+        <!-- <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>5.编码实战</h3>
+        </section> -->
+        <!-- <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: justify">1.插入纯文字。content属性与 ::before 及 ::after 伪元素配合使用生成文本内容。
+            </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: justify">2.嵌入文字符号。使用content属性的open-quote属性值和close-quote属性值在字符串两边添加诸如括号、单引号、双引号之类的嵌套文字符号。open-quote用于添加开始的文字符号，close-quote用于添加结束的文字符号。
+            </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: justify">3.插入图片。content属性也可以直接在元素前/后插入图片， content:url()。
+            </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: justify">4.插入元素的属性值。content属性可以直接利用attr获取元素的属性，将其插入到对应位置。
+                attr（attribute），是属性的意思，attr(href)，也就是获取href里面的值填充到content里面啊，这是css3的用法。
+                语法为::after{content:attr(href);}
+            </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: justify">5.计数器用法。content属性可以插入编号，可以修饰，可以指定编号种类，还可以在编号中进行嵌套。
+            </p>
+        </section> -->
+        <!-- <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>6.扩展思考</h3>
+        </section> -->
+        <!-- <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <p style="text-align: center">
+                    content:"."是怎么实现清除浮动的？
+                </p>
+            </section>
+        </section>
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <p style="text-align: center">
+                    如果有一个DIV作为外部容器，内部的DIV如果设置了float样式，则外部的容器DIV因为内部没有clear，导致不能被撑开。
+                    这个对这个盒子使用：：after这个伪元素，在盒子的结尾添加content属性，添加了一个句号"."，
+                    并设置display为block；高度设为0；clear设为both；visibility设为隐藏。这样就达到了撑开容器的目的。
+                </p>
+            </section> -->
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>7.参考文献</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p>参考一：<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank">
+                flex布局</a></p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>8.更多讨论</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>霍亚豪</small>
+            </p>
+        </section>
+
+    </div>
+    <div class="backgrounds">
+        <div class="slide-background past" data-loaded="true" style="display: none;"></div>
+        <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background stack present" data-loaded="true" style="display: block;">
+            <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+        </div>
+        <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+        <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background stack future" style="display: none;">
+            <div class="slide-background present" style="display: none;"></div>
+        </div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background stack future" style="display: none;">
+            <div class="slide-background present" style="display: none;"></div>
+        </div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background stack future" style="display: none;">
+            <div class="slide-background present" style="display: none;"></div>
+        </div>
+吗，         <div class="slide-background stack future" style="display: none;"> </div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+    </div>
+    <div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div>
+    <aside class="controls" style="display: block;">
+        <button class="navigate-left enabled" aria-label="previous slide"></button>
+        <button class="navigate-right enabled" aria-label="next slide"></button>
+        <button class="navigate-up enabled" aria-label="above slide"></button>
+     </aside>
+    <div class="slide-number" style="display: none;"></div>
+    <div class="speaker-notes" data-prevent-swipe=""></div>
+    <div class="pause-overlay"></div>
+    <div id="aria-status-div" aria-live="polite" aria-atomic="true"
+         style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+
+        语法：
+        return[()[expression][]];
+        可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。
+
+        用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression 被省略，
+        或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+    </div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+    //    原始类型对象直接赋值不会相互影响
+    //    var a = 1;
+    //
+    //    var b = a;
+    //    b = 10;
+    //    console.log(a); // 1
+    ////
+    //    var a = 'hello';
+    //    var b = a;
+    //    b = 'world';
+    //    console.log(a); // hello
+    //
+    //    var a = true;
+    //    var b = a;
+    //    b = false;
+    //    console.log(a);
+
+    //数组浅复制
+    //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+    //    ];
+    //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+    //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+    //    console.log(a)//那么现在打印a 是什么结果呢
+    //
+    //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+    //    var arrtoo = arr.slice(1);
+    //    arrtoo[2] = "set Map";
+    //    console.log(arr);//One,Two,Three
+    //    console.log(arrtoo);//One,set Map,Three
+
+    //
+    //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+    //    var arrtooo = arr1.concat(111111);
+    //    arrtooo[1] = "set Map To";
+    //    console.log(arr1);//One,Two,Three
+    //    console.log(arrtooo);//One,set Map To,Three
+
+    //
+    //    var b=[1,2,3,4,5];   //concat的链接
+    //    var c=[6,7,8,9];
+    //    var d =[4,4,22]
+    //    console.log(b.concat(c,d))
+
+    var a = {name: 'yy', age: 26};  //对象的浅拷贝哦
+    var b = new Object();
+    b.name = a.name;
+    b.age = a.age;
+    b.name = 'xx';
+    console.log(a);//Object { name="yy", age=26}
+    console.log(b);//Object { name="xx", age=26}
+
+    var d = {            //对象的浅拷贝哦 第一种
+        name: 'd',
+        oc: {
+            age: 32
+        },
+        oad: {
+            adds: {
+                bb: 12
+            }
+        }
+    };
+    var deepCopy = function (source) {
+        var result = {};
+        for (var key in source) {
+            result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+        }
+        return result
+    };
+
+    var c = deepCopy(d);
+    c.name = 'c';
+    c.oc = {
+        age: 49
+    };
+    console.log(c);
+    console.log(d);
+
+
+    //    var person = {    //第二种深拷贝
+    //        name: 'aa',
+    //        friends: ['da', 'dsa', 'gf']
+    //    };
+    //
+    //    var aPerson = Object.create(person, {
+    ////        name: {
+    ////            value: "gee"
+    ////        }
+    //    });
+    //
+    //    console.log(person.name);
+    //    console.log(aPerson.friends)
+
+    var Chinese = {
+        nation: '中国'
+
+    }
+    var Doctor = {
+        career: '医生'
+    }
+
+    function extendCopy(p) {
+        var c = {};
+        for (var i in p) {
+            c[i] = p[i];
+        }
+        c.uber = p;
+        return c;
+    }
+
+    var Doctor = extendCopy(Chinese);
+    Doctor.career = '医生';
+    console.log(Doctor); // 中国
+    Chinese.birthPlaces = ['北京', '上海', '香港'];
+    var Doctor = extendCopy(Chinese);
+    Doctor.birthPlaces.push('厦门');
+
+</script>
+
+
+</body>
+</html>

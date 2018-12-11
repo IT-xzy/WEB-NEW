@@ -1,0 +1,310 @@
+﻿<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <link rel="stylesheet" href="./task-js-1.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section class="txt">
+                <h1></h1>
+                <h2>小课堂【js-04】</h2>
+                <h4>课题：js事件冒泡、阻止事件冒泡以及阻止默认行为</h4>
+                <p>分享人：吴胜</p>
+            </section>
+
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <section>
+                    <h3>
+                        1.背景介绍
+                    </h3>
+                </section>
+                <section>
+                    <h3>事件冒泡</h3>
+                    <p class="txt-word-3">&emsp;&emsp;故名思意，事件冒泡就像水底气泡浮到水面这一过程。即是事件从最底层逐个经过上面一级级事件的过程，就是事件冒泡。</p>
+                    <h3>默认事件</h3>
+                    <p class="txt-word-3">&emsp;&emsp;默认事件就是浏览器自己的行为，比如我们在点击a标签（a
+                        href="#"）时候，浏览器跳转到指定页面。比如当我们滚动鼠标时页面会向下滚动。</p>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>2.知识剖析</h3>
+                </section>
+                <section>
+                    <h5 class="txt-word-3">&emsp;&emsp;事件冒泡 ：当一个元素接收到事件的时候 会把他接收到的事件传给自己的父级，一直到window。</h5>
+                    <br>
+                    <h5 class="txt-word-3">&emsp;&emsp;事件冒泡传递的仅仅只是事件，并不会传递其他东西，如果父级没有绑定事件函数的话，就算传递了事件，也不会有什么表现，但是我们要清楚，事件是确确实实传递到了</h5>
+                </section>
+                <section>
+                    <h3>首先我们看下面代码</h3>
+                    <p class="txt-word-3">
+                        //js<br>
+                        var a = document.getElementById("123");<br>
+                        var b = document.getElementById("321");<br>
+                        a.addEventListener("click", function () {<br>
+                        alert(1);<br>
+                        })<br>
+                        b.addEventListener("click", function () {<br>
+                        alert(2);<br>
+                        })
+                    </p>
+                </section>
+                <section>
+                    <p style="font-size:30px;" class="txt-word-3">
+                        //html<br>
+                        &lt;div id="123" style="display:inline-block;width:200px;height:200px;background:
+                        #ff0000;"&gt;
+                        <br>我是父级元素
+                        <br>
+                        &lt;div id="321"
+                        style="display:inline-block;margin-left:200px;width:100px;height:100px;background:#000;color:#fff;"&gt
+                        <br>我是子级元素
+                        <br>&lt;/div&gt;
+                        <br>
+                        &lt;/div&gt;
+                    </p>
+                    <p class="txt-word-3">
+                        看下demo<br>
+                        上面两个父子关系的div,然后分别加了点击事件，当我们在子div里面点击的时候，会发现弹出了一次1，接着又弹出了2，这说明点击的时候，不仅子div的事件被触发了，它的父级的点击事件也触发了，说明子div的将事件传递给了父div。这种就是事件冒泡。
+                    </p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    <p class="txt-word-3">大多数时候，事件冒泡给我们带来的缺是困扰，比如下面这个demo</p>
+                </section>
+                <section>
+                    <p class="txt-word-3">这个时候我们测试发现，怎么点击#321面板，#123面板都不会显示了，为什么呢？就是冒泡的原因，我们来分析下逻辑，当点击#321的时候，他会触发父亲级别的点击事件，然后一层一层的往上传，所以document的点击事件自然也被触发了，然后执行了自己身上的绑定事件，让#123面板消失。所以当你点击#321的时候首先，
+                        让面板#321显示，只是事件执行太快了，很快又执行了document的点击事件，让面板隐藏。 不信可以再两个事件之间加一个弹出，就可以测试。
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+                <section>
+                    <h3>解决办法就是取消冒泡</h3>
+                    <p class="txt-word-3">
+                        取消事件冒泡可以运用下面方法：<br>
+                        e.stopPropagation();<br>
+                        stopPropagation() 方法定义是：不再派发事件。所以直接调用的event 即可<br>
+                        window.event.cancelBubble = true；<br>
+                        这里的cancelBubble是 IE事件对象的属性定义：是否取消冒泡，设为true就可以了。<br>
+                    </p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>5.代码实战</h3>
+                </section>
+                <section>
+                    <p class="txt-word-3">function stopBubble(e) {<br>
+                        //如果提供了事件对象，则这是一个非IE浏览器<br>
+                        if ( e && e.stopPropagation )<br>
+                        //因此它支持W3C的stopPropagation()方法<br>
+                        e.stopPropagation();<br>
+                        else<br>
+                        //否则，我们需要使用IE的方式来取消事件冒泡<br>
+                        window.event.cancelBubble = true;<br>
+                        }<br>
+                    </p>
+                </section>
+                <section>
+                    <p class="txt-word-3"> //js<br>
+                        var b = document.getElementById("321");<br>
+                        b.addEventListener("click", function (e) {// 红色面板加事件<br>
+                        a.style.display = "block";<br>
+                        stopBubble(e)；//这样就不会再冒泡给父级了<br>
+                        })<br>
+                        document.onclick = function () {<br>
+                        a.style.display = "none";<br>
+                        }</p>
+                    <p>接下来看demo</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>6.拓展思考</h3>
+                </section>
+                <section>
+                    <h4 class="txt-word-3">
+                        如何阻止事件的默认行为？
+                    </h4>
+                    <br>
+                    <h4 class="txt-word-3">
+                        阻止事件的默认行为可以运用下面方法：<br>
+                        <br>
+                        1.e.preventDefault();<br>
+                        <br>
+                        2.window.event.returnValue =false;
+                    </h4>
+                </section>
+                <section>
+                    <h4 class="txt-word-3">
+                        注：preventDefault它是事件对象(Event)的一个方法，作用是取消一个目标元素的默认行为。既然是说默认行为，当然是元素必须有默认行为才能被取消，如果元素本身就没有默认行为，调用当然就无效了。什么元素有默认行为呢？如链接&lt;a&gt;，提交按钮等。当Event
+                        对象的 cancelable为false时，表示没有默认行为，这时即使有默认行为，调用preventDefault也是不会起作用的。
+                    </h4>
+                </section>
+                <section>
+                    <p style="font-size:30px;" class="txt-word-3"> function stopDefault(e){<br>
+                        if(e && e.preventDefault){ //判断浏览器是非IE浏览器<br>
+                        e.preventDefault(); //非IE浏览器下使用preventDefault方法<br>
+                        }
+                        <br>else{
+                        //IE浏览器下令事件（window.event）的returnValue属性为false;<br>
+                        window.event.returnValue = false;<br>
+                        }<br>
+                        return false;<br>
+                        }
+                    </p>
+                </section>
+                <section>
+                    <p style="font-size:30px;" class="txt-word-3"> //js<br>
+                        window.onload = function(){<br>
+
+                        var test = document.getElementById('test');<br>
+
+                        test.onclick = function(e){ //当单击此超链接时执行这个函数<br>
+
+                        alert('URL:' + this.href + ',不会跳转');<br>
+
+                        stopDefault(e);<br>
+                        }<br>
+                        }<br>
+                        //html<br>
+                        &lt;a&gt; href="http://www.baidu.com" id="test">百度&lt;/a&gt;<br>
+                        看Demo
+                    </p>
+                </section>
+            </section>
+            <section>
+                <h3>7.参考文献</h3>
+                <h4><a class="txt-a" href="https://www.cnblogs.com/ycc-020/p/6078968.html">JavaScript事件——冒泡、捕获</a></h4>
+                <h4><a class="txt-a" href="https://www.cnblogs.com/yycode/articles/5499234.html">js事件(Event)之（四）阻止默认操作</a></h4>
+            </section>
+            <section>
+                <section>
+                    <h3>8.更多讨论</h3>
+                </section>
+                <section>
+                    <h3>阻止事件冒泡和默认行为还有其他方法吗？</h3>
+                    <p class="txt-word-3">&emsp;&emsp;可以利用return false;来阻止 事件冒泡和静默行为。
+                        注意：javascript的return false只会阻止默认行为，而用jQuery的话则既阻止默认行为又防止对象冒泡。</p>
+                </section>
+                <section>
+                    <h3>return false 和 e.preventDefault()的区别</h3>
+                    <p class="txt-word-3">&emsp;&emsp;return false不仅阻止了冒泡（默认）行为，也阻止了事件本身。而e.preventDefault()只针对默认行为。</p>
+                </section>
+                <section>
+                    <h3>事件运行的原理</h3>
+                    <p class="txt-word-3">当一个事件发生后，这个事件就要开始传播(从里到外或者从外向里)。为什么要传播呢？因为事件源本身（可能）并没有处理事件的能力，
+                        即处理事件的函数（方法）并未绑定在该事件源上。例如我们点击一个按钮时，就会产生一个click事件，但这个按钮本身可能不能处理这个事件，事件必须从这个按钮传播出去，
+                        从而到达能够处理这个事件的代码中（例如我们给按钮的onclick属性赋一个函数的名字，
+                        就是让这个函数去处理该按钮的click事件），或者按钮的父级绑定有事件函数，当该点击事件发生在按钮上，按钮本身并无处理事件函数，则传播到父级去处理。</p>
+                </section>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    <small>BY : 吴胜</small>
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: './plugin/markdown/marked.js'
+                },
+                {
+                    src: './plugin/markdown/markdown.js'
+                },
+                {
+                    src: './plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: './plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>

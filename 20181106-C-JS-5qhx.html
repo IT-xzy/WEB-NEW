@@ -1,0 +1,538 @@
+﻿<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+    </map>
+    <div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+        <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+            <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+                <h3>【JS-task5】什么是AJAX</h3>
+                <p>分享人：乾洪瑆</p>
+            </section>
+            <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>1.背景介绍</h3>
+            </section>
+            <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+                <br>
+                <br>
+                <br>
+                <h4>什么是AJAX？</h4>
+                <p>
+                    即异步的 JavaScript 和 XML，是一种用于创建快速动态网页的技术；
+                    传统的网页（不使用 AJAX）如果需要更新内容，必需重载整个网页面。
+                    使用AJAX则不需要加载更新整个网页，实现部分内容更新；
+                </p>
+            </section>
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>2.知识剖析</h3>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>AJAX</p>
+                <ol>
+                    <li>什么是ajax</li>
+                    <li>常见的ajax使用场景</li>
+                    <li>为什么需要使用ajax</li>
+                    <li>Ajax的工作原理</li>
+                    <li>XMLHttpRequest常用方法及属性</li>
+                    <li>几种常见的写法</li>
+                </ol>
+            </section>
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>什么是ajax</p>
+                <p>AJAX
+                    AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。
+                    AJAX 是与服务器交换数据并更新部分网页的艺术，在不重新加载整个页面的情况下。</p>
+
+            </section>
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>常见的ajax使用场景</p>
+                <p>谷歌地图，甚至一些弹幕，微博的时时更新评论等等</p>
+
+            </section>
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>为什么需要使用ajax</p>
+                <p style="text-align:left">ajax主要是实现页面和web服务器之间数据的异步传输。
+                    简单来说，不采用ajax的页面，当用户在页面发起请求时，就要进行整个页面的刷新，刷新快慢取决于服务器的处理快慢。在这个过程中用户必须得等待，不能进行其他操作。也就是同步的方式。客户端和服务端传递了很多不需要的数据。效率低，用户体验差。<br>
+                    1、采用ajax的页面，可以实现页面的局部更新，而不是整个页面的更新；2、并且发起请求后，用户还可以进行页面上的其他操作。这就是异步的方式。3、客户端和服务端间只传递需要的数据，效率高，用户体验性好。
+                    4、并且Ajax引擎在客户端运行，承担了一部分本来由服务器承担的工作，从而减少了大用户量下的服务器负载。</p>
+
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <img src="C:\Users\syxycjx\Desktop\1.png" alt="" width="150%" height="150%">
+                </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>Ajax的工作原理</p>
+                <p style="text-align:left">图片里面提到一个xhr，所谓的“XHR”（浏览器内置对象”XMLHttpRequest
+                    ”），也就是Ajax功能实现所依赖的对象，AJAX就是通过浏览器的内置对象XHMHttpResquest来发送异步请求的，异步请求不会妨碍客户端的任何操作。</p>
+                <p style="text-align:left">异步：
+                    XHR相当于是一个通信兵，来负责客户端与服务器之间的通信传输。举个栗子：<br>
+                    要打仗了，前方阵地（客服端）不可能只等着通信兵（XHR）传递消息其他什么也不干吧，所以前方阵地还在干着自己的事情然后派通信兵去请求后方指挥部（服务器）的命令，指挥部下达命令指挥，通信兵再把命令传到前方阵地，然后前方阵地再执行命令相关的操作（客户端把数据渲染到页面），这也就是Ajax的异步原理。</p>
+            </section>
+            
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>Ajax的工作原理</p>
+                <p>
+                    再来说说同步：
+                    所谓的同步就是前方阵地和通信兵一起去向服务器请求数据，直到通信兵请求到数据，我才开始渲染页面，在请求的过程中页面一直是白屏等待的。</p>
+
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>XMLHttpRequest常用方法</p>
+                <p style="text-align:left">一、open();<br>
+                    XMLHttpRequest.open()方法用于指定 HTTP 请求的参数，或者说初始化 XMLHttpRequest 实例对象。它一共可以接受五个参数。<br>
+                    例：<br>
+                    xhr.open('POST', '/carrots-admin-ajax/a/login', true);<br>
+                    参数:<br>
+                    1, method:用于指定请求的类型  "GET"或者"POST"<br>
+                    2, url:用于请求的地址, 可相对可绝对<br>
+                    3, asyncFlag:指定请求方式为同步还是异步, true为异步, false为同步</p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>XMLHttpRequest常用方法</p>
+                <p style="text-align:left">二、send();<br>
+                    XMLHttpRequest.send()方法用于实际发出 HTTP 请求。它的参数是可选的，如果不带参数，就表示 HTTP 请求只包含头信息，也就是只有一个 URL，典型例子就是 GET
+                    请求；如果带有参数，就表示除了头信息，还带有包含具体数据的信息体，典型例子就是 POST 请求。<br>
+                </p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>XMLHttpRequest常用方法</p>
+                <p style="text-align:left">
+                    var xhr = new XMLHttpRequest();<br>
+                    var data = 'name=' + userVal + '&pwd=' + pwVal;<br>
+
+                    xhr.open('POST', '/carrots-admin-ajax/a/login', true);<br>
+
+                    /* POST的请求头 */<br>
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');<br>
+
+                    /* 发出HTTP请求 */<br>
+                    xhr.send(data);<br>
+                    注意，所有 XMLHttpRequest 的监听事件，都必须在send()方法调用之前设定。（send放在最后）</p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>XMLHttpRequest常用方法</p>
+                <p style="text-align:left">
+                    三、setRequestHeader("header","value")<br>
+                    XMLHttpRequest.setRequestHeader()方法用于设置浏览器发送的 HTTP
+                    请求的头信息。该方法必须在open()之后、send()之前调用。如果该方法多次调用，设定同一个字段，则每一次调用的值会被合并成一个单一的值发送。<br>
+                    该方法接受两个参数。第一个参数是字符串，表示头信息的字段名，第二个参数是字段值。<br>
+                    /* POST的请求头 */<br>
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');</p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>XMLHttpRequest常用属性</p>
+                <p style="text-align:left">
+                    一, readyState<br>
+                    XMLHttpRequest.readyState返回一个整数，表示实例对象的当前状态。该属性只读。它可能返回以下值。<br>
+                    0，表示 XMLHttpRequest 实例已经生成，但是实例的open()方法还没有被调用。<br>
+                    1，表示open()方法已经调用，但是实例的send()方法还没有调用，仍然可以使用实例的setRequestHeader()方法，设定 HTTP 请求的头信息。<br>
+                    2，表示实例的send()方法已经调用，并且服务器返回的头信息和状态码已经收到。<br>
+                    3，表示正在接收服务器传来的数据体（body 部分）。<br>
+                    4，表示服务器返回的数据已经完全接收，或者本次接收已经失败。<br>
+                    </p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>XMLHttpRequest常用属性</p>
+                <p style="text-align:left">
+                    二, onreadystatechange<br>
+                    XMLHttpRequest.onreadystatechange属性指向一个监听函数。<br>
+                    通信过程中，每当实例对象发生状态变化，它的readyState属性的值就会改变。这个值每一次变化，都会触发readyStateChange事件。<br>
+                    readystatechange事件发生时（实例的readyState属性变化），就会执行这个属性。<br>
+                    另外，如果使用实例的abort()方法，终止 XMLHttpRequest
+                    请求，也会造成readyState属性变化，导致调用XMLHttpRequest.onreadystatechange属性。</p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>XMLHttpRequest常用属性</p>
+                <p style="text-align:left">
+                    var xhr = new XMLHttpRequest();<br>
+                    xhr.onreadystatechange = function(){<br>
+                    // 通信成功时，状态值为4<br>
+                    if (xhr.readyState === 4){<br>
+                    if (xhr.status === 200){<br>
+                    console.log(xhr.responseText);<br>
+                    } else {<br>
+                    console.error(xhr.statusText);<br>
+                    }<br>
+                    }};<br>
+                    xhr.open('GET', '/endpoint', true);<br>
+                    xhr.send(null);</p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>XMLHttpRequest常用属性</p>
+                <p style="text-align:left">
+                    三, responseText<br>
+                    XMLHttpRequest.responseText属性返回从服务器接收到的字符串，该属性为只读。只有 HTTP 请求完成接收以后，该属性才会包含完整的数据</p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>XMLHttpRequest常用属性</p>
+                <p style="text-align:left">
+                    四, status<br>
+                    XMLHttpRequest.status属性返回一个整数，表示服务器回应的 HTTP
+                    状态码。一般来说，如果通信成功的话，这个状态码是200；如果服务器没有返回状态码，那么这个属性默认是200。请求发出之前，该属性为0。该属性只读。<br>
+                    200, OK，访问正常<br>
+                    404, Not Found，未发现指定网址<br>
+                    500, Internal Server Error，服务器发生错误<br>
+                    基本上，只有2xx和304的状态码，表示服务器返回是正常状态。</p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>ajax中的onload和onreadystatechange的区别</p>
+                <p style="text-align:left">
+                    onreadystatechange()的定义是只要返回的状态码只要变化时就回调一次函数，而onload只有状态码为4时才能回调一次函数。</p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>结合任务来看三种常见的写法（不涉及框架中写法）</p>
+                <p style="text-align:left">
+                    1、原生写法：见demo</p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>结合任务来看三种常见的写法（不涉及框架中写法）</p>
+                <p style="text-align:left">
+                    2、jQuery 底层 AJAX 实现：见demo</p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <img src="C:\Users\syxycjx\Desktop\2.png" alt="" width="150%" height="150%">
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <img src="C:\Users\syxycjx\Desktop\3.png" alt="" width="150%" height="150%">
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <img src="C:\Users\syxycjx\Desktop\4.png" alt="" width="150%" height="150%">
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <img src="C:\Users\syxycjx\Desktop\5.png" alt="" width="150%" height="150%">
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>结合任务来看三种常见的写法（不涉及框架中写法）</p>
+                <p style="text-align:left">
+                    3、jQuery 高层 AJAX 实现：见demo</p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <img src="C:\Users\syxycjx\Desktop\6.png" alt="" width="150%" height="150%">
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>3.常见问题</h3>
+                <p class="fragment" data-fragment-index="1">1、跨域问题</p>
+                <p class="fragment" data-fragment-index="3">2、使用post提交的时候需要设置content-type为"application/x-www-form-urlencoded"</p>
+            </section>
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>4.解决方案</h3>
+            </section>
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>5.编码实战</h3>
+            </section>
+
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>6.扩展思考</h3>
+                <p>AJAX的优缺点</p>
+                <p>get与post</p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <p>ajax的缺点：</p>
+                    <ol>
+                    <li>ajax不支持浏览器back按钮。</li>
+                    <li>安全问题 AJAX暴露了与服务器交互的细节。</li>
+                    <li>对搜索引擎的支持比较弱。</li>
+                    <li>破坏了程序的异常机制。</li>
+                    <li>不容易调试。</li>
+                    </ol>
+            </section>
+
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>7.参考文献</h3>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>w3c</p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>8 更多讨论</h3>
+                <p>AJAX适用场景有哪些？</p>
+                <ol><p>Ajax适用场景</p>
+                    <li>表单驱动的交互</li>
+                    
+                    <li>深层次的树的导航</li>
+                    <li> 快速的用户与用户间的交流响应</li>
+                    <li>类似投票、yes/no等无关痛痒的场景</li>
+                    <li>对数据进行过滤和操纵相关数据的场景</li>
+                    <li>普通的文本输入提示和自动完成的场景</li></ol>
+            </section>
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    <small>BY :乾洪瑆</small>
+                </p>
+            </section>
+
+        </div>
+        <div class="backgrounds">
+            <div class="slide-background past" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background stack present" data-loaded="true" style="display: block;">
+                <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+                <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+            </div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+                <div class="slide-background future" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+        </div>
+        <div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div>
+        <aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button
+                class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up enabled"
+                aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside>
+        <div class="slide-number" style="display: none;"></div>
+        <div class="speaker-notes" data-prevent-swipe=""></div>
+        <div class="pause-overlay"></div>
+        <div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+        //    原始类型对象直接赋值不会相互影响
+        //    var a = 1;
+        //
+        //    var b = a;
+        //    b = 10;
+        //    console.log(a); // 1
+        ////
+        //    var a = 'hello';
+        //    var b = a;
+        //    b = 'world';
+        //    console.log(a); // hello
+        //
+        //    var a = true;
+        //    var b = a;
+        //    b = false;
+        //    console.log(a);
+
+        //数组浅复制
+        //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+        //    ];
+        //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+        //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+        //    console.log(a)//那么现在打印a 是什么结果呢
+        //
+        //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+        //    var arrtoo = arr.slice(1);
+        //    arrtoo[2] = "set Map";
+        //    console.log(arr);//One,Two,Three
+        //    console.log(arrtoo);//One,set Map,Three
+
+        //
+        //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+        //    var arrtooo = arr1.concat(111111);
+        //    arrtooo[1] = "set Map To";
+        //    console.log(arr1);//One,Two,Three
+        //    console.log(arrtooo);//One,set Map To,Three
+
+        //
+        //    var b=[1,2,3,4,5];   //concat的链接
+        //    var c=[6,7,8,9];
+        //    var d =[4,4,22]
+        //    console.log(b.concat(c,d))
+
+        var a = {
+            name: 'yy',
+            age: 26
+        }; //对象的浅拷贝哦
+        var b = new Object();
+        b.name = a.name;
+        b.age = a.age;
+        b.name = 'xx';
+        console.log(a); //Object { name="yy", age=26}
+        console.log(b); //Object { name="xx", age=26}
+
+        var d = { //对象的浅拷贝哦 第一种
+            name: 'd',
+            oc: {
+                age: 32
+            },
+            oad: {
+                adds: {
+                    bb: 12
+                }
+            }
+        };
+        var deepCopy = function (source) {
+            var result = {};
+            for (var key in source) {
+                result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+            }
+            return result
+        };
+
+        var c = deepCopy(d);
+        c.name = 'c';
+        c.oc = {
+            age: 49
+        };
+        console.log(c);
+        console.log(d);
+
+
+        //    var person = {    //第二种深拷贝
+        //        name: 'aa',
+        //        friends: ['da', 'dsa', 'gf']
+        //    };
+        //
+        //    var aPerson = Object.create(person, {
+        ////        name: {
+        ////            value: "gee"
+        ////        }
+        //    });
+        //
+        //    console.log(person.name);
+        //    console.log(aPerson.friends)
+
+        var Chinese = {
+            nation: '中国'
+
+        }
+        var Doctor = {
+            career: '医生'
+        }
+
+        function extendCopy(p) {
+            var c = {};
+            for (var i in p) {
+                c[i] = p[i];
+            }
+            c.uber = p;
+            return c;
+        }
+
+        var Doctor = extendCopy(Chinese);
+        Doctor.career = '医生';
+        console.log(Doctor); // 中国
+        Chinese.birthPlaces = ['北京', '上海', '香港'];
+        var Doctor = extendCopy(Chinese);
+        Doctor.birthPlaces.push('厦门');
+    </script>
+
+</body>
+
+</html>

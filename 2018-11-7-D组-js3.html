@@ -1,0 +1,313 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .left {
+            text-align: left;
+        }
+        .red {
+            color: #323232;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : 'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides"
+         style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h2>【JS-task-3】</h2>
+            <h3>jquery中的bind(),live(),delegate(),on()有什么区别？
+            </h3>
+            <p>分享人：张新</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <section>
+            <p class="left">
+                在学习和实践jquery框架的过程中，由于开始，只是使用的《锋利的Jquery》中绑定事件的方法，只认识到了bind()的方法。而该书是基于jquery1.7.1编写的，目前最新的版本已经到了3.2。对于绑定事件的方法做了调整。后来发现还有live()、delegate()、on()的方法，它们之间有什么样的区别呢？我们来学习讨论一下。
+            </p>
+        </section>
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+            <h3>
+                bind()方法
+            </h3>
+            <p class="left">
+                bind()方法用于对匹配的元素进行特定事件的绑定。它直接绑定在现有的元素节点上，也很好的解决了浏览器在事件处理中的兼容问题。
+            </p>
+        </section>
+        <section>
+            <p>
+                优点:<br>
+                1.跨浏览器<br>
+                2.非常方便和快捷地绑定事件<br>
+                3.简单的实现方法（.click() .hover() ,etc…）让它用起来很方便<br>
+                4.对于简单的ID选择器来说，使用.bind()不仅方便，而且当触发这个事件的时候能够即时响应。
+            </p>
+            <p>
+                缺点:<br>
+                1.这个方法会附加相同的处理程序到每一个匹配到的元素上<br>
+                2.对于动态添加的属于匹配到的元素，不会被触发事件的<br>
+                3.性能问题，对于处理大量的匹配元素的时候<br>
+                4.如果在页面加载前要处理添加事件的话，会影响加载效率的.
+            </p>
+        </section>
+        <section>
+            <h3>
+                live()方法
+            </h3>
+            <p class="left">
+                live()是事件委托的概念来执行，把节点的处理委托给了document，向当前或未来的匹配元素添加一个或多个事件处理器。
+            </p>
+        </section>
+        <section>
+            <p>
+                优点:<br>
+                1.相对于.bind()的循环注册很多次事件处理程序来说，.live()只注册一次事件处理程序<br>
+                2.从.bind()更新到.live()的方法对程序更改很少，只需要替换“bind”为”live”<br>
+                3.对于动态添加的属于匹配到的元素，也能够“神奇”的执行处理程序<br>
+                4.在document元素没有全部加载完之前都能够几乎不花时间地绑定并触发事件
+            </p>
+            <p>
+                缺点:<br>
+                1.此方法在jQuery1.7的时候已经废除，你应该逐步从你的代码中替换掉该方法<br>
+                2.链接不能够正常的支持这个方法<br>
+                3.这个方法被抛弃是因为它只能够绑定事件处理程序到document上<br>
+                4.event.stopPropagation()不再有效了，因为事件已经委托到了document上了<br>
+                5.由于所有的选择器和事件信息都是附加到了document上的，所以一个确定的事件要触发，必须通过大量的存储信息来匹配到<br>
+                6.由于事件都是委托到了document上的，所以如果DOM太深的话，会影响到性能的
+            </p>
+        </section>
+        <section>
+            <h3>
+                delegate()方法
+            </h3>
+            <p class="left">
+                delegate()方法的行为有点类似live()。但是不是把选择器和事件的信息附加到了document上，而是可以自行选择它要附加的DOM元素，这个技术可以让事件的委托正常工作。我们的选择又多了一些灵活性，不单可以利用事件委托，还可以选择委托的对象。它适用于当前或未来的元素（比如由脚本创建的新元素）。
+            </p>
+        </section>
+        <section>
+            <p>
+                优点:<br>
+                1.可以自由选择附加的选择器和事件信息的位置<br>
+                2.链接也可以有效的支持了<br>
+                3.jQuery仍然需要循环访问选择器和事件数据来确定匹配，但是因为能够选择这些信息附加的位置，所以通过匹配的量小很多了<br>
+                4.由于这种技术使用了事件委托，所以它能很好的动态处理添加到DOM元素<br>
+                5.如果你委托事件到了document上，你也可以在document全部准备完之前绑定和调用
+            </p>
+            <p>
+                缺点:<br>
+                1.方法从.bind()更改到.delegate()比较麻烦<br>
+                2.如果把选择器和事件数据附加到了document上，仍然需要很多的匹配信息，但是相对于.live()的存储量要小很多了
+            </p>
+        </section>
+        <section>
+            <h3>
+                on()方法
+            </h3>
+            <p class="left">
+                on()方法绑定事件处理程序到当前选定的jQuery对象中的元素。它是在1.7版本中被提出来的，提供绑定事件处理程序所需的所有功能。用于替换 bind()、delegate()和 live()。
+            </p>
+        </section>
+        <section>
+            <p>
+                优点:<br>
+                1.为各种事件绑定方法带来了统一性<br>
+                2.简化了jQuery代码库，并删除一个界别的重定向，因为通过调用这个方法实现了 .bind() .live() 和 .delegate()<br>
+                3.仍然提供了好用的.delegate()方法，但是也仍然对.bind()方法提供了支持
+            </p>
+            <p>
+                缺点:
+                因为调用这个方法的各个形式，会带来一些混乱
+            </p>
+        </section>
+        <section>
+            <h3>
+                总结
+            </h3>
+            <p class="left">
+                如果你已经对各种类型的事件绑定方法混淆的神志不清的话也别担心，这是因为历史遗留问题和API在随着时间的推移导致的。有些人认为这些方法作为魔法方法，但是一旦你发现他们如何工作的将会更好的利于你的项目。
+            </p>
+        </section>
+        <section>
+            <h3>3.常见问题</h3>
+        </section>
+        <section>
+            <p>
+                bind(),live(),delegate(),on()的特点？
+            </p>
+        </section>
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+            <p class="left">
+                bind()的特点
+            </p>
+            <p class="left">
+                直接绑定在已经存在的元素上，但是对在它执行完后动态添加的那些元素上不起作用。因为直接绑定在具体的元素上，响应事件及时，它是出现最早的一种绑定事件的方法。这种方法很浪费资源，引起性能问题，因为它要匹配选择器中的每一项并且挨个设置相同的事件处理程序。如果在页面加载前要处理添加事件的话，会影响加载效率的。在jquery1.7版本以前比较受推崇。在jquery1.7版本之后，官方推荐使用on()方法代替。在jquery3.0版本之后，已经删除该方法。
+            </p>
+        </section>
+        <section>
+            <p class="left">
+                live()的特点
+            </p>
+            <p class="left">
+                与bind()的实现原理却不同。live()方法附加事件处理程序在document上通过冒泡来关联匹配到相应的元素和事件信息。对新添加的元素依然有效。不需要在每个元素上去绑定事件，而只在document上绑定一次就可以了。可以在document ready之前就可以绑定那些需要的事件。但是jquery1.9版本之后，已经被弃用了。
+            </p>
+        </section>
+        <section>
+            <p class="left">
+                delegate()方法的特点
+            </p>
+            <p class="left">
+                更精确的小范围使用事件代理，性能优于live()。它可以自由选择附加的选择器和事件信息的位置，把事件绑定到具体元素的上一级较稳定（不会动态地添加或者删除、变化）的元素上，缩短了事件冒泡的路径。同样对新添加的元素依然有效。在jquery3.0版本之后，已经删除该方法。
+            </p>
+        </section>
+        <section>
+            <p class="left">
+                on()的特点
+            </p>
+            <p class="left">
+                是以上三种方法的统一。可以使用一个方法，设置不同参数值来实现上述三种方法的功能。简化了jQuery代码库，并删除一个界别的重定向。
+            </p>
+        </section>
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+        <h4>如何移除事件</h4>
+        <p class="left">
+            $("body").off("click","p");<br>
+            使用off方法移除事件
+        </p>
+        </section>
+        <section>
+            <h4>如何执行一次事件后移除事件</h4>
+            <p class="left">
+                $("body").one("click","p");<br>
+                使用one方法执行一次事件后移除事件
+            </p>
+        </section>
+        <section>
+            <h3>7.参考文献</h3>
+        </section>
+        <section class="left">
+            <p>参考一：<a href="https://blog.csdn.net/helloliuhai/article/details/19987509" target="_blank">jQuery四种事件绑定方式.bind(),.live(),.delegate(),on()的区别</a></p>
+            <p>参考二：<a href="http://www.cnblogs.com/chenlogin/p/5105710.html" target="_blank">jQuery中.bind() .live() .delegate() .on()区别</a></p>
+            <p>参考二：<a href="https://www.jb51.net/article/78298.htm" target="_blank">jQuery中bind(),live(),delegate(),on()绑定事件方法实例详解</a></p>
+        </section>
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+        <section>
+            <p>1.这四种方法的区别</p>
+            <p>
+                .bind()是直接绑定在元素上<br>
+                .live()则是通过冒泡的方式来绑定到元素上的。更适合列表类型的，绑定到document DOM节点上。和.bind()的优势是支持动态数据。<br>
+                .delegate()则是更精确的小范围使用事件代理，性能优于.live()<br>
+                .on()则是最新的1.9版本整合了之前的三种方式的新事件绑定机制<br>
+            </p>
+        </section>
+        <section>
+            <p>2，如今live（）方法是否还适合使用?</p>
+            <p>建议停止使用.live()方法，因为它已经被弃用了，由于他有很多的问题</p>
+        </section>
+        <section>
+            <p>3，为什么更推荐使用on()方法</p>
+            <p>新的.on()方法主要是可以实现.bind() .live() 甚至 .delegate()的功能</p>
+        </section>
+        <section>
+            <p>感谢大家观看</p>
+            <p><small>BY : 张新</small></p>
+        </section>
+    </div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status He
