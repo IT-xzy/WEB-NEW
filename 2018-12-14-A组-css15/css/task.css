@@ -1,0 +1,39 @@
+
+body{
+    margin: 0;
+} 
+p {
+    color: #f55;
+    background: #fcc;
+    width: 200px;
+    line-height: 100px;
+    text-align:center;
+    margin: 100px;
+}
+.box{
+    overflow: hidden;
+}
+
+/* .left {
+    float: left;
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+}
+p {
+    background-color: green;
+    overflow: hidden;
+} */
+
+/* .par {
+    border: 5px solid #fcc;
+    width: 300px;
+    overflow: hidden;
+}
+
+.child {
+    border: 5px solid #f66;
+    width:100px;
+    height: 100px;
+    float: left;
+} */
