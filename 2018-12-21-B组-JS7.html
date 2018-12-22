@@ -1,0 +1,698 @@
+<html class="js no-mobile desktop no-ie chrome chrome69 task-section xkt-section gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch retina fontface domloaded gr__maikihyh_github_io w-613 gt-240 gt-320 gt-480 lt-640 lt-768 lt-800 lt-1024 lt-1280 lt-1440 lt-1680 lt-1920 portrait no-landscape"
+      id="2018-09-18-a-css-10-page">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>angular之中，$state $watch $scope $rootScope 分别是什么？</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <link rel="stylesheet" type="text/css" href="../css/reveal/print/paper.css">
+    <script type="text/javascript" src="../plugin/markdown/marked.js"></script>
+    <script type="text/javascript" src="../plugin/markdown/markdown.js"></script>
+    <script type="text/javascript" src="../plugin/notes/notes.js"></script>
+    <script type="text/javascript" src="../plugin/highlight/highlight.js"></script>
+</head>
+
+<body data-gr-c-s-loaded="true">
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal center default" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides"
+         style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.574688);">
+        <section class="present" style="top: 178px; display: block;">
+            <h2>【angular之中，$state $watch $scope $rootScope 分别是什么？】</h2>
+            <!--<h3>如何阻止事件冒泡和默认事件？</h3>-->
+            <p>分享人：宋恒</p>
+        </section>
+        <section class="future" style="top: 1.5px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <!--<h4>面向对象是什么</h4>-->
+            <p style="text-align: justify">
+                在平时的编码中，我们总会想着有什么方法能够简化我们的工作流程，让我们只专心于业务逻辑和数据的处理，而angularjs 就为我们程序员实现了这一点。
+                $scope $rootScope $watch 和 $state就是里面的几个方法，今天着重跟大家讨论一下这 几个方法。
+            </p>
+
+        </section>
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--&lt;!&ndash;<h4>那什么THIS的指向又是什么呢？</h4>&ndash;&gt;-->
+            <!--<p style="text-align: justify">-->
+                <!--它是一个很特别的关键字，被自动定义在所有函数的作用域中-->
+                <!--在JavaScript中，this是动态绑定的，它可以是全局对象、当前对象或者任意对象，这完全取决于函数的调用方式。-->
+                <!--这就导致了this具备了多重含义，可以使得JavaScript更灵活的使用。-->
+            <!--</p>-->
+
+        <!--</section>-->
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>2.知识剖析</h3>
+        </section>
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--&lt;!&ndash;<h4>先来了解一下事件流</h4>&ndash;&gt;-->
+            <!--<p style="letter-spacing: 5px"> 由于其运行期绑定的特性，JavaScript 中的 this 含义要丰富得多，它可以是全局对象、当前对象或者任意对象，-->
+                <!--这完全取决于函数的调用方式。JavaScript 中函数的调用有以下几种方式：作为对象方法调用，作为函数调用，作为构造函数调用，-->
+                <!--和使用 apply 或 call 调用。下面我们将按照调用方式的不同，分别讨论 this 的含义。</p>-->
+
+        <!--</section>-->
+        <!--<section class="present" style="top: 0px; display: block;">-->
+            <!--<h4>this作为对象方法调用</h4>-->
+            <!--<p style="letter-spacing: 5px">-->
+                <!--在 JavaScript 中，函数也是对象，因此函数可以作为一个对象的属性，此时该函数被称为该对象的方法，在使用这种调用方式时，this 被自然绑定到该对象。-->
+            <!--</p>-->
+            <!--<pre><code class="hljs less">-->
+            <!--var point = {-->
+                <!--x : 0,-->
+                <!--y : 0,-->
+                <!--moveTo : function(x, y) {-->
+                    <!--this.x = this.x + x;-->
+                    <!--this.y = this.y + y;-->
+                    <!--}-->
+                <!--};-->
+
+                <!--point.moveTo(1, 1)//this 绑定到当前对象，即 point 对象-->
+            <!--</code></pre>-->
+        <!--</section>-->
+        <section class="present" style="top: 0px; display: block;">
+            <h4>$scope</h4>
+            <p style="letter-spacing: 5px">
+                $scope在angularjs中，你可以把它理解成作用域，每个不同的controller，都具有它不同的作用域，所以 controller不同，
+                他们的scope是不同的。Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的纽带。
+
+            </p>
+            <!--<pre><code class="hljs less">-->
+           <!--$ bower install angular-ui-router &#45;&#45;save-->
+            <!--</code></pre>-->
+
+        </section>
+        <section class="present" style="top: 0px; display: block;">
+            <!--<h4>constructor和prototype属性</h4>-->
+            <p style="letter-spacing: 5px">Scope 是一个对象，有可用的方法和属性。Scope 可应用在视图和控制器上。scope 是模型。scope 是一个 JavaScript 对象，带有属性和方法，
+                这些属性和方法可以在视图和控制器中使用。如果我们想象js那样，做一个全局变量该怎么办呢？这就要说 到rootScope了。</p>
+
+            <!--<pre><code class="hljs less">-->
+                <!--script type="text/javascript" src="app/bower_components/angular-ui-router/release/angular-ui-router.js">-->
+
+            <!--</code></pre>-->
+        </section>
+        <section class="present" style="top: 0px; display: block;">
+            <h4>$rootscope</h4>
+            <p style="letter-spacing: 5px">
+                $rootScope就相当于一个全局作用域，所以我们保存在其中的东西是全局性的，在任一controller之中都能够使用scope是html和单个controller之间的桥梁，
+                数据绑定就靠他了。rootscope是各个controller中scope的桥梁。 用rootscope定义的值，可以在各个controller中使用。
+
+
+
+
+
+            </p>
+            <!--<pre><code class="hljs less">-->
+                  <!--angular.module('myApp', ['ui.router']);-->
+
+            <!--</code></pre>-->
+            <!--<p style="letter-spacing: 5px">这属于 JavaScript 的设计缺陷，正确的设计方式是内部函数的 this 应该绑定到其外层函数对应的对象上，-->
+                <!--为了规避这一设计缺陷，聪明的 JavaScript 程序员想出了变量替代的方法，约定俗成，该变量一般被命名为 that。</p>-->
+        </section>
+
+        <section class="present" style="top: 0px; display: block;">
+            <!--<h4>直接创建</h4>-->
+            <!--<h4>使用函数创建（工厂模式）</h4>-->
+            <!--<h4>使用构造函数</h4>-->
+            <!--<h4>用原型链</h4>-->
+            <!--<h4>具体见demo</h4>-->
+            <p style="letter-spacing: 5px">
+                所有的应用都有一个$rootScope，它可以作用在ng-app指令包含的所有 HTML 元素中。$rootScope可作用于整个应用中。
+                是各个 controller 中 scope 的桥梁。用 rootscope 定义的值，可以在各个 controller 中使用。
+            </p>
+            <!--<pre><code class="hljs less">-->
+                    <!--<span class="hljs-tag"><<span class="hljs-name">div ng-controller="DemoController"</span><span class="hljs-tag">></span></span>-->
+                        <!--<span class="hljs-tag"><<span class="hljs-name">div ui-view</span><span class="hljs-tag">></span></span>-->
+                        <!--<span class="hljs-tag"><<span class="hljs-name">/div</span><span class="hljs-tag">></span></span>-->
+                    <!--<span class="hljs-tag"><<span class="hljs-name">/div</span><span class="hljs-tag">></span></span>-->
+            <!--</code></pre>-->
+            <!--<p style="letter-spacing: 5px">看demo</p>-->
+        </section>
+
+
+
+        <section class="present" style="top: 0px; display: block;">
+            <!--<h4>作为构造函数调用</h4>-->
+            <p style="letter-spacing: 5px;text-align: left">
+                $rootscope设置的变量在所有controller里面都是可以直接用{{$root.变量名}}来显示的，
+                当然也可以赋值给$scope.$rootScope 全局对象的属性可在所有子作用域中访问，子作用域互相无法访问对方的私有变量，这一点与js的函数作用域完全一致。</p>
+
+            <!--<pre><code class="hljs less">-->
+                    <!--.config(function($stateProvider, $urlRouterProvider) {-->
+                          <!--$stateProvider-->
+                            <!--.state('start', {-->
+                              <!--url: '/start',-->
+                              <!--templateUrl: 'partials/start.html'-->
+                            <!--})-->
+                        <!--});-->
+            <!--</code></pre>-->
+                <!--<pre><code class="hljs less">-->
+
+            <!--</code></pre>-->
+            <!--<p style="letter-spacing: 5px; text-align: left">上述代码在设置对象上定义了一个叫start的状态。设置对象stateConfig和路由设置对象的选项是非常相似的。</p>-->
+                <!--为了规避这一设计缺陷，聪明的 JavaScript 程序员想出了变量替代的方法，约定俗成，该变量一般被命名为 that。</p>-->
+            <!--<p style="letter-spacing: 5px">需要先了解一些关键点：1.event事件对象 2.目标源：target 3.当前目标源：currentTarget 4.元素element</p>-->
+        </section>
+
+
+
+        <section class="present" style="top: 0px; display: block;">
+            <h4>$watch</h4>
+            <p style="letter-spacing: 5px;text-align: left">  相信使用过angularjs的同学都知道，ng中有个比较重要的特点，叫做双向绑定，那么这个双向绑定是如何实现的呢？
+                当我们在创建出scope下的一个新属性的时候，ng就会主动为我们新属性加上$watch这个方法，这个方法会监听我们 的数据变化，
+                当数据变化之后，就立即把view和scope上数据同步。
+
+
+
+            </p>
+
+                <!--<pre><code class="hljs less">-->
+                          <!--$stateProvider.state('home', {-->
+                    <!--template: '<span class="hljs-tag"><</span> <span class="hljs-name"></span>h1<span class="hljs-name"></span><span class="hljs-tag">>{{name}}</span><span class="hljs-tag"><</span> <span class="hljs-name"></span>/h1<span class="hljs-name"></span><span class="hljs-tag">></span>',-->
+                        <!--});-->
+                <!--</code></pre>-->
+        </section>
+        <section class="present" style="top: 0px; display: block;">
+            <!--<h4>URL</h4>-->
+            <p style="letter-spacing: 5px">
+                $watch(watchExpression, listener, objectEquality);<br/>
+                watchExpression：需要监控的表达式<br/>
+                listener：处理函数，函数参数如下 function(newValue,oldValue, scope)<br/>
+                objectEquality：是否深度监听，如果设置为true,它告诉Angular检查所监控的对象中每一个属性的变化. 如果你希望监控数组的个别元素或者对象的属性而不是一个普通的值, 那么你应该使用它。
+            </p>
+            <!--<pre><code class="hljs less">-->
+                <!--$stateProvider-->
+              <!--.state('inbox', {-->
+                <!--url: '/inbox',-->
+                    <!--template: '<span class="hljs-tag"><</span> <span class="hljs-name"></span>h1<span class="hljs-name"></span><span class="hljs-tag">></span><span class="hljs-tag">Welcome to your inbox<</span> <span class="hljs-name"></span>/h1<span class="hljs-name"></span><span class="hljs-tag">></span>',-->
+              <!--});-->
+                <!--</code></pre>-->
+        </section>
+
+
+        <section class="present" style="top: 0px; display: block;">
+            <h4> $STATE</h4>
+            <p style="letter-spacing: 5px">
+                在ajax技术发展普及之后，因为其不会留下历史记录方便浏览器访问和对于seo不友好的特点，一个新技术应运而生： 路由，$state就是路由中的一项服务。
+            </p>
+            <!--<pre><code class="hljs less">-->
+               <!--$stateProvider-->
+                  <!--.state('inbox', {-->
+                    <!--url: '/inbox/:inboxId',-->
+                    <!--template: '<span class="hljs-tag"><</span> <span class="hljs-name"></span>h1<span class="hljs-name"></span><span class="hljs-tag">></span><span class="hljs-tag">Welcome to your inbox<</span> <span class="hljs-name"></span>/h1<span class="hljs-name"></span><span class="hljs-tag">></span>',-->
+                    <!--controller: function($scope, $stateParams) {-->
+                      <!--$scope.inboxId = $stateParams.inboxId;-->
+                    <!--}-->
+                  <!--});-->
+                <!--</code></pre>-->
+        </section>
+        <!--<section class="present" style="top: 0px; display: block;">-->
+            <!--&lt;!&ndash;<h4>3.element对象</h4>&ndash;&gt;-->
+            <!--<p style="letter-spacing: 5px">$state（总共6个方法和1个事件：go，href，include，is，reload，transitionTo和事件：$stateChangeError，$stateChangeStart，$stateChangeSuccess和$stateNotFound。 ）-->
+                <!--这里用最常用的是 go方法:-->
+
+                <!--<pre><code class="hljs less">-->
+                <!--go(to,params,options);-->
+                <!--</code></pre>-->
+            <!--</p>-->
+
+        <!--</section>-->
+
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<p style="letter-spacing: 5px"> 这三个参数:-->
+
+                <!--to：string，即将跳转的状态,    $state.go("login");-->
+
+                <!--params:object，跳转所带的参数,是一个对象,-->
+                <!--options：object，可选配置对象。有 location(是否更新地址栏的url，或以什么字符串替换url)，inherit(是否继承当前url的参数)，relative(当变化相对路径：如"^,定义的状态是相对的)，notify(是否广播$stateChangeStart和$stateChangeSuccess事件)，reload(是否重新载入)。-->
+            <!--</p>-->
+            <!--&lt;!&ndash;<pre><code class="hljs less">&ndash;&gt;-->
+                 <!--&lt;!&ndash;url: '/inbox/{inboxId}'&ndash;&gt;-->
+                 <!--&lt;!&ndash;</code></pre>&ndash;&gt;-->
+            <!--&lt;!&ndash;<p style="letter-spacing: 5px">路径必须匹配URL，与ngRoute不同的是，当用户访问到/inbox/时，上面的的路径会被激活，然而当访问到/inbox时不会被激活。路径同时也使开发者可以使用正则表达式来匹配，例如：</p>&ndash;&gt;-->
+            <!--&lt;!&ndash;<pre><code class="hljs less">&ndash;&gt;-->
+               <!--&lt;!&ndash;// 限定id为6位16进制数字&ndash;&gt;-->
+                    <!--&lt;!&ndash;url: '/inbox/{inboxId:[0-9a-fA-F]{6}}',&ndash;&gt;-->
+                    <!--&lt;!&ndash;// 或者&ndash;&gt;-->
+                    <!--&lt;!&ndash;// 匹配任何在 `/inbox`后面的url（慎用）并匹配值到indexId&ndash;&gt;-->
+                    <!--&lt;!&ndash;url: '/inbox/{inboxId:.*}'&ndash;&gt;-->
+                 <!--&lt;!&ndash;</code></pre>&ndash;&gt;-->
+        <!--</section>-->
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>$state在嵌套路由例子</h4>
+
+            <!--<p style="letter-spacing: 5px">使用url参数可以实现嵌套的路由，有了嵌套路由便可在同一个模板同一个路由实现多层次的ui-view-->
+                <!--</p>-->
+        </section>
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+
+            <!--<h4>ui-view</h4>-->
+
+        <!--</section>-->
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+
+            <!--<p style="letter-spacing: 5px">作为元素：</p>-->
+            <!--<pre><code class="hljs less">-->
+                        <!--<span class="hljs-tag"><<span class="hljs-name">ui-view</span><span class="hljs-tag">></span></span><span class="hljs-tag"><<span class="hljs-name">/ui-view</span><span class="hljs-tag">></span></span>-->
+                  <!--</code></pre>-->
+            <!--<p style="letter-spacing: 5px">作为属性：</p>-->
+            <!--<pre><code class="hljs less">-->
+                        <!--<span class="hljs-tag"><<span class="hljs-name">div ui-view</span><span class="hljs-tag">></span></span> <span class="hljs-tag"><<span class="hljs-name">/div ui-view</span><span class="hljs-tag">></span></span>-->
+                  <!--</code></pre>-->
+            <!--<p style="letter-spacing: 5px">作为class：</p>-->
+            <!--<pre><code class="hljs less">-->
+                        <!--<span class="hljs-tag"><<span class="hljs-name">div class="ui-view"</span><span class="hljs-tag">></span></span><span class="hljs-tag"><<span class="hljs-name">/div</span><span class="hljs-tag">></span></span>-->
+                  <!--</code></pre>-->
+            <!--<p style="letter-spacing: 5px">给ui-view添加名字：</p>-->
+            <!--<pre><code class="hljs less">-->
+                        <!--<span class="hljs-tag"><<span class="hljs-name">div ui-view="my"</span><span class="hljs-tag">></span></span> <span class="hljs-tag"><<span class="hljs-name">/div</span><span class="hljs-tag">></span></span>-->
+                  <!--</code></pre>-->
+        <!--</section>-->
+
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<h3>事件</h3>-->
+        <!--</section>-->
+
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<p style="text-align: left">和ngRoute相同的是，angular-route服务会在不同的状态生命周期lifecycle里启动某些事件events。-->
+                <!--监听$scope对象便可以捕获这些事件然后采取不同的响应或者操作。如下的事件将会在$rootScope上触发，-->
+                <!--因此在任何$scope对象上都可以监听到这些事件。</p>-->
+
+
+        <!--</section>-->
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<p style="text-align: left">状态改变事件</p>-->
+            <!--<pre><code class="hljs less">-->
+             <!--$scope.$on('$stateChangeStart',-->
+                <!--function(evt, toState, toParams, fromState, fromParams), {-->
+                  <!--// 如果需要阻止事件的完成-->
+                  <!--evt.preventDefault();-->
+                <!--});-->
+                 <!--</code></pre>-->
+         <!--</section>-->
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<h3>$urlRouterProvider</h3>-->
+        <!--</section>-->
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<p style="text-align: left"> 和ngRoute一样，开发者可以在该对象上设定特定的URL被激活时做什么的规则。-->
+                <!--由于设定好的状态在特定的url被访问是会自动激活，所以$urlRouterProvider没有必要用来管理激活和载入状态。-->
+                <!--但当需要管理哪些被发生在当前状态之外的作用域scope时它会非常有用，例如在重定向或者安全验证的时候。-->
+                <!--在模块的设置函数里便可使用$urlRouterProvider。 </p>-->
+
+        <!--</section>-->
+        <!--<section class="future" aria-hidden="true" style="top: 330px; display: none;" hidden="">-->
+            <!--<p style="text-align: left">when()</p>-->
+            <!--<p style="text-align: left">该函数需要两个参数：1.当前的路径，2.需要重定向到的路径（或者是需要在路径被访问是运行的函数）。-->
+                <!--设置重定向前需要为$urlRouterProvider设置when函数来接受一个字符串。例如，当希望重定向一个空的路由到/inbox：</p>-->
+            <!--<pre><code class="hljs less">-->
+                           <!--.config(function($urlRouterProvider) {-->
+                              <!--$urlRouterProvider.when('', '/inbox');-->
+                            <!--});-->
+                        <!--</code></pre>-->
+        <!--</section>-->
+
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>3.常见问题</h3>
+            <p style="text-align: left">watch的深度监听是什么意思呢？有什么优缺点呢？</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <!--<h3>3.常见问题</h3>-->
+            <h4>解决方案</h4>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+
+            <!--<p style="letter-spacing: 5px">这两种方法是有区别的。return false不仅阻止了事件冒泡，还阻止了事件本身。-->
+                <!--stopPropagation()方法只会阻止事件冒泡，不会阻止事件本身。-->
+
+            <!--</p>-->
+            <p style="text-align: left">
+                如果我们将$watch的第三个变量设置为true，那么此时我们进行的监视叫做“全等监视”，原词是“equality watch”。此时，
+                只要$watch的对象有一点风吹草动，它马上就跳出来
+
+            </p>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+
+            <!--<p style="letter-spacing: 5px">这两种方法是有区别的。return false不仅阻止了事件冒泡，还阻止了事件本身。-->
+            <!--stopPropagation()方法只会阻止事件冒泡，不会阻止事件本身。-->
+
+            <!--</p>-->
+            <p style="text-align: left">
+
+                全等监视 在运行时需要先遍历整个监视对象，然后在每次$digest之前使用angular.copy()将整个对象深拷贝一遍然后在运行之后用angular.equal()将前后的对象进行对比，上面的例子中因为items比较简单，因此可能性能上不会有什么差别，但是到了实际生产时，我们要面对的数据千千万万，
+                可能因为全等监视这一个设置就会消耗大量的资源，让应用停滞不前
+
+
+            </p>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;"><h3>5.扩展思考</h3>
+
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: left"> $state主要有哪些方法 </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: left"> $state（总共6个方法和1个事件：go，href，include，is，reload，transitionTo和事件：$stateChangeError，$stateChangeStart，$stateChangeSuccess和$stateNotFound。 ）
+            <br/>    主要是go方法:
+
+                go(to,params,options);
+            </p>
+        </section>
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <p style="text-align: center">
+
+
+
+
+                    这三个参数:<br/>
+
+                    to：string，即将跳转的状态,    $state.go("login");<br/>
+
+                    params:object，跳转所带的参数,是一个对象,<br/>
+
+                    options：object，可选配置对象。有 location(是否更新地址栏的url，或以什么字符串替换url)，inherit(是否继承当前url的参数)，relative(当变化相对路径：如"^,定义的状态是相对的)，notify(是否广播$stateChangeStart和$stateChangeSuccess事件)，reload(是否重新载入)。
+                </p>
+                <!--<p style="text-align: center"> focus、blur和scroll事件不会冒泡。文档元素上的load事件会冒泡，但它会在document对象上停止冒泡而不会传播到window对象-->
+                <!--</p>-->
+            </section>
+        </section>
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<p style="text-align: left"> 一个函数被执行时，会创建一个执行环境（ExecutionContext），函数的所有的行为均发生在此执行环境中，-->
+                <!--构建该执行环境时，JavaScript 首先会创建 arguments变量，其中包含调用函数时传入的参数。接下来创建作用域链。然后初始化变量，-->
+                <!--首先初始化函数的形参表，值为 arguments变量中对应的值，如果 arguments变量中没有对应值，则该形参初始化为 undefined。 </p>-->
+        <!--</section>-->
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<p style="text-align: left"> 如果该函数中含有内部函数，则初始化这些内部函数。如果没有，继续初始化该函数内定义的局部变量，-->
+                <!--需要注意的是此时这些变量初始化为 undefined，其赋值操作在执行环境（ExecutionContext）创建成功后，函数执行时才会执行，-->
+                <!--这点对于我们理解 JavaScript 中的变量作用域非常重要，鉴于篇幅，我们先不在这里讨论这个话题。最后为 this变量赋值，-->
+                <!--如前所述，会根据函数调用方式的不同，赋给 this全局对象，当前对象等。至此函数的执行环境（ExecutionContext）创建成功，-->
+                <!--函数开始逐行执行，所需变量均从之前构建好的执行环境（ExecutionContext）中读取。</p>-->
+        <!--</section>-->
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<p style="text-align: left"> 我们来看看 this 在 JavaScript 中经常被误用的一种情况：回调函数。js 支持函数式编程，-->
+                <!--函数属于一级对象，可以作为参数被传递。请看下面的例子 myObject.handler 作为回调函数，会在 onclick 事件被触发时调用，-->
+                <!--但此时，该函数已经在另外一个执行环境（ExecutionContext）中执行了，this 自然也不会绑定到 myObject 对象上。</p>-->
+        <!--</section>-->
+        <!--<section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">-->
+            <!--<section style="top: 330px; display: none;">-->
+                <!--<p style="text-align: center">-->
+
+                    <!---->
+                    <!---->
+                        <!--</p>-->
+    <!---->
+                <!--</section>-->
+    <!---->
+            <!--</section>-->
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+
+                <h3>6.编码实战</h3>
+            </section>
+
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h3>7.参考文献</h3>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <p><a href="https://gaohaoyang.github.io/2015/05/20/scope/" target="_blank">
+                    参考一</a>
+
+                </p>
+                <p><a href="https://juejin.im/entry/57f5d492bf22ec006475238f" target="_blank">参考2</a></p>
+                <p><a href="https://github.com/mqyqingfeng/Blog/issues/3" target="_blank">参考3</a></p>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h3>8.更多讨论</h3>
+            </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>1.return=false可以阻止那一层的事件冒泡？2.怎么防止事件是冒泡上来的</h3>
+            <p>1.写在那一层里就阻止其冒泡行为。2.使用事件代理，$.on()，这其实是将事件监听（代理）在父元素上面，内部也是利用了冒泡的机制，并判断目标源，实现事件代理的。</p>
+        </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    <small>宋恒</small>
+                </p>
+            </section>
+
+        </div>
+        <div class="backgrounds">
+            <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background stack future" style="display: none;">
+                <div class="slide-background present" style="display: none;"></div>
+            </div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+        </div>
+        <div class="progress" style="display: block;"><span style="width: 0px;"></span></div>
+        <aside class="controls" style="display: block;">
+            <button class="navigate-left" aria-label="previous slide"></button>
+            <button class="navigate-right enabled" aria-label="next slide"></button>
+            <button class="navigate-up" aria-label="above slide"></button>
+        </aside>
+        <div class="slide-number" style="display: none;"></div>
+        <div class="speaker-notes" data-prevent-swipe=""></div>
+        <div class="pause-overlay"></div>
+        <div id="aria-status-div" aria-live="polite" aria-atomic="true"
+             style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+            【如何使用ui-router】
+
+            分享人：宋恒
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                src: '../plugin/markdown/marked.js'
+            },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+        //    原始类型对象直接赋值不会相互影响
+        //    var a = 1;
+        //
+        //    var b = a;
+        //    b = 10;
+        //    console.log(a); // 1
+        ////
+        //    var a = 'hello';
+        //    var b = a;
+        //    b = 'world';
+        //    console.log(a); // hello
+        //
+        //    var a = true;
+        //    var b = a;
+        //    b = false;
+        //    console.log(a);
+
+        //数组浅复制
+        //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+        //    ];
+        //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+        //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+        //    console.log(a)//那么现在打印a 是什么结果呢
+        //
+        //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+        //    var arrtoo = arr.slice(1);
+        //    arrtoo[2] = "set Map";
+        //    console.log(arr);//One,Two,Three
+        //    console.log(arrtoo);//One,set Map,Three
+
+        //
+        //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+        //    var arrtooo = arr1.concat(111111);
+        //    arrtooo[1] = "set Map To";
+        //    console.log(arr1);//One,Two,Three
+        //    console.log(arrtooo);//One,set Map To,Three
+
+        //
+        //    var b=[1,2,3,4,5];   //concat的链接
+        //    var c=[6,7,8,9];
+        //    var d =[4,4,22]
+        //    console.log(b.concat(c,d))
+
+        var a = {
+            name: 'yy',
+            age: 26
+        }; //对象的浅拷贝哦
+        var b = new Object();
+        b.name = a.name;
+        b.age = a.age;
+        b.name = 'xx';
+        console.log(a); //Object { name="yy", age=26}
+        console.log(b); //Object { name="xx", age=26}
+
+        var d = { //对象的浅拷贝哦 第一种
+            name: 'd',
+            oc: {
+                age: 32
+            },
+            oad: {
+                adds: {
+                    bb: 12
+                }
+            }
+        };
+        var deepCopy = function (source) {
+            var result = {};
+            for (var key in source) {
+                result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+            }
+            return result
+        };
+
+        var c = deepCopy(d);
+        c.name = 'c';
+        c.oc = {
+            age: 49
+        };
+        console.log(c);
+        console.log(d);
+
+
+        //    var person = {    //第二种深拷贝
+        //        name: 'aa',
+        //        friends: ['da', 'dsa', 'gf']
+        //    };
+        //
+        //    var aPerson = Object.create(person, {
+        ////        name: {
+        ////            value: "gee"
+        ////        }
+        //    });
+        //
+        //    console.log(person.name);
+        //    console.log(aPerson.friends)
+
+        var Chinese = {
+            nation: '中国'
+
+        }
+        var Doctor = {
+            career: '医生'
+        }
+
+        function extendCopy(p) {
+            var c = {};
+            for (var i in p) {
+                c[i] = p[i];
+            }
+            c.uber = p;
+            return c;
+        }
+
+        var Doctor = extendCopy(Chinese);
+        Doctor.career = '医生';
+        console.log(Doctor); // 中国
+        Chinese.birthPlaces = ['北京', '上海', '香港'];
+        var Doctor = extendCopy(Chinese);
+        Doctor.birthPlaces.push('厦门');
+    </script>
+
+
+    </body>
+
+    </html>
