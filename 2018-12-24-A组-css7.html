@@ -1,0 +1,270 @@
+<!doctype html>
+
+<head xmlns="http://www.w3.org/1999/html">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题,可以在/css/reveal/theme/中选择其他主题,目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        .text-l {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>
+                rgba和opacity的透明效果有什么不同？display和visiblity有什么区别？</h2>
+            <p>分享人：阮少凡</p>
+        </section>
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+
+        <section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section style="text-align: left;">
+                <br style="text-align: left">
+                rgb大家都熟悉，RGB色彩模式（也翻译为“红绿蓝”，比较少用）是工业界的一种颜色标准，是通过对红(R)、绿(G)、蓝(B)三个颜色通道的变化以及它们相互之间的叠加来得到各式各样的颜色的，RGB即是代表红、绿、蓝三个通道的颜色，这个标准几乎包括了人类视力所能感知的所有颜色，是目前运用最广的颜色系统之一。
+            </section>
+            <section style="text-align: left;">
+                <br style="text-align: left">
+                <h3>什么是OPACITY？</h3>
+                是一个css3属性，该属性用于设置元素的不透明度级别，所有的浏览器都支持这个属性。
+                取值说明: value 不透明度，从0.0(完全透明)到1.0（完全不透明）
+            </section>
+            <section style="text-align: left;">
+                <br style="text-align: left">
+                <h3>什么是 visibility</h3>
+                w3school上给的定义 定义和用法 visibility 属性规定元素是否可见。 提示：即使不可见的元素也会占据页面上的空间。请使用 "display" 属性来创建不占据页面空间的不可见元素。
+            </section>
+        </section>
+
+
+        <section>
+
+
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section style="text-align: left;">
+                <h3><strong>一、RGBA</strong></h3>
+                <p><br>
+                    RGBA是代表Red（红色） Green（绿色） Blue（蓝色）和 Alpha的色彩空间，也就是透明度/不透明度。<hr/>
+                R：红色值。正整数 | 百分数 &nbsp;&nbsp; &nbsp; &nbsp;
+                G： 绿色值。正整数 | 百分数&nbsp; &nbsp; &nbsp; &nbsp; B： 蓝色值。正整数| 百分数&nbsp; &nbsp; &nbsp; &nbsp; A： 透明度。取值0~1之间,取值为0，那它就是完全透明的（也就是看不见的），而数值为,1则意味着一个完全不透明的像素
+
+
+                </p>
+
+            </section>
+
+
+            <section style="text-align: left;">
+                <h3><strong>OPACITY</strong></h3>
+                <p>
+                    语法： opacity: value|inherit;
+
+                    value:规定不透明度。从 0.0 （完全透明）到 1.0（完全不透明）。
+
+                    从父元素继承 opacity 属性的值。<hr/>
+                    DISPLAY:NONE
+
+                    display 属性规定元素应该生成的框的类型。
+
+                    值为none，表示元素不会被显示。
+
+                    位置也不再被占据。
+                </p>
+            </section>
+
+
+            <section class="text-l">
+                <h3>visibility:hidden</h3>
+                <p>
+                    visibility 属性规定元素是否可见。
+
+                    值为hidden，表示元素不可见。
+
+                    但是会占据原有位置。
+                </p>
+            </section>
+
+            <section class="text-l">
+                <h3></h3>
+                <p>
+                    <!--去掉样式，看网页结构是否组织良好有序，是否仍然有很好的可读性。<br>-->
+                </p>
+            </section>
+
+
+            <section class="text-l">
+                <h3></h3>
+                <p>
+                    <!--1.尽可能少的使用无语义的标签div和span；<br>-->
+                    <!--2.在语义不明显时，既可以使用div或者p时，尽量用p, 因为p在默认情况下有上下间距，对兼容特殊终端有利；<br>-->
+                    <!--3.不要使用纯样式标签，如：b、font、u等，改用css设置。<br>-->
+                    <!--4.需要强调的文本，可以包含在strong或者em标签中（浏览器预设样式，能用CSS指定就不用他们），strong默认样式是加粗（不要用b），em是斜体（不用i）；<br>-->
+                    <!--5.使用表格时，标题要用caption，表头用thead，主体部分用tbody包围，尾部用tfoot包围。表头和一般单元格要区分开，表头用th，单元格用td；<br>-->
+                    <!--6.每个input标签对应的说明文本都需要使用label标签，并且通过为input设置id属性，在lable标签中设置for=someld来让说明文本和相对应的input关联起来。<br>-->
+                </p>
+            </section>
+
+
+        </section>
+
+        <section>
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+            <section>
+                <h4>1.RGBA与 opacity的区别？</h4>
+                <h4>2. display:none和visibility:hidden的区别</h4>
+            </section>
+            <section>
+
+
+            </section>
+
+        </section>
+
+
+        <section>
+            <section>
+                <h3>4.解决方案</h3>
+            </section>
+
+            <section>
+
+                <p class="text-l">
+                <h4>1.RGBA与 opacity的区别？</h4>
+                    1opacity会继承父元素的 opacity 属性，而RGBA设置的元素的后代元素不会继承不透明属性。 即可以单独为被设置的元素设置透明度，而子元素而不受该设置影响。。<br>
+                    在rgba中，a的取值范围是0-1之间，不可以是负值，r、g、b三个参数，正整数值的取值范围为：0 - 255。百分数值的取值范围为：0.0% -
+                    100.0%。超出范围的数值将被截至其最接近的取值极限。并非所有浏览器都支持使用百分数值
+                </p>
+            </section>
+            <section>
+
+                <p class="text-l">
+                <h4>2. display:none和visibility:hidden的区别</h4>
+                    visibility：hidden:隐藏元素并且占据该元素原来的空间。子级设置visible后不受父级影响。<hr/>
+                display：none:隐藏元素但不占据该元素原来的空间。父级设置值为none后，无论子级设置任何值都无法显示。。<br>
+                株连性,所谓“株连性”，就是如果祖先元素遭遇某祸害，则其子子孙孙无一例外也要遭殃。display:none就是“株连性”明显的声明：一旦父节点元素应用了display:none，父节点及其子孙节点元素全部不可见，而且无论其子孙元素设置什么属性内容都无法显示.我们给一个父元素应用visibility:hidden，则所有子元素也都会全部不可见。如果子孙元素应用了visibility:visible，那么这个子孙元素又会显现出来
+                </p>
+            </section>
+
+        </section>
+        <section>
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+
+        </section>
+        <section>
+            <section>
+                <h3>6.扩展思考</h3>
+
+            </section>
+
+            <section class="text-l">
+                <h4>CSS中如何让元素隐藏 </h4>
+                <p>
+                    1、使用display:none来隐藏所有内容:display:none可以让网页中所有内容不显示，如代码、文字、链接、图片、div层，是推荐的内容隐藏方式。<hr/>
+                    2.使用visibility:hidden来隐藏内容:visibility:hidden和display:none可以隐藏的内容几乎一样，但唯一区别是它虽然隐藏了内容，但被隐藏掉的内容仍旧占据空间，这段隐藏了内容却保留空间的位置会在网页中显示为空白。而display：none不会保留原来做占据的位置<hr/>
+                    3.使用overflow:hidden隐藏溢出内容 :overflow:hidden这种方式可以隐藏掉固定区域外的内容，它可以有效控制显示区域。但应注意，使用它时需要给它定义宽度和高度，否则会无效。
+
+
+                </p>
+                <p>
+
+                </p>
+                <p>
+
+                </p>
+
+
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>7.参考文献</h3>
+            </section>
+            <section>
+                <p style="text-align: left">参考：<br>
+                    参考一：handongopqwe的专栏<br>
+                    参考二：W3school <br>
+                </p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>8.更多讨论</h3>
+            </section>
+        </section>
+        <section>
+            <!--<h4>鸣谢</h4>-->
+            <p>感谢大家观看</p>
+            <p>
+                <small> 阮少凡</small>
+            </p>
+        </section>
+
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: './plugin/markdown/marked.js'},
+            {src: './plugin/markdown/markdown.js'},
+            {src: './plugin/notes/notes.js', async: true},
+            {
+                src: './plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+
+</html>
