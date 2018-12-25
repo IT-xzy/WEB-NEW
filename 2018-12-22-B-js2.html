@@ -1,0 +1,256 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+
+        p.font {
+            text-align: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>常见Dom操作有哪些</h2>
+                <p style="text-align: center;">分享人：王恒</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <h3>一、背景介绍</h3>
+            </section>
+            <section>
+                <h3>DOM是什么</h3>
+
+                <P class="font">DOM是针对于HTML和XML文档的一个API（应用程序编程接口）。是W3C组织推荐的处理可扩展标志语言的标准编程接口。在网页上，组织页面（或文档）的对象被组织在一个树形结构中，用来表示文档中对象的标准模型就称为DOM。
+
+                    当网页被加载时，浏览器会创建页面的文档对象模型（Document Object Model）。
+                    
+                    在DOM中，可以将任何HTML或者XML的文档描绘成一个由多层节点构成的结构</P>
+
+            </section>
+            <section>
+                <p>
+                    <img src="./img/2018.8.8-C组-js2/01.png">
+                </p>
+            </section>
+            <section>
+                <h3>二、知识剖析</h3>
+            </section>
+            <section>
+            <h3>获取DOM</h3>
+                <p>通过使用 getElementById() 方法匹配元素的id属性来访问元素节点，对元素节点进行操作</p>
+                <p>通过使用 getElementsByTagName() 方法匹配元素的tagName来访问元素节点，对元素节点进行操作</p>
+                <p>通过使用 getElementsByClassName() 方法匹配元素的className来访问元素节点，对元素节点进行操作</p>
+                <p> 值得注意的是， getElementsByTagName() 和 getElementsByClassName() 这两种方法因为其访问的是节点中的可能为复数的属性， 所以得到的会是一个以数组的形式来体现出来的元素节点集合，我们可以通过打印获取到的DOM节点来判断类型
+                </p>
+
+            </section>
+            
+            <section>
+                <h3>新建DOM节点</h3>
+                <p>document.createElement('元素名');创建新的元素节点</p>
+                <p> document.createAttribute('属性名');创建新的属性节点</p>
+                <p>document.createTextNode('文本内容');创建新的文本节点</p>
+                <p>document.createComment('注释节点');创建新的注释节点</p>
+                <p> document.createDocumentFragment( );创建文档片段节点</p>
+            </section>
+            <section>
+                    <h3>注意事项</h3>
+                    <p> ID不能重名，如果ID重复，只能取到第一个。</p>
+                    <p> 获取元素节点时，必须等到DOM树加载完成后才能获取。</p>
+                    <p class="font">通过class和标签获取到的节点为数组格式，操作时必须取到其中的每一个元素（数组下标），才能进行操作，而不能直接对数组进行操作。</p>
+                </section>
+        
+            <section>
+                <h3>增加节点</h3>
+                <p> innerHTML 空DOM节点插入新的DOM节点,非空DOM节点会直接替换掉原来的所有子节点
+                </p>
+                <p> appendChild() Node.appendChild() 把一个子节点添加到父节点的最后一个子节点;如果节点已经存在于当前文档树，这个节点会从原先的位置删除，再插入到新的位置。
+                </p>
+
+            </section>
+            <section>
+                <h3>删除节点</h3>
+                <p> parentNode.removeChild( existingChild );删除已有的子节点，返回值为删除节点</p>
+                <p> element.removeAttribute('属性名');删除具有指定属性名称的属性，无返回值</p>
+                <p> element.removeAttributeNode( attrNode );删除指定属性，返回值为删除的属性</p>
+
+            </section>
+            <section>
+                <h4>DOM事件</h4>
+                <p>允许 JavaScript 对 HTML 事件作出反应
+                    <br> onclick 事件——当用户点击时
+                    <br> onload 事件——用户进入
+                    <br> onunload 事件——用户离开
+                    <br> onmouseover事件——鼠标移入
+                    <br> onmouseout事件——鼠标移出
+                    <br> onmousedown事件——鼠标按下
+                    <br> onmouseup 事件——鼠标抬起</p>
+            </section>
+            <section>
+                <h4>HTML DOM EventListener</h4>
+                <p>addEventListener() 方法用于向指定元素添加事件句柄。
+                    <br> addEventListener() 方法添加的事件句柄不会覆盖已存在的事件句柄。
+                    <br> 可以向一个元素添加多个事件句柄。
+                    <br> 可以向同个元素添加多个同类型的事件句柄，如：两个 "click" 事件。
+                    <br> 可以向任何 DOM 对象添加事件监听，不仅仅是 HTML 元素。如： window 对象。
+                    <br> addEventListener() 方法可以更简单的控制事件（冒泡与捕获）。</p>
+
+                </section>
+                <section>
+                    <p>element.addEventListener(event, function, useCapture);</p>
+                    <p>第一个参数是事件的类型 (如 "click" 或 "mousedown")
+                        <br> 第二个参数是事件触发后调用的函数。
+                        <br> 第三个参数是个布尔值用于描述事件是冒泡还是捕获，true则表示在捕获阶段调用，为false表示在冒泡阶段调用。
+                    </p>
+                    </section>
+                   
+            <section>
+                <h3>三、常见问题</h3>
+            </section>
+            <section>
+                <p>如何阻止事件冒泡</p>
+            </section>
+            <section>
+                <h3>四、解决方案</h3>
+            </section>
+            <section>
+                <p>使用event.stopPropagation( );
+                </p>
+                <p>
+                 另一种方式是通过event.target， target指向了触发事件的那个具体对象.
+                        可以使用
+                         if(event.target==this){
+                          //语句
+                          }
+                </p>
+            </section>
+
+            <section>
+                <h3>五、编码实战</h3>
+            </section>
+
+            <section>
+                <h3>六、拓展思考</h3>
+
+            </section>
+            <section>
+
+          </section>
+    
+
+
+            <section>
+                <h3>七、参考文献</h3>
+            </section>
+            <section>
+             <a href="https://blog.csdn.net/zhouziyu2011/article/details/60961444">浅谈原生JS和jQuery操作DOM</a>
+                <p>1.JavaScript高级程序设计</p>
+                <p>2.head first JavaScript</p>
+
+                <br>
+            </section>
+            <section>
+                <h3>八、更多讨论</h3>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>BY : 王恒</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
