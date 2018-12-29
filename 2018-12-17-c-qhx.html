@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)https://it-xzy.github.io/WEB-NEW/2018-5-29-D%E7%BB%84-js7.html -->
+<html class=" js no-mobile desktop no-ie chrome chrome71 web-new-section gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch no-retina fontface domloaded w-1366 gt-240 gt-320 gt-480 gt-640 gt-768 gt-800 gt-1024 gt-1280 lt-1440 lt-1680 lt-1920 no-portrait landscape" id="2018-5-29-d%e7%bb%84-js7-page"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./2018-12-17-c-qhx_files/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./2018-12-17-c-qhx_files/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./2018-12-17-c-qhx_files/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script><link rel="stylesheet" type="text/css" href="./2018-12-17-c-qhx_files/paper.css"><script type="text/javascript" src="./2018-12-17-c-qhx_files/marked.js.下载"></script><script type="text/javascript" src="./2018-12-17-c-qhx_files/markdown.js.下载"></script><script type="text/javascript" src="./2018-12-17-c-qhx_files/notes.js.下载"></script><script type="text/javascript" src="./2018-12-17-c-qhx_files/highlight.js.下载"></script>
+</head>
+
+<body>
+    <img src="./2018-12-17-c-qhx_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+    </map>
+    <div class="reveal center default" role="application" data-transition-speed="slow" data-background-transition="fade">
+        <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.741857);">
+            <section class="present" style="top: 201px; display: block;">
+                <h3>简述angular 中constant和$filter的用法？</h3>
+                <p>分享人：乾洪瑆</p>
+            </section>
+            <section class="future" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>1.背景介绍</h3>
+            </section>
+            <section class="stack future" style="top: 0px; display: none;" data-previous-indexv="1" hidden="" aria-hidden="true">
+                <section class="past" style="top: 142px; display: none;" hidden="" aria-hidden="true">
+                    <p style="text-align: left;">AngularJS中有时在不同的控制器中使用到同一个变量，需要在ng-app或控制器中定义的全局变量。angularjs自身有二种设置全局变量的方法，constant()是其中的一种方法。</p>
+                    <p style="text-align: left;">Filter作用就是接收一个输入，通过某个规则进行处理，然后给用户返回处理后的结果。Filter可以用在模板、控制器、或者服务，同时也会很容易自定义一个Filter过滤器。</p>
+                </section>
+            </section>
+            <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                <h3>2.知识剖析</h3>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>定义全局变量的三种方法</h4>
+                <p>1.通过var 直接定义global variable。</p>
+                <p>2.用angularjs constant来设置全局变量。</p>
+                <p>3.用angularjs value来设置全局变量 。</p>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>constant和value的区别</h4>
+                <p>1.value不可以在config里注入，但是constant可以；</p>
+                <p>2.value可以修改，但是constant不可以修改，一般直接用constant配置一些需要经常使用的数据。</p>
+            </section>
+
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="stack future">
+                
+            <section style="top: 330px; display: none;" class="present">
+                <h4>$filter过滤器</h4>
+				<p style="text-align: left">filter是用来格式化数据用的</p>
+				<p style="text-align: left">基本原型</p>
+				<p style="text-align: left">{{expression | filter}}</p>
+				<p style="text-align: left">多个filter连用版</p>
+				<p style="text-align: left">{{expression | filter1 | filter2}}</p>
+				<p style="text-align: left">传入参数版</p>
+				<p style="text-align: left">{{expression | filter:1:2}}</p>
+			</section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>$filter内置过滤器</h4>
+                <p>ng内置了9种过滤器，分别是：currency(货币)、date(日期)、filter(子串匹配)、json(格式化json对象)、limitTo(限制个数)、lowercase(小写)、uppercase(大写)、number(数字)、orderBy(排序)。</p>               
+            </section>
+            
+
+            <!-- <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <pre><code class="hljs kotlin">
+                    <span class="hljs-variable"><span class="hljs-keyword">var</span> array1</span>=<span class="hljs-number">new Array("1","2","3")</span>;
+                    <span class="hljs-variable"><span class="hljs-keyword">var</span> array2</span><span class="hljs-number"></span>;
+                    array2</span>=<span class="hljs-number">array1.concat()</span>;
+                    alert(array2);//返回1,2,3
+                    </code></pre>
+            </section> -->
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+                <section style="text-align: center; top: 330px; display: none;" class="future" aria-hidden="true">
+                    <h3>3.常见问题</h3>
+                </section>
+            </section>
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h4>angularjs中如何使用constant和$filter</h4>
+            </section>
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+                <section style="text-align: center; top: 330px; display: none;" class="future" aria-hidden="true">
+                    <h3>4 解决方案</h3>
+                </section>
+            </section>
+            <!-- <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <p>jquery.extend()</p>
+                <p>语法：jQuery.extend( [deep ], target, object1 [, objectN ] )</p>
+                <p>将两个或更多对象的内容合并到第一个对象。</p>
+                <p> deep：可选。 Boolean类型 指示是否深度合并对象，默认为false。如果该值为true，且多个对象的某个同名属性也都是对象，则该"属性对象"的属性也将进行合并。</p>
+                <pre><code class="hljs typescript">
+                    <span class="hljs-keyword">var</span> arr = [[<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>],<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,{name:<span class="hljs-string">'old'</span>}];
+                    <span class="hljs-keyword">var</span> newArr = $.extend(<span class="hljs-literal">true</span>, [], arr);
+                    newArr[<span class="hljs-number">4</span>].name = <span class="hljs-string">'new'</span>;
+                    newArr[<span class="hljs-number">0</span>].push(<span class="hljs-string">'c'</span>);
+                    <span class="hljs-built_in">console</span>.log(newArr);
+                    <span class="hljs-built_in">console</span>.log(arr);
+                </code>
+            </pre>
+            </section> -->
+
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+                <section style="text-align: center; top: 330px; display: none;" class="future" aria-hidden="true">
+                    <h3>5.编码实战</h3>
+                </section>
+            </section>
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;" class="future" aria-hidden="true">
+                    <h3 style="text-align: center">6.扩展思考</h3>
+                </section>
+            </section>
+            <section style="text-align: left; top: 0px; display: none;" hidden="" aria-hidden="true" class="future">
+                <p>如何自定义过滤器</p>
+            </section>
+
+
+            <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h3>7.参考文献</h3>
+                <p>参考1：
+                    <a href="https://blog.csdn.net/sourcecode_poet/article/details/53509748">angularJS三种定义全局变量的方法</a>
+                </p>
+                <p>参考2：
+                        <a href="https://www.cnblogs.com/zhujierong/p/6136716.html">AngularJS内置9种过滤器</a>
+                    </p>
+                <p>参考3：
+                    <a href="http://www.jb51.net/article/99859.htm">AngularJS过滤器filter用法总结</a>
+                </p>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h3>8 更多讨论</h3>
+            </section>
+
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    <small>BY : 乾洪瑆</small>
+                </p>
+            </section>
+
+        </section></div>
+        <div class="backgrounds"><div class="slide-background present" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"></div><div class="slide-background future"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"></div><div class="slide-background future"></div><div class="slide-background stack future" style="display: none;"></div><div class="slide-background future"></div><div class="slide-background stack future" style="display: none;"></div><div class="slide-background future"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div></div>
+        <div class="progress" style="display: block;">
+            <span style="width: 0px;"></span>
+        </div>
+        <aside class="controls" style="display: block;">
+            <button class="navigate-left" aria-label="previous slide"></button>
+            <button class="navigate-right enabled" aria-label="next slide"></button>
+            <button class="navigate-up" aria-label="above slide"></button>
+            <button class="navigate-down" aria-label="below slide"></button>
+        </aside>
+        <div class="slide-number" style="display: none;"></div>
+        <div class="speaker-notes" data-prevent-swipe=""></div>
+        <div class="pause-overlay"></div>
+        <div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+                简述angular 中constant和$filter的用法？
+                分享人：乾洪瑆
+            </div>
+    </div>
+
+    <script src="./2018-12-17-c-qhx_files/head.min.js.下载"></script>
+    <script src="./2018-12-17-c-qhx_files/reveal.js.下载"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+        //    原始类型对象直接赋值不会相互影响
+        //    var a = 1;
+        //
+        //    var b = a;
+        //    b = 10;
+        //    console.log(a); // 1
+        ////
+        //    var a = 'hello';
+        //    var b = a;
+        //    b = 'world';
+        //    console.log(a); // hello
+        //
+        //    var a = true;
+        //    var b = a;
+        //    b = false;
+        //    console.log(a);
+
+        //数组浅复制
+        //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+        //    ];
+        //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+        //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+        //    console.log(a)//那么现在打印a 是什么结果呢
+        //
+        //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+        //    var arrtoo = arr.slice(1);
+        //    arrtoo[2] = "set Map";
+        //    console.log(arr);//One,Two,Three
+        //    console.log(arrtoo);//One,set Map,Three
+
+        //
+        //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+        //    var arrtooo = arr1.concat(111111);
+        //    arrtooo[1] = "set Map To";
+        //    console.log(arr1);//One,Two,Three
+        //    console.log(arrtooo);//One,set Map To,Three
+
+        //
+        //    var b=[1,2,3,4,5];   //concat的链接
+        //    var c=[6,7,8,9];
+        //    var d =[4,4,22]
+        //    console.log(b.concat(c,d))
+
+        var a = {
+            name: 'yy',
+            age: 26
+        }; //对象的浅拷贝哦
+        var b = new Object();
+        b.name = a.name;
+        b.age = a.age;
+        b.name = 'xx';
+        console.log(a); //Object { name="yy", age=26}
+        console.log(b); //Object { name="xx", age=26}
+
+        var d = { //对象的浅拷贝哦 第一种
+            name: 'd',
+            oc: {
+                age: 32
+            },
+            oad: {
+                adds: {
+                    bb: 12
+                }
+            }
+        };
+        var deepCopy = function (source) {
+            var result = {};
+            for (var key in source) {
+                result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+            }
+            return result
+        };
+
+        var c = deepCopy(d);
+        c.name = 'c';
+        c.oc = {
+            age: 49
+        };
+        console.log(c);
+        console.log(d);
+
+
+        //    var person = {    //第二种深拷贝
+        //        name: 'aa',
+        //        friends: ['da', 'dsa', 'gf']
+        //    };
+        //
+        //    var aPerson = Object.create(person, {
+        ////        name: {
+        ////            value: "gee"
+        ////        }
+        //    });
+        //
+        //    console.log(person.name);
+        //    console.log(aPerson.friends)
+
+        var Chinese = {
+            nation: '中国'
+
+        }
+        var Doctor = {
+            career: '医生'
+        }
+
+        function extendCopy(p) {
+            var c = {};
+            for (var i in p) {
+                c[i] = p[i];
+            }
+            c.uber = p;
+            return c;
+        }
+
+        var Doctor = extendCopy(Chinese);
+        Doctor.career = '医生';
+        console.log(Doctor); // 中国
+        Chinese.birthPlaces = ['北京', '上海', '香港'];
+        var Doctor = extendCopy(Chinese);
+        Doctor.birthPlaces.push('厦门');
+    </script>
+
+
+
+</body></html>

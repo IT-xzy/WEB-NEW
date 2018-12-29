@@ -1,0 +1,232 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题,可以在/css/reveal/theme/中选择其他主题,目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        .text-l {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h3 style="text-align: center;">请描述一下cookies，sessionStorage和localStorage的区别？　</h2>
+                <p>分享人：许恒倩</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <section>
+                    <h3>1.背景介绍</h3>
+                </section>
+                <section style="text-align: left;">
+                    什么是COOKIE？<br>
+
+                    Cookie 是小饼干的意思。cookie 确实非常小，它的大小限制为4KB左右， 是由W3C组织提出，最早由Netscape社区发展的一种机制。目前Cookie已经成为标准， 所有的主流浏览器如IE、Netscape、Firefox、Opera等都支持Cookie。 它的主要用途有保存登录信息， 比如你登录某个网站市场可以看到“记住密码”， 这通常就是通过在 Cookie 中存入一段辨别用户身份的数据来实现的。
+
+                </section>
+                <section style="text-align: left">
+                    什么是LOCALSTORAGE？<br>
+
+                    localStorage 是 HTML5 标准中新加入的技术，它并不是什么划时代的新东西。 早在 IE 6 时代，就有一个叫 userData 的东西用于本地存储，而当时考虑到浏览器兼容性， 更通用的方案是使用 Flash。而如今，localStorage 被大多数浏览器所支持，更多用他来存储数据。
+
+                </section>
+                <section style="text-align: left">
+                    什么是SESSIONSTORAGE？<br>
+
+                    sessionStorage 与 localStorage 的接口类似， 但保存数据的生命周期与 localStorage 不同。 做过后端开发的同学应该知道 Session 这个词的意思， 直译过来是“会话”。 而 sessionStorage 是一个前端的概念， 它只是可以将一部分数据在当前会话中保存下来， 刷新页面数据依旧存在。 但当页面关闭后，sessionStorage 中的数据就会被清空。
+                </section>
+            </section>
+            <section>
+
+
+                <section>
+                    <h3>2.知识剖析</h3>
+                </section>
+                <section style="text-align: left;">
+                    <h3><strong>COOKIE的特性</strong></h3>
+                    <p><br>
+                      
+
+                    </p>
+
+                </section>
+
+
+                <section style="text-align: left;">
+                    <h3><strong></strong></h3>
+                    <p>
+                        一个cookie的设置以及发送过程分为以下四步：<br>
+
+                        ①客户端发送一个http请求到服务器端 <br>
+                        ②服务器端发送一个http响应到客户端，其中包含Set-Cookie头部<br>
+                        ③客户端发送一个http请求到服务器端，其中包含Cookie头部 <br>
+                        ④服务器端发送一个http响应到客户端
+                    </p>
+
+                </section>
+
+                <section>
+                    <img src="img/2018-12-14-c组/1.png" alt="">
+                </section>
+
+                <section style="text-align: left;">
+                    local storage和session storage主要通过在js中操作这两个对象来实现， 分别为window.localStorage和window.sessionStorage。这两个对象均是Storage类的两个实例，自然也具有Storage类的属性和方法。
+                </section>
+                <section>
+
+                    <img src="img/2018-12-14-c组/2.png" alt="">
+                </section>
+                <section>
+                    
+                        <img src="img/2018-12-14-c组/3.png" alt="">
+                    </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    <h4>cookie的优点</h4>
+                </section>
+
+            </section>
+
+
+            <section>
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+
+                <section>
+
+                    <p class="text-l">
+                            极高的扩展性和可用性<br>
+                            通过良好的编程，控制保存在cookie中的session对象的大小。<br>
+                            
+                            通过加密和安全传输技术（SSL），减少cookie被破解的可能性。<br>
+                            
+                            只在cookie中存放不敏感数据，即使被盗也不会有重大损失。<br>
+                            
+                            控制cookie的生命期，使之不会永远有效。偷盗者很可能拿到一个过期的cookie。<br>
+                    </p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>5.编码实战</h3>
+                </section>
+
+            </section>
+            <section>
+                <section>
+                    <h3>6.扩展思考</h3>
+
+                </section>
+
+                <section class="text-l">
+
+                        三者的使用场景<br>
+
+                        localStoragese：常用于长期登录（+判断用户是否已登录），适合长期保存在本地的数据,也可以用来统计页面访问次数。<br>
+                        
+                        Session用于保存每个用户的专用信息，变量的值保存在服务器端，通过SessionID来区分不同的客户。也可以用来统计当前页面元素的点击次数。比如杀人游戏<br>
+                        
+                        cookie，判断用户是否登陆过网站，以便下次登录时能够实现自动登录。如果我们删除cookie，则每次登录必须重新填写登录的相关信息。比如页面一键换色，下次打开是换后的颜色。<br>
+                        
+                </section>
+            </section>
+            </section>
+            <section>
+                <section>
+                    <h3>7.参考文献</h3>
+                </section>
+                <section>
+                    <p style="text-align: left">参考：<br>
+                        <br>
+                        参考一:MDN-Cookie Web文档<br>
+                        
+                        参考二:详说 Cookie, LocalStorage 与 SessionStorage - 思否<br>
+                        
+                        参考三:jquery.cookie.js 使用方法<br>
+                    </p>
+
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>8.更多讨论</h3>
+                </section>
+            </section>
+            <section>
+                <!-- <h4>鸣谢</h4> -->
+                <p>感谢大家观看</p>
+                <p>
+                    <small>BY : 许恒倩</small>
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [
+                { src: './plugin/markdown/marked.js' },
+                { src: './plugin/markdown/markdown.js' },
+                { src: './plugin/notes/notes.js', async: true },
+                {
+                    src: './plugin/highlight/highlight.js', async: true, callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>

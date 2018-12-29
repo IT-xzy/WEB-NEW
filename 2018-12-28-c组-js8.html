@@ -1,0 +1,242 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题,可以在/css/reveal/theme/中选择其他主题,目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        .text-l {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h3 style="text-align: center;">angular js 常用指令ng-if、ng-class、ng-option、ng-value、ng-click是如何使用的？</h2>
+                    <p>分享人：许恒倩</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <section>
+                    <h3>1.背景介绍</h3>
+                </section>
+                <section style="text-align: left;">
+                    指令是一个Dom元素上的标签(和元素上的属性, CSS 类样式一样，属于这个Dom元素)， 它告诉AngualrJS的HTML 编译器，去附加一个行为到这个Dom元素上去，
+                    这个行为可以改变这个Dom元素，或者这个Dom元素的子元素。
+
+                    AngularJS 通过被称为 指令 的新属性来扩展 HTML。
+                    AngularJS 通过内置的指令来为应用添加功能。 AngularJS 内置指令是扩展的 HTML 属性，带有前缀 ng-。
+                </section>
+            </section>
+            <section>
+
+
+                <section>
+                    <h3>2.知识剖析</h3>
+                </section>
+                <section style="text-align: left;">
+                    <h3><strong>ng-if、ng-class、ng-option、ng-value、ng-click是如何使用的？</strong></h3>
+                    <p><br>
+                    </p>
+
+                </section>
+
+
+                <section style="text-align: left;">
+                    <h3><strong>ng-if</strong></h3>
+                    <p>
+                        ng-if 指令用于在表达式为 false 时移除 HTML 元素。
+                        如果 ng-if 语句执行的结果为 true，会添加HTML元素，并显示。
+                        ng-if 指令不同于 ng-hide/ng-show， ng-hide/ng-show是隐藏元素,设置元素的 display 为 none。而 ng-if 是从 DOM 中移除元素。
+                        ng-hide 指令在表达式为 true 时隐藏指定的 HTML 元素。
+                        ng-show 指令在表达式为 true 时显示指定的 HTML 元素。
+                    </p>
+
+                </section>
+
+                <section>
+                    <h3><strong> ng-class：</strong></h3>
+                    ng-class 指令用于给 HTML 元素动态绑定一个或多个 CSS 类。
+                    ng-class 指令的值可以是字符串，对象，或一个数组。
+                    如果是字符串，多个类名使用空格分隔。
+                    如果是对象，需要使用 key-value 对，key 为你想要添加的类名，value 是一个布尔值。只有在 value 为 true 时类才会被添加。
+                    如果是数组，可以由字符串或对象组合组成，数组的元素可以是字符串或对象。
+
+                </section>
+
+                <section style="text-align: left;">
+                    <h3><strong> ng-option：</strong></h3>
+                    <p> "ng-options 指令用于使用
+                        <xmp style="text-align: left;">
+                            <options>填充 <select>
+                        </xmp>元素的选项。
+                        ng-options属性可以在表达式中使用数组或对象来自动生成一个select中的option列表。
+                        ng-options与ng-repeat很相似，很多时候可以用ng-repeat来代替ng-options。
+                        但是ng-options提供了一些好处，例如减少内存提高速度，以及提供选择框的选项来让用户选择。"</p>
+                </section>
+                <section>
+                    <h3><strong> ng-value：</strong></h3>
+                    ng-value 指令用于设置 input 或 select 元素的 value 属性。
+                    和value相比，它的值可以是表达式，所以相比之下可以实现更多需求。
+                    比如当需要使用ng-repeat来动态生成input[]的时候，ngValue是很有用处的。
+                </section>
+                <section>
+                    <h3><strong> ng-click：</strong></h3>
+                    ng-click 指令告诉了 AngularJS HTML 元素被点击后需要执行的操作。
+                    如果是使用ng-click来实现函数的执行的话，还可以进行传参。
+                    一个ng-click可以触发多个操作，
+                    <xmp><button ng-click="function1();function2()"></button></xmp>
+                    先执行function1后执行function2
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    <h4>ng-option表达式的写法</h4>
+                </section>
+
+            </section>
+
+
+            <section>
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+
+                <section>
+
+                    <p class="text-l">
+                        ng-options的值可以是一个内涵表达式（comprehension expression）， 其实这只是一种有趣的说法，简单来说就是它可以接收一个数组或者对象，
+                        并对它们进行循环，将内部的内容提供给select标签内部的选项。它可以是一下两种形式。
+                    </p>
+                </section>
+                <section class="text-l" style="font-size:30px">
+                    1、数组作为数据源<br>
+                    用数组中的值做标签。(label for value in array)<br>
+                    用数组中的值作为选中的标签。(select as label for value in array)<br>
+                    用数组中的值做标签组。(label group by group for value in array)<br>
+                    用数组中的值作为选中的标签组。(select as label group by group for value in array track by trackexpr)<br>
+                    2、对象作为数据源<br>
+                    用对象的键-值（key-value）做标签。(label for (key , value) in object)<br>
+                    用对象的键-值作为选中的标签。(select as label for (key , value) in object)<br>
+                    用对象的键-值作为标签组。(label group by group for (key, value) in object)<br>
+                    用对象的键-值作为选中的标签组。(select as label group by group for (key, value) in obj)<br>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>5.编码实战</h3>
+                </section>
+
+            </section>
+            <section>
+                <section>
+                    <h3>6.扩展思考</h3>
+
+                </section>
+
+                <section class="text-l">
+
+                    ng-if的作用域问题<br>
+                    ng-if指令会创建一个子级作用域，因此，如果在ng-if指令中添加了元素， 并向元素属性增加 ng-model指令，那么ng-model指令对应的作用域属性
+                    子级作用域，而并非控制器注入的$scope作用域对象，这点在进行双向数 据绑定时，需要引起注意。
+                </section>
+                <section>
+                    因此，解决ng-if中ng-model值无效的问题，主要方法就是在绑定值时添加$parent标识， 或者用ng-show指令代替ng-if指令，这两种方法都可以达到同样的页面效果。
+                    写法如下：
+                    <img width="800px" src="img/2018-12-28-c组/1.png" alt="">
+                </section>
+            </section>
+            </section>
+            <section>
+                <section>
+                    <h3>7.参考文献</h3>
+                </section>
+                <section>
+                    <p style="text-align: left">参考：<br>
+                        <br>
+                        参考一:菜鸟教程<br>
+
+                        参考二:细说angular ng-class<br>
+                    </p>
+
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>8.更多讨论</h3>
+                </section>
+            </section>
+            <section>
+                <!-- <h4>鸣谢</h4> -->
+                <p>感谢大家观看</p>
+                <p>
+                    <small>BY : 许恒倩</small>
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [
+                { src: './plugin/markdown/marked.js' },
+                { src: './plugin/markdown/markdown.js' },
+                { src: './plugin/notes/notes.js', async: true },
+                {
+                    src: './plugin/highlight/highlight.js', async: true, callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
