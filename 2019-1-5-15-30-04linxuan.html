@@ -1,0 +1,492 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h4>json是什么，如何处理转义？</h4>
+                <h4>分享人：林璇</h4>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <!-- <h4 style="font-family: 'Times New Roman'; text-transform:none;">什么是Ajax？</h4> -->
+                <section>
+                    <p style="text-align: left;">
+                        最早的程序猿们使用XML来进行传递数据。XML使用起来很繁琐了。
+                        <br> 虽然XML本身不算复杂，但是，加上DTD、XSD、XPath、XSLT等一大堆复杂的规范以后 ，
+                        <br> 2001年由 Douglas Crockford 提出JSON 格式后，JSON便慢慢取代了繁琐笨重的 XML 格式。
+                        <!-- <br> 那么参数在不同的页面间进行传递，一个页面的参数被另一页面使用，如何才能做到不同页面间进行参数传递？ -->
+                        <!-- <br>在JS中有多种页面传递参数的方法： -->
+                        <!-- <br>一、URL -->
+                        <!-- <br>把参数值附在url后面传递到其他页面 -->
+                        <!-- <br>二、H5 web storage -->
+                        <!-- <br>localStroage 和 sessionStorage -->
+                    </p>
+                </section>
+                <section>
+                    <p style="text-align: left;">
+                        <!-- 三、Cookie -->
+                        <!-- <br> 使用浏览器Cookie传递参数 -->
+                        <!-- <br>四、Form 表单 -->
+                        <!-- <br>Form表单通过URL传递参数 -->
+                    </p>
+                </section>
+            </section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+
+            <section>
+                <section>
+                    <p style="text-align: left;">
+                        JSON (JavaScript Object Notation, JS 对象标记) 是一种轻量级的数据交换格式。
+                        <br> 1&gt;.
+                        <br>相比 XML 格式，JSON 格式有两个显著的优点：书写简单，一目了然；符合 JavaScript
+                        <br>
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        PS:每个 JSON 对象就是一个值，可能是一个数组或对象，也可能是一个原始类型的值。总之，只能是一个值，不能是两个或更多的值。
+                        <br>SON 对值的类型和格式规定
+                        <br>复合类型的值只能是数组或对象，不能是函数、正则表达式对象、日期对象。
+                        <br>原始类型的值只有四种：字符串、数值（必须以十进制表示）、布尔值和null（不能使用NaN, Infinity, -Infinity和undefined）。
+                        <br>字符串必须使用双引号表示，不能使用单引号。
+                        <br>对象的键名必须放在双引号里面。
+                        <br>数组或对象最后一个成员的后面，不能加逗号。
+                        <br>ps:注意，null、空数组和空对象都是合法的 JSON 值。
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        JSON语法
+                        <br>数据在名称/值对,中
+                        <br>数据由逗号分隔
+                        <br>大括号保存对象
+                        <br>中括号保存数组
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        <br>
+                        例：
+
+                        var json = {
+
+                        "password":123456,
+
+                        "name":"myname",
+
+                        "Booleans":true,
+
+                        "Array":[x,y,z],
+
+                        "object":{}
+
+                        }
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        json的嵌套使用
+                        <br>
+                        <br> myObj = {
+
+                        "name":"jnshu",
+
+                        "alexa":1000,
+
+                        "sites": {
+
+                        "site1":"www.jnshu.com",
+
+                        "site2":"m.jnshu.com",
+
+                        "site3":"c.jnshu.com"
+
+                        }
+
+                        }
+
+                        console.log(myObj)
+
+                        //输出结果：
+
+                        // Object {name: "jnshu", alexa: 1000, sites: Object}
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        json对象
+                        <br>JSON对象是 JavaScript 的原生对象，用来处理 JSON 格式数据。
+                        通俗点讲，每个符合JSON格式的值就是一个JSON对象。也就是说，每个JSON对象，都是一个值。
+                        一个JSON对象对应且只对应一个值，要么是简单类型的值，要么是复合类型的值。
+                        它有两个方法：JSON.stringify()和JSON.parse()。
+                        JSON.parse()将字符串转化为对象
+                        JSON.stringify()将对象转化为字符串
+                        JSON.stringify有三个参数
+                        JSON.stringify(value [, replacer] [, space])
+                        当replacer是方法时，其作用类似给传入的对象的每一个符合方法条件的值一个方法进行迭代
+                        当replacer是数组时，其作用是对传入的对象值进行筛选
+                        第三个参数是对显示数据进行排版，对每一个键值对换行处理。
+                        值可以是数字或字符串。当起为数字时，一个数字代表键值对前面的空格，
+                        数字不大于10。字符串同理，只是将空格换成相应的字符，字符最多不能大于10个。
+                    </p>
+                </section>
+            </section>
+            <section>
+                <h3>3.常见问题</h3>
+                <br>原生语法是什么
+            </section>
+
+            <section>
+                <h3>4.解决方案</h3>
+                <p> 原生语法，可以由解释引擎直接处理，不用另外添加解析代码。所以，JSON 迅速被接受，已经成为各大网站交换数据的标准格式，并被写入标准。
+                </p>
+            </section>
+            <section class="" style="top: 275px; display: none;" aria-hidden="true">
+                <h6>
+                    <a href="https://ptteng.github.io/WEB/demo/angular%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3%E6%98%AF%E4%BB%80%E4%B9%88/demo2.html"
+                        target="_blank">demo</a>
+                </h6>
+            </section>
+            <section>
+                <h3>5.编码实战</h3>
+            </section>
+            <section>
+                <h3>6.扩展思考</h3>
+            </section>
+            <section>
+                <section class="past" style="top: 278.5px; display: none;" hidden="" aria-hidden="true">
+                    <h5></h5>
+                </section>
+                <section class="past" style="top: 0px; display: none;" hidden="" aria-hidden="true">
+                    <p style="text-align: left;">
+                        <br> 我们先看2串代码
+
+                        {name:“myname”,password:123456}
+
+                        它是js对象
+
+                        和
+
+                        {“name”:“myname”,“password”:123456}
+
+                        它是json
+
+                        那么js对象和json有什么不一样的地方？
+
+                        JSON 是 JS 对象的字符串表示法，它使用文本表示一个 JS 对象的信息，本质是一个字符串。
+
+                        例：
+
+                        var obj = {a: 'Hello', b: 'World'}; //这是一个对象，注意键名也是可以使用引号包裹的
+
+                        var json = '{"a": "Hello", "b": "World"}'; //这是一个 JSON 字符串，本质是一个字符串
+
+
+                        它们的区别
+
+                        <span ng-bind="goods.goodsID"></span>
+                        <!-- <br> 6.
+                        <span ng-bind="goods.goodsPrice*goods.count"></span> 总价就是单价乘以数量
+                        <br> 7.
+                        <span ng-bind="goods.goodsPrice*goods.count| currency"></span> 单价和总价格式化成美元形式。 -->
+                        <br>
+                        <br>
+                        <br>
+                    </p>
+                </section>
+            </section>
+
+            <section>
+                <h3>7.参考文献</h3>
+            </section>
+            <section style="text-align:left">
+                <h6>
+                    <a>博客</a>
+                </h6>
+                <h6>
+                    <a>b站视频</a>
+                </h6>
+
+            </section>
+            <section>
+                <h3>8.更多讨论</h3>
+
+            </section>
+            <section>
+                <p> 1、为什么需要转义？
+                    <br>
+                </p>
+                <p>
+                    2、json如何处理转义？
+                </p>
+                <p>
+                    3、 由JSON字符串生成JSON对象时的转义问题
+                </p>
+            </section>
+            <section style="text-align:left">
+                <p>
+                    1. 在js中我们使用的js对象进行处理，但是在与后端数据交换的时候，我们需要发送规定的json格式的字符串，所以在给后端发送或接受数据的时候，需要转义
+                </p>
+                <p>
+                    2 json字符串转js对象，调用parse方法：
+
+
+                    js对象 = JSON.parse(json字符串);
+
+
+
+                    js对象转json字符串，调用stringify方法：
+
+
+                    json字符串 = JSON.stringify(js对象);
+                </p>
+                <p>
+                      原因：在用JSON.parse解析JSON对象时会对其中的转义符进行两次解析。
+
+
+                    比如'{"a":"b","b":"\\\\"}' //{a: "b", b: "\"}，
+
+                      首先解析器提取单引号括起来的字符串时认为第一个‘\’是用来转义第二个‘\’的 ,第三个‘\是用来’转义第四个‘\’， 结果输出字符串是{“a”:“b”,“b”:"\"}。
+
+                      然后正式转为js对象的时候还有一次转义， 也就是实际输出字符转中的第一个\转义第二个\（此时只有两个\），结果输出字符串是{“a”:“b”,“b”:""}。
+
+                    所以说我们想要输出"“时需要输入四个”"，不然会出错。
+                </p>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    By
+                    <small style="vertical-align: middle">林璇</small>
+                </p>
+
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, //                                                                                                                                                                                                                                                                                                      是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+        //    原始类型对象直接赋值不会相互影响
+        //    var a = 1;
+        //
+        //    var b = a;
+        //    b = 10;
+        //    console.log(a); // 1
+        ////
+        //    var a = 'hello';
+        //    var b = a;
+        //    b = 'world';
+        //    console.log(a); // hello
+        //
+        //    var a = true;
+        //    var b = a;
+        //    b = false;
+        //    console.log(a);
+
+        //数组浅复制
+        //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+        //    ];
+        //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+        //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+        //    console.log(a)//那么现在打印a 是什么结果呢
+        //
+        //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+        //    var arrtoo = arr.slice(1);
+        //    arrtoo[2] = "set Map";
+        //    console.log(arr);//One,Two,Three
+        //    console.log(arrtoo);//One,set Map,Three
+
+        //
+        //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+        //    var arrtooo = arr1.concat(111111);
+        //    arrtooo[1] = "set Map To";
+        //    console.log(arr1);//One,Two,Three
+        //    console.log(arrtooo);//One,set Map To,Three
+
+        //
+        //    var b=[1,2,3,4,5];   //concat的链接
+        //    var c=[6,7,8,9];
+        //    var d =[4,4,22]
+        //    console.log(b.concat(c,d))
+
+        var a = {
+            name: 'yy',
+            age: 26
+        }; //对象的浅拷贝哦
+        var b = new Object();
+        b.name = a.name;
+        b.age = a.age;
+        b.name = 'xx';
+        console.log(a); //Object { name="yy", age=26}
+        console.log(b); //Object { name="xx", age=26}
+
+        var d = { //对象的浅拷贝哦 第一种
+            name: 'd',
+            oc: {
+                age: 32
+            },
+            oad: {
+                adds: {
+                    bb: 12
+                }
+            }
+        };
+        var deepCopy = function (source) {
+            var result = {};
+            for (var key in source) {
+                result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+            }
+            return result
+        };
+
+        var c = deepCopy(d);
+        c.name = 'c';
+        c.oc = {
+            age: 49
+        };
+        console.log(c);
+        console.log(d);
+
+
+
+
+        //    var person = {    //第二种深拷贝
+        //        name: 'aa',
+        //        friends: ['da', 'dsa', 'gf']
+        //    };
+        //
+        //    var aPerson = Object.create(person, {
+        ////        name: {
+        ////            value: "gee"
+        ////        }
+        //    });
+        //
+        //    console.log(person.name);
+        //    console.log(aPerson.friends)
+
+        var Chinese = {
+            nation: '中国'
+
+        }
+        var Doctor = {
+            career: '医生'
+        }
+
+        function extendCopy(p) {
+            var c = {};
+            for (var i in p) {
+                c[i] = p[i];
+            }
+            c.uber = p;
+            return c;
+        }
+        var Doctor = extendCopy(Chinese);
+        Doctor.career = '医生';
+        console.log(Doctor); // 中国
+        Chinese.birthPlaces = ['北京', '上海', '香港'];
+        var Doctor = extendCopy(Chinese);
+        Doctor.birthPlaces.push('厦门');
+    </script>
+</body>
+
+</html>
