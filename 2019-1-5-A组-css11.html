@@ -1,0 +1,268 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题,可以在/css/reveal/theme/中选择其他主题,目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        .text-l {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>
+                    less和sass有什么区别？</h2>
+                <p>分享人：阮少凡</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <section>
+                    <h3>1.背景介绍</h3>
+                </section>
+                <section style="text-align: left;">
+                    <br style="text-align: left">
+                    CSS 是一门非程序式语言，没有变量、函数、SCOPE（作用域），需要书写大量看似没有逻辑的代码，不方便维护及扩 展，不利于复用，
+                    尤其对于非前端开发工程师来讲，往往会因为缺少 CSS 编写经验而很难写出组织良好且易于维护的 CSS 代码。为了方便前端开发的工作量，出现了sass和less.
+                    Sass 是一种动态样式语言，Sass语法属于缩排语法，比css比多出好些功能(如变量、嵌套、运算,混入(Mixin)、继承、颜色处理，函数等)，更容易阅读。
+                    Less也是一种动态样式语言. 对CSS赋予了动态语言的特性，如变量，继承，运算， 函数. Less 既可以在客户端上运行 ，也可在服务端运行 (借助 Node.js)。
+
+
+                </section>
+
+
+            </section>
+            <section>
+
+
+                <section>
+                    <h3>2.知识剖析</h3>
+                </section>
+                <section style="text-align: left;">
+                    <h3><strong>Sass</strong></h3>
+                    <p><br>
+
+                        Sass 是一种动态样式语言，
+                        Sass为web前端开发而生，可以用它来定 义一套新的语法规则和函数，以加强和提升CSS。
+                        通过这种新的编程语言，你可以使用最高效的方式，以少量的代 码创建复杂的设计。
+                        它改进并增强了CSS的能力，增加了变量，局部和函数这些特性。而这只使Sass一部分利器！
+
+                    </p>
+
+                </section>
+
+
+                <section style="text-align: left;">
+                    <h3><strong> less </strong></h3>
+                    <p>
+                        less是单独的一种文件，可以理解为css的升级版，完全按照css写也没问题，不过它提供了很多便利的东 西，
+                        可以省好多代码量。第二个，html只认css,所以需要配套一些软件将less解析成css,引用时候，直接引用css 就好。
+                        gulp,koala 都是常用的，Koala好像简单且方便一点。 多种方式能平滑的将写好的代码转化成标准的CSS代码。
+
+                    </p>
+                </section>
+
+                <section style="text-align: left;">
+                    <h3><strong></strong></h3>
+                    <p>
+                        sass有两种后缀名文件：一种后缀名为sass，不使用大括号和分号；另一种就是我们这里使用的scss文件，这种和 我们平时写的css文件格式差不多，使用大括号和分号。
+                        sass的导入(@import)规则和CSS的有所不同，编译时会将@import的scss文件合并进来只生成一个CSS文件。
+                        但是如 果你在sass文件中导入css文件如@import 'reset.css'，那效果跟普通CSS导入样式文件一样，导入的css文件不会 合并到编译后的文件中，而是以@import方式存在。
+                        所有的sass导入文件都可以忽略后缀名.scss</p>
+                </section>
+                <section style="text-align: left;">
+                    <h3><strong></strong></h3>
+                    <p>
+                        可以直接在客户端使用“.less”（LESS源文件），只需要在官网载一个Javascript脚本文件主“less.js”，然后 在我们需要引入LESS源文件的HTML的中加入如下代码。
+                        需要注意的是：在引入“.less”文件中，“link”的“rel”属性要设置为“stylesheet/less”。
+                        还有更重要的一 点需要注意的是：LESS源文件一定要在“less.js”引入之前引入，这样才能保证LESS源文件正确编译解析。
+                    </p>
+                </section>
+
+
+
+            </section>
+
+            <section>
+                <section>
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    <p>
+                        less和sass有什么区别？<br>
+
+                    </p>
+                </section>
+            </section>
+
+
+            <section>
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+
+                <section class="text-l">
+                    <p>
+                        1.编译环境不一样Sass的安装需要Ruby环境，是在服务端处理的，而Less是需要引入less.js来处理Less代码输出css到浏览器，
+                        也可 以在开发环节使用Less，然后编译成css文件，直接放到项目中，也有 Less.app、SimpleLess、CodeKit.app这样 的工具，也有在线编译地址。
+                        2.变量符不一样，LESS是@，而SCSS是$，而且变量的作用域也不一样。
+
+                    </p>
+                </section>
+                <section class="text-l">
+                    <p>3.输出设置，LESS没有输出设置，SASS提供4中输出选项：NESTED, COMPACT, COMPRESSED 和 EXPANDED。
+                        输出样式的风格可以有四种选择，默认为nested<br>
+
+                        nested：嵌套缩进的css代码<br>
+
+                        expanded：展开的多行css代码<br>
+
+                        compact：简洁格式的css代码<br>
+
+                        compressed：压缩后的css代码。<br>
+                    </p>
+                </section>
+                <section class="text-l">
+                    <p> 4.SASS支持条件语句，可以使用IF{}ELSE{},FOR{}循环等等。而LESS不支持。<br>
+                        5.引用外部CSS文件。scss引用的外部文件命名必须以_开头, 如下例所示:其中_test1.scss、_test2.scss、_test3.scss文件分别设置 的h1 h2
+                        h3。文件名如果以下划线_开头的话，Sass会认为该文件是一个引用文件，不会将其编译为css文件。
+
+                    </p>
+                </section>
+                <section class="text-l">
+                <p>
+                    6.SASS和LESS的工具库不同。Sass有工具库Compass,
+                    简单说，Sass和Compass的关系有点像Javascript和jQuery的关系,Compass是Sass的工具库。 在它的基础上，封装了一系列有用的模块和模板，补充强化了Sass的功能。
+                    Less有UI组件库Bootstrap,Bootstrap是web前端开发中一个比较有名的前端UI组件库，Bootstrap的样式文件部分 源码就是采用Less语法编写。
+
+                </p>
+            </section>
+            </section>
+            <section>
+                <section>
+                    <h3>5.编码实战</h3>
+                </section>
+                <section class="text-l">
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>6.扩展思考</h3>
+
+
+                </section>
+
+                <section class="text-l">
+                    <h4>还有什么好的预处理器语言？</h4>
+                    <p>
+                        stylus，2010年产生于Node.js社区,可同时使用缩进和括号写法，写法非常灵活，扩展性与scss相当，高于less，但由于规定过少，可能容易让人混乱。
+
+
+                    </p>
+
+                </section>
+                <section>
+                    <h4>如何选择css预处理器?</h4>
+                    <p>
+                        1，Sass诞生是最早也是最成熟的CSS预处理器，有Ruby社区和Compass支持；
+                        Stylus早期服务于Node JS项目，在该社区得到一定支持者；LESS出现于2009年，支持者远超于Ruby和Node JS社区；
+                        2，sass和stylus扩展性更强，sass广泛使用于国外，less在国内受众最多。stylus是后起之秀。
+                        3，Sass和LESS语法较为严谨、严密，而Stylus语法相对散漫，其中LESS学习起来更快一些，因为他更像CSS的标准；
+                        4，sass和LESS相互影响较大，其中Sass受LESS影响，已经进化到了全面兼容CSS的SCSS；
+                        5，Sass和LESS都有第三方工具提供转译，特别是Sass和Compass是绝配；
+
+
+                    </p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>7.参考文献</h3>
+                </section>
+                <section>
+                    <p style="text-align: left"><br>
+                        参考一： CSS预处理器——Sass、LESS和Stylus实践<br>
+                        参考二：SASS用法指南 <br>
+                        参考三：css清除浮动float的三种方法总结<br>
+                        参考四：CSS清除浮动常用方法小结
+                    </p>
+
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>8.更多讨论</h3>
+                    <p>   </p>
+            </section>
+            <section>
+                <!--<h4>鸣谢</h4>-->
+                <p>感谢大家观看</p>
+                <p>
+                    <small>BY : 阮少凡</small>
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [
+                { src: './plugin/markdown/marked.js' },
+                { src: './plugin/markdown/markdown.js' },
+                { src: './plugin/notes/notes.js', async: true },
+                {
+                    src: './plugin/highlight/highlight.js', async: true, callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
