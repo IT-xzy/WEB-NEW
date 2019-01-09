@@ -1,0 +1,367 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h3>简述JS中执行环境与作用域的关系</h3>
+            <p>分享人：王浩冉</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <h3>什么是JS的执行环境、作用域</h3></section>
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <section><p>JS的执行环境。所谓执行环境（有时也称环境）它是JavaScript中最为重要的一个概念。执行环境定义了变量或函数有权访问的其他数据 ，
+                决定了它们各自的行为。而每个执行环境都有一个与之相关的变量对象，环境中定义的所有变量和函数都保存在这个对象中。</p>
+                <p>那什么是作用域呢？每个函数都有自己的执行环境，当代码在执行环境中执行时，就会创建变量对象的作用域链。作用域链保证了对执行环境有权访问所有
+                    变量和函数的有序访问。作用域链的前端，始终都是当前执行的代码所在的环境的变量对象，如果环境是一个函数，那么它的变量对象就是该函数的活动对象。
+                    作用域链的下一个变量对象来自包含（外部）环境，再下一个变量对象来自下一个包含环境。这样一直延续到全局执行环境，记住，全局执行环境的变量对象
+                    永远是作用域中的最后一个对象。</p></section>
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <section><p>1. 执行环境与变量对象之间的对应关系，每个执行环境会有一个变量对象与之关联，该变量对象保存了执行环境中定义的所有局部变量及函数，变量对象具有动态性，
+                只有在定义变量的语句得到执行才会将该变量添加到变量对象中。</p>
+                <p>2. 程序执行时，环境栈与执行环境的关系,当执行流进入一个函数时，即该函数正在执行，函数的执行环境就会被推入一个环境栈中，所有处在执行流的执行环境将有次序地保存在环境栈中，在函数执行之后，
+                    栈将其执行环境弹出，把控制权交给原来的执行环境。所以在程序执行中，环境栈是不断变化的，伴随着执行环境的出入.</p></section>
+            <section><p>3.理解环境栈，执行环境与作用域链之间的关系,在某一时刻，环境栈中保存的执行环境是一定的.</p>
+                <p>4. 作用域链的作用. 作用域链的用途，是保证对执行环境有权访问的所有变量和函数的有序访问（包括外部数据）
+                    标识符解析是沿着作用域链一级一级地搜索标识符的过程，搜索始终从作用域链的前端开始，然后逐级地向后回溯，直到找到标识符为止。</p>
+            </section>
+            <section>
+                <p>5. 作用域与变量对象，执行环境的关系,由定义可知，作用域即函数或变量的作用区域。 变量或函数具有作用域的原因，
+                    就是在环境中定义的变量仅保存在了该执行环境对应的对象变量中，执行环境在环境栈中弹出之后，作用域链中找不到该对变量对象，
+                    以下面为例
+                    function showColor () {
+                    var  color = 'red';
+                    }
+                    showColor(); // red
+                    alert(color); // color is undefined
+                    　　为什么在全局环境下showColor()内定义的变量不可访问呢，这是因为当函数执行到该语句时，color变量保存在了showColor()环境对应的变量对象中，
+                    现在showColor()已经执行完毕，该执行环境也从环境栈中弹出并销毁，所以此时的作用域链也不包括showColor()的执行环境对应的变量对象了，
+                    因为标识符解析是顺着作用域链查找变量的，所以这个过程不再能搜索到color变量，所以color变得只有定义该变量的函数中才能访问，
+                    具有一定范围的作用域。</p></section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>3.常见问题</h3></section>
+        </section>
+        <section>
+            <p>js中执环境和作用域的区别在哪里?</p>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>4 解决方案</h3></section>
+
+        </section>
+        <section><p>1.执行环境：执行环境是JS中最重要的一个概念；它定义了变量和函数有权访问的其他数据；</p>
+            <p>2.全局执行环境：最外围的一个执行环境，根据ECMAScript实现所在的宿主环境不同而不同，在Web浏览器中，全局执行环境被认为是window对象；</p>
+            <p>3.作用域链：当代码在环境中执行时，会创建变量对象的一个作用链；作用域链的作用是保证对执行环境有权访问的所有变量和函数的有序访问；</p></section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>5.编码实战</h3>
+                <a href="../demo.html"><h3>demo</h3></a></section>
+
+        </section>
+        <section><p>script type="text/javascript"
+
+            (function(){
+
+                console.log('execution context test');
+
+                console.log(typeof foo);//function
+
+                console.log(typeof a);//undefined
+
+                console.log(typeof b);//undefined
+
+                console.log(typeof c);//undefined
+
+                function foo(){
+
+                    console.log('foo function');
+
+                }
+
+                var foo='test';
+
+                var a='a';
+
+                var b='b';
+
+                var c=function(){
+
+                    console.log('c function');
+
+                };
+
+
+
+            })();
+        </p>
+        </section>
+        <section>如刚才程序实例所示，创建了一个自执行函数，代码被加载后且代码未被执行前自动创建一个执行环境的对象，并且分析执行环境的参数，
+        然后查找对应的函数声明以及变量声明。这就是为什么在打印foo的类型的时候是function的原因，解析变量声明会被自动赋值为undefind，c为一个函数表达式，
+        因此也被解析为变量，赋值为undefind。在有foo函数声明的前提下，代码中又声明了一个foo的变量，这种情况下在解析变量声明的过程中，
+        会发现在执行环境对象中有了一个foo的属性，因此直接跳过。</section>
+
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <h3 style="text-align: center">6.扩展思考</h3>
+                <section><p>执行环境和作用域是一回事吗？</p>
+                    <p>作用域和执行环境是两个完全不同的概念，我们试图给他俩分别一个明确的定义，发现很难，因为你很难定义一个
+                        概念“是什么”，但是我们可以搞清楚他们分别起什么作用。另一个令人迷惑的地方就是js中的this关键字。其实执行
+                        环境就是this的值。总的来说，作用域是相对于函数来讲的，因为ES5 里没有块级作用域，只有函数才能形成新的
+                        作用域。而且作用域在函数声明时就定义好了。</p>
+                </section>
+            </section>
+        </section>
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+
+
+                </code></pre>
+
+
+            </section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h3>7.参考文献</h3>
+            <p>参考：<a href="https://juejin.im/post/5af59d776fb9a07a9a10eac4">掘金：JavaScript——执行环境及作用域</a></p>
+            <p><a href="https://blog.csdn.net/jnshu_it/article/details/81121164">简述JS中执行环境与作用域的关系</a></p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>8 更多讨论</h3>
+            <section><p>1.块级作用的缺点在哪里？</p><p>2.为什么需要块级作用域？</p></section>
+        </section>
+        <!--<section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">-->
+        <!--<p>2333333</p>-->
+        <!--</section>-->
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>BY : 王浩冉</small>
+            </p>
+        </section>
+
+    </div>
+    <div class="backgrounds"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background stack present" data-loaded="true" style="display: block;"><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up enabled" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+
+    语法：
+    return[()[expression][]];
+    可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。
+
+    用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression 被省略，
+    或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+</div></div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+    //    原始类型对象直接赋值不会相互影响
+    //    var a = 1;
+    //
+    //    var b = a;
+    //    b = 10;
+    //    console.log(a); // 1
+    ////
+    //    var a = 'hello';
+    //    var b = a;
+    //    b = 'world';
+    //    console.log(a); // hello
+    //
+    //    var a = true;
+    //    var b = a;
+    //    b = false;
+    //    console.log(a);
+
+    //数组浅复制
+    //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+    //    ];
+    //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+    //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+    //    console.log(a)//那么现在打印a 是什么结果呢
+    //
+    //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+    //    var arrtoo = arr.slice(1);
+    //    arrtoo[2] = "set Map";
+    //    console.log(arr);//One,Two,Three
+    //    console.log(arrtoo);//One,set Map,Three
+
+    //
+    //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+    //    var arrtooo = arr1.concat(111111);
+    //    arrtooo[1] = "set Map To";
+    //    console.log(arr1);//One,Two,Three
+    //    console.log(arrtooo);//One,set Map To,Three
+
+    //
+    //    var b=[1,2,3,4,5];   //concat的链接
+    //    var c=[6,7,8,9];
+    //    var d =[4,4,22]
+    //    console.log(b.concat(c,d))
+
+    var a = {name: 'yy', age: 26};  //对象的浅拷贝哦
+    var b = new Object();
+    b.name = a.name;
+    b.age = a.age;
+    b.name = 'xx';
+    console.log(a);//Object { name="yy", age=26}
+    console.log(b);//Object { name="xx", age=26}
+
+    var d = {            //对象的浅拷贝哦 第一种
+        name: 'd',
+        oc: {
+            age: 32
+        },
+        oad: {
+            adds: {
+                bb: 12
+            }
+        }
+    };
+    var deepCopy = function (source) {
+        var result = {};
+        for (var key in source) {
+            result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+        }
+        return result
+    };
+
+    var c = deepCopy(d);
+    c.name = 'c';
+    c.oc = {
+        age: 49
+    };
+    console.log(c);
+    console.log(d);
+
+
+    //    var person = {    //第二种深拷贝
+    //        name: 'aa',
+    //        friends: ['da', 'dsa', 'gf']
+    //    };
+    //
+    //    var aPerson = Object.create(person, {
+    ////        name: {
+    ////            value: "gee"
+    ////        }
+    //    });
+    //
+    //    console.log(person.name);
+    //    console.log(aPerson.friends)
+
+    var Chinese = {
+        nation: '中国'
+
+    }
+    var Doctor = {
+        career: '医生'
+    }
+
+    function extendCopy(p) {
+        var c = {};
+        for (var i in p) {
+            c[i] = p[i];
+        }
+        c.uber = p;
+        return c;
+    }
+
+    var Doctor = extendCopy(Chinese);
+    Doctor.career = '医生';
+    console.log(Doctor); // 中国
+    Chinese.birthPlaces = ['北京', '上海', '香港'];
+    var Doctor = extendCopy(Chinese);
+    Doctor.birthPlaces.push('厦门');
+
+</script>
+
+</body>
+</html>
