@@ -1,0 +1,211 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>葡萄藤PPT</title>
+
+	<link rel="stylesheet" href="./css/reveal/reveal.css">
+
+	<!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+	<link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+	<!-- syntax highlighting 代码高亮主题 -->
+	<link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+	<!-- 打印和PDF输出样式 -->
+	<script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+	<area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+</map>
+<div class="reveal">
+	<div class="slides">
+		<section>
+			<h2>【js-06】</h2>
+			<h4>
+				请描述一下cookies，sessionStorage和localStorage的区别？
+			</h4>
+			<p>分享人：邹志程</p>
+		</section>
+
+		<section>
+			<p>目录</p>
+			<p>1.背景介绍</p>
+			<p>2.知识剖析</p>
+			<p>3.常见问题</p>
+			<p>4.解决方案</p>
+			<p>5.编码实战</p>
+			<p>6.扩展思考</p>
+			<p>7.参考文献</p>
+			<p>8.更多讨论</p>
+		</section>
+
+		<section>
+			<section>
+				<h3>1.背景介绍</h3>
+			</section>
+			<section>
+				SessionStorage, LocalStorage, Cookie这三者都可以被用来在浏览器端存储数据，而且都是字符串类型的键值对。 区别在于前两者属于WebStorage，创建它们的目的便于客户端存储数据。 而Cookie早在网景公司的浏览器中就开始支持，最初目的是为了保持HTTP的状态。
+			</section>
+			<section>
+				Cookie（也叫Web cookie或者浏览器Cookie）是服务器发送到用户浏览器并保存在浏览器上的一块数据， 它会在浏览器下一次发起请求时被携带并发送到服务器上。比较经典的，可以用它来确定两次请求是否来自于同一个浏 览器，从而能够确认和保持用户的登录状态
+			</section>
+			<section>
+				sessionStorage 和 localStorage 是HTML5 Web Storage API 提供的，可以方便的在web请求之间保存数据。有了本地数据，就可以避免数据在浏览器和服务器间不必要地来回传递。
+			</section>
+			<section>
+				sessionStorage 与 localStorage 的接口类似， 但保存数据的生命周期与 localStorage 不同。Session 这个词直译过来是“会话”。 而 sessionStorage 是一个前端的概念， 它只 是可以将一部分数据在当前会话中保存下来， 刷新页面数据依旧存在。 但当页面关闭后，sessionStorage 中的数据就会被清空.localStorage则在客户端永久存储，永不失效，除非是手动删除
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h3>2.知识剖析</h3>
+			</section>
+			<section>
+				<p>三者之间有什么区别?</p>
+				<p>共同点：都是保存在浏览器端，且同源的。</p>
+				<p>区别 ：</p>
+				<p>1、存储大小<br></p>
+				cookie数据大小不能超过4k。<br>
+				sessionStorage和localStorage 虽然也有存储大小的限制，但比cookie大得多，一般浏览器支持的是5M大小，这个在不同的浏览器中localStorage会有所不同。
+			</section>
+			<section>
+				<p>2、有效时间</p>
+				localStorage       存储持久数据，浏览器关闭后数据不丢失除非主动删除数据；<br>
+				sessionStorage  数据在当前浏览器窗口关闭后自动删除。<br>
+				cookie     设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭
+			</section>
+			<section>
+				<p>Web Storage的优势</p>
+				1、减少网络流量：一旦数据保存在本地后，就可以避免再向服务器请求数据，因此减少不必要的数据请求，减少数据在浏览器和服务器间不必要地来回传递。<br>
+				2、快速显示数据：性能好，从本地读数据比通过网络从服务器获得数据快得多，本地数据可以即时获得。再加上网页本身也可以有缓存，因此整个页面和数据都在本地的话，可以立即显示。<br>
+				3、临时存储：很多时候数据只需要在用户浏览一组页面期间使用，关闭窗口后数据就可以丢弃了，这种情况使用sessionStorage非常方便。
+			</section>
+		</section>
+		<section>
+			<section>
+				<h3>3.常见问题</h3>
+				1、浏览器如何查看cookies、Web storage。<br>
+				2、使用webstorage存储对象或数组，获取时是字符串形式，如何解决。<br>
+				3、同源怎么判断？
+			</section>
+		</section>
+		<section>
+			<section>
+				<h3>4.解决方案</h3>
+			</section>
+			<section>
+				1、在谷歌浏览器中F12打开调试工具，找到右边的Application即可查看相应客户端存储的数据了。
+			</section>
+			<section>
+				2、因为webStorage会自动将数据转换成为字符串形式，所以一般我们是使用JSON.stringify()这个方法序列化对象，转换成成JSON字符串
+				读取之后要将JSON字符串转换成为JSON对象，使用JSON.parse()方法。
+			</section>
+			<section>
+				3、同源的判断规则：
+
+				http://www.test.com
+
+				https://www.test.com （不同源，因为协议不同）
+
+				http://my.test.com（不同源，因为主机名不同）
+
+				http://www.test.com:8080（不同源，因为端口不同）
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h3>5.代码实战</h3>
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h3>6.拓展思考</h3>
+			</section>
+			<section>
+				三者的使用场景？<br>
+				例如：<br>
+				localStorage可以用来统计页面访问次数。<br>
+
+				sessionStorage可以用来统计当前页面元素的点击次数。比如任务2-4中的杀人游戏中的用途。<br>
+
+				cookie一般存储用户名密码相关信息，判断用户是否登陆过网站，以便下次登录时能够实现自动登录。如果我们删除cookie，则每次登录必须重新填写登录的相关信息。比如任务6-10的后台页，使用cookie存储用户的信息，用来判断是否已登陆。
+			</section>
+			<section>
+
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h3>7.参考文献</h3>
+				参考一：浅谈session,cookie,sessionStorage,localStorage的区别及应用场景<br>
+				https://www.cnblogs.com/cencenyue/p/7604651.html <br>
+				参考二：cookies,sessionStorage和localStorage的区别<br>
+				https://www.cnblogs.com/greatluoluo/p/5826018.html<br>
+				参考三：红宝书《JavaScript高级程序设计》
+			</section>
+
+			<h3>8.更多讨论</h3>
+		</section>
+
+		<section>
+			<h4>鸣谢</h4>
+			<p>感谢大家观看</p>
+			<p>
+				BY : 邹志程
+			</p>
+		</section>
+	</div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: './plugin/markdown/marked.js' },
+            { src: './plugin/markdown/markdown.js' },
+            { src: './plugin/notes/notes.js', async: true },
+            { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>
