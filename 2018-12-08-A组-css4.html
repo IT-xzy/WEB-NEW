@@ -1,0 +1,228 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题,可以在/css/reveal/theme/中选择其他主题,目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        .text-l {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>
+                    如何理解HTML结构的语义化？</h2>
+                <p>分享人：阮少凡</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <section>
+                    <h3>1.背景介绍</h3>
+                </section>
+                <section style="text-align: left;">
+                    <br style="text-align: left">
+                    HTML结构语义化，是最近几年才提出来的，以前的html结构，都是一堆的没有语义的冷冰冰的标签。最泛滥的就是div+css,以前的页面，你一打来就是一堆的div+css, <br>
+                    为了改变这种这种状况，开发者们和官方提出了让HTML结构语义化的概念，并且官方w3c，也在HTML5给出了几个新的语义化的标签。 <br>
+
+                </section>
+
+
+            </section>
+            <section>
+
+
+                <section>
+                    <h3>2.知识剖析</h3>
+                </section>
+                <section style="text-align: left;">
+                    <h3><strong>1. 什么是语义化</strong></h3>
+                    <p><br>
+                        字面意思就是说根据我们所说的话，就能了解其中的含义。<br>
+                        语义化，故名思意，就是你写的HTml结构，是用相对应的有一定语义的英文字母（标签）表示的，标记的，因为HTML本身就是标记语言。不仅对自己来说，容易阅读，书写。别人看你的代码和结构也容易理解，甚至对一些不是做网页开发的人来说，也容易阅读。<br>
+                    </p>
+
+                </section>
+
+
+                <section style="text-align: left;">
+                    <h3><strong>什么是HTML语义化？</strong></h3>
+                    <p>
+                        首先标签语义化是指HTML，不是CSS, 语义化标签只是HTML，CSS不存在语义化。HTML是标签，CSS是属性。<br>
+                    </p>
+                </section>
+
+
+                <section class="text-l">
+                    <h3>什么是标签语义化？</h3>
+                    <p>
+                        在最初html里标签的语义，我们看到table,就会知道这是列表，看到p，就知道这是段落，看到img知道是图片，看到input就知道这是一个表单，h1~h6是标题。 机器和人类相比笨多了，但是只要我们设定好程序，上面的标签的意思机器也能读懂。<br>
+                        但是也有些是无语义化的如div---division并不能呢个表示div标签里面内容的属性和表现样式<br>
+                        HTML 标签语义化是让大家直观的通过标签(markup)和属性(attribute)来知道其用途和作用。<br>
+                    </p>
+                </section>
+
+                <section class="text-l">
+                    <h3>怎样判断标签是否语义化</h3>
+                    <p>
+                        去掉样式，看网页结构是否组织良好有序，是否仍然有很好的可读性。<br>
+                    </p>
+                </section>
+
+
+                <section class="text-l">
+                    <h3>写HTML代码时应注意什么？</h3>
+                    <p>
+                        1.尽可能少的使用无语义的标签div和span；<br>
+                        2.在语义不明显时，既可以使用div或者p时，尽量用p, 因为p在默认情况下有上下间距，对兼容特殊终端有利；<br>
+                        3.不要使用纯样式标签，如：b、font、u等，改用css设置。<br>
+                        4.需要强调的文本，可以包含在strong或者em标签中（浏览器预设样式，能用CSS指定就不用他们），strong默认样式是加粗（不要用b），em是斜体（不用i）；<br>
+                        5.使用表格时，标题要用caption，表头用thead，主体部分用tbody包围，尾部用tfoot包围。表头和一般单元格要区分开，表头用th，单元格用td；<br>
+                        6.每个input标签对应的说明文本都需要使用label标签，并且通过为input设置id属性，在lable标签中设置for=someld来让说明文本和相对应的input关联起来。<br>
+                    </p>
+                </section>
+
+
+            </section>
+
+            <section>
+                <section>
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    <h4>实现HTML语义化好处有哪些？</h4>
+                </section>
+
+            </section>
+
+
+            <section>
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+
+                <section>
+
+                    <p class="text-l">
+                        1.清晰的页面结构。去掉或样式丢失的时候,也能让页面呈现清晰的结构，增强页面的可读性。<br>
+                        2.支持更多的设备。屏幕阅读器会完全根据你的标记来“读”你的网页。更好的支持浏览器的阅读模式等。<br>
+                        3.有利于SEO(搜索引擎优化)。和搜索引擎建立良好沟通，有助于爬虫抓取更多的有效信息，搜索引擎的爬虫也依赖于标记来确定上下文和各个关键字的权重。<br>
+                        4.便于团队开发和维护。在团队中大家都遵循同一个标准，可以减少很多差异化的东西，方便开发和维护，提高开发效率，甚至实现模块化开发。 <br>
+                        5.方便其他设备解析（如屏幕阅读器、盲人阅读器、移动设备）以意义的方式来渲染网页；
+                    </p>
+                </section>
+
+            </section>
+            <section>
+                <section>
+                    <h3>5.编码实战</h3>
+                </section>
+
+            </section>
+            <section>
+                <section>
+                    <h3>6.扩展思考</h3>
+
+                </section>
+
+                <section class="text-l">
+                    <h4>b标签，i标签 ，strong标签，em标签的区别 </h4>
+                    <p>
+                         (b)，(i)标签 是视觉要素（presentationl elements），分别表示无意义的加粗，无意义的斜体，仅仅表示「这里应该用粗体显示」或者「这里应该用斜体显示」，此两个标签在HTML4.01中并不被推荐使用。
+                    </p>
+                    <p>
+                        (em)、(strong)是表达要素(phrase elements)。(em) （emphasized text）表示一般的强调文本，而(strong) （strong emphasized text）表示比(em) 语义更强的的强调文本。
+                    </p>
+                    <p>
+                        在新的HTML5工作草案中：（em）和（strong）仍旧是表达要素(phrase elements)。但这时的（strong）表示html页面上的强调（emphasized text），（em） 表示句子中的强调（即强调语义）
+                    </p>
+
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>7.参考文献</h3>
+                </section>
+                <section>
+                    <p style="text-align: left">参考：<br>
+                        参考一：HTML5新标签<br>
+                        参考二：html语义化PPT  <br>
+                    </p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>8.更多讨论</h3>
+                </section>
+            </section>
+            <section>
+                <!--<h4>鸣谢</h4>-->
+                <p>感谢大家观看</p>
+                <p>
+                    <small> 阮少凡</small>
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [
+                { src: './plugin/markdown/marked.js' },
+                { src: './plugin/markdown/markdown.js' },
+                { src: './plugin/notes/notes.js', async: true },
+                {
+                    src: './plugin/highlight/highlight.js', async: true, callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,235 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题,可以在/css/reveal/theme/中选择其他主题,目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        .text-l {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2 style="text-align: center;">前端垮域问题有哪些常用的解决方式？</h2>
+                <p>分享人：许恒倩</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <section>
+                    <h3>1.背景介绍</h3>
+                </section>
+                <section style="text-align: left;">
+                    1.1 什么是跨域？<br>
+
+                    指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对javascript施加的安全限制。
+
+                </section>
+                <section style="text-align: left">
+                    1.2 为什么需要跨域？<br>
+                    受浏览器同源策略的限制，本域的js不能操作其他域的页面对象（比如DOM）。但在安全限制的同时也给注入iframe或是ajax应用上带来了不少麻烦。所以我们要通过一些方法使本域的js能够操作其他域的页面对象或者使其他域的js能操作本域的页面对象（iframe之间）。
+
+                </section>
+            </section>
+            <section>
+
+
+                <section>
+                    <h3>2.知识剖析</h3>
+                </section>
+                <section style="text-align: left;">
+                    <h3><strong></strong></h3>
+                    <p><br>
+                        1.同源策略：<br>
+                        它是由Netscape提出的一个著名的安全策略。同源是指，域名，协议，端口相同。浏览器执行javascript脚本时，会检查这个脚本属于那个页面，如果不是同源页面，就不会被执行。
+
+                    </p>
+
+                </section>
+
+
+                <section style="text-align: left;">
+                    <h3><strong></strong></h3>
+                    <p>
+                        2.为什么script标签引入的文件不受同源策略的限制？<br>
+                        因为script标签引入的文件内容是不能够被客户端的js获取到的，不会影响到被引用文件的安全，所以没必要使script标签引入的文件遵循浏览器的同源策略。而通过ajax加载的文件内容是能够被客户端js获取到的，所以ajax必须遵循同源策略，否则被引入文件的内容会泄漏或者存在其他风险。
+                    </p>
+
+                </section>
+
+                <section>
+                    <img src="img/2018-12-04-c组/1.png" alt="">
+                </section>
+
+                <section style="text-align: left;">
+                    3.静态HTTP服务器：Nginx是一个HTTP服务器，可以将服务器上的静态文件（如HTML、图片）通过HTTP协议展现给客户端<br>
+                    4.反向代理服务器：客户端本来可以直接通过HTTP协议访问某网站应用服务器，网站管理员可以在中间加上一个Nginx，客户端请求Nginx，Nginx请求应用服务器，然后将结果返回给客户端，此时Nginx就是反向代理服务器。<br>
+                    5.负载均衡:当网站访问量非常大，一台服务器已经不够用了。于是将同一个应用部署在多台服务器上，将大量用户的请求分配给多台机器处理。Nginx可以通过反向代理来实现负载均衡。<br>
+
+
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    <h4>前端垮域问题有哪些常用的解决方式？</h4>
+                </section>
+
+            </section>
+
+
+            <section>
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+
+                <section>
+
+                    <p class="text-l">
+                        4.1 window.name + iframe<br>
+                        window.name的美妙之处：name值在不同的页面（甚至不同域名）加载后依旧存在，并且可以支持非常长的name值（2MB）。原理：利用了“在同一浏览器窗口载入的不同页面（
+                        无论它们是否不同域 ），共享同一个window.name，并且都对window.name有读写的权限”的这一特性来实现页面间的数据交换
+                    </p>
+                </section>
+                <section>
+
+                    <p class="text-l">
+                        4.2 CORS<br>
+                        CORS背后的思想，就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功，还是应该失败。CORS需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能，IE浏览器不能低于IE10。整个CORS通信过程，都是浏览器自动完成，不需要用户参与。对于开发者来说，CORS通信与同源的AJAX通信没有差别，代码完全一样。浏览器一旦发现AJAX请求跨源，就会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉。
+                        因此，实现CORS通信的关键是服务器。只要服务器实现了CORS接口，就可以跨源通信。
+
+                    </p>
+
+                </section>
+                <section>
+                    <p class="text-l">
+                        4.3 JSONP<br>
+                        JSONP包含两部分：回调函数和数据。回调函数是当响应到来时要放在当前页面被调用的函数。数据就是传入回调函数中的json数据，也就是回调函数的参数了。<br>
+                        jsonp虽然很简单，但是有如下缺点：<br>
+                        1）安全问题(请求代码中可能存在安全隐患);<br>
+                        2）要确定jsonp请求是否失败并不容易。
+                    </p>
+                </section>
+                <section>
+                    4.4 配置Nginx通过域名访问网页
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>5.编码实战</h3>
+                </section>
+
+            </section>
+            <section>
+                <section>
+                    <h3>6.扩展思考</h3>
+
+                </section>
+
+                <section class="text-l">
+
+                    还有什么其他的跨域的方法？<br>
+                    location.hash + iframe<br>
+                    原理是利用location.hash来进行传值。假设域名a.com下的文件cs1.html要和cnblogs.com域名下的cs2.html传递信息。<br>
+                    1)cs1.html首先自动创建一个隐藏的iframe，iframe的src指向cnblogs.com域名下的cs2.html页面；<br>
+                    2)cs2.html响应请求后再将通过修改cs1.html的hash值来传递数据；<br>
+                    3)同时在cs1.html上加一个定时器，隔一段时间来判断location.hash的值有没有变化，一旦有变化则获取hash值<br>
+                    <!-- 注：由于两个页面不在同一个域下IE、Chrome不允许修改parent.location.hash的值，所以要借助于a.com域名下的一个代理iframe<br> -->
+
+
+                </section>
+            </section>
+            </section>
+            <section>
+                <section>
+                    <h3>7.参考文献</h3>
+                </section>
+                <section>
+                    <p style="text-align: left">参考：<br>
+                        <br>
+
+                        前端解决跨域问题的8种方案（最新最全）<br>
+                        深入理解前端跨域方法和原理
+                    </p>
+
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>8.更多讨论</h3>
+                </section>
+            </section>
+            <section>
+                <!-- <h4>鸣谢</h4> -->
+                <p>感谢大家观看</p>
+                <p>
+                    <small>BY : 许恒倩</small>
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [
+                { src: './plugin/markdown/marked.js' },
+                { src: './plugin/markdown/markdown.js' },
+                { src: './plugin/notes/notes.js', async: true },
+                {
+                    src: './plugin/highlight/highlight.js', async: true, callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>

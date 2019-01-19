@@ -1,0 +1,302 @@
+﻿<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>葡萄藤PPT</title>
+
+	<link rel="stylesheet" href="./css/reveal/reveal.css">
+
+	<!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+	<link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+	<!-- syntax highlighting 代码高亮主题 -->
+	<link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+	<link rel="stylesheet" href="./task-js-1.css">
+
+	<!-- 打印和PDF输出样式 -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+			'../css/reveal/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+	<map name="pttmap">
+		<area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+	</map>
+	<div class="reveal">
+		<div class="slides">
+			<section class="txt">
+				<h1></h1>
+				<h2>小课堂【js-08】</h2>
+				<h4>课题：angular js自定义指令 directive 如何使用？为什么要使用封装的自定义指令？</h4>
+				<p>分享人：吴胜</p>
+			</section>
+
+			<section>
+				<p>目录</p>
+				<p>1.背景介绍</p>
+				<p>2.知识剖析</p>
+				<p>3.常见问题</p>
+				<p>4.解决方案</p>
+				<p>5.编码实战</p>
+				<p>6.扩展思考</p>
+				<p>7.参考文献</p>
+				<p>8.更多讨论</p>
+			</section>
+
+			<section>
+				<section>
+					<h3>
+						1.背景介绍
+					</h3>
+				</section>
+				<section>
+					<h3>什么是指令</h3>
+					<p class="txt-word-3">&emsp;&emsp;指令就是DOM与逻辑行为的媒介，本质就是DOM绑定的独立逻辑行为函数。<br>
+						&emsp;&emsp;angular通过内置指令的方式实现了对html的拓展，同时也赋予了我们自定义指令的功能，让我们根据实际需求进行指令的定制。
+						自定义指令涉及到模板（template）、作用域（scope）、数据绑定和Dom操作等内容。</p>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>2.知识剖析</h3>
+				</section>
+				<section>
+					<h3>如何自定义指令</h3>
+					<h5>我们可以用directive 函数来添加自定义的指令。</h5>
+				</section>
+				<section>
+					<p class="txt-word-3">
+						<h6 class="txt-word-3">
+							App.directive("directiveName",function(){<br>
+							return {<br>
+							restrict: 'E',<br>
+							replace: true,<br>
+							template: '&lt;div&gt;。。。&lt;/div&gt;',<br>
+							scope: {<br>
+							key:value<br>
+							}<br>
+							};<br>
+							});
+						</h6>
+					</p>
+				</section>
+				<section>
+					<h3>属性详解</h3>
+				</section>
+				<section>
+					<h3>directive( )模块解析(2个参数）</h3>
+					<li class="txt-word-3">name （字符串）
+						指令的名字，用来在视图中引用特定的指令。</li>
+					<li class="txt-word-3">factory_function （函数）
+						这个函数返回一个对象，其中定义了指令的全部行为。</li>
+				</section>
+				<section>
+					<h3>restrict（字符串|可选）</h3>
+					<li class="txt-word-3">E(Element)：&lt;runoob-directive&gt;&lt;/runoob-directive&gt;
+					</li>
+					<li class="txt-word-3">A(Attribute): &lt;div runoob-directive&gt;&lt;/div&gt;
+					</li>
+					<li class="txt-word-3">C(CLASS)&lt;div class="runoob-directive"&gt;&lt;/div&gt;</li>
+					<li class="txt-word-3">M(注释)&lt;!-- directive: runoob-directive --&gt;</li>
+				</section>
+				<section>
+					<h3>template和templateUrl（字符串或函数|可选)</h3>
+					<li class="txt-word-3">这两个只能同时存在其中一个。<br>
+						分别为：html文本的字符串;获取html文本链接的字符串</li>
+					<li class="txt-word-3">如果为函数的时候则为：<br>
+						一个可以接受两个参数的函数，参数为 tElement 和 tAttrs ，并返回一个代表模板的字符串；<br>
+						一个可以接受两个参数的函数，参数为 tElement 和 tAttrs ，并返回一个外部HTML文件路径的字符串。<br></li>
+				</section>
+				<section>
+					<h3>replace和transclude（布尔值|可选）</h3>
+					<li class="txt-word-3">replace：是否用模板替换当前元素。<br>
+						true : 将指令标签替换成temple中定义的内容,页面上不会再有标签；<br>
+						false ：则append（追加）在当前元素上，即模板的内容包在标签内部。默认false。
+					</li>
+					<li class="txt-word-3">transculde：是否使用ng-transculde来包含html中指令包含的原有的内容（不会被替换），默认false。</li>
+				</section>
+			</section>
+			<section>
+				<h3>scope（布尔值|对象|可选）</h3>
+				<li class="txt-word-3">scope：指令是被赋予允许访问父DOM元素对应作用域的能力.默认false;</li>
+				<li class="txt-word-3">当该值为false时，将会直接访问父元素的作用域，此时指令中对作用域中元素的修改也会直接
+					作用在父元素的作用域中。 当该值为true时，则会继承父元素作用域，并创建一个新的作用域对象。</li>
+				<li class="txt-word-3">如果为一个对象的时候，他会隔绝作用域。如空对象{}，此时指令的作用域将会完全独立于外界。</li>
+			</section>
+			<section>
+				<h3>controller（字符串或函数）</h3>
+				<li class="txt-word-3">若该属性的值是字符串，则会以该字符串值去应用中查找该控制器。</li>
+			</section>
+			<section>
+				<h3>controllerAs （字符串）</h3>
+				<li class="txt-word-3">用于设置控制器的别名</li>
+			</section>
+			<section>
+				<h3>link(函数）：</h3>
+				<p class="txt-word-3">
+					link:function(scope, element, attrs){<br>
+					//在这里操作DOM<br>
+					}
+				</p>
+			</section>
+			<section>
+				<section>
+					<h3>3.常见问题</h3>
+				</section>
+				<section>
+					<h3>如何使用自定义指令</h3>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>4.解决方案</h3>
+				</section>
+				<section>
+					<h3>先看一串代码</h3>
+					<p class="txt-word-3">
+						&lt;body&gt;<br>
+						&lt;my-hello&gt;&lt;/my-hello&gt;<br>
+						&lt;/body&gt;<br>
+						&lt;script type="text/javascript"&gt;<br>
+						var m1 = angular.module('myApp', []);<br>
+						m1.directive('myHello', function () {<br>
+						return {<br>
+						restrict: 'E',<br>
+						replace: true,<br>
+						template: '&lt;div&gt;hello angular&lt;/div&gt;'<br>
+						};<br>
+						});<br>
+						&lt;/script&gt;
+					</p>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>5.代码实战</h3>
+				</section>
+				<section>
+					<h3>看demo1</h3>
+				</section>
+				<section>
+					<h3>看demo2(scope.默认状态下）</h3>
+				</section>
+				<section>
+					<h3>看demo3(scope.true的状态下）</h3>
+				</section>
+				<section>
+					<h3>看demo4（scope.为独立域时的@单绑)</h3>
+				</section>
+				<section>
+					<h3>还是看demo4（将@改为=）</h3>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>6.拓展思考</h3>
+				</section>
+				<section>
+					<p class="txt-word-3">
+						&emsp;&emsp;指令就相当于为我们写了公共的自定义DOM元素或CLASS属性或ATTR属性，并且它不只是单单如此，
+						你还可以在它的基础上来操作scope、绑定事件、更改样式等。通过这个Directive，我们可以封装很多公共指令，
+						比如分页指令、自动补全指令等等。然后在HTML页面里只需要简单的写一行代码就可以实现很多强大的功能。
+					</p>
+				</section>
+			</section>
+			<section>
+				<h3>7.参考文献</h3>
+				<h4><a class="txt-a" href="https://blog.csdn.net/Four_One_O/article/details/70988901">AngularJS1.x入门·常用指令以及自定义指令</a></h4>
+			</section>
+			<section>
+				<section>
+					<h3>8.更多讨论</h3>
+				</section>
+				<section>
+					<h3>1.什么时候用指令？</h3>
+					<li class="txt-word-3">使你的Html更具语义化，不需要深入研究代码和逻辑即可知道页面的大致逻辑。
+					</li>
+					<li class="txt-word-3">抽象一个自定义组件，在其他地方进行重用。
+					</li>
+				</section>
+				<section>
+					<h3>2.为什么不推荐Angular和JQuery混合使用？</h3>
+					<p class="txt-word-3">在Angular中，操纵数据不是通过抓取和注入。一般通过数据绑定来实现，JQurey是抓取dom节后进行操作的。核心理念不同。
+						虽然在Angular里也能通过抓取然后注入数据，但是会出现很多不必要的问题和bug.
+					</p>
+				</section>
+				<section>
+					<h3>3.为什么在directive里尽量不要用大写。
+					</h3>
+					<p class="txt-word-3">因为在directive里，会将遇到的大写字母转换成 “-” + 转换的小写字母。
+					</p>
+				</section>
+			</section>
+			<section>
+				<h4>鸣谢</h4>
+				<p>感谢大家观看</p>
+				<p>
+					<small>BY : 吴胜</small>
+				</p>
+			</section>
+		</div>
+	</div>
+
+	<script src="./lib/reveal/js/head.min.js"></script>
+	<script src="./lib/reveal/reveal.js"></script>
+
+	<script>
+		// 以下为常见配置属性的默认值
+		// {
+		// 	controls: true, // 是否在右下角展示控制条
+		// 	progress: true, // 是否显示演示的进度条
+		// 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+		// 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+		// 	keyboard: true, // 是否启用键盘快捷键来导航
+		// 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+		// 	center: true, // 是否将幻灯片垂直居中
+		// 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+		// 	loop: false, // 是否循环演示
+		// 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+		// 	fragments: true, // 全局开启和关闭碎片。
+		// 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+		// 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+		// 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+		// 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+		// }
+
+		// 初始化幻灯片
+		Reveal.initialize({
+			history: true,
+			dependencies: [{
+					src: './plugin/markdown/marked.js'
+				},
+				{
+					src: './plugin/markdown/markdown.js'
+				},
+				{
+					src: './plugin/notes/notes.js',
+					async: true
+				},
+				{
+					src: './plugin/highlight/highlight.js',
+					async: true,
+					callback: function () {
+						hljs.initHighlightingOnLoad();
+					}
+				}
+			]
+		});
+	</script>
+</body>
+
+</html>
