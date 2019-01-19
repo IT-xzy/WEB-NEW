@@ -1,0 +1,225 @@
+﻿<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>葡萄藤PPT</title>
+
+	<link rel="stylesheet" href="./css/reveal/reveal.css">
+
+	<!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+	<link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+	<!-- syntax highlighting 代码高亮主题 -->
+	<link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+	<!-- 打印和PDF输出样式 -->
+	<style>
+		.txt-word-2 {
+			margin-left: -122.625px;
+			text-align: center;
+			font-family: sans-serif !important;
+		}
+
+		.txt-word-3 {
+			text-align: left;
+			word-break: break-all;
+			font-size: 16px;
+			font-family: sans-serif !important;
+			text-transform: none !important;
+		}
+
+		.txt {
+			text-transform: none !important;
+		}
+
+		.txt-a {
+			color: #fff !important;
+		}
+	</style>
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+			'../css/reveal/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+	<map name="pttmap">
+		<area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+	</map>
+	<div class="reveal">
+		<div class="slides">
+			<section class="txt">
+				<h1></h1>
+				<h2>小课堂【css-task8】</h2>
+				<h4>课题：如何使用媒体查询？</h4>
+				<p>分享人：程一凡</p>
+			</section>
+
+			<section>
+				<p>目录</p>
+				<p>1.背景介绍</p>
+				<p>2.知识剖析</p>
+				<p>3.常见问题</p>
+				<p>4.解决方案</p>
+				<p>5.编码实战</p>
+				<p>6.扩展思考</p>
+				<p>7.参考文献</p>
+				<p>8.更多讨论</p>
+			</section>
+
+			<section>
+				<section>
+					<h3>
+						1.背景介绍
+					</h3>
+				</section>
+				<section>
+					<h5 class="txt-word-3">
+						&emsp;&emsp;媒体查询是针对不同的屏幕尺寸设置不同的样式而出现的，特别是你需要设置设计响应式的页面，媒体查询是非常有用的。当你重置浏览器大小的过程中，页面也会根据浏览器的宽度和高度重新渲染页面。
+						</h3>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h3>2.知识剖析</h3>
+				</section>
+				<section>
+					首先，我们得了解一下@medin
+				</section>
+				<section>
+					<h3>语法</h3>
+					<br>
+					<br>
+					<h5 class="txt-word-3">
+						<p>@medin screen and （max-width/min-width）</p>
+						<p>screen：指的是一种媒体类型：用于电脑屏幕，平板电脑，智能手机等</p>
+						<p>and：被称为关键词。</p>
+						<p>max-width/min-width:是一种媒体特性。</p>
+					</h5>
+				</section>
+				<section>
+					<h3>3.常见问题&4.解决方案</h3>
+					<h3 class="txt">
+						<p>max-width与min-width的区别</p>
+					</h3>
+				</section>
+				<section>
+					<p class="txt-word-3">
+						最大宽度“max-width”是媒体特性中最常用的一个特性，
+						其意思是指媒体类型小于或等于指定的宽度时，样式生效。
+					</p>
+					<h5 style="color: #fff;">
+						最小宽度“min-width”与“max-width”相反，
+						指的是媒体类型大于或等于指定宽度时，样式生效。
+					</h5>
+				</section>
+				<section>
+					<h3>5.编码实战</h3>
+				</section>
+				<section>
+					<p>这段代码的意思是在小于或等于768的分辨率下背景色与boeder的颜色改变</p>
+					<img src="./demo.jpg" alt="" style="width:50%; height: 50%;">
+				</section>
+				<section>
+					<h3>6.拓展思考</h3>
+				</section>
+				<section>
+					<p>
+						max-device-width和max-width的区别
+					</p>
+				</section>
+				<section style="text-align: left;">
+					<p class="txt-word-3">
+						1、max-device-width是设备整个显示区域的宽度，例如，真实的设备屏幕宽度。
+					</p>
+					<p>2、max-width是目标显示区域的宽度，例如，浏览器宽度。</p>
+					<p>3、如果使用max-device-width，那么在PC浏览器上浏览网页时，缩小或放大浏览器时是不执行CSS的，
+						因为“PC设备”没有变化。但如果使用max-width，缩小或放大浏览器时是执行CSS的，
+						因为“显示区域”即浏览器大小发生了变化。</p>
+				</section>
+				<section style="text-align: left;">
+					<p>4、如果使用max-device-width，那么当手机由竖变横时，
+						CSS是不执行的，因为“手机宽度”并没有变化。
+						如果使用max-width，那么当手机由竖变横时，
+						CSS是执行的，因为“显示区域”发生了变化。</p>
+					<p>5、通常，面向“移动设备”用户使用max-device-width；面向“PC设备”用户使用max-width。</p>
+				</section>
+				<section>
+					<h3>7.参考文献</h3>
+				</section>
+				<section style="text-align: left; padding: 25%; box-sizing: border-box;">
+					<h4><a class="txt-a" href="http://www.runoob.com/css/css-rwd-mediaqueries.html">1.菜鸟教程</a></h4>
+					<h4><a class="txt-a" href="https://www.cnblogs.com/zyl-Tara/p/5519144.html">2.媒体查询使用方法@media</a></h4>
+					<h4><a class="txt-a" href="http://www.webkaka.com/tutorial/html/2015/082713/">3.max-device-width和max-width的区别</a></h4>
+				</section>
+				<section>
+					<h3>8.更多讨论</h3>
+				</section>
+				<section>
+					<h4>鸣谢</h4>
+					<p>感谢大家观看</p>
+					<p>
+						<small>BY : 程一凡</small>
+					</p>
+				</section>
+		</div>
+	</div>
+
+	<script src="./lib/reveal/js/head.min.js"></script>
+	<script src="./lib/reveal/reveal.js"></script>
+
+	<script>
+		// 以下为常见配置属性的默认值
+		// {
+		// 	controls: true, // 是否在右下角展示控制条
+		// 	progress: true, // 是否显示演示的进度条
+		// 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+		// 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+		// 	keyboard: true, // 是否启用键盘快捷键来导航
+		// 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+		// 	center: true, // 是否将幻灯片垂直居中
+		// 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+		// 	loop: false, // 是否循环演示
+		// 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+		// 	fragments: true, // 全局开启和关闭碎片。
+		// 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+		// 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+		// 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+		// 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+		// }
+
+		// 初始化幻灯片
+		Reveal.initialize({
+			history: true,
+			dependencies: [{
+					src: './plugin/markdown/marked.js'
+				},
+				{
+					src: './plugin/markdown/markdown.js'
+				},
+				{
+					src: './plugin/notes/notes.js',
+					async: true
+				},
+				{
+					src: './plugin/highlight/highlight.js',
+					async: true,
+					callback: function () {
+						hljs.initHighlightingOnLoad();
+					}
+				}
+			]
+		});
+	</script>
+</body>
+
+</html>
