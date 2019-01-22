@@ -1,0 +1,291 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+
+        p.font {
+            text-align: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>JS有哪几种传参方式?</h2>
+                <p style="text-align: center;">分享人：王恒</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <h3>一、背景介绍</h3>
+            </section>
+            <section>
+
+                <P class="font">
+                    <p>什么是传参</p>
+
+                    <p>我今天要讲的是js基础传参：值传递、对象传递</p>
+
+                    <h3>概念</h3>
+
+                    在计算机科学里，按值传递(call by value)和按引用传递(call by reference)这个部分统称求值策略(Evaluation
+                    Strategy)。它决定变量之间、函数调用时实参和形参之间值是如何传递的。
+
+                    js中的传值方式，对于简单类型（比如字符串和数值）就是值传递和引用传递。但是HTML页面之间如何传递数据？
+
+                    如果是动态页面，根本就不需要考虑这个问题，可以如果是一个纯HTML+JavaScript的应用，
+
+                    无法使用数据库等操作，没有保存数据，光依靠前端的手段该如何实现页面之间的传递数据和参数呢？
+                </P>
+
+            </section>
+
+            <section>
+                <h3>二、知识剖析</h3>
+            </section>
+            
+            <section>
+
+                <p>第一种常见的是通过url传值，</p>
+
+                    主要原理是：通过GET方法然后获取URL从中解析出传递的数据
+
+                    //获取到的url值是以"?"开头的url
+
+                    var deocdeURL = decodeURI(location.search);//解码url
+
+                    //封装的解析url的方法
+
+                    function doClickfamg(){
+
+                    var pureURL = deocdeURL.split("?")[1];//获取"?"以后的参数
+
+                    var valuesArray = pureURL.split("&");
+
+                    var url_Object = new Object();
+
+                    for(var i = 0;i< valuesArray.length;i++){ var key_value=valuesArray[i].split("=");
+                        
+                        //动态给对象添加key和value
+                        
+                        //是以传递过来的key和value作为解析后的新的对象的key和value
+                        
+                        url_Object[key_value[0]] = key_value[1];
+                        
+                        }
+                        
+                        return url_Object;//返回对象
+                        
+                        }</p>
+                
+            </section>
+            <section>
+                    <p class="
+                        font">获取url传的值
+
+                        //调用解析方法
+
+                        var mydecodeURI = doClickfamg();
+
+                        //比如我要知道传递的key2的value是什么
+
+                        alert(mydecodeURI.key2);</p>
+            </section>
+
+            <section>
+
+                <p> 优缺点</p>
+
+                <p> 优点</p>
+
+                <p> 1.URL地址法简洁易用可同时传递多个字符型参数；</p>
+
+                <p> 2.URL地址法可以很方便的在页面之间切换并传递参数，无需额外的处理，基于正常情况比较不会性能损失；</p>
+
+                <p> 不足：</p>
+
+                <p> 3.URL传递参数长度受限，最大为2K；</p>
+
+                <p> 4.URL只能传递字符型参数，传递中文时由于发送页面和接收页面的字符编码方式不一样而导致参数解析处理错误，参数包含中文时可能出现乱码或者参数接收错误；</p>
+
+                <p> 5.URL地址在客户端可见，所以涉及隐私的参数需进行加密后才能进行传递，不加密传输会导致信息泄露，产生安全隐患。</p>
+
+
+
+
+                </p>
+
+            </section>
+            <section>
+                <h3>Cookie</h3>
+                <p> Cookie 是一些数据, 存储于你电脑上的文本文件中。
+
+                        当 web 服务器向浏览器发送 web 页面时，在连接关闭后，服务端不会记录用户的信息。
+                        
+                        Cookie 的作用就是用于解决 "如何记录客户端的用户信息":
+                        
+                        当用户访问 web 页面时，他的名字可以记录在 cookie 中。
+                        
+                        在用户下一次访问该页面时，可以在 cookie 中读取用户访问记录。
+                        
+                        Cookie 以名/值对形式存储</p>
+                
+
+            </section>
+        
+
+            <section>
+                <h3>三、常见问题</h3>
+            </section>
+            <section>
+                <p>javascript是按值传递，还是按引用传递来传递参数？</p>
+            </section>
+            <section>
+                <h3>四、解决方案</h3>
+            </section>
+            <section>
+                <p>传值
+                </p>
+                <p>
+                        函数内的num, obj1, obj2都将是一份新的内存，与调用函数之前定义的三个变量毫无关系。函数内无论怎么修改这三个参数，外部定义的三个变量的值始终不变
+                </p>
+                <p>传引用
+                    </p>
+                    <p>
+                            函数内的num, obj1, obj2都将是一份新的内存，与调用函数之前定义的三个变量毫无关系。函数内无论怎么修改这三个参数，外部定义的三个变量的值始终不变
+                    </p>
+            </section>
+
+            <section>
+                <h3>五、编码实战</h3>
+            </section>
+
+            <section>
+                <h3>六、拓展思考</h3>
+            
+            </section>
+            <section>
+                  <h3>es6中的函数传参是什么</h3>  
+
+                    <p>对于其他语言来讲，传参分为传值类型和传引用（指针）类型。如果是传值，函数内部对于参数的改变不会影响到外部变量或对象；
+                    
+                    如果是传引用（指针），在函数内部做的修改则会对外部的变量和对象造成影响。
+                    
+                    从技术层面来讲，javascript参数的传递方式全部都是传值类型，当我们将一个值传递到函数内部时，
+                    
+                    一个临时的局部变量会被创建，形成对这个参数的一个拷贝，任何对该值的改变都不会影响原有的外部变量。</p>
+            </section>
+
+
+
+            <section>
+                <h3>七、参考文献</h3>
+            </section>
+            <section>
+                   <p>JavaScript让HTML静态页面传值的方法</p> 
+                <p>页面之间传参之url传参-实现点击携参跳转到详情页</p>
+                <br>
+            </section>
+            <section>
+                <h3>八、更多讨论</h3>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>BY : 王恒</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
