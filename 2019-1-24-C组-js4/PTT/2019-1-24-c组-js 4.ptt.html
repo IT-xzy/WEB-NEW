@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+
+        p.font {
+            text-align: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h3>简述JS中this的指向</h3>
+                <p>分享人：左昌杰</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <h3>一、背景介绍</h3>
+            </section>
+            <section>
+                <h3></h3>
+                <P></p>
+                <p>在javaScript中，this是动态绑定的，它可以是全局对象、当前对象或者任意对象，这完全取决于函数的调用方式。在绝大多数情况下，函数的调用方式决定了this的值,this指向调用函数的对象。this不能在执行期间被赋值，并且在每次函数被调用时this的值也可能会不同。</p>
+                <p></p>
+            </section>
+            <section>
+                <h3>二、知识剖析</h3>
+            </section>
+            <section>
+                <h3></h3>
+                <p>this指向在函数定义的时候是确定不了的，只有函数被调用的时候才能够确定,实际上this的最终指向的是那个调用它的对象
+                     this的常见的四种情形</p>
+                <p>1、纯粹的作为函数调用：全局函数中，this指向window</p>
+                <p>2、作为对象方法的调用：当函数被作为某个对象的方法调用时，this就是指向那个对象</p>
+                <p> 3、作为构造函数被调用的时候，this 代表它即将 new 出来的对象</p>
+                <p>4、apply、call调用：this指向改变后的调用这个函数的对象</p>
+            </section>
+             <section>
+                <h3>1,全局环境中的this</h3>
+                <p>this指向window</p>
+                <h3>严格模式 ‘use strict’下的this</h3>
+                <p> 在严格模式下，在全局环境中执行函数调用的时候
+                 this 并不会指向 window 而是会指向 undefined。</p>
+            </section>
+            <section>
+                <h3>2,如果函数作为一个对象的属性方法，并且被调用的时候，this 就指向这个对象。</h3>
+                <p>如果说一个函数中有this，这个函数有被上一级的对象调用，那么this的指向就是上一级的对象</p>
+                <p>如果说一个函数中有this，这个函数没有被上一级的对象调用，那么this的指向的就是window</p>
+                <p>如果说一个函数中有this，这个函数中包含多个对象，尽管这个函数是被最外层的对象所调用，this的指向也只是它上一级的对象</p>
+            </section>
+            <section>
+                <h3>作为构造函数被调用的时候，this 代表它即将 new 出来的对象</h3>
+                <p> 注：构造函数不使用new调用，则和普通函数一样。一般地，构造函数首字母大写
+                        如果不加 new,表示即作为普通函数调用，指向 window</p>
+            </section>
+            <section>
+                <h3>作为 call/apply方法被调用的时候指向传入的值</h3>
+            </section>
+            <section>
+                <h3>三、常见问题</h3>
+            </section>
+            <section>
+                <p>setTimeout、setInterval中的this是指向哪里？</p>
+                <p>setTimeout、setInterval中的this再实际调用的时候this指向全局Window的对象</p>
+            </section>
+            <section>
+                <h3>四、解决方案</h3>
+                <p>《javascript 高级程序设计》中写到：“超时调用的代码都是在全局执行域中执行的”。</p>
+                <p>setTimeout/setInterval 执行的时候，this 默认指向 window 对象，除非手动改变 this 的指向。</p>
+            </section>
+            <section>
+                <h3>五、编码实战</h3>
+            </section>
+            <section>
+                <h3>六、拓展思考</h3>
+                <p>如何改变this的指向？</p>
+                <p>可以使用call或者apply的方法</p>
+                <p> 一个对象可以作为call和apply的第一个参数，并且this会被绑定到这个对象。</p>
+            </section>
+            <section>
+                <h3>七、参考文献</h3>
+            </section>
+            <section>
+                <a href="https://www.ibm.com/developerworks/cn/web/1207_wangqf_jsthis/">深入浅出 JavaScript 中的 this</a>
+                <br>
+                <br>
+            </section>
+            <section>
+                <h3>八、更多讨论</h3>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>BY : 左昌杰</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
