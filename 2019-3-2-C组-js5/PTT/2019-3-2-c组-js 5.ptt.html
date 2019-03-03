@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+
+        p.font {
+            text-align: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h3>什么是AJAX？</h3>
+                <p>分享人：左昌杰</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <h3>一、背景介绍</h3>
+            </section>
+            <section>
+                <h3></h3>
+                <P>简单来说 就是没使用AJAX的网页，你点一个按钮就要刷新一下整个页面，尽管新页面上只有一行字和当前页面不一样，但你还是要无聊地等待页面刷新 用了AJAX之后，你点击，然后页面上的一行字就变化了，页面本身不用刷新</p>
+                <p>AJAX只是一种技术，不同的浏览器有自己实现AJAX的组件。传统的网页想要更新内容或者提交一个表单，需要重新载入整个页面，而运用了ajax技术的网页 通过和后台进行少量的数据交换，网页就可以异步更新 如果有错误，服务器会把响应的结果发给页面，给你提示，在这个过程中你还可以继续进行，页面也不会被刷新，也不会有提交和等待</p>
+                <p></p>
+            </section>
+            <section>
+                <h3>二、知识剖析</h3>
+            </section>
+            <section>
+                <p>1,为什么需要使用ajax</p>
+                <p>2,Ajax的工作原理</p>
+            </section>
+            <section>
+                <p>为什么需要使用ajax</p>
+                <p>ajax主要是实现页面和web服务器之间数据的异步传输。 简单来说，不采用ajax的页面，当用户在页面发起请求时，就要进行整个页面的刷新，刷新快慢取决于服务器的处理快慢。在这个过程中用户必须得等待，不能进行其他操作。也就是同步的方式。客户端和服务端传递了很多不需要的数据。效率低，用户体验差。
+                    1、采用ajax的页面，可以实现页面的局部更新，而不是整个页面的更新；2、并且发起请求后，用户还可以进行页面上的其他操作。这就是异步的方式。3、客户端和服务端间只传递需要的数据，效率高，用户体验性好。 4、并且Ajax引擎在客户端运行，承担了一部分本来由服务器承担的工作，从而减少了大用户量下的服务器负载。</p>
+            </section>
+            <section>
+                <p>Ajax的工作原理</p>
+                <p>“XHR”（浏览器内置对象”XMLHttpRequest ”），也就是Ajax功能实现所依赖的对象，AJAX就是通过浏览器的内置对象XMLHttpResquest来发送异步请求的，异步请求不会妨碍客户端的任何操作。</p>
+                <p>异步： XHR相当于是一个通信兵，来负责客户端与服务器之间的通信传输。</p>
+            </section>
+            <section>
+                <h3>三、常见问题</h3>
+            </section>
+            <section>
+                <p>如何用JS发起一个请求</p>
+            </section>
+            <section>
+                <h3>四、解决方案</h3>
+                <p>1.创建一个对象 XMLHttpRequest(),为了支持ie6以及更早的版本，要 var xhr=new ActiveXObject()</p>
+                <p>2.监听请求成功后的状态变化,设置回调函数onreadystatechange，监听请求成功后的状态变化，在回调函数中，通常我们只需通过readyState === 4判断请求是否完成，如果已完成，再根据status === 200判断是否是一个成功的响应</p>
+                <p>3.设置请求参数,将请求发送到服务器，我们使用 XMLHttpRequest 对象的 open() 和 send() 方法：
+                    xhr.open(method,url,async,user,password);
+                    xhr.send();</p>
+            </section>
+            <section>
+                method：表示 HTTP 动词方法，比如GET、POST、PUT、DELETE、HEAD等。
+                url: 表示请求发送目标 URL。
+                async: 布尔值，表示请求是否为异步，默认为true。如果设为false，则send()方法只有等到收到服务器返回了结果，才会进行下一步操作。该参数可选。由于同步 AJAX 请求会造成浏览器失去响应，许多浏览器已经禁止在主线程使用，只允许 Worker 里面使用。所以，这个参数轻易不应该设为false。
+                user：表示用于认证的用户名，默认为空字符串。该参数可选。
+                password：表示用于认证的密码，默认为空字符串。该参数可选。
+            </section>
+            <section>
+             send()方法用于实际发出 HTTP 请求。它的参数是可选的，如果不带参数，就表示 HTTP 请求只包含头信息，也就是只有一个 URL，典型例子就是 GET 请求；如果带有参数，就表示除了头信息，还带有包含具体数据的信息体，典型例子就是 POST 请求。
+            </section>
+            <section>
+                <p>4.发起请求</p>
+                <p>5.操作DOM，实现动态局部刷新</p>
+            </section>
+            <section>
+                <h3>五、编码实战</h3>
+            </section>
+            <section>
+                <h3>六、拓展思考</h3>
+                <p>什么是一个完整的HTTP请求呢？</p>
+            </section>
+            <section>
+                    <p>1.建立TCP连接</p>
+                    <p>2.web浏览器向服务器发送请求命令</p>
+                    <p>3.web浏览器发送头信息</p>
+                    <p>4.web服务器应答</p>
+                    <p>5.web服务器发送应答头信息</p>
+                    <p>6.web服务器向浏览器发送数据</p>
+                    <p>7.web服务器关闭TCP连接</p>
+            </section>
+            <section>
+                <h3>七、参考文献</h3>
+            </section>
+            <section>
+                <a href="http://javascript.ruanyifeng.com/bom/ajax.html#toc3">任务五资料</a>
+                <br>
+                <br>
+            </section>
+            <section>
+                <h3>八、更多讨论</h3>
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>BY : 左昌杰</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
