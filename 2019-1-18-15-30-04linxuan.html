@@ -35,7 +35,7 @@
     <div class="reveal">
         <div class="slides">
             <section>
-                <h4>简述JS中this的指向？</h4>
+                <h4>什么是AJAX</h4>
                 <h4>分享人：林璇</h4>
             </section>
             <section>
@@ -58,25 +58,24 @@
                 <!-- <h4 style="font-family: 'Times New Roman'; text-transform:none;">什么是Ajax？</h4> -->
                 <section>
                     <p style="text-align: left;">
-                        在面向对象的语言中（例如Java,C#等)，this含义是明确且具体的，即指向当前对象
-                        <br> 一般在编译期绑定。而在javascript中，this是动态绑定的，它可以是全局对象、当前对象或者任意对象，
-                        <br> 这完全取决于函数的调用方式，并且在严格模式下也有不同，这就导致了this具备了多重含义，
-                        <br> 可以使得javascript更灵活的使用。但是，带来了灵活性的同时也会给我们初学者带来不少困惑。即使是细微的语法变化，都有可能意外改变this的值。
-                        <!-- <br>在JS中有多种页面传递参数的方法： -->
-                        <!-- <br>一、URL -->
-                        <!-- <br>把参数值附在url后面传递到其他页面 -->
-                        <!-- <br>二、H5 web storage -->
-                        <!-- <br>localStroage 和 sessionStorage -->
+                        什么是Ajax？
+                        <br> Ajax就是用 JS 发起一个请求，并得到服务器返回的内容。
+                        <br> 这跟以前的技术最大的不同点在于「页面没有刷新」，改善了用户体验，仅此而已。
+                        <br> 首先，speak with me, 诶债克斯，别读成阿贾克斯了哦~。
+                        <br>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）
+                        <br>AJAX 不是新的编程语言，而是一种使用现有标准的新方法。
+                        <br>AJAX 最大的优点是在不重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。
+                        <br>AJAX 不需要任何浏览器插件，但需要用户允许JavaScript在浏览器上执行。
                     </p>
                 </section>
-                <section>
+                <!-- <section>
                     <p style="text-align: left;">
-                        <!-- 三、Cookie -->
-                        <!-- <br> 使用浏览器Cookie传递参数 -->
-                        <!-- <br>四、Form 表单 -->
-                        <!-- <br>Form表单通过URL传递参数 -->
+                        查找 HTML 元素
+                        <br> 通过 id 找到 HTML 元素
+                        <br>通过标签名找到 HTML 元素
+                        <br>通过类名找到 HTML 元素
                     </p>
-                </section>
+                </section> -->
             </section>
             <section>
                 <h3>2.知识剖析</h3>
@@ -85,226 +84,78 @@
             <section>
                 <section>
                     <p style="text-align: left;">
-                        JSON (JavaScript Object Notation, JS 对象标记) 是一种轻量级的数据交换格式。
+                        那么我们如何发送一个ajax请求呢？
                         <br> 1&gt;.
-                        <br>相比 XML 格式，JSON 格式有两个显著的优点：书写简单，一目了然；符合 JavaScript
-                        <br>
+                        <br> 1. 创建一个对象 XMLHttpRequest
+                        <br>var xhr = new XMLHttpRequest();为了支持ie6以及更早的版本，要 var xhr=new ActiveXObject()
+                        <br>2.监听请求成功后的状态变化
+                        <br>3.设置请求参数
+                        <br>4.发起请求
+                        <br>5.操作DOM，实现动态局部刷新
+                        <br>而什么是一个完整的HTTP请求呢？
                     </p>
                 </section>
                 <section style="font-family: 'Times New Roman'; text-transform:none;">
                     <p style="text-align: left;">
-                        JavaScript中函数的调用有以下几种方式：作为对象方法调用，作为函数调用，作为构造函数调用，和使用apply 或 call 调用。
-                        <br>下面我们将按照调用方式的不同，分别讨论this 的含义
-                        <br>// console.log(this === window);  //true  // console.log(window.a);  //37// 
-                        <br>无论是否在严格模式下，在全局执行上下文中（在任何函数体外部）this 都指代全局对象。
-                        <!-- <br>字符串必须使用双引号表示，不能使用单引号。
-                        <br>对象的键名必须放在双引号里面。
-                        <br>数组或对象最后一个成员的后面，不能加逗号。
-                        <br>ps:注意，null、空数组和空对象都是合法的 JSON 值。 -->
+                        一个完整的请求由四部分组成
+                        <br>接下来，我们就要监听请求成功的状态变化了
+                        <br>onreadystatechange：用来监听readyState的变化的
+                        <br>readyState：表示当前请求的后台的状态
+                        <br>status：表示处理的结果
+                        <br>其中readyState：表示当前请求的后台的状态
                     </p>
                 </section>
                 <section style="font-family: 'Times New Roman'; text-transform:none;">
                     <p style="text-align: left;">
-                        2.函数上下文
-                        <br>// function makeNoSense(x)  
-                        <br>{//     this.x = x;// }
-                        <br>//// makeNoSense(5);
-                        <br>// console.log(x);//
-                        <br> window里的x(就是该全局对象)
+                        0：请求未初始化(还没有调用open())
+                        <br>1：请求已经建立，但是还没有发送(还没有调用send())
+                        <br>2：请求已经发送，正在处理中
                     </p>
                 </section>
                 <section style="font-family: 'Times New Roman'; text-transform:none;">
                     <p style="text-align: left;">
-                        <br>3.bind方法
-                        <br>// function f()
-                        <br>{    return this.a; }
-                        <br>var g = f.bind({a:"matt"});
-                        <br>// console.log(g());
-                        <br>// var h = g.bind({a:'Danny'});
-                        <br>// console.log(h());//
-                        <br>bind只生效一次//调用f.bind(someObject)会创建一个与f具有相同函数体和作用域的函数但是在这个新函数中，this将永久地被绑定到了bind的第一个参数，这个参数不能被重写。
+                        3：请求正在处理中，通常响应中已经有部分数据可以用了
+                        <br>4：响应已经完成，可以获取并使用服务器的响应了
+                        <br>而status：表示处理的结果(状态码)
+                        <br>1XX，表示收到请求正在处理中
+                        <br>status == 200 是表示处理的结果是OK的
+                        <br>状态码:200到300是指服务端正常返回
                     </p>
                 </section>
                 <section style="font-family: 'Times New Roman'; text-transform:none;">
                     <p style="text-align: left;">
-                        4.作为对象的方法
-                        <br>var point = {    x : 0,    y : 0,    moveTo : function(x, y) {        this.x = this.x + x;        this.y = this.y + y;    }};point.moveTo(1, 1);console.log(point.x);console.log(point.y);
-                        <br>在JavaScript 中，函数也是对象，因此函数可以作为一个对象的属性，此时该函数被称为该对象的方法，在使用这种调用方式时，this 被自然绑定到该对象。
+                        304:如果网页自请求者上次请求后再也没有更改过，应将服务器配置为返回此响应，进而节省带宽和开销
+                        <br>404:找不到对象（404 not found)
+                        <br>503:服务器超时
+                        <br>设置请求参数
+                        <br>xhr对象接受三个参数 
+                        <br>1：表示请求类型
+                        <br>2：表示请求的网址
+                        <br>3：表示是否异步
+                        <br>get/post/put/delete
+                        <br>Get和post方法的区别：
+                        <br>get是获取数据，get的send方法的参数可以是null或者空，对发送信息有限制，一般在2000个字符，一般是用来查询（幂等） 
+                        <br>post可以发送数据，但是在使用post方法发送数据，
                     </p>
                 </section>
                 <section style="font-family: 'Times New Roman'; text-transform:none;">
                     <p style="text-align: left;">
-                        5.原型链中的this
-                        <br>// var o = {/ f: function() {return this.a + this.b; } }; 
-                        var p = Object.create(o);               
-                        p.a = 1;                  
-                         p.b = 4;                       
-                        console.log(p.f());
-                    </p>
-                </section>
-                <section style="font-family: 'Times New Roman'; text-transform:none;">
-                    <p style="text-align: left;">
-                        6.getter 与 setter 中的 this
-                        <br>var o = { a: 1,  b: 2, c: 3, get average()  return (this.a + this.b + this.c) / 3;}}
-                        console.log(o.average);                      
-                        用作getter 或 setter 的函数都会把 this 绑定到设置或获取属性的对象。也就是O
-                    </p>
-                </section>
-                <section style="font-family: 'Times New Roman'; text-transform:none;">
-                    <p style="text-align: left;">
-                        7.作为构造函数调用function Point(x, y)
-                        <br>{ this.x = x;this.y = y;}
-
-                        var obj=new Point(1,3);
-                        
-                        console.log(obj.x);
-                        
-                        console.log(obj.y);
-                        
-                        function C()
-                        
-                        {this.a = 37;}
-                        
-                        var o = new C();
-                        
-                        console.log(o.a);  logs 37 
-                        
-                        function C2(){ this.a = 37;return {a:38}; }
-                        
-                        o = new C2();// console.log(o);
-                        
-                         console.log(o.a); // logs 38
-                        
-                        当一个函数用作构造函数时（使用new关键字），它的this被绑定到正在构造的新对象。
-                    </p>
-                </section>
-                <section style="font-family: 'Times New Roman'; text-transform:none;">
-                    <p style="text-align: left;">
-                        8.在事件处理中
-                        <br>在事件处理中// 
-
-                        $(document).ready(function ()
-                        
-                         { $(".blue").click(function () 
-                        
-                        { $(this).css("background-color","orange"); }) });
-                        
-                        它的this指向触发事件的元素
-                        
-                        当我们点击的时候,this指向了触发时间的p元素。
-                    </p>
-                </section>
-                <section style="font-family: 'Times New Roman'; text-transform:none;">
-                    <p style="text-align: left;">
-                        9.作为一个内联事件处理函数
-                        <br>它的this指向监听器所在的DOM元素
-
-                        button onclick="alert(this.tagName.toLowerCase());">
-                            Show this
-                        button
-                        div它的this指向监听器所在的DOM元素
-                        button onclick="alert((function(){return this})());"
-                            Show inner this
-                        没有设置内部函数的this，所以它指向 global/window 对象
-                        虽然this只是JavaScript 中一个很小的概念，但借此我们可以深入了解 JavaScript 中函数的执行环境，而这是理解闭包等其他概念的基础。掌握了这些概念，才能充分发挥 JavaScript 的特点，才会发现 JavaScript 语言特性的强大。
+                        <br>需要使用setRequestHeader()来添加HTTP头，同时，post的send()方法需要写入要发送的数据的值, 
+                        <br>一般用于修改服务器上的资源，对信息数量无限制，也更安全
                     </p>
                 </section>
             </section>
             <section>
                 <h3>3.常见问题</h3>
-                <br>内部函数
-
-                var point = {
-                
-                x :0,
-                
-                y :0,
-                
-                moveTo :function(x, y) {
-                
-                // 内部函数
-                
-                        var moveX =function(x) {
-                
-                this.x = x;//this 绑定到了哪里？
-                
-                        };
-                
-                // 内部函数
-                
-                        var moveY =function(y) {
-                
-                this.y = y;//this 绑定到了哪里？
-                
-                        };
-                
-                moveX(x);
-                
-                moveY(y);
-                
-                }
-                
-                };
-                
-                point.moveTo(1,1);
-                
-                // console.log(point.x);
-                
-                // console.log(point.y);
-                
-                console.log(x);
-                
-                console.log(y);
-                
-                这属于 JavaScript 的设计缺陷，正确的设计方式是内部函数的this 应该绑定到其外层函数对应的对象上，
-                为了规避这一设计缺陷，聪明的 JavaScript 程序员想出了变量替代的方法，约定俗成，该变量一般被命名为 that
+                <br>使用post提交需要忘记content-type的问题
             </section>
+
             <section>
                 <h3>4.解决方案</h3>
-                <p> var point = {
-
-                    x :0,
-                    
-                    y :0,
-                    
-                    moveTo :function(x, y) {
-                    
-                    var that =this;
-                    
-                    // 内部函数
-                    
-                            var moveX =function(x) {
-                    
-                    that.x = x;
-                    
-                    };
-                    
-                    // 内部函数
-                    
-                            var moveY =function(y) {
-                    
-                    that.y = y;
-                    
-                    };
-                    
-                    moveX(x);
-                    
-                    moveY(y);
-                    
-                    }
-                    
-                    };
-                    
-                    point.moveTo(1,1);
-                    
-                    console.log(point.x);
-                    
-                    console.log(point.y);
-                    
-                    console.log(x);
-                    
-                    console.log(y);
-                </p>
+                <p>xhr.open("post", "/carrots-admin-ajax/a/login",true);
+                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    xhr.send("name=" + name + "&pwd=" + code);
+                    Content-type要作为请求头放在open和send之间</p>
             </section>
             <section class="" style="top: 275px; display: none;" aria-hidden="true">
                 <h6>
@@ -314,9 +165,57 @@
             </section>
             <section>
                 <h3>5.编码实战</h3>
+                <p>var xhr = new XMLHttpRequest();
+                    function ip() {
+                        var name = $("#name").val();
+                        var code = $("#code").val();
+                    // 指定通信过程中状态改变时的回调函数
+                        xhr.open("post", "/carrots-admin-ajax/a/login",true);
+                        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                        xhr.send("name=" + name + "&pwd=" + code);
+                        xhr.onreadystatechange = function () {
+                    
+                            if (xhr.readyState == 4) {
+                                if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                                    if (JSON.parse(xhr.responseText).code >= 0) {
+                                        window.location.href = "http://dev.admin.carrots.ptteng.com/";
+                                    } else {
+                                        $(".alert").html("该用户不存在或密码不正确");
+                                    }
+                                }
+                            }
+                        };
+                    }
+                    
+                    $(function () {
+                        $("#summit").click(function () {
+                            var name = $("#name").val();
+                            var code = $("#pwd").val();
+                            $.ajax({
+                                type: "POST",
+                                url: "/carrots-admin-ajax/a/login",
+                                data: {
+                                    "name": name,
+                                    "pwd": code
+                                },
+                                // beforeSend: function(xhr){xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");},
+                                datatype:"json",
+                                success: function (data) {
+                                    console.log(data);
+                                    if (JSON.parse(data).code==0) {
+                                        alert(JSON.parse(data).message);
+                                    }
+                                    else {
+                                        alert(JSON.parse(data).message)
+                                    }
+                                }
+                            })
+                        })
+                    });</p>
             </section>
             <section>
                 <h3>6.扩展思考</h3>
+                <p>Ajax有什么优点和缺点？</p>
             </section>
             <section>
                 <section class="past" style="top: 278.5px; display: none;" hidden="" aria-hidden="true">
@@ -324,10 +223,10 @@
                 </section>
                 <section class="past" style="top: 0px; display: none;" hidden="" aria-hidden="true">
                     <p style="text-align: left;">
-                        <br> 如何能加深记忆？（this永远指向的是最后调用它的对象，也就是看它执行的时候是谁调用的。）
-
-                        严格模式下的this
-
+                            <!-- 绑定事件的方式有哪些
+                        <br>方式一：直接绑定匿名函数
+                        <br>方式二：先单独定义函数，再绑定
+                        <br>方式三：行内绑定 -->
                         <span ng-bind="goods.goodsID"></span>
                         <!-- <br> 6.
                         <span ng-bind="goods.goodsPrice*goods.count"></span> 总价就是单价乘以数量
@@ -357,27 +256,30 @@
 
             </section>
             <section>
-                <p> 1.如果想让一个this指向函数内部，但是它指向了全局，有什么办法让它指向函数内部？
+                <p> 1. 请求体是什么？
                     <br>
                 </p>
                 <p>
-                   2.内联元素的this可以再讲一下吗？
+                    2.xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                        application/x-www-form-urlencoded代表什么意思？
                 </p>
                 <p>
-                    3.简单说一下this 到底有几种指向？
+                    3.jQuery如何设置接受的数据类型？
                 </p>
             </section>
             <section style="text-align:left">
                 <p>
-                    使用call方法或者apply方法给它指定this，或者把他作为对象的方法调用
-                </p>
+                    请求体将一个页面表单中的组件值通过param1=value1¶m2=value2的键值对形式编码成一个格式化串，它承载多个请求参数的数据。不但报文体可以传递请求参数，请求URL也可以通过类似于“/chapter15/user.html? param1=value1¶m2=value2”的方式传递请求参数。
                 <p>
-                    内联元素中的this指向了它所在的dom对象，没有设置内部函数的this，所以它指向 global/window 对象
-                </p>
-                <p>
-                     我们重点掌握作为对象方法调用，作为函数调用，作为构造函数调用，和使用apply 或 call 调用这几种，其他的情况了解即可，请牢记一点，
+                    form的enctype属性为编码方式，常用有两种：application/x-www-form-urlencoded和multipart/form-data，默认为application/x-www-form-urlencoded。
 
-                        this永远指向的是最后调用它的对象，也就是看它执行的时候是谁调用的。
+                    x-www-form-urlencoded
+                    
+                    当action为get时候，浏览器用x-www-form-urlencoded的编码方式把form数据转换成一个字串（name1=value1&name2=value2…），然后把这个字串append到url后面，用?分割，加载这个新的url。
+                </p>
+                <p>
+                    3使用datatype:"json",里面写自己想要接受的数据类型
                 </p>
             </section>
             <section>
@@ -415,7 +317,6 @@
         // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
         // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
         // }
-
         // 初始化幻灯片
         Reveal.initialize({
             //        history: true,
@@ -456,7 +357,6 @@
         //    var b = a;
         //    b = false;
         //    console.log(a);
-
         //数组浅复制
         //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
         //    ];
@@ -469,20 +369,17 @@
         //    arrtoo[2] = "set Map";
         //    console.log(arr);//One,Two,Three
         //    console.log(arrtoo);//One,set Map,Three
-
         //
         //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
         //    var arrtooo = arr1.concat(111111);
         //    arrtooo[1] = "set Map To";
         //    console.log(arr1);//One,Two,Three
         //    console.log(arrtooo);//One,set Map To,Three
-
         //
         //    var b=[1,2,3,4,5];   //concat的链接
         //    var c=[6,7,8,9];
         //    var d =[4,4,22]
         //    console.log(b.concat(c,d))
-
         var a = {
             name: 'yy',
             age: 26
@@ -493,7 +390,6 @@
         b.name = 'xx';
         console.log(a); //Object { name="yy", age=26}
         console.log(b); //Object { name="xx", age=26}
-
         var d = { //对象的浅拷贝哦 第一种
             name: 'd',
             oc: {
@@ -512,7 +408,6 @@
             }
             return result
         };
-
         var c = deepCopy(d);
         c.name = 'c';
         c.oc = {
@@ -520,10 +415,6 @@
         };
         console.log(c);
         console.log(d);
-
-
-
-
         //    var person = {    //第二种深拷贝
         //        name: 'aa',
         //        friends: ['da', 'dsa', 'gf']
@@ -537,15 +428,12 @@
         //
         //    console.log(person.name);
         //    console.log(aPerson.friends)
-
         var Chinese = {
             nation: '中国'
-
         }
         var Doctor = {
             career: '医生'
         }
-
         function extendCopy(p) {
             var c = {};
             for (var i in p) {
