@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? './css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+
+<body>
+<img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>【css-14】</h2>
+            <h4>为什么要做组件库？</h4>
+            <p>分享人：何潇</p>
+        </section>
+
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+
+        <section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                组件是一个含义很大的概念，一般是指软件系统的一部分，承担了特定的职责，可以独立于整个系统进行开发和测试，一个良
+                好设计的组件应该可以在不同的软件系统中被使用(可复用)。例如V8引擎是Chrome浏览器的一部分，负责运行javascript代码
+                ，这里V8引擎就可以视为一个组件。V8引擎同时也是Node.js的javascript解释器，这体现了组件的可复用性。
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+            <section>
+                库(Library)：库是更多是一个封装好的特定的集合，提供给开发者使用，而且是特定于某一方面的集合（方法和函数），库
+                没有控制权，控制权在使用者手中，在库中查询需要的功能在自己的应用中使用，我们可以从封装的角度理解库；bootstrap、
+                jQuery、react（React和react-router, react-redux结合起来才叫框架，本身只是充当一个前端渲染的库而已）、underscore就是库
+            </section>
+            <section>
+                框架(Framework)：框架顾名思义就是一套架构，会基于自身的特点向用户提供一套相当于叫完整的解决方案，而且控制权的
+                在框架本身，使用者要找框架所规定的某种规范进行开发。angular、backbone、vue就属于框架
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>3.常见问题</h3>
+            </section>
+            <section>
+                <p>如何构建组件库？</p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>4.解决方案</h3>
+            </section>
+            <section>
+                （1）先整体后部分再颗粒化</br>
+                1.布局级别：先看大局（譬如移动端的布局，是怎么去布局，用这个布局去抽象出来几个模块）</br>
+                2.页面级别：页面页面之间的关联关系，譬如页面之间有公共的样式，这个时候布局模块里面的某一个样式</br>
+                3.功能级别：譬如很多页面都有这个按钮，但是按钮的文本以及功能是不一样的，这个时候可以站在一个大的角度去思考问题
+                ，写一个比较基  础的按钮，通过继承，重写等方式去实现不同的按钮，那么这个基础的按钮就是一个功能组件了</br>
+                4.业务级别：譬如页面中返回按钮，这个按钮通过继承功能按钮，就可以变成一个业务组件了
+                从上面看的出来是通过大到小的一个思路去写这个样式的
+            </section>
+            <section>
+                （2）先抽象再具体</br>
+                譬如很多页面，有很多的模块，但是某一个模块其实是不一样的，这个时候不要具体去看不同的，而是把这些都看成相同的东
+                西，只不过隐藏，或者增加了某一些模块的东西，这就是就可以抽离出一个组件了，然后这个组件是通过继承，重写，配置等等
+                ，实现成具体的某一个模块，这就是先抽象再具体的原理了、
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>5.代码实战</h3>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>6.拓展思考</h3>
+            </section>
+            <section>
+                1、组件的本质是什么？<br>
+                封装<br>
+            </section>
+            <section>
+                2、组件的核心意义是什么？<br>
+                高内聚低耦合，提高可扩展性<br>
+            </section>
+            <section>
+                3、组件有哪些作用？<br>
+                回答：解决资源整合问题、增强功能促进开发效率。提高可维护性，便于协同开发
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>7.参考文献</h3>
+                <p>参考一：<a href="https://blog.csdn.net/u014036123/article/details/53174906">前端为什么要做组件化</a></p>
+                <p>参考二：<a href="https://blog.csdn.net/qq_24930743/article/details/79215170">组件化学习总结三——css设计</a></p>
+            </section>
+        </section>
+
+        <section>
+            <h3>8.更多讨论</h3>
+            模块和组件经常混淆，今天介绍的是组件库，那什么是模块化呢，如果实现模块化呢？
+        </section>
+
+        <section>
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>BY : 何潇</small>
+            </p>
+        </section>
+    </div>
+</div>
+
+<script src="./lib/reveal/js/head.min.js"></script>
+<script src="./lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            { src: './plugin/markdown/marked.js' },
+            { src: './plugin/markdown/markdown.js' },
+            { src: './plugin/notes/notes.js', async: true },
+            { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>
