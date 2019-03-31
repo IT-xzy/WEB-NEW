@@ -35,7 +35,7 @@
     <div class="reveal">
         <div class="slides">
             <section>
-                <h4>什么是AJAX</h4>
+                <h4>如何使用PostMan？</h4>
                 <h4>分享人：林璇</h4>
             </section>
             <section>
@@ -58,14 +58,14 @@
                 <!-- <h4 style="font-family: 'Times New Roman'; text-transform:none;">什么是Ajax？</h4> -->
                 <section>
                     <p style="text-align: left;">
-                        什么是Ajax？
-                        <br> Ajax就是用 JS 发起一个请求，并得到服务器返回的内容。
-                        <br> 这跟以前的技术最大的不同点在于「页面没有刷新」，改善了用户体验，仅此而已。
-                        <br> 首先，speak with me, 诶债克斯，别读成阿贾克斯了哦~。
-                        <br>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）
-                        <br>AJAX 不是新的编程语言，而是一种使用现有标准的新方法。
-                        <br>AJAX 最大的优点是在不重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。
-                        <br>AJAX 不需要任何浏览器插件，但需要用户允许JavaScript在浏览器上执行。
+                       什么是PostMan？
+                        <br> 用户在开发或者调试网络程序或者是网页B/S模式的程序的时候是需要一些方法来跟踪网页请求的
+                        <br> 用户可以使用一些网络的监视工具比如著名的Firebug等网页调试工具。
+                        <br> 今天给大家介绍的这款网页调试工具不仅可以调试简单的css、html、脚本等简单的网页基本信息，它还可以发送几乎所有类型的HTTP请求！
+                        <br>Postman在发送网络HTTP请求方面可以说是Chrome插件类产品中的代表产品之一。
+                        <!-- <br>AJAX 不是新的编程语言，而是一种使用现有标准的新方法。 -->
+                        <!-- <br>AJAX 最大的优点是在不重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。 -->
+                        <!-- <br>AJAX 不需要任何浏览器插件，但需要用户允许JavaScript在浏览器上执行。 -->
                     </p>
                 </section>
                 <!-- <section>
@@ -84,18 +84,18 @@
             <section>
                 <section>
                     <p style="text-align: left;">
-                        那么我们如何发送一个ajax请求呢？
+                        那么我们如何发送一个请求呢？
                         <br> 1&gt;.
-                        <br> 1. 创建一个对象 XMLHttpRequest
-                        <br>var xhr = new XMLHttpRequest();为了支持ie6以及更早的版本，要 var xhr=new ActiveXObject()
-                        <br>2.监听请求成功后的状态变化
-                        <br>3.设置请求参数
-                        <br>4.发起请求
-                        <br>5.操作DOM，实现动态局部刷新
-                        <br>而什么是一个完整的HTTP请求呢？
+                        <br> 1. 在软件的页面上进行选择
+                        <br>发送的方式
+                        <br>2.接口请求的历史纪录
+                        <br>3.看看接口集
+                        <br>4.相应测试
+                        <br>5.请求参数和相应状态码
+                        <br>相应的内容
                     </p>
                 </section>
-                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <!-- <section style="font-family: 'Times New Roman'; text-transform:none;">
                     <p style="text-align: left;">
                         一个完整的请求由四部分组成
                         <br>接下来，我们就要监听请求成功的状态变化了
@@ -143,19 +143,15 @@
                         <br>需要使用setRequestHeader()来添加HTTP头，同时，post的send()方法需要写入要发送的数据的值, 
                         <br>一般用于修改服务器上的资源，对信息数量无限制，也更安全
                     </p>
-                </section>
+                </section> -->
             </section>
             <section>
                 <h3>3.常见问题</h3>
-                <br>使用post提交需要忘记content-type的问题
-            </section>
-
+                <br>返回的都是看不懂的数据怎么办
+            </section>    
             <section>
                 <h3>4.解决方案</h3>
-                <p>xhr.open("post", "/carrots-admin-ajax/a/login",true);
-                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                    xhr.send("name=" + name + "&pwd=" + code);
-                    Content-type要作为请求头放在open和send之间</p>
+                <p>点击JSON格式就可以</p>
             </section>
             <section class="" style="top: 275px; display: none;" aria-hidden="true">
                 <h6>
@@ -165,57 +161,24 @@
             </section>
             <section>
                 <h3>5.编码实战</h3>
-                <p>var xhr = new XMLHttpRequest();
-                    function ip() {
-                        var name = $("#name").val();
-                        var code = $("#code").val();
-                    // 指定通信过程中状态改变时的回调函数
-                        xhr.open("post", "/carrots-admin-ajax/a/login",true);
-                        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                        xhr.send("name=" + name + "&pwd=" + code);
-                        xhr.onreadystatechange = function () {
-                    
-                            if (xhr.readyState == 4) {
-                                if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
-                                    if (JSON.parse(xhr.responseText).code >= 0) {
-                                        window.location.href = "http://dev.admin.carrots.ptteng.com/";
-                                    } else {
-                                        $(".alert").html("该用户不存在或密码不正确");
-                                    }
-                                }
-                            }
-                        };
-                    }
-                    
-                    $(function () {
-                        $("#summit").click(function () {
-                            var name = $("#name").val();
-                            var code = $("#pwd").val();
-                            $.ajax({
-                                type: "POST",
-                                url: "/carrots-admin-ajax/a/login",
-                                data: {
-                                    "name": name,
-                                    "pwd": code
-                                },
-                                // beforeSend: function(xhr){xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");},
-                                datatype:"json",
-                                success: function (data) {
-                                    console.log(data);
-                                    if (JSON.parse(data).code==0) {
-                                        alert(JSON.parse(data).message);
-                                    }
-                                    else {
-                                        alert(JSON.parse(data).message)
-                                    }
-                                }
-                            })
-                        })
-                    });</p>
+                <!-- <p></p> -->
             </section>
             <section>
                 <h3>6.扩展思考</h3>
-                <p>Ajax有什么优点和缺点？</p>
+                <p>PostMan的优点和缺点？</p>
+                <p>优点:门槛低,上手快
+                    优点: 脚本语言是js
+                    优点:自带各种代码模块
+                    优点:跨平台
+                    优点: 免费版就已经非常强大了,支持http,https协议
+                    优点:有命令行版本,newman,方便放在服务器上运行,或者jenkins做持续集成
+                    优点: 支持抓包,保存历史记录,多终端同步用例
+                    优点: 支持读取数据文件,json,csv
+                    优点:支持json Schema校验
+                    优点: 如果项目有Swagger生成API文档,JSON文件可以直接导入Postman来生成用例
+                    不支持:通过url搜索用例,通过命令行传参修改环境变量,不能指定执行失败的测试用例
+                    不理想:不能操作文件相关的操作,不能读写数据库,不能使用非HTTP协议
+                    不理想:封装公共函数,引入第三方,自己写的js库,用例间的跳转,重试等.</p>
             </section>
             <section>
                 <section class="past" style="top: 278.5px; display: none;" hidden="" aria-hidden="true">
@@ -256,30 +219,26 @@
 
             </section>
             <section>
-                <p> 1. 请求体是什么？
+                <p> 1. 在Iterations重复运行时，如果某个用例希望每次运行时，使用不同的数据，那么应该满足如下什么条件？
                     <br>
                 </p>
                 <p>
-                    2.xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-                        application/x-www-form-urlencoded代表什么意思？
+                    2.”Status code:Code is 200”，这句话是什么意思
                 </p>
                 <p>
-                    3.jQuery如何设置接受的数据类型？
+                    3.form-data是什么意思？
                 </p>
             </section>
             <section style="text-align:left">
                 <p>
-                    请求体将一个页面表单中的组件值通过param1=value1¶m2=value2的键值对形式编码成一个格式化串，它承载多个请求参数的数据。不但报文体可以传递请求参数，请求URL也可以通过类似于“/chapter15/user.html? param1=value1¶m2=value2”的方式传递请求参数。
-                <p>
-                    form的enctype属性为编码方式，常用有两种：application/x-www-form-urlencoded和multipart/form-data，默认为application/x-www-form-urlencoded。
+                    1、脚本中要用到数据的地方参数化，即用一个变量来代替，每次运行时，重新获取当前的运行数据。
 
-                    x-www-form-urlencoded
-                    
-                    当action为get时候，浏览器用x-www-form-urlencoded的编码方式把form数据转换成一个字串（name1=value1&name2=value2…），然后把这个字串append到url后面，用?分割，加载这个新的url。
+                    2、需要有一个数据池，这个数据池里的数据条数，要与重复运行的次数相同。
+                <p>
+                    名称为”Status code is 200”的断言中，判断responseCode对象的code属性值是否为200
                 </p>
                 <p>
-                    3使用datatype:"json",里面写自己想要接受的数据类型
+                    3是一种传参方式这种方式需要在header里面声明Content-Type，然后再添加表单内容，另外需要注意的是，有文件上传操作的时候，是可以使用表单上传的，参数里面是可以选择文件的。后端获取的时候要注意，有些框架对同时存在参数和文件的请求获取顺序是有要求的，必须先获取文件再获取其他参数，不然会报错
                 </p>
             </section>
             <section>
