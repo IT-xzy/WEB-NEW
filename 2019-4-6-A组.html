@@ -35,8 +35,8 @@
     <div class="reveal">
         <div class="slides">
             <section>
-                <h4>如何使用PostMan？</h4>
-                <h4>分享人：林璇</h4>
+                <h4>BFC(Block Formatting Context) 的原理以及特性</h4>
+                <h4>分享人：林钟远</h4>
             </section>
             <section>
                 <p>目录</p>
@@ -58,23 +58,21 @@
                 <!-- <h4 style="font-family: 'Times New Roman'; text-transform:none;">什么是Ajax？</h4> -->
                 <section>
                     <p style="text-align: left;">
-                       什么是PostMan？
-                        <br> 用户在开发或者调试网络程序或者是网页B/S模式的程序的时候是需要一些方法来跟踪网页请求的
-                        <br> 用户可以使用一些网络的监视工具比如著名的Firebug等网页调试工具。
-                        <br> 今天给大家介绍的这款网页调试工具不仅可以调试简单的css、html、脚本等简单的网页基本信息，它还可以发送几乎所有类型的HTTP请求！
-                        <br>Postman在发送网络HTTP请求方面可以说是Chrome插件类产品中的代表产品之一。
-                        <!-- <br>AJAX 不是新的编程语言，而是一种使用现有标准的新方法。 -->
-                        <!-- <br>AJAX 最大的优点是在不重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。 -->
-                        <!-- <br>AJAX 不需要任何浏览器插件，但需要用户允许JavaScript在浏览器上执行。 -->
+                        BFC是什么？
+                        <br>BFC全称”Block Formatting Context”, 中文为“块级格式化上下文”。
+                        <br>
+                        <br>听着很高大上，其实简单的来说，就是这么一句话：
+                        <br>
+                        <br>BFC元素特性表现原则就是，内部子元素再怎么翻江倒海，都不会影响外部的元素。使每个盒子独立于其他。
+                        <br>
+                        <br>那么究竟是如何做到如此淡定，不受外界影响的呢？
+                        <br>
+                        <br>NEXT
                     </p>
                 </section>
                 <!-- <section>
-                    <p style="text-align: left;">
-                        查找 HTML 元素
-                        <br> 通过 id 找到 HTML 元素
-                        <br>通过标签名找到 HTML 元素
-                        <br>通过类名找到 HTML 元素
-                    </p>
+
+
                 </section> -->
             </section>
             <section>
@@ -84,17 +82,18 @@
             <section>
                 <section>
                     <p style="text-align: left;">
-                        那么我们如何发送一个请求呢？
-                        <br> 1&gt;.
-                        <br> 1. 在软件的页面上进行选择
-                        <br>发送的方式
-                        <br>2.接口请求的历史纪录
-                        <br>3.看看接口集
-                        <br>4.相应测试
-                        <br>5.请求参数和相应状态码
-                        <br>相应的内容
+                        首先我们得清楚，什么时候会触发BFC？ 你肯定用过，但是可能身在庐山，不知其真面目
+                        <br>
+                        <br>（1）float，值不为none
+                        <br>
+                        <br>（2）overflow，当它的值为auto，scroll，或hidden
+                        <br>
+                        <br>（3）display的值为table-cell，table-caption，inline-block
+                        <br>
+                        <br>（4）position的值为absolute或fixed
                     </p>
                 </section>
+                <!-- 切换到下面 -->
                 <!-- <section style="font-family: 'Times New Roman'; text-transform:none;">
                     <p style="text-align: left;">
                         一个完整的请求由四部分组成
@@ -143,110 +142,113 @@
                         <br>需要使用setRequestHeader()来添加HTTP头，同时，post的send()方法需要写入要发送的数据的值, 
                         <br>一般用于修改服务器上的资源，对信息数量无限制，也更安全
                     </p>
-                </section> -->
+                </section>
+            </section> -->
+                <section>
+                    <h3>3.常见问题</h3>
+                    <br>(1)高度塌陷问题 <a href="BFC-high.html" target="blank">DEMO-高度塌陷</a>
+                    <p>我们在布局中可能会遇到下面这种情况，一个父级大盒子，包着三个小盒子，然后给小盒子添加浮动后，大盒子就消失了
+                        一般我们遇到这种情况会考虑到清除浮动
+                    </p>
+                    <br>
+                    <br>
+
+                </section>
+
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+
+                    <br>(2)文字环绕 <a href="BFC-text.html" target="blank">DEMO-环绕</a>
+                    <p>来看下面这个demo-2，文字环绕在图片边，但是如果文字内容太多了，超过了图片的高度，它就会跑到图片的下面，这样非常影响美观和整体性</p>
+
+                    <p>这里有一个细节，如果我们想让图片和文字之间留一个间距，有人可能会让旁边的文字加一个margin-left，但是发现不管用！</p>
+                  
+                    <p> 但是这并不是最佳方案，我们其实可以很简单的给图片加一个margin-right，或者给文字加一padding-left就能解决， 这就是BFC盒子与浮动元素并排的表现</p>
+
+                </section>
+
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+
+                    <br>(3)margin重叠的问题  <a href="BFC-margin.html" target="blank">DEMO-重叠</a>
+                    <p>
+                        在一些垂直的布局里，上下和盒子的margin值会重叠
+                    </p>
+
+                </section>
+
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+
+                    <br>(4)总结一下BFC大家族的“顶梁柱”  
+                    <p>
+                        1.overflow: auto/hidden  <br>
+                        2.display:inline-block   <br>
+                        3.display:table-cell     <br>
+                    </p>
+
+                </section>
+
+
             </section>
-            <section>
-                <h3>3.常见问题</h3>
-                <br>返回的都是看不懂的数据怎么办
-            </section>    
-            <section>
+
+            <!-- <section>
                 <h3>4.解决方案</h3>
-                <p>点击JSON格式就可以</p>
+                <p>xhr.open("post", "/carrots-admin-ajax/a/login",true);
+                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    xhr.send("name=" + name + "&pwd=" + code);
+                    Content-type要作为请求头放在open和send之间</p>
             </section>
             <section class="" style="top: 275px; display: none;" aria-hidden="true">
+              
                 <h6>
                     <a href="https://ptteng.github.io/WEB/demo/angular%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3%E6%98%AF%E4%BB%80%E4%B9%88/demo2.html"
                         target="_blank">demo</a>
                 </h6>
-            </section>
+            </section> -->
+
             <section>
                 <h3>5.编码实战</h3>
-                <!-- <p></p> -->
+                <p>正文已展示</p>
             </section>
+
             <section>
                 <h3>6.扩展思考</h3>
-                <p>PostMan的优点和缺点？</p>
-                <p>优点:门槛低,上手快
-                    优点: 脚本语言是js
-                    优点:自带各种代码模块
-                    优点:跨平台
-                    优点: 免费版就已经非常强大了,支持http,https协议
-                    优点:有命令行版本,newman,方便放在服务器上运行,或者jenkins做持续集成
-                    优点: 支持抓包,保存历史记录,多终端同步用例
-                    优点: 支持读取数据文件,json,csv
-                    优点:支持json Schema校验
-                    优点: 如果项目有Swagger生成API文档,JSON文件可以直接导入Postman来生成用例
-                    不支持:通过url搜索用例,通过命令行传参修改环境变量,不能指定执行失败的测试用例
-                    不理想:不能操作文件相关的操作,不能读写数据库,不能使用非HTTP协议
-                    不理想:封装公共函数,引入第三方,自己写的js库,用例间的跳转,重试等.</p>
+                <p>清除浮动，给伪元素加上display:table ; clear:both 大家有没有想过，为什么是display:table，必须是它吗？</p>
+
+                <br>
+
+                <p>那又为什么一定要改变display属性呢？</p>
+
+                <p>这又要牵扯到clear；both清除浮动的特性了</p>
+
+                <p>clear属性只有块级元素才有效（注意：行内块inline-block也不可以）因为 after伪元素默认的是内联水平，所以我们需要借助display来改变这一现状</p>
+
+
             </section>
-            <section>
-                <section class="past" style="top: 278.5px; display: none;" hidden="" aria-hidden="true">
-                    <h5></h5>
-                </section>
-                <section class="past" style="top: 0px; display: none;" hidden="" aria-hidden="true">
-                    <p style="text-align: left;">
-                            <!-- 绑定事件的方式有哪些
-                        <br>方式一：直接绑定匿名函数
-                        <br>方式二：先单独定义函数，再绑定
-                        <br>方式三：行内绑定 -->
-                        <span ng-bind="goods.goodsID"></span>
-                        <!-- <br> 6.
-                        <span ng-bind="goods.goodsPrice*goods.count"></span> 总价就是单价乘以数量
-                        <br> 7.
-                        <span ng-bind="goods.goodsPrice*goods.count| currency"></span> 单价和总价格式化成美元形式。 -->
-                        <br>
-                        <br>
-                        <br>
-                    </p>
-                </section>
-            </section>
+
+
 
             <section>
                 <h3>7.参考文献</h3>
             </section>
             <section style="text-align:left">
                 <h6>
-                    <a>博客</a>
+                    <a>张鑫旭大神的博客</a>
                 </h6>
                 <h6>
-                    <a>b站视频</a>
+                    <a>《CSS世界》</a>
                 </h6>
 
             </section>
-            <section>
+            <!-- <section>
                 <h3>8.更多讨论</h3>
 
-            </section>
-            <section>
-                <p> 1. 在Iterations重复运行时，如果某个用例希望每次运行时，使用不同的数据，那么应该满足如下什么条件？
-                    <br>
-                </p>
-                <p>
-                    2.”Status code:Code is 200”，这句话是什么意思
-                </p>
-                <p>
-                    3.form-data是什么意思？
-                </p>
-            </section>
-            <section style="text-align:left">
-                <p>
-                    1、脚本中要用到数据的地方参数化，即用一个变量来代替，每次运行时，重新获取当前的运行数据。
+            </section> -->
 
-                    2、需要有一个数据池，这个数据池里的数据条数，要与重复运行的次数相同。
-                <p>
-                    名称为”Status code is 200”的断言中，判断responseCode对象的code属性值是否为200
-                </p>
-                <p>
-                    3是一种传参方式这种方式需要在header里面声明Content-Type，然后再添加表单内容，另外需要注意的是，有文件上传操作的时候，是可以使用表单上传的，参数里面是可以选择文件的。后端获取的时候要注意，有些框架对同时存在参数和文件的请求获取顺序是有要求的，必须先获取文件再获取其他参数，不然会报错
-                </p>
-            </section>
             <section>
                 <h4>鸣谢</h4>
                 <p>感谢大家观看</p>
                 <p>
                     By
-                    <small style="vertical-align: middle">林璇</small>
+                    <small style="vertical-align: middle">林钟远</small>
                 </p>
 
             </section>
@@ -393,6 +395,7 @@
         var Doctor = {
             career: '医生'
         }
+
         function extendCopy(p) {
             var c = {};
             for (var i in p) {
