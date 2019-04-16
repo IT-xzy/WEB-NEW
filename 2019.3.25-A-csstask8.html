@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+
+        p.font {
+            text-align: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+<img src="img/2018-11-16-A-css01/logo.png" alt="" usemap="#pttmap" class="base-logo" style="visibility: hidden">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+            <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.794571);">
+                <section class="present" style="top: 234px; display: block;">
+                    <h3>【CSS-task-14】 为什么要做组件库？</h3>
+
+                    <p style="text-align: center;">分享人：崔浩然</p>
+
+                </section>
+                <section class="future" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+                    <p>目录</p>
+                    <p>1. 背景介绍</p>
+                    <p>2. 知识剖析</p>
+                    <p>3. 常见问题</p>
+                    <p>4. 解决方案</p>
+                    <p>5. 编码实战</p>
+                    <p>6. 扩展思考</p>
+                    <p>7. 参考文献</p>
+                    <p>8. 更多讨论</p>
+                </section>
+                <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <h3>一、背景介绍</h3>
+                </section>
+                <section class="future" style="top: 190px; display: none;" hidden="" aria-hidden="true">
+                    <p>什么是组件库</p>
+                    <p>组件库就是界面设计常用控件或元素的集合，
+                        一个好的组件库，衡量标准主要包括灵活性、复用性、全面性。
+                        前端组件库，这是一个概念，也是一种技术。</p>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>二、知识剖析</h3>
+                </section>
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <p>为什么要做组件库？</p>
+                </section>
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <p>①传统开发方式效率低以及维护成本高的主要原因在于很多时候是将一个系统做成了整块应用，
+                        而且往往随着业务的增长或者变更，系统的复杂度会呈现指数级的增长，
+                        经常出现的情况就是一个小小的改动或者一个小功能的增加可能会引起整体逻辑的修改，造成牵一发而动全身。</p>
+                    <p>②组件化的初衷并非提高一致性、利于团队合作这些高大上的目的，而是人类进步的第一生产力——「懒」。
+                        消灭重复劳动是提高效率的主要途径，勤劳如小蜜蜂的设计师也不例外，那么组件化就是无论交互前端开发还是UI设计中我们不得不思考的问题。</p>
+                    <a>一句话总结来说就是提高前端开发效率，容易维护，易于纠正</a>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>三、常见问题</h3>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <p>为什么要进行组件化？</p>
+                    <p></p>
+                    <p></p>
+
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>四、解决办法</h3>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <p>从开发者角度来看：
+                        在CSS上，保证代码上的模块化，具有独立作用域；
+                        内部的布局，字体的变化(不包括颜色这类是不可控的)只由其最外层容器影响；
+                        在容器不受外部影响变化的前提下，内部容器的样式不被外部所影响。
+                        最重要的就是极大提高了工程师的编译速度。
+                        进行组件化拆分后，每个业务或者功能都是一个单独的工程，
+                        这个单独的工程可以独立编译运行，拆分后的工程通常都比较小，代码量也比较少。
+                    </p>
+                    <p>  从公司角度来看：
+                        业务划分更佳清晰，新人接手更佳容易，可以按组件分配开发任务；
+                        项目可维护性更强，提高开发效率；
+                        更好排查问题，某个组件出现问题，直接对组件进行处理；
+                        开发测试过程中，可以只编译自己那部分代码，不需要编译整个项目代码。</p>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>五、编码实战</h3>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>六、拓展思考</h3>
+                </section>
+                <section class="future" style="top: 97.5px; display: none;" hidden="" aria-hidden="true">
+                <h4>使用组件库的优缺点</h4>
+
+            </section>
+                <section class="future" style="top: 97.5px; display: none;" hidden="" aria-hidden="true">
+                    <h2>优点</h2>
+                    <p>1：极大提高工程编译速度</p>
+                    <p>2：业务模块解耦，有利于多人团队协作开发  </p>
+                    <p>业务组件之间不能相互引用，每个组件都把对应的业务功能收敛在一个工程里，彼此互不打扰。</p>
+                    <p>3：组件化是功能重用的基石</p>
+                    <p>业务组件类似一个个积木一样，我们可以用积木搭建出不同的房子，
+                        同理我们也可以创建多个不同的APP。我们只需要维护好每个组件，
+                        需要用到该组件的功能时，一建引用集成就可以了。</p>
+                </section>
+                <section class="future" style="top: 97.5px; display: none;" hidden="" aria-hidden="true">
+                    <h2>缺点</h2>
+                    <p>1:组件化开发前期可能要花费更多的时间来进行模块拆分；</p>
+                    <p>2:一个人的小项目完全没必要组件化开发，那样只会给自己带来更多的工作量；</p>
+                    <p>3:组件化可能会带来更多重复的代码；</p>
+                    <p>4:组件化需要良好的架构设计，包括怎么拆分业务，组件之间怎么通信等等，</p>
+                    <p>5:需要有个高水平的架构师统筹全局，经验不足的同学盲目进行组件化反而会适得其反，带来更多的麻烦；</p>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>七、参考文献</h3>
+                </section>
+                <section class="future" style="top: 178px; display: none;" hidden="" aria-hidden="true">
+                    <p>参考一：<a href="https://blog.csdn.net/qq_42774426/article/details/8660091">前端框架及组件库选型分析</a></p><br>
+                    <p>参考二： <a href="http://blog.sina.com.cn/s/blog_67f70dd80102xpem.html">前端为什么一定要做组件化</a></p><br>
+
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>八、更多讨论</h3>
+                </section>
+                <section class="future" style="top: 202.5px; display: none;" hidden="" aria-hidden="true">
+                    <h3>感谢观看</h3>
+                </section>
+            </div>
+        <div class="backgrounds"><div class="slide-background present" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 0px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+    【CSS-task-8】 为什么要做组件库？？
+
+                    分享人：崔浩然
+                </div></div>
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+        <script>
+            Reveal.initialize({
+                history: true,
+                dependencies: [{
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'
+                },
+                    {
+                        src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'
+                    },
+                    {
+                        src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js',
+                        async: true
+                    },
+                    {
+                        src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js',
+                        async: true,
+                        callback: function () {
+                            hljs.initHighlightingOnLoad();
+                        }
+                    }
+                ]
+            });
+        </script>
+    
+    </body></html>
