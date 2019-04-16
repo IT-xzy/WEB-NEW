@@ -45,7 +45,7 @@
 <div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
             <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.794571);">
                 <section class="present" style="top: 234px; display: block;">
-                    <h3>【CSS-task-8】bootstrap有哪些常用组件？</h3>
+                    <h3>【CSS-task-14】 为什么要做组件库？</h3>
 
                     <p style="text-align: center;">分享人：崔浩然</p>
 
@@ -65,51 +65,51 @@
                     <h3>一、背景介绍</h3>
                 </section>
                 <section class="future" style="top: 190px; display: none;" hidden="" aria-hidden="true">
-                    <p>什么是bootstarp?</p>
-                    <p>Bootstrap 是一个用于快速开发 Web 应用程序和网站的前端框架,是由美国  Twitter 公司开发的简洁、直观、强悍的 前端开发框架。 Bootstrap 提供了优雅的 HTML 和 CSS 规范，它即是由动态 CSS 语言  Less 写成，一直是  GitHub 上的热门开源项目   国内一些移动开发者较为熟悉的框架，如  WeX5 前端开源框架等，也是基于 Bootstrap 源码进行性能优化而来。
-                    </p>
+                    <p>什么是组件库</p>
+                    <p>组件库就是界面设计常用控件或元素的集合，
+                        一个好的组件库，衡量标准主要包括灵活性、复用性、全面性。
+                        前端组件库，这是一个概念，也是一种技术。</p>
                 </section>
                 <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
                     <h3>二、知识剖析</h3>
                 </section>
                 <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
-                    <p>什么是组件,常用组件有哪些
-                        <br>
-
+                    <p>为什么要做组件库？</p>
                 </section>
                 <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
-                    <p>
-                        组件:一般是指软件系统的一部分，承担了特定的职责，可以独立于整个系统进行开发和测试， 一个良好设计的组件应该可以在不同的软件系统中被使用(可复用)。
-                        目前常用的bootstrap组件：
-
-                        1.轮播图
-
-                        2.下拉菜单
-
-                        3.响应式导航栏
-                        <br>
-
+                    <p>①传统开发方式效率低以及维护成本高的主要原因在于很多时候是将一个系统做成了整块应用，
+                        而且往往随着业务的增长或者变更，系统的复杂度会呈现指数级的增长，
+                        经常出现的情况就是一个小小的改动或者一个小功能的增加可能会引起整体逻辑的修改，造成牵一发而动全身。</p>
+                    <p>②组件化的初衷并非提高一致性、利于团队合作这些高大上的目的，而是人类进步的第一生产力——「懒」。
+                        消灭重复劳动是提高效率的主要途径，勤劳如小蜜蜂的设计师也不例外，那么组件化就是无论交互前端开发还是UI设计中我们不得不思考的问题。</p>
+                    <a>一句话总结来说就是提高前端开发效率，容易维护，易于纠正</a>
                 </section>
                 <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
                     <h3>三、常见问题</h3>
                 </section>
                 <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
-                    <p>为什么使用 Bootstrap？</p>
-                    <p>字体颜色怎么改？</p>
-                    <p>导航栏的介绍？</p>
+                    <p>为什么要进行组件化？</p>
+                    <p></p>
+                    <p></p>
 
                 </section>
                 <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
                     <h3>四、解决办法</h3>
                 </section>
                 <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
-                    <p>1：容易上手，响应式设计</p>
-                    <p>2：移动设备优先，浏览器支持</p>
-                    <p>3：直接在开发者工具里找到其对应颜色属性进行修改</p>
-                    <p>4：导航栏是一个很好的功能，是 Bootstrap 网站的一个突出特点。
-                        导航栏在您的应用或网站中作为导航页头的响应式基础组件。
-                        导航栏在移动设备的视图中是折叠的，随着可用视口宽度的增加，导航栏也会水平展开
-                        。在 Bootstrap 导航栏的核心中，导航栏包括了站点名称和基本的导航定义样式。</p>
+                    <p>从开发者角度来看：
+                        在CSS上，保证代码上的模块化，具有独立作用域；
+                        内部的布局，字体的变化(不包括颜色这类是不可控的)只由其最外层容器影响；
+                        在容器不受外部影响变化的前提下，内部容器的样式不被外部所影响。
+                        最重要的就是极大提高了工程师的编译速度。
+                        进行组件化拆分后，每个业务或者功能都是一个单独的工程，
+                        这个单独的工程可以独立编译运行，拆分后的工程通常都比较小，代码量也比较少。
+                    </p>
+                    <p>  从公司角度来看：
+                        业务划分更佳清晰，新人接手更佳容易，可以按组件分配开发任务；
+                        项目可维护性更强，提高开发效率；
+                        更好排查问题，某个组件出现问题，直接对组件进行处理；
+                        开发测试过程中，可以只编译自己那部分代码，不需要编译整个项目代码。</p>
                 </section>
                 <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
                     <h3>五、编码实战</h3>
@@ -118,22 +118,33 @@
                     <h3>六、拓展思考</h3>
                 </section>
                 <section class="future" style="top: 97.5px; display: none;" hidden="" aria-hidden="true">
-                <h4>使用 bootstrap 是需要注意的问题</h4>
+                <h4>使用组件库的优缺点</h4>
 
             </section>
                 <section class="future" style="top: 97.5px; display: none;" hidden="" aria-hidden="true">
-                    <p>1：一定要把行和列包裹在.container中。如果不包裹，行会占据整个body，而container是固定宽度1170px</p>
-                    <p>2:Bootstrap是基于border-box为盒模型基准尺寸，即box-sizing属性为border-box</p>
-                    <p>3:在每一行中最多可以指定col-12列，指定的列越多，每一列所分得的列宽也越小.</p>
-                    <p>4:若要做成响应式的网页，千万不要让你的块级元素有固定的较大宽度</p>
-                    <p>5:负的外边距在右或下时，对独立的元素而言，周围会产生一个磁场，一右边或下边有元素，就会被吸进这个黑洞（减掉相应的外边距）；负的外边距在左或上时，会使元素左移或上移相应外边距的距离。</p>
+                    <h2>优点</h2>
+                    <p>1：极大提高工程编译速度</p>
+                    <p>2：业务模块解耦，有利于多人团队协作开发  </p>
+                    <p>业务组件之间不能相互引用，每个组件都把对应的业务功能收敛在一个工程里，彼此互不打扰。</p>
+                    <p>3：组件化是功能重用的基石</p>
+                    <p>业务组件类似一个个积木一样，我们可以用积木搭建出不同的房子，
+                        同理我们也可以创建多个不同的APP。我们只需要维护好每个组件，
+                        需要用到该组件的功能时，一建引用集成就可以了。</p>
+                </section>
+                <section class="future" style="top: 97.5px; display: none;" hidden="" aria-hidden="true">
+                    <h2>缺点</h2>
+                    <p>1:组件化开发前期可能要花费更多的时间来进行模块拆分；</p>
+                    <p>2:一个人的小项目完全没必要组件化开发，那样只会给自己带来更多的工作量；</p>
+                    <p>3:组件化可能会带来更多重复的代码；</p>
+                    <p>4:组件化需要良好的架构设计，包括怎么拆分业务，组件之间怎么通信等等，</p>
+                    <p>5:需要有个高水平的架构师统筹全局，经验不足的同学盲目进行组件化反而会适得其反，带来更多的麻烦；</p>
                 </section>
                 <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
                     <h3>七、参考文献</h3>
                 </section>
                 <section class="future" style="top: 178px; display: none;" hidden="" aria-hidden="true">
-                    <p>参考一：<a href="http://code.z01.com/v4/docs/">bootstrap4中文网</a></p><br>
-                    <p>参考二： <a href="http://www.runoob.com">菜鸟教程</a></p><br>
+                    <p>参考一：<a href="https://blog.csdn.net/qq_42774426/article/details/8660091">前端框架及组件库选型分析</a></p><br>
+                    <p>参考二： <a href="http://blog.sina.com.cn/s/blog_67f70dd80102xpem.html">前端为什么一定要做组件化</a></p><br>
 
                 </section>
                 <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
@@ -144,7 +155,7 @@
                 </section>
             </div>
         <div class="backgrounds"><div class="slide-background present" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 0px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
-    【CSS-task-8】bootstrap有哪些常用组件？
+    【CSS-task-8】 为什么要做组件库？？
 
                     分享人：崔浩然
                 </div></div>
