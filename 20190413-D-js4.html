@@ -1,0 +1,296 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+
+        p.font {
+            text-align: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+<img src="img/2018-11-16-A-css01/logo.png" alt="" usemap="#pttmap" class="base-logo" style="visibility: hidden">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+            <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.794571);">
+                <section class="present" style="top: 234px; display: block;">
+                    <h3>【JS-TASK4】如何理解JS作用域与作用域链？</h3>
+
+                    <p style="text-align: center;">分享人：刘利铭</p>
+
+                </section>
+                <section class="future" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+                    <p>目录</p>
+                    <p>1. 背景介绍</p>
+                    <p>2. 知识剖析</p>
+                    <p>3. 常见问题</p>
+                    <p>4. 解决方案</p>
+                    <p>5. 编码实战</p>
+                    <p>6. 扩展思考</p>
+                    <p>7. 参考文献</p>
+                    <p>8. 更多讨论</p>
+                </section>
+                <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <h3>一、背景介绍</h3>
+                </section>
+                <section class="future" style="top: 190px; display: none;" hidden="" aria-hidden="true">
+                    <p>什么是作用域？</p>
+                    <p style="text-align: left">&emsp;&emsp;任何程序设计语言都有作用域的概念，简单的说，作用域就是变量与函数的可访问范围，即作用域控制着变量与函数的可见性和生命周期。<br>
+                        &emsp;&emsp;在JavaScript中，变量的作用域有全局作用域和局部作用域两种。<br>
+                        &emsp;&emsp;作用域是JavaScript最重要的概念之一，想要学好JavaScript就需要理解JavaScript作用域和作用域链的工作原理；作用域链的概念对理解闭包至关重要。</p>
+                </section>
+
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>二、知识剖析</h3>
+                    <p>首先，我们得了解一下局部变量和全局变量：</p>
+                </section>
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <h3>全局变量</h3>
+                    <p style="text-align: left">全局变量：定义在函数外部的变量可以被叫做全局变量<br>
+                        全局变量对应的作用域是整个代码，即在代码的任何部分都是可以调用该变量的</p>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <h3>编码实战</h3>
+                    <p style="text-align: left"><br>
+                        var a = 1;<span style="font-size: 25px">//在函数外定义了一个变量a,这个a就是这个js里的全局变量</span><br>
+                        function ppt() {<br>
+                        &emsp; console.log(a); <span style="font-size: 25px">//打印为1，说明a可以被函数调用;</span><br>
+                        }<br>
+                        ppt();<br>
+                        console.log(a);</p>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <h3>局部变量</h3>
+                    <p style="text-align: left">
+                        局部变量：定义在函数内部的变量；<br>
+                        &emsp; &emsp; &emsp; &emsp; 但是如果变量在函数内部没有使用var来声明，那么该变量也会被认为是全局变量。<br>
+                        1，局部变量对应的作用域是函数内部，只能在函数内部使用，如果在函数外部使用就会出错<br>
+                        2，局部变量的优先级大于全局变量，即如果全局变量和局部变量名字一样，那么在函数内部局部变量会覆盖掉全局变量。<br>
+                       </p>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <h3>编码实战-局部变量</h3>
+                    <p style="text-align: left">
+                        var a = 1;<span style="font-size: 25px">//在函数外定义了一个变量a,这个a就是这个js里的全局变量</span><br>
+                        function ppt() {<br>
+                        &emsp;var b=2;<span style="font-size: 25px">//在函数里定义了一个变量b,这个b就是这个js里的局部变量</span><br>
+                        &emsp; console.log(a);<span style="font-size: 25px"> //打印为1，说明a可以被函数调用;</span><br>
+                        }<br>
+                        ppt();<br>
+                        console.log(b);<span style="font-size: 25px">//打印不为2，因为b是局部变量，如果在函数外部使用就会出错</span></p>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <h3>编码实战-不用var</h3>
+                    <p style="text-align: left">
+                        var a = 1;<span style="font-size: 25px">//在函数外定义了一个变量a,这个a就是这个js里的全局变量</span><br>
+                        function ppt() {<br>
+                        &emsp;b=2;<span style="font-size: 25px">//变量b在函数内部没有使用var来声明，那么该变量也会被认为是全局变量。</span><br>
+                        &emsp; console.log(a); <span style="font-size: 25px">//打印为1，说明a可以被函数调用;</span><br>
+                        }<br>
+                        ppt();<br>
+                        console.log(b);<span style="font-size: 25px">//打印为2，因为b现在是全局变量</span></p>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <h3>编码实战-优先级</h3>
+                    <p style="text-align: left">
+                        var a = 1;<span style="font-size: 25px">//在函数外定义了一个变量a,这个a就是这个js里的全局变量</span><br>
+                        function ppt() {<br>
+                        &emsp;a= 2;<span style="font-size: 25px">//在函数里定义了一个变量a,这个a就是这个js里的局部变量</span><br>
+                        &emsp; console.log(a); <span style="font-size: 25px">//打印为2，因为局部变量的优先级大于全局变量</span><br>
+                        }<br>
+                        ppt();<br>
+                        console.log(a);<span style="font-size: 25px">//打印为1，因为a=2这个变量是局部变量，不会被打印。</span></p>
+                </section>
+
+
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>二、知识剖析</h3>
+                    <p>然后，我们得了解执行环境以及作用域链</p>
+                </section>
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <h3>执行环境</h3>
+                    <p style="text-align: left">
+                        &emsp; &emsp;众所周知，我们码代码要有一个写代码的开发环境,同样，代码在执行过程中也需要一个执行环境<br><br>
+                        在js里函数的执行环境，就是该函数的内部。每当执行一个函数，就会进入该函数的执行环境。<br>
+                        对应的全局执行环境就是整个js内容。<br>
+
+
+                    </p>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+
+                    <p style="text-align: left">
+                        <span style="font-weight: bold"> 执行环境</span>定义了变量或函数有权访问的其他数据,决定了它们各自的行为。<br>
+                        &emsp; &emsp;每个执行环境都有一个与之广联的<span style="font-weight: bold"> 变量对象</span>，这个变量对象保存了环境所定义的所有变量和函数。<br>
+                        &emsp; &emsp;不过我们的代码没法访问这个对象。但解析器在处理数据时，在后台使用它。（可以理解为自动运行，但我们看不到）<br>
+                        当某个执行环境中的所有代码执行完毕后，改代码就被销毁，保存在其中的所有变量和函数定义也随之销毁。<br>
+                        同样，对应的全局执行环境，是直到网页关闭或浏览器关闭时，才会被销毁。<br>
+                    </p>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <p style="text-align: left">每当创建（或声明）一个函数的时候，那么会创建这个函数的作用域链，作用域链会被创建此函数的作用域中可访问的数据对象填充。</p>
+                    <img src="img/20190413-D-js2/img-one.png" height="481" width="1210"/>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <p style="text-align: left">如果函数add执行时。例：运行var total = add(5,10);</p>
+                    <p style="text-align: left">执行此函数时会创建一个称为“运行期上下文(execution context)”的内部对象， 运行期上下文定义了函数执行时的环境。<br>
+                        每个运行期上下文都有自己的作用域链，用于标识符解析，当运行期上下文被创建时，而它的作用域链初始化为当前运行函数的[[Scope]]所包含的对象。<br>
+                        这些值按照它们出现在函数中的顺序被复制到运行期上下文的作用域链中。<br>
+                        它们共同组成了一个新的对象，叫“活动对象(activation object)”，该对象包含了函数的所有局部变量、命名参数、参数集合以及this，<br>
+                        然后此对象会被推入作用域链的前端，当运行期上下文被销毁，活动对象也随之销毁。</p>
+                    <img src="img/20190413-D-js2/img-one.png" height="481" width="1210"/>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <img src="img/20190413-D-js2/img-two.png" height="300" width="1210"/>
+                    <p style="text-align: left;font-size: 30px;">在函数执行过程中，每遇到一个变量，都会经历一次标识符解析过程以决定从哪里获取和存储数据。<br>
+                        该过程从作用域链头部，也就是从活动对象开始搜索，查找同名的标识符，<br>
+                        如果找到了就使用这个标识符对应的变量，<br>
+                        如果没找到继续搜索作用域链中的下一个对象，<br>
+                        如果搜索完所有对象都未找到，则认为该标识符未定义。<br>
+                        函数执行过程中，每个标识符都要经历这样的搜索过程。</p>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <p style="text-align: left">
+                        当代码（函数）在一个环境中执行，会创建变量对象的一个作用域链。 所以作用域链是与执行环境相关的。<br>
+                        对象有一个内部属性[[scope]]，该内部属性指向了该函数（代码）的作用域链，<br>
+                        而作用域链中存储了每个执行环境相关的变量对象。</p>
+                </section>
+
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>三、常见问题</h3>
+                </section>
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>作用域链和代码优化</h3>
+                    <p style="text-align: left">从作用域链的结构可以看出，在运行期上下文的作用域链中，标识符所在的位置越深，读写速度就会越慢。<br>
+                        如上图所示，因为全局变量总是存在于运行期上下文作用域链的最末端，因此在标识符解析的时候，查找全局变量是最慢的。<br>
+
+                    </p>
+
+                </section>
+
+
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>四、解决办法</h3>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <p style="text-align: left">所以，在编写代码的时候应尽量少使用全局变量，尽可能使用局部变量。<br>
+                        一个好的经验法则是：如果一个跨作用域的对象被引用了一次以上，则先把它存储到局部变量里再使用。<br>
+                    </p>
+
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>五、编码实战</h3>
+                    <p>  综上所述，已经和大家展示过，这里就不多说</p>
+                </section>
+
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>六、拓展思考</h3>
+                </section>
+                <section class="future" style="top: 97.5px; display: none;" hidden="" aria-hidden="true">
+                <h3>js没有块级作用域。</h3>
+                    <p style="text-align: left">let a=1;<br>
+                        if(b>0){<br>
+                        &emsp; b=100;<br>
+                        &emsp; console.log(b)//打印100；<br>
+                        }<br>
+                        console.log(b)//打印100；<br>
+                        <br>
+                        看代码，js中像if，for，switch之类的语句，他们包含的代码块里面的变量，在代码块外面也能被读取，所以说，js没有块级作用域。</p>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>七、参考文献</h3>
+                </section>
+
+                <section class="future" style="top: 178px; display: none;" hidden="" aria-hidden="true">
+                    <p style="text-align: left">
+                        https://cloud.tencent.com/developer/article/1339323<br>
+                        https://baijiahao.baidu.com/s?id=1581383989251664360&wfr=spider&for=pc<br>
+                        https://www.cnblogs.com/signheart/p/0313297cdfae75970ac459b7f9b543be.html<br>
+                    </p>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>八、更多讨论</h3>
+                </section>
+                <section class="future" style="top: 202.5px; display: none;" hidden="" aria-hidden="true">
+                    <h3>感谢观看</h3>
+                </section>
+            </div>
+        <div class="backgrounds"><div class="slide-background present" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 0px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+    【JS-TASK4】如何理解JS作用域与作用域链？
+
+                    分享人：刘利铭
+                </div></div>
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+        <script>
+            Reveal.initialize({
+                history: true,
+                dependencies: [{
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'
+                },
+                    {
+                        src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'
+                    },
+                    {
+                        src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js',
+                        async: true
+                    },
+                    {
+                        src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js',
+                        async: true,
+                        callback: function () {
+                            hljs.initHighlightingOnLoad();
+                        }
+                    }
+                ]
+            });
+        </script>
+    
+    </body></html>
