@@ -6,46 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <style>
-        ul {
-            margin: 30vh auto;
-            text-align: center;
-        }
-    </style>
 </head>
 
 <body>
-    <ul id="ul1">
-        <li>1111111</li>
-        <li>2222222</li>
-        <li>3333333</li>
-        <li>4444444</li>
-    </ul>
-
     <script>
-        let oUl = document.getElementById("ul1");
-        let aLi = oUl.getElementsByTagName('li');
-        window.onload = function () {
-
-            for (var i = 0; i < aLi.length; i++) {
-                aLi[i].onclick = function () {
-                    alert(123);
-                }
+        for (var i = 1; i <= 5; i++) {
+            (function () {
+                    setTimeout(function timer() {
+                        console.log(i)
+                    }, 1000 * i)
+                })()
             }
-        }
-
-
-
-        // window.onload = function () {
-        //     let oUl = document.getElementById("ul1");
-        //     oUl.onclick = function (ev) {
-        //         let target = event.target
-        //         if (target.tagName.toLowerCase() == 'li') {
-        //             alert(123);
-        //             alert(target.innerHTML);
-        //         }
-        //     }
-        // }
     </script>
 </body>
 
