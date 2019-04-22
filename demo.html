@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #parent {
+            margin: 35vh auto;
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 3;
+            background: green;
+        }
+
+        #child {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            background: orange;
+        }
+
+        a {
+            display: block;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="parent">
+        父元素
+        <div id="child">
+            子元素
+            　<a href="http://www.baidu.com">点击我</a>
+        </div>
+    </div>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        let parent = document.getElementById("parent");
+        let child = document.getElementById("child");
+
+        // 捕获事件
+        // document.body.addEventListener("click",function(){
+        //     alert("捕获body");
+        //     console.log("捕获body")
+        // },true)
+        // parent.addEventListener("click",function(){
+        //     alert("捕获parent");
+        //     console.log("捕获parent")
+        // },true)
+        // child.addEventListener("click",function(){
+        //     alert("捕获child");
+        //     console.log("捕获child")
+        // },true)
+
+        冒泡事件
+        document.body.addEventListener("click", function () {
+            alert("冒泡body");
+            console.log("冒泡body")
+        })
+
+        parent.addEventListener("click", function () {
+            alert("冒泡parent");
+            console.log("冒泡parent")
+        })
+
+        child.addEventListener("click", function () {
+            alert("冒泡child");
+            console.log("冒泡child")
+        })
+
+
+
+
+
+
+
+
+        // parent.addEventListener("click", function () {
+        //     alert("额外的parent事件");
+        // })
+
+
+        // 方法一：  event.stopPropagation(); 
+        // 方法二：  event.preventDefault();
+        // 方法三：  event.stopImmediatePropagation();
+        // 方法四：  return false;
+        // document.body.onclick = function () {
+        //     alert("冒泡body");
+        //     console.log("冒泡body")
+
+        // }
+
+        // parent.onclick = function () {
+        //     alert("冒泡parent");
+        //     console.log("冒泡parent")
+        // }
+
+        // child.onclick = function () {
+        //     alert("冒泡child");
+        //     console.log("冒泡child")
+        //     return false;
+        // }
+
+     
+
+
+
+
+
+
+
+        $("body").click(function (){
+            alert("冒泡body");
+            console.log("冒泡body")
+        })
+
+        $("#parent").click(function (){
+            alert("冒泡parent");
+            console.log("冒泡parent")
+        })
+
+        $("#child").click(function (){
+            alert("冒泡child");
+            console.log("冒泡child")
+           
+        })
+
+           
+    </script>
+</body>
+
+</html>
