@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+
+        p.font {
+            text-align: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+<img src="img/2018-11-16-A-css01/logo.png" alt="" usemap="#pttmap" class="base-logo" style="visibility: hidden">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+            <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.794571);">
+                <section class="present" style="top: 234px; display: block;">
+                    <h3>【JS-TASK6】请描述一下 cookies，sessionStorage 和 localStorage 的区别？</h3>
+
+                    <p style="text-align: center;">分享人：王亚龙</p>
+
+                </section>
+                <section class="future" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+                    <p>目录</p>
+                    <p>1. 背景介绍</p>
+                    <p>2. 知识剖析</p>
+                    <p>3. 常见问题</p>
+                    <p>4. 解决方案</p>
+                    <p>5. 编码实战</p>
+                    <p>6. 扩展思考</p>
+                    <p>7. 参考文献</p>
+                    <p>8. 更多讨论</p>
+                </section>
+                <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <h3>一、背景介绍</h3>
+                </section>
+                <section class="future" style="top: 190px; display: none;" hidden="" aria-hidden="true">
+                    <p>区别<br>
+                        cookie 在浏览器请求中每次都会附加请求头中发送给服务器。大小不能超过 4k<br>
+                        
+                        localStorage 保存数据会一直保存没有过期时间，不会随浏览器发送给服务器。大小 5M 或更大<br>
+                        
+                        sessionStorage 仅当前页面有效一旦关闭就会被释放。也不会随浏览器发送给服务器。大小 5M 或更大<br>
+                        
+
+                    </p>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>二、知识剖析</h3>
+                </section>
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <p>Cookies<br>
+
+                        Cookies 是一种在文档内存储字符串数据最典型的方式。一般而言，cookies 会由服务端发送给客户端，客户端存储下来，然后在随后让请求中再发回给服务端。这可以用于诸如管理用户会话，追踪用户信息等事情。
+                        
+                        此外，客户端也用使用 cookies 存储数据。因而，cookies 常被用于存储一些通用的数据，如用户的首选项设置。
+                    </p>
+
+
+
+                </section>
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <p>
+                        Local Storage<br>
+Local Storage 是 Web Storage API 的一种类型，能在浏览器端存储键值对数据。Local Storage 因提供了更直观和安全的 API 来存储简单的数据，被视为替代 Cookies 的一种解决方案。
+
+从技术上说，尽管 Local Storage 只能存储字符串，但是它也是可以存储字符串化的 JSON 数据。这就意味着，Local Storage 能比 Cookies 存储更复杂的数据。
+                    </p>
+
+                </section>
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <p>
+                        Session Storage<br>
+                        Session Storage 是 Web Storage API 的另一种类型。
+                        和 Local Storage 非常类似，区别是 Session Storage 只存储当前会话页 (tab 页) 的数据，
+                        一旦用户关闭当前页或者浏览器，数据就自动被清除掉了。
+                    </p>
+
+                </section>
+               
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>三、常见问题</h3>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <p>如何使用</p>
+
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>四、解决办法</h3>
+                </section>
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>五、编码实战</h3>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>六、拓展思考</h3>
+                </section>
+                <section class="future" style="top: 97.5px; display: none;" hidden="" aria-hidden="true">
+                <h4>格式的转换 </h4>
+
+            </section>
+               
+                <!--<section class="future" style="top: 97.5px; display: none;" hidden="" aria-hidden="true">-->
+                    <!--<h4>ng 提倡在控制器里面不要有操作 DOM 的代码，对于一些 jQuery 插件的使用，如果想不破坏代码的整洁性，需要写一些 directive 去封装插件，</h4>-->
+
+                <!--</section>-->
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>七、参考文献</h3>
+                </section>
+                <section class="future" style="top: 178px; display: none;" hidden="" aria-hidden="true">
+                    <p>参考一：<a href="https://www.runoob.com/json/json-tutorial.html">JSON</a></p><br>
+                    <p>参考二： <a href="https://www.runoob.com/html/html5-webstorage.html">菜鸟教程</a></p><br>
+
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>八、更多讨论</h3>
+                </section>
+                <section class="future" style="top: 202.5px; display: none;" hidden="" aria-hidden="true">
+                    <h3>感谢观看</h3>
+                </section>
+            </div>
+        <div class="backgrounds"><div class="slide-background present" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 0px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+            【JS-TASK6】请描述一下 cookies，sessionStorage 和 localStorage 的区别？
+
+                    分享人：王亚龙
+                </div></div>
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+        <script>
+            Reveal.initialize({
+                history: true,
+                dependencies: [{
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'
+                },
+                    {
+                        src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'
+                    },
+                    {
+                        src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js',
+                        async: true
+                    },
+                    {
+                        src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js',
+                        async: true,
+                        callback: function () {
+                            hljs.initHighlightingOnLoad();
+                        }
+                    }
+                ]
+            });
+        </script>
+    
+    </body>
+</html>
