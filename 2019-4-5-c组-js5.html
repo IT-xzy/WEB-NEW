@@ -1,0 +1,399 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h3> 如何使用PostMan？</h3>
+            <p>分享人：王浩冉</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <h3> 如何使用PostMan？</h3>
+            <p>用户在开发或者调试网络程序或者是网页B/S模式的程序的时候是需要一些方法来跟踪网页请求的，
+                用户可以使用一些网络的监视工具比如著名的Firebug等网页调试工具。今天给大家介绍的这款网页调试工
+                具不仅可以调试简单的css、html、脚本等简单的网页基本信息，它还可以发送几乎所有类型的HTTP请求！
+                Postman在发送网络HTTP请求方面可以说是Chrome插件类产品中的代表产品之一。</p>
+        </section>
+        <section>
+            <p>Postman的操作环境</p>
+            <p>postman适用于不同的操作系统，Postman Mac、Windows X32、Windows X64、Linux系统，
+                还支持postman 浏览器扩展程序、postman chrome应用程序等。</p>
+            <p>Postman使用参考文档：</p>
+            <p>1.官方英文文档</p>
+            <p>2.chrome插件整理的 postman中文使用教程</p>
+        </section>
+        <!--<section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">-->
+        <!--</section>-->
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <section>
+                <p>Postman安装</p>
+                <p>postman的安装方法分好几种，按照我们上文介绍的那样，我们分为三种安装模式介绍：
+                    1、chrome浏览器postman 插件安装
+                    postman谷歌浏览器的安装插件，所以说它的使用前提是你的电脑上得安装谷歌浏览器才行，
+                    在安装了谷歌浏览器后还需要在谷歌网上应用店中下载所需要的Postman插件，该插件的下载方式如下：</p>
+            </section>
+            <section><img src="4-5/1.png" height="700" width="1920"/></section>
+            <section>
+                <p>不能访问google 应用上商店的朋友 可以 参考这里， 或者下载客户端版本</p>
+                <p>1).macOS安装
+                    一旦你下载的应用程序，你可以拖动文件到“应用程序”文件夹。 双击Postman打开应用程序。
+                    2).Windows安装
+                    下载安装文件
+                    运行安装程序
+                    3). Linux安装
+                    我没有试过，但是找了一些参考资料( 有兴趣的朋友可以自行实验)
+                    ubuntu安装postman: https://blog.csdn.net/qianmosolo/article/details/79353632
+                    Ubuntu16.04上安装Postman应用程序: https://blog.bluematador.com/
+                    posts/postman-how-to-install-on-ubuntu-1604/?utm_source=hootsuite&utm_medium=twitter&utm_campaign=
+                    </p>
+            </section>
+            <section>
+                <p>Postman的基础功能</p>
+                <img src="4-5/2.png" height="600" width="1920"/>
+            </section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>3.常见问题</h3></section>
+        </section>
+        <section>
+            <p>接口请求流程</p>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>4 解决方案</h3></section>
+
+        </section>
+
+        <section>
+            <section>
+                <p>1. GET 请求</p>
+            <p>GET请求：点击Params，输入参数及value，可输入多个，即时显示在URL链接上，</p>
+            <p>所以，GET请求的请求头与请求参数如在接口文档中无特别声明时，可以不填。</p>
+            </section>
+            <section><img src="4-5/3.png" height="700" width="1528"/></section>
+            <section>
+                <p>响应 示例： 这里会有请求的响应状态码，响应时间，以及响应大小</p>
+                <div><img src="4-5/4.png" height="198" width="1518"/></div>
+            </section>
+            <section>
+                <p>响应体示例： 响应的格式可以有多种，我这里由于请求的是 百度，so, 响应的是 html ,
+                    一般情况下，我们自定义接口的话是 json格式的响应体</p>
+                <img src="4-5/5.png" height="490" width="1523"/>
+            </section>
+            <section>
+                <p>2. POST请求
+                    POST请求一：表单提交</p>
+                <img src="4-5/6.png" height="137" width="1175"/>
+            </section>
+            <section><img src="4-5/7.png" height="700" width="1524"/></section>
+            <section><img src="4-5/8.png" height="700" width="1534"/></section>
+            <section>
+                <p>POST请求二：json提交
+                    下图中，当我们选择JSON(application/json) 是会自动帮我们设置 headers 为 application/json
+                    在这里就不截图 举例了，朋友们可以自行去查看</p>
+            </section>
+            <section>
+                <img src="4-5/9.png" height="650" width="1514"/>
+            </section>
+            <section>
+                <p>POST请求三：xml提交</p>
+                <img src="4-5/10.png" height="600" width="1516"/>
+            </section>
+            <section>
+                <p>POST请求四：二进制文件提交</p>
+                <img src="4-5/11.png" height="279" width="1542"/>
+                <p>其它请求方式如PUT,DELETE 大致流程和GET,POST 差不多，这里就不一一举例说明了</p>
+            </section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>5.编码实战</h3>
+                <a href="../demo.html"><h3>demo</h3></a></section>
+
+        </section>
+        <section><h3>详情请看demo</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <h3 style="text-align: center">6.扩展思考</h3>
+            </section>
+                <section>
+                    <p>管理用例—Collections</p>
+                    <p>在POST基础功能那里有一张图片大致说了一下Collections 的作用， 这里我们再详细说明一下
+                        Collections集合：也就是将多个接口请求可以放在一起，并管理起来。
+                        什么样的接口请求可以放在同一个collection里？
+                        在这里告诉大家可以这样：一个工程一个Collection，这样方便查找及统一处理数据。</p>
+                </section>
+                <section><img src="4-5/12.png" height="500" width="397"/></section>
+                <section><img src="4-5/13.png" height="650" width="1004"/></section>
+                <section><p>第一步, 创建Collections
+                    点击上图中的带+号的图标，输入Name:”abc”，Description:”示例demo”，
+                    点击Create按钮即创建成功一个Collections.
+                    第二步，在Collections里添加请求
+                    在右侧准备好接口请求的所有数据，并验证后，点击save按钮。
+                </p></section>
+                <section><img src="4-5/14.png" height="600" width="1529"/></section>
+                <section>
+                    <p>保存好之后就可以在这里看到啦，之后要再次调用时可以点击这里，方便快捷有木有</p>
+                    <img src="4-5/15.png" height="278" width="382"/>
+                </section>
+                <section>
+                    <p>collections 管理精细化， 这里我们针对不同的请求方式做分组
+                        添加子文件夹
+                    </p>
+                    <img src="4-5/16.png" height="504" width="574"/>
+                </section>
+                <section><img src="4-5/17.png" height="600" width="1006"/></section>
+                <section>
+                    <p>这是我们精细化划分之后的结果， 是不是看着有条理多了？</p>
+                    <img src="4-5/18.png" height="387" width="456"/>
+                </section>
+            </section>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                </code></pre>
+            </section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none; color: #fff" hidden="" aria-hidden="true" class="future">
+            <h3>7.参考文献</h3>
+            <p><a href="https://blog.csdn.net/fxbin123/article/details/80428216">CSDN《Postman 使用方法详解》</a></p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>8 更多讨论</h3>
+            <section></section>
+        </section>
+        <!--<section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">-->
+        <!--<p>2333333</p>-->
+        <!--</section>-->
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>BY : 王浩冉</small>
+            </p>
+        </section>
+    </div>
+    <div class="backgrounds"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background stack present" data-loaded="true" style="display: block;"><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up enabled" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+
+    语法：
+    return[()[expression][]];
+    可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。
+
+    用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression 被省略，
+    或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+</div></div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+    //    原始类型对象直接赋值不会相互影响
+    //    var a = 1;
+    //
+    //    var b = a;
+    //    b = 10;
+    //    console.log(a); // 1
+    ////
+    //    var a = 'hello';
+    //    var b = a;
+    //    b = 'world';
+    //    console.log(a); // hello
+    //
+    //    var a = true;
+    //    var b = a;
+    //    b = false;
+    //    console.log(a);
+
+    //数组浅复制
+    //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+    //    ];
+    //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+    //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+    //    console.log(a)//那么现在打印a 是什么结果呢
+    //
+    //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+    //    var arrtoo = arr.slice(1);
+    //    arrtoo[2] = "set Map";
+    //    console.log(arr);//One,Two,Three
+    //    console.log(arrtoo);//One,set Map,Three
+
+    //
+    //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+    //    var arrtooo = arr1.concat(111111);
+    //    arrtooo[1] = "set Map To";
+    //    console.log(arr1);//One,Two,Three
+    //    console.log(arrtooo);//One,set Map To,Three
+
+    //
+    //    var b=[1,2,3,4,5];   //concat的链接
+    //    var c=[6,7,8,9];
+    //    var d =[4,4,22]
+    //    console.log(b.concat(c,d))
+
+    var a = {name: 'yy', age: 26};  //对象的浅拷贝哦
+    var b = new Object();
+    b.name = a.name;
+    b.age = a.age;
+    b.name = 'xx';
+    console.log(a);//Object { name="yy", age=26}
+    console.log(b);//Object { name="xx", age=26}
+
+    var d = {            //对象的浅拷贝哦 第一种
+        name: 'd',
+        oc: {
+            age: 32
+        },
+        oad: {
+            adds: {
+                bb: 12
+            }
+        }
+    };
+    var deepCopy = function (source) {
+        var result = {};
+        for (var key in source) {
+            result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+        }
+        return result
+    };
+
+    var c = deepCopy(d);
+    c.name = 'c';
+    c.oc = {
+        age: 49
+    };
+    console.log(c);
+    console.log(d);
+
+
+    //    var person = {    //第二种深拷贝
+    //        name: 'aa',
+    //        friends: ['da', 'dsa', 'gf']
+    //    };
+    //
+    //    var aPerson = Object.create(person, {
+    ////        name: {
+    ////            value: "gee"
+    ////        }
+    //    });
+    //
+    //    console.log(person.name);
+    //    console.log(aPerson.friends)
+
+    var Chinese = {
+        nation: '中国'
+
+    }
+    var Doctor = {
+        career: '医生'
+    }
+
+    function extendCopy(p) {
+        var c = {};
+        for (var i in p) {
+            c[i] = p[i];
+        }
+        c.uber = p;
+        return c;
+    }
+
+    var Doctor = extendCopy(Chinese);
+    Doctor.career = '医生';
+    console.log(Doctor); // 中国
+    Chinese.birthPlaces = ['北京', '上海', '香港'];
+    var Doctor = extendCopy(Chinese);
+    Doctor.birthPlaces.push('厦门');
+
+</script>
+
+</body>
+</html>

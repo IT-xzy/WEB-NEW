@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+
+        p.font {
+            text-align: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+<img src="img/2018-11-16-A-css01/logo.png" alt="" usemap="#pttmap" class="base-logo" style="visibility: hidden">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+            <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.794571);">
+                <section class="present" style="top: 234px; display: block;">
+                    <h3>【JS-TASK8】angular js 常用指令 ng-if、ng-class、ng-option、ng-value、ng-click 是如何使用的？</h3>
+
+                    <p style="text-align: center;">分享人：王亚龙</p>
+
+                </section>
+                <section class="future" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+                    <p>目录</p>
+                    <p>1. 背景介绍</p>
+                    <p>2. 知识剖析</p>
+                    <p>3. 常见问题</p>
+                    <p>4. 解决方案</p>
+                    <p>5. 编码实战</p>
+                    <p>6. 扩展思考</p>
+                    <p>7. 参考文献</p>
+                    <p>8. 更多讨论</p>
+                </section>
+                <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <h3>一、背景介绍</h3>
+                </section>
+                <section class="future" style="top: 190px; display: none;" hidden="" aria-hidden="true">
+                    <p>AngularJS 指令是扩展的 HTML 属性，带有前缀 ng-。
+
+                        ng-app 指令初始化一个 AngularJS 应用程序。
+
+                        ng-init 指令初始化应用程序数据。
+
+                        ng-model 指令把元素值（比如输入域的值）绑定到应用程序。
+
+                    </p>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>二、知识剖析</h3>
+                </section>
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <p>
+                        AngularJS 应用程序由 ng-app 定义。应用程序在 div 内运行。<br>
+
+                    ng-controller="myCtrl" 属性是一个 AngularJS 指令。用于定义一个控制器。
+                    </p>
+
+
+
+                </section>
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <p>
+                        ng-if 指令用于在表达式为 false 时移除 HTML 元素。
+
+                        如果 if 语句执行的结果为 true，会添加移除元素，并显示。
+
+                        ng-if 指令不同于 ng-hide， ng-hide 隐藏元素，而 ng-if 是从 DOM 中移除元素。
+                    </p>
+
+                </section>
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <p>
+                        ng-class 指令用于给 HTML 元素动态绑定一个或多个 CSS 类。
+
+                        ng-class 指令的值可以是字符串，对象，或一个数组。
+
+                        如果是字符串，多个类名使用空格分隔。
+
+                        如果是对象，需要使用 key-value 对，key 为你想要添加的类名，value 是一个布尔值。只有在 value 为 true 时类才会被添加。
+
+                        如果是数组，可以由字符串或对象组合组成，数组的元素可以是字符串或对象。
+                    </p>
+
+                </section>
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <p>
+                        ng-options 指令用于使用 options填充 select 元素的选项。
+
+                        ng-options 指令使用数组来填充下拉列表，多数情况下与 ng-repeat 指令一起使用。
+                    </p>
+
+                </section>
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <p>
+                        ng-value 指令用于设置 input 或 select 元素的 value 属性。
+                    </p>
+
+                </section>
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <p>
+                        ng-click 指令定义了 AngularJS 点击事件。
+                    </p>
+
+                </section>
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>三、常见问题</h3>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <p>ng-option如何使用</p>
+
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>四、解决办法</h3>
+                </section>
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>五、编码实战</h3>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>六、拓展思考</h3>
+                </section>
+                <section class="future" style="top: 97.5px; display: none;" hidden="" aria-hidden="true">
+                <h4>ng-repeat 和 ng-options 的用法 </h4>
+
+            </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <p>ng-repeat 是通过数组来循环 HTML 代码来创建下拉列表，ng-repeat 绑定到 ngModel 的值只能是字符串。
+                        ng-options 的列表项可以是对象和数组循环输出，很多时候使用 ng-options 更方便。</p>
+                </section>
+                <!--<section class="future" style="top: 97.5px; display: none;" hidden="" aria-hidden="true">-->
+                    <!--<h4>ng 提倡在控制器里面不要有操作 DOM 的代码，对于一些 jQuery 插件的使用，如果想不破坏代码的整洁性，需要写一些 directive 去封装插件，</h4>-->
+
+                <!--</section>-->
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>七、参考文献</h3>
+                </section>
+                <section class="future" style="top: 178px; display: none;" hidden="" aria-hidden="true">
+                    <p>参考一：<a href="http://www.cnblogs.com/lyy-2016/p/6087954.html">ng-repeat 和 ng-options 的用法</a></p><br>
+                    <p>参考二： <a href="http://www.runoob.com">菜鸟教程</a></p><br>
+
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>八、更多讨论</h3>
+                </section>
+                <section class="future" style="top: 202.5px; display: none;" hidden="" aria-hidden="true">
+                    <h3>感谢观看</h3>
+                </section>
+            </div>
+        <div class="backgrounds"><div class="slide-background present" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 0px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+    【JS-TASK8】angular js 常用指令 ng-if、ng-class、ng-option、ng-value、ng-click 是如何使用的？
+
+                    分享人：王亚龙
+                </div></div>
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+        <script>
+            Reveal.initialize({
+                history: true,
+                dependencies: [{
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'
+                },
+                    {
+                        src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'
+                    },
+                    {
+                        src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js',
+                        async: true
+                    },
+                    {
+                        src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js',
+                        async: true,
+                        callback: function () {
+                            hljs.initHighlightingOnLoad();
+                        }
+                    }
+                ]
+            });
+        </script>
+    
+    </body>
+</html>
