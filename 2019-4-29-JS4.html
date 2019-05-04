@@ -1,0 +1,690 @@
+<html class="js no-mobile desktop no-ie chrome chrome69 task-section xkt-section gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch retina fontface domloaded gr__maikihyh_github_io w-613 gt-240 gt-320 gt-480 lt-640 lt-768 lt-800 lt-1024 lt-1280 lt-1440 lt-1680 lt-1920 portrait no-landscape"
+      id="2018-09-18-a-css-10-page">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>return的用法是什么？若用在for循环中，还会执行下一次循环吗？</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <link rel="stylesheet" type="text/css" href="../css/reveal/print/paper.css">
+    <script type="text/javascript" src="../plugin/markdown/marked.js"></script>
+    <script type="text/javascript" src="../plugin/markdown/markdown.js"></script>
+    <script type="text/javascript" src="../plugin/notes/notes.js"></script>
+    <script type="text/javascript" src="../plugin/highlight/highlight.js"></script>
+</head>
+
+<body data-gr-c-s-loaded="true">
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal center default" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides"
+         style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.574688);">
+        <section class="present" style="top: 178px; display: block;">
+            <h2>【return的用法是什么？若用在for循环中，还会执行下一次循环吗？】</h2>
+            <h3>介绍return的用法</h3>
+            <p>分享人：刘超</p>
+        </section>
+        <section class="future" style="top: 1.5px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="text-align: justify">
+            <p>用return语句来终止一个函数的执行，并且返回expression的值，如果expression被省略，或者在函数中没有return语句被执行，则把undefined赋值给调用当前函数的表达式</p>
+            <p>return语句从当前的函数退出，并给那个函数返回一个值。</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>语法及返回方式</h4>
+            <p style="letter-spacing: 5px">1，返回函数结果，语法为return与表达式，语句结果函数的执行，返回调用的函数，而且把表达式的值作为函数结果返回出去。</p>
+            <p style="letter-spacing: 5px">返回控制无函数结果，语法为return。在大多数情况下，为事件处理函数返回false，可以防止默认的事件行为，例如，默认情况下点击一个超链接，、
+                页面会跳转到，该元素href属性指定的页面</p>
+            <p>在这个时候，return false就相当于终止符，而return true就相当于执行符</p>
+            <p>在onclick事件中，除了我们指定意以外，还要触发一个事件执行页面的跳转，所以如果你想取消对象的默认动作的话，就可以使用return false。</p>
+            <!-- <pre><code class="hljs less">//获取到的url值是以"?"开头的url
+                var deocdeURL = decodeURI(location.search);//解码url
+                //封装的解析url的方法
+                function doClickfamg(){
+                    var pureURL = deocdeURL.split("?")[1];//获取"?"以后的参数
+                    var valuesArray = pureURL.split("&");
+                    var url_Object = new Object();
+                    for(var i = 0;i< valuesArray.length;i++){
+                        var key_value = valuesArray[i].split("=");
+                        //动态给对象添加key和value
+                        //是以传递过来的key和value作为解析后的新的对象的key和value
+                        url_Object[key_value[0]] = key_value[1];
+                    }
+                    return url_Object;//返回对象
+                }
+                 </code></pre> -->
+        </section>
+        <section class="present" style="top: 0px; display: block;">
+            <!--<h4>全局作用域</h4>-->
+            <p style="letter-spacing: 5px">返回函数结果</p>
+            <!--<p>(1)程序最外层定义的函数或者变量:</p>-->
+            <pre><code class="hljs less">
+                function test() {
+                    var a=1;
+                    var b=7;
+                    return a;//return 中止了函数的运行。并且把表达式的值返回给函数。
+                    console.log(b);//undefined
+                }
+                    console.log(test());//1
+                    </code></pre>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="letter-spacing: 5px">返回函数控制</p>
+            <pre><code class="hljs less">
+                function test() {
+                    var a=1;
+                    var b=7;
+                    return a+b;//return 中止了函数的运行。并且把表达式的值返回给函数。
+                    // console.log(b);//undefined
+                }
+                function demo() {
+                    console.log(test());//8
+                    }
+                demo();
+            </code></pre>
+            <p style="letter-spacing: 5px">通过这两个栗子，我们可以明显的看出，return可以阻止函数的继续运行下去，并且会给该函数的表达式的值返回给这个函数。</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p style="letter-spacing: 5px"></p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>return返回控制</h4>
+            <p style="letter-spacing: 5px">在之前我们说过，</p>
+            <pre><code class="hljs less">
+                function a（）{
+                    if（True）
+                    return false;
+                }
+             </code></pre>
+        </section>
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<h3>作用域链</h3>-->
+        <!--</section>-->
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+              <pre><code class="hljs less">
+                  //但是当我们把点击事件的函数放在其他函数里的话。
+                  function Test（）{
+                      a（）;
+                      b（）;
+                      c（）;
+                  }
+                  //即使return false阻止了函数a的提交，但是在test函数中并不会影响到其他函数的。也就是说，return false只是对与a（）函数而言。
+                  test函数中，这仅仅是一个返回值而已。
+             </code></pre>
+        </section>
+        <!--<section class="future" aria-hidden="true" style="top: 330px; display: none;" hidden="">-->
+            <!--<h3>(1)变量和函数声明</h3>-->
+            <!--<p style="text-align: left">在JavaScript引擎解析JavaScript代码的时候，首先，JavaScript引擎会把-->
+                <!--变量和函数的声明提前进行预解析，然后再去执行其他代码。</p>-->
+            <!--<p style="text-align: left">-->
+                <!--变量声明：变量的声明只有一种方式，那就是用var关键字声明，直接赋值不是一种声明方式。-->
+                <!--这仅仅是在全局对象上创建了新的属性（而不是变量）。它们有一下区别：-->
+            <!--</p>-->
+            <!--<pre><code class="hljs less">-->
+                        <!--alert(a); // undefined-->
+                        <!--alert(b); // error "b" is not defined-->
+                        <!--b = 10;-->
+                        <!--var a = 20;-->
+                    <!--</code></pre>-->
+        <!--</section>-->
+
+        <!--<section class="future" aria-hidden="true" style="top: 330px; display: none;" hidden="">-->
+            <!--<p style="text-align: left">（2）直接赋值形式是在执行阶段创建</p>-->
+            <!--<pre><code class="hljs less">-->
+                            <!--alert(a); // undefined, 这个大家都知道-->
+                            <!--b = 10;-->
+                            <!--alert(b); // 10, 代码执行阶段创建-->
+
+                            <!--var a = 20;-->
+                            <!--alert(a); // 20, 代码执行阶段修改-->
+                        <!--</code></pre>-->
+        <!--</section>-->
+
+        <!--<section class="future" aria-hidden="true" style="top: 330px; display: none;" hidden="">-->
+            <!--<h4>（3）变量不能删除（delete），属性可以删除</h4>-->
+            <!--<p style="text-align: left"></p>-->
+            <!--<pre><code class="hljs less">-->
+                            <!--a = 10;-->
+                            <!--alert(window.a); // 10-->
+                            <!--alert(delete a); // true-->
+                            <!--alert(window.a); // undefined-->
+                            <!--var b = 20;-->
+                            <!--alert(window.b); // 20-->
+                            <!--alert(delete b); // false-->
+                            <!--alert(window.b); // 仍然为 20，因为变量是不能够删除的。-->
+                            <!--</code>-->
+                        <!--</pre>-->
+
+        <!--</section>-->
+
+
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<h3>(2)函数的声明主要三种：</h3>-->
+            <!--<p style="text-align: left">（1）function name( ){ }直接创建方式</p>-->
+            <!--<p style="text-align: left">（2）new Funtion构建函数创建 </p>-->
+            <!--<p style="text-align: left"> （3）给变量赋值匿名函数方法创建</p>-->
+            <!--&lt;!&ndash; <p style="text-align: left">在js中操作cookie</p>   &ndash;&gt;-->
+
+
+        <!--</section>-->
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<h3>(3)函数的生命周期</h3>-->
+            <!--<p style="text-align: left">函数的的生命周期分为创建和执行两个阶段。-->
+                <!--在函数创建阶段，JS解析引擎进行预解析，会将函数声明提前，同时将该函数放到全局作用域中或当前函数的上一级函数的局部作用域中。-->
+                <!--在函数执行阶段，JS引擎会将当前函数的局部变量和内部函数进行声明提前，-->
+                <!--然后再执行业务代码，当函数执行完退出时，释放该函数的执行上下文，并注销该函数的局部变量。</p>-->
+
+        <!--</section>-->
+
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<h3>(4)什么是AO、VO</h3>-->
+            <!--<p style="text-align: left">AO：Activetion Object（活动对象)<br/>-->
+                <!--VO：Variable Object（变量对象）<br/>-->
+
+                <!--VO对应的是函数创建阶段，JS解析引擎进行预解析时，所有的变量和函数的声明，统称为Variable Object。-->
+                <!--该变量与执行上下文相关，知道自己的数据存储在哪里，并且知道如何访问。VO是一个与执行上下文相关的特殊对象，-->
+                <!--它存储着在上下文中声明的以下内容：<br/>-->
+
+                <!--变量 (var, 变量声明);<br/>-->
+                <!--函数声明 (FunctionDeclaration, 缩写为FD);<br/>-->
+                <!--函数的形参</p>-->
+
+        <!--</section>-->
+
+
+        <!--<section class="future" aria-hidden="true" style="top: 330px; display: none;" hidden="">-->
+            <!--<h4>举个例子</h4>-->
+            <!--<p style="text-align: left"></p>-->
+            <!--<pre><code class="hljs less">-->
+                    <!--function add(a,b){-->
+                        <!--var sum = a + b;-->
+                        <!--function say(){-->
+                            <!--alert(sum);-->
+                        <!--}-->
+                        <!--return sum;-->
+                    <!--}-->
+                    <!--// sum,say,a,b 组合的对象就是VO，不过该对象的值基本上都是undefined-->
+                <!--</code>-->
+            <!--</pre>-->
+
+        <!--</section>-->
+
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--&lt;!&ndash; <h3>(4)什么是AO、VO</h3> &ndash;&gt;-->
+            <!--<p style="text-align: left">-->
+                <!--&lt;!&ndash; VO：Variable Object（变量对象）<br /> &ndash;&gt;-->
+
+                <!--AO对应的是函数执行阶段，当函数被调用执行时，会建立一个执行上下文，该执行上下文包含了函数所需的所有变量，-->
+                <!--该变量共同组成了一个新的对象就是Activetion Object。该对象包含了：-->
+                <!--1.函数的所有局部变量<br/>-->
+                <!--2.函数的所有命名参数<br/>-->
+                <!--3.函数的参数集合<br/>-->
+                <!--4.函数的this指向-->
+            <!--</p>-->
+
+        <!--</section>-->
+        <!--<section class="future" aria-hidden="true" style="top: 330px; display: none;" hidden="">-->
+            <!--<h4>举个例子</h4>-->
+            <!--<p style="text-align: left"></p>-->
+            <!--<pre><code class="hljs less">-->
+                    <!--unction add(a,b){-->
+                        <!--var sum = a + b;-->
+                        <!--function say(){-->
+                            <!--alert(sum);-->
+                        <!--}-->
+                        <!--return sum;-->
+                    <!--}-->
+                    <!--add(4,5);-->
+                    <!--//  我用JS对象来表示AO-->
+                    <!--//  AO = {-->
+                    <!--//	    this : window,-->
+                    <!--//	    arguments : [4,5],-->
+                    <!--//	    a : 4,-->
+                    <!--//	    b : 5,-->
+                    <!--//	    say : ,-->
+                    <!--//	    sum : undefined-->
+                    <!--//  }-->
+                <!--</code>-->
+            <!--</pre>-->
+
+        <!--</section>-->
+
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--<h3>那么作用域链</h3>-->
+            <!--<p style="text-align: left">当代码在一个环境中执行时，会创建变量对象的一个作用域链（scope chain）-->
+                <!--来保证对执行环境有权访问的变量和函数的有序访问。-->
+                <!--作用域第一个对象始终是当前执行代码所在环境的变量对象（VO）。</p>-->
+            <!--<pre>-->
+                            <!--<code class="hljs less">-->
+                                <!--function add(a,b){-->
+                                <!--var sum = a + b;-->
+                                <!--return sum;-->
+                            <!--}</code>-->
+                    <!--</pre>-->
+
+        <!--</section>-->
+
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+
+            <!--<p style="text-align: left">假设函数是在全局作用域中创建的，在函数a创建的时候，-->
+                <!--它的作用域链填入全局对象,全局对象中有所有全局变量，此时的全局变量就是VO。此时的作用域链就是：</p>-->
+            <!--<pre>-->
+                                <!--<code class="hljs less">-->
+                                        <!--此时作用域链（Scope Chain）只有一级,就为Global Object-->
+                                        <!--scope(add) -> Global Object(VO)-->
+                                        <!--VO = {-->
+                                            <!--this : window,-->
+                                            <!--add :-->
+                                        <!--}-->
+                                <!--}</code>-->
+                        <!--</pre>-->
+
+        <!--</section>-->
+
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--&lt;!&ndash; <h3>2.2、H5 web storage</h3> &ndash;&gt;-->
+            <!--<p style="text-align: left">如果是函数执行阶段，那么将其activation object（AO）作为作用域链第一个对象，-->
+                <!--第二个对象是上级函数的执行上下文AO，下一个对象依次类推。</p>-->
+            <!--<pre>-->
+                                <!--<code class="hljs less">-->
+                                        <!--add(4,5);-->
+                                <!--</code>-->
+                        <!--</pre>-->
+
+        <!--</section>-->
+
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--&lt;!&ndash; <h3>2.2、H5 web storage</h3> &ndash;&gt;-->
+
+            <!--<p style="text-align: left">调用add后的作用域链是：</p>-->
+            <!--<pre>-->
+                                <!--<code class="hljs less">-->
+                                        <!--此时作用域链（Scope Chain）有两级，第一级为AO，然后Global Object（VO）-->
+                                            <!--scope(add) -> AO -> VO-->
+                                            <!--AO = {-->
+                                                <!--this : window,-->
+                                                <!--arguments : [4,5],-->
+                                                <!--a : 4,-->
+                                                <!--b : 5,-->
+                                                <!--sum : undefined-->
+                                            <!--}-->
+                                            <!--VO = {-->
+                                                <!--this : window,-->
+                                                <!--add :-->
+                                            <!--}-->
+                                <!--}</code>-->
+                        <!--</pre>-->
+            <!--<p style="text-align: left">在函数运行过程中标识符的解析是沿着作用域链一级一级搜索的过程，从第一个对象开始，-->
+                <!--逐级向后回溯，直到找到同名标识符为止，找到后不再继续遍历，找不到就报错</p>-->
+        <!--</section>-->
+
+
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--&lt;!&ndash; <h3>2.2、H5 Form</h3> &ndash;&gt;-->
+            <!--<p style="text-align: left">再举个例子</p>-->
+            <!--<pre>-->
+                            <!--<code class="hljs less">-->
+                                    <!--var x = 10;-->
+                                    <!--function foo() {-->
+                                        <!--var y = 20;-->
+                                        <!--function bar() {-->
+                                            <!--var z = 30;-->
+                                            <!--console.log(x + y + z);-->
+                                        <!--};-->
+                                        <!--bar()-->
+                                    <!--};-->
+                                    <!--foo();-->
+                            <!--}</code>-->
+                    <!--</pre>-->
+        <!--</section>-->
+
+
+        <!--<section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">-->
+            <!--&lt;!&ndash; <h3>2.2、H5 Form</h3> &ndash;&gt;-->
+            <!--<p style="text-align: left">上面代码的输出结果为”60″，函数bar可以直接访问”z”，-->
+                <!--然后通过作用域链访问上层的”x”和”y”。此时的作用域链为：</p>-->
+            <!--<pre>-->
+                            <!--<code class="hljs less">-->
+                                    <!--此时作用域链（Scope Chain）有三级，第一级为bar AO，第二级为foo AO,然后Global Object（VO）-->
+                                            <!--scope -> bar.AO -> foo.AO -> Global Object-->
+                                            <!--bar.AO = {-->
+                                                <!--z : 30,-->
+                                                <!--__parent__ : foo.AO-->
+                                            <!--}-->
+                                            <!--foo.AO = {-->
+                                                <!--y : 20,-->
+                                                <!--bar : ,-->
+                                                <!--__parent__ :-->
+                                            <!--}-->
+                                            <!--Global Object = {-->
+                                                <!--x : 10,-->
+                                                <!--foo : ,-->
+                                                <!--__parent__ : null-->
+                                            <!--}-->
+                            <!--}</code>-->
+                    <!--</pre>-->
+        <!--</section>-->
+
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>3.常见问题</h3>
+            <p style="text-align: left">如果return在for循环中，还会执行一次循环吗？</p>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>解决方案</h4>
+            <pre><code class="hljs less">
+                function test() {
+                    var demo=[];
+                    for (var i=0; i<10; i++){
+                    demo.push(i);
+                    return demo;
+                    }
+                }
+                console.log(test());//[0];
+                //很显然，for循环只是返回了return所返回的值，并没有进行下次循环。所以，return可以让for循环跳出循环。
+             </code></pre>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;"><h3>5.扩展思考</h3>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <p style="text-align: center">
+                    还要什么办法可以跳出for循环？</p>
+
+            </section>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <p style="text-align: center">除了return可以跳出for循环，还有，break，以及continue。</p>
+                <p>break语句会使运行的程序立刻退出包含在最内层的循环，或者退出一个switch语句，由于它是用来退出循环的，或者switch语句，所以当他出现在这些语句时，这种形式的break才是合法的。</p>
+                <p>如果一个循环终止的条件特别复杂的情况下，那么我们使用，break语句来实现某些条件比用循环表达式要容易得多。</p>
+                <P>continue语句，continue语句与break语句相似，但是他不是一个退出循环，而是开始循环的一次新迭代。</P>
+                <p>return语句用于指定函数返回的值，return语句只能出现在函数体内，出现在代码的其他任何地方都会造成语法错误。且，当执行return语句的时候，即使函数还有其他语句，函数执行也会停止。</p>
+            </section>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>6.编码实战</h3>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>7.参考文献</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <p><a href="https://www.cnblogs.com/jrystal/p/7067390.html" target="_blank">
+                参考一</a>
+
+            </p>
+            <p><a href="" target="_blank">参考2</a></p>
+            <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/return" target="_blank">参考3</a></p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>8.更多讨论</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>宋恒</small>
+            </p>
+        </section>
+
+    </div>
+    <div class="backgrounds">
+        <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background stack future" style="display: none;">
+            <div class="slide-background present" style="display: none;"></div>
+        </div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+    </div>
+    <div class="progress" style="display: block;"><span style="width: 0px;"></span></div>
+    <aside class="controls" style="display: block;">
+        <button class="navigate-left" aria-label="previous slide"></button>
+        <button class="navigate-right enabled" aria-label="next slide"></button>
+        <button class="navigate-up" aria-label="above slide"></button>
+    </aside>
+    <div class="slide-number" style="display: none;"></div>
+    <div class="speaker-notes" data-prevent-swipe=""></div>
+    <div class="pause-overlay"></div>
+    <div id="aria-status-div" aria-live="polite" aria-atomic="true"
+         style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+        【如何理解JS作用域与作用域链】
+        return的用法是什么？，若在for循环中，还会执行下一次循环吗？
+        分享人：刘超
+    </div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+        //        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [{
+            src: '../plugin/markdown/marked.js'
+        },
+            {
+                src: '../plugin/markdown/markdown.js'
+            },
+            {
+                src: '../plugin/notes/notes.js',
+                async: true
+            },
+            {
+                src: '../plugin/highlight/highlight.js',
+                async: true,
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+    //    原始类型对象直接赋值不会相互影响
+    //    var a = 1;
+    //
+    //    var b = a;
+    //    b = 10;
+    //    console.log(a); // 1
+    ////
+    //    var a = 'hello';
+    //    var b = a;
+    //    b = 'world';
+    //    console.log(a); // hello
+    //
+    //    var a = true;
+    //    var b = a;
+    //    b = false;
+    //    console.log(a);
+
+    //数组浅复制
+    //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+    //    ];
+    //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+    //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+    //    console.log(a)//那么现在打印a 是什么结果呢
+    //
+    //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+    //    var arrtoo = arr.slice(1);
+    //    arrtoo[2] = "set Map";
+    //    console.log(arr);//One,Two,Three
+    //    console.log(arrtoo);//One,set Map,Three
+
+    //
+    //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+    //    var arrtooo = arr1.concat(111111);
+    //    arrtooo[1] = "set Map To";
+    //    console.log(arr1);//One,Two,Three
+    //    console.log(arrtooo);//One,set Map To,Three
+
+    //
+    //    var b=[1,2,3,4,5];   //concat的链接
+    //    var c=[6,7,8,9];
+    //    var d =[4,4,22]
+    //    console.log(b.concat(c,d))
+
+    var a = {
+        name: 'yy',
+        age: 26
+    }; //对象的浅拷贝哦
+    var b = new Object();
+    b.name = a.name;
+    b.age = a.age;
+    b.name = 'xx';
+    console.log(a); //Object { name="yy", age=26}
+    console.log(b); //Object { name="xx", age=26}
+
+    var d = { //对象的浅拷贝哦 第一种
+        name: 'd',
+        oc: {
+            age: 32
+        },
+        oad: {
+            adds: {
+                bb: 12
+            }
+        }
+    };
+    var deepCopy = function (source) {
+        var result = {};
+        for (var key in source) {
+            result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+        }
+        return result
+    };
+
+    var c = deepCopy(d);
+    c.name = 'c';
+    c.oc = {
+        age: 49
+    };
+    console.log(c);
+    console.log(d);
+
+
+    //    var person = {    //第二种深拷贝
+    //        name: 'aa',
+    //        friends: ['da', 'dsa', 'gf']
+    //    };
+    //
+    //    var aPerson = Object.create(person, {
+    ////        name: {
+    ////            value: "gee"
+    ////        }
+    //    });
+    //
+    //    console.log(person.name);
+    //    console.log(aPerson.friends)
+
+    var Chinese = {
+        nation: '中国'
+
+    }
+    var Doctor = {
+        career: '医生'
+    }
+
+    function extendCopy(p) {
+        var c = {};
+        for (var i in p) {
+            c[i] = p[i];
+        }
+        c.uber = p;
+        return c;
+    }
+
+    var Doctor = extendCopy(Chinese);
+    Doctor.career = '医生';
+    console.log(Doctor); // 中国
+    Chinese.birthPlaces = ['北京', '上海', '香港'];
+    var Doctor = extendCopy(Chinese);
+    Doctor.birthPlaces.push('厦门');
+</script>
+
+
+</body>
+
+</html>
