@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <div onclick="{console.log(this)}">点我</div> -->
+
+    <script>
+        // 普通函数调用
+        // console.log(this)
+        // var a = 1
+
+        // function b() {
+        //     console.log(this.a)
+        // }
+        // b()
+
+        //对象函数调用
+        // var a = 1;
+        // let obj1 = {
+        //     a: 222,
+        //     b: 333
+        // };
+        // let obj2 = {
+        //     a: 111,
+        //     fn: function () {
+        //         console.log(this.a);
+        //     }
+        // }
+        // obj1.fn = obj2.fn;
+        // obj1.fn()
+
+        //数组
+        // let arr = [fun,'1','2']
+        // function fun () {
+        //     console.log(this)
+        // }
+        // arr[0]()
+
+        //在构造函数或者构造函数原型对象中 this 指向构造函数的实例
+        // function Test() {
+        //     this.name = "Riven"
+        //     console.log(this);
+        // }
+
+        // let test = new Test ()
+        // // console.log(typeof (test))
+        // console.log(test.name)
+
+
+        // (1) 创建一个新对象；
+        // (2) 将新建的对象设置为函数中的this
+        // (3) 执行构造函数中的代码（为这个新对象添加属性） ；
+        // (4) 返回新对象。
+
+        // var age = 10;
+
+        // function person() {
+        //     var age = 20;
+        //     this.age = 30;
+        //     this.say = function () {
+        //         console.log(this);
+        //         console.log(this.age);
+        //     }
+        //     console.log(this);
+        // }
+        // var man = new person();
+        // man.say();
+        // console.log(age)
+        // console.log(man.age)
+
+
+        //箭头函数中指向外层作用域的this
+        // var obj = {
+        //     foo() {
+        //         console.log(this);
+        //     },
+        //     bar: () => {
+        //         console.log(this);
+        //     }
+        // }
+        // obj.foo() // 
+        // obj.bar() // 
+
+        // call apply
+        // let obj1 = {
+        //     a: 222,
+        //     b: 333
+        // };
+        // let obj2 = {
+        //     a: 111,
+        //     fn: function () {
+        //         console.log(this.b);
+        //     }
+        // }
+        // obj2.fn.call(obj1)
+
+  
+        function k(){
+            setTimeout(function(){
+                console.log(this)
+            },1000)
+        }
+        k()
+    </script>
+</body>
+
+</html>
