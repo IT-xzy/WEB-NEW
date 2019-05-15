@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>LZY's PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h3> 作用域与作用域链</h3>
+                <p>上海分院：林钟远</p>
+            </section>
+            <section>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+            <section>
+                <section>
+                    <p>
+                        任何程序设计语言都有作用域的概念，简单的说，作用域就是变量与函数的可访问范围，即作用域控制着变量与函数的可见性和生命周期。
+                        在JavaScript中，变量的作用域有全局作用域和局部作用域两种。
+                    </p>
+
+                </section>
+            </section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+
+
+            <section>
+                <p>
+                    什么是作用域？
+                </p>
+                <p>
+                    作用域是每种计算机语言最重要的基础之一，当然它也是JavaScript最重要的概念之一。要想真正的深入了解JavaScript，了解JavaScript的作用域链非常必要。
+                </p>
+
+                <p>
+                    简单的说，作用域就是变量与函数的可访问范围，即作用域控制着变量与函数的可见性和生命周期。在JavaScript中，
+
+                    变量的作用域有全局作用域和局部作用域两种，局部作用域又称为函数作用域。
+                </p>
+
+
+            </section>
+
+            <section>
+                <p>
+                    什么是又是全局作用域和局部作用域？
+                </p>
+                <p>
+                    全局作用域:在js中被认为是window对象，所有的全局变量和函数都是作为window对象的属性和方法创建出来的；全局执行环境是直到应用程序或者浏览器关闭时才会被销毁；
+                </p>
+                <p>
+                    局部作用域:是执行流进入到一个函数函数时，这个函数的环境就会被推入一个环境栈中，这个环境栈就是所谓的局部环境，函数中的代码执行完成以后，这个环境会被销毁，保存在里面的变量和函数定义都会随之销毁；
+                </p>
+
+            </section>
+
+
+            <section>
+
+
+                <section>
+                    <p>
+                        什么是作用域链
+                    </p>
+
+                    <p>作用域链：代码在一个环境中执行时，会创建变量对象的一个作用域链，作用域链的用途是保证执行环境能访问到的函数和变量 的有序访问； 作用域的前端，始终都是当前执行的代码
+                        所在环境的变量对象，如果这个环境是函数（局部环境），就将函数的活动对象作为变量对象，活动对象最开始只包含一个变量，就是arguments对象（这个arguments对象在全局环境中是不存在的）；
+                        作用域链中执行完arguments对象后的下一个变量对象就来自包含环境。一直延续到全局执行环境中，全局执行环境的变量对象始终都是作用域链中的最后一个对象；</p>
+                </section>
+
+
+            </section>
+
+
+            <section>
+                <h3>3.常见问题</h3>
+                <p>如何更加直观的体现作用域链</p>
+            </section>
+            <section>
+                <h3>4.解决方案</h3>
+                <p>正文已展示</p>
+            </section>
+            <section>
+            </section>
+
+            <section>
+                <h3>5.编码实战</h3>
+                <p>正文已展示</p>
+            </section>
+            <section>
+                <h3>6.扩展思考</h3>
+                <p>如何用这些知识实现代码优化？</p>
+                <p>
+                    从作用域链的结构可以看出，在运行期上下文的作用域链中，标识符所在的位置越深，读写速度就会越慢。
+
+                    因为全局变量总是存在于运行期上下文作用域链的最末端，因此在标识符解析的时候，查找全局变量是最慢的。
+
+                    所以，在编写代码的时候应尽量少使用全局变量，尽可能使用局部变量。
+
+                    一个好的经验法则是：如果一个跨作用域的对象被引用了一次以上，则先把它存储到局部变量里再使用。
+                </p>
+            </section>
+
+            <section>
+            </section>
+            <section>
+                <h3>7.参考文献</h3>
+                <p>https://www.tangshuang.net/2384.html 《javascript变量作用域与声明提升》</p>
+                <p>https://blog.csdn.net/weixin_41819731/article/details/81046721《JS函数作用域及作用域链理解》</p>
+            </section>
+            <section>
+                <p>
+                </p>
+            </section>
+            <section>
+                <h3>8.更多讨论</h3>
+                <p> 1.局部变量和全局变量谁的优先级高？</p>
+                <p>答：局部变量，因为查询的时候一一级一级的从局部到全局。</p> <br>
+
+                <p>1.曾经有人提到全局作用域污染，这个意思是要少用全局变量吗？</p>
+                <p>意思是作用域链就是JS引擎查询数据的一个链表，后定义的覆盖先定义的，查询不到定义的数据就往深一层查询，一直到全局作用域为止但是越往内层延伸，读写速度就会越慢，
+                    查找全局变量是最慢的。所以，在编写代码的时候应尽量少使用全局变量，尽可能使用局部变量。如果一个跨作用域的对象被引用了一次以上，则先把它存储到局部变量里再使用。
+                </p>
+
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <h3>感谢观看</h3>
+                <p>
+                    <small>BY——林钟远</small>
+                </p>
+            </section>
+        </div>
+    </div>
+
+
+    <!-- 控制按钮 -->
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+            // 	center: true, // 是否将幻灯片垂直居中
+            // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+            // 	loop: false, // 是否循环演示
+            // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+            // 	fragments: true, // 全局开启和关闭碎片。
+            // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+            // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+            // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+            // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+            // }
+            // 初始化幻灯片
+            Reveal.initialize({
+                history: true,
+                dependencies: [{
+                        src: '../plugin/markdown/marked.js'
+                    },
+                    {
+                        src: '../plugin/markdown/markdown.js'
+                    },
+                    {
+                        src: '../plugin/notes/notes.js',
+                        async: true
+                    },
+                    {
+                        src: '../plugin/highlight/highlight.js',
+                        async: true,
+                        callback: function () {
+                            hljs.initHighlightingOnLoad();
+                        }
+                    }
+                ]
+            });
+    </script>
+</body>
+
+</html>
