@@ -1,0 +1,256 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>DOM常规操作</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h3>【JS-TASK2】常见Dom操作有哪些？</h3>
+                <p>分享人:董家宇</p>
+            </section>
+
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <section>
+                    <h3>1.背景介绍</h3>
+                </section>
+                <section>
+                    <h4>什么是DOM？</h4>
+                    <p>
+                        DOM = Document Object
+                        Model，文档对象模型。DOM可以以一种独立于平台和语言的方式访问和修改一个文档的内容和结构。换句话说，这是表示和处理一个HTML或XML文档的常用方法。有一点很重要，DOM的设计是以对象管理组织（OMG）的规约为基础的，因此可以用于任何编程语言。最初人们把它认为是一种让JavaScript在浏览器间可移植的方法，不过DOM的应用已经远远超出这个范围。Dom技术使得用户页面可以动态地变化，如可以动态地显示或隐藏一个元素，改变它们的属性，增加一个元素等，Dom技术使得页面的交互性大大地增强。<br>
+                        简单地说，DOM是一套对文档的内容进行抽象和概念化的方法。
+                    </p>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>2.知识剖析</h3>
+                </section>
+                <section>
+                    <p>DOM中的“D”</p>
+                    <li>如果没有document（文档），DOM就无从谈起。</li>
+                    <li>每个载入浏览器的HTML文档都会成为Document对象。</li>
+                    <li>Document对象使我们可以从脚本中对HTML页面中的所有元素进行访问。</li>
+                    <li>当浏览器打开一个HTML文档时，浏览器解析HTML文档的标记，并创建表示这些标记的对象，这些对象就是HTML文档对象。</li>
+                </section>
+                <section>
+                    <p>DOM中的“O”</p>
+                    <ul>
+                        <li>JavaScript 中的所有事物都是对象</li>
+                        <li>对象只是一种特殊的数据。对象拥有属性和方法。</li>
+                        <li>与某个特定对象相关联的变量被称为这个对象的属性；只能通过某个特定对象去调用函数被称为这个对象的方法</li>
+                        <li>JavaScript语言里的对象可以分为三种类型
+                            <ol>
+                                <li>用户定义对象（user-defined object）：由程序员自行创建的对象。</li>
+                                <li>内建对象（native object）：内建在JavaScript语言里的对象，如Array、Math和Date等。</li>
+                                <li>宿主对象（host object）：由浏览器提供的对象。</li>
+                            </ol>
+
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <p>DOM中的“M”</p>
+                    <li>DOM中的“M”代表着“Model”（模型），但说它代表着“Map”（地图）也未尝不可。他们的含义都是某种事物的表现形式。</li>
+                    <li>浏览器提供了网页的地图（模型），而我们可以通过JavaScript去读取这张地图</li>
+                </section>
+                <section>
+                    <img src="./img/20190519-B-JS2/1.png" alt="">
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    <p>常见的DOM操作有哪些？</p>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>4.解决方法</h3>
+                </section>
+                <section>
+                    <p>常用的查找节点的方法有：</p>
+                    <p>document.getElementById('id属性值');返回拥有指定id的对象的引用</p>
+                    <p>document.getElementsByClassName('class属性值');返回拥有指定class的对象集合</p>
+                    <p>document.getElementsByTagName('标签名');返回拥有指定标签名的对象集合</p>
+                </section>
+                <section>
+                    <p>常用的新建节点的方法有：</p>
+                    <p>document.createElement('元素名');创建新的元素节点</p>
+                    <p>document.createAttribute('属性名');创建新的属性节点</p>
+                    <p>document.createTextNode('文本内容');创建新的文本节点</p>
+                </section>
+                <section>
+                    <p>常用的添加节点的方法有：</p>
+                    <p>1.element.setAttribute(attributeName, attributeValue );给元素增加指定属性，并设定属性值</p>
+                    <p>2.element.setAttributeNode(attributeName );给元素增加属性节点</p>
+                    <p>3.如需向HTML DOM添加新元素，您必须首先创建该元素（元素节点），然后向一个已存在的元素追加该元素。</p>
+                    <p>(1)document.createTextNode('新增文本内容');创建新的文本节点</p>
+                    <p>(2)parent.appendChild(创建的新节点);向父节点的最后一个子节点后追加新节点，或使用parent.insertBefore(newChild, existingChild
+                        );向父节点的某个特定子节点之前插入新节点</p>
+                </section>
+                <section>
+                    <p>常用的删除节点的方法有：</p>
+                    <p>parentNode.removeChild(existingChild );删除已有的子节点，返回值为删除节点</p>
+                    
+                </section>
+                <section>
+                    <p>常用的修改节点的方法有：</p>
+                    <p>parentNode.replaceChild(newChild, existingChild );用新节点替换父节点中已有的子节点</p>
+                    <p>element.setAttribute(attributeName, attributeValue );给元素增加指定属性，并设定属性值(若原元素已有该节点，此操作能达到修改该属性值的目的)
+                        <p>element.setAttributeNode(attributeName );给元素增加属性节点(若原元素已有该节点，此操作能达到修改该属性值的目的)</p>
+                    </p>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>5、编码实战</h3>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>6、扩展思考</h3>
+                    <p>常见的DOM事件有哪些？</p>
+                </section>
+                <section>
+                    <li>onclick事件——当用户点击时</li>
+                    <li>onload事件——用户进入</li>
+                    <li>onunload事件——用户离开</li>
+                    <li>onmouseover事件——鼠标移入</li>
+                    <li>onmouseout事件——鼠标移出</li>
+                    <li>onmousedown事件——鼠标按下</li>
+                    <li>onmouseup 事件——鼠标抬起</li>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>7、参考文献</h3>
+                </section>
+                <section>
+                    <p>参考书籍：《JavaScript编程艺术》</p>
+                    <p>参考网站：<a href="https://www.runoob.com/js/js-htmldom.html">runoob.com</a></p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>8、更多讨论</h3>
+                </section>
+                <section>
+                    <P>1、JS的加载是和HTML同步加载的吗？</P>
+                    <p>2、dom的操作是异步的吗？</p>
+                    <p>3、除了getElementsByClassName()、getElementsByTagName()、getElementById()还有什么可以获取dom节点的方法</p>
+                </section>
+            </section>
+            <section>
+                <p>谢谢观看</p>
+                <p>分享人：董家宇</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+    <script>
+        document.getElementById("change").onclick = function () {
+            document.getElementById("change").setAttribute("src", "./img/QTC_ppt/wtm.jpg");
+            // alert("a");
+        }
+    </script>
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: false, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            transition: 'convex',
+
+
+            dependencies: [{
+                src: './plugin/markdown/marked.js'
+            },
+            {
+                src: './plugin/markdown/markdown.js'
+            },
+            {
+                src: './plugin/notes/notes.js',
+                async: true
+            },
+            {
+                src: './plugin/highlight/highlight.js',
+                async: true,
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+            ]
+        });
+    </script>
+</body>
+
+</html>
