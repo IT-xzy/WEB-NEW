@@ -1,0 +1,565 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h4 style="font-size:58px">js传参有哪几种方式</h4>
+                <br>
+                <h4>分享人：上海分院--林钟远</h4>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <!-- <h4 style="font-family: 'Times New Roman'; text-transform:none;">什么是Ajax？</h4> -->
+                <section>
+                    <p style="text-align: left;">
+                        《js高级程序设计》上这样叙述参数传递：所有函数的参数都是按值传递的,也就是说把函数外部的值复制给函数内部的参数，就和把值从一个变量复制到另一个变量一样。
+                        但在非单页应用中，参数需要在不同的页面间进行传递，一个页面的参数在另一页面无法访问，如何才能做到不同页面间进行参数传递？
+                    </p>
+                </section>
+                <!-- <section>
+
+                </section> -->
+            </section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+
+            <section>
+                <section>
+                    <p style="text-align: left;">
+                               在JS中有多种页面传递参数的方法：<br> <br>
+                        一、URL
+                        把参数值附在url后面传递到其他页面 <br> <br>
+                       
+                        二、H5 web storage
+                        localStroage 和 sessionStorage    <br><br>
+                    
+                        三、Cookie
+                        使用浏览器Cookie传递参数
+
+                    </p>
+                </section>
+
+
+                <!-- 切换到下面 -->
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        2.1URL传参
+                        <br>
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        URL地址传递参数的几个特点：
+
+                        优点：
+                        1、 URL地址法简洁易用，可同时传递多个字符型参数；<br><br>
+                        2、 URL地址法可以很方便的在页面之间切换并传递参数，无需额外的处理，基于正常情况比较不会性能损失；<br><br>
+                        不足：
+                        1、 URL传递参数长度受限，最大为2K；<br><br>
+                        2、 URL只能传递字符型参数，传递中文时，由于发送页面和接收页面的字符编码方式不一样而导致参数解析处理错误，参数包含中文时可能出现乱码或者参数接收错误； <br><br>
+                        3、 信息泄露：URL地址在客户端可见，所以涉及隐私的参数需进行加密后才能进行传递，不加密传输会导致信息泄露，产生安全隐患。<br><br>
+
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        2.2 H5 WEB storage
+                        <br>
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+
+                        1、sessionStorage用于本地存储一个会话中的数据，这些数据只有在同一个会话中的页面才能访问,并且当会话结束后数据
+                        也随之销毁。因此sessionStorage不是一种持久化的本地存储，仅仅是会话级别的存储。<br><br>
+
+                        2、localStorage HTML5本地存储web storage特性的API之一，用于将大量数据（最大5M）保存在浏览器中. 保存后数据永远
+                        存在不会失效过期，除非手动清除。不参与网络传输。一般用于性能优化，可以保存图片、js、css、html 模板、大量数据<br><br>
+
+                        3、数据以 键/值 （key/value）对存在, web网页的数据只允许该域访问使用<br><br>
+
+                       
+
+
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        
+                        4、数据储存：
+                        在有多组数据需要储存时，一般建立一个新的对象，然后将多组数据储存在对象中，使用 JSON.stringify()
+                        来将对象转换为字符串，使用localStorage.setItem(key,value);保存数据。<br><br>
+
+                        5、数据提
+                        取：使用localStorage.getItem(key)读取数据使用 JSON.parse 方法将字符串转换为 JSON 对象。直接引用对象的各个值。<br><br>
+
+                    
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+
+                        2.3 cookie
+
+                        <br>
+
+                        Cookie是什么
+
+                        Cookie是当你浏览某网站时，网站存储在你机器上的一个小文本文件， 它记录了你的用户ID，密码、浏览过的网页、停留的时间等信息，当你再次来到该网站时，
+                        网站通过读取Cookie，得知你的相关信息，就可以做出相应的动作，如在页面显示欢迎你的标语， 或者让你不用输入ID、密码就直接登录等等
+
+
+                    </p>
+                </section>
+                <!-- <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+
+                      
+
+                    </p>
+                </section> -->
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        Cookie 一般有两个作用。
+                        第一个作用是识别用户身份。
+                        比如用户 A 用浏览器访问了 http://a.com，那么 http://a.com 的服务器就会立刻给 A 返回一段数据「uid=1」（这就是 Cookie）。当 A 再次访问
+                        http://a.com 的其他页面时，就会附带上「uid=1」这段数据。<br><br>
+
+                        同理，用户 B 用浏览器访问 http://a.com 时，http://a.com 发现 B 没有附带 uid 数据，就给 B 分配了一个新的 uid，为2，然后返回给 B
+                        一段数据「uid=2」。B 之后访问 http://a.com 的时候，就会一直带上「uid=2」这段数据。<br><br>
+
+                        借此，http://a.com 的服务器就能区分 A 和 B 两个用户了。<br><br>
+
+
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+
+                        第二个作用是记录历史。<br><br>
+                        假设 http://a.com 是一个购物网站，当 A 在上面将商品 A1 、A2 加入购物车时，JS 可以改写 Cookie，改为「uid=1; cart=A1,A2」，表示购物车里有 A1
+                        和 A2 两样商品了。<br><br>
+
+                        这样一来，当用户关闭网页，过三天再打开网页的时候，依然可以看到 A1、A2 躺在购物车里，因为浏览器并不会无缘无故地删除这个 Cookie。<br><br>
+
+                        借此，就达到里记录用户操作历史的目的了<br><br>
+
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+
+                        Cookie的一些特点。
+
+                        1.Cookie可以使用 js 在浏览器直接设置（用于记录不敏感信息，如用户名）, 也可以在服务端通使用 HTTP 协议规定的 set-cookie
+                        来让浏览器种下Cookie，这是最常见的做法。
+
+                        2.每次网络请求 Request headers 中都会带上Cookie。所以如果 Cookie太多太大对传输效率会有影响。
+
+                        3.一般浏览器存储Cookie 最大容量为4k，所以大量数据不要存到Cookie。
+
+                    </p>
+                </section>
+
+                <!-- <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+
+                        2.4 form表单
+
+                        通常使用的表单的提交方式主要是：
+                        post和get两种。
+                        两者的区别在于：post方式是把数据内容放在请求的数据正文部分，没有长度的限制;
+                        get方式则是把数据内容直接跟在请求的头部的URL后面，有长度的限制。
+                        而一般在表单的数据提交中，都会选择POST方式，
+                        因为使用GET方法数据是通过URL传递的，在地址栏中会直接看到传递的数据，这样就缺少安全性。
+                        而使用POST传递时，是把提交的数据放置在HTTP包的包体中，地址栏不会看到数据。
+
+                    </p>
+                </section> -->
+
+                <!-- <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+
+
+                    </p>
+                </section>
+
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+
+
+                    </p>
+                </section>
+
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+
+
+                    </p>
+                </section> -->
+
+            </section>
+
+
+
+
+
+            <section>
+                <h3>3.常见问题</h3>
+
+
+                <p>
+                    那么在有这么多存储方式的情况下，我们应该如何选择？
+                </p>
+
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+            </section>
+
+            <!-- 
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+
+                <br>(2)文字环绕 <a href="BFC-text.html" target="blank">DEMO-环绕</a>
+                <p>来看下面这个demo-2，文字环绕在图片边，但是如果文字内容太多了，超过了图片的高度，它就会跑到图片的下面，这样非常影响美观和整体性</p>
+
+                <p>这里有一个细节，如果我们想让图片和文字之间留一个间距，有人可能会让旁边的文字加一个margin-left，但是发现不管用！</p>
+
+                <p> 但是这并不是最佳方案，我们其实可以很简单的给图片加一个margin-right，或者给文字加一padding-left就能解决， 这就是BFC盒子与浮动元素并排的表现</p>
+
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+
+                <br>(3)margin重叠的问题 <a href="BFC-margin.html" target="blank">DEMO-重叠</a>
+                <p>
+                    在一些垂直的布局里，上下和盒子的margin值会重叠
+                </p>
+
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+
+                <br>(4)总结一下BFC大家族的“顶梁柱”
+                <p>
+                    1.overflow: auto/hidden <br>
+                    2.display:inline-block <br>
+                    3.display:table-cell <br>
+                </p>
+
+            </section> -->
+
+            <section>
+                <h3>4.解决方案</h3>
+                <p>
+                    在传递少量不涉及隐私的参数时可以使用直接url或者Form的GET方式传递. <br>
+                    大量数据可以用POST传递会话信息等可以用cookie和localStorage. <br>
+                    临时数据可用sessionStorage
+                </p>
+            </section>
+
+            <!-- <section class="" style="top: 275px; display: none;" aria-hidden="true">
+
+
+
+
+            </section> -->
+
+            <section>
+                <h3>5.编码实战</h3>
+                <p>正文已展示</p>
+            </section>
+
+
+            <section>
+                <h3>6.扩展思考</h3>
+                <p>传参方式的优缺点</p>
+
+                <br>
+
+                <p>6.1、URL传参：
+                    优点：取值方便，可以跨域。
+                    缺点：值长度有限制。
+                </p>
+
+                <p>6.2、H5 Web storage：
+                    优点：使用起来非常简单、方便。
+                    缺点：兼容性有点小问题。兼容性： 现代浏览器（firefox safari chrome opera）都支持，IE8以下（不包括IE8）不支持。
+                </p>
+
+                <p>6.3、Cookie传参：
+                    优点：兼容性最好，可以在同源内的任意网页内访问，生命期可以设置。
+                    缺点：值长度有限制（存储的容量小），还得注意请求接口时别带到http head
+                </p>
+
+            </section>
+
+
+
+            <section>
+                <h3>7.参考文献</h3>
+            </section>
+            <section style="text-align:left">
+                <p>
+                    js传参方式https://blog.csdn.net/u013131203/article/details/53946456
+
+
+                    理解cookie及其用法
+                    https://www.cnblogs.com/sy270321/p/4248961.html
+
+
+                    web Storage
+                    https://justcoding.iteye.com/blog/2092992
+                </p>
+            </section>
+
+            <section>
+                <h3>8.更多讨论</h3>
+
+                <p> 问：1.按值传参的值是什么值？</p>
+                <p> 答：基本数据类型. 方法调用时，实际参数把它的值传递给对应的形式参数，
+
+                    形式参数只是用实际参数的值初始化自己的存储单元内容，
+
+                    是两个不同的存储单元，所以方法执行中形式参数值的改变不影响实际参数的值。
+                </p>
+
+                <br>
+
+                <p>问：2.引用传递是什么意思？</p>
+                <p>答：引用数据类型参数. 方法调用时，实际参数是对象(或数组)，
+
+                    这时实际参数与形式参数指向同一个地址，
+
+                    在方法执行中，对形式参数的操作实际上就是对实际参数的操作，
+
+                    这个结果在方法结束后被保留了下来，所以方法执行中形式参数的改变将会影响实际参数 </p>
+
+                <br>
+
+                <p> 问：3.哪种情况下适合用sessionStorage传参？</p>
+                <p> 答：回答3会话信息等可以用cookie和localStorage,可以永久保存（不过只有5M）。临时数据可用sessionStorage，不过当会话结束后数据也随之销毁。</p>
+
+            </section>
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    By
+                    <small style="vertical-align: middle">林钟远</small>
+                </p>
+
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, //                                                                                                                                                                                                                                                                                                      是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+
+
+
+        //    原始类型对象直接赋值不会相互影响
+        //    var a = 1;
+        //
+        //    var b = a;
+        //    b = 10;
+        //    console.log(a); // 1
+        ////
+        //    var a = 'hello';
+        //    var b = a;
+        //    b = 'world';
+        //    console.log(a); // hello
+        //
+        //    var a = true;
+        //    var b = a;
+        //    b = false;
+        //    console.log(a);
+        //数组浅复制
+        //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+        //    ];
+        //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+        //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+        //    console.log(a)//那么现在打印a 是什么结果呢
+        //
+        //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+        //    var arrtoo = arr.slice(1);
+        //    arrtoo[2] = "set Map";
+        //    console.log(arr);//One,Two,Three
+        //    console.log(arrtoo);//One,set Map,Three
+        //
+        //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+        //    var arrtooo = arr1.concat(111111);
+        //    arrtooo[1] = "set Map To";
+        //    console.log(arr1);//One,Two,Three
+        //    console.log(arrtooo);//One,set Map To,Three
+        //
+        //    var b=[1,2,3,4,5];   //concat的链接
+        //    var c=[6,7,8,9];
+        //    var d =[4,4,22]
+        //    console.log(b.concat(c,d))
+        // var a = {
+        //     name: 'yy',
+        //     age: 26
+        // }; //对象的浅拷贝哦
+        // var b = new Object();
+        // b.name = a.name;
+        // b.age = a.age;
+        // b.name = 'xx';
+        // console.log(a); //Object { name="yy", age=26}
+        // console.log(b); //Object { name="xx", age=26}
+        // var d = { //对象的浅拷贝哦 第一种
+        //     name: 'd',
+        //     oc: {
+        //         age: 32
+        //     },
+        //     oad: {
+        //         adds: {
+        //             bb: 12
+        //         }
+        //     }
+        // };
+        // var deepCopy = function (source) {
+        //     var result = {};
+        //     for (var key in source) {
+        //         result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+        //     }
+        //     return result
+        // };
+        // var c = deepCopy(d);
+        // c.name = 'c';
+        // c.oc = {
+        //     age: 49
+        // };
+        // console.log(c);
+        // console.log(d);
+        //    var person = {    //第二种深拷贝
+        //        name: 'aa',
+        //        friends: ['da', 'dsa', 'gf']
+        //    };
+        //
+        //    var aPerson = Object.create(person, {
+        ////        name: {
+        ////            value: "gee"
+        ////        }
+        //    });
+        //
+        //    console.log(person.name);
+        //    console.log(aPerson.friends)
+        // var Chinese = {
+        //     nation: '中国'
+        // }
+        // var Doctor = {
+        //     career: '医生'
+        // }
+
+        // function extendCopy(p) {
+        //     var c = {};
+        //     for (var i in p) {
+        //         c[i] = p[i];
+        //     }
+        //     c.uber = p;
+        //     return c;
+        // }
+        // var Doctor = extendCopy(Chinese);
+        // Doctor.career = '医生';
+        // console.log(Doctor); // 中国
+        // Chinese.birthPlaces = ['北京', '上海', '香港'];
+        // var Doctor = extendCopy(Chinese);
+        // Doctor.birthPlaces.push('厦门');
+    </script>
+</body>
+
+</html>
