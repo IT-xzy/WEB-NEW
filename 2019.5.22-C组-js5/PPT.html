@@ -1,0 +1,445 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>原型链和访问对象原型的方法</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="../img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal slide center" role="application" data-transition-speed="default"
+        data-background-transition="fade">
+        <div class="slides"
+            style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+            <section>
+                <h2 style="font-size: 1.5em;width: 110%;">
+                    【JS-task5】
+                    <span>原型链和访问对象原型的方法</span>
+                </h2>
+                <p>分享人：周建刚</p>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+
+            <section>
+                <h3 style="text-align: left;">1.背景介绍</h3>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    &emsp;&emsp; 面向对象编程都会涉及到继承这个概念，JS中实现继承的方式主要是通过原型链的方法。</br>
+                    &emsp;&emsp; JavaScript本身不提供类实现。 (在ES2015/ES6中引入了class关键字，但是只是语法糖，JavaScript 仍然是基于原型的)。
+                    通过原型这种机制，JavaScript 中的对象从其他对象继承功能特性。
+                </p>
+                <!-- <p style="text-align: left;">
+                当谈到继承时，Javascript 只有一种结构：对象。每个对象都有一个内部链接到另一个对象， 称为它的原型 prototype。该原型对象有自己的原型，等等，直到达到一个以null为原型的对象。 根据定义，null没有原型，并且作为这个原型链prototype
+                chain中的最终链接。那么原型链如何工作? prototype 属性如何向已有的构造器添加方法?
+            </p> -->
+            </section>
+
+            <section>
+                <h3 style="text-align: left;">2.知识剖析</h3>
+            </section>
+            <section>
+                <h4 style="text-align: left;">2.1&emsp;prototype和__proto__</h4>
+                <p style="text-align: left;">
+
+                    每个函数都有一个属性——prototype。这个prototype的属性值是一个对象（属性的集合），默认只有一个叫做constructor的属性，指向这个函数本身。
+                </p>
+                <p style="text-align: left;">
+                    每个对象都有一个隐藏的属性——“__proto__”，这个属性引用了创建这个对象的函数的prototype。<br>即：fn.__proto__ === Fn.prototype
+                </p>
+            </section>
+            <section>
+                <h4 style="text-align: left;">定义构造函数,通过new来创建对象实例</h4>
+                <pre><code>
+                function Dog (name){
+                    this.name = name;
+                    this.type = 'Dog';
+                  
+                }
+                Dog.prototype.speak = function () {
+                    　　alert('wang');
+                    }
+                var doggie = new Dog('jiwawa');
+                console.log(doggie.name);  //jiwawa
+                doggie.speak();  //wang 
+                </code></pre>
+                <p style="text-align: left;">
+                    在这个例子中，Dog就是一个构造函数，我们使用 new 创建了一个实例对象doggie。
+                </p>
+                <img src='asd.png'>
+            </section>
+            <section>
+                <h4 style="text-align: left;">要清楚原型链,首先要弄清楚对象：</h4>
+                <p style="text-align: left;">
+                    普通对象
+                </p>
+                <p style="text-align: left;">
+                    最普通的对象：有__proto__属性（指向其原型链），没有prototype属性。<br>
+                    原型对象(person.prototype 原型对象还有constructor属性（指向构造函数对象）)
+                </p>
+                <p style="text-align: left;">
+                    函数对象
+                </p>
+                <p style="text-align: left;">
+                    凡是通过new Function()创建的都是函数对象。<br>
+                    拥有__proto__、prototype属性（指向原型对象）。
+                </p>
+
+            </section>
+
+            <section>
+                <p style="text-align: left;">
+                    构造函数,原型和实例的关系:
+                    <br> 1.每个构造函数(constructor)都有一个原型对象(prototype)
+                    <br> 2.原型对象都包含一个指向构造函数的指针
+                    <br> 3.实例都包含一个指向原型 对象的内部指针
+                    <br> 4.如果试图引用对象的某个属性,会首先在对象内部寻找该属性,直至找不到,然后才在该对象的原型(prototype)里去找这个属性.
+                </p>
+
+            </section>
+
+            <!--   <section>
+                <h4 style="text-align: left;">对象的 __PROTO__ 属性指向实例原型</h4>
+                <p style="text-align: left;">
+                    这是每一个JavaScript对象(除了null)都具有的一个属性，叫[[prototype]] __proto__，这个属性会指向该对象的原型。
+                </p>
+                <pre><code>
+                    function Person() {
+
+                    }
+                    var person = new Person();
+                    console.log(person.__proto__ === Person.prototype);  //true?
+                </code></pre>
+            </section> -->
+            <!-- <section>
+                <img src="./img/20180827-B-js5/prototype2.png" alt="prototype2">
+                <p style="text-align: left;">
+                    既然实例对象和构造函数都可以指向原型，那么原型是否有属性指向构造函数或者实例呢？
+                </p>
+            </section>
+            <section>
+                <h4 style="text-align: left;">实例原型的 CONSTRUCTOR 属性指向构造函数?</h4>
+                <p style="text-align: left;">
+                    指向实例是不可能的,因为一个构造函数可以生成多个实例，但是原型指向构造函数倒是有的，每个原型都有一个constructor属性指向关联的构造函数：
+                </p>
+                <pre><code>
+                    function Person() {
+
+                    }
+                    console.log(Person === Person.prototype.constructor); //true?
+                </code></pre>
+            </section> -->
+            <!-- <section>
+                <img src="./img/20180827-B-js5/prototype3.png" alt="prototype3">
+            <p style="text-align: left;">
+                构造函数,原型和实例的关系:
+                <br> 每个构造函数(constructor)都有一个原型对象(prototype)
+                <br> 原型对象都包含一个指向构造函数的指针
+                <br> 实例(instance)都包含一个指向原型 对象的内部指针
+                <br> 如果试图引用对象(实例instance)的某个属性,会首先在对象内部寻找该属性,直至找不到,然后才在该对象的原型(instance.prototype)里去找这个属性.
+            </p> -->
+            <!-- </section> -->
+            <!-- <section>
+            <p style="text-align: left;">
+                综上我们已经得出：
+            </p>
+            <pre><code>
+                    function Person() {
+                    }
+
+                    var person = new Person();
+
+                    console.log(person.__proto__ == Person.prototype) // true
+                    console.log(Person.prototype.constructor == Person) // true
+                </code></pre>
+        </section> -->
+
+            <section>
+                <p style="text-align: left;">
+                    在这个例子中，我们设置了person的name属性，所以我们可以读取到为'name of this
+                    person'，当我们删除了person的name属性时，再次读取person.name，从person中找不到之后就会从person的原型也就是person.__proto__
+                    == Person.prototype中查找，幸运的是我们在person的原型找到了`name`属性，但是万一还没有找到呢？原型的原型又是什么呢？
+                </p>
+
+            </section>
+            <section>
+                <img src='./ggg.png'>
+                <p style="text-align: left;">
+                    原型链 那Object.prototype的原型呢？ 就是null,所以查到Object.prototype就可以停止查找了
+                </p>
+            </section>
+            <section>
+                <img src='./qqq.png'>
+            </section>
+            <section>
+                <h3 style="text-align: left;">3.常见问题</h3>
+            </section>
+            <section>
+                <p style="text-align: left;">访问对象原型的方法有哪些？</p>
+            </section>
+
+
+            <section>
+                <h3 style="text-align: left;">4.解决方案</h3>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    没有正式的方法用于直接访问一个对象的原型对象——原型链中的“连接”被定义在一个内部属性中，在 JavaScript 语言标准中用 [[prototype]] 表示。
+                    <br> 然而，大多数现代浏览器还是提供了一个名为 __proto__ （前后各有2个下划线）的属性，其包含了对象的原型。你可以尝试输入 person1.__proto__ 和
+                    person1.__proto__.__proto__，看看代码中的原型链是什么样的！获取实例对象obj的原型对象，有三种方法
+                </p>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    <br> obj.__proto__
+                    <br> obj.constructor.prototype
+                    <br> Object.getPrototypeOf(obj)
+                    <br> 上面三种方法之中，前两种都不是很可靠。
+                    <br> 最新的ES6标准规定，__proto__属性只有浏览器才需要部署，其他环境可以不部署。而obj.constructor.prototype在手动改变原型对象时，可能会失效。
+                </p>
+            </section>
+
+
+            <section>
+                <h3 style="text-align: left;">5.编码实战</h3>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    获取原型对象的方法
+                </p>
+                <pre><code>
+                    function Person() {};//构造函数
+                    var person1 = new Person();//函数实例
+                    //    三种方法都能获取到当前对象的原型对象
+                    person1.__proto__===Person.prototype;// true
+                    person1.constructor.prototype===Person.prototype;// true
+                    Object.getPrototypeOf(person1)===Person.prototype;// true
+                </code></pre>
+            </section>
+
+
+            <section>
+                <h3 style="text-align: left;">6.扩展思考</h3>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    instanceof运算符的原型链原理? instanceof运算符返回一个布尔值，表示指定对象是否为某个构造函数的实例。
+                </p>
+                <pre><code>
+                    function Animal(){
+                        }
+                    var LaoWang = new Animal();
+                    LaoWang instanceof Animal 
+                    
+                    function Person(){
+                        }
+
+                    Person.prototype = new Animal();
+                    var Lao li = new Person
+                    LaoWang instanceof Animal //  ?
+                    Laowang.__proto__   有没有  Animal.prototype
+                </code></pre>
+                <p style="text-align: left;">
+                    instanceof运算符的左边是实例对象，右边是构造函数。它的运算实质是检查右边构建函数的原型对象，是否在左边对象的原型链上。
+                    由于instanceof对整个原型链上的对象都有效，因此同一个实例对象，可能会对多个构造函数都返回true。
+                </p>
+            </section>
+
+            <section>
+                <h3 style="text-align: left;">7.参考文献</h3>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    参考一&emsp;
+                    <a
+                        href="https://www.jianshu.com/p/470d7f19b000">JS中的构造函数，原型，原型链，继承
+                      </a>
+                </p>
+                <p style="text-align: left;">
+                    参考二&emsp;
+                    <a href="https://www.cnblogs.com/sarahwang/p/6870072.html">构造函数、原型与实例之间的关系
+                        </a>
+                </p>
+                <p style="text-align: left;">
+                    参考三&emsp;
+                    <a href="https://blog.csdn.net/u011504806/article/details/80676490">【JS】深入理解JS原型和继承</a>
+                </p>
+            </section>
+
+
+            <!-- <section>
+                <h3 style="text-align: left;">8.更多讨论</h3>
+            </section>
+            <section>
+                <p style="text-align: left;">
+                    原型链并非十分完美, 它包含如下两个问题.
+                </p>
+                <p style="text-align: left;">
+                    问题一: 当原型链中包含引用类型值的原型时,该引用类型值会被所有实例共享;
+                    <br>问题二: 在创建子类型(例如创建Son的实例)时,不能向超类型(例如Father)的构造函数中传递参数.
+                </p>
+                <p style="text-align: left;">
+                    有鉴于此, 实践中很少会单独使用原型链. 为此,下面将有一些尝试以弥补原型链的不足.
+                </p>
+                <p style="text-align: left;">
+                    1 借用构造函数
+                    <br>2 组合继承
+                    <br>3 原型继承
+                </p>
+            </section> -->
+
+
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>BY : 周建刚 </p>
+            </section>
+        </div>
+    </div>
+
+    <div class="backgrounds">
+        <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background stack future" style="display: none;">
+            <div class="slide-background present" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+        </div>
+        <div class="slide-background stack future" style="display: none;">
+            <div class="slide-background present" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+        </div>
+        <div class="slide-background stack future" style="display: none;">
+            <div class="slide-background present" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+        </div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background stack future" style="display: none;">
+            <div class="slide-background present" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+        </div>
+        <div class="slide-background stack future" style="display: none;">
+            <div class="slide-background present" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+        </div>
+    </div>
+    <div class="progress" style="display: block;"><span style="width: 0px;"></span></div>
+    <aside class="controls" style="display: block;"><button class="navigate-left"
+            aria-label="previous slide"></button><button class="navigate-right enabled"
+            aria-label="next slide"></button><button class="navigate-up" aria-label="above slide"></button><button
+            class="navigate-down" aria-label="below slide"></button></aside>
+    <div class="slide-number" style="display: none;"></div>
+    <div class="speaker-notes" data-prevent-swipe=""></div>
+    <div class="pause-overlay"></div>
+    <div id="aria-status-div" aria-live="polite" aria-atomic="true"
+        style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px 1px 1px 1px);">
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        //  controls: true, // 是否在右下角展示控制条
+        //  progress: true, // 是否显示演示的进度条
+        //  slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        //  history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        //  keyboard: true, // 是否启用键盘快捷键来导航
+        //  overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        //  center: true, // 是否将幻灯片垂直居中
+        //  touch: true, // 是否在触屏设备上启用触摸滑动切换
+        //  loop: false, // 是否循环演示
+        //  rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        //  fragments: true, // 全局开启和关闭碎片。
+        //  autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        //  transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        //  transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        //  mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status He
