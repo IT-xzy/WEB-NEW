@@ -1,0 +1,268 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section style="text-align: center;">
+                <h2>【CSS-7】</h2>
+                <h4>rgba和opacity的透明效果有什么不同？display和visiblity有什么区别？</h4>
+                <p>分享人：王熠(yì)华</p>
+            </section>
+
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <section>
+                    <h3>1.背景介绍</h3>
+                </section>
+                <section style="text-align: center;">
+                    在CSS7的任务中，我们会遇到需要透明度的边框，但用opacity好还是rgba好呢？</br>
+                    另外在面试中面试官问你display:none和visibility:hidden有什么区别?</br>
+                    我们回答display:none不占用原来的位置，而visibility:hidden保留原来的位置，会不会显得太年轻了。</br>
+                </section>
+                <section>
+
+
+                    <h3>2.知识剖析</h3>
+                </section>
+
+                <section>
+                    1.rgba是什么：</br>
+
+                    RGB（Red（红色） Green（绿色） Blue（蓝色））的基础上增加了一个通道Alpha。</br>
+                    Alpha参数为透明值，在0~1之间。RGBa 扩展了 RGB的颜色</br>
+                    rgba（）是css中设置背景颜色中的一个属性。</br>
+
+
+                </section>
+                <section>
+                    2.rgba语法：</br>
+                    div { background-color: rgba(255,0,0,1); } </br>
+                    a 表示透明度：0=透明；1=不透明；</br>
+                </section>
+
+
+
+            </section>
+            <section>
+                1.opacity是什么：</br>
+
+                Opacity属性设置一个元素的透明度级别。</br>
+                opacity是css的一个属性</br>
+
+            </section>
+
+            <section style="line-height:3.5rem;">
+                2.opacity属性有哪些：</br>
+
+                语法： div { background-color: rgb(255,0,0); opacity: 1; } </br>
+
+                value指不透明度。从0.0（完全透明）到1.0（完全不透明）；</br>
+                value 取值0~1，0为完全透明，1为完全不透明。默认是继承父元素opacity属性，所以子元素会继承父元素的opacity属性值，从而产生相同的效果。</br>
+            </section>
+
+            <section>
+                3.他们俩的区别是什么：</br>
+                rgba（）的作用对象是元素的背景颜色或元素的颜色，其对象的子元素不能够继承它的透明度；</br>
+                opacity的作用对象是元素，以及元素的所有内容，并且其子元素能够继承它的透明度。</br>
+            </section>
+            <section>
+                4.display的常用属性有哪些？
+                <img style="width:1418px;height:500px" src=".\img\20190618-A-CSS7\display的属性.png"></br>
+
+            </section>
+            <section>
+                当元素设置display:none后，界面上将不会显示该元素，并且该元素不占布局空间（影响布局），但我们仍然可以通过JavaScript操作该元素。
+            </section>
+            <section>
+                5.visibility的常用属性有哪些？
+                <img style="width:1418px;height:480px" src=".\img\20190618-A-CSS7\visibility的属性.png">
+                visibility有两个不同的作用</br>
+                1.用于隐藏表格的行和列</br>
+                2.在不触发布局(即还占空间不影响布局)的情况下隐藏元素</br>
+            </section>
+
+            <section>
+                <p>visibility：hidden和display:none还有哪些不同区别？</p>
+                <p style="text-align: center;">（抓稳了，前方可能翻车）</p>
+            </section>
+
+            <section>
+                俩者的特点：
+                <img style="width:1418px;height:480px" src=".\img\20190618-A-CSS7\display：none的特点.png">
+            </section>
+            
+            <section>
+                    俩者的特点：
+                <img style="width:1418px;height:480px" src=".\img\20190618-A-CSS7\visibility：hidden特点.png">
+            </section>
+            <section>
+                    俩者的特点对比：
+                <img style="max-width:100%;height:479px" src=".\img\20190618-A-CSS7\俩者的特点对比.png">
+            </section>
+
+            <section>
+                <section>
+                    <h3>3.常见问题</h3>
+                    3.1 :&nbsp;&nbsp;单独给子元素设置opacity的值会单独产生效果吗，还是说怎么修改都没办法，一定会继承父级的元素属性值？<br>
+                    <br>
+                    <br>
+                    <h3>4.解决方案</h3>
+                    <p>4.1:&nbsp;&nbsp;代码实际演示看看</p>
+                </section>
+
+                <section>
+                    <h3>3.常见问题</h3>
+                    3.2 :&nbsp;&nbsp;如果是通过样式文件或<style>css</style>方式来设置元素的display:none样式，用js设置style.display=""并不能使元素显示，<br>
+                    <br>
+                    <br>
+                    <h3>4.解决方案</h3>
+                    <p>4.2:可以使用block或inline等值来代替。通过style="display:none"直接在元素上进行的设置不会有这个问题 </p>
+                </section>
+            </section>
+            <section>
+
+
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+
+                <section style="text-align: center;">
+                    <p>代码实际演示看看</p>
+                </section>
+
+
+            </section>
+
+            <section>
+                <section>
+                    <h3>5.代码实战</h3>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>6.拓展思考</h3>
+                </section>
+                <section>
+                    <p>除了display：none和visibility:hidden还有什么办法隐藏元素</p></br>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>7.参考文献</h3>
+                    <p>参考一：<a
+                            href="https://www.cnblogs.com/fsjohnhuang/p/9727386.html">CSS魔法堂：display:none与visibility:hidden的恩怨情仇</a>
+                    </p>
+                    <p>参考二：<a href="https://www.jb51.net/web/73987.html">
+                        css元素隐藏原理及display:none和visibility:hidden</a></p>
+                </section>
+            </section>
+
+            <section>
+                <h3>8.更多讨论</h3>
+
+            </section>
+
+            <section style="text-align: center;">
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    <small>BY : 王熠华</small>
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: './plugin/markdown/marked.js'
+                },
+                {
+                    src: './plugin/markdown/markdown.js'
+                },
+                {
+                    src: './plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: './plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
