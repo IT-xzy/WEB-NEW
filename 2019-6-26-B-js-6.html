@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>小课堂</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            './css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h3>【JS-TASK5】如何使用正则表达式</h3>
+                <p>分享人:董家宇</p>
+            </section>
+
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <section>
+                    <h3>1.背景介绍</h3>
+                </section>
+                <section>
+                    <p>
+                        一个正则表达式通常被称为一个模式
+                        (pattern)，为用来描述或者匹配一系列符合某个句法规则的字符串。正则表达式是对字符串操作的一种逻辑公式，就是用事先定义好的一些特定字符、及这些特定字符的组合，组成一个“规则字符串”，这个“规则字符串”用来表达对字符串的一种过滤逻辑。
+                    </p>
+                </section>
+                <section>
+                    <p>
+                        在编写处理字符串的程序或网页时，经常会有查找符合某些复杂规则的字符串的需求。正则表达式就是用于描述这些规则的工具。换句话说，正则表达式就是记录文本规则的代码。
+                    </p>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>2.知识剖析</h3>
+                </section>
+
+                <section>
+                    <h4 style="text-align: center">为什么要学正则，或者说它好在哪里？</h4>
+                </section>
+                <section>
+                    <h4>什么是正则表达式？</h4>
+                    <p>1.正则：规则、模式</p>
+                    <p>2.强大的字符串匹配工具</p>
+                    <p>3.是一种正常人很难读懂的文字</p>
+                    <p>4.RegExp对象</p>
+                    <p>(1)JS风格——new RegExp("a")</p>
+                    <p>(2)perl风格——/a/</p>
+                </section>
+                <section>
+                    <h4 style="text-align: center">字符串与正则配合</h4>
+                    <p>忽略大小写:i —— ignore</p>
+                    <p>转义：\d —— 数字</p>
+                    <p>全局匹配：g —— global</p>
+                    <p>量词:+ —— 若干个</p>
+                </section>
+                <section>
+                    <p>replace:替换所有匹配的，返回替换后的字符串</p>
+                    <p>例子：敏感词过滤</p>
+                </section>
+                <section>
+                    <h4>[ ]——元字符</h4>
+                    <p>任意字符：[abc]</p>
+                    <p>范围：[a-z][0-9]</p>
+                    <p>排除：[^a]</p>
+                </section>
+                <section>
+                    <p>转义字符</p>
+                    <p>.(点) —— 任意字符</p>
+                    <p>\d(数字)、\w(英文、数字、下划线)、\s(空白字符)</p>
+                    <p>\D、\W、\S</p>
+                </section>
+                <section>
+                    <h4>量词</h4>
+                    <p>{n}——正好出现n次</p>
+                    <p>{n,m}——最少n次，最多m次</p>
+                    <p>{n,}——最少n次，最多不限</p>
+                    <p>+——最少1次，最多不限</p>
+                    <p>？——最少0次，最多一次</p>
+                    <p>*——可以没有，也可以有，并且有多少位都行</p>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>3.常见问题</h3>
+                </section>
+                <section>
+                    <p>如何校验邮箱？</p>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>4.解决方法</h3>
+                </section>
+                <section>
+                    <p>先找出邮箱的规则，翻译成正则表达式</p>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>5、编码实战</h3>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>6、扩展思考</h3>
+                </section>
+                <section>
+                    <p>1、如何校验电话？</p>
+                    <p>2、如何校验QQ号</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>7、参考文献</h3>
+                </section>
+                <section>
+                    <p>参考网址：<a
+                            href="https://www.bilibili.com/video/av29885002/?p=32">https://www.bilibili.com/video/av29885002/?p=32</a>
+                    </p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>8、更多讨论</h3>
+                </section>
+            </section>
+            <section>
+                <p>谢谢观看</p>
+                <p>分享人：董家宇</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+    <script>
+        document.getElementById("change").onclick = function () {
+            document.getElementById("change").setAttribute("src", "./img/QTC_ppt/wtm.jpg");
+            // alert("a");
+        }
+    </script>
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: false, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            transition: 'convex',
+
+
+            dependencies: [{
+                src: './plugin/markdown/marked.js'
+            },
+            {
+                src: './plugin/markdown/markdown.js'
+            },
+            {
+                src: './plugin/notes/notes.js',
+                async: true
+            },
+            {
+                src: './plugin/highlight/highlight.js',
+                async: true,
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+            ]
+        });
+    </script>
+</body>
+
+</html>
