@@ -1,0 +1,425 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h4>javascript-TASK3 JS有哪几种传参方式？</h4>
+                <h4>分享人：胡海滔</h4>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <!-- <h4 style="font-family: 'Times New Roman'; text-transform:none;">什么是Ajax？</h4> -->
+                <section>
+                    <p style="text-align: left;">
+                        <!-- <h4>为什么要使用SASS</h4> -->
+                        <br>所有函数的参数都是按值传递的,也就是说把函数外部的值赋值给函数内部的参数，就和把值从一个变量赋值到另一个变量一样。————《js高级程序设计》有的人可能会把这里的js传参方式，理解成js函数中的参数传递，但是呢，我们所要讲的是页面之间的数据传递。传统的前端开发中，页面之间是少有参数交互的，甚至没有，而在如今的前端环境下，
+                        一个稍微正式点的项目都不可能少了页面间传参，页面的跨越、服务器后台进行数据请求等，都需要一个或多个传参的方法。
+                        那么参数在不同的页面间进行传递，一个页面的参数被另一页面使用，如何才能做到不同页面间进行参数传递？在JS中有多种页面传递参数的方法：一、URL把参数值附在url后面传递到其他页面二、H5
+                        web storagelocalStroage 和 sessionStorage三、Cookie使用浏览器Cookie传递参数四、Form 表单Form表单通过URL传递参数
+
+
+                    </p>
+                </section>
+                <!-- <section>
+                </section> -->
+            </section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+
+            <section>
+                <section>
+                    <p style="text-align: left;">
+                        理解参数：
+                        <br>
+
+                        JS函数的参数与大多数其他语言中函数的参数有所不同，JS函数不介意传递进来多少个参数，也不在乎传递进来的参数是什么数据类型。也就是说，即便你定义的函数只接收两个参数，在调用这个函数也未必一定要传递两个参数。可以传递一个，三个甚至不传递参数，而解析器永远也不会有什么怨言。原因是JavaScript中的参数在内部是用一个数组来表示的。函数接受到始终是这个数组，而不关心数组包含多少元素和参数。实际上在函数体内可以通过arguments对象来访问这个参数数组，从而获取传递给函数的每一个参数。
+
+                        其实，arguments对象只是与数组类似（它并不是array的实例），因为可以使用方括号语法访问它的每一个元素（即第一个元素是arguments[0],第二个下标为1，以此类推），使用length属性来确定传递进来多少个参数。
+                    </p>
+                </section>
+                <!-- 切换到下面 -->
+                <!-- <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        一个完整的请求由四部分组成
+                        <br>接下来，我们就要监听请求成功的状态变化了
+                        <br>onreadystatechange：用来监听readyState的变化的
+                        <br>readyState：表示当前请求的后台的状态
+                        <br>status：表示处理的结果
+                        <br>其中readyState：表示当前请求的后台的状态
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        0：请求未初始化(还没有调用open())
+                        <br>1：请求已经建立，但是还没有发送(还没有调用send())
+                        <br>2：请求已经发送，正在处理中
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        3：请求正在处理中，通常响应中已经有部分数据可以用了
+                        <br>4：响应已经完成，可以获取并使用服务器的响应了
+                        <br>而status：表示处理的结果(状态码)
+                        <br>1XX，表示收到请求正在处理中
+                        <br>status == 200 是表示处理的结果是OK的
+                        <br>状态码:200到300是指服务端正常返回
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        304:如果网页自请求者上次请求后再也没有更改过，应将服务器配置为返回此响应，进而节省带宽和开销
+                        <br>404:找不到对象（404 not found)
+                        <br>503:服务器超时
+                        <br>设置请求参数
+                        <br>xhr对象接受三个参数 
+                        <br>1：表示请求类型
+                        <br>2：表示请求的网址
+                        <br>3：表示是否异步
+                        <br>get/post/put/delete
+                        <br>Get和post方法的区别：
+                        <br>get是获取数据，get的send方法的参数可以是null或者空，对发送信息有限制，一般在2000个字符，一般是用来查询（幂等） 
+                        <br>post可以发送数据，但是在使用post方法发送数据，
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        <br>需要使用setRequestHeader()来添加HTTP头，同时，post的send()方法需要写入要发送的数据的值, 
+                        <br>一般用于修改服务器上的资源，对信息数量无限制，也更安全
+                    </p>
+                </section>
+            </section> -->
+                <section>
+                    <h3>3.常见问题</h3>
+                    <br>在什么情况适合使用以上介绍的传递方式？ <a href="BFC-high.html" target="blank"></a>
+                    <p>
+                    </p>
+                    <br>
+                    <br>
+
+                </section>
+
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+
+                    <br> <a href="BFC-text.html" target="blank"></a>
+                    <p>
+                    </p>
+
+
+
+                </section>
+
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+
+                    <h3>4.解决方案</h3>
+                    <p>在传递少量不涉及隐私的参数时可以使用直接url或者Form的GET方式传递，大量数据可以用POST传递</p>
+                    <p></p>
+
+                </section>
+
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+
+                    <br>
+                    <p>
+
+                    </p>
+
+                </section>
+
+
+            </section>
+
+            <!-- <section>
+                <h3>4.解决方案</h3>
+                <p>xhr.open("post", "/carrots-admin-ajax/a/login",true);
+                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    xhr.send("name=" + name + "&pwd=" + code);
+                    Content-type要作为请求头放在open和send之间</p>
+            </section>
+            <section class="" style="top: 275px; display: none;" aria-hidden="true">
+              
+                <h6>
+                    <a href="https://ptteng.github.io/WEB/demo/angular%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3%E6%98%AF%E4%BB%80%E4%B9%88/demo2.html"
+                        target="_blank">demo</a>
+                </h6>
+            </section> -->
+
+            <section>
+                <h3>5.编码实战</h3>
+                <p>正文已展示</p>
+            </section>
+
+            <section>
+                <h3>6.扩展思考</h3>
+                <p>各种传参方式的优缺点
+
+                    URL传参：<br>
+
+                    优点：取值方便，可以跨域。<br>
+
+                    缺点：值长度有限制；URL只能传递字符型参数，传递中文时，由于发送页面和接收页面的字符编码方式不一样而导致参数解析处理错
+                    误，参数包含中文时可能出现乱码或者参数接收错误；信息泄露：URL地址在客户端可见，导致会泄露信息，可能被黑客用来攻击系统
+                    。<br>
+                    H5 Web storage：<br>
+
+                    优点：使用起来非常简单、方便。<br>
+
+                    缺点：兼容性有点小问题。兼容性： 现代浏览器（firefox safari chrome opera）都支持，IE8以下（不包括IE8）不支持。
+
+
+
+
+                <br>
+
+                <p></p>
+
+                <p></p>
+
+                <p></p>
+            </section>
+
+
+
+            <section>
+                <h3>7.参考文献</h3>
+            </section>
+            <section style="text-align:left">
+                <h6>
+                    <p></p>
+                    <p></p>
+                </h6>
+
+            </section>
+            <section>
+                <h3>8.更多讨论</h3>
+
+                <p></p>
+                <p></p> <br>
+
+                <p>
+                </p>
+                <p></p> <br>
+
+                <p></p>
+
+                <p></p>
+                <p></p>
+
+            </section>
+
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    <small style="vertical-align: middle"></small>
+                </p>
+
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, //                                                                                                                                                                                                                                                                                                      是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+        //    原始类型对象直接赋值不会相互影响
+        //    var a = 1;
+        //
+        //    var b = a;
+        //    b = 10;
+        //    console.log(a); // 1
+        ////
+        //    var a = 'hello';
+        //    var b = a;
+        //    b = 'world';
+        //    console.log(a); // hello
+        //
+        //    var a = true;
+        //    var b = a;
+        //    b = false;
+        //    console.log(a);
+        //数组浅复制
+        //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+        //    ];
+        //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+        //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+        //    console.log(a)//那么现在打印a 是什么结果呢
+        //
+        //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+        //    var arrtoo = arr.slice(1);
+        //    arrtoo[2] = "set Map";
+        //    console.log(arr);//One,Two,Three
+        //    console.log(arrtoo);//One,set Map,Three
+        //
+        //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+        //    var arrtooo = arr1.concat(111111);
+        //    arrtooo[1] = "set Map To";
+        //    console.log(arr1);//One,Two,Three
+        //    console.log(arrtooo);//One,set Map To,Three
+        //
+        //    var b=[1,2,3,4,5];   //concat的链接
+        //    var c=[6,7,8,9];
+        //    var d =[4,4,22]
+        //    console.log(b.concat(c,d))
+        var a = {
+            name: 'yy',
+            age: 26
+        }; //对象的浅拷贝哦
+        var b = new Object();
+        b.name = a.name;
+        b.age = a.age;
+        b.name = 'xx';
+        console.log(a); //Object { name="yy", age=26}
+        console.log(b); //Object { name="xx", age=26}
+        var d = { //对象的浅拷贝哦 第一种
+            name: 'd',
+            oc: {
+                age: 32
+            },
+            oad: {
+                adds: {
+                    bb: 12
+                }
+            }
+        };
+        var deepCopy = function (source) {
+            var result = {};
+            for (var key in source) {
+                result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+            }
+            return result
+        };
+        var c = deepCopy(d);
+        c.name = 'c';
+        c.oc = {
+            age: 49
+        };
+        console.log(c);
+        console.log(d);
+        //    var person = {    //第二种深拷贝
+        //        name: 'aa',
+        //        friends: ['da', 'dsa', 'gf']
+        //    };
+        //
+        //    var aPerson = Object.create(person, {
+        ////        name: {
+        ////            value: "gee"
+        ////        }
+        //    });
+        //
+        //    console.log(person.name);
+        //    console.log(aPerson.friends)
+        var Chinese = {
+            nation: '中国'
+        }
+        var Doctor = {
+            career: '医生'
+        }
+
+        function extendCopy(p) {
+            var c = {};
+            for (var i in p) {
+                c[i] = p[i];
+            }
+            c.uber = p;
+            return c;
+        }
+        var Doctor = extendCopy(Chinese);
+        Doctor.career = '医生';
+        console.log(Doctor); // 中国
+        Chinese.birthPlaces = ['北京', '上海', '香港'];
+        var Doctor = extendCopy(Chinese);
+        Doctor.birthPlaces.push('厦门');
+    </script>
+</body>
+
+</html>
