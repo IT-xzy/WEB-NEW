@@ -1,0 +1,464 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h4>margin负值在页面布局中有哪些应用？</h4>
+                <h4>分享人：温奇</h4>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <!-- <h4 style="font-family: 'Times New Roman'; text-transform:none;">什么是Ajax？</h4> -->
+                <section>
+                    <p style="text-align: left;">
+                        <!-- <h4>为什么要使用SASS</h4> -->
+                        CSS盒模型中，margin是我们非常熟悉的一个属性，大多数情况下，我们采用的都是正数的 margin 值，可能有时候会用到负的 margin 值。在我们的印象中，负的 margin
+                        值就类似于浏览器的 hack 一样，不被人接受。但是，本文要说明的就是，负的 margin 值并不是 hack，这是正常范围内的写法。
+                        根据 W3C，margin 是能够接受负值的，只是在具体实现上有一些区别。那么，设置margin为负值究竟会是什么样的效果呢？
+
+                    </p>
+
+                </section>
+                <!-- <section>
+                    <p style="text-align: left;">
+                        <h4>为什么要使用SASS</h4>
+
+                        3.什么是Display：none<br>
+                        属性规定元素应该生成的框的类型。值为none，表示元素不会被显示, 位置也不再被占据
+                        添加了这个属性会将元素与其子元素从普通文档流中移除。这时文档的渲染就像元素从来没有存在过一样，也就是说它所占据的空间被折叠了。元素的内容也会被屏幕阅读所忽略。隐藏起来
+                        <br>4.什么是Visibility:hidden
+                        visibility 属性规定元素是否可见。值为hidden，表示元素不可见。但是会占据原有位置。
+                    </p>
+
+                </section> -->
+                <!-- <section>
+                </section> -->
+            </section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+
+            <section>
+                <section>
+                    <h2>MARGIN为负值时产生的影响</h2>
+                    <p style="text-align: left;">
+                        1、对文档流的影响
+                        <br>
+                        当非浮动、非定位元素的margin-top/margin-left被赋予负值时，元素将被拉进指定的方向。
+                        但这种偏移不同于相对定位，通过相对定位偏移后，其仍然会坚守着它原来占据的空间，不会让文档流的其它元素乘虚而入。
+                        而通过负边距进行偏移的元素，它会放弃偏移前占据的空间，这样它后面文档流中的其它元素就会“流”过来填充这部分空间。
+                        但如果你设置margin-bottom/right为负数，元素并不会如你所想的那样向下/右移动，而是将后续的元素拖拉进来，覆盖本来的元素。
+                        文档流只能是后面的流向前面的，即文档流只能向左或向上流动，不能向下或向右移动。
+                    </p>
+                </section>
+                <section>
+                    <p>
+                        所以，一切只要是由文档流决定的东西，负边距就能起作用了。
+                        负边距不仅能影响元素在文档流中的位置，还能增加元素的宽度！
+                        如果没有设定width属性，设定负margin-left/right会将元素拖向对应的方向，并增加宽度，此时的margin的作用就像padding一样。
+                        总结，在文档流中，元素的最终边界是由margin决定的，margin为负的时候就相当于元素的边界向里收，文档流认的只是这个边界，不会管你实际的尺寸是多少。
+                    </p>
+                </section>
+                <section>
+                    <p style="text-align: left;">
+                        2、对浮动元素的影响<br>
+                        负边距对浮动元素的影响与负边距对文档流中元素的影响其实是差不多的。文档流中元素的位置由文档流的走向决定，浮动的元素也可以看成有一个“浮动流”存在，不过浮动流既可以向左，也可以向右。
+                        负margin会改变浮动元素的显示位置，即使元素写在DOM的后面，也能让它显示在最前面。圣杯布局、双飞翼布局啊什么的，都是利用这个原理实现的。
+                        就是某个元素虽然是写在了后面，但可以通过负边距让它在浏览器显示的时候是在前面的。
+                    </p>
+                </section>
+                <section>
+                    <p style="text-align: left;">
+                        3、对绝对定位的影响<br>
+                        绝对定位的元素定义的top、right、bottom、left等值是元素自身的边界到最近的已定位的祖先元素的距离，这个元素自身的边界指的就是margin定义的边界，所以，如果margin为正的时候，那它的边界是向外扩的，如果margin为负的时候，则它的边界是向里收的。
+                        可以通过这个特性来利用绝对定位居中，但该方法的缺点是必须要知道要居中元素的高度和宽度。
+
+                    </p>
+                </section>
+                <!-- 切换到下面 -->
+                <!-- <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        一个完整的请求由四部分组成
+                        <br>接下来，我们就要监听请求成功的状态变化了
+                        <br>onreadystatechange：用来监听readyState的变化的
+                        <br>readyState：表示当前请求的后台的状态
+                        <br>status：表示处理的结果
+                        <br>其中readyState：表示当前请求的后台的状态
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        0：请求未初始化(还没有调用open())
+                        <br>1：请求已经建立，但是还没有发送(还没有调用send())
+                        <br>2：请求已经发送，正在处理中
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        3：请求正在处理中，通常响应中已经有部分数据可以用了
+                        <br>4：响应已经完成，可以获取并使用服务器的响应了
+                        <br>而status：表示处理的结果(状态码)
+                        <br>1XX，表示收到请求正在处理中
+                        <br>status == 200 是表示处理的结果是OK的
+                        <br>状态码:200到300是指服务端正常返回
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        304:如果网页自请求者上次请求后再也没有更改过，应将服务器配置为返回此响应，进而节省带宽和开销
+                        <br>404:找不到对象（404 not found)
+                        <br>503:服务器超时
+                        <br>设置请求参数
+                        <br>xhr对象接受三个参数 
+                        <br>1：表示请求类型
+                        <br>2：表示请求的网址
+                        <br>3：表示是否异步
+                        <br>get/post/put/delete
+                        <br>Get和post方法的区别：
+                        <br>get是获取数据，get的send方法的参数可以是null或者空，对发送信息有限制，一般在2000个字符，一般是用来查询（幂等） 
+                        <br>post可以发送数据，但是在使用post方法发送数据，
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                        <br>需要使用setRequestHeader()来添加HTTP头，同时，post的send()方法需要写入要发送的数据的值, 
+                        <br>一般用于修改服务器上的资源，对信息数量无限制，也更安全
+                    </p>
+                </section>
+            </section> -->
+                <section>
+                    <h3>3.常见问题</h3>
+                    <br>MARGIN负值在页面布局中有哪些应用？ <a href="BFC-high.html" target="blank"></a>
+                    <p>
+                    </p>
+                    <br>
+                    <br>
+
+                </section>
+
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+
+                    <h3>4.解决方案</h3>
+
+                </section>
+                <section>
+                    <p style="text-align: left;">
+                        1.负边距+定位：水平垂直居中<br>
+                        使用绝对定位将content的定点定位到body的中心，
+                        然后使用负margin（content宽高的一半），将content的中心拉回到body的中心，已到达水平垂直居中的效果
+
+                    </p>
+                </section>
+
+                <section>
+                    <p style="text-align: left;">
+                        2.去除列表右边距<br>
+                        我们使用浮动列表展示信息的时候，为了美观通常为每个列表之间设置一定的间距（margin-right）,当父元素的宽度固定时，
+                        每一行的最右端的li元素的右边距就多余了，去除的方法通常是为最右端的li添加class，设置margin-right:0; 这种方法需要动态判断为哪些li元素添加class，比较麻烦。
+
+                    </p>
+                </section>
+
+                <section>
+                    <p style="text-align: left;">
+                        3.去除列表最后一个li元素的border-bottom<br>
+                        列表中我们经常会添加border-bottom值，最后一个li的border-bottom往往会与外边框重合，视觉上不雅观，往往要移除。
+                        我们可以为li元素设置margin-bottom:-1px;来实现，不过不要为ul/ol设置高度，需要高度请在外层嵌套一个div设置高度。
+
+                    </p>
+                </section>
+                <section>
+                    <p style="text-align: left;">
+                            4.负边距自适应布局<br>
+                            此例适用于一栏宽度固定一栏宽度自适应的布局，就像QQmail一样，导航栏宽度固定，内容区域随着浏览器的大小而自动缩放。
+                            大家自然想到使用百分比来定元素的宽度，可是浏览器无法理解100%-200px这样的表达式。这里我们就需要元素嵌套和负边距的思想
+
+                    </p>
+                </section>
+               
+                <section>
+                    <p style="text-align: left;">
+                            5.三栏等高<br>
+                            关键是给每个框设置大的底部内边距，然后用数值相似的负外边距消除这个高度。
+                            这会导致每一列溢出容器元素，如果把外包容器的overflow属性设为hidden，列就在最高点被裁切
+
+                    </p>
+                </section>
+
+
+                <!-- <section>
+                <h3>4.解决方案</h3>
+                <p>xhr.open("post", "/carrots-admin-ajax/a/login",true);
+                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    xhr.send("name=" + name + "&pwd=" + code);
+                    Content-type要作为请求头放在open和send之间</p>
+            </section>
+            <section class="" style="top: 275px; display: none;" aria-hidden="true">
+              
+                <h6>
+                    <a href="https://ptteng.github.io/WEB/demo/angular%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3%E6%98%AF%E4%BB%80%E4%B9%88/demo2.html"
+                        target="_blank">demo</a>
+                </h6>
+            </section> -->
+
+                <section>
+                    <h3>5.编码实战</h3>
+                    <p>正文已展示</p>
+                </section>
+
+                <section>
+                    <h3>6.扩展思考</h3>
+                    <p>MARGIN负值是否会改变元素的宽度？<br>
+                        这取决于是否给了元素宽度,如果已经给了元素宽度,那么margin负值不会影响元素的宽度,如果没有给元素宽度,那么margin会影响元素的宽度.</p>
+
+
+
+                    <p></p>
+
+                    <p></p>
+
+                    <p></p>
+                </section>
+
+
+
+                <section>
+                    <h3>7.参考文献</h3>
+                </section>
+                <section style="text-align:left">
+                    <h6>
+                        <p>http://blog.csdn.net/twoto3_/article/details/52250602
+                            </p>
+                        <p>https://www.jianshu.com/p/45852cf3ce28</p>
+                        
+                    </h6>
+
+                </section>
+                <section>
+                    <h3>8.更多讨论</h3>
+
+                    <p>margin负值还能运用到哪些地方？</p>
+
+                    <P> 双飞翼布局,圣杯布局或者垂直居中
+                    </p>
+                </section>
+               
+
+                    
+
+                <section>
+                    <h4>鸣谢</h4>
+                    <p>感谢大家观看</p>
+                    <p>
+                        <small style="vertical-align: middle"></small>
+                    </p>
+
+                </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, //                                                                                                                                                                                                                                                                                                      是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+        // 初始化幻灯片
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+        //    原始类型对象直接赋值不会相互影响
+        //    var a = 1;
+        //
+        //    var b = a;
+        //    b = 10;
+        //    console.log(a); // 1
+        ////
+        //    var a = 'hello';
+        //    var b = a;
+        //    b = 'world';
+        //    console.log(a); // hello
+        //
+        //    var a = true;
+        //    var b = a;
+        //    b = false;
+        //    console.log(a);
+        //数组浅复制
+        //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+        //    ];
+        //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+        //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+        //    console.log(a)//那么现在打印a 是什么结果呢
+        //
+        //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+        //    var arrtoo = arr.slice(1);
+        //    arrtoo[2] = "set Map";
+        //    console.log(arr);//One,Two,Three
+        //    console.log(arrtoo);//One,set Map,Three
+        //
+        //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+        //    var arrtooo = arr1.concat(111111);
+        //    arrtooo[1] = "set Map To";
+        //    console.log(arr1);//One,Two,Three
+        //    console.log(arrtooo);//One,set Map To,Three
+        //
+        //    var b=[1,2,3,4,5];   //concat的链接
+        //    var c=[6,7,8,9];
+        //    var d =[4,4,22]
+        //    console.log(b.concat(c,d))
+        var a = {
+            name: 'yy',
+            age: 26
+        }; //对象的浅拷贝哦
+        var b = new Object();
+        b.name = a.name;
+        b.age = a.age;
+        b.name = 'xx';
+        console.log(a); //Object { name="yy", age=26}
+        console.log(b); //Object { name="xx", age=26}
+        var d = { //对象的浅拷贝哦 第一种
+            name: 'd',
+            oc: {
+                age: 32
+            },
+            oad: {
+                adds: {
+                    bb: 12
+                }
+            }
+        };
+        var deepCopy = function (source) {
+            var result = {};
+            for (var key in source) {
+                result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+            }
+            return result
+        };
+        var c = deepCopy(d);
+        c.name = 'c';
+        c.oc = {
+            age: 49
+        };
+        console.log(c);
+        console.log(d);
+        //    var person = {    //第二种深拷贝
+        //        name: 'aa',
+        //        friends: ['da', 'dsa', 'gf']
+        //    };
+        //
+        //    var aPerson = Object.create(person, {
+        ////        name: {
+        ////            value: "gee"
+        ////        }
+        //    });
+        //
+        //    console.log(person.name);
+        //    console.log(aPerson.friends)
+        var Chinese = {
+            nation: '中国'
+        }
+        var Doctor = {
+            career: '医生'
+        }
+
+        function extendCopy(p) {
+            var c = {};
+            for (var i in p) {
+                c[i] = p[i];
+            }
+            c.uber = p;
+            return c;
+        }
+        var Doctor = extendCopy(Chinese);
+        Doctor.career = '医生';
+        console.log(Doctor); // 中国
+        Chinese.birthPlaces = ['北京', '上海', '香港'];
+        var Doctor = extendCopy(Chinese);
+        Doctor.birthPlaces.push('厦门');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,291 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' :
+            'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h4>如何做默认样式重置？RESETTING 和 NORMALIZING 之间有什么区别？</h4>
+                <h4>分享人：张杰</h4>
+            </section>
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <h3>1.背景介绍</h3>
+            </section>
+
+            <section style="font-family: 'Times New Roman'; text-transform:none;">
+                <!-- <h4 style="font-family: 'Times New Roman'; text-transform:none;">什么是Ajax？</h4> -->
+                <section>
+                    <p style="text-align: center;">
+                        为什么需要重置CSS样式？
+                        <p style="text-indent:65px">
+                            由于html标签在各浏览器的默认样式解析出来的有所不同。例如 ul 标签在IE、firefox、chrome浏览器下默认边距是不一样的。
+                        各浏览器的默认样，会给我们的页面带来一定的麻烦。同一个标签却显示出不同的效果。所以这就需要统一设置所有浏览器的默认样式。
+                        每个项目都应该会有一个默认样式，这就是css reset。                          
+                        </p>
+                        <p style="text-indent:65px">
+                            内核不同的浏览器，它对于网页标签的解析是不同的。
+                            比如，a标签添加链接后，在chrome里点击的时候显示红色。在edge里点击则不会显示红色。
+                            这样，同一个网页，在不同浏览器的浏览下，就会发生较大的区别，可能在某浏览器中是正常的，在另一个浏览器中，就不正常了。
+                        </p>
+                    </p>
+                </section>
+              
+            </section>
+            <section>
+                <h3>2.知识剖析</h3>
+            </section>
+
+            <section>
+                <section>
+                    <p style="text-align: center;">
+                       <h4>重置方法共2类</h4>
+                       <h5>什么是reset重置</h5>
+                      <p style="text-indent:65px">我们可以把它叫做CSS重设，也有人叫做CSS复位、默认CSS、CSS重置等。 
+                          CSS重设就是由于各种浏览器解释CSS样式的初始值有所不同，导致设计师 在没有定义某个CSS属性时，
+                          不同的浏览器会按照自己的默认值来为没有定义的样式赋值，所以我们要先定义好一些CSS样式，去“覆盖”浏览器的CSS默认属性， 
+                          来让所有浏览器都按照同样的规则解释CSS，这样就能避免发生这种问题。</p>
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                      <p style="text-indent:65px">目前在网络上，已经有很多关于css reset的框架，我们可以下载下来看看他们是怎么写的，是怎么处理的。
+                          同时也可以直接在网页中引用。但是对于小的页面，并不推荐这种做法，那些大的框架，适合大型网站使用，里面几乎对所有的html标签进行了css reset，
+                          而我们制作的小页面，并不需要太多的标签，如果使用那么多无用的css reset代码，会导致页面体积变大。推荐的做法是，根据自己页面用到的标签，去寻找相应的css reset代码。
+                    </p>
+                    <p style="text-indent:65px">
+                        全局重置* { padding: 0; margin: 0; border: 0; }
+                       虽然能全部重置，但由于性能较低，不推荐使用。
+                       因为*需要遍历整个DOM树，当页面节点较多时，会影响页面的渲染性能。</p>
+                  
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                     <h4>什么是NORMALIZING重置</h4>
+                     <p style="text-indent:65px">Normalize.css 只是一个很小的CSS文件，但它在默认的HTML元素样式上 提供了跨浏览器的高度一致性。
+                    相比于传统的CSS reset，Normalize.css 是一种现代的、为HTML5准备的优质替代方案。
+                    Normalize.css现在已经被 用于Twitter Bootstrap、HTML5 Boilerplate、GOV.UK、Rdio、CSS Tricks 以及许许多多其他框架、工具和网站上。
+</p>
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                    <p style="text-align: left;">
+                     <p style="text-indent:65px">Normalize.css支持包括手机浏览器在内的超多浏览器，同时对HTML5元素、排版、列表、嵌入的内容、表单和表格都进行了一般化。</p>
+                    <p style="text-indent:65px">选择Normalize.css ，主要是reset.css为几乎所有的元素施加默认样式，所以需要对所有公共的排版元素重新设置样式，这是一件很麻烦的工作。</p>
+                    </p>
+                </section>
+                <section style="font-family: 'Times New Roman'; text-transform:none;">
+                        <p style="text-align: left;">
+                                <h4>NORMALIZING相对与reset的优点有哪些？</h4>
+                         <p style="text-indent:65px">1. Normalize.css 保护了有价值的默认值
+                        Reset通过为几乎所有的元素施加默认样式，强行使得元素有相同的视觉效果。 
+                        相比之下，Normalize.css保持了许多默认的浏览器样式。这就意味着你不用再 为所有公共的排版元素重新设置样式。</p>
+                        </p>
+                        <p style="text-indent:65px">2. Normalize.css 修复了浏览器的bug它修复了常见的桌面端和移动端浏览器的bug。
+                             这往往超出了Reset所能做到的范畴。关于这一点， Normalize.css修复的问题包含了HTML5元素的显示设置、 
+                             预格式化文字的font-size问题、在IE9中SVG的溢出、许多 出现在各浏览器和操作系统中的与表单相关的bug。</p>
+                            </section>
+                             <section style="font-family: 'Times New Roman'; text-transform:none;">
+                             <p style="text-align: left;">
+                             <p style="text-indent:65px">3. Normalize.css 不会让你的调试工具变的杂乱
+                                使用Reset最让人困扰的地方莫过于在浏览器调试工具中大段大段的继承链。
+                                在Normalize.css中就不会有这样的问题，因为在我们的准则中 对多选择器的使用时非常谨慎的，我们仅会有目的地对目标元素设置样式。</p>
+                                <p style="text-indent:65px">4. Normalize.css 是模块化的
+                                        这个项目已经被拆分为多个相关却又独立的部分， 这使得你能够很容易也很清楚地知道哪些元素被设置了特定的值。
+                                         因此这能让你自己选择性地移除掉某些永远不会用到部分（比如表单的一般化）。</p>
+                                         <p style="text-indent:65px">5. Normalize.css 拥有详细的文档
+                                                Normalize.css的代码基于详细而全面的跨浏览器研究与测试。 
+                                                这意味着你可以找到每一行代码具体完成了什么工作、为什么要写这句代码、 浏览器之间的差异，并且你可以更容易地进行自己的测试。</p>
+                            </section>
+               
+            </section>
+            <section>
+                <h3>3.常见问题</h3>
+               <p>reset和normalize怎么选择？</p>
+            </section>
+
+            <section>
+                <h3>4.解决方案</h3>
+             
+            </section>
+            <section class="" style="top: 275px; display: none;" aria-hidden="true">
+                <h6>
+                        看实际情况和工作中的需求，合理利用2种不同方式。
+                </h6>
+                <p>现在需要用reset重置的地方越来越少了，各大网站都在使用normalize个性版，符合工作实际需要来添加需要的内容。
+                    如果要使用css reset，也不要直接从网上全复制下来，因为有些老旧的重置文件，有的还包含90年代的样式重置，以及许多无用的重置。
+                </p>
+              
+            </section>
+            <section>
+                    <h3>5.编码实战</h3>
+                
+                </section>
+                <section>
+                    <h3>6.扩展思考</h3>
+                    <p>到底该不该用 CSS reset？</p>
+                    <a href=" https://www.zhihu.com/question/23554164">知乎有讨论</a>
+                </section>
+        
+                <section>
+                    <h3>7.参考文献</h3>
+                    <a href="http://www.qianxingzhem.com/post-610.html">潜行者m</a><br/>
+                    <a href="http://jerryzou.com/posts/aboutNormalizeCss/">咀嚼之味</a>
+                </section>
+                <section style="text-align:left">
+                    <h6>
+                        <a>博客</a>
+                    </h6>
+                    <h6>
+                        <a>b站视频</a>
+                    </h6>
+    
+                </section>
+                <section>
+                    <h3>8.更多讨论</h3>
+    
+                </section>
+               
+            <section>
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    By
+                    <small style="vertical-align: middle">张杰</small>
+                </p>
+
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+      
+        Reveal.initialize({
+            //        history: true,
+            transition: 'default',
+            transitionSpeed: 'slow',
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+      
+        var a = {
+            name: 'yy',
+            age: 26
+        }; //对象的浅拷贝哦
+        var b = new Object();
+        b.name = a.name;
+        b.age = a.age;
+        b.name = 'xx';
+        console.log(a); //Object { name="yy", age=26}
+        console.log(b); //Object { name="xx", age=26}
+        var d = { //对象的浅拷贝哦 第一种
+            name: 'd',
+            oc: {
+                age: 32
+            },
+            oad: {
+                adds: {
+                    bb: 12
+                }
+            }
+        };
+        var deepCopy = function (source) {
+            var result = {};
+            for (var key in source) {
+                result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+            }
+            return result
+        };
+        var c = deepCopy(d);
+        c.name = 'c';
+        c.oc = {
+            age: 49
+        };
+        console.log(c);
+        console.log(d);
+       
+        var Chinese = {
+            nation: '中国'
+        }
+        var Doctor = {
+            career: '医生'
+        }
+        function extendCopy(p) {
+            var c = {};
+            for (var i in p) {
+                c[i] = p[i];
+            }
+            c.uber = p;
+            return c;
+        }
+        var Doctor = extendCopy(Chinese);
+        Doctor.career = '医生';
+        console.log(Doctor); // 中国
+        Chinese.birthPlaces = ['北京', '上海', '香港'];
+        var Doctor = extendCopy(Chinese);
+        Doctor.birthPlaces.push('厦门');
+    </script>
+</body>
+
+</html>
