@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section style="text-align: center;">
+                <h2>【CSS-14】</h2>
+                <h4>为什么要做组件库？</h4>
+                <p>分享人：王熠(yì)华</p>
+            </section>
+
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <section>
+                    <h3>1.背景介绍</h3>
+                </section>
+                <section>
+                    有句话：前端摩尔定律：“每18个月，前端难度会增加一倍”。</br>
+                    我并不完全认可这个数字的可靠性，但是这句话的本意我还是非常肯定的。
+
+                </section>
+                <section>
+
+
+                    <h3>2.知识剖析</h3>
+                </section>
+
+                <section>
+                    2.1.什么是组件化</br></br>
+                    组件化并不是前端所特有的，一些其他的语言或者桌面程序等，都具有组件化的先例。确切的说，只要有UI层的展示，就必定有可以组件化的地方。</br>
+                    <img src="img\20190729-Ａ-Css14/组件图片.png">
+
+
+                </section>
+                <section>
+
+                    组件化就好像我们的 PC 组装机一样，整个机器（应用）由不同的部件组成，
+                    例如显示器、主板、内存、显卡、硬盘等等。
+                    <img src="img\20190729-Ａ-Css14/电脑硬件.jpg">
+
+
+                </section>
+                <section>
+                    组件化开发优势</br>
+                <img src="img\20190729-Ａ-Css14/组件化开发优势.png"> 
+                </section>
+                <section>
+
+                    一句话总结： 提高前端开发效率，降低WEB维护成本
+                </section>
+
+                <section>
+                    2.1.组件化原则 </br>
+                    <img src="img\20190729-Ａ-Css14/组件化原则.png">
+                </section>
+            </section>
+            <section>
+                2.2. CSS组件化：less和sass</br>
+                </br></br>
+                less和sass出现之后，使得CSS的编程可以定义变量，可以实现继承，CSS内容的结构也变得更加清晰，提高了CSS文件的阅读性，更容易让人理解，修改起来也变得简单。
+           
+            </section>
+
+            <section style="line-height:3.5rem;">
+                2.3.创建组件化的难度</br>
+
+                <img src="img\20190729-Ａ-Css14/前端组件化能力要求.png">
+
+            </section>
+
+            <section>
+                2.4.Nec规范 - 统一语义理解和命名</br>
+
+                <img src="img\20190712-A-CSS12/统一理解名命.png">
+            </section>
+
+
+            <section>
+                <section>
+                    <h3>3.常见问题</h3>
+                    组件化后，一个文件夹一个组件，最后怎么把组件拼接起来？<br><br>
+<br>
+                    使用gulp之类打包工具即可。<br>
+
+                </section>
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+            </section>
+
+
+            <section>
+                <section>
+                    <h3>5.代码实战</h3>
+                </section>
+            </section> 
+
+            <section>
+                <section>
+                    <h3>6.拓展思考</h3>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>7.参考文献</h3>
+                    <p>参考：<a href="https://blog.csdn.net/u014036123/article/details/53174906">前端为什么要做组件化</a>
+                        <p>参考：<a href="https://www.jianshu.com/p/3461c1cefe5c">css预处理语言的模块化实践</a>
+                            <p>参考：<a href="https://www.jianshu.com/p/6ce8619dc674">从css谈模块化</a>
+                    <p>参考：<a href="http://nec.netease.com/">NEC 更好的CSS方案</a>
+
+                    </p>
+
+                </section>
+            </section>
+
+            <section>
+                <h3>8.更多讨论</h3>
+
+            </section>
+
+            <section style="text-align: center;">
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    <small>BY : 王熠华</small>
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: './plugin/markdown/marked.js'
+                },
+                {
+                    src: './plugin/markdown/markdown.js'
+                },
+                {
+                    src: './plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: './plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
