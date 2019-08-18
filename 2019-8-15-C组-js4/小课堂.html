@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>有限状态机是什么？</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : 'https://ptteng.github.io/PPT/css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>有限状态机是什么？</h2>
+
+            <h3></h3>
+
+            <p style="text-align: center;">分享人：沈沪生</p>
+        </section>
+        <section>
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <section>
+                <h3>什么是有限状态机</h3>
+            <p style="text-align: left">
+                有限状态机（英语：finite-state machine，缩写：FSM）又称有限状态自动机，简称状态机，是表示有限个状态（State）以及在这些状态之间的转移（Transition）和动作（Action）等行为的数学模型。
+
+            </p>
+        </section>
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+        <section>
+                <h3>状态机有三个特征：</h3>
+            <p style="text-align: left">
+                1、状态（State）总数是有限的。
+                2、在任一时刻，只处于一种状态。
+                3、在某种条件（Event）下，会从某种状态转移（Transition）到另一种状态，同时执行某个动作（Action）。
+            </p>
+           
+        </section>
+        <section>
+            <p>从有限状态机的定义和特征我们可以看到它的几个重要概念：</p>
+            <p style="text-align: left">
+                状态（State）：包括初始状态和事件触发后的状态，同时必须要有一个最终状态。
+                事件（Event）：触发状态机从一种状态切换到另一种状态。
+                转移（Transition）：状态切换路径，包含Event(触发该转移的事件)，Source(源状态），Target(目的状态)。
+                动作（Action）：表示在进行状态转移后要执行的具体行为。
+            </p>
+        </section>
+        <section>
+            <p>状态转移表</p>     
+        </section>
+        <section><p><img src="state.png"></p></section>
+        <section>
+            <p style="text-align: left">可以归纳为一个公式。</p>
+            <p style="text-align: left"> Old State + Event = New State</p>
+            
+            <p style="text-align: left">
+                把上面的状态转移表用公式表达就是</br>
+                状态A + 条件X = 状态B</br>
+                状态A + 条件Y = 状态C
+            </p>
+        </section>
+        <section>
+            <p>状态机的要素</p>
+            <p style="text-align: left">
+                状态机可归纳为4个要素，即现态、条件、动作、次态。“现态”和“条件”是因，“动作”和“次态”是果。详解如下  
+            </p>
+            <p style="text-align: left">
+                ①现态：是指当前所处的状态。</br>
+                ②条件：又称为“事件”。当一个条件被满足，将会触发一个动作，或者执行一次状态的迁移。</br>
+                ③动作：条件满足后执行的动作。动作执行完毕后，可以迁移到新的状态，也可以仍旧保持原状态。动作不是必需的，当条件满足后，也可以不执行任何动作，直接迁移到新状态。</br>
+                ④次态：条件满足后要迁往的新状态。“次态”是相对于“现态”而言的，“次态”一旦被激活，就转变成新的“现态”了。</br>
+            </p>
+        </section>
+        <section>
+            <img src="machine.jpg">
+        </section>
+       
+        <section>
+            <p>这里需要注意的问题：</p>
+            <!-- <p style="text-align: left">
+                1、避免把某个“程序动作”当作是一种“状态”来处理。那么如何区分“动作”和“状态”？“动作”是不稳定的，即使没有条件的触发，“动作”一旦执行完毕就结束了；而“状态”是相对稳定的，如果没有外部条件的触发，一个状态会一直持续下去。                                                                                    
+            </p> -->
+            <p style="text-align: left">
+                状态划分时漏掉一些状态，导致跳转逻辑不完整。
+                所以维护上述一张状态表就非常必要，而且有意义了。从表中可以直观看出那些状态直接存在跳转路径，那些状态直接不存在。如果不存在，就把对应的单元格置灰。 每次写代码之前先把表格填写好，并且对置灰的部分重点review，看看是否有“漏态”，然后才是写代码。QA拿到这张表格之后，写测试用例也是手到擒来。  
+            </p>
+        </section>
+       
+        <section>
+            <h3>3.常见问题</h3>
+            
+        </section>
+        <section>
+                <p>需要注意的问题</p>
+                
+        </section>
+       
+              
+        <section>
+            <h3>4.解决方案</h3>
+        </section>
+        <section>
+                <p>
+                        动作是不稳定的，即使没有条件的触发， “动作”一旦执行完毕就结束了；而“状态”是相对稳定的，如果没有外部条件的触发，一个状态会一直持续下去
+                </p>
+                <p>
+                        1,在同一个线程下,只会出现状态机中的一个状态</br>
+
+                        2, 如果输入在当前状态没有定义转换，输入就被忽视.</br>
+           
+                        3,输入的状态装换操作,其初态不匹配当前状态,输入也会忽视</br>
+                </p>
+        </section>
+       
+        <section>
+            <h3>5.编码实战</h3>
+        </section>
+        <section>
+            <h3>6.扩展思考</h3>
+        </section>
+        <section>
+           <p>有限状态机在编程中有哪些应用</p>
+            
+        </section>
+        <section>
+                <p style="text-align:left">
+                        词法分析
+正则表达式
+网络协议
+游戏设计
+自动电话客服
+                </p>
+        </section>
+        
+         <section>
+             <p style="text-align:left">
+                    常见的计算机就是使用有限状态机作为计算模型的：对于内存的不同状态，CPU通过读取内存值进行计算，更新内存中的状态。CPU还通过消息总线接受外部输入设备（如键盘、鼠标）的指令，计算后更改内存中的状态，计算结果输出到外部显示设备（如显示器），以及持久化存储在硬盘。
+                    电脑游戏设计中也经常使用有限状态机模型。以水果忍者游戏为例，游戏中水果的状态是有限状态，其运行轨迹是由模拟物理运动规律的计算公式运算而成的，一个香蕉抛起来后会按照抛物线运行，其每一帧位置变化都是一个状态的改变，状态改变通过计算公式来决定。当然作为游戏不会仅仅这么简单，如果这么简单就是动画了，游戏还有复杂的人机交互事件，比如用手在屏幕上“切”了水果，水果感知到这个事件后，会按照程序逻辑进入爆炸状态。
+            </p>
+            
+         </section>
+        <section>
+            <h3>7.参考文献</h3>
+        </section>
+        <section>
+            <p>https://zhuanlan.zhihu.com/p/46347732</p>
+            <p>https://segmentfault.com/a/1190000012363771</p>
+            <p>http://javascript.ruanyifeng.com/advanced/fsm.html</p>
+        </section>
+        <section>
+            <h3>8.更多讨论</h3>
+        </section>
+
+        <section>
+            <h4>感谢观看</h4>
+            <p>
+                
+            </p>
+        </section>
+    </div>
+</div>
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'},
+            {src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'},
+            {src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js', async: true},
+            {
+                src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
