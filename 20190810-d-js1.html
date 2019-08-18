@@ -1,0 +1,244 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-09 18:30:12
+ * @LastEditTime: 2019-08-10 12:37:38
+ * @LastEditors: Please set LastEditors
+ -->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? './css/reveal/print/pdf.css' :
+            '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+
+
+<body>
+    <img src="./img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+    <map name="pttmap">
+        <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+    </map>
+    <div class="reveal">
+        <div class="slides">
+            <section style="text-align: center;">
+                <h2>【JS-1】</h2>
+                <h4>定时器有哪些用法？</h4>
+                <p>分享人：王熠(yì)华</p>
+            </section>
+
+            <section>
+                <p>目录</p>
+                <p>1.背景介绍</p>
+                <p>2.知识剖析</p>
+                <p>3.常见问题</p>
+                <p>4.解决方案</p>
+                <p>5.编码实战</p>
+                <p>6.扩展思考</p>
+                <p>7.参考文献</p>
+                <p>8.更多讨论</p>
+            </section>
+
+            <section>
+                <section>
+                    <h3>1.背景介绍</h3>
+                </section>
+                <section>
+                    在js应用中，定时器的作用就是可以设定当到达一个时间来执行一个函数，或者每隔几秒重复执行某段函数。这里面涉及到了三个函数方法：setInterval()、setTimeout()、clearInterval()，本文将围绕这三种函数的用法，来实现定时器的功能。
+                </section>
+
+                <section>
+
+
+                    <h3>2.知识剖析</h3>
+                </section>
+
+                <section>
+
+                    setTimeout 将函数的执行推迟到一段时间之后再执行。</br></br>
+
+
+                    setInterval 让函数间隔一段时间周期性执行。</br></br>
+
+
+                </section>
+
+                <section>
+                    这两个方法并不存在于 JavaScript 的规范中。但是大多数运行环境都有内置的调度器，而且也提供了这两个方法的实现。目前来讲，所有浏览器，包括 Node.js 都支持这两个方法。
+                </section>
+
+
+            </section>
+
+
+            <section>
+
+                使用语法： </br>
+                setTimeout </br>
+                let timerId = setTimeout(func|code, delay[, arg1, arg2...]) </br> </br>
+
+
+                参数说明： </br>
+
+                func|code ：想要执行的函数或代码字符串。 一般传入的都是函数，介于某些历史原因，代码字符串也支持，但是不建议使用这种方式。 </br></br>
+
+                delay ：执行前的延时，以毫秒为单位（1000 毫秒 = 1 秒）； </br> </br>
+
+                arg1，arg2… ：要传入被执行函数（或代码字符串）的参数列表（IE9 以下不支持） </br> </br>
+            </section>
+
+            <section>
+                setTimeout()、setInterval()的区别在于 </br></br>
+
+                setTimeout()：当方法执行完成定时器就立即停止(但是定时器还在,只不过没用了);</br></br>
+                setInterval()：当方法执行完成,定时器并没有停止,以后每隔[interval]这么长的时间都会重新的执行对应的方法[function],直到我们手动清除定时器为止;
+                </br></br> 意思就是：
+                setTimeout()时间到了只会执行一次，setInterval()不会停止，会不间断的执行对应的函数，直到我们手动暂停或窗口被关闭。
+
+
+            </section>
+
+
+
+
+            <section>
+                    如何暂停setTimeout()、setInterval():</br></br>
+                    clearTimeout（）取消由setTimeout() 方法设置的 timeout。</br></br>
+                    clearInterval() ，这个函数只有一个作用，就是暂停setInterval()调用函数。</br></br>
+                
+            </section>
+
+
+
+            <section>
+                <section>
+                    <h3>3.常见问题</h3>
+                    弹窗会让 Chrome/Opera/Safari 内的时钟停止。<br>
+                    <br>
+                    在众多浏览器中，IE 和 Firefox 在显示 alert/confirm/prompt 时，内部的定时器仍旧会继续滴答，但是在 Chrome、Opera 和 Safari 中，内部的定时器会暂停/冻结。
+                    <br><br>
+                    所以，在执行以上代码时，如果在一定时间内没有关掉 alert 弹窗，那么在你关闭弹窗后，Firefox/IE 会立即显示下一个 alert 弹窗（前提是距离上一次执行超过了 2 秒），而 Chrome/Opera/Safari 这三个则需要再等待 2 秒以上的时间才会再显示（因为在 alert 弹窗期间，定时器并没有滴答）。<br>
+                </section>
+                <section style="text-align:center;">
+                        都不能保证延时的准确性<br>
+
+                
+
+
+
+                        
+                    </section>
+                <section>
+                    <h3>4.解决方案</h3>
+                </section>
+            </section>
+
+
+            <section>
+                <section>
+                    <h3>5.代码实战</h3>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>6.拓展思考</h3>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>7.参考文献</h3>
+                    <p>参考：<a href="https://zh.javascript.info/settimeout-setinterval">调度：setTimeout 和 setInterval</a>
+                        <p>参考：<a
+                                href="https://www.jeffjade.com/2016/01/10/2016-01-10-javaScript-setInterval/">你所不知道的setInterval</a>
+
+
+                </section>
+            </section>
+
+            <section>
+                <h3>8.更多讨论</h3>
+
+            </section>
+
+            <section style="text-align: center;">
+                <h4>鸣谢</h4>
+                <p>感谢大家观看</p>
+                <p>
+                    <small>BY : 王熠华</small>
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <script src="./lib/reveal/js/head.min.js"></script>
+    <script src="./lib/reveal/reveal.js"></script>
+
+    <script>
+        // 以下为常见配置属性的默认值
+        // {
+        // 	controls: true, // 是否在右下角展示控制条
+        // 	progress: true, // 是否显示演示的进度条
+        // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+        // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+        // 	keyboard: true, // 是否启用键盘快捷键来导航
+        // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+        // 	center: true, // 是否将幻灯片垂直居中
+        // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+        // 	loop: false, // 是否循环演示
+        // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+        // 	fragments: true, // 全局开启和关闭碎片。
+        // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+        // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+        // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+        // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+        // }
+
+        // 初始化幻灯片
+        Reveal.initialize({
+            history: true,
+            dependencies: [{
+                    src: './plugin/markdown/marked.js'
+                },
+                {
+                    src: './plugin/markdown/markdown.js'
+                },
+                {
+                    src: './plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: './plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
