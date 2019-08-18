@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+    }
+
+    div {
+      height: 150px;
+      width: 150px;
+      border-radius: 50%;
+      margin: 15px;
+    }
+
+    span {
+      border: 1px solid;
+      background-color: antiquewhite;
+      border-radius: 30px;
+    }
+
+    .aa {
+      background-color: rgb(255, 0, 0)
+    }
+
+    .bb {
+      background-color: rgb(255, 255, 0)
+    }
+
+    .cc {
+      background-color: rgb(0, 255, 0)
+    }
+
+    .dd {
+      background-color: rgb(0, 255, 255)
+    }
+  </style>
+</head>
+
+<body>
+  <span>
+    <div class="aa"></div>
+    <div class="bb"></div>
+    <div class="cc"></div>
+    <div class="dd"></div>
+  </span>
+  <script src="state-machine.js"></script>
+  <script>
+    var aa = document.getElementsByClassName('aa')[0]
+    var bb = document.getElementsByClassName('bb')[0]
+    var cc = document.getElementsByClassName('cc')[0]
+    var dd = document.getElementsByClassName('dd')[0]
+    var fsm = new StateMachine({
+      init: 'green',
+      transitions: [{
+          name: 'aa',
+          from: 'green',
+          to: 'undead',
+        },
+        {
+          name: 'bb',
+          from: 'undead',
+          to: 'ready',
+        },
+        {
+          name: 'cc',
+          from: 'ready',
+          to: 'warn',
+        },
+        {
+          name: 'dd',
+          from: 'warn',
+          to: 'green',
+        }
+      ],
+      methods: {
+        onInvalidTransition: function (transition, from, to) {
+          switch (from) {
+            case "green":
+              alert("请按游戏顺序进行，请点击黄灯！");
+              break;
+            case "undead":
+              alert("请按游戏顺序进行，请点击绿灯！");
+              break;
+            case "ready":
+              alert("请按游戏顺序进行，请点击蓝灯！");
+              break;
+            case "warn":
+              alert("请按游戏顺序进行，请点击红灯！");
+              break;
+          }
+        },
+      },
+    });
+    aa.onclick = function () {
+      if (fsm.state === 'green') {
+        alert('红灯转化为黄灯')
+        aa.style.backgroundColor='rgb(255, 255, 0)'
+      }
+      fsm.aa();
+    }
+    bb.onclick = function () {
+      if (fsm.state === 'undead') {
+        alert('黄灯转化为绿灯！')
+        bb.style.backgroundColor='rgb(0, 255, 0)';
+      }
+      fsm.bb();
+    }
+    cc.onclick = function () {
+      if (fsm.state == 'ready') {
+        alert("黄灯转化为蓝灯！");
+        cc.style.backgroundColor='rgb(0, 255, 255)';
+      }
+      fsm.cc();
+    }
+    dd.onclick = function () {
+      if (fsm.state === 'warn') {
+        alert('颜色结束')
+        aa.style.backgroundColor='rgb(255, 0, 0)'
+        bb.style.backgroundColor='rgb(255, 255, 0)'
+        cc.style.backgroundColor='rgb(0, 255, 0)'
+      }
+      fsm.dd();
+
+    }
+
+  </script>
+</body>
+
+</html>
