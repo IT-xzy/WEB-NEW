@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank"/>
+</map>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>PostMan如何使用？</h2>
+            <p></p>
+        </section>
+        <section>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.扩展思考</p>
+            <p>6.编码实战</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section>
+            <h3>1.背景介绍</h3>
+        </section>
+        <section>
+            <p>什么是Postman？
+            </p>
+            <p>
+                　在平时开发中，特别是需要与接口打交道时，不管是写接口还是用接口，拿到接口后肯定都得提前测试一下，
+                用户在开发或者调试网络程序或者是网页B/S模式的程序的时候是需要一些方法来跟踪网页请求的，
+                这样的话就非常需要有一个比较给力的Http请求模拟工具，现在流行的这种工具也挺多的，主要介绍一下Postman。
+            </p>
+
+
+        </section>
+
+
+        <section>
+            <h3>2.知识剖析</h3>
+        </section>
+
+        <section>
+            <p>
+                Postman
+            <p>
+                　Postman是一种网页调试与发送网页http请求的工具。我们可以用来很方便的模拟get或者post或者其他方式的请求来调试接口。
+            </p>
+
+            <p>Postman下载</p>
+            <p> postman分为Postman Chrome app和独立安装包版本。目前Chrome app已经停止维护，官方已经不推荐使用该版本。所以现在都是使用安装版本。
+                下载地址https://www.getpostman.com/
+
+            </p>
+        </section>
+
+
+        <section>
+
+            <p>GET 请求</p>
+            GET请求：点击Params，输入参数及value，可输入多个，即时显示在URL链接上，
+            所以，GET请求的请求头与请求参数如在接口文档中无特别声明时，可以不填。
+
+            点击Params按钮打开参数编辑器，输入URL参数。我们可以单独添加键-值对，Postman会将上述查询字符串中的所有内容组合在一起。如果网址已经有参数，Postman会自动将网址分成键-值对两部分。
+
+            <p>POST请求</p>
+            方法是post方法，将找到的接口复制在URL栏中，在文档中找到的请求参数info和key，切记要放在body中，不要放错了
+
+
+        </section>
+        <section>
+            <img src="11.png" alt="">
+        </section>
+        <section>
+            <h3>3.常见问题</h3>
+            <p>返回的数据如何查看？</p>
+            <p>接口请求流程</p>
+
+        </section>
+
+
+        <section>
+            <h3>4.解决方案</h3>
+            <p>
+                将其它格式点击转化为json格式。
+            </p>
+
+            <p>
+                选择一个请求方法，如：get或post<br/>
+                填写请求的url，如：http://www.baidu.com<br/>
+                如果是get则请求参数直接写在url后，用？连接<br/>
+                如果是post则请求添加在body中<br/>
+                点击“send”发送请求<br/>
+                查看请求响应内容<br/>
+            </p>
+
+        </section>
+
+
+
+        <section>
+            <h3>5.扩展思考</h3>
+            <p>
+                post和get方法的比较
+            </p>
+            <p>
+                相对于get，post是稍微安全一点的，数据在地址栏不可见。从传输的角度来看，其实都不太安全，因为http在网络上是明文传包的，只要在网络节点上抓包，就能完整的获取数据报文。
+                想要安全，得加密，用https
+            </p>
+        </section>
+
+        <section style="text-align: left">
+            <p style="text-align: center">
+                优缺点
+            </p>
+            <p>1.简单易用的图形用户界面</p>
+            <p>2.可以保存接口请求的历史记录</p>
+            <p>3.使用测试集Collections可以更有效的管理组织接口</p>
+            <p>4.可以在团队之间同步接口数据如果想系统的学习接口测试相关的技术</p>
+            <p>5.脚本语言是js</p>
+            <p>6.自带各种代码模块</p>
+            <p>7.不能操作文件相关的操作,不能读写数据库,不能使用非HTTP协议</p>
+            <p>......等等</p>
+        </section>
+        <section>
+            <h3>6.编码实战</h3>
+        </section>
+
+        <section>
+            <h3>7.参考文献</h3>
+            <p>
+                参考一：https://blog.csdn.net/flowerspring/article/details/52774399
+            </p>
+            <p>
+                参考二：https://www.jellythink.com/archives/161
+            </p>
+
+        </section>
+        <section>
+            <h3>8.更多讨论</h3>
+            <p>
+                Get方法有长度限制?
+            </p>
+            <p>
+                浏览器地址栏输入的参数是有限的。HTTP协议没有body和url的长度限制，对url限制的大多是浏览器和服务器的原因。
+
+                服务器是因为处理长url要消耗比较多的资源，为了性能和安全（防止恶意构造长url来攻击）考虑，会给url长度加限制。
+            </p>
+        </section>
+
+        <section>
+            <p>
+                管理Collections
+            </p>
+            <p>
+                一个工程一个Collection，这样管理起来更直观
+
+                Collections创建后还可以添加子文件夹，针对不同的请求方式做分组。
+            </p>
+        </section>
+
+<!--        <section>-->
+<!--            <p>-->
+<!--                1.Get方法有长度限制?-->
+<!--            </p>-->
+<!--            <p>-->
+<!--                浏览器地址栏输入的参数是有限的。HTTP协议没有body和url的长度限制，对url限制的大多是浏览器和服务器的原因。-->
+
+<!--                服务器是因为处理长url要消耗比较多的资源，为了性能和安全（防止恶意构造长url来攻击）考虑，会给url长度加限制。-->
+<!--            </p>-->
+<!--        </section>-->
+        <section>
+            <h4>结束语</h4>
+            <p>今天的分享就到这里啦，感谢大家观看</p>
+        </section>
+
+    </div>
+</div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    // controls: true, // 是否在右下角展示控制条
+    // progress: true, // 是否显示演示的进度条
+    // slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // keyboard: true, // 是否启用键盘快捷键来导航
+    // overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // center: true, // 是否将幻灯片垂直居中
+    // touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // loop: false, // 是否循环演示
+    // rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // fragments: true, // 全局开启和关闭碎片。
+    // autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+    // 初始化幻灯片
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'},
+            {src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'},
+            {src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js', async: true},
+            {
+                src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
