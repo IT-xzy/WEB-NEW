@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>葡萄藤PPT</title>
+
+    <link
+      rel="stylesheet"
+      href="https://ptteng.github.io/PPT/css/reveal/reveal.css"
+    />
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link
+      rel="stylesheet"
+      href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css"
+    />
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link
+      rel="stylesheet"
+      href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css"
+    />
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? "https://ptteng.github.io/PPT/css/reveal/print/pdf.css"
+        : "https://ptteng.github.io/PPT/css/reveal/print/paper.css";
+      document.getElementsByTagName("head")[0].appendChild(link);
+    </script>
+  </head>
+
+  <body>
+    <img
+      src="https://ptteng.github.io/PPT/img/demo/logo.png"
+      alt=""
+      usemap="#pttmap"
+      class="base-logo"
+    />
+    <map name="pttmap">
+      <area
+        shape="rect"
+        coords="0,0,276,58"
+        href="http://www.jnshu.com"
+        alt=""
+        target="_blank"
+      />
+    </map>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h4>如何进行网站性能优化？</h4>
+          <h4>分享人：广州web学员谢俊凯</h4>
+        </section>
+        <section>
+          <p>目录</p>
+          <p>1.背景介绍</p>
+          <p>2.知识剖析</p>
+          <p>3.常见问题</p>
+          <p>4.解决方案</p>
+          <p>5.编码实战</p>
+          <p>6.扩展思考</p>
+          <p>7.参考文献</p>
+          <p>8.更多讨论</p>
+        </section>
+
+        <section>
+          <h3>1.背景介绍</h3>
+        </section>
+
+        <section style="font-family: 'Times New Roman'; text-transform: none;">
+          <!-- <h4 style="font-family: 'Times New Roman'; text-transform:none;">什么是Ajax？</h4> -->
+          <section>
+            <p style="text-align: left;">
+              为什么要优化网站？
+              <br />
+              一个快速反应的网站，能够提升用户体验，页面加载得更快、对用户的操作响应得更快速，能够给用户提供更为舒适的体验。
+              <br> 一个网站的体验，决定了用户是否愿意去了解网站的功能；而网站的功能，决定了用户是否会一票否决网站的体验。
+              <br />
+              恰当的优化不仅能够改善用户体验且能够节省资源利用。
+              <br />
+              <br />
+              <br />
+            </p>
+          </section>
+    
+        </section>
+        <section>
+          <h3>2.知识剖析</h3>
+        </section>
+        <section>
+          <p style="text-align: left;">
+            <br />网页的生成：
+            <br />1.浏览器读取html。浏览器会将HTML转换成一种格式 – 文档对象模型（Document Object Model）简称为 DOM,每一个 HTML 标签都对应着树种的某个节点（DOM节点）。
+
+            <br> 2.解析CSS。页面上的 CSS 样式被映射到CSS 对象模型（CSS Object Model）。CSS 不阻塞 DOM 的构建，它会阻塞 DOM 的渲染,直到 DOM 和 CSSOM 准备好之前，浏览器什么都不会显示
+            
+            <br> 3.结合DOM和CSSOM，生成一颗渲染树。
+            
+            <br> 4.生成布局（layout），即将所有渲染树的所有节点进行平面合成
+            
+            <br> 5.将布局绘制在屏幕上
+            <br> 这是浏览器读取html到渲染的过程。
+          </p>
+        </section>
+        <!-- <section>
+          <section>
+              <p style="text-align: left;">
+                http请求的过程
+          </p>
+          </section>
+          <section>
+              <img src="./2020-6-30-A组JS10/HTTP请求过程.jpg" alt="">
+          </section>
+        </section> -->
+
+
+
+        <section>
+          <p style="text-align: left;">
+          <h3>3.常见问题</h3>
+          <br /> 如何优化？
+          </p>
+        </section>
+        <section>
+          <h3>4.解决方案</h3>
+        </section>
+
+        <section>
+          <p style="text-align: left;">
+            1，雪碧图：CSS Sprite(CSS精灵)
+            <br />
+            <br />雪碧图就是一个很好的优化图片加载的例子，当页面有大量的icon的时候，就可以使用雪碧图。
+            <br />雪碧图的设计理念就是减少页面加载大量图片的请求，只加载一张图片。
+            <br />
+          </p>
+        </section>
+        <section>
+          <section>
+            <p style="text-align: left;">
+              2，使用外联的CSS文件和JS文件
+            </p>
+          </section>
+          <section>
+            <p style="text-align: left;">
+              简单的说下css的外联内联和内嵌。
+              <br />从功能上来说，这3个实现的功能是一样的。从权重层级从权重最高的说起，
+              <br />1：嵌套样式，也就是在head（html的头部）这是一个最先接触到的写法。
+              &lt;style&gt; div{color:red;} &lt;/style&gt;
+              <br />2：内联"&lt;p
+              style="color:red;"&gt;文字内容&lt;p&gt;"而内联样式也不是没有优点，好处就是减少http请求，提升页面性能，缓解服务器压力。由于浏览器加载完
+              CSS 才能渲染页面，因此能防止 CSS
+              文件无法读取而造成页面裸奔的现象。
+              <br />3：外联样式，使用link链接到指定地址。因为把样式都写到外部文件，所以会加快html的加载速度，且可以缓存到浏览器，提升重复访问时的html加载速度。
+              <br />而且link的调用是与页面同步加载。
+            </p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <p style="text-align: left;">
+              3-1，压缩静态资源----压缩图片和视频
+              <br />
+              为什么要压缩？
+              图片和视频的上传一般情况下不需要上传大体积的图片，因为大体积图片很消耗资源，一个是加载耗时比较长，同时也增加了存储的开销,当展示的时候也会消耗下载的带宽，影响加载效率。
+              <br />如果不压缩，就像我们使用手机网络在线看一些高清视频，因为手机的网络不稳定或者网页的，加载非常慢，像是视频，看半截卡半截，这就是一个非常难受的体验了。
+              <br>目前比较方便的方法是使用软件进行压缩或者网页进行在线压缩。
+            </p>
+          </section>
+          <!-- <section>
+            <p style="text-align: left;">
+              <br />
+              <br />
+            </p>
+          </section> -->
+
+          <section>
+            <p style="text-align: left;">
+              <br />不要在浏览器里面缩放图片，比如一个200 像素x
+              200像素的空间里面放入一个400 x
+              400的图片，这样做除了加重服务器的负担以外并不会有任何清晰度的提升。
+              <br />若是一些通用icon可以使用图标库，比如ui框架一般都会提供icon库，或者可以使用link链接访问阿里的矢量图标库http://www.iconfont.cn/
+              <br />转换格式为WebP格式，这是谷歌开发的一种旨在加快图片加载速度的图片格式。图片压缩体积大约只有JPEG的2/3，并能节省大量的服务器带宽资源和数据空间。Facebook、Ebay等知名网站已经开始测试并使用WebP格式。
+              <br />兼容的问题目前只支持Chrome（谷歌）和Opera（欧朋浏览器），暂时没看到有大量使用这个的现象，如果想尝试一下可以使用网址：https://www.upyun.com/webp 去进行体验。
+            </p>
+          </section>
+          <section
+            style="font-family: 'Times New Roman'; text-transform: none;"
+          >
+            <p style="text-align: left;">
+              3-2，webpake
+              <br />webpack的功能：可以看做是模块打包机器，<br />
+              它做的事情是：分析你的项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript等），并将其转换和打包为合适的格式供浏览器使用。
+              同时也能转换、捆绑、打包其他的静态资源，包括css、image、font file、template等。
+              <br />在使用方面，如果只是单独使用webpack的话，也是有相当多的参数需要学习，但是我们在使用js框架编译打包的时候，使用指令可以实现自动打包，而打包过程就是JS框架封装好的webpack。
+            </p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <p style="text-align: left;">
+              4,懒加载：
+              <br />懒加载的应用在学习路由配置的时候首次接触到的,angular的路由懒加载loadchildren，懒加载的功能是使页面需要用到该文件/模块的时候才进行加载，能够使页面在拥有大量模块的时候（或者图片），不需要一次性加载完成，提升了页面的载入速度。
+              <br />
+              <br />
+            </p>
+          </section>
+          <section>
+            <p style="text-align: left;">
+                <br>页面加载太慢往往是因为图片资源过多占用太多加载资源导致的，因为大量图片的话，往往页面载入会非常耗时，所以除了缩小图片体积，使用雪碧图，最重要的就是使用图片的懒加载进行优化。
+              <br />图片的懒加载，如果页面比较长，或者图片较多的话，首先使用一个轻量级的图片，占位，监听页面的滚轮，如果滚动到当前图片位置的话，就加载该图片，这是懒加载图片的原理。
+              <br />
+            </p>
+          </section>
+        </section>
+        <section style="font-family: 'Times New Roman'; text-transform: none;">
+          <section>
+            <p style="text-align: left;">
+              5，CDN
+              <br />
+              <br />什么是CDN？CDN的全称是Content Delivery
+              Network，就是一个内容分发网络。CDN网络的诞生大大地改善了互联网的服务质量.
+              <br />(1)节省骨干网带宽，减少带宽需求量；
+              <br />(2)提供服务器端加速，解决由于用户访问量大造成的服务器过载问题；
+              <br />(3)服务商能使用Web
+              Cache技术在本地缓存用户访问过的Web页面和对象，实现相同对象的访问无须占用主干的出口带宽，并提高用户访问因特网页面的相应时间的需求；
+              <br />(4)能克服网站分布不均的问题，并且能降低网站自身建设和维护成本；
+              <br />(5)降低“通信风暴”的影响，提高网络访问的稳定性。
+              <br />
+            </p>
+          </section>
+          <section>
+            <p style="text-align: left;">
+              <br />CDN的基本原理是广泛采用各种缓存服务器，将这些缓存服务器分布到用户访问相对集中的地区或网络中，在用户访问网站时，利用全局负载技术将用户的访问指向距离最近的工作正常的缓存服务器上，由缓存服务器直接响应用户请求。
+              <br />内容服务基于缓存服务器，也称作代理缓存（Surrogate），它位于网络的边缘，距用户仅有"一跳"（Single
+              Hop）之遥。同时，代理缓存是内容提供商源服务器（通常位于CDN服务提供商的数据中心）的一个透明镜像。这样的架构使得CDN服务提供商能够代表他们客户，即内容供应商，向最终用户提供尽可能好的体验，而这些用户是不能容忍请求响应时间有任何延迟的。
+              <br />
+              <br />以上均来自百度。
+              <br />
+            </p>
+          </section>
+          <section>
+            <img src="./2020-6-30-A组JS10/CDN.jpg" alt="" />
+          </section>
+          <section>
+            <p style="text-align: left;">
+              <br />个人理解的CDN：
+              <br />租用网络运营商在各个地方架设的缓存服务器，相当于缩短了请求的路径，就近原则获取数据，缩短了数据的请求距离，也分割了大量用户访问的话造成的通信风暴影响，经由各地的服务器进行处理过后发送到主干服务器。
+              <br />在我看来有点像使用梯子翻墙，我们裸连不使用梯子访问git反应速度很慢，因为git的服务器在国外，虽然没被墙，但是请求数据到获取回应，返回数据什么的因为跨太平洋请求，数据传输延时，所以会很卡。
+              <br />此时我们使用梯子访问，我们通过运营商服务器，变成外国用户访问，所以访问速度会很快（相对国内）。
+              <br />
+            </p>
+          </section>
+          <!-- <section>
+            <p style="text-align: left;">
+              <br />题外话(无关技术）
+              <br />----访问外国服务器引出我的一个疑问：光纤不是光速吗？一秒绕地球七圈半，怎么访问外国网站会那么卡（除开被墙的）？
+              <br />根据所搜索的知识来说：其实光缆的铺设不是直线，在光纤中的传播走的是折射，且在介质中传播的速度慢于真空，各种原因下，会导致传播的速度其实并没有想象中的那么快。
+              <br />当然还有其他一系列的原因，路由，dns解析什么的，就不深入了解了。
+            </p>
+          </section> -->
+        </section>
+        <section style="font-family: 'Times New Roman'; text-transform: none;">
+          <section>
+          <p style="text-align: left;">
+            6,能缓存就缓存，能缓存多久就缓存多久
+            <br/>缓存的意义就在于减少请求，更多地使用本地的资源，给用户更好的体验的同时，也减轻服务器压力。而缓存又分为强缓存和协商缓存，协商缓存就是每次读取缓存的时候像服务器发送一次请求，是否要读取缓存，强缓存顾名思义，就是强制读取缓存。
+            <br/>两者的区别就是是否需要向服务器验证本地缓存是否还有效。
+            <br> 可能导致的问题：服务端资源更新后，客户端更新滞后
+            <br>两种缓存都是通过修改请求头的参数进行设定。
+          </p>
+          </section>
+          <section>
+            <p style="text-align: left;">
+              <img src="./2020-6-30-A组JS10/HTTP请求.jpg" alt="">
+          
+          
+          </p>
+          </section>
+          
+        </section>
+        
+    
+        
+        <!-- <section class="" style="top: 275px; display: none;" aria-hidden="true">
+          <h6>
+            <a
+              href="https://ptteng.github.io/WEB/demo/angular%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3%E6%98%AF%E4%BB%80%E4%B9%88/demo2.html"
+              target="_blank"
+              >demo</a
+            >
+          </h6>
+        </section> -->
+        <section>
+          <h3>5.编码实战</h3>
+          <!-- <p>懒加载图片的实现</p> -->
+          <br><img src="./2020-6-30-A组JS10/懒加载图片方法.png" alt="">
+        </section>
+<!-- 
+        图片的dom
+        <img src="default.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" alt="">
+        <img src="default.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" alt="">
+        <img src="default.jpg" data-src="http://ww1.sinaimg.cn/large/006y8mN6gw1fa7kaed2hpj30sg0l9q54.jpg" alt="">
+        下为JS
+        <script>
+          var num = document.getElementsByTagName('img').length;// 所有图片有多少张
+          var img = document.getElementsByTagName("img");// img的dom节点
+          var n = 0; //该变量存储图片加载到第几张，避免每次从第一张图片开始遍历
+      
+          lazyload(); //页面载入完毕运行一次，加载窗口内的图片
+      
+          window.onscroll = lazyload; // 监听滚动条变化时的事件处理函数
+      
+          function lazyload() { //监听页面滚动事件
+              var seeHeight = document.documentElement.clientHeight; //可见窗口高度
+              var scrollTop = document.documentElement.scrollTop || document.body.scrollTop; //滚动条距离顶部高度
+              for (var i = n; i < num; i++) {
+                  if (img[i].offsetTop < seeHeight + scrollTop) { // 窗口触及了图片顶部的话
+                      if (img[i].getAttribute("src") == "default.jpg") { //进行判断src的地址是否为占位地址，
+                          img[i].src = img[i].getAttribute("data-src");// 若是，则替换为实际地址实现懒加载
+                      }
+                      n = i + 1;
+                  }
+              }
+          }
+      </script> -->
+      <!-- <script>   
+        var n = 0,
+            imgNum = $("img").length,
+            img = $('img');
+    
+        lazyload();
+    
+        $(window).scroll(lazyload); 
+    
+        function lazyload(event) {
+            for (var i = n; i < imgNum; i++) {
+                if (img.eq(i).offset().top < parseInt($(window).height()) + parseInt($(window).scrollTop())) {
+                    if (img.eq(i).attr("src") == "default.jpg") {
+                        var src = img.eq(i).attr("data-src");
+                        img.eq(i).attr("src", src);
+    
+                        n = i + 1;
+                    }
+                }
+            }
+        }
+    </script>
+    
+    作者：Jakeeee
+    链接：https://juejin.im/post/583b10640ce463006ba2a71a
+    来源：掘金
+    著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 -->
+          <!-- <br><p></p> -->
+        <section>
+          <h3>6.扩展思考</h3>
+        </section>
+        <section>
+          <section
+            class="past"
+            style="top: 278.5px; display: none;"
+            hidden=""
+            aria-hidden="true"
+          >
+            <h5>
+              属性canvas，可以实现2d画图，在html有canvas标签，js也有相关参数可设定，可以结合标签和js进行画图，或者定义参数压缩图片或者缩放到参数大小。</h5>
+          </section>
+          <section
+            class="past"
+            style="top: 0px; display: none;"
+            hidden=""
+            aria-hidden="true"
+          >
+            <p style="text-align: left;">
+              
+              <span ng-bind="goods.goodsID"></span>
+
+              <br />
+              <br />
+              <br />
+            </p>
+          </section>
+        </section>
+
+        <section>
+          <h3>7.参考文献</h3>
+        </section>
+        <section style="text-align: left;">
+          <h6>
+            <a>博客</a>
+          </h6>
+          <h6>
+            <a>简书</a>
+          </h6>
+        </section>
+        <section>
+          <h3>8.更多讨论</h3>
+        </section>
+        <section>
+          <p>
+            <br />
+          </p>
+          <p>
+          </p>
+          <p>
+          </p>
+        </section>
+        <section style="text-align: left;">
+          <p>
+          </p>
+          <p>
+          </p>
+          <p>
+          </p>
+        </section>
+        <section>
+          <h4>鸣谢</h4>
+          <p>感谢大家观看</p>
+          <p>
+            By
+            <small style="vertical-align: middle;">谢俊凯</small>
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+    <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+    <script>
+      // 以下为常见配置属性的默认值
+      // {
+      // 	controls: true, // 是否在右下角展示控制条
+      // 	progress: true, // 是否显示演示的进度条
+      // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+      // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+      // 	keyboard: true, // 是否启用键盘快捷键来导航
+      // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+      // 	center: true, // 是否将幻灯片垂直居中
+      // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+      // 	loop: false, // 是否循环演示
+      // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+      // 	fragments: true, // 全局开启和关闭碎片。
+      // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+      // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+      // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+      // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+      // }
+
+      // 初始化幻灯片
+      Reveal.initialize({
+        //        history: true,
+        transition: "default",
+        transitionSpeed: "slow",
+        dependencies: [
+          {
+            src: "../plugin/markdown/marked.js",
+          },
+          {
+            src: "../plugin/markdown/markdown.js",
+          },
+          {
+            src: "../plugin/notes/notes.js",
+            async: true,
+          },
+          {
+            src: "../plugin/highlight/highlight.js",
+            async: true,
+            callback: function () {
+              hljs.initHighlightingOnLoad();
+            },
+          },
+        ],
+      });
+      //    原始类型对象直接赋值不会相互影响
+      //    var a = 1;
+      //
+      //    var b = a;
+      //    b = 10;
+      //    console.log(a); // 1
+      ////
+      //    var a = 'hello';
+      //    var b = a;
+      //    b = 'world';
+      //    console.log(a); // hello
+      //
+      //    var a = true;
+      //    var b = a;
+      //    b = false;
+      //    console.log(a);
+
+      //数组浅复制
+      //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+      //    ];
+      //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+      //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+      //    console.log(a)//那么现在打印a 是什么结果呢
+      //
+      //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+      //    var arrtoo = arr.slice(1);
+      //    arrtoo[2] = "set Map";
+      //    console.log(arr);//One,Two,Three
+      //    console.log(arrtoo);//One,set Map,Three
+
+      //
+      //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+      //    var arrtooo = arr1.concat(111111);
+      //    arrtooo[1] = "set Map To";
+      //    console.log(arr1);//One,Two,Three
+      //    console.log(arrtooo);//One,set Map To,Three
+
+      //
+      //    var b=[1,2,3,4,5];   //concat的链接
+      //    var c=[6,7,8,9];
+      //    var d =[4,4,22]
+      //    console.log(b.concat(c,d))
+
+      var a = {
+        name: "yy",
+        age: 26,
+      }; //对象的浅拷贝哦
+      var b = new Object();
+      b.name = a.name;
+      b.age = a.age;
+      b.name = "xx";
+      console.log(a); //Object { name="yy", age=26}
+      console.log(b); //Object { name="xx", age=26}
+
+      var d = {
+        //对象的浅拷贝哦 第一种
+        name: "d",
+        oc: {
+          age: 32,
+        },
+        oad: {
+          adds: {
+            bb: 12,
+          },
+        },
+      };
+      var deepCopy = function (source) {
+        var result = {};
+        for (var key in source) {
+          result[key] =
+            typeof source[key] === "object"
+              ? deepCopy(source[key])
+              : source[key];
+        }
+        return result;
+      };
+
+      var c = deepCopy(d);
+      c.name = "c";
+      c.oc = {
+        age: 49,
+      };
+      console.log(c);
+      console.log(d);
+
+      //    var person = {    //第二种深拷贝
+      //        name: 'aa',
+      //        friends: ['da', 'dsa', 'gf']
+      //    };
+      //
+      //    var aPerson = Object.create(person, {
+      ////        name: {
+      ////            value: "gee"
+      ////        }
+      //    });
+      //
+      //    console.log(person.name);
+      //    console.log(aPerson.friends)
+
+      var Chinese = {
+        nation: "中国",
+      };
+      var Doctor = {
+        career: "医生",
+      };
+
+      function extendCopy(p) {
+        var c = {};
+        for (var i in p) {
+          c[i] = p[i];
+        }
+        c.uber = p;
+        return c;
+      }
+      var Doctor = extendCopy(Chinese);
+      Doctor.career = "医生";
+      console.log(Doctor); // 中国
+      Chinese.birthPlaces = ["北京", "上海", "香港"];
+      var Doctor = extendCopy(Chinese);
+      Doctor.birthPlaces.push("厦门");
+    </script>
+  </body>
+</html>
