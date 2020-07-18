@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <title>葡萄藤PPT</title>
+
+  <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css" />
+
+  <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+  <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css" />
+
+  <!-- syntax highlighting 代码高亮主题 -->
+  <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css" />
+
+  <!-- 打印和PDF输出样式 -->
+  <script>
+    var link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.href = window.location.search.match(/print-pdf/gi)
+      ? "https://ptteng.github.io/PPT/css/reveal/print/pdf.css"
+      : "https://ptteng.github.io/PPT/css/reveal/print/paper.css";
+    document.getElementsByTagName("head")[0].appendChild(link);
+  </script>
+</head>
+
+<body>
+  <img src="https://ptteng.github.io/PPT/img/demo/logo.png" alt="" usemap="#pttmap" class="base-logo" />
+  <map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com" alt="" target="_blank" />
+  </map>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h4>
+          JS哪些操作会造成内存泄漏?</h4>
+        <h4>分享人：深圳web学员谢俊凯</h4>
+      </section>
+      <section>
+        <p>目录</p>
+        <p>1.背景介绍</p>
+        <p>2.知识剖析</p>
+        <p>3.常见问题</p>
+        <p>4.解决方案</p>
+        <p>5.编码实战</p>
+        <p>6.扩展思考</p>
+        <p>7.参考文献</p>
+        <p>8.更多讨论</p>
+      </section>
+
+      <section>
+        <h3>1.背景介绍</h3>
+      </section>
+
+      <section style="font-family: 'Times New Roman'; text-transform: none;">
+        <!-- <h4 style="font-family: 'Times New Roman'; text-transform:none;">什么是Ajax？</h4> -->
+        <section>
+          <p style="text-align: left;">
+            什么是内存泄漏？
+
+            <br>程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存.
+            <br>对于持续运行的服务进程（daemon），必须及时释放不再用到的内存。否则，内存占用越来越高，轻则影响系统性能，重则导致进程崩溃。
+            <br /> 不再用到的内存，没有及时释放，就叫做内存泄漏
+            <br />
+            <br />
+            <br />
+          </p>
+        </section>
+
+      </section>
+      <section>
+        <h3>2.知识剖析</h3>
+        <section>
+          <p style="text-align: left;">
+            <br>不管什么程序语言，内存生命周期基本是一致的：
+            <br>1:分配你所需要的内存
+            <br>2:使用分配到的内存（读、写）
+            <br>3:不需要时将其释放\归还
+            <br>所有语言第二部分都是明确的。第一和第三部分在底层语言中是明确的，但在像JavaScript这些高级语言中，大部分都是隐含的。
+            <br>为了不让程序员费心分配内存，JavaScript 在定义变量时就完成了内存分配。
+            <br>像C语言这样的底层语言一般都有底层的内存管理接口，比如 malloc()和free()。
+          </p>
+        </section>
+        <section>
+          <p style="text-align: left;">
+            <br />JS的回收机制
+            <br />JavaScript垃圾回收的机制：找出不再使用的变量，然后释放掉其占用的内存，但是这个过程不是实时的，因为其开销比较大，所以垃圾回收系统会按照固定的时间间隔,周期性的执行。(类似节流函数)
+            到底哪个变量是没有用的？所以垃圾收集器必须跟踪到底哪个变量没用，对于不再有用的变量打上标记，以备将来收回其内存。用于标记的无用变量的策略可能因实现而有所区别，通常情况下有两种实现方式：标记清除和引用计数。
+          </p>
+        </section>
+
+        <section>
+          <p style="text-align: left;">
+            <br>引用计数
+            <br>引用计数的含义是跟踪记录每个值被引用的次数。
+            当声明了一个变量并将一个引用类型值（function object array）赋给该变量时，则这个值的引用次数就是1。
+            如果同一个值又被赋给另一个变量，则该值的引用次数加1。相反，如果包含对这个值引用的变量又取得了另外一个值，则这个值的引用次数减1。当这个值的引用次数变成0时，则说明没有办法再访问这个值了，因而就可以将其占用的内存空间回收回来。这样，当垃圾回收器下次再运行时，它就会释放那些引用次数为0的值所占用的内存。
+          </p>
+        </section>
+        <section>
+          <p style="text-align: left;">
+            <br>例子：
+            <br> function test(){
+            <br> var a={};// 声明变量为引用类型 a的引用次数为0
+            <br> var b=a;//a的引用次数加1，为1
+            <br> var c=a;//a的引用次数加1，为2
+            <br> var b={};//b引用被覆盖，a的引用次数减1，为1
+            <br>}
+          </p>
+        </section>
+        <section>
+          <p style="text-align: left;">
+            <br>引用计数有个缺陷，无法处理循环引用的事例,如下
+            <br>function f(){
+            <br> var o = {};
+            <br> var o2 = {};
+            <br> o.a = o2; // o 引用 o2
+            <br> o2.a = o; // o2 引用 o
+            <br> return "azerty";}
+            <br> f();
+            <br>在上面的例子中，两个对象被创建，并互相引用，形成了一个循环。
+            它们被调用之后会离开函数作用域，所以它们已经没有用了，可以被回收了。
+            然而，引用计数算法考虑到它们互相都有至少一次引用，所以它们不会被回收。造成了内存泄漏。
+          </p>
+        </section>
+        <section>
+          <p style="text-align: left;">
+            <br />标记清除
+            <br>这个算法把“对象是否不再需要”简化定义为“对象是否可以获得”
+            <br />js中最常用的垃圾回收方式就是标记清除。当变量进入环境时，例如，在函数中声明一个变量，就将这个变量标记为“进入环境”。
+            从逻辑上讲，永远不能释放进入环境的变量所占用的内存，因为只要执行流进入相应的环境，就可能会用到它们。
+            而当变量离开环境时，则将其标记为“离开环境”。
+            function test() {
+            <br> var a=10;//被标记，进入环境
+            <br> var b=20;//被标记，进入环境
+            }
+            <br> test();//执行完毕之后a、b又被标记离开环境，被回收
+          </p>
+        </section>
+      </section>
+      <section>
+        <p style="text-align: left;">
+        <h3>3.常见问题</h3>
+        <br>①哪些操作会造成内存泄露？
+        <br>②怎么找出内存泄漏？
+        </p>③怎么处理内存泄漏？
+      </section>
+      <section>
+        <h3>4.解决方案</h3>
+
+
+        <section>
+          <p style="text-align: left;">
+            ①，意外的全局变量引起的内存泄露(全局变量只有关闭/刷新浏览器才会被释放或回收)
+            <br />function leak(){
+            <br> leak="xxx";//没声明导致leak成为一个全局变量，不会被回收
+            <br> }
+          </p>console.log(leak) // xxx
+        </section>
+        <section>
+          <p style="text-align: left;">
+            ②意外的this创建了全局变量
+            <br>function foo() {
+            <br> this.variable = "潜在的全局变量";
+            <br> }
+            <br> // 当在全局作用域中调用foo函数，此时this指向的是全局对象(window)，而不是'undefined'
+            <br> foo();
+          </p>
+        </section>
+        <section>
+          <p style="text-align: left;">
+            <br> 解决方法：
+            <br> 在JavaScript文件中添加'use strict'，开启严格模式，可以有效地避免上述问题
+            <br> function foo() {
+            <br> "use strict" // 在foo函数作用域内开启严格模式
+            <br> bar = "未声明的全局变量";
+            <br> // 报错：因为bar还没有被声明
+            <br> }
+          </p>
+        </section>
+        <section>
+          <p style="text-align: left;">
+            如果需要在一个函数中使用全局变量，可以像如下代码所示，在window上明确声明：
+            <br>function foo() {
+            <br> window.bar = "这是一个全局变量";
+            <br> }
+            <br>关于全局变量，优化可以在使用完之后，给全局变量赋值为null，进行内存回收，也是一个优化方法。
+          </p>
+        </section>
+        <section>
+          <p style="text-align: left;">
+            <br>常见内存泄漏问题：
+            <br>console.log：向web开发控制台打印一条消息，常用来在开发时调试分析。有时在开发时，需要打印一些对象信息，但发布时却忘记去掉console.log语句，这可能造成内存泄露。
+            <br>在传递给console.log的对象是不能被垃圾回收 ♻️，因为在代码运行之后需要在开发工具能查看对象信息。所以最好不要在生产环境中console.log任何对象。
+            <br>用完了在整合项目的时候记得注释掉或者删除。
+          </p>
+        </section>
+        <section>
+          <p style="text-align: left;">
+            ②，闭包引起的内存泄露
+            <br>闭包就是能够读取其他函数内部变量的函数，相当于函数内部函数调用父级变量，闭包通常用来引出函数内变量，而这种行为会导致闭包一直占用内存，为了优化，或者说避免内存泄漏，在退出函数前需要删除用不到的局部变量
+            <br> function assignHandler ( ) {
+            <br> var element = document .getElementById( "someElement" );
+            <br> element.onclick = function ( ) {
+            <br> alert(element.id);
+            <br> };
+
+            <br> 匿名函数调用函数外的element，导致element至少有一次引用，不会被清除，造成内存泄漏。
+
+          </p>
+        </section>
+        <section>
+          <p style="text-align: left;">
+            解决办法：
+            <br> function Handler ( ) {
+            <br> var element = document .getElementById( "someElement" );
+            <br> var id = element.id // 变量相当于记录了element.id
+            <br> element.onclick = function ( ) {
+            <br> alert(id); // 此时
+            <br> }
+            <br> element = null //回收，
+            <br> };
+          </p>
+        </section>
+        <section style="font-family: 'Times New Roman'; text-transform: none;">
+          <p style="text-align: left;">
+            dom泄漏
+            <br>为了减少DOM访问次数，一般情况下，当需要多次访问同一个DOM方法或属性时，会将DOM引用缓存到一个局部变量中。
+            <br>但如果在执行某些删除、更新操作后，可能会忘记释放掉代码中对应的DOM引用，这样会造成DOM内存泄露。
+            <br>同样把局部变量 = null进行释放。
+            <br>
+          </p>
+        </section>
+        <section>
+          <p style="text-align: left;">
+            timer未clear造成的泄漏
+            <br>如果在不需要setInterval()时，没有通过clearInterval()方法移除，那么setInterval()会不停地调用函数，
+            直到调用clearInterval()或窗口关闭。如果链式setTimeout()调用模式没有给出终止逻辑，
+            也会一直运行下去。因此再不需要重复定时器时，确保对定时器进行清除，避免占用系统资源。
+
+          </p>
+        </section>
+        <!-- <section>
+          <p style="text-align: left;">
+            <br>链式调用settimeout，
+            <br> setTimeout(function() {
+            <br> // do something. . . .
+            <br> setTimeout(arguments.callee, interval);
+            <br> }, interval);
+          </p>
+        </section> -->
+      </section>
+      <section>
+        <h3>5.编码实战</h3>
+        <br>查看内存泄漏与调试方法，console.log是否被回收。
+        <br>
+      </section>
+
+      <section>
+        <h3>6.扩展思考</h3>
+      </section>
+      <section>
+        <section class="past" style="top: 278.5px; display: none;" hidden="" aria-hidden="true">
+          <h5>
+        </section>
+        <section class="past" style="top: 0px; display: none;" hidden="" aria-hidden="true">
+          <p style="text-align: left;">
+
+            <span ng-bind="goods.goodsID"></span>
+
+            <br />
+            <br />
+            <br />
+          </p>
+        </section>
+      </section>
+
+      <section>
+        <h3>7.参考文献</h3>
+      </section>
+      <section style="text-align: left;">
+        <h6>
+          <a>博客</a>
+        </h6>
+        <h6>
+          <a>简书，知乎</a>
+        </h6>
+      </section>
+      <section>
+        <h3>8.更多讨论</h3>
+      </section>
+      <section>
+        <p>
+          <br />
+        </p>
+        <p>
+        </p>
+        <p>
+        </p>
+      </section>
+      <section style="text-align: left;">
+        <p>
+        </p>
+        <p>
+        </p>
+        <p>
+        </p>
+      </section>
+      <section>
+        <h4>鸣谢</h4>
+        <p>感谢大家观看</p>
+        <p>
+          By
+          <small style="vertical-align: middle;">谢俊凯</small>
+        </p>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+  <script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+  <script>
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+      //        history: true,
+      transition: "default",
+      transitionSpeed: "slow",
+      dependencies: [
+        {
+          src: "../plugin/markdown/marked.js",
+        },
+        {
+          src: "../plugin/markdown/markdown.js",
+        },
+        {
+          src: "../plugin/notes/notes.js",
+          async: true,
+        },
+        {
+          src: "../plugin/highlight/highlight.js",
+          async: true,
+          callback: function () {
+            hljs.initHighlightingOnLoad();
+          },
+        },
+      ],
+    });
+    //    原始类型对象直接赋值不会相互影响
+    //    var a = 1;
+    //
+    //    var b = a;
+    //    b = 10;
+    //    console.log(a); // 1
+    ////
+    //    var a = 'hello';
+    //    var b = a;
+    //    b = 'world';
+    //    console.log(a); // hello
+    //
+    //    var a = true;
+    //    var b = a;
+    //    b = false;
+    //    console.log(a);
+
+    //数组浅复制
+    //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+    //    ];
+    //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+    //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+    //    console.log(a)//那么现在打印a 是什么结果呢
+    //
+    //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+    //    var arrtoo = arr.slice(1);
+    //    arrtoo[2] = "set Map";
+    //    console.log(arr);//One,Two,Three
+    //    console.log(arrtoo);//One,set Map,Three
+
+    //
+    //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+    //    var arrtooo = arr1.concat(111111);
+    //    arrtooo[1] = "set Map To";
+    //    console.log(arr1);//One,Two,Three
+    //    console.log(arrtooo);//One,set Map To,Three
+
+    //
+    //    var b=[1,2,3,4,5];   //concat的链接
+    //    var c=[6,7,8,9];
+    //    var d =[4,4,22]
+    //    console.log(b.concat(c,d))
+
+    var a = {
+      name: "yy",
+      age: 26,
+    }; //对象的浅拷贝哦
+    var b = new Object();
+    b.name = a.name;
+    b.age = a.age;
+    b.name = "xx";
+    console.log(a); //Object { name="yy", age=26}
+    console.log(b); //Object { name="xx", age=26}
+
+    var d = {
+      //对象的浅拷贝哦 第一种
+      name: "d",
+      oc: {
+        age: 32,
+      },
+      oad: {
+        adds: {
+          bb: 12,
+        },
+      },
+    };
+    var deepCopy = function (source) {
+      var result = {};
+      for (var key in source) {
+        result[key] =
+          typeof source[key] === "object"
+            ? deepCopy(source[key])
+            : source[key];
+      }
+      return result;
+    };
+
+    var c = deepCopy(d);
+    c.name = "c";
+    c.oc = {
+      age: 49,
+    };
+    console.log(c);
+    console.log(d);
+
+    //    var person = {    //第二种深拷贝
+    //        name: 'aa',
+    //        friends: ['da', 'dsa', 'gf']
+    //    };
+    //
+    //    var aPerson = Object.create(person, {
+    ////        name: {
+    ////            value: "gee"
+    ////        }
+    //    });
+    //
+    //    console.log(person.name);
+    //    console.log(aPerson.friends)
+
+    var Chinese = {
+      nation: "中国",
+    };
+    var Doctor = {
+      career: "医生",
+    };
+
+    function extendCopy(p) {
+      var c = {};
+      for (var i in p) {
+        c[i] = p[i];
+      }
+      c.uber = p;
+      return c;
+    }
+    var Doctor = extendCopy(Chinese);
+    Doctor.career = "医生";
+    console.log(Doctor); // 中国
+    Chinese.birthPlaces = ["北京", "上海", "香港"];
+    var Doctor = extendCopy(Chinese);
+    Doctor.birthPlaces.push("厦门");
+  </script>
+</body>
+
+</html>
